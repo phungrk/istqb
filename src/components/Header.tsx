@@ -1,0 +1,61 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useApp } from "./AppProvider";
+import { MailIcon } from "./icons";
+
+const NAV = [
+  ["/mindmap", "Mindmap"],
+  ["/tests", "Practice tests"],
+  ["/dashboard", "Dashboard"],
+  ["/coach", "AI Coach"],
+  ["/pricing", "Pricing"],
+] as const;
+
+export function Header() {
+  const { user, tier, openLogin, signOut } = useApp();
+  const pathname = usePathname();
+  // Exam and Result belong to Practice tests.
+  const active = pathname === "/exam" || pathname === "/result" ? "/tests" : pathname;
+
+  return (
+    <header style={{ maxWidth: 1180, margin: "0 auto", padding: "18px 28px", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
+      <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: "var(--color-text)" }}>
+        <span style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--color-accent)", display: "grid", placeItems: "center", color: "var(--color-bg)", fontFamily: "var(--font-heading)", fontSize: 18 }}>T</span>
+        <span style={{ fontFamily: "var(--font-heading)", fontSize: 21 }}>Testpath</span>
+      </Link>
+      <nav style={{ display: "flex", gap: 4, flexWrap: "wrap", marginLeft: 12, flex: "1 1 auto", minWidth: 0 }}>
+        {NAV.map(([href, label]) => {
+          const on = active === href;
+          return (
+            <Link
+              key={href}
+              href={href}
+              className="hov-nav"
+              style={{ display: "flex", alignItems: "center", gap: 6, background: on ? "var(--color-accent-200)" : "transparent", color: on ? "var(--color-accent-900)" : "var(--color-text)", borderRadius: 999, padding: "8px 14px", fontSize: 14, fontWeight: 600, textDecoration: "none" }}
+            >
+              <span>{label}</span>
+              {href === "/coach" && <span className="tag tag-accent" style={{ padding: "1px 8px", fontSize: 10 }}>PRO</span>}
+            </Link>
+          );
+        })}
+      </nav>
+      {!user ? (
+        <button className="btn btn-primary" onClick={openLogin}>
+          <MailIcon />
+          Sign in with Gmail
+        </button>
+      ) : (
+        <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+          <span style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--color-accent-2-300)", color: "var(--color-accent-2-900)", display: "grid", placeItems: "center", fontWeight: 700 }}>{user.name[0]}</span>
+          <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
+            <span style={{ fontSize: 13, fontWeight: 600 }}>{user.email}</span>
+            <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{tier === "pro" ? "Pro member" : "Member · free"}</span>
+          </div>
+          <button className="btn btn-ghost" onClick={signOut} style={{ fontSize: 13 }}>Sign out</button>
+        </div>
+      )}
+    </header>
+  );
+}

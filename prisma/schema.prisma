@@ -1,0 +1,59 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum Plan {
+  member
+  pro
+}
+
+model User {
+  id               String         @id @default(cuid())
+  email            String         @unique
+  name             String
+  plan             Plan           @default(member)
+  proUntil         DateTime?
+  stripeCustomerId String?        @unique
+  createdAt        DateTime       @default(now())
+  attempts         Attempt[]
+  learned          LearnedTopic[]
+}
+
+model Attempt {
+  id          String          @id @default(cuid())
+  userId      String
+  user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title       String
+  setKey      String
+  mode        String
+  correct     Int
+  total       Int
+  durationSec Int
+  perChapter  Json
+  createdAt   DateTime        @default(now())
+  answers     AttemptAnswer[]
+
+  @@index([userId, createdAt])
+}
+
+model AttemptAnswer {
+  attemptId   String
+  attempt     Attempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId  String
+  chosenIndex Int?
+
+  @@id([attemptId, questionId])
+}
+
+model LearnedTopic {
+  userId String
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  nodeId String
+
+  @@id([userId, nodeId])
+}

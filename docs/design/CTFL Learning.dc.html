@@ -1,0 +1,913 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="stylesheet" href="_ds/organic-07af368f-ba7f-4e8a-a4aa-af85b4597d6f/styles.css">
+<script src="_ds/organic-07af368f-ba7f-4e8a-a4aa-af85b4597d6f/_ds_bundle.js"></script>
+<style>
+body{margin:0;background:var(--color-bg)}
+a{color:var(--color-accent-700)}
+a:hover{color:var(--color-accent-800)}
+button{font:inherit}
+.btn{white-space:nowrap;flex:none}
+</style>
+</helmet>
+<div style="min-height:100vh; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); padding-bottom:96px">
+
+<header style="max-width:1180px; margin:0 auto; padding:18px 28px; display:flex; align-items:center; gap:20px; flex-wrap:wrap">
+  <button onClick="{{ goHome }}" style="display:flex; align-items:center; gap:10px; background:none; border:0; cursor:pointer; padding:0; color:var(--color-text)">
+    <span style="width:34px; height:34px; border-radius:50%; background:var(--color-accent); display:grid; place-items:center; color:var(--color-bg); font-family:var(--font-heading); font-size:18px">T</span>
+    <span style="font-family:var(--font-heading); font-size:21px">Testpath</span>
+  </button>
+  <nav style="display:flex; gap:4px; flex-wrap:wrap; margin-left:12px; flex:1 1 auto; min-width:0">
+    <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
+      <button onClick="{{ n.go }}" style="display:flex; align-items:center; gap:6px; background:{{ n.bg }}; color:{{ n.color }}; border:0; border-radius:999px; padding:8px 14px; font-size:14px; font-weight:600; cursor:pointer" style-hover="background:var(--color-neutral-200)">
+        <span>{{ n.label }}</span>
+        <sc-if value="{{ n.isCoach }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent" style="padding:1px 8px; font-size:10px">PRO</span></sc-if>
+      </button>
+    </sc-for>
+  </nav>
+  <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ true }}">
+    <button class="btn btn-primary" onClick="{{ openLogin }}">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+      Sign in with Gmail
+    </button>
+  </sc-if>
+  <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; align-items:center; gap:10px">
+      <span style="width:34px; height:34px; border-radius:50%; background:var(--color-accent-2-300); color:var(--color-accent-2-900); display:grid; place-items:center; font-weight:700">{{ initial }}</span>
+      <div style="display:flex; flex-direction:column; line-height:1.2">
+        <span style="font-size:13px; font-weight:600">{{ userEmail }}</span>
+        <span style="font-size:12px; color:var(--color-neutral-700)">{{ tierLabel }}</span>
+      </div>
+      <button class="btn btn-ghost" onClick="{{ signOut }}" style="font-size:13px">Sign out</button>
+    </div>
+  </sc-if>
+</header>
+
+<main style="max-width:1180px; margin:0 auto; padding:0 28px">
+
+<!-- HOME -->
+<sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+<section data-screen-label="Home" style="display:flex; flex-direction:column; gap:72px; padding-top:40px">
+  <div style="display:flex; flex-wrap:wrap; gap:48px; align-items:center">
+    <div style="flex:1 1 480px; max-width:620px">
+      <span class="tag tag-accent-2">ISTQB® CTFL · Syllabus v4.0.1</span>
+      <h1 style="font-size:56px; margin:18px 0 18px; text-wrap:pretty">Pass the Foundation Level exam with a map, not a pile of notes.</h1>
+      <p style="font-size:18px; color:var(--color-neutral-800); max-width:520px; text-wrap:pretty">Study the whole syllabus as a mindmap, then test yourself on practice sets and timed mock exams. No account needed to start.</p>
+      <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:28px">
+        <button class="btn btn-primary" onClick="{{ goMindmap }}" style="font-size:16px; padding:12px 22px">Open the mindmap</button>
+        <button class="btn btn-secondary" onClick="{{ goTests }}" style="font-size:16px; padding:12px 22px">Take a practice test</button>
+      </div>
+    </div>
+    <div style="flex:0 1 380px; position:relative; height:360px; min-width:300px">
+      <div style="position:absolute; left:0; top:0; width:300px; height:300px; border-radius:50%; background:var(--color-accent-200)"></div>
+      <div style="position:absolute; right:0; bottom:0; width:180px; height:180px; border-radius:50%; background:var(--color-accent-2-300)"></div>
+      <div style="position:absolute; left:48px; top:70px; display:flex; flex-direction:column; gap:6px">
+        <span style="font-family:var(--font-heading); font-size:72px; line-height:1; color:var(--color-accent-800)">40</span>
+        <span style="font-size:15px; font-weight:600; color:var(--color-accent-900)">questions in 60 minutes</span>
+      </div>
+      <div style="position:absolute; right:36px; bottom:56px; display:flex; flex-direction:column; gap:2px; text-align:right">
+        <span style="font-family:var(--font-heading); font-size:40px; line-height:1; color:var(--color-accent-2-900)">65%</span>
+        <span style="font-size:13px; font-weight:600; color:var(--color-accent-2-900)">to pass</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:20px">
+    <h2 style="margin:0">Six chapters</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:16px">
+      <sc-for list="{{ chapters }}" as="c" hint-placeholder-count="6">
+        <button onClick="{{ c.open }}" style="display:flex; flex-direction:column; gap:12px; text-align:left; padding:20px; border:0; border-radius:28px; background:{{ c.tint }}; cursor:pointer; color:var(--color-text)" style-hover="box-shadow:var(--shadow-md)">
+          <span style="width:44px; height:44px; border-radius:50%; background:{{ c.base }}; color:var(--color-bg); display:grid; place-items:center; font-family:var(--font-heading); font-size:20px">{{ c.id }}</span>
+          <span style="font-family:var(--font-heading); font-size:17px; line-height:1.2; color:{{ c.ink }}">{{ c.title }}</span>
+          <span style="font-size:13px; color:{{ c.ink }}">{{ c.q }} exam questions</span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="display:flex; flex-direction:column; gap:20px">
+    <h2 style="margin:0">What you get</h2>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:16px">
+      <div class="card" style="padding:26px; gap:12px">
+        <span class="card-kicker" style="color:var(--color-accent-700)">Without an account</span>
+        <span class="card-title" style="font-size:22px">Learn and practise</span>
+        <span style="display:flex; flex-direction:column; gap:8px; font-size:14px">
+          <span>Interactive syllabus mindmap</span>
+          <span>Practice sets and mock exams</span>
+        </span>
+      </div>
+      <div class="card" style="padding:26px; gap:12px; background:var(--color-accent-2-100)">
+        <span class="card-kicker" style="color:var(--color-accent-2-800)">Sign in with Gmail · free</span>
+        <span class="card-title" style="font-size:22px">Track your results</span>
+        <span style="display:flex; flex-direction:column; gap:8px; font-size:14px">
+          <span>Every attempt saved</span>
+          <span>Score trend and mastery per chapter</span>
+          <span>Mindmap study progress</span>
+        </span>
+      </div>
+      <div class="card" style="padding:26px; gap:12px; background:var(--color-accent-100)">
+        <span class="card-kicker" style="color:var(--color-accent-800)">Pro · $5 / month</span>
+        <span class="card-title" style="font-size:22px">AI exam coach</span>
+        <span style="display:flex; flex-direction:column; gap:8px; font-size:14px">
+          <span>Explains every wrong answer</span>
+          <span>Chat about any syllabus topic</span>
+          <span>Study plan from your weak areas</span>
+          <span>Custom question sets on weak topics</span>
+        </span>
+        <button class="btn btn-primary" onClick="{{ goPricing }}" style="align-self:flex-start; margin-top:6px">See plans</button>
+      </div>
+    </div>
+  </div>
+  <p style="font-size:12px; color:var(--color-neutral-700)">ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.</p>
+</section>
+</sc-if>
+
+<!-- MINDMAP -->
+<sc-if value="{{ isMindmap }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Mindmap" style="display:flex; flex-direction:column; gap:24px; padding-top:24px">
+  <div style="display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap">
+    <div style="flex:1 1 320px">
+      <h1 style="margin:0 0 6px">Syllabus mindmap</h1>
+      <p style="margin:0; color:var(--color-neutral-700)">Open a branch to go deeper. Select any node to read its key points.</p>
+    </div>
+    <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}">
+      <span class="tag tag-accent-2" style="font-size:13px; padding:6px 14px">{{ learnedLabel }}</span>
+    </sc-if>
+    <div style="display:flex; gap:8px">
+      <button class="btn btn-secondary" onClick="{{ expandAll }}">Expand all</button>
+      <button class="btn btn-secondary" onClick="{{ collapseAll }}">Collapse</button>
+    </div>
+  </div>
+  <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
+    <div style="flex:1 1 460px; min-width:0; background:var(--color-neutral-100); border-radius:32px; padding:24px; display:flex; flex-direction:column">
+      <sc-for list="{{ tree }}" as="r" hint-placeholder-count="8">
+        <div style="margin-left:{{ r.ml }}px; padding:5px 0 5px {{ r.pl }}px; border-left:{{ r.bl }}; display:flex; align-items:center; gap:8px">
+          <sc-if value="{{ r.hasLine }}" hint-placeholder-val="{{ false }}"><span style="width:16px; height:2px; background:var(--color-neutral-400); flex:none"></span></sc-if>
+          <button onClick="{{ r.toggle }}" style="width:26px; height:26px; flex:none; border-radius:50%; border:0; background:{{ r.togBg }}; color:var(--color-text); cursor:pointer; display:grid; place-items:center; visibility:{{ r.togVis }}" style-hover="background:var(--color-neutral-300)">
+            <sc-if value="{{ r.isOpen }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></sc-if>
+            <sc-if value="{{ r.isClosed }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"></path></svg></sc-if>
+          </button>
+          <button onClick="{{ r.select }}" style="display:flex; align-items:center; gap:8px; border:2px solid {{ r.ring }}; background:{{ r.bg }}; color:{{ r.fg }}; font-family:{{ r.font }}; font-size:{{ r.size }}px; padding:8px 16px; border-radius:999px; cursor:pointer; text-align:left; line-height:1.25" style-hover="box-shadow:var(--shadow-md)">
+            <span>{{ r.title }}</span>
+            <sc-if value="{{ r.learned }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-2-700)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+            <sc-if value="{{ r.hasCount }}" hint-placeholder-val="{{ false }}"><span style="font-family:var(--font-body); font-size:12px; opacity:0.75">{{ r.count }}</span></sc-if>
+          </button>
+        </div>
+      </sc-for>
+    </div>
+    <aside style="flex:0 1 380px; min-width:280px; position:sticky; top:16px">
+      <div class="card elev-md" style="padding:28px; gap:14px; background:var(--color-surface)">
+        <span class="card-kicker" style="color:var(--color-accent-700)">{{ node.kicker }}</span>
+        <h3 style="margin:0">{{ node.title }}</h3>
+        <p style="margin:0; font-size:15px; text-wrap:pretty">{{ node.summary }}</p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px">
+          <sc-for list="{{ node.points }}" as="p" hint-placeholder-count="3">
+            <div style="display:flex; gap:10px; align-items:flex-start; font-size:14px">
+              <span style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); margin-top:7px; flex:none"></span>
+              <span>{{ p }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ node.hasKids }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px">
+            <sc-for list="{{ node.kids }}" as="k" hint-placeholder-count="3">
+              <button class="tag tag-neutral" onClick="{{ k.select }}" style="border:0; cursor:pointer; font-size:12px; padding:5px 12px">{{ k.title }}</button>
+            </sc-for>
+          </div>
+        </sc-if>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px">
+          <sc-if value="{{ node.canPractice }}" hint-placeholder-val="{{ false }}">
+            <button class="btn btn-primary" onClick="{{ node.practice }}">Practise this chapter</button>
+          </sc-if>
+          <sc-if value="{{ node.canMark }}" hint-placeholder-val="{{ false }}">
+            <button class="btn btn-secondary" onClick="{{ node.toggleLearned }}">{{ node.markLabel }}</button>
+          </sc-if>
+          <sc-if value="{{ node.guestHint }}" hint-placeholder-val="{{ false }}">
+            <button class="btn btn-ghost" onClick="{{ openLogin }}">Sign in to track what you've learned</button>
+          </sc-if>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+</sc-if>
+
+<!-- TESTS -->
+<sc-if value="{{ isTests }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Practice tests" style="display:flex; flex-direction:column; gap:28px; padding-top:24px">
+  <div style="display:flex; align-items:flex-end; gap:20px; flex-wrap:wrap">
+    <div style="flex:1 1 360px">
+      <h1 style="margin:0 0 6px">Practice tests</h1>
+      <p style="margin:0; color:var(--color-neutral-700); max-width:560px">{{ modeHelp }}</p>
+    </div>
+    <div style="display:flex; background:var(--color-surface); border-radius:999px; padding:4px; gap:4px">
+      <sc-for list="{{ modes }}" as="m" hint-placeholder-count="2">
+        <button onClick="{{ m.pick }}" style="border:0; border-radius:999px; padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer; background:{{ m.bg }}; color:{{ m.fg }}">{{ m.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+  <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--color-accent-2-100); border-radius:28px; padding:16px 22px">
+      <span style="flex:1 1 300px; font-size:14px; color:var(--color-accent-2-900)">You can take any test now. Results are not saved until you sign in.</span>
+      <button class="btn btn-secondary" onClick="{{ openLogin }}">Sign in with Gmail</button>
+    </div>
+  </sc-if>
+  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px">
+    <sc-for list="{{ exams }}" as="e" hint-placeholder-count="6">
+      <div class="card" style="padding:24px; gap:10px; background:{{ e.bg }}">
+        <span class="card-kicker" style="color:var(--color-accent-700)">{{ e.kicker }}</span>
+        <span class="card-title" style="font-size:20px">{{ e.title }}</span>
+        <span style="font-size:14px; color:var(--color-neutral-800)">{{ e.sub }}</span>
+        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:auto; padding-top:10px">
+          <span class="tag tag-neutral">{{ e.meta }}</span>
+          <sc-if value="{{ e.hasBest }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent-2">Best {{ e.best }}%</span></sc-if>
+          <button class="btn btn-primary" onClick="{{ e.start }}" style="margin-left:auto">Start</button>
+        </div>
+      </div>
+    </sc-for>
+    <div class="card" style="padding:24px; gap:10px; background:var(--color-accent-100)">
+      <span class="card-kicker" style="color:var(--color-accent-800)">Pro · AI generated</span>
+      <span class="card-title" style="font-size:20px">A set built from your weak topics</span>
+      <span style="font-size:14px; color:var(--color-neutral-800)">The coach writes new questions for the chapters where you score lowest.</span>
+      <button class="btn btn-primary" onClick="{{ goCoachQuiz }}" style="align-self:flex-start; margin-top:auto">{{ aiSetLabel }}</button>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- EXAM -->
+<sc-if value="{{ isExam }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Exam" style="display:flex; flex-direction:column; gap:22px; padding-top:20px">
+  <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap">
+    <button class="btn btn-ghost" onClick="{{ quitExam }}">Leave test</button>
+    <h3 style="margin:0; flex:1 1 240px">{{ ex.title }}</h3>
+    <span class="tag tag-accent-2" style="font-size:13px; padding:5px 14px">{{ ex.modeLabel }}</span>
+    <sc-if value="{{ ex.timed }}" hint-placeholder-val="{{ false }}">
+      <span style="display:flex; align-items:center; gap:8px; background:{{ ex.timerBg }}; color:{{ ex.timerFg }}; border-radius:999px; padding:7px 16px; font-weight:700; font-variant-numeric:tabular-nums">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        {{ ex.timeLeft }}
+      </span>
+    </sc-if>
+  </div>
+  <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
+    <div style="flex:1 1 560px; min-width:0; display:flex; flex-direction:column; gap:18px">
+      <div style="background:var(--color-neutral-100); border-radius:32px; padding:32px; display:flex; flex-direction:column; gap:20px">
+        <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
+          <span style="font-size:14px; font-weight:700">Question {{ ex.num }} of {{ ex.total }}</span>
+          <span class="tag tag-neutral">{{ ex.chLabel }}</span>
+        </div>
+        <p style="margin:0; font-size:20px; line-height:1.45; text-wrap:pretty">{{ ex.q }}</p>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <sc-for list="{{ ex.opts }}" as="o" hint-placeholder-count="4">
+            <button onClick="{{ o.pick }}" style="display:flex; align-items:center; gap:14px; text-align:left; padding:12px 18px 12px 12px; border-radius:999px; background:{{ o.bg }}; border:2px solid {{ o.bd }}; cursor:{{ o.cursor }}; color:var(--color-text); font-size:15px" style-hover="box-shadow:var(--shadow-sm)">
+              <span style="width:34px; height:34px; flex:none; border-radius:50%; display:grid; place-items:center; font-weight:700; background:{{ o.dBg }}; color:{{ o.dFg }}">{{ o.letter }}</span>
+              <span>{{ o.text }}</span>
+            </button>
+          </sc-for>
+        </div>
+        <sc-if value="{{ ex.reveal }}" hint-placeholder-val="{{ false }}">
+          <div style="border-radius:24px; padding:20px 22px; background:{{ ex.fbBg }}; display:flex; flex-direction:column; gap:8px">
+            <span style="font-family:var(--font-heading); font-size:18px; color:{{ ex.fbFg }}">{{ ex.fbTitle }}</span>
+            <span style="font-size:15px; color:var(--color-neutral-900)">{{ ex.explain }}</span>
+            <button class="btn btn-ghost" onClick="{{ ex.askAI }}" style="align-self:flex-start; color:var(--color-accent-700)">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path></svg>
+              {{ ex.askLabel }}
+            </button>
+          </div>
+        </sc-if>
+      </div>
+      <div style="display:flex; gap:10px; align-items:center">
+        <button class="btn btn-secondary" onClick="{{ ex.prev }}" disabled="{{ ex.isFirst }}">Previous</button>
+        <span style="flex:1"></span>
+        <sc-if value="{{ ex.notLast }}" hint-placeholder-val="{{ true }}">
+          <button class="btn btn-primary" onClick="{{ ex.next }}">Next question</button>
+        </sc-if>
+        <sc-if value="{{ ex.isLast }}" hint-placeholder-val="{{ false }}">
+          <button class="btn btn-primary" onClick="{{ ex.submit }}">Submit test</button>
+        </sc-if>
+      </div>
+    </div>
+    <aside style="flex:0 1 280px; min-width:240px; background:var(--color-surface); border-radius:32px; padding:24px; display:flex; flex-direction:column; gap:14px">
+      <span style="font-weight:700; font-size:14px">{{ ex.answeredLabel }}</span>
+      <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:8px">
+        <sc-for list="{{ ex.dots }}" as="d" hint-placeholder-count="10">
+          <button onClick="{{ d.go }}" style="aspect-ratio:1; border-radius:50%; border:0; cursor:pointer; font-weight:700; font-size:13px; background:{{ d.bg }}; color:{{ d.fg }}">{{ d.n }}</button>
+        </sc-for>
+      </div>
+      <button class="btn btn-secondary" onClick="{{ ex.submit }}" style="margin-top:6px">Submit now</button>
+    </aside>
+  </div>
+</section>
+</sc-if>
+
+<!-- RESULT -->
+<sc-if value="{{ isResult }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Result" style="display:flex; flex-direction:column; gap:28px; padding-top:24px">
+  <div style="display:flex; gap:36px; flex-wrap:wrap; align-items:center">
+    <div style="width:220px; height:220px; border-radius:50%; background:{{ res.ringBg }}; display:flex; flex-direction:column; align-items:center; justify-content:center; flex:none">
+      <span style="font-family:var(--font-heading); font-size:64px; line-height:1; color:{{ res.ringFg }}">{{ res.pct }}%</span>
+      <span style="font-size:14px; font-weight:700; color:{{ res.ringFg }}">{{ res.correct }} / {{ res.total }} correct</span>
+    </div>
+    <div style="flex:1 1 360px; display:flex; flex-direction:column; gap:10px">
+      <span class="card-kicker" style="color:var(--color-accent-700)">{{ res.title }} · {{ res.modeLabel }}</span>
+      <h1 style="margin:0">{{ res.headline }}</h1>
+      <p style="margin:0; color:var(--color-neutral-800)">{{ res.sub }}</p>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px">
+        <button class="btn btn-primary" onClick="{{ res.retry }}">Try again</button>
+        <button class="btn btn-secondary" onClick="{{ goTests }}">All tests</button>
+        <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}"><button class="btn btn-secondary" onClick="{{ goDashboard }}">Open dashboard</button></sc-if>
+      </div>
+    </div>
+  </div>
+  <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--color-accent-2-100); border-radius:28px; padding:18px 22px">
+      <span style="flex:1 1 300px; font-size:15px; color:var(--color-accent-2-900)">This result is not saved. Sign in with Gmail to keep it and follow your progress.</span>
+      <button class="btn btn-primary" onClick="{{ openLogin }}">Save my result</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ res.savedNote }}" hint-placeholder-val="{{ false }}">
+    <span class="tag tag-accent-2" style="align-self:flex-start; font-size:13px; padding:6px 14px">Saved to your dashboard</span>
+  </sc-if>
+  <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
+    <div style="flex:0 1 380px; min-width:280px; background:var(--color-surface); border-radius:32px; padding:26px; display:flex; flex-direction:column; gap:16px">
+      <h4 style="margin:0">By chapter</h4>
+      <sc-for list="{{ res.chRows }}" as="r" hint-placeholder-count="4">
+        <div style="display:flex; flex-direction:column; gap:6px">
+          <div style="display:flex; justify-content:space-between; font-size:14px; gap:10px"><span>{{ r.title }}</span><span style="font-weight:700">{{ r.label }}</span></div>
+          <div style="height:10px; border-radius:999px; background:var(--color-neutral-200); overflow:hidden"><div style="height:100%; width:{{ r.w }}; border-radius:999px; background:{{ r.color }}"></div></div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="flex:1 1 520px; min-width:0; display:flex; flex-direction:column; gap:12px">
+      <h4 style="margin:0">Review answers</h4>
+      <sc-for list="{{ res.review }}" as="v" hint-placeholder-count="4">
+        <div style="background:var(--color-neutral-100); border-radius:28px; padding:20px 22px; display:flex; flex-direction:column; gap:8px">
+          <div style="display:flex; gap:10px; align-items:center">
+            <span style="width:28px; height:28px; border-radius:50%; flex:none; display:grid; place-items:center; background:{{ v.badgeBg }}; color:var(--color-bg)">
+              <sc-if value="{{ v.ok }}" hint-placeholder-val="{{ true }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg></sc-if>
+              <sc-if value="{{ v.bad }}" hint-placeholder-val="{{ false }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg></sc-if>
+            </span>
+            <span style="font-size:13px; font-weight:700">Q{{ v.n }} · {{ v.ch }}</span>
+          </div>
+          <span style="font-size:15px">{{ v.q }}</span>
+          <span style="font-size:14px; color:var(--color-neutral-800)">Your answer: {{ v.yours }} · Correct: {{ v.right }}</span>
+          <sc-if value="{{ v.bad }}" hint-placeholder-val="{{ false }}">
+            <span style="font-size:14px; color:var(--color-neutral-800)">{{ v.explain }}</span>
+            <button class="btn btn-ghost" onClick="{{ v.askAI }}" style="align-self:flex-start; color:var(--color-accent-700)">{{ v.askLabel }}</button>
+          </sc-if>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+</sc-if>
+
+<!-- DASHBOARD -->
+<sc-if value="{{ isDashboard }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Dashboard" style="display:flex; flex-direction:column; gap:28px; padding-top:24px">
+  <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:560px; display:flex; flex-direction:column; gap:14px; padding:40px 0">
+      <h1 style="margin:0">Your progress lives here</h1>
+      <p style="margin:0; font-size:17px; color:var(--color-neutral-800)">Sign in with your Gmail account to save every attempt, see your score trend and find your weakest chapters. It's free.</p>
+      <button class="btn btn-primary" onClick="{{ openLogin }}" style="align-self:flex-start; font-size:16px; padding:12px 22px">Sign in with Gmail</button>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; flex-direction:column; gap:6px">
+      <h1 style="margin:0">Hi {{ firstName }}, here's where you stand</h1>
+      <p style="margin:0; color:var(--color-neutral-700)">{{ dash.readyText }}</p>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:16px">
+      <sc-for list="{{ dash.stats }}" as="s" hint-placeholder-count="4">
+        <div style="background:{{ s.bg }}; border-radius:28px; padding:22px; display:flex; flex-direction:column; gap:4px">
+          <span style="font-size:13px; font-weight:600; color:var(--color-neutral-800)">{{ s.label }}</span>
+          <span style="font-family:var(--font-heading); font-size:38px; line-height:1.1">{{ s.value }}</span>
+        </div>
+      </sc-for>
+    </div>
+    <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:stretch">
+      <div style="flex:1 1 480px; min-width:0; background:var(--color-neutral-100); border-radius:32px; padding:26px; display:flex; flex-direction:column; gap:16px">
+        <div style="display:flex; justify-content:space-between; align-items:baseline; gap:10px; flex-wrap:wrap">
+          <h4 style="margin:0">Score trend</h4>
+          <span style="font-size:13px; color:var(--color-neutral-700)">Dashed line = {{ passMark }}% pass mark</span>
+        </div>
+        <div style="position:relative; height:200px; display:flex; align-items:flex-end; gap:12px; padding-top:10px">
+          <div style="position:absolute; left:0; right:0; bottom:{{ dash.passLine }}; border-top:2px dashed var(--color-accent-2-600)"></div>
+          <sc-for list="{{ dash.bars }}" as="b" hint-placeholder-count="5">
+            <div style="flex:1; max-width:64px; display:flex; flex-direction:column; align-items:center; gap:6px; height:100%; justify-content:flex-end">
+              <span style="font-size:12px; font-weight:700">{{ b.pct }}%</span>
+              <div style="width:100%; height:{{ b.h }}; border-radius:999px 999px 12px 12px; background:{{ b.color }}"></div>
+            </div>
+          </sc-for>
+        </div>
+        <sc-if value="{{ dash.empty }}" hint-placeholder-val="{{ false }}"><span style="font-size:14px; color:var(--color-neutral-700)">Take a test to see your trend.</span></sc-if>
+      </div>
+      <div style="flex:0 1 380px; min-width:280px; background:var(--color-surface); border-radius:32px; padding:26px; display:flex; flex-direction:column; gap:14px">
+        <h4 style="margin:0">Mastery by chapter</h4>
+        <sc-for list="{{ dash.mastery }}" as="r" hint-placeholder-count="6">
+          <div style="display:flex; flex-direction:column; gap:5px">
+            <div style="display:flex; justify-content:space-between; gap:10px; font-size:13px"><span>{{ r.title }}</span><span style="font-weight:700">{{ r.label }}</span></div>
+            <div style="height:9px; border-radius:999px; background:var(--color-neutral-200); overflow:hidden"><div style="height:100%; width:{{ r.w }}; border-radius:999px; background:{{ r.color }}"></div></div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+    <div style="display:flex; gap:24px; flex-wrap:wrap; align-items:flex-start">
+      <div style="flex:1 1 520px; min-width:0; background:var(--color-neutral-100); border-radius:32px; padding:26px; overflow-x:auto">
+        <h4 style="margin:0 0 10px">Recent attempts</h4>
+        <table class="table">
+          <thead><tr><th>Date</th><th>Test</th><th>Mode</th><th>Score</th><th>Result</th></tr></thead>
+          <tbody>
+            <sc-for list="{{ dash.rows }}" as="a" hint-placeholder-count="3">
+              <tr><td>{{ a.date }}</td><td>{{ a.title }}</td><td>{{ a.mode }}</td><td>{{ a.score }}</td><td><span class="tag {{ a.tagClass }}">{{ a.status }}</span></td></tr>
+            </sc-for>
+          </tbody>
+        </table>
+      </div>
+      <div style="flex:0 1 380px; min-width:280px; display:flex; flex-direction:column; gap:16px">
+        <div style="background:var(--color-accent-2-100); border-radius:32px; padding:24px; display:flex; flex-direction:column; gap:8px">
+          <span class="card-kicker" style="color:var(--color-accent-2-800)">Mindmap progress</span>
+          <span style="font-family:var(--font-heading); font-size:26px">{{ learnedLabel }}</span>
+          <button class="btn btn-ghost" onClick="{{ goMindmap }}" style="align-self:flex-start; color:var(--color-accent-2-800)">Continue studying</button>
+        </div>
+        <div style="background:var(--color-accent-100); border-radius:32px; padding:24px; display:flex; flex-direction:column; gap:8px">
+          <span class="card-kicker" style="color:var(--color-accent-800)">AI coach</span>
+          <span style="font-size:15px">Weakest right now: <strong>{{ dash.weakest }}</strong></span>
+          <button class="btn btn-primary" onClick="{{ goCoachPlan }}" style="align-self:flex-start">{{ dash.coachCta }}</button>
+        </div>
+      </div>
+    </div>
+  </sc-if>
+</section>
+</sc-if>
+
+<!-- COACH -->
+<sc-if value="{{ isCoach }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="AI Coach" style="display:flex; flex-direction:column; gap:24px; padding-top:24px">
+  <sc-if value="{{ notPro }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:center; padding:30px 0">
+      <div style="flex:1 1 420px; max-width:600px; display:flex; flex-direction:column; gap:14px">
+        <span class="tag tag-accent" style="align-self:flex-start">Pro</span>
+        <h1 style="margin:0">An exam coach that knows where you slip</h1>
+        <p style="margin:0; font-size:17px; color:var(--color-neutral-800)">It reads your results, explains each wrong answer, answers your questions about the syllabus, plans your week and writes new questions for your weakest chapters.</p>
+        <button class="btn btn-primary" onClick="{{ goPricing }}" style="align-self:flex-start; font-size:16px; padding:12px 22px">Upgrade to Pro</button>
+      </div>
+      <div style="flex:0 1 340px; display:flex; flex-direction:column; gap:10px">
+        <span style="align-self:flex-end; background:var(--color-accent-200); border-radius:24px 24px 6px 24px; padding:12px 16px; font-size:14px; max-width:280px">Why is 17 a boundary value for ages 18–65?</span>
+        <span style="align-self:flex-start; background:var(--color-surface); border-radius:24px 24px 24px 6px; padding:12px 16px; font-size:14px; max-width:300px">With 2-value BVA you test each boundary and its nearest neighbour outside the range. 17 is the closest invalid value below 18…</span>
+      </div>
+    </div>
+  </sc-if>
+  <sc-if value="{{ isPro }}" hint-placeholder-val="{{ false }}">
+    <div style="display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap">
+      <div style="flex:1 1 320px">
+        <h1 style="margin:0 0 6px">AI coach</h1>
+        <p style="margin:0; color:var(--color-neutral-700)">Weakest chapters from your results: {{ weakText }}</p>
+      </div>
+      <div style="display:flex; background:var(--color-surface); border-radius:999px; padding:4px; gap:4px">
+        <sc-for list="{{ coachTabs }}" as="t" hint-placeholder-count="3">
+          <button onClick="{{ t.pick }}" style="border:0; border-radius:999px; padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer; background:{{ t.bg }}; color:{{ t.fg }}">{{ t.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ tabChat }}" hint-placeholder-val="{{ true }}">
+      <div style="background:var(--color-neutral-100); border-radius:32px; padding:24px; display:flex; flex-direction:column; gap:16px">
+        <div style="min-height:320px; max-height:480px; overflow-y:auto; display:flex; flex-direction:column; gap:12px">
+          <sc-if value="{{ chatEmpty }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; flex-direction:column; gap:12px; padding:20px 0">
+              <span style="font-family:var(--font-heading); font-size:22px">Ask anything about the CTFL syllabus</span>
+              <div style="display:flex; flex-wrap:wrap; gap:8px">
+                <sc-for list="{{ suggestions }}" as="g" hint-placeholder-count="3">
+                  <button class="tag tag-accent" onClick="{{ g.send }}" style="border:0; cursor:pointer; font-size:13px; padding:7px 14px">{{ g.text }}</button>
+                </sc-for>
+              </div>
+            </div>
+          </sc-if>
+          <sc-for list="{{ chat }}" as="m" hint-placeholder-count="0">
+            <div style="align-self:{{ m.align }}; max-width:78%; background:{{ m.bg }}; border-radius:{{ m.radius }}; padding:12px 16px; font-size:15px; white-space:pre-wrap">{{ m.text }}</div>
+          </sc-for>
+          <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
+            <div style="align-self:flex-start; background:var(--color-surface); border-radius:24px; padding:12px 16px; font-size:14px; color:var(--color-neutral-700)">Coach is thinking…</div>
+          </sc-if>
+        </div>
+        <form onSubmit="{{ submitChat }}" style="display:flex; gap:10px">
+          <input class="input" value="{{ chatInput }}" onChange="{{ onChatInput }}" placeholder="e.g. What's the difference between confirmation and regression testing?" style="flex:1; min-height:44px">
+          <button class="btn btn-primary btn-icon" type="submit" style="width:44px; height:44px" aria-label="Send">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
+          </button>
+        </form>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ tabPlan }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--color-neutral-100); border-radius:32px; padding:28px; display:flex; flex-direction:column; gap:16px; max-width:820px">
+        <h3 style="margin:0">Study plan from your weak areas</h3>
+        <p style="margin:0; color:var(--color-neutral-800)">The coach looks at your mastery per chapter and builds a 7-day plan, heavier on the chapters where you lose most points.</p>
+        <button class="btn btn-primary" onClick="{{ makePlan }}" disabled="{{ busy }}" style="align-self:flex-start">{{ planCta }}</button>
+        <sc-if value="{{ hasPlan }}" hint-placeholder-val="{{ false }}">
+          <div style="background:var(--color-surface); border-radius:24px; padding:22px; white-space:pre-wrap; font-size:15px; line-height:1.6">{{ plan }}</div>
+        </sc-if>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ tabQuiz }}" hint-placeholder-val="{{ false }}">
+      <div style="background:var(--color-neutral-100); border-radius:32px; padding:28px; display:flex; flex-direction:column; gap:16px; max-width:820px">
+        <h3 style="margin:0">Custom question set</h3>
+        <p style="margin:0; color:var(--color-neutral-800)">Pick a chapter. The coach writes 5 new exam-style questions with explanations, in practice mode.</p>
+        <div style="display:flex; flex-wrap:wrap; gap:8px">
+          <sc-for list="{{ quizChs }}" as="c" hint-placeholder-count="6">
+            <button onClick="{{ c.pick }}" style="border:2px solid {{ c.bd }}; background:{{ c.bg }}; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:14px; font-weight:600; color:var(--color-text)">{{ c.label }}</button>
+          </sc-for>
+        </div>
+        <button class="btn btn-primary" onClick="{{ makeQuiz }}" disabled="{{ busy }}" style="align-self:flex-start">{{ quizCta }}</button>
+      </div>
+    </sc-if>
+  </sc-if>
+</section>
+</sc-if>
+
+<!-- PRICING -->
+<sc-if value="{{ isPricing }}" hint-placeholder-val="{{ false }}">
+<section data-screen-label="Pricing" style="display:flex; flex-direction:column; gap:28px; padding-top:24px">
+  <div style="max-width:620px">
+    <h1 style="margin:0 0 8px">Plans</h1>
+    <p style="margin:0; font-size:17px; color:var(--color-neutral-800)">Studying is free. Pay only if you want the AI coach.</p>
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items:stretch">
+    <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+      <div class="card" style="padding:30px; gap:14px; background:{{ p.bg }}; box-shadow:{{ p.shadow }}">
+        <span class="card-kicker" style="color:var(--color-accent-800)">{{ p.kicker }}</span>
+        <span style="font-family:var(--font-heading); font-size:28px">{{ p.name }}</span>
+        <div style="display:flex; align-items:baseline; gap:6px"><span style="font-family:var(--font-heading); font-size:44px; line-height:1">{{ p.price }}</span><span style="font-size:14px; color:var(--color-neutral-700)">{{ p.per }}</span></div>
+        <div style="display:flex; flex-direction:column; gap:10px; flex:1; padding-top:6px">
+          <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="3">
+            <div style="display:flex; gap:10px; font-size:14px; align-items:flex-start">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-2-700)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20 6 9 17l-5-5"></path></svg>
+              <span>{{ f }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <button class="btn {{ p.btnClass }}" onClick="{{ p.action }}" disabled="{{ p.current }}" style="padding:12px 20px; font-size:15px">{{ p.cta }}</button>
+      </div>
+    </sc-for>
+  </div>
+</section>
+</sc-if>
+</main>
+
+<!-- DIALOGS -->
+<sc-if value="{{ dlgLogin }}" hint-placeholder-val="{{ false }}">
+  <div class="dialog-backdrop" onClick="{{ closeDialog }}" style="z-index:50">
+    <div class="dialog" onClick="{{ stop }}" style="width:min(420px,100%); background:var(--color-neutral-100)">
+      <span class="dialog-title" style="font-size:24px">Sign in with Gmail</span>
+      <span class="dialog-body">Choose a Google account to continue to Testpath. We only read your name and email address.</span>
+      <button onClick="{{ loginDemo }}" style="display:flex; align-items:center; gap:12px; padding:12px 16px; border-radius:999px; border:2px solid var(--color-divider); background:var(--color-bg); cursor:pointer; text-align:left; color:var(--color-text)" style-hover="border-color:var(--color-accent)">
+        <span style="width:36px; height:36px; border-radius:50%; background:var(--color-accent-2-300); color:var(--color-accent-2-900); display:grid; place-items:center; font-weight:700">L</span>
+        <span style="display:flex; flex-direction:column; line-height:1.25"><span style="font-weight:600">Linh Nguyen</span><span style="font-size:13px; color:var(--color-neutral-700)">linh.nguyen@gmail.com</span></span>
+      </button>
+      <form onSubmit="{{ loginEmailSubmit }}" style="display:flex; flex-direction:column; gap:8px">
+        <div class="field"><label>Use another Gmail address</label><input class="input" type="email" value="{{ loginEmail }}" onChange="{{ onLoginEmail }}" placeholder="you@gmail.com" style="min-height:44px"></div>
+        <div class="dialog-actions">
+          <button class="btn btn-ghost" type="button" onClick="{{ closeDialog }}">Cancel</button>
+          <button class="btn btn-primary" type="submit">Continue</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ dlgCheckout }}" hint-placeholder-val="{{ false }}">
+  <div class="dialog-backdrop" onClick="{{ closeDialog }}" style="z-index:50">
+    <div class="dialog" onClick="{{ stop }}" style="width:min(460px,100%); background:var(--color-neutral-100)">
+      <span class="dialog-title" style="font-size:24px">Upgrade to Pro</span>
+      <div style="display:flex; gap:10px">
+        <sc-for list="{{ billingOpts }}" as="b" hint-placeholder-count="2">
+          <button onClick="{{ b.pick }}" style="flex:1; display:flex; flex-direction:column; gap:2px; text-align:left; padding:14px 16px; border-radius:24px; border:2px solid {{ b.bd }}; background:{{ b.bg }}; cursor:pointer; color:var(--color-text)">
+            <span style="font-weight:700">{{ b.label }}</span>
+            <span style="font-size:13px; color:var(--color-neutral-700)">{{ b.price }}</span>
+          </button>
+        </sc-for>
+      </div>
+      <div class="field"><label>Card number</label><input class="input" value="4242 4242 4242 4242" style="min-height:44px"></div>
+      <div style="display:flex; gap:10px">
+        <div class="field" style="flex:1"><label>Expiry</label><input class="input" value="12 / 28" style="min-height:44px"></div>
+        <div class="field" style="flex:1"><label>CVC</label><input class="input" value="123" style="min-height:44px"></div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" onClick="{{ closeDialog }}">Cancel</button>
+        <button class="btn btn-primary" onClick="{{ pay }}">{{ payLabel }}</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ dlgUpgrade }}" hint-placeholder-val="{{ false }}">
+  <div class="dialog-backdrop" onClick="{{ closeDialog }}" style="z-index:50">
+    <div class="dialog" onClick="{{ stop }}" style="background:var(--color-neutral-100)">
+      <span class="dialog-title" style="font-size:24px">Explanations by the AI coach are a Pro feature</span>
+      <span class="dialog-body">Pro adds a coach that explains why your answer was wrong, chats about any topic, plans your study week and writes questions for your weak chapters.</span>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" onClick="{{ closeDialog }}">Not now</button>
+        <button class="btn btn-primary" onClick="{{ goPricingClose }}">See plans</button>
+      </div>
+    </div>
+  </div>
+</sc-if>
+
+<sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
+  <div style="position:fixed; left:50%; top:20px; transform:translateX(-50%); background:var(--color-neutral-900); color:var(--color-bg); border-radius:999px; padding:12px 22px; font-size:14px; font-weight:600; z-index:60; box-shadow:var(--shadow-lg)">{{ toast }}</div>
+</sc-if>
+
+<sc-if value="{{ showDemoBar }}" hint-placeholder-val="{{ true }}">
+  <div style="position:fixed; right:20px; bottom:20px; display:flex; align-items:center; gap:6px; background:var(--color-neutral-900); color:var(--color-bg); border-radius:999px; padding:6px 6px 6px 16px; z-index:40; box-shadow:var(--shadow-lg)">
+    <span style="font-size:12px; font-weight:600; margin-right:4px">Preview as</span>
+    <sc-for list="{{ demoTiers }}" as="t" hint-placeholder-count="3">
+      <button onClick="{{ t.pick }}" style="border:0; border-radius:999px; padding:6px 12px; font-size:12px; font-weight:700; cursor:pointer; background:{{ t.bg }}; color:{{ t.fg }}">{{ t.label }}</button>
+    </sc-for>
+  </div>
+</sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;demoTier&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;guest&quot;,&quot;member&quot;,&quot;pro&quot;],&quot;default&quot;:&quot;guest&quot;,&quot;tsType&quot;:&quot;'guest'|'member'|'pro'&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;showDemoBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Prototype&quot;},&quot;passMark&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:65,&quot;min&quot;:50,&quot;max&quot;:90,&quot;step&quot;:1,&quot;unit&quot;:&quot;%&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Exam&quot;}}">
+const CH=[
+ {id:1,title:'Fundamentals of Testing',q:8},
+ {id:2,title:'Testing Throughout the SDLC',q:6},
+ {id:3,title:'Static Testing',q:4},
+ {id:4,title:'Test Analysis and Design',q:11},
+ {id:5,title:'Managing the Test Activities',q:9},
+ {id:6,title:'Test Tools',q:2}];
+const pal=id=>id%2?{tint:'var(--color-accent-100)',mid:'var(--color-accent-200)',ink:'var(--color-accent-800)',base:'var(--color-accent)'}:{tint:'var(--color-accent-2-100)',mid:'var(--color-accent-2-200)',ink:'var(--color-accent-2-800)',base:'var(--color-accent-2)'};
+const NODES=[
+['root',null,'ISTQB CTFL v4.0.1','The Foundation Level syllabus in six chapters. The exam has 40 multiple-choice questions, 60 minutes and a pass mark of 65% (26 correct).',['Questions per chapter follow the syllabus weighting','K1 = remember, K2 = understand, K3 = apply','Chapter 4 carries the most questions (11)']],
+['c1','root','1 · Fundamentals of Testing','What testing is, why it is needed, the seven principles and the test process.',['8 exam questions','180 minutes of study time in the syllabus']],
+['1.1','c1','1.1 What is Testing?','Testing is a set of activities to discover defects and evaluate the quality of software work products. It covers verification and validation, static and dynamic testing.',['Objectives: evaluate work products, trigger failures and find defects, ensure coverage, reduce risk, build confidence','Testing triggers failures; debugging finds, analyses and removes their causes','Testing is more than test execution']],
+['1.2','c1','1.2 Why is Testing Necessary?','Testing is a cost-effective way to detect defects and helps meet contractual, legal and regulatory requirements.',['Testing is a form of quality control (QC); QA is process-oriented','A person makes an error → it produces a defect → the defect may cause a failure','Root cause: the fundamental reason a problem occurred']],
+['1.3','c1','1.3 Testing Principles','Seven principles that apply across all testing.',['Testing shows the presence, not the absence of defects','Exhaustive testing is impossible','Early testing saves time and money','Defects cluster together','Tests wear out','Testing is context dependent','Absence-of-defects fallacy']],
+['1.4','c1','1.4 Test Activities, Testware and Roles','Planning, monitoring and control, analysis, design, implementation, execution and completion. Context decides how they are carried out.',['Testware: plans, conditions, cases, scripts, data, logs, reports','Traceability links test basis, testware, results and defects','Two main roles: test management and testing']],
+['1.5','c1','1.5 Essential Skills and Good Practices','Testers need domain knowledge, technical skills, communication and critical thinking.',['Whole-team approach: quality is everyone\'s responsibility','Independent testers find different kinds of failures','Too much independence can isolate testers']],
+['c2','root','2 · Testing Throughout the SDLC','How testing fits sequential, iterative and agile lifecycles; test levels and test types.',['6 exam questions','130 minutes']],
+['2.1','c2','2.1 Testing in the Context of an SDLC','The lifecycle model affects scope, timing, documentation and automation of testing.',['Every development activity has a matching test activity','Test-first approaches: TDD, ATDD, BDD','DevOps and CI/CD give fast feedback','Shift-left: test earlier; retrospectives improve the process']],
+['2.2','c2','2.2 Test Levels and Test Types','Levels group test activities organised together; types group them by quality characteristic.',['Levels: component, component integration, system, system integration, acceptance','Types: functional, non-functional, black-box, white-box','Confirmation testing checks a fix; regression testing checks nothing else broke']],
+['2.3','c2','2.3 Maintenance Testing','Testing changes to a system in production.',['Triggers: modification, upgrade or migration, retirement','Scope depends on risk and size of the change','Impact analysis decides regression scope']],
+['c3','root','3 · Static Testing','Examining work products without executing them, by review or static analysis.',['4 exam questions','80 minutes']],
+['3.1','c3','3.1 Static Testing Basics','Almost any work product can be examined statically: requirements, code, test plans, user stories.',['Finds defects early, often before dynamic testing is possible','Finds things dynamic testing cannot, e.g. unreachable code or gaps in requirements','Static testing finds defects directly; dynamic testing finds failures']],
+['3.2','c3','3.2 Feedback and Review Process','Planning, review initiation, individual review, communication and analysis, fixing and reporting.',['Roles: manager, author, moderator, scribe, reviewer, review leader','From least to most formal: informal review, walkthrough, technical review, inspection','Success factors: clear objectives, small chunks, training, management support']],
+['c4','root','4 · Test Analysis and Design','Techniques to derive test conditions, test cases and test data.',['11 exam questions, the heaviest chapter','390 minutes','Most K3 (apply) questions come from here']],
+['4.1','c4','4.1 Test Techniques Overview','Techniques fall into black-box, white-box and experience-based groups.',['Black-box: based on specified behaviour','White-box: based on internal structure','Experience-based: based on tester knowledge']],
+['4.2','c4','4.2 Black-Box Test Techniques','Specification-based techniques, each with its own coverage measure.',['Coverage = items exercised ÷ total items','You must be able to apply all four (K3)']],
+['ep','4.2','Equivalence Partitioning','Divide data into partitions expected to be processed the same way. One value per partition is enough.',['Covers valid and invalid partitions','Coverage = partitions exercised ÷ total partitions','Test each invalid partition on its own']],
+['bva','4.2','Boundary Value Analysis','Test the edges of ordered partitions, where defects tend to hide.',['2-value BVA: the boundary and its nearest neighbour in the adjacent partition','3-value BVA: the boundary and both neighbours','Range 18–65 with 2-value BVA → 17, 18, 65, 66']],
+['dt','4.2','Decision Table Testing','Model combinations of conditions and the resulting actions. Each column is a rule.',['n Boolean conditions → up to 2ⁿ columns','Coverage = columns exercised ÷ feasible columns','Tables can be minimised by merging columns']],
+['st','4.2','State Transition Testing','Model behaviour that depends on the current state and events, e.g. lockout after failed logins.',['All states, valid transitions (0-switch) and all transitions coverage','Valid transitions coverage is the most widely used','A state table also shows invalid transitions']],
+['4.3','c4','4.3 White-Box Test Techniques','Structure-based techniques measured on code.',['Statement coverage: executable statements exercised','Branch coverage: branches exercised','100% branch coverage implies 100% statement coverage, not the reverse']],
+['4.4','c4','4.4 Experience-Based Techniques','Tester knowledge complements systematic techniques.',['Error guessing, often as fault attacks','Exploratory testing, often session-based with a charter','Checklist-based testing']],
+['4.5','c4','4.5 Collaboration-Based Approaches','Testers work with business and developers to write testable stories.',['User stories: Card, Conversation, Confirmation','INVEST criteria','Acceptance criteria and ATDD: tests written before the code']],
+['c5','root','5 · Managing the Test Activities','Planning, risk, monitoring, configuration and defect management.',['9 exam questions','335 minutes']],
+['5.1','c5','5.1 Test Planning','A test plan describes objectives, resources and processes for a test project.',['Entry criteria: preconditions to start; exit criteria: what must be achieved to finish','Estimation: ratios, extrapolation, Wideband Delphi, three-point','Test pyramid and testing quadrants guide the test mix']],
+['5.2','c5','5.2 Risk Management','Risk level = likelihood × impact. Risk analysis and risk control drive risk-based testing.',['Project risks: organisational, people, technical, supplier','Product risks: quality of the product itself, e.g. wrong calculations','Responses: mitigation, acceptance, transfer, contingency']],
+['5.3','c5','5.3 Monitoring, Control and Completion','Metrics show progress against the plan so you can act on deviations.',['Metrics: progress, defects, risk, coverage, cost','Test progress reports and test completion reports','Tailor reports to the audience']],
+['5.4','c5','5.4 Configuration Management','Identify, control and track testware and test items with versions.',['Every item uniquely identified and version controlled','Supports traceability and reproducibility']],
+['5.5','c5','5.5 Defect Management','A defect report records what happened so it can be fixed.',['Objectives: information to fix, track quality, improve the process','Content: ID, title, environment, steps, expected vs actual, severity, priority, status']],
+['c6','root','6 · Test Tools','Tool support for testing and the benefits and risks of automation.',['2 exam questions','20 minutes']],
+['6.1','c6','6.1 Tool Support for Testing','Tools support management, static testing, design, execution, non-functional testing, DevOps and collaboration.',['Tools help many activities, not only execution','Choose tools to fit the context']],
+['6.2','c6','6.2 Benefits and Risks of Automation','Automation saves repetitive effort but brings its own costs.',['Benefits: less manual work, consistency, objective measures, earlier feedback','Risks: unrealistic expectations, wrong effort estimates, over-reliance, vendor issues']]];
+const N={},KIDS={};NODES.forEach(([id,p,t,s,pts])=>{N[id]={id,p,t,s,pts};if(p)(KIDS[p]=KIDS[p]||[]).push(id)});
+const chOf=id=>{let n=N[id];while(n&&n.p&&n.p!=='root')n=N[n.p];return n&&n.id[0]==='c'?+n.id.slice(1):null};
+const depthOf=id=>{let d=0,n=N[id];while(n.p){d++;n=N[n.p]}return d};
+const STUDY=NODES.filter(n=>n[1]&&n[1]!=='root').map(n=>n[0]);
+const Q=[
+{ch:1,q:'Which of the following is a typical objective of testing?',o:['Fixing defects found in the code','Triggering failures and finding defects','Proving that the software has no defects','Writing the user requirements'],a:1,e:'Testing triggers failures and finds defects. Fixing them is debugging, and testing can never prove the absence of defects.'},
+{ch:1,q:'A developer makes a mistake that puts incorrect code into the system. When run, the system produces wrong output. Which sequence is correct?',o:['Defect → Error → Failure','Error → Defect → Failure','Failure → Defect → Error','Error → Failure → Defect'],a:1,e:'A human error (mistake) introduces a defect (fault, bug) in the work product. Executing the defect can cause a failure.'},
+{ch:1,q:'"Exhaustive testing is impossible." What does this principle imply?',o:['Only the happy path should be tested','Test effort should be focused using risk, techniques and priorities','All tests should be automated','Testing should continue until no defects remain'],a:1,e:'Since you cannot test every combination, test techniques, prioritisation and risk-based testing focus the effort.'},
+{ch:2,q:'Which test level focuses on the interactions and interfaces between components?',o:['Component testing','Component integration testing','System testing','Acceptance testing'],a:1,e:'Component integration testing tests interfaces and interactions between components. Component testing tests them in isolation.'},
+{ch:2,q:'What is the purpose of confirmation testing?',o:['To check that a fix has resolved the original defect','To check that a change has not broken other areas','To confirm that users accept the system','To confirm the test environment is ready'],a:0,e:'Confirmation testing re-runs the failed tests to confirm the fix. Checking for side effects elsewhere is regression testing.'},
+{ch:3,q:'Which review type is the most formal, follows a defined process with documented outputs and collects metrics?',o:['Informal review','Walkthrough','Technical review','Inspection'],a:3,e:'Inspection is the most formal review type. It follows the full generic process and collects metrics to improve the process.'},
+{ch:3,q:'Which is a benefit of static testing?',o:['It detects defects early, before dynamic testing is possible','It measures performance under load','It finds failures in running code','It replaces dynamic testing'],a:0,e:'Static testing can start on requirements and design, finding defects before any code runs. It complements dynamic testing, it does not replace it.'},
+{ch:4,q:'An age field accepts integers from 18 to 65 inclusive. Using 2-value boundary value analysis, which set covers all boundary values?',o:['17, 18, 65, 66','18, 65','17, 66','0, 18, 65, 100'],a:0,e:'2-value BVA tests each boundary (18, 65) and its nearest neighbour in the adjacent partition (17, 66).'},
+{ch:4,q:'A field accepts values 1–100. Values below 1 and above 100 are invalid. What is the minimum number of test cases to cover all equivalence partitions?',o:['1','2','3','4'],a:2,e:'There are three partitions: < 1 (invalid), 1–100 (valid), > 100 (invalid). One value from each gives 100% EP coverage.'},
+{ch:4,q:'What does achieving 100% branch coverage guarantee?',o:['100% statement coverage','That the code has no defects','100% path coverage','That every decision was evaluated only to true'],a:0,e:'Every statement lies on some branch, so exercising all branches executes all statements. The reverse is not true.'},
+{ch:4,q:'An account locks after three failed login attempts. Which technique fits best for testing this behaviour?',o:['Equivalence partitioning','Decision table testing','State transition testing','Statement testing'],a:2,e:'The result depends on what happened before (the number of failed attempts), so a state model with transitions fits best.'},
+{ch:5,q:'Which of the following is a product risk?',o:['The test environment is delivered late','The software calculates interest incorrectly','There are not enough skilled testers','The test budget is cut'],a:1,e:'Product risks concern the quality of the product itself. The others are project risks that affect how the project is run.'},
+{ch:5,q:'Which is a typical exit criterion?',o:['Testable requirements are available','Planned coverage is reached and no critical defects remain open','The test environment is ready','Test tools are installed'],a:1,e:'Exit criteria define what must be achieved to finish. The other options are entry criteria.'},
+{ch:6,q:'Which is a risk of test automation?',o:['Less repetitive manual work','Unrealistic expectations about what the tool can do','Greater consistency of tests','More objective assessment'],a:1,e:'Unrealistic expectations are a classic automation risk. The other options are benefits.'},
+{ch:6,q:'Which is a benefit of test automation?',o:['Test design is no longer needed','Time saved by reducing repetitive manual work','The tool needs no maintenance','All manual testing can be replaced'],a:1,e:'Automation reduces repetitive manual work. Test design and maintenance are still needed, and manual testing keeps its place.'}];
+const KEY='ctfl_proto_v1';
+const fmt=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
+const daysAgo=d=>new Date(Date.now()-d*864e5).toISOString();
+const SEED=[
+ {id:'s1',title:'Chapter 1 · Fundamentals of Testing',mode:'practice',date:daysAgo(6),correct:2,total:3,durSec:140,perCh:{1:[2,3]}},
+ {id:'s2',title:'Mock Exam A',mode:'mock',date:daysAgo(4),correct:8,total:15,durSec:760,perCh:{1:[2,3],2:[2,2],3:[1,2],4:[1,4],5:[1,2],6:[1,2]}},
+ {id:'s3',title:'Chapter 4 · Test Analysis and Design',mode:'practice',date:daysAgo(2),correct:2,total:4,durSec:300,perCh:{4:[2,4]}},
+ {id:'s4',title:'Mock Exam B',mode:'mock',date:daysAgo(1),correct:10,total:15,durSec:690,perCh:{1:[3,3],2:[1,2],3:[2,2],4:[2,4],5:[1,2],6:[1,2]}}];
+
+class Component extends DCLogic {
+  state = this.init();
+  init(){
+    let s={};try{s=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+    const tier=s.tier||this.props.demoTier||'guest';
+    return {screen:'home',tier,user:s.user||(tier!=='guest'?{name:'Linh Nguyen',email:'linh.nguyen@gmail.com'}:null),attempts:s.attempts||(tier!=='guest'?SEED:[]),learned:s.learned||{},
+      expanded:{root:true,c1:true,c4:true},sel:'root',mode:'practice',exam:null,result:null,dialog:null,pending:null,
+      chat:[],chatInput:'',busy:false,plan:'',quizCh:null,coachTab:'chat',toast:'',now:Date.now(),billing:'monthly',loginEmail:''};
+  }
+  componentDidMount(){
+    this.iv=setInterval(()=>{const e=this.state.exam;if(e&&e.mode==='mock'){this.setState({now:Date.now()});if(e.limitSec-(Date.now()-e.started)/1000<=0)this.submit()}},1000);
+  }
+  componentWillUnmount(){clearInterval(this.iv);clearTimeout(this.tt)}
+  componentDidUpdate(pp,ps){
+    if(pp.demoTier!==this.props.demoTier&&this.props.demoTier)this.setTier(this.props.demoTier);
+    const s=this.state;
+    if(ps.tier!==s.tier||ps.user!==s.user||ps.attempts!==s.attempts||ps.learned!==s.learned)
+      try{localStorage.setItem(KEY,JSON.stringify({tier:s.tier,user:s.user,attempts:s.attempts,learned:s.learned}))}catch(e){}
+  }
+  toast(t){this.setState({toast:t});clearTimeout(this.tt);this.tt=setTimeout(()=>this.setState({toast:''}),2600)}
+  go(screen,extra){this.setState({screen,...(extra||{})});window.scrollTo(0,0)}
+  setTier(t){
+    if(t==='guest'){this.setState({tier:'guest',user:null});return}
+    this.setState(s=>({tier:t,user:s.user||{name:'Linh Nguyen',email:'linh.nguyen@gmail.com'},attempts:s.user?s.attempts:(s.attempts.length?s.attempts:SEED)}));
+  }
+  login(email){
+    const name=email.split('@')[0].split(/[._]/).map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+    this.setState(s=>{
+      let attempts=s.attempts.length?s.attempts:(email==='linh.nguyen@gmail.com'?SEED:[]);
+      let result=s.result;
+      if(result&&!result.saved){attempts=[...attempts,result.attempt];result={...result,saved:true}}
+      return {user:{name,email},tier:s.tier==='guest'?'member':s.tier,attempts,result,dialog:s.pending==='checkout'?'checkout':null,pending:null,loginEmail:''};
+    });
+    this.toast('Signed in as '+email);
+  }
+  startExam(def){
+    this.go('exam',{exam:{title:def.title,mode:this.state.mode,qs:def.qs,idx:0,answers:{},started:Date.now(),limitSec:def.min*60,def}});
+  }
+  pick(i){
+    this.setState(s=>{const e=s.exam;if(e.mode==='practice'&&e.answers[e.idx]!==undefined)return null;return {exam:{...e,answers:{...e.answers,[e.idx]:i}}}});
+  }
+  move(d){this.setState(s=>({exam:{...s.exam,idx:Math.max(0,Math.min(s.exam.qs.length-1,s.exam.idx+d))}}))}
+  submit(){
+    const e=this.state.exam;if(!e)return;
+    let correct=0;const perCh={};
+    e.qs.forEach((q,i)=>{const ok=e.answers[i]===q.a;if(ok)correct++;const p=perCh[q.ch]||[0,0];perCh[q.ch]=[p[0]+(ok?1:0),p[1]+1]});
+    const attempt={id:'a'+Date.now(),title:e.title,mode:e.mode,date:new Date().toISOString(),correct,total:e.qs.length,durSec:Math.round((Date.now()-e.started)/1000),perCh};
+    const logged=this.state.tier!=='guest';
+    this.go('result',{exam:null,result:{...attempt,attempt,qs:e.qs,answers:e.answers,def:e.def,saved:logged,savedNow:logged},attempts:logged?[...this.state.attempts,attempt]:this.state.attempts});
+  }
+  mastery(){
+    const agg={};this.state.attempts.forEach(a=>Object.entries(a.perCh).forEach(([c,[k,t]])=>{const p=agg[c]||[0,0];agg[c]=[p[0]+k,p[1]+t]}));
+    return CH.map(c=>{const p=agg[c.id];return {...c,pct:p?Math.round(p[0]/p[1]*100):null}});
+  }
+  weak(){const m=this.mastery().filter(c=>c.pct!==null).sort((a,b)=>a.pct-b.pct);return m.length?m.slice(0,2):[CH[3],CH[4]].map(c=>({...c,pct:null}))}
+  async ai(prompt){
+    try{if(window.claude&&window.claude.complete){const r=await window.claude.complete(prompt);return typeof r==='string'?r:(r&&r.text)||String(r)}}catch(err){}
+    return null;
+  }
+  askAI(q,chosen){
+    if(this.state.tier!=='pro'){this.setState({dialog:'upgrade'});return}
+    const msg=`Explain this question. I answered "${chosen===undefined?'nothing':q.o[chosen]}" but the correct answer is "${q.o[q.a]}".\n\n${q.q}`;
+    this.go('coach',{coachTab:'chat'});this.send(msg);
+  }
+  async send(text){
+    text=(text||'').trim();if(!text||this.state.busy)return;
+    const chat=[...this.state.chat,{role:'user',text}];
+    this.setState({chat,chatInput:'',busy:true});
+    const weak=this.weak().map(c=>`Chapter ${c.id} ${c.title}${c.pct!==null?` (${c.pct}%)`:''}`).join(', ');
+    const hist=chat.slice(-8).map(m=>(m.role==='user'?'Learner: ':'Coach: ')+m.text).join('\n');
+    const r=await this.ai(`You are a friendly, precise ISTQB CTFL v4.0.1 exam coach. Answer in plain text, no markdown, under 140 words. Refer to syllabus sections when useful. The learner's weakest chapters: ${weak}.\n\n${hist}\nCoach:`);
+    this.setState(s=>({busy:false,chat:[...s.chat,{role:'ai',text:(r||'I could not reach the AI service just now. In short: check the syllabus section for this topic in the mindmap, then try the question again.').trim()}]}));
+  }
+  async makePlan(){
+    const w=this.weak();this.setState({busy:true});
+    const m=this.mastery().map(c=>`Ch${c.id} ${c.title}: ${c.pct===null?'no data':c.pct+'%'} (${c.q} exam questions)`).join('\n');
+    const r=await this.ai(`You are an ISTQB CTFL v4.0.1 coach. Build a 7-day study plan for this learner. Plain text, no markdown symbols. One line per day, starting "Day 1 —". Each line: what to study (syllabus sections) and one practice action. Weight time towards weak chapters and chapters with many exam questions.\n\nMastery:\n${m}`);
+    const fb=[`Day 1 — Chapter ${w[0].id}: reread the mindmap branch and its key points. Do the chapter practice set.`,`Day 2 — Chapter ${w[0].id}: redo the questions you missed and ask the coach to explain each one.`,`Day 3 — Chapter ${w[1].id}: study the mindmap branch, then the chapter practice set.`,'Day 4 — Chapter 4: apply EP, BVA, decision tables and state transitions on paper.','Day 5 — AI custom set on your weakest chapter.','Day 6 — Full mock exam under time.','Day 7 — Review every wrong answer from the week.'].join('\n');
+    this.setState({busy:false,plan:(r||fb).trim()});
+  }
+  async makeQuiz(){
+    const ch=this.state.quizCh||this.weak()[0].id;const c=CH.find(x=>x.id===ch);
+    this.setState({busy:true});
+    const r=await this.ai(`Write 5 new ISTQB CTFL v4.0.1 exam-style multiple-choice questions on Chapter ${ch} "${c.title}". Return ONLY a JSON array, no prose. Each item: {"q": string, "o": [4 option strings], "a": index 0-3 of the correct option, "e": one or two sentence explanation}.`);
+    let qs=null;
+    try{const t=r.slice(r.indexOf('['),r.lastIndexOf(']')+1);qs=JSON.parse(t).filter(x=>x.q&&x.o&&x.o.length===4).map(x=>({...x,ch,a:+x.a}))}catch(e){}
+    if(!qs||!qs.length)qs=Q.filter(q=>q.ch===ch);
+    this.setState({busy:false,mode:'practice'});
+    this.startExam({title:`AI set · Chapter ${ch}`,qs,min:qs.length*2,key:'ai'+ch});
+  }
+  openNode(id){const ex={...this.state.expanded,root:true};let n=N[id];while(n){ex[n.id]=true;n=N[n.p]}this.go('mindmap',{expanded:ex,sel:id})}
+  examDefs(){
+    const rot=[...Q].sort((a,b)=>(Q.indexOf(a)*7%15)-(Q.indexOf(b)*7%15));
+    return [{key:'mA',kicker:'Mock exam',title:'Mock Exam A',sub:'All six chapters, in syllabus order',qs:Q,min:22},
+      {key:'mB',kicker:'Mock exam',title:'Mock Exam B',sub:'All six chapters, mixed order',qs:rot,min:22},
+      ...CH.map(c=>{const qs=Q.filter(q=>q.ch===c.id);return {key:'c'+c.id,kicker:'Chapter '+c.id,title:`Chapter ${c.id} · ${c.title}`,sub:N['c'+c.id].s,qs,min:qs.length*2}})];
+  }
+  renderVals(){
+    const s=this.state, tier=s.tier, logged=tier!=='guest', pro=tier==='pro';
+    const passMark=this.props.passMark??65;
+    const scr=s.screen, navKey=scr==='exam'||scr==='result'?'tests':scr;
+    const nav=[['mindmap','Mindmap'],['tests','Practice tests'],['dashboard','Dashboard'],['coach','AI Coach'],['pricing','Pricing']].map(([k,l])=>({label:l,go:()=>this.go(k),isCoach:k==='coach',bg:navKey===k?'var(--color-accent-200)':'transparent',color:navKey===k?'var(--color-accent-900)':'var(--color-text)'}));
+    const chapters=CH.map(c=>({...c,...pal(c.id),open:()=>this.openNode('c'+c.id)}));
+    const learnedCount=STUDY.filter(id=>s.learned[id]).length;
+    // mindmap
+    const tree=[];const walk=(id,d)=>{const n=N[id],kids=KIDS[id]||[],open=!!s.expanded[id],ch=chOf(id),p=ch?pal(ch):null,sel=s.sel===id;
+      const st=d===0?{bg:'var(--color-text)',fg:'var(--color-bg)',font:'var(--font-heading)',size:19}:d===1?{bg:p.mid,fg:p.ink,font:'var(--font-heading)',size:17}:d===2?{bg:'var(--color-bg)',fg:'var(--color-text)',font:'var(--font-body)',size:15}:{bg:p.tint,fg:p.ink,font:'var(--font-body)',size:14};
+      tree.push({...st,id,title:n.t,ml:d<=1?d*14:14+(d-1)*34,pl:d===0?0:6,bl:d===0?'0':'2px solid var(--color-neutral-300)',hasLine:d>0,hasKids:kids.length>0,isOpen:kids.length>0&&open,isClosed:kids.length>0&&!open,togVis:kids.length?'visible':'hidden',togBg:kids.length?'var(--color-neutral-200)':'transparent',ring:sel?'var(--color-accent)':'transparent',learned:logged&&!!s.learned[id],hasCount:kids.length>0&&!open,count:kids.length+' topics',
+        toggle:()=>this.setState(x=>({expanded:{...x.expanded,[id]:!x.expanded[id]}})),select:()=>this.setState({sel:id})});
+      if(open)kids.forEach(k=>walk(k,d+1))};walk('root',0);
+    const sn=N[s.sel],sch=chOf(s.sel),sd=depthOf(s.sel);
+    const node={title:sn.t,summary:sn.s,points:sn.pts,kicker:sd===0?'Syllabus overview':sd===1?`Chapter ${sch} · ${CH[sch-1].q} exam questions`:`Chapter ${sch} · ${CH[sch-1].title}`,
+      hasKids:!!KIDS[s.sel],kids:(KIDS[s.sel]||[]).map(k=>({title:N[k].t,select:()=>this.openNode(k)})),
+      canPractice:!!sch,practice:()=>{const d=this.examDefs().find(x=>x.key==='c'+sch);this.setState({mode:'practice'},()=>this.startExam(d))},
+      canMark:logged&&sd>=2,guestHint:!logged&&sd>=2,markLabel:s.learned[s.sel]?'Learned ✓ (undo)':'Mark as learned',
+      toggleLearned:()=>this.setState(x=>({learned:{...x.learned,[x.sel]:!x.learned[x.sel]}}))};
+    // tests
+    const best={};s.attempts.forEach(a=>{const p=Math.round(a.correct/a.total*100);best[a.title]=Math.max(best[a.title]||0,p)});
+    const exams=this.examDefs().map(d=>({...d,bg:d.key[0]==='m'?'var(--color-surface)':'var(--color-neutral-100)',meta:`${d.qs.length} questions${s.mode==='mock'?` · ${d.min} min`:''}`,hasBest:logged&&best[d.title]!==undefined,best:best[d.title],start:()=>this.startExam(d)}));
+    const modes=[['practice','Practice'],['mock','Mock exam']].map(([k,l])=>({label:l,pick:()=>this.setState({mode:k}),bg:s.mode===k?'var(--color-accent)':'transparent',fg:s.mode===k?'var(--color-bg)':'var(--color-text)'}));
+    // exam
+    let ex={};
+    if(s.exam){const e=s.exam,q=e.qs[e.idx],ch=e.answers[e.idx],prac=e.mode==='practice',reveal=prac&&ch!==undefined,left=e.limitSec-(s.now-e.started)/1000;
+      ex={title:e.title,modeLabel:prac?'Practice · instant feedback':'Mock exam · timed',timed:!prac,timeLeft:fmt(left),timerBg:left<120?'var(--color-accent-200)':'var(--color-surface)',timerFg:left<120?'var(--color-accent-900)':'var(--color-text)',
+        num:e.idx+1,total:e.qs.length,chLabel:`Chapter ${q.ch} · ${CH[q.ch-1].title}`,q:q.q,reveal,explain:q.e,
+        fbTitle:ch===q.a?'Correct':'Not quite',fbBg:ch===q.a?'var(--color-accent-2-100)':'var(--color-accent-100)',fbFg:ch===q.a?'var(--color-accent-2-800)':'var(--color-accent-800)',
+        askLabel:pro?'Ask the AI coach to explain':'Ask the AI coach (Pro)',askAI:()=>this.askAI(q,ch),
+        opts:q.o.map((t,i)=>{let bg='var(--color-bg)',bd='var(--color-divider)',dBg='var(--color-surface)',dFg='var(--color-text)';
+          if(reveal){if(i===q.a){bg='var(--color-accent-2-100)';bd='var(--color-accent-2-600)';dBg='var(--color-accent-2-600)';dFg='var(--color-bg)'}else if(i===ch){bg='var(--color-accent-100)';bd='var(--color-accent-600)';dBg='var(--color-accent-600)';dFg='var(--color-bg)'}}
+          else if(i===ch){bg='var(--color-accent-100)';bd='var(--color-accent)';dBg='var(--color-accent)';dFg='var(--color-bg)'}
+          return {letter:'ABCD'[i],text:t,pick:()=>this.pick(i),bg,bd,dBg,dFg,cursor:reveal?'default':'pointer'}}),
+        isFirst:e.idx===0,isLast:e.idx===e.qs.length-1,notLast:e.idx<e.qs.length-1,prev:()=>this.move(-1),next:()=>this.move(1),submit:()=>this.submit(),
+        answeredLabel:`${Object.keys(e.answers).length} of ${e.qs.length} answered`,
+        dots:e.qs.map((qq,i)=>{const a=e.answers[i];let bg='var(--color-neutral-200)',fg='var(--color-text)';
+          if(a!==undefined)bg=prac?(a===qq.a?'var(--color-accent-2-300)':'var(--color-accent-300)'):'var(--color-accent-200)';
+          if(i===e.idx){bg='var(--color-text)';fg='var(--color-bg)'}return {n:i+1,bg,fg,go:()=>this.setState(x=>({exam:{...x.exam,idx:i}}))}})};}
+    // result
+    let res={};
+    if(s.result){const r=s.result,pct=Math.round(r.correct/r.total*100),pass=pct>=passMark;
+      res={title:r.title,modeLabel:r.mode==='mock'?'Mock exam':'Practice',pct,correct:r.correct,total:r.total,
+        ringBg:pass?'var(--color-accent-2-200)':'var(--color-accent-200)',ringFg:pass?'var(--color-accent-2-900)':'var(--color-accent-900)',
+        headline:pass?'You passed this set':'Not yet at the pass mark',sub:`Pass mark is ${passMark}%. Time taken ${fmt(r.durSec)}.${pass?'':' The chapter bars show where to focus.'}`,
+        savedNote:logged&&r.saved,retry:()=>{this.setState({mode:r.mode},()=>this.startExam(r.def))},
+        chRows:Object.entries(r.perCh).map(([c,[k,t]])=>({title:`${c} · ${CH[c-1].title}`,label:`${k}/${t}`,w:Math.round(k/t*100)+'%',color:k/t*100>=passMark?'var(--color-accent-2-600)':'var(--color-accent)'})),
+        review:r.qs.map((q,i)=>{const a=r.answers[i],ok=a===q.a;return {n:i+1,ch:'Chapter '+q.ch,q:q.q,ok,bad:!ok,badgeBg:ok?'var(--color-accent-2-600)':'var(--color-accent-600)',yours:a===undefined?'—':'ABCD'[a],right:'ABCD'[q.a],explain:q.e,askLabel:pro?'Explain with AI coach':'Explain with AI coach (Pro)',askAI:()=>this.askAI(q,a)}})};}
+    // dashboard
+    const at=[...s.attempts].sort((a,b)=>a.date<b.date?-1:1),pcts=at.map(a=>Math.round(a.correct/a.total*100));
+    const mast=this.mastery(),weak=this.weak();
+    const avg=pcts.length?Math.round(pcts.reduce((x,y)=>x+y,0)/pcts.length):0;
+    const mocks=at.filter(a=>a.mode==='mock').map(a=>Math.round(a.correct/a.total*100));
+    const lastMock=mocks[mocks.length-1];
+    const dash={stats:[{label:'Attempts',value:at.length,bg:'var(--color-surface)'},{label:'Average score',value:pcts.length?avg+'%':'—',bg:'var(--color-surface)'},{label:'Best score',value:pcts.length?Math.max(...pcts)+'%':'—',bg:'var(--color-accent-2-100)'},{label:'Last mock exam',value:lastMock!==undefined?lastMock+'%':'—',bg:'var(--color-accent-100)'}],
+      readyText:lastMock===undefined?'Take a mock exam to see if you are ready.':lastMock>=passMark?`Your last mock exam is above the ${passMark}% pass mark. Keep it there.`:`Your last mock exam is ${passMark-lastMock} points below the ${passMark}% pass mark.`,
+      bars:at.slice(-8).map((a,i)=>{const p=Math.round(a.correct/a.total*100);return {pct:p,h:Math.max(6,p*1.6)+'px',color:p>=passMark?'var(--color-accent-2-500)':'var(--color-accent-400)'}}),
+      passLine:(passMark*1.6+20)+'px',empty:!at.length,
+      mastery:mast.map(c=>({title:`${c.id} · ${c.title}`,label:c.pct===null?'—':c.pct+'%',w:(c.pct||0)+'%',color:c.pct!==null&&c.pct>=passMark?'var(--color-accent-2-600)':'var(--color-accent)'})),
+      rows:[...at].reverse().slice(0,8).map(a=>{const p=Math.round(a.correct/a.total*100);return {date:new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short'}),title:a.title,mode:a.mode==='mock'?'Mock':'Practice',score:`${a.correct}/${a.total} · ${p}%`,status:p>=passMark?'Pass':'Below',tagClass:p>=passMark?'tag-accent-2':'tag-accent'}}),
+      weakest:`Chapter ${weak[0].id} · ${weak[0].title}`,coachCta:pro?'Get a study plan':'Unlock with Pro'};
+    // coach
+    const coachTabs=[['chat','Chat'],['plan','Study plan'],['quiz','Custom set']].map(([k,l])=>({label:l,pick:()=>this.setState({coachTab:k}),bg:s.coachTab===k?'var(--color-accent)':'transparent',fg:s.coachTab===k?'var(--color-bg)':'var(--color-text)'}));
+    const qch=s.quizCh||weak[0].id;
+    const quizChs=CH.map(c=>({label:`${c.id} · ${c.title}${weak[0].id===c.id?' (weakest)':''}`,pick:()=>this.setState({quizCh:c.id}),bg:qch===c.id?'var(--color-accent-100)':'var(--color-bg)',bd:qch===c.id?'var(--color-accent)':'var(--color-divider)'}));
+    const plans=[
+      {kicker:'No account',name:'Guest',price:'Free',per:'',features:['Syllabus mindmap','Practice sets and mock exams','Instant answers and explanations'],cta:tier==='guest'?'Current plan':'Included',current:true,btnClass:'btn-secondary',action:()=>{},bg:'var(--color-neutral-100)',shadow:'none'},
+      {kicker:'Sign in with Gmail',name:'Member',price:'Free',per:'',features:['Everything in Guest','Every attempt saved','Score trend and chapter mastery','Mindmap study progress'],cta:tier==='member'?'Current plan':logged?'Included':'Sign in with Gmail',current:logged,btnClass:'btn-secondary',action:()=>this.setState({dialog:'login'}),bg:'var(--color-accent-2-100)',shadow:'none'},
+      {kicker:'Most help',name:'Pro',price:'$5',per:'/ month',features:['Everything in Member','AI explanations for wrong answers','Chat with the AI coach','Study plan from your weak areas','AI question sets on weak topics'],cta:pro?'Current plan':'Upgrade to Pro',current:pro,btnClass:'btn-primary',action:()=>this.setState(logged?{dialog:'checkout'}:{dialog:'login',pending:'checkout'}),bg:'var(--color-accent-100)',shadow:'var(--shadow-md)'}];
+    const billingOpts=[['monthly','Monthly','$5 / month'],['yearly','Yearly','$39 / year · save 35%']].map(([k,l,p])=>({label:l,price:p,pick:()=>this.setState({billing:k}),bg:s.billing===k?'var(--color-accent-100)':'var(--color-bg)',bd:s.billing===k?'var(--color-accent)':'var(--color-divider)'}));
+    const demoTiers=[['guest','Guest'],['member','Member'],['pro','Pro']].map(([k,l])=>({label:l,pick:()=>this.setTier(k),bg:tier===k?'var(--color-accent)':'transparent',fg:'var(--color-bg)'}));
+    const name=s.user?s.user.name:'';
+    return {
+      nav,chapters,tree,node,exams,modes,ex,res,dash,coachTabs,quizChs,plans,billingOpts,demoTiers,passMark,
+      isGuest:!logged,isLogged:logged,isPro:pro,notPro:!pro,
+      isHome:scr==='home',isMindmap:scr==='mindmap',isTests:scr==='tests',isExam:scr==='exam'&&!!s.exam,isResult:scr==='result'&&!!s.result,isDashboard:scr==='dashboard',isCoach:scr==='coach',isPricing:scr==='pricing',
+      initial:name?name[0]:'',userEmail:s.user?s.user.email:'',firstName:name.split(' ')[0],tierLabel:pro?'Pro member':'Member · free',
+      learnedLabel:`${learnedCount} of ${STUDY.length} topics learned`,
+      modeHelp:s.mode==='practice'?'Practice mode: no timer, and you see the right answer and explanation after each question.':'Mock exam mode: timed like the real exam, answers revealed only when you submit.',
+      aiSetLabel:pro?'Create a set':'Unlock with Pro',
+      goHome:()=>this.go('home'),goMindmap:()=>this.go('mindmap'),goTests:()=>this.go('tests'),goPricing:()=>this.go('pricing'),goDashboard:()=>this.go('dashboard'),
+      goCoachQuiz:()=>pro?this.go('coach',{coachTab:'quiz'}):this.go('pricing'),goCoachPlan:()=>pro?this.go('coach',{coachTab:'plan'}):this.go('pricing'),
+      goPricingClose:()=>this.go('pricing',{dialog:null}),
+      quitExam:()=>this.go('tests',{exam:null}),
+      openLogin:()=>this.setState({dialog:'login'}),closeDialog:()=>this.setState({dialog:null,pending:null}),stop:e=>e.stopPropagation(),
+      signOut:()=>{this.setState({tier:'guest',user:null,attempts:[],learned:{},chat:[],plan:''});this.go('home');this.toast('Signed out')},
+      loginDemo:()=>this.login('linh.nguyen@gmail.com'),loginEmail:s.loginEmail,onLoginEmail:e=>this.setState({loginEmail:e.target.value}),
+      loginEmailSubmit:e=>{e.preventDefault();const v=s.loginEmail.trim();if(!/^[^@\s]+@gmail\.com$/i.test(v)){this.toast('Please enter a Gmail address');return}this.login(v.toLowerCase())},
+      dlgLogin:s.dialog==='login',dlgCheckout:s.dialog==='checkout',dlgUpgrade:s.dialog==='upgrade',
+      payLabel:s.billing==='monthly'?'Pay $5':'Pay $39',pay:()=>{this.setState({tier:'pro',dialog:null});this.go('coach');this.toast('Welcome to Pro. Your AI coach is ready.')},
+      hasToast:!!s.toast,toast:s.toast,showDemoBar:this.props.showDemoBar??true,
+      weakText:weak.map(c=>`${c.id} · ${c.title}${c.pct!==null?` (${c.pct}%)`:''}`).join(', '),
+      tabChat:s.coachTab==='chat',tabPlan:s.coachTab==='plan',tabQuiz:s.coachTab==='quiz',
+      chat:s.chat.map(m=>({text:m.text,align:m.role==='user'?'flex-end':'flex-start',bg:m.role==='user'?'var(--color-accent-200)':'var(--color-surface)',radius:m.role==='user'?'24px 24px 6px 24px':'24px 24px 24px 6px'})),
+      chatEmpty:!s.chat.length&&!s.busy,busy:s.busy,chatInput:s.chatInput,onChatInput:e=>this.setState({chatInput:e.target.value}),
+      submitChat:e=>{e.preventDefault();this.send(s.chatInput)},
+      suggestions:[`Explain the hardest idea in Chapter ${weak[0].id}`,'Confirmation vs regression testing?','How do I approach K3 questions?'].map(t=>({text:t,send:()=>this.send(t)})),
+      makePlan:()=>this.makePlan(),hasPlan:!!s.plan,plan:s.plan,planCta:s.busy?'Building your plan…':s.plan?'Rebuild plan':'Build my 7-day plan',
+      makeQuiz:()=>this.makeQuiz(),quizCta:s.busy?'Writing questions…':'Generate 5 questions'
+    };
+  }
+}
+</script>
+</body>
+</html>

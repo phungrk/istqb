@@ -1,0 +1,197 @@
+[
+  {
+    "id": "q1",
+    "chapter": 1,
+    "question": "Which of the following is a typical objective of testing?",
+    "options": [
+      "Fixing defects found in the code",
+      "Triggering failures and finding defects",
+      "Proving that the software has no defects",
+      "Writing the user requirements"
+    ],
+    "answerIndex": 1,
+    "explanation": "Testing triggers failures and finds defects. Fixing them is debugging, and testing can never prove the absence of defects."
+  },
+  {
+    "id": "q2",
+    "chapter": 1,
+    "question": "A developer makes a mistake that puts incorrect code into the system. When run, the system produces wrong output. Which sequence is correct?",
+    "options": [
+      "Defect → Error → Failure",
+      "Error → Defect → Failure",
+      "Failure → Defect → Error",
+      "Error → Failure → Defect"
+    ],
+    "answerIndex": 1,
+    "explanation": "A human error (mistake) introduces a defect (fault, bug) in the work product. Executing the defect can cause a failure."
+  },
+  {
+    "id": "q3",
+    "chapter": 1,
+    "question": "\"Exhaustive testing is impossible.\" What does this principle imply?",
+    "options": [
+      "Only the happy path should be tested",
+      "Test effort should be focused using risk, techniques and priorities",
+      "All tests should be automated",
+      "Testing should continue until no defects remain"
+    ],
+    "answerIndex": 1,
+    "explanation": "Since you cannot test every combination, test techniques, prioritisation and risk-based testing focus the effort."
+  },
+  {
+    "id": "q4",
+    "chapter": 2,
+    "question": "Which test level focuses on the interactions and interfaces between components?",
+    "options": [
+      "Component testing",
+      "Component integration testing",
+      "System testing",
+      "Acceptance testing"
+    ],
+    "answerIndex": 1,
+    "explanation": "Component integration testing tests interfaces and interactions between components. Component testing tests them in isolation."
+  },
+  {
+    "id": "q5",
+    "chapter": 2,
+    "question": "What is the purpose of confirmation testing?",
+    "options": [
+      "To check that a fix has resolved the original defect",
+      "To check that a change has not broken other areas",
+      "To confirm that users accept the system",
+      "To confirm the test environment is ready"
+    ],
+    "answerIndex": 0,
+    "explanation": "Confirmation testing re-runs the failed tests to confirm the fix. Checking for side effects elsewhere is regression testing."
+  },
+  {
+    "id": "q6",
+    "chapter": 3,
+    "question": "Which review type is the most formal, follows a defined process with documented outputs and collects metrics?",
+    "options": [
+      "Informal review",
+      "Walkthrough",
+      "Technical review",
+      "Inspection"
+    ],
+    "answerIndex": 3,
+    "explanation": "Inspection is the most formal review type. It follows the full generic process and collects metrics to improve the process."
+  },
+  {
+    "id": "q7",
+    "chapter": 3,
+    "question": "Which is a benefit of static testing?",
+    "options": [
+      "It detects defects early, before dynamic testing is possible",
+      "It measures performance under load",
+      "It finds failures in running code",
+      "It replaces dynamic testing"
+    ],
+    "answerIndex": 0,
+    "explanation": "Static testing can start on requirements and design, finding defects before any code runs. It complements dynamic testing, it does not replace it."
+  },
+  {
+    "id": "q8",
+    "chapter": 4,
+    "question": "An age field accepts integers from 18 to 65 inclusive. Using 2-value boundary value analysis, which set covers all boundary values?",
+    "options": [
+      "17, 18, 65, 66",
+      "18, 65",
+      "17, 66",
+      "0, 18, 65, 100"
+    ],
+    "answerIndex": 0,
+    "explanation": "2-value BVA tests each boundary (18, 65) and its nearest neighbour in the adjacent partition (17, 66)."
+  },
+  {
+    "id": "q9",
+    "chapter": 4,
+    "question": "A field accepts values 1–100. Values below 1 and above 100 are invalid. What is the minimum number of test cases to cover all equivalence partitions?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "4"
+    ],
+    "answerIndex": 2,
+    "explanation": "There are three partitions: < 1 (invalid), 1–100 (valid), > 100 (invalid). One value from each gives 100% EP coverage."
+  },
+  {
+    "id": "q10",
+    "chapter": 4,
+    "question": "What does achieving 100% branch coverage guarantee?",
+    "options": [
+      "100% statement coverage",
+      "That the code has no defects",
+      "100% path coverage",
+      "That every decision was evaluated only to true"
+    ],
+    "answerIndex": 0,
+    "explanation": "Every statement lies on some branch, so exercising all branches executes all statements. The reverse is not true."
+  },
+  {
+    "id": "q11",
+    "chapter": 4,
+    "question": "An account locks after three failed login attempts. Which technique fits best for testing this behaviour?",
+    "options": [
+      "Equivalence partitioning",
+      "Decision table testing",
+      "State transition testing",
+      "Statement testing"
+    ],
+    "answerIndex": 2,
+    "explanation": "The result depends on what happened before (the number of failed attempts), so a state model with transitions fits best."
+  },
+  {
+    "id": "q12",
+    "chapter": 5,
+    "question": "Which of the following is a product risk?",
+    "options": [
+      "The test environment is delivered late",
+      "The software calculates interest incorrectly",
+      "There are not enough skilled testers",
+      "The test budget is cut"
+    ],
+    "answerIndex": 1,
+    "explanation": "Product risks concern the quality of the product itself. The others are project risks that affect how the project is run."
+  },
+  {
+    "id": "q13",
+    "chapter": 5,
+    "question": "Which is a typical exit criterion?",
+    "options": [
+      "Testable requirements are available",
+      "Planned coverage is reached and no critical defects remain open",
+      "The test environment is ready",
+      "Test tools are installed"
+    ],
+    "answerIndex": 1,
+    "explanation": "Exit criteria define what must be achieved to finish. The other options are entry criteria."
+  },
+  {
+    "id": "q14",
+    "chapter": 6,
+    "question": "Which is a risk of test automation?",
+    "options": [
+      "Less repetitive manual work",
+      "Unrealistic expectations about what the tool can do",
+      "Greater consistency of tests",
+      "More objective assessment"
+    ],
+    "answerIndex": 1,
+    "explanation": "Unrealistic expectations are a classic automation risk. The other options are benefits."
+  },
+  {
+    "id": "q15",
+    "chapter": 6,
+    "question": "Which is a benefit of test automation?",
+    "options": [
+      "Test design is no longer needed",
+      "Time saved by reducing repetitive manual work",
+      "The tool needs no maintenance",
+      "All manual testing can be replaced"
+    ],
+    "answerIndex": 1,
+    "explanation": "Automation reduces repetitive manual work. Test design and maintenance are still needed, and manual testing keeps its place."
+  }
+]

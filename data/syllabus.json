@@ -1,0 +1,394 @@
+{
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Fundamentals of Testing",
+      "q": 8
+    },
+    {
+      "id": 2,
+      "title": "Testing Throughout the SDLC",
+      "q": 6
+    },
+    {
+      "id": 3,
+      "title": "Static Testing",
+      "q": 4
+    },
+    {
+      "id": 4,
+      "title": "Test Analysis and Design",
+      "q": 11
+    },
+    {
+      "id": 5,
+      "title": "Managing the Test Activities",
+      "q": 9
+    },
+    {
+      "id": 6,
+      "title": "Test Tools",
+      "q": 2
+    }
+  ],
+  "nodes": [
+    {
+      "id": "root",
+      "parent": null,
+      "title": "ISTQB CTFL v4.0.1",
+      "summary": "The Foundation Level syllabus in six chapters. The exam has 40 multiple-choice questions, 60 minutes and a pass mark of 65% (26 correct).",
+      "points": [
+        "Questions per chapter follow the syllabus weighting",
+        "K1 = remember, K2 = understand, K3 = apply",
+        "Chapter 4 carries the most questions (11)"
+      ]
+    },
+    {
+      "id": "c1",
+      "parent": "root",
+      "title": "1 · Fundamentals of Testing",
+      "summary": "What testing is, why it is needed, the seven principles and the test process.",
+      "points": [
+        "8 exam questions",
+        "180 minutes of study time in the syllabus"
+      ]
+    },
+    {
+      "id": "1.1",
+      "parent": "c1",
+      "title": "1.1 What is Testing?",
+      "summary": "Testing is a set of activities to discover defects and evaluate the quality of software work products. It covers verification and validation, static and dynamic testing.",
+      "points": [
+        "Objectives: evaluate work products, trigger failures and find defects, ensure coverage, reduce risk, build confidence",
+        "Testing triggers failures; debugging finds, analyses and removes their causes",
+        "Testing is more than test execution"
+      ]
+    },
+    {
+      "id": "1.2",
+      "parent": "c1",
+      "title": "1.2 Why is Testing Necessary?",
+      "summary": "Testing is a cost-effective way to detect defects and helps meet contractual, legal and regulatory requirements.",
+      "points": [
+        "Testing is a form of quality control (QC); QA is process-oriented",
+        "A person makes an error → it produces a defect → the defect may cause a failure",
+        "Root cause: the fundamental reason a problem occurred"
+      ]
+    },
+    {
+      "id": "1.3",
+      "parent": "c1",
+      "title": "1.3 Testing Principles",
+      "summary": "Seven principles that apply across all testing.",
+      "points": [
+        "Testing shows the presence, not the absence of defects",
+        "Exhaustive testing is impossible",
+        "Early testing saves time and money",
+        "Defects cluster together",
+        "Tests wear out",
+        "Testing is context dependent",
+        "Absence-of-defects fallacy"
+      ]
+    },
+    {
+      "id": "1.4",
+      "parent": "c1",
+      "title": "1.4 Test Activities, Testware and Roles",
+      "summary": "Planning, monitoring and control, analysis, design, implementation, execution and completion. Context decides how they are carried out.",
+      "points": [
+        "Testware: plans, conditions, cases, scripts, data, logs, reports",
+        "Traceability links test basis, testware, results and defects",
+        "Two main roles: test management and testing"
+      ]
+    },
+    {
+      "id": "1.5",
+      "parent": "c1",
+      "title": "1.5 Essential Skills and Good Practices",
+      "summary": "Testers need domain knowledge, technical skills, communication and critical thinking.",
+      "points": [
+        "Whole-team approach: quality is everyone's responsibility",
+        "Independent testers find different kinds of failures",
+        "Too much independence can isolate testers"
+      ]
+    },
+    {
+      "id": "c2",
+      "parent": "root",
+      "title": "2 · Testing Throughout the SDLC",
+      "summary": "How testing fits sequential, iterative and agile lifecycles; test levels and test types.",
+      "points": [
+        "6 exam questions",
+        "130 minutes"
+      ]
+    },
+    {
+      "id": "2.1",
+      "parent": "c2",
+      "title": "2.1 Testing in the Context of an SDLC",
+      "summary": "The lifecycle model affects scope, timing, documentation and automation of testing.",
+      "points": [
+        "Every development activity has a matching test activity",
+        "Test-first approaches: TDD, ATDD, BDD",
+        "DevOps and CI/CD give fast feedback",
+        "Shift-left: test earlier; retrospectives improve the process"
+      ]
+    },
+    {
+      "id": "2.2",
+      "parent": "c2",
+      "title": "2.2 Test Levels and Test Types",
+      "summary": "Levels group test activities organised together; types group them by quality characteristic.",
+      "points": [
+        "Levels: component, component integration, system, system integration, acceptance",
+        "Types: functional, non-functional, black-box, white-box",
+        "Confirmation testing checks a fix; regression testing checks nothing else broke"
+      ]
+    },
+    {
+      "id": "2.3",
+      "parent": "c2",
+      "title": "2.3 Maintenance Testing",
+      "summary": "Testing changes to a system in production.",
+      "points": [
+        "Triggers: modification, upgrade or migration, retirement",
+        "Scope depends on risk and size of the change",
+        "Impact analysis decides regression scope"
+      ]
+    },
+    {
+      "id": "c3",
+      "parent": "root",
+      "title": "3 · Static Testing",
+      "summary": "Examining work products without executing them, by review or static analysis.",
+      "points": [
+        "4 exam questions",
+        "80 minutes"
+      ]
+    },
+    {
+      "id": "3.1",
+      "parent": "c3",
+      "title": "3.1 Static Testing Basics",
+      "summary": "Almost any work product can be examined statically: requirements, code, test plans, user stories.",
+      "points": [
+        "Finds defects early, often before dynamic testing is possible",
+        "Finds things dynamic testing cannot, e.g. unreachable code or gaps in requirements",
+        "Static testing finds defects directly; dynamic testing finds failures"
+      ]
+    },
+    {
+      "id": "3.2",
+      "parent": "c3",
+      "title": "3.2 Feedback and Review Process",
+      "summary": "Planning, review initiation, individual review, communication and analysis, fixing and reporting.",
+      "points": [
+        "Roles: manager, author, moderator, scribe, reviewer, review leader",
+        "From least to most formal: informal review, walkthrough, technical review, inspection",
+        "Success factors: clear objectives, small chunks, training, management support"
+      ]
+    },
+    {
+      "id": "c4",
+      "parent": "root",
+      "title": "4 · Test Analysis and Design",
+      "summary": "Techniques to derive test conditions, test cases and test data.",
+      "points": [
+        "11 exam questions, the heaviest chapter",
+        "390 minutes",
+        "Most K3 (apply) questions come from here"
+      ]
+    },
+    {
+      "id": "4.1",
+      "parent": "c4",
+      "title": "4.1 Test Techniques Overview",
+      "summary": "Techniques fall into black-box, white-box and experience-based groups.",
+      "points": [
+        "Black-box: based on specified behaviour",
+        "White-box: based on internal structure",
+        "Experience-based: based on tester knowledge"
+      ]
+    },
+    {
+      "id": "4.2",
+      "parent": "c4",
+      "title": "4.2 Black-Box Test Techniques",
+      "summary": "Specification-based techniques, each with its own coverage measure.",
+      "points": [
+        "Coverage = items exercised ÷ total items",
+        "You must be able to apply all four (K3)"
+      ]
+    },
+    {
+      "id": "ep",
+      "parent": "4.2",
+      "title": "Equivalence Partitioning",
+      "summary": "Divide data into partitions expected to be processed the same way. One value per partition is enough.",
+      "points": [
+        "Covers valid and invalid partitions",
+        "Coverage = partitions exercised ÷ total partitions",
+        "Test each invalid partition on its own"
+      ]
+    },
+    {
+      "id": "bva",
+      "parent": "4.2",
+      "title": "Boundary Value Analysis",
+      "summary": "Test the edges of ordered partitions, where defects tend to hide.",
+      "points": [
+        "2-value BVA: the boundary and its nearest neighbour in the adjacent partition",
+        "3-value BVA: the boundary and both neighbours",
+        "Range 18–65 with 2-value BVA → 17, 18, 65, 66"
+      ]
+    },
+    {
+      "id": "dt",
+      "parent": "4.2",
+      "title": "Decision Table Testing",
+      "summary": "Model combinations of conditions and the resulting actions. Each column is a rule.",
+      "points": [
+        "n Boolean conditions → up to 2ⁿ columns",
+        "Coverage = columns exercised ÷ feasible columns",
+        "Tables can be minimised by merging columns"
+      ]
+    },
+    {
+      "id": "st",
+      "parent": "4.2",
+      "title": "State Transition Testing",
+      "summary": "Model behaviour that depends on the current state and events, e.g. lockout after failed logins.",
+      "points": [
+        "All states, valid transitions (0-switch) and all transitions coverage",
+        "Valid transitions coverage is the most widely used",
+        "A state table also shows invalid transitions"
+      ]
+    },
+    {
+      "id": "4.3",
+      "parent": "c4",
+      "title": "4.3 White-Box Test Techniques",
+      "summary": "Structure-based techniques measured on code.",
+      "points": [
+        "Statement coverage: executable statements exercised",
+        "Branch coverage: branches exercised",
+        "100% branch coverage implies 100% statement coverage, not the reverse"
+      ]
+    },
+    {
+      "id": "4.4",
+      "parent": "c4",
+      "title": "4.4 Experience-Based Techniques",
+      "summary": "Tester knowledge complements systematic techniques.",
+      "points": [
+        "Error guessing, often as fault attacks",
+        "Exploratory testing, often session-based with a charter",
+        "Checklist-based testing"
+      ]
+    },
+    {
+      "id": "4.5",
+      "parent": "c4",
+      "title": "4.5 Collaboration-Based Approaches",
+      "summary": "Testers work with business and developers to write testable stories.",
+      "points": [
+        "User stories: Card, Conversation, Confirmation",
+        "INVEST criteria",
+        "Acceptance criteria and ATDD: tests written before the code"
+      ]
+    },
+    {
+      "id": "c5",
+      "parent": "root",
+      "title": "5 · Managing the Test Activities",
+      "summary": "Planning, risk, monitoring, configuration and defect management.",
+      "points": [
+        "9 exam questions",
+        "335 minutes"
+      ]
+    },
+    {
+      "id": "5.1",
+      "parent": "c5",
+      "title": "5.1 Test Planning",
+      "summary": "A test plan describes objectives, resources and processes for a test project.",
+      "points": [
+        "Entry criteria: preconditions to start; exit criteria: what must be achieved to finish",
+        "Estimation: ratios, extrapolation, Wideband Delphi, three-point",
+        "Test pyramid and testing quadrants guide the test mix"
+      ]
+    },
+    {
+      "id": "5.2",
+      "parent": "c5",
+      "title": "5.2 Risk Management",
+      "summary": "Risk level = likelihood × impact. Risk analysis and risk control drive risk-based testing.",
+      "points": [
+        "Project risks: organisational, people, technical, supplier",
+        "Product risks: quality of the product itself, e.g. wrong calculations",
+        "Responses: mitigation, acceptance, transfer, contingency"
+      ]
+    },
+    {
+      "id": "5.3",
+      "parent": "c5",
+      "title": "5.3 Monitoring, Control and Completion",
+      "summary": "Metrics show progress against the plan so you can act on deviations.",
+      "points": [
+        "Metrics: progress, defects, risk, coverage, cost",
+        "Test progress reports and test completion reports",
+        "Tailor reports to the audience"
+      ]
+    },
+    {
+      "id": "5.4",
+      "parent": "c5",
+      "title": "5.4 Configuration Management",
+      "summary": "Identify, control and track testware and test items with versions.",
+      "points": [
+        "Every item uniquely identified and version controlled",
+        "Supports traceability and reproducibility"
+      ]
+    },
+    {
+      "id": "5.5",
+      "parent": "c5",
+      "title": "5.5 Defect Management",
+      "summary": "A defect report records what happened so it can be fixed.",
+      "points": [
+        "Objectives: information to fix, track quality, improve the process",
+        "Content: ID, title, environment, steps, expected vs actual, severity, priority, status"
+      ]
+    },
+    {
+      "id": "c6",
+      "parent": "root",
+      "title": "6 · Test Tools",
+      "summary": "Tool support for testing and the benefits and risks of automation.",
+      "points": [
+        "2 exam questions",
+        "20 minutes"
+      ]
+    },
+    {
+      "id": "6.1",
+      "parent": "c6",
+      "title": "6.1 Tool Support for Testing",
+      "summary": "Tools support management, static testing, design, execution, non-functional testing, DevOps and collaboration.",
+      "points": [
+        "Tools help many activities, not only execution",
+        "Choose tools to fit the context"
+      ]
+    },
+    {
+      "id": "6.2",
+      "parent": "c6",
+      "title": "6.2 Benefits and Risks of Automation",
+      "summary": "Automation saves repetitive effort but brings its own costs.",
+      "points": [
+        "Benefits: less manual work, consistency, objective measures, earlier feedback",
+        "Risks: unrealistic expectations, wrong effort estimates, over-reliance, vendor issues"
+      ]
+    }
+  ]
+}

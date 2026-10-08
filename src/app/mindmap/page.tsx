@@ -1,0 +1,117 @@
+"use client";
+
+import { useApp } from "@/components/AppProvider";
+import { CheckIcon, ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
+import { examDef } from "@/lib/questions";
+import { CHAPTERS, KIDS, NODE, NODES, STUDY_IDS, chapterOf, depthOf, palette } from "@/lib/syllabus";
+
+type Row = { id: string; depth: number };
+
+export default function MindmapPage() {
+  const { tier, learned, expanded, setExpanded, selected, setSelected, openNode, toggleLearned, startExam, openLogin } = useApp();
+  const logged = tier !== "guest";
+
+  const rows: Row[] = [];
+  const walk = (id: string, depth: number) => {
+    rows.push({ id, depth });
+    if (expanded[id]) (KIDS[id] || []).forEach((k) => walk(k, depth + 1));
+  };
+  walk("root", 0);
+
+  const sel = NODE[selected];
+  const selCh = chapterOf(selected);
+  const selDepth = depthOf(selected);
+  const kicker = selDepth === 0 ? "Syllabus overview" : selDepth === 1 ? `Chapter ${selCh} · ${CHAPTERS[selCh! - 1].q} exam questions` : `Chapter ${selCh} · ${CHAPTERS[selCh! - 1].title}`;
+  const learnedCount = STUDY_IDS.filter((id) => learned[id]).length;
+
+  return (
+    <section style={{ display: "flex", flexDirection: "column", gap: 24, paddingTop: 24 }}>
+      <div style={{ display: "flex", alignItems: "flex-end", gap: 16, flexWrap: "wrap" }}>
+        <div style={{ flex: "1 1 320px" }}>
+          <h1 style={{ margin: "0 0 6px" }}>Syllabus mindmap</h1>
+          <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>Open a branch to go deeper. Select any node to read its key points.</p>
+        </div>
+        {logged && <span className="tag tag-accent-2" style={{ fontSize: 13, padding: "6px 14px" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>}
+        <div style={{ display: "flex", gap: 8 }}>
+          <button className="btn btn-secondary" onClick={() => setExpanded(Object.fromEntries(NODES.filter((n) => KIDS[n.id]).map((n) => [n.id, true])))}>Expand all</button>
+          <button className="btn btn-secondary" onClick={() => setExpanded({ root: true })}>Collapse</button>
+        </div>
+      </div>
+
+      <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
+        <div role="tree" style={{ flex: "1 1 460px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column" }}>
+          {rows.map(({ id, depth: d }) => {
+            const n = NODE[id];
+            const kids = KIDS[id] || [];
+            const open = !!expanded[id];
+            const ch = chapterOf(id);
+            const p = ch ? palette(ch) : null;
+            const st =
+              d === 0 ? { bg: "var(--color-text)", fg: "var(--color-bg)", font: "var(--font-heading)", size: 19 }
+              : d === 1 ? { bg: p!.mid, fg: p!.ink, font: "var(--font-heading)", size: 17 }
+              : d === 2 ? { bg: "var(--color-bg)", fg: "var(--color-text)", font: "var(--font-body)", size: 15 }
+              : { bg: p!.tint, fg: p!.ink, font: "var(--font-body)", size: 14 };
+            return (
+              <div key={id} role="treeitem" aria-expanded={kids.length ? open : undefined} aria-selected={selected === id}
+                style={{ marginLeft: d <= 1 ? d * 14 : 14 + (d - 1) * 34, padding: `5px 0 5px ${d === 0 ? 0 : 6}px`, borderLeft: d === 0 ? 0 : "2px solid var(--color-neutral-300)", display: "flex", alignItems: "center", gap: 8 }}>
+                {d > 0 && <span style={{ width: 16, height: 2, background: "var(--color-neutral-400)", flex: "none" }} />}
+                <button
+                  className="hov-toggle"
+                  aria-label={open ? "Collapse" : "Expand"}
+                  tabIndex={kids.length ? 0 : -1}
+                  onClick={() => setExpanded((x) => ({ ...x, [id]: !x[id] }))}
+                  style={{ width: 26, height: 26, flex: "none", borderRadius: "50%", border: 0, background: kids.length ? "var(--color-neutral-200)" : "transparent", color: "var(--color-text)", cursor: "pointer", display: "grid", placeItems: "center", visibility: kids.length ? "visible" : "hidden" }}
+                >
+                  {open ? <ChevronDownIcon /> : <ChevronRightIcon />}
+                </button>
+                <button
+                  className="hov-shadow-md"
+                  onClick={() => setSelected(id)}
+                  style={{ display: "flex", alignItems: "center", gap: 8, border: `2px solid ${selected === id ? "var(--color-accent)" : "transparent"}`, background: st.bg, color: st.fg, fontFamily: st.font, fontSize: st.size, padding: "8px 16px", borderRadius: 999, cursor: "pointer", textAlign: "left", lineHeight: 1.25 }}
+                >
+                  <span>{n.title}</span>
+                  {logged && learned[id] && <CheckIcon stroke="var(--color-accent-2-700)" />}
+                  {kids.length > 0 && !open && <span style={{ fontFamily: "var(--font-body)", fontSize: 12, opacity: 0.75 }}>{kids.length} topics</span>}
+                </button>
+              </div>
+            );
+          })}
+        </div>
+
+        <aside style={{ flex: "0 1 380px", minWidth: 280, position: "sticky", top: 16 }}>
+          <div className="card elev-md" style={{ padding: 28, gap: 14, background: "var(--color-surface)" }}>
+            <span className="card-kicker" style={{ color: "var(--color-accent-700)" }}>{kicker}</span>
+            <h3 style={{ margin: 0 }}>{sel.title}</h3>
+            <p style={{ margin: 0, fontSize: 15, textWrap: "pretty" }}>{sel.summary}</p>
+            <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
+              {sel.points.map((pt) => (
+                <div key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 14 }}>
+                  <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-accent)", marginTop: 7, flex: "none" }} />
+                  <span>{pt}</span>
+                </div>
+              ))}
+            </div>
+            {KIDS[selected] && (
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 6 }}>
+                {KIDS[selected].map((k) => (
+                  <button key={k} className="tag tag-neutral" onClick={() => openNode(k)} style={{ border: 0, cursor: "pointer", fontSize: 12, padding: "5px 12px" }}>{NODE[k].title}</button>
+                ))}
+              </div>
+            )}
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10 }}>
+              {selCh && (
+                <button className="btn btn-primary" onClick={() => { const d = examDef("c" + selCh); if (d) startExam(d, "practice"); }}>Practise this chapter</button>
+              )}
+              {logged && selDepth >= 2 && (
+                <button className="btn btn-secondary" onClick={() => toggleLearned(selected)}>{learned[selected] ? "Learned ✓ (undo)" : "Mark as learned"}</button>
+              )}
+              {!logged && selDepth >= 2 && (
+                <button className="btn btn-ghost" onClick={openLogin}>Sign in to track what you&apos;ve learned</button>
+              )}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  );
+}

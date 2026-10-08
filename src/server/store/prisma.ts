@@ -1,0 +1,69 @@
+import "server-only";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { PrismaClient, type Attempt as DbAttempt, type User as DbUser } from "@/generated/prisma/client";
+import type { Attempt } from "@/lib/stats";
+import type { PerChapter } from "@/lib/questions";
+import type { Store, User } from "./types";
+
+const g = globalThis as unknown as { prisma?: PrismaClient };
+const prisma = (g.prisma ??= new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) }));
+
+const toUser = (u: DbUser): User => ({
+  id: u.id,
+  email: u.email,
+  name: u.name,
+  plan: u.plan,
+  proUntil: u.proUntil?.toISOString() ?? null,
+  stripeCustomerId: u.stripeCustomerId,
+});
+
+const toAttempt = (a: DbAttempt): Attempt => ({
+  id: a.id,
+  title: a.title,
+  setKey: a.setKey,
+  mode: a.mode === "mock" ? "mock" : "practice",
+  correct: a.correct,
+  total: a.total,
+  durationSec: a.durationSec,
+  perChapter: a.perChapter as PerChapter,
+  createdAt: a.createdAt.toISOString(),
+});
+
+export const prismaStore: Store = {
+  async getUserByEmail(email) {
+    const u = await prisma.user.findUnique({ where: { email } });
+    return u && toUser(u);
+  },
+  async getUserByStripeCustomer(customerId) {
+    const u = await prisma.user.findUnique({ where: { stripeCustomerId: customerId } });
+    return u && toUser(u);
+  },
+  async upsertUser(email, name) {
+    return toUser(await prisma.user.upsert({ where: { email }, update: {}, create: { email, name } }));
+  },
+  async updateUser(id, patch) {
+    const data = { ...patch, proUntil: patch.proUntil === undefined ? undefined : patch.proUntil && new Date(patch.proUntil) };
+    return toUser(await prisma.user.update({ where: { id }, data }));
+  },
+  async listAttempts(userId) {
+    return (await prisma.attempt.findMany({ where: { userId }, orderBy: { createdAt: "asc" } })).map(toAttempt);
+  },
+  async addAttempt(userId, { answers, createdAt, ...a }) {
+    const row = await prisma.attempt.create({
+      data: {
+        ...a,
+        userId,
+        createdAt: createdAt ? new Date(createdAt) : undefined,
+        answers: { create: answers },
+      },
+    });
+    return toAttempt(row);
+  },
+  async listLearned(userId) {
+    return (await prisma.learnedTopic.findMany({ where: { userId } })).map((l) => l.nodeId);
+  },
+  async setLearned(userId, nodeId, learned) {
+    if (learned) await prisma.learnedTopic.upsert({ where: { userId_nodeId: { userId, nodeId } }, update: {}, create: { userId, nodeId } });
+    else await prisma.learnedTopic.deleteMany({ where: { userId, nodeId } });
+  },
+};

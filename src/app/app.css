@@ -1,0 +1,13 @@
+/* App-level rules on top of the Organic design system (organic.css). */
+body { margin: 0; background: var(--color-bg); }
+a { color: var(--color-accent-700); }
+a:hover { color: var(--color-accent-800); }
+button { font: inherit; }
+.btn { white-space: nowrap; flex: none; }
+
+/* Hover states from the prototype's style-hover attributes. They override inline backgrounds. */
+.hov-nav:hover { background: var(--color-neutral-200) !important; }
+.hov-toggle:hover { background: var(--color-neutral-300) !important; }
+.hov-shadow-md:hover { box-shadow: var(--shadow-md) !important; }
+.hov-shadow-sm:hover { box-shadow: var(--shadow-sm) !important; }
+.hov-border-accent:hover { border-color: var(--color-accent) !important; }
