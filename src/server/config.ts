@@ -4,7 +4,12 @@ import "server-only";
 export const config = {
   /** Google sign-in is offered next to username/password when its keys are set. */
   google: !!(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET),
-  db: process.env.DATABASE_URL ? ("postgres" as const) : ("file" as const),
+  /** Postgres when DATABASE_URL is set, else Cloudflare R2 when its keys are set, else a local JSON file. */
+  db: process.env.DATABASE_URL
+    ? ("postgres" as const)
+    : process.env.R2_BUCKET && process.env.R2_ACCESS_KEY_ID && process.env.R2_SECRET_ACCESS_KEY && (process.env.R2_ACCOUNT_ID || process.env.R2_ENDPOINT)
+      ? ("r2" as const)
+      : ("file" as const),
   payments: process.env.STRIPE_SECRET_KEY ? ("stripe" as const) : ("demo" as const),
   ai: process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN ? ("live" as const) : ("demo" as const),
   /** Pricing and the AI coach are hidden for now; ENABLE_PRO=1 turns their APIs back on. */

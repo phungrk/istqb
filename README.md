@@ -25,7 +25,8 @@ With no `.env` it runs locally with a JSON file as the database (`.data/demo-db.
 | Integration | Turns on when set | Without it |
 | --- | --- | --- |
 | Session signing | `AUTH_SECRET` (**required in production**) | dev-only fallback secret |
-| Postgres (Prisma) | `DATABASE_URL` (**required on Vercel**, its filesystem is read-only) | JSON file at `.data/demo-db.json` |
+| Storage: Cloudflare R2 | `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY`, `R2_BUCKET` | JSON file at `.data/demo-db.json` (local only — Vercel's filesystem is read-only) |
+| Storage: Postgres (alternative) | `DATABASE_URL` (takes priority over R2) | |
 | Google sign-in (optional) | `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET` | username/password only |
 | Pricing, Stripe, AI coach | `ENABLE_PRO=1` (+ Stripe and Anthropic keys) | hidden, APIs return 404 |
 
@@ -33,7 +34,8 @@ Copy `.env.example` to `.env` and fill in what you need.
 
 ### Going live
 
-1. **Database:** set `DATABASE_URL`, then `npm run db:push` to create or update the tables (`prisma/schema.prisma`). Run it again after pulling schema changes (v2 added `username` and `passwordHash` to `User`).
+1. **Storage — Cloudflare R2:** in the Cloudflare dashboard, **R2 → Create bucket** (e.g. `testpath`), then **R2 → Manage API tokens → Create API token** with *Object Read & Write* on that bucket. Set `R2_ACCOUNT_ID` (shown on the R2 overview page), `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_BUCKET`. No schema step: data is stored as small JSON objects (`src/server/store/r2.ts`) with conditional writes, so concurrent requests don't overwrite each other and a username can't be handed out twice.
+   *Or Postgres:* set `DATABASE_URL`, then `npm run db:push` (re-run after schema changes).
 2. **Secret:** set `AUTH_SECRET` (`npx auth secret`).
 3. **Google (optional):** create an OAuth client (Web), redirect URI `https://<host>/api/auth/callback/google`. Sign-in is limited to `@gmail.com` unless you change `ALLOWED_EMAIL_DOMAIN`.
 4. **Stripe (only with `ENABLE_PRO=1`):** create two recurring prices ($5/month, $39/year). Point a webhook at `https://<host>/api/stripe/webhook` with `checkout.session.completed`, `customer.subscription.updated` and `customer.subscription.deleted`.
@@ -44,7 +46,7 @@ Copy `.env.example` to `.env` and fill in what you need.
 - `src/app/*` — one route per screen: `/`, `/mindmap`, `/tests`, `/exam`, `/result`, `/dashboard`, `/coach`, `/pricing`.
 - `src/components/AppProvider.tsx` — client state (exam in progress, result, dialogs, coach chat). The exam and the last result live in `sessionStorage`, so a guest's result survives the Google sign-in redirect and is saved automatically once they're signed in.
 - `src/app/api/*` — all gating is server-side: attempts and learned topics need a signed-in user, `/api/coach/*` needs Pro (and `ENABLE_PRO=1`). `/api/account/*` handles username sign-in, sign-out and account generation. Bank questions are re-scored on the server when an attempt is saved.
-- `src/server/store` — one `Store` interface with a Prisma and a demo-file implementation.
+- `src/server/store` — one `Store` interface with three implementations: Cloudflare R2, Postgres (Prisma) and a local JSON file.
 - `data/syllabus.json`, `data/questions.json` — the mindmap and question bank (server-only; sets are drawn by `src/server/bank.ts`).
 
 ## Mindmap
