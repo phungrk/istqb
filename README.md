@@ -43,6 +43,12 @@ Copy `.env.example` to `.env` and fill in the groups you want. The "Preview as" 
 - `src/server/store` — one `Store` interface with a Prisma and a demo-file implementation.
 - `data/syllabus.json`, `data/questions.json` — the mindmap and question bank (server-only; sets are drawn by `src/server/bank.ts`).
 
+## Mindmap
+
+The mindmap is root → six chapters → **36 study topics** imported from the "Mindmap CTFL — nhớ bằng hình" artifact into `data/mindmap.json`. Each topic has a memory hook, key terms, flows/comparisons, sample work products, illustrations (diagrams, keyword maps, tables), a sample question with its answer and the usual exam trap; ⭐ marks topics that often come up in the exam. The content is in Vietnamese with English syllabus terms. Members can mark each topic as learned.
+
+To refresh it after editing the artifact, save the page and run `node scripts/import-mindmap.mjs <file>.html .`. The chapter and root nodes still come from `data/syllabus.json`.
+
 ## Practice tests and the question bank
 
 `data/questions.json` holds **915 questions** imported from the "Quiz 1–25 – ISTQB CTFL" artifacts (Quiz 6 and 7 don't exist; duplicates across quizzes are kept once, and one Quiz 25 question whose figure is missing is skipped). Per chapter: 183 / 138 / 92 / 250 / 206 / 46. Images live in `public/q/`.

@@ -1,0 +1,3549 @@
+[
+ {
+  "id": "c1",
+  "n": 1,
+  "icon": "🧭",
+  "nick": "Nền móng",
+  "topics": [
+   {
+    "id": "efd",
+    "icon": "💥",
+    "label": "Error → Defect → Failure",
+    "starred": true,
+    "hook": "Domino: người nhầm → code sai → chạy sai",
+    "trap": "“Sửa lỗi” không phải mục tiêu của testing — đó là debugging. Tester KHÔNG tạo ra error — error do developer gây ra; tester chỉ gây failure và tìm defect. Bẫy hay gặp: đáp án sai chỉ vì đảo \"verifying\" và \"validating\" cho nhau (vd. \"validating that documented requirements are met\" thực ra mô tả VERIFICATION, không phải validation). Hay đảo failure ↔ defect (Quiz 9 Q2, Quiz 10 Q3, Quiz 16 Q11). Hay gán “cải tiến quy trình” cho testing, đó là QA (Quiz 16 Q1).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "error = người",
+       "defect = trong code/tài liệu",
+       "failure = khi CHẠY",
+       "reduce the risk of inadequate quality",
+       "build confidence in the quality level",
+       "triggering failures and finding defects",
+       "testing determines that defects exist",
+       "debugging removes defects",
+       "maintaining communications is NOT a primary test objective",
+       "defect nằm trong WORK PRODUCT, dù ai đó đã tìm ra hay chưa",
+       "ensuring required coverage of a test object",
+       "cải tiến và đánh giá hiệu quả quy trình = QA, KHÔNG phải mục tiêu test"
+      ]
+     },
+     {
+      "k": "flow",
+      "items": [
+       "🌱 Root cause — lý do gốc (vd. bị dí deadline)",
+       "🙋 Error — người sai sót",
+       "🐛 Defect — nằm lại trong work product (code, yêu cầu, tài liệu)",
+       "💥 Failure — quan sát được khi CHẠY"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🎯",
+        "Test objective điển hình",
+        "Giảm rủi ro chất lượng kém; xây dựng niềm tin vào mức chất lượng; gây ra failure để tìm defect; đánh giá work product như requirement, user story, design, code"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Testing vs debugging trong 1 câu: testing XÁC ĐỊNH defect có tồn tại; debugging TÌM nguyên nhân gốc và LOẠI BỎ nó."
+     },
+     {
+      "k": "p",
+      "t": "Debugging khác nhau tuỳ nguồn: khi STATIC testing tìm ra defect trực tiếp, debugging chỉ cần LOẠI BỎ nó (không cần reproduce hay chẩn đoán). Khi DYNAMIC testing gây ra failure, debugging phải TÌM nguyên nhân (defect) trước, phân tích, rồi mới loại bỏ."
+     },
+     {
+      "k": "vs",
+      "a": [
+       "🛡️",
+       "QA",
+       "Hướng QUY TRÌNH · phòng ngừa (preventive) · trách nhiệm của MỌI người trong dự án"
+      ],
+      "b": [
+       "🔍",
+       "Testing",
+       "Hướng SẢN PHẨM · sửa lỗi (corrective) · là một hình thức quality control"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Phân biệt theo HOẠT ĐỘNG, không theo chức danh: dev viết unit test cũng là testing. Confirmation testing (chạy lại test đã fail sau khi sửa) là TESTING, không phải debugging."
+     },
+     {
+      "k": "wp",
+      "name": "Ghi chú phân tích nguyên nhân gốc",
+      "doc": [
+       [
+        "Failure",
+        "Chuyển 5,000 bị từ chối “vượt hạn mức” (quan sát khi chạy test)"
+       ],
+       [
+        "Defect",
+        "TransferValidator: điều kiện amount < 5000, đúng phải là amount <= 5000"
+       ],
+       [
+        "Error",
+        "Dev đọc “tối đa 5,000” thành “nhỏ hơn 5,000”"
+       ],
+       [
+        "Root cause",
+        "Acceptance criteria mơ hồ, không có ví dụ biên; team bị dí deadline"
+       ],
+       [
+        "Hành động",
+        "Sửa điều kiện; thêm test biên; bổ sung ví dụ vào acceptance criteria"
+       ]
+      ],
+      "note": "Chuỗi: root cause → error → defect → failure."
+     },
+     {
+      "k": "sample",
+      "lo": "1.2.3",
+      "q": "While running a test, a tester sees that the cart shows a 15% discount instead of the specified 10%. Which term describes this observation?",
+      "o": [
+       "Error",
+       "Failure",
+       "Defect",
+       "Root cause"
+      ],
+      "a": "b",
+      "why": "Failure là hành vi sai quan sát được khi chạy. Error là sai sót của người, defect là lỗi nằm trong code hoặc tài liệu, root cause là lý do gốc xa nhất."
+     }
+    ]
+   },
+   {
+    "id": "principles",
+    "icon": "🎣",
+    "label": "7 nguyên tắc",
+    "starred": false,
+    "hook": "Cả 7 đều nói về giới hạn của testing",
+    "trap": "Dạng “which is NOT a principle”: câu nào nói testing chứng minh được hết lỗi, hoặc tool đảm bảo 100%, chính là đáp án. Đừng nhầm #1 (giới hạn của TEST — không chứng minh hết lỗi) với #7 (hết lỗi vẫn có thể THẤT BẠI vì sai nhu cầu).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "\"which is NOT\" → tìm câu tuyệt đối hoá",
+       "shows presence NOT absence",
+       "#1 ≠ #7",
+       "muốn tìm 100% lỗi hoặc mọi lỗi → exhaustive testing is impossible",
+       "chọn thiết bị hoặc dữ liệu theo dân số chung thay vì nhóm người dùng đích → context dependent (không phải absence-of-errors fallacy)"
+      ]
+     },
+     {
+      "k": "grid",
+      "items": [
+       [
+        "🎣",
+        "Câu cá",
+        "Testing shows presence, not absence of defects"
+       ],
+       [
+        "🏖️",
+        "Đếm cát",
+        "Exhaustive testing is impossible"
+       ],
+       [
+        "🦷",
+        "Nha sĩ",
+        "Early testing saves time and money"
+       ],
+       [
+        "🪳",
+        "Gián trong bếp",
+        "Defects cluster together"
+       ],
+       [
+        "💉",
+        "Thuốc trừ sâu",
+        "Tests wear out"
+       ],
+       [
+        "🧑‍🍳",
+        "Nấu ăn",
+        "Testing is context dependent"
+       ],
+       [
+        "🏠",
+        "Nhà đẹp sai chỗ",
+        "Absence-of-defects fallacy"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Áp dụng 7 nguyên tắc vào dự án",
+      "head": [
+       "Nguyên tắc",
+       "Ví dụ áp dụng"
+      ],
+      "rows": [
+       [
+        "1. Testing cho thấy có defect, không chứng minh không còn defect",
+        "Báo cáo “không thấy lỗi trong 120 test”, không viết “không có lỗi”"
+       ],
+       [
+        "2. Không thể test vét cạn",
+        "Chọn test theo rủi ro, dùng EP và BVA thay vì thử mọi số tiền"
+       ],
+       [
+        "3. Test sớm tiết kiệm thời gian và tiền",
+        "Tester review user story trước sprint planning"
+       ],
+       [
+        "4. Defect tập trung",
+        "Module thanh toán có nhiều lỗi nhất → tăng test cho module này"
+       ],
+       [
+        "5. Test bị “mòn” (pesticide paradox)",
+        "Rà soát và bổ sung test regression mỗi release"
+       ],
+       [
+        "6. Testing phụ thuộc ngữ cảnh",
+        "App tài chính: security và audit trail; game: hiệu năng, usability"
+       ],
+       [
+        "7. “Không còn lỗi” là ngụy biện",
+        "Sản phẩm không lỗi nhưng sai nhu cầu → làm validation với người dùng"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "1.3.1",
+      "q": "A team runs 500 test cases and finds no failures. The test manager concludes the product has no defects. Which testing principle contradicts this conclusion?",
+      "o": [
+       "Exhaustive testing is impossible",
+       "Tests wear out",
+       "Defects cluster together",
+       "Testing shows the presence of defects, not their absence"
+      ],
+      "a": "d",
+      "why": "Testing chỉ cho thấy defect có tồn tại, không chứng minh không còn defect. Không failure nào được tìm thấy không có nghĩa là sản phẩm không có lỗi."
+     }
+    ]
+   },
+   {
+    "id": "vv",
+    "icon": "⚖️",
+    "label": "Verification vs Validation",
+    "starred": false,
+    "hook": "Đúng tài liệu, hay đúng nhu cầu?",
+    "trap": "Review design so với spec là verification — so tài liệu với tài liệu.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "verification = đúng SPEC",
+       "validation = đúng NHU CẦU USER",
+       "building the product right vs building the right product"
+      ]
+     },
+     {
+      "k": "vs",
+      "a": [
+       "✅",
+       "Verification",
+       "Làm đúng spec chưa? (building the product right)"
+      ],
+      "b": [
+       "🎯",
+       "Validation",
+       "Làm đúng thứ người dùng cần chưa? (building the right product)"
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Bảng phân loại verification và validation",
+      "head": [
+       "Hoạt động",
+       "Loại",
+       "So với"
+      ],
+      "rows": [
+       [
+        "Đối chiếu API chuyển tiền với đặc tả",
+        "Verification",
+        "Tài liệu đặc tả"
+       ],
+       [
+        "Review thiết kế màn hình theo yêu cầu",
+        "Verification",
+        "Yêu cầu"
+       ],
+       [
+        "Người dùng thử chuyển tiền cho bạn bè",
+        "Validation",
+        "Nhu cầu thực"
+       ],
+       [
+        "UAT với đại diện nghiệp vụ",
+        "Validation",
+        "Nhu cầu nghiệp vụ"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "1.1.1",
+      "q": "A tester checks the implemented login against the written requirements. Later, a user representative tries the login to see whether it supports her daily work. Which statement is correct?",
+      "o": [
+       "The first is verification, the second is validation",
+       "The first is validation, the second is verification",
+       "Both activities are verification",
+       "Both activities are validation"
+      ],
+      "a": "a",
+      "why": "Verification: đối chiếu với yêu cầu đặc tả (đúng tài liệu). Validation: kiểm tra có đáp ứng nhu cầu thực của người dùng (đúng nhu cầu)."
+     }
+    ]
+   },
+   {
+    "id": "activities",
+    "icon": "🔁",
+    "label": "7 test activities",
+    "starred": true,
+    "hook": "Hỏi WHAT trước, rồi mới tới HOW",
+    "trap": "Analysis ra test conditions. Design ra test cases và coverage items. Implementation ra test suites, test data, lịch chạy. Test Manager KHÔNG tự tay viết test case chi tiết — đó là việc của Tester (dù team nhỏ có thể kiêm nhiệm cả hai). Bẫy hay gặp trong đề: ước lượng effort là test PLANNING; dùng BVA để suy ra coverage item là test DESIGN; báo cáo defect tìm được khi chạy test là test EXECUTION; test environment REQUIREMENTS là đầu ra của design, còn DỰNG environment là ở implementation. Đúng 7 hoạt động: planning, monitoring and control, analysis, design, implementation, execution, completion. Monitoring and control không nằm giữa execution và completion (Quiz 10 Q5). Khi đề liệt kê nhiều task cho hai vai trò, nhìn ĐỘNG TỪ (xem từ khoá) (Quiz 8 Q6, Quiz 17 Q33, Quiz 19 Q33).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Analysis=WHAT, Design=HOW",
+       "Test Manager ≠ Tester",
+       "Monitoring & control CHẠY LIÊN TỤC",
+       "test procedures",
+       "test execution schedule",
+       "testware produced by",
+       "KHÔNG có activity “review” hay “reporting”",
+       "test condition (analysis) ≠ test case + test data cần có (design)",
+       "tạo/thu thập test data = implementation",
+       "👔 MANAGEMENT: kế hoạch · giám sát và kiểm soát · completion",
+       "👔 MANAGEMENT: báo cáo cho stakeholder",
+       "👔 MANAGEMENT: policy, strategy, resource, escalation",
+       "👔 MANAGEMENT: quy trình defect và change request",
+       "👔 MANAGEMENT: metrics, chọn tool, QUYẾT ĐỊNH về environment",
+       "🧑‍💻 TESTING: phân tích test basis, test condition",
+       "🧑‍💻 TESTING: thiết kế test case, test data",
+       "🧑‍💻 TESTING: DỰNG và KIỂM TRA environment, hạ tầng, tool cần dùng",
+       "🧑‍💻 TESTING: stub, driver, simulator",
+       "🧑‍💻 TESTING: thực thi, báo cáo defect tìm thấy",
+       "🧑‍💻 TESTING: review test do người khác viết",
+       "động từ: plan · monitor · control · report · decide → MANAGEMENT",
+       "động từ: analyze · design · implement · set up · verify · execute → TESTING",
+       "ngữ cảnh test: kỹ năng đội · loại phần mềm · SDLC · ràng buộc dự án · stakeholder",
+       "số dòng code KHÔNG phải yếu tố ngữ cảnh đáng kể"
+      ]
+     },
+     {
+      "k": "flow",
+      "items": [
+       "🗺️ Planning",
+       "🔍 Analysis — WHAT",
+       "✏️ Design — HOW",
+       "🧰 Implementation — dựng thật",
+       "▶️ Execution — chạy",
+       "📦 Completion — dọn dẹp"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "📡 Monitoring & control chạy liên tục, song song với mọi bước."
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"kt\"><div class=\"kr\"><div class=\"kn\">🗺️ Test planning</div><div class=\"qk\"><span>define test objectives</span><span>choose the test approach</span><span>estimate test effort</span><span>entry and exit criteria</span><span>approach depends on SDLC · product risks · regulations</span><span class=\"x\">test plan</span></div></div><div class=\"kr\"><div class=\"kn\">📡 Test monitoring and control</div><div class=\"qk\"><span>runs continuously</span><span>ongoing checks that the plan is followed</span><span>compare actual progress with the plan</span><span>take corrective actions</span><span>evaluate exit criteria</span><span class=\"x\">test progress report</span></div></div><div class=\"kr\"><div class=\"kn\">🔍 Test analysis</div><div class=\"qk\"><span>evaluate the test basis</span><span>identify features to test</span><span>define and prioritize test conditions</span><span>defects found in the test basis</span><span>assess testability of the test object</span><span>techniques used to identify test conditions</span><span class=\"x\">prioritized test conditions</span><span class=\"x\">defect reports (test basis)</span></div></div><div class=\"kr\"><div class=\"kn\">✏️ Test design</div><div class=\"qk\"><span>derive test cases from test conditions</span><span>identify coverage items</span><span>apply test techniques (EP, BVA)</span><span>specify test data and environment requirements</span><span class=\"x\">test cases</span><span class=\"x\">coverage items</span><span class=\"x\">test charters</span><span class=\"x\">test data requirements</span><span class=\"x\">test environment requirements</span></div></div><div class=\"kr\"><div class=\"kn\">🧰 Test implementation</div><div class=\"qk\"><span>organize test cases into test procedures</span><span>create automated test scripts</span><span>assemble test suites</span><span>create test data</span><span>build and verify the test environment</span><span>arrange the test execution schedule</span><span class=\"x\">test procedures</span><span class=\"x\">test suites</span><span class=\"x\">test execution schedule</span><span class=\"x\">stubs · drivers · simulators · service virtualization</span></div></div><div class=\"kr\"><div class=\"kn\">▶️ Test execution</div><div class=\"qk\"><span>execute test procedures per the schedule</span><span>compare actual and expected results</span><span>analyze discrepancies</span><span>report defects found by dynamic testing</span><span class=\"x\">test logs</span><span class=\"x\">defect reports</span></div></div><div class=\"kr\"><div class=\"kn\">📦 Test completion</div><div class=\"qk\"><span>at milestones: release · end of iteration · end of test level</span><span>archive reusable testware</span><span>shut down the test environment</span><span>analyze lessons learned</span><span class=\"x\">test completion report</span><span class=\"x\">lessons learned</span><span class=\"x\">action items</span><span class=\"x\">change requests (product backlog items)</span></div></div></div>",
+      "cap": "Ô đặc = cách đề thi chính thức diễn đạt task (bộ A đến D) · ô nét đứt = testware do activity tạo ra."
+     },
+     {
+      "k": "vs",
+      "a": [
+       "👔",
+       "Test Manager",
+       "Chiến lược tổng thể, test policy, lập kế hoạch, quản lý resource, escalation, báo cáo cho stakeholder"
+      ],
+      "b": [
+       "🧑‍💻",
+       "Tester",
+       "Phân tích/thiết kế/thực thi test chi tiết, viết defect report, đánh giá kỹ thuật"
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "1.4.1",
+      "q": "Which test process activity answers the question “WHAT should be tested?” by analyzing the test basis and defining test conditions?",
+      "o": [
+       "Test design",
+       "Test implementation",
+       "Test analysis",
+       "Test planning"
+      ],
+      "a": "c",
+      "why": "Test analysis trả lời WHAT (xác định test condition từ test basis). Test design trả lời HOW (thiết kế test case, test data cần có)."
+     }
+    ]
+   },
+   {
+    "id": "testware",
+    "icon": "🔗",
+    "label": "Testware & traceability",
+    "starred": true,
+    "hook": "Test basis là thứ bạn đọc, testware là thứ bạn viết ra",
+    "trap": "Requirement không phải testware — nó là test basis.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "test basis = ĐỌC (input)",
+       "testware = VIẾT RA (output)",
+       "traceability = nối 2 chiều",
+       "traceability matrix",
+       "cột trống = coverage gap",
+       "completion → completion report · action items · lessons learned · change requests",
+       "progress report ← monitoring and control; log, defect report ← execution; exit criteria ← planning"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "📥",
+        "Test basis (đầu vào)",
+        "Requirement, user story + AC, design, code"
+       ],
+       [
+        "📤",
+        "Testware (đầu ra)",
+        "Test conditions, test cases, scripts, test data, logs, reports"
+       ],
+       [
+        "🔗",
+        "Traceability",
+        "Nối basis ↔ testware: đo coverage, biết test nào phải sửa khi requirement đổi"
+       ]
+      ]
+     },
+     {
+      "k": "svg",
+      "t": "<table class=\"tm\">\n<tr><th></th><th>Req1</th><th>Req2</th><th>Req3</th><th>Req4</th><th class=\"gap\">Req5</th></tr>\n<tr><td class=\"r\">TC1</td><td class=\"x\">X</td><td class=\"x\">X</td><td class=\"x\">X</td><td></td><td class=\"gap\"></td></tr>\n<tr><td class=\"r\">TC2</td><td></td><td class=\"x\">X</td><td class=\"x\">X</td><td></td><td class=\"gap\"></td></tr>\n<tr><td class=\"r\">TC3</td><td></td><td></td><td></td><td class=\"x\">X</td><td class=\"gap\"></td></tr>\n<tr><td class=\"r\">TC4</td><td class=\"x\">X</td><td></td><td></td><td></td><td class=\"gap\"></td></tr>\n<tr class=\"sum\"><td class=\"r\">Tests</td><td>2</td><td>2</td><td>2</td><td>1</td><td class=\"gap\">0 ⚠</td></tr>\n</table>",
+      "cap": "Traceability matrix mẫu: X = test case phủ requirement đó. Req1 đăng nhập · Req2 chuyển tiền · Req3 tính phí · Req4 biên lai · Req5 hạn mức ngày. Cột đỏ = coverage gap."
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "➡️",
+        "Đọc theo HÀNG",
+        "1 test case phủ những requirement nào — TC1 fail thì Req1, Req2, Req3 bị ảnh hưởng"
+       ],
+       [
+        "⬇️",
+        "Đọc theo CỘT",
+        "1 requirement được những test nào phủ — cột trống (Req5) là coverage gap"
+       ],
+       [
+        "✏️",
+        "Requirement đổi",
+        "Lần theo cột của nó để biết test nào phải xem lại — Req3 đổi → TC1, TC2"
+       ],
+       [
+        "📊",
+        "Coverage",
+        "Requirement đã phủ ÷ tổng requirement = 4 ÷ 5 = 80%"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "1.4.4",
+      "q": "Which of the following is a benefit of maintaining traceability between the test basis, test cases and test results?",
+      "o": [
+       "It automatically generates test cases from requirements",
+       "It supports impact analysis when requirements change",
+       "It guarantees that all defects will be found",
+       "It removes the need for test reports"
+      ],
+      "a": "b",
+      "why": "Traceability giúp phân tích tác động khi yêu cầu thay đổi, làm testing có thể audit và báo cáo dễ hiểu hơn. Nó không tự sinh test case và không đảm bảo tìm hết lỗi."
+     }
+    ]
+   },
+   {
+    "id": "independence",
+    "icon": "🔭",
+    "label": "Independence",
+    "starred": false,
+    "hook": "Càng xa tác giả, càng độc lập",
+    "trap": "Bất lợi không nằm ở việc cô lập, mà ở HẬU QUẢ của nó (xem các dòng bất lợi ở trên).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "No → Some → High → Very high",
+       "cùng công ty khác team = High, CHƯA Very high",
+       "identify different types of failures and defects",
+       "varied backgrounds, technical viewpoints, and potential biases",
+       "cognitive bias",
+       "challenge assumptions made by stakeholders during specification and implementation",
+       "isolated from the development team",
+       "communication problems and a lack of collaboration",
+       "adversarial relationship",
+       "blamed for delays and bottlenecks in the release process",
+       "developers feeling less accountable for quality",
+       "phát hiện defect sớm ≠ lợi ích của độc lập (đó là shift-left)"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🙋",
+        "No",
+        "Tác giả tự test"
+       ],
+       [
+        "👥",
+        "Some",
+        "Dev khác trong cùng team"
+       ],
+       [
+        "🏢",
+        "High",
+        "Team test riêng, cùng tổ chức"
+       ],
+       [
+        "🌍",
+        "Very high",
+        "Người ngoài tổ chức"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Theo syllabus: 1 lợi ích chính và 3 bất lợi riêng biệt."
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "✅",
+        "Lợi ích",
+        "Tester dễ nhận ra loại failure và defect khác với dev, nhờ khác biệt về background, góc nhìn kỹ thuật, và thiên kiến (kể cả cognitive bias). Nhờ đó tester thách thức được giả định của stakeholder đưa ra lúc specification và implementation."
+       ]
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "❌",
+        "Giảm hợp tác",
+        "Cô lập không giúp tăng sự hợp tác chặt chẽ vốn được mong muốn giữa tester và dev"
+       ],
+       [
+        "❌",
+        "Quan hệ đối đầu",
+        "Cô lập gây ra vấn đề giao tiếp và thiếu hợp tác; tester có thể bị đổ lỗi cho việc trễ tiến độ và tắc nghẽn trong release process"
+       ],
+       [
+        "❌",
+        "Dev giảm trách nhiệm",
+        "Dev có thể cảm thấy ít chịu trách nhiệm về chất lượng hơn khi tester bị cô lập khỏi team"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Quyết định mức độc lập trong test plan",
+      "doc": [
+       [
+        "Module thanh toán (rủi ro cao)",
+        "High: đội QA riêng test; cân nhắc Very high cho phần bảo mật"
+       ],
+       [
+        "Báo cáo nội bộ (rủi ro thấp)",
+        "Some: đồng nghiệp cùng team review chéo"
+       ],
+       [
+        "Hàm tiện ích",
+        "None: dev tự viết unit test"
+       ]
+      ],
+      "note": "Độc lập càng cao càng dễ thấy loại lỗi khác, nhưng tăng rủi ro cô lập, nên chọn theo rủi ro của từng phần."
+     },
+     {
+      "k": "sample",
+      "lo": "1.5.3",
+      "q": "A developer asks a colleague from the same team to test her code. Which level of independence of testing does this represent?",
+      "o": [
+       "None",
+       "Some",
+       "High",
+       "Very high"
+      ],
+      "a": "b",
+      "why": "Cùng team là some independence. Tự test là none, team khác trong cùng tổ chức là high, ngoài tổ chức là very high."
+     }
+    ]
+   },
+   {
+    "id": "wholeteam",
+    "icon": "🧑‍🤝‍🧑",
+    "label": "Whole team",
+    "starred": true,
+    "hook": "Chất lượng là việc của cả đội",
+    "trap": "Whole team và độc lập cao là hai lựa chọn đánh đổi nhau.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "ai có skill đều làm được",
+       "đánh đổi với độc lập cao",
+       "kỹ năng chung của tester: testing knowledge · domain knowledge · technical knowledge (gồm test automation)",
+       "soft skills: communication · team player · critical thinking · creativity · curiosity · attention to detail",
+       "từ tuyệt đối (necessarily, always) → sai"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Ai có kỹ năng thì làm được mọi việc. Tester làm cùng dev và business để có hiểu biết chung."
+     },
+     {
+      "k": "wp",
+      "name": "Definition of Done (do cả team thống nhất)",
+      "doc": [
+       [
+        "☐",
+        "Code đã được review"
+       ],
+       [
+        "☐",
+        "Unit test pass"
+       ],
+       [
+        "☐",
+        "Acceptance test của story pass"
+       ],
+       [
+        "☐",
+        "Không còn defect severity 1 mở"
+       ],
+       [
+        "☐",
+        "Tài liệu và test được cập nhật"
+       ]
+      ],
+      "note": "Chất lượng là trách nhiệm chung: dev, tester và PO cùng bám Definition of Done."
+     },
+     {
+      "k": "sample",
+      "lo": "1.5.2",
+      "q": "Which statement best reflects the whole-team approach?",
+      "o": [
+       "Only testers are responsible for quality",
+       "Testing starts only after developers finish coding",
+       "Testers must sit in a separate team to stay objective",
+       "Anyone with the necessary knowledge and skills can perform any task, and everyone is responsible for quality"
+      ],
+      "a": "d",
+      "why": "Whole-team: chất lượng là trách nhiệm của cả team, bất kỳ ai có đủ kỹ năng đều có thể làm bất kỳ việc nào. Phương án c là độc lập của tester, không phải whole-team."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c2",
+  "n": 2,
+  "icon": "🏗️",
+  "nick": "Test trong SDLC",
+  "topics": [
+   {
+    "id": "sdlc",
+    "icon": "♻️",
+    "label": "Sequential vs Iterative SDLC",
+    "starred": false,
+    "hook": "Bàn giao cả căn nhà ở cuối, hay xong phòng nào bàn giao phòng đó?",
+    "trap": "Agile không phải một nhóm riêng: Scrum, Kanban thuộc họ iterative và incremental. Iterative làm regression testing QUAN TRỌNG hơn, không bao giờ loại bỏ nó.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "software development lifecycle",
+       "sequential development model",
+       "iterative development model",
+       "incremental development model",
+       "Agile software development",
+       "scope and timing of test activities",
+       "extent of test automation"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "➡️",
+        "Sequential",
+        "Luồng tuyến tính: xong pha này mới sang pha sau (Waterfall, V-model)"
+       ],
+       [
+        "🔁",
+        "Iterative",
+        "Lặp lại các hoạt động theo vòng; mỗi vòng tinh chỉnh sản phẩm, như sơn lại căn phòng cho tới khi ưng"
+       ],
+       [
+        "➕",
+        "Incremental",
+        "Thêm chức năng từng phần; mỗi increment là một phần chạy được, như xong từng phòng một"
+       ],
+       [
+        "⚡",
+        "Agile",
+        "Iterative + incremental theo vòng ngắn, phản hồi liên tục, cả team cùng tham gia (Scrum, Kanban)"
+       ]
+      ]
+     },
+     {
+      "k": "svg",
+      "t": "<table class=\"cmp\">\n<tr><th></th><th class=\"s\">Sequential</th><th class=\"i\">Iterative / incremental (Agile)</th></tr>\n<tr><td>Luồng</td><td>Các pha tuần tự, ít chồng lấn</td><td>Vòng lặp ngắn lặp lại</td></tr>\n<tr><td>Bàn giao</td><td>Cả sản phẩm ở cuối</td><td>Một bản chạy được mỗi iteration</td></tr>\n<tr><td>Ví dụ</td><td>Waterfall, V-model</td><td>Scrum, Kanban, Spiral, RUP</td></tr>\n<tr><td>Chạy test</td><td>Chủ yếu sau khi code xong</td><td>Trong mọi iteration</td></tr>\n<tr><td>Regression</td><td>Cần sau mỗi thay đổi</td><td>Thiết yếu, thường xuyên</td></tr>\n<tr><td>Tài liệu test</td><td>Chi tiết</td><td>Nhẹ hơn</td></tr>\n<tr><td>Test automation</td><td>Hữu ích</td><td>Rất cần (CI)</td></tr>\n</table>",
+      "cap": "Iterative và incremental (Scrum, Kanban, Spiral, RUP) là họ mô hình mà Agile thuộc về."
+     },
+     {
+      "k": "p",
+      "t": "Mô hình SDLC ảnh hưởng tới: phạm vi và thời điểm của các test activity, mức chi tiết của tài liệu test, cách chọn test technique và test approach, mức độ test automation, vai trò và trách nhiệm của tester."
+     },
+     {
+      "k": "p",
+      "t": "Good practice đúng với MỌI mô hình SDLC:"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🔗",
+        "Mỗi hoạt động phát triển đều có một test activity tương ứng",
+        ""
+       ],
+       [
+        "🎯",
+        "Mỗi test level có test objective riêng",
+        ""
+       ],
+       [
+        "⏱️",
+        "Test analysis và design bắt đầu ngay khi hoạt động phát triển tương ứng bắt đầu",
+        ""
+       ],
+       [
+        "👀",
+        "Tester tham gia thảo luận requirement, design và review bản nháp sớm",
+        ""
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "2.1.1",
+      "q": "Compared with a sequential lifecycle model, which statement is true for an iterative and incremental model?",
+      "o": [
+       "Regression testing becomes more important because the product changes in every iteration",
+       "Test activities of all levels start only after coding is complete",
+       "Test analysis is performed only once at the start of the project",
+       "Acceptance testing is performed only at the very end"
+      ],
+      "a": "a",
+      "why": "Iterative/incremental: sản phẩm thay đổi liên tục nên regression testing và tự động hoá quan trọng hơn, test activity diễn ra trong từng iteration."
+     }
+    ]
+   },
+   {
+    "id": "levels",
+    "icon": "🏠",
+    "label": "5 test levels",
+    "starred": false,
+    "hook": "Xây nhà: từ viên gạch tới lúc chủ nhà dọn vào",
+    "trap": "Operational acceptance testing (vận hành, backup/restore, phục hồi sau sự cố) là ACCEPTANCE chứ không phải system testing (Quiz 15 Q20).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Component→CompIntegration→System→SysIntegration→Acceptance",
+       "mỗi level: entry/exit criteria riêng",
+       "each test level has its own focus",
+       "not limited to a specific test type"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🧱",
+        "Component",
+        "Viên gạch"
+       ],
+       [
+        "🧱",
+        "Component integration",
+        "Bức tường — các viên gạch ghép với nhau"
+       ],
+       [
+        "🏠",
+        "System",
+        "Cả căn nhà"
+       ],
+       [
+        "🏘️",
+        "System integration",
+        "Cả khu phố — nối với hệ thống khác"
+       ],
+       [
+        "🔑",
+        "Acceptance",
+        "Chủ nhà nghiệm thu, dọn vào"
+       ]
+      ]
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"kt\"><div class=\"kr\"><div class=\"kn\">Component testing</div><div class=\"qk\"><span>individual components in isolation</span><span>performed by developers</span><span>stubs · drivers · mocks</span><span>unit test frameworks</span></div></div><div class=\"kr\"><div class=\"kn\">Component integration testing</div><div class=\"qk\"><span>interfaces and interactions between components</span><span>bottom-up · top-down · big-bang</span><span>developers</span></div></div><div class=\"kr\"><div class=\"kn\">System testing</div><div class=\"qk\"><span>overall behavior of the whole system</span><span>end-to-end tasks</span><span>non-functional behaviors</span><span>environment like production</span><span>often independent testers</span></div></div><div class=\"kr\"><div class=\"kn\">System integration testing</div><div class=\"qk\"><span>interfaces with other systems</span><span>external services</span><span>third-party components</span><span>environment similar to operational</span></div></div><div class=\"kr\"><div class=\"kn\">Acceptance testing</div><div class=\"qk\"><span>validation · ready for deployment</span><span>users and business needs</span><span>UAT · OAT</span><span>contractual and regulatory</span><span>alpha and beta testing</span><span>usually the last level</span></div></div></div>",
+      "cap": "Keyword đặc trưng của từng test level."
+     },
+     {
+      "k": "wp",
+      "name": "Ma trận test level",
+      "head": [
+       "Level",
+       "Test object",
+       "Mục tiêu",
+       "Môi trường"
+      ],
+      "rows": [
+       [
+        "Component",
+        "Hàm validateAmount()",
+        "Logic đúng",
+        "Máy dev, CI"
+       ],
+       [
+        "Component integration",
+        "Transfer service + Account service",
+        "Giao diện giữa component",
+        "CI, test env"
+       ],
+       [
+        "System",
+        "Toàn bộ luồng chuyển tiền",
+        "Verify theo yêu cầu",
+        "Giống production"
+       ],
+       [
+        "System integration",
+        "App + cổng thanh toán ngoài",
+        "Giao diện ra ngoài",
+        "Sandbox của đối tác"
+       ],
+       [
+        "Acceptance",
+        "Hệ thống và quy trình vận hành",
+        "Validation, sẵn sàng triển khai",
+        "Staging, UAT"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "2.2.1",
+      "q": "Which test level focuses on the interfaces and interactions between components?",
+      "o": [
+       "Component testing",
+       "System testing",
+       "Component integration testing",
+       "Acceptance testing"
+      ],
+      "a": "c",
+      "why": "Component integration testing kiểm tra giao diện và tương tác giữa các component. Component testing chỉ kiểm tra từng component riêng lẻ."
+     }
+    ]
+   },
+   {
+    "id": "leveltype",
+    "icon": "🔀",
+    "label": "Level ≠ Type",
+    "starred": true,
+    "hook": "Level là khi nào, type là để làm gì",
+    "trap": "Hai trục cắt nhau, không phải hai tên của cùng một thứ. Level không quyết định type: component testing vẫn có thể gồm kiểm tra non-functional, và system testing không chỉ có functional. Khi đề hỏi “loại test nào” cho một mô tả như performance efficiency, chọn nhóm chung non-functional, đừng chọn loại cụ thể như load testing (Quiz 14 Q20).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Level = KHI NÀO",
+       "Type = MỤC TIÊU",
+       "test types can be applied at all test levels",
+       "each test level has its own focus",
+       "not limited to one test type",
+       "functional = LÀM CÁI GÌ · non-functional = TỐT ĐẾN ĐÂU",
+       "performance, usability, security = non-functional TYPE (không phải level)",
+       "hai đáp án cùng loại: chọn lý do KHỚP mô tả của đề, đừng thêm giả định",
+       "functional testing → CẢ 5 level (component đến acceptance)"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "⚙️",
+        "Functional",
+        "Hệ thống làm gì"
+       ],
+       [
+        "🚀",
+        "Non-functional",
+        "Làm tốt tới đâu: nhanh, an toàn, dễ dùng"
+       ],
+       [
+        "⬛",
+        "Black-box",
+        "Thiết kế từ spec"
+       ],
+       [
+        "⬜",
+        "White-box",
+        "Thiết kế từ cấu trúc code"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Mọi test type (functional, non-functional, black-box, white-box) áp dụng được ở TẤT CẢ test level. Mỗi test level có focus riêng nhưng không bị giới hạn ở một test type nào."
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"kt\"><div class=\"kr\"><div class=\"kn\">Functional testing</div><div class=\"qk\"><span>what the system should do</span><span>functional suitability</span><span>completeness · correctness · appropriateness</span><span>functional coverage</span></div></div><div class=\"kr\"><div class=\"kn\">Non-functional testing</div><div class=\"qk\"><span>how well the system behaves</span><span>performance efficiency</span><span>compatibility · usability · reliability</span><span>security · maintainability · portability</span><span>can start early</span></div></div><div class=\"kr\"><div class=\"kn\">Black-box testing</div><div class=\"qk\"><span>specification-based</span><span>inputs and outputs</span><span>not the internal structure</span></div></div><div class=\"kr\"><div class=\"kn\">White-box testing</div><div class=\"qk\"><span>structure-based</span><span>code · architecture · workflows · data flows</span><span>structure and processing within the test object</span></div></div><div class=\"kr\"><div class=\"kn\">Confirmation testing</div><div class=\"qk\"><span>after a defect fix</span><span>failed tests re-run</span><span>confirm the defect is fixed</span></div></div><div class=\"kr\"><div class=\"kn\">Regression testing</div><div class=\"qk\"><span>change did not affect unchanged parts</span><span>run many times</span><span>strong candidate for automation</span></div></div></div>",
+      "cap": "Keyword đặc trưng của từng test type."
+     },
+     {
+      "k": "wp",
+      "name": "Ma trận test type × test level (ví dụ)",
+      "head": [
+       "",
+       "Component",
+       "System",
+       "Acceptance"
+      ],
+      "rows": [
+       [
+        "Functional",
+        "Unit test tính phí",
+        "Test luồng chuyển tiền",
+        "UAT kịch bản nghiệp vụ"
+       ],
+       [
+        "Non-functional",
+        "Hiệu năng hàm tính phí",
+        "Load test 1,000 giao dịch/phút",
+        "Operational acceptance (backup, restore)"
+       ],
+       [
+        "White-box",
+        "Branch coverage",
+        "—",
+        "—"
+       ],
+       [
+        "Change-related",
+        "Regression unit test",
+        "Regression end-to-end",
+        "Confirmation sau khi sửa lỗi UAT"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "2.2.2",
+      "q": "Performance testing of a single component during development is an example of:",
+      "o": [
+       "A test level",
+       "A non-functional test type applied at the component level",
+       "A functional test type",
+       "Maintenance testing"
+      ],
+      "a": "b",
+      "why": "Performance là non-functional test type (không phải level). Mọi test type đều có thể thực hiện ở mọi test level, kể cả component."
+     }
+    ]
+   },
+   {
+    "id": "confreg",
+    "icon": "🔄",
+    "label": "Confirmation vs Regression",
+    "starred": false,
+    "hook": "Chạy lại chỗ đã hỏng, soi cả chỗ chưa đụng tới",
+    "trap": "Chạy lại test đã FAIL sau khi sửa lỗi là confirmation, kể cả khi test chạy tự động (Quiz 15 Q27). Confirmation là testing, không phải debugging.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Confirmation = re-test ĐÚNG chỗ đã fail",
+       "Regression = test chỗ KHÔNG đổi",
+       "mỗi lần chạy lại test đã FAIL ở lần trước = confirmation (kể cả khi fail tiếp)",
+       "đối chiếu ô cùng hàng ở cột trước: Failed → confirmation, Passed → regression"
+      ]
+     },
+     {
+      "k": "vs",
+      "a": [
+       "✅",
+       "Confirmation",
+       "Chạy lại đúng test đã fail để xác nhận đã fix"
+      ],
+      "b": [
+       "🛡️",
+       "Regression",
+       "Chạy phần không đổi để chắc bản fix không làm hỏng chỗ khác"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🔁",
+        "Ví dụ confirmation",
+        "Sửa lỗi đăng nhập → chạy lại ĐÚNG test đăng nhập đã fail"
+       ],
+       [
+        "🛡️",
+        "Ví dụ regression",
+        "Sửa lỗi sắp xếp → chạy các test của tính năng lọc (đã pass) xem có bị ảnh hưởng không"
+       ],
+       [
+        "➡️",
+        "Thứ tự",
+        "Confirmation trước, regression sau"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Bản ghi chạy lại sau khi sửa lỗi",
+      "head": [
+       "Test",
+       "Lần trước",
+       "Lần này",
+       "Loại"
+      ],
+      "rows": [
+       [
+        "TC-003 số dư không đủ",
+        "Fail",
+        "Pass",
+        "Confirmation"
+       ],
+       [
+        "TC-001 chuyển 1",
+        "Pass",
+        "Pass",
+        "Regression"
+       ],
+       [
+        "TC-004 TK không tồn tại",
+        "Pass",
+        "Fail",
+        "Regression (phát hiện tác dụng phụ)"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "2.2.3",
+      "q": "After a defect in the payment module is fixed, a tester re-executes the failed test cases and then runs selected previously passed tests of the checkout module. What are these two activities, in order?",
+      "o": [
+       "Regression testing, then confirmation testing",
+       "Regression testing, then maintenance testing",
+       "Confirmation testing, then confirmation testing",
+       "Confirmation testing, then regression testing"
+      ],
+      "a": "d",
+      "why": "Chạy lại test đã fail để xác nhận bản sửa là confirmation. Chạy các test khác đã pass để tìm tác dụng phụ là regression. Thứ tự: confirmation trước, regression sau."
+     }
+    ]
+   },
+   {
+    "id": "maint",
+    "icon": "🚚",
+    "label": "Sửa, chuyển, dọn nhà",
+    "starred": true,
+    "hook": "Sau đó hệ thống còn được dùng không?",
+    "trap": "Ngừng hệ thống và giữ dữ liệu để tra cứu sau là Retirement, không phải Migration. Với retirement, test việc migrate hoặc lưu trữ dữ liệu; “retirement testing” không phải thuật ngữ trong syllabus (Quiz 10 Q12).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "còn dùng + sửa = Modification",
+       "còn dùng + đổi môi trường = Migration",
+       "NGỪNG dùng = Retirement",
+       "maintenance testing = test thay đổi trên hệ thống ĐANG vận hành",
+       "regression chỉ là MỘT PHẦN của maintenance testing",
+       "impact analysis quyết định phạm vi test",
+       "phạm vi = rủi ro của thay đổi + kích thước hệ thống + kích thước thay đổi"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🔧",
+        "Modification",
+        "Sửa nhà đang ở — thêm tính năng, fix bug, hot fix"
+       ],
+       [
+        "🚚",
+        "Migration / upgrade",
+        "Chuyển nhà — vẫn dùng, chỉ đổi môi trường hoặc platform"
+       ],
+       [
+        "📦",
+        "Retirement",
+        "Dọn nhà nghỉ hưu — ngừng hẳn, nhưng dữ liệu vẫn archive và truy xuất được"
+       ]
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "📋",
+        "Maintenance testing là gì",
+        "Test sau thay đổi trên hệ thống đang vận hành: vừa đánh giá thay đổi có thành công không, vừa kiểm tra regression ở vùng không đổi"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Impact analysis cho một thay đổi (CR-42)",
+      "doc": [
+       [
+        "Thay đổi",
+        "Nâng cấp thư viện mã hoá lên v3"
+       ],
+       [
+        "Trigger",
+        "Modification (upgrade)"
+       ],
+       [
+        "Vùng ảnh hưởng",
+        "Đăng nhập, chuyển tiền, lưu thẻ"
+       ],
+       [
+        "Test cần chạy",
+        "Confirmation: các test lỗi bảo mật đã sửa. Regression: bộ test đăng nhập và chuyển tiền"
+       ],
+       [
+        "Rủi ro",
+        "Cao (module thanh toán)"
+       ]
+      ],
+      "note": "Phạm vi maintenance testing phụ thuộc rủi ro, kích thước hệ thống và kích thước thay đổi."
+     },
+     {
+      "k": "sample",
+      "lo": "2.3.1",
+      "q": "Which of the following is a typical trigger for maintenance testing?",
+      "o": [
+       "Migration of the application to a new operating system platform",
+       "Completion of component testing",
+       "Start of a new sprint",
+       "Approval of the test plan"
+      ],
+      "a": "a",
+      "why": "Trigger của maintenance testing: modifications, upgrades hoặc migrations, retirement. Di chuyển sang nền tảng mới là migration."
+     }
+    ]
+   },
+   {
+    "id": "testfirst",
+    "icon": "✍️",
+    "label": "Test-first TDD, ATDD, BDD",
+    "starred": true,
+    "hook": "Viết test trước, code sau",
+    "trap": "ATDD và BDD hay nhầm vì cả hai nói bằng ngôn ngữ dễ hiểu: “viết test bằng ngôn ngữ tự nhiên đơn giản (Given/When/Then)” là mô tả của BDD, không phải mục tiêu của ATDD (Quiz 15 Q9). Chiều đúng: user story → acceptance criteria → test (không đảo, Quiz 16 Q9).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "TDD = unit test trước",
+       "ATDD = specification workshop",
+       "BDD = Given/When/Then",
+       "ATDD: test rút ra từ acceptance criteria, hợp tác business-dev-tester",
+       "keyword-driven KHÔNG phải test-first"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🔴",
+        "TDD",
+        "Unit test trước: red → green → refactor"
+       ],
+       [
+        "🤝",
+        "ATDD",
+        "Acceptance test trước, mở đầu bằng specification workshop"
+       ],
+       [
+        "💬",
+        "BDD",
+        "Kịch bản Given / When / Then, ai cũng đọc được"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Dấu hiệu để tách khi đọc đề:"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🔴",
+        "Thấy “unit test trước”, “red-green-refactor”",
+        "→ TDD (Q1)"
+       ],
+       [
+        "🤝",
+        "Thấy “acceptance criteria”, “xác minh criteria”, “hợp tác”, “tìm lỗi mức cao sớm”",
+        "→ ATDD (Q2)"
+       ],
+       [
+        "💬",
+        "Thấy “Given/When/Then”, “behavior”, “ngôn ngữ tự nhiên”",
+        "→ BDD (Q2)"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Unit test viết theo TDD (red → green → refactor)",
+      "code": "// 1. RED: viết test trước, chạy → FAIL\ntest('từ chối 5001', () => {\n  expect(validateAmount(5001)).toBe(false);\n});\n// 2. GREEN: code vừa đủ để pass\nfunction validateAmount(a) {\n  return a >= 1 && a <= 5000;\n}\n// 3. REFACTOR: dọn code, test vẫn pass"
+     },
+     {
+      "k": "wp",
+      "name": "Kịch bản viết theo BDD (Given / When / Then)",
+      "code": "Scenario: Chuyển tiền thành công\n  Given số dư của tôi là 10,000\n  When tôi chuyển 100 cho tài khoản hợp lệ\n  Then số dư còn lại là 9,900"
+     },
+     {
+      "k": "sample",
+      "lo": "2.1.3",
+      "q": "Which approach derives test cases from acceptance criteria created collaboratively by business, developers and testers before implementation starts?",
+      "o": [
+       "TDD",
+       "Exploratory testing",
+       "ATDD",
+       "Keyword-driven testing"
+      ],
+      "a": "c",
+      "why": "ATDD: test rút ra từ acceptance criteria, cộng tác giữa business, developer và tester, trước khi code. TDD viết unit test trước code, BDD dùng Given/When/Then."
+     }
+    ]
+   },
+   {
+    "id": "shiftleft",
+    "icon": "⬅️",
+    "label": "Shift-left",
+    "starred": true,
+    "hook": "Kéo test sang trái trục thời gian — làm sớm hơn",
+    "trap": "Hoãn performance test tới sau release là ngược với shift-left. Bẫy tinh vi: \"viết test script trước khi thiết lập configuration management\" là vấn đề về THỨ TỰ QUY TRÌNH, không phải về việc đẩy hoạt động sớm hơn trong SDLC — nên KHÔNG phải ví dụ của shift-left. Shift-left là một ĐÁNH ĐỔI thật sự, không phải lợi ích miễn phí: cần thêm đào tạo và effort/chi phí cao hơn ở giai đoạn đầu — đổi lại tổng chi phí chất lượng thấp hơn.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "shift-left = làm SỚM hơn",
+       "gốc: nguyên tắc #3 early testing",
+       "retrospective = cải tiến PROCESS",
+       "reduce the total cost of quality",
+       "moved earlier in the software development lifecycle",
+       "additional training and increased effort and cost in early phases",
+       "shift-left KHÔNG bỏ các level sau",
+       "retro: MỌI thành viên (tester và không phải tester) góp ý cả test và không test",
+       "retro: lợi ích = hiệu quả test · chất lượng testware · gắn kết team · chất lượng test basis · hợp tác dev-test",
+       "retro KHÔNG phải: hiệu năng test environment, giảm số test basis",
+       "retro: cải tiến dựa trên DỮ LIỆU và METRIC khách quan",
+       "DevOps lợi ích: phản hồi nhanh · CI shift-left · môi trường test ổn định · thấy rõ đặc tính phi chức năng · giảm test thủ công lặp lại",
+       "DevOps: developer tự viết unit test (tester KHÔNG viết hộ)",
+       "đáp án nửa đúng kèm vế sai → LOẠI",
+       "DevOps xây dựng trên CI/CD, KHÔNG thay thế nó",
+       "DevOps: team autonomy · rapid feedback · integrated toolchains (mô tả ĐÚNG)"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Ví dụ:"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "📝",
+        "Review spec dưới góc nhìn tester",
+        ""
+       ],
+       [
+        "✍️",
+        "Viết test trước khi code",
+        ""
+       ],
+       [
+        "🤖",
+        "CI chạy test mỗi lần commit",
+        ""
+       ],
+       [
+        "🔎",
+        "Static analysis trước dynamic testing",
+        ""
+       ],
+       [
+        "⚡",
+        "Non-functional test ngay từ component level",
+        ""
+       ],
+       [
+        "🔄",
+        "Retrospective",
+        "Cuối mỗi iteration, cả team nhìn lại → cải tiến QUY TRÌNH liên tục, không chỉ sản phẩm"
+       ]
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🗓️",
+        "Retrospective họp khi nào",
+        "Cuối iteration (daily stand-up mới là họp hằng ngày)"
+       ],
+       [
+        "🗂️",
+        "Bàn gì",
+        "Quy trình, con người, tổ chức, quan hệ, công cụ"
+       ],
+       [
+        "✅",
+        "Kết quả mong đợi",
+        "Hành động cải tiến cụ thể cho iteration sau: giữ cái tốt, sửa cái chưa tốt. KHÔNG để quy trách nhiệm hay duyệt release"
+       ],
+       [
+        "🧭",
+        "Bẫy diễn đạt",
+        "Đáp án nói “thay vì ở system level” (tức thay thế level sau) là sai (Quiz 16 Q40)"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Nhật ký review sớm trên user story (trước khi code)",
+      "doc": [
+       [
+        "Story",
+        "US-17 Chuyển tiền"
+       ],
+       [
+        "Người review",
+        "Tester"
+       ],
+       [
+        "Nhận xét",
+        "“Số tiền tối đa” có gồm 5,000 không?"
+       ],
+       [
+        "Kết quả",
+        "PO bổ sung ví dụ: 5,000 hợp lệ, 5,001 bị từ chối"
+       ],
+       [
+        "Lợi ích",
+        "Chặn lỗi hiểu sai trước khi code"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "2.1.5",
+      "q": "Which of the following is an example of the shift-left approach?",
+      "o": [
+       "Running performance tests in production",
+       "Reviewing user stories and acceptance criteria before development starts",
+       "Performing acceptance testing at the end of the release",
+       "Postponing regression testing to a later phase"
+      ],
+      "a": "b",
+      "why": "Shift-left là làm các hoạt động test sớm hơn trong vòng đời, ví dụ review yêu cầu và acceptance criteria trước khi code. Không bỏ các test level sau."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c3",
+  "n": 3,
+  "icon": "🔍",
+  "nick": "Static testing",
+  "topics": [
+   {
+    "id": "staticdyn",
+    "icon": "📄",
+    "label": "Static vs Dynamic",
+    "starred": false,
+    "hook": "Đọc tài liệu, hay phải chạy thật?",
+    "trap": "Tự hỏi: cần chạy mới lộ không? Nếu có, chỉ dynamic tìm được. COTS và code mã hoá của bên thứ 3 KHÔNG phù hợp static testing (không có source, hạn chế pháp lý) — nhưng kiểm tra tuân thủ security guideline THÌ phù hợp static testing.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "cần CHẠY mới lộ → chỉ dynamic",
+       "COTS/code mã hoá → KHÔNG phù hợp static",
+       "check security guideline → PHÙ HỢP static"
+      ]
+     },
+     {
+      "k": "vs",
+      "a": [
+       "📄",
+       "Static",
+       "Không chạy phần mềm. Tìm defect trực tiếp: requirement mâu thuẫn, code không bao giờ chạy tới, biến chưa khai báo"
+      ],
+      "b": [
+       "▶️",
+       "Dynamic",
+       "Phải chạy. Tìm failure: race condition, memory leak, chậm khi tải cao"
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Trích báo cáo static analysis (không cần chạy code)",
+      "head": [
+       "File:dòng",
+       "Quy tắc",
+       "Mức"
+      ],
+      "rows": [
+       [
+        "Transfer.js:42",
+        "Biến fee khai báo nhưng không dùng",
+        "Warning"
+       ],
+       [
+        "Account.js:88",
+        "Hàm có độ phức tạp 24 (ngưỡng 10)",
+        "Major"
+       ],
+       [
+        "Auth.js:15",
+        "Mật khẩu viết cứng trong code",
+        "Critical"
+       ]
+      ],
+      "note": "Dynamic testing mới thấy: thời gian đáp ứng, memory leak, race condition."
+     },
+     {
+      "k": "sample",
+      "lo": "3.1.3",
+      "q": "Which defect is most likely to be found by static testing but NOT by dynamic testing?",
+      "o": [
+       "A race condition under heavy load",
+       "A memory leak after hours of operation",
+       "Slow response time of an external interface",
+       "A variable declared in the code but never used"
+      ],
+      "a": "d",
+      "why": "Static testing tìm defect trực tiếp trong work product (biến khai báo không dùng). Race condition, thời gian đáp ứng, memory leak chỉ lộ ra khi chạy (dynamic)."
+     }
+    ]
+   },
+   {
+    "id": "reviews",
+    "icon": "👥",
+    "label": "4 loại review",
+    "starred": true,
+    "hook": "Walkthrough = writer walks you through",
+    "trap": "Hay nhầm (Quiz 15 Q14, Quiz 15 Q28, Quiz 14 Q28, Quiz 16 Q28): manager ↔ review leader; individual review ↔ communication and analysis; technical review ↔ inspection ↔ informal review.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Author dẫn = Walkthrough",
+       "Moderator dẫn = Technical review, Inspection",
+       "Scribe = ghi, KHÔNG dẫn",
+       "Manager = quyết định + cấp resource",
+       "Review leader = tổ chức (ai, khi nào, ở đâu)",
+       "review leader ≠ manager",
+       "fixing and reporting (không phải “debug”)"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "💬",
+        "Informal",
+        "Không có quy trình xác định, không cần kết quả ghi chính thức. Mục tiêu chính: phát hiện anomaly"
+       ],
+       [
+        "✍️",
+        "Walkthrough",
+        "Tác giả dẫn: giải thích, thu ý kiến, giáo dục reviewer, đạt đồng thuận"
+       ],
+       [
+        "🧑‍🔬",
+        "Technical review",
+        "Moderator dẫn, reviewer là chuyên gia kỹ thuật. Mục tiêu: đạt đồng thuận và quyết định vấn đề kỹ thuật"
+       ],
+       [
+        "🔬",
+        "Inspection",
+        "Chính thức nhất: moderator được đào tạo, có vai trò xác định, metrics. Tác giả KHÔNG làm review leader hay scribe"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "6 vai trò trong review:"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "👔",
+        "Manager",
+        "Quyết định review CÁI GÌ và cấp nguồn lực (nhân sự, thời gian)"
+       ],
+       [
+        "🧑‍✈️",
+        "Review leader",
+        "Chịu trách nhiệm tổng thể: chọn ai tham gia, khi nào, ở đâu"
+       ],
+       [
+        "👤",
+        "Author",
+        "Tạo work product, sửa lỗi sau review"
+       ],
+       [
+        "🎙️",
+        "Moderator (facilitator)",
+        "Điều phối buổi họp, mediation, quản lý thời gian"
+       ],
+       [
+        "✍️",
+        "Scribe (recorder)",
+        "Ghi lại phát hiện và điểm mở trong buổi họp, KHÔNG dẫn"
+       ],
+       [
+        "🔎",
+        "Reviewer",
+        "Thực hiện review, tìm anomaly"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "5 hoạt động của quy trình review:"
+     },
+     {
+      "k": "flow",
+      "items": [
+       "📅 Planning — phạm vi, mục đích, exit criteria",
+       "🚀 Initiate review — phát tài liệu, giải thích",
+       "🔍 Individual review — mỗi người áp dụng kỹ thuật review, ghi anomaly",
+       "💬 Communication and analysis — thảo luận, đánh giá theo exit criteria, ra quyết định",
+       "🛠️ Fixing and reporting — tác giả sửa, defect report, metrics"
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Nhật ký inspection (review log)",
+      "head": [
+       "#",
+       "Vị trí",
+       "Anomaly",
+       "Mức",
+       "Chủ sở hữu",
+       "Trạng thái"
+      ],
+      "rows": [
+       [
+        "1",
+        "Spec §3.2",
+        "Hạn mức 5,000 mâu thuẫn với §5.1 (10,000)",
+        "Major",
+        "Author",
+        "Open"
+       ],
+       [
+        "2",
+        "Spec §4.1",
+        "Thiếu thông báo lỗi khi số dư không đủ",
+        "Minor",
+        "Author",
+        "Open"
+       ],
+       [
+        "3",
+        "Mockup 2",
+        "Nút “Gửi” không có trạng thái loading",
+        "Minor",
+        "UX",
+        "Fixed"
+       ]
+      ],
+      "note": "Inspection: moderator đã đào tạo dẫn, scribe ghi log; tác giả không làm review leader hay scribe."
+     },
+     {
+      "k": "sample",
+      "lo": "3.2.4",
+      "q": "Which review type is characterized by a defined process, formally documented output, rules and checklists, and mandatory roles?",
+      "o": [
+       "Inspection",
+       "Walkthrough",
+       "Technical review",
+       "Informal review"
+      ],
+      "a": "a",
+      "why": "Inspection là loại review chính thức nhất: quy trình định nghĩa, output ghi chính thức, luật và checklist, vai trò bắt buộc, có thu metrics."
+     }
+    ]
+   },
+   {
+    "id": "success",
+    "icon": "🏆",
+    "label": "Success factors",
+    "starred": false,
+    "hook": "Soi sản phẩm, không soi con người",
+    "trap": "Ba đáp án nghe hợp lý thường là thứ cần tránh — tìm cái tích cực thật sự.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "3 đáp án hợp lý = thứ cần TRÁNH",
+       "never đánh giá người",
+       "management support",
+       "cản trở review: chỉ nêu nhận xét tích cực để giữ tinh thần tác giả (defect phải được ghi nhận khách quan)"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "✅",
+        "Mục tiêu rõ, exit criteria đo được",
+        ""
+       ],
+       [
+        "✅",
+        "Chọn đúng loại review",
+        ""
+       ],
+       [
+        "✅",
+        "Chia nhỏ tài liệu, buổi ngắn",
+        ""
+       ],
+       [
+        "✅",
+        "Đủ thời gian chuẩn bị, có checklist",
+        ""
+       ],
+       [
+        "✅",
+        "Được management ủng hộ",
+        ""
+       ],
+       [
+        "❌",
+        "Đánh giá người tham gia",
+        ""
+       ],
+       [
+        "❌",
+        "Review khối lớn trong một buổi dài",
+        ""
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "3.2.5",
+      "q": "Which of the following is an organizational (not people-related) success factor for reviews?",
+      "o": [
+       "Participants avoid body language that indicates boredom",
+       "Defects found are acknowledged and handled objectively",
+       "Management supports the review process, for example by allocating time in the project schedule",
+       "The review is conducted in an atmosphere of trust"
+      ],
+      "a": "c",
+      "why": "Management hỗ trợ (dành thời gian trong schedule) là yếu tố tổ chức. Các phương án còn lại (hành vi, xử lý defect khách quan, bầu không khí tin cậy) là yếu tố con người."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c4",
+  "n": 4,
+  "icon": "🧪",
+  "nick": "Kỹ thuật test",
+  "topics": [
+   {
+    "id": "techcat",
+    "icon": "🌗",
+    "label": "Black-box, White-box & Experience-based",
+    "starred": true,
+    "hook": "Nhìn vào spec, vào code, hay vào kinh nghiệm của mình?",
+    "trap": "Error guessing, exploratory, checklist-based là experience-based, KHÔNG phải black-box. Statement và branch là white-box. Nhóm kỹ thuật (cách suy ra test) và test type (functional, non-functional: mục tiêu) là hai trục khác nhau.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "black-box test technique",
+       "white-box test technique",
+       "experience-based test technique",
+       "based on the specification",
+       "internal structure of the test object",
+       "knowledge and experience of the tester",
+       "góc nhìn người dùng = black-box (không phải white-box)",
+       "câu INCORRECT về white-box: tìm câu nói về người dùng hoặc specification"
+      ]
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"tcs\">\n<div class=\"tcc bb\"><div class=\"th\">⬛ Black-box</div><div class=\"tb\">Dựa trên specification, không nhìn vào cấu trúc bên trong của test object</div><div class=\"qk\"><span>Equivalence partitioning</span><span>Boundary value analysis</span><span>Decision table testing</span><span>State transition testing</span></div><div class=\"cv\">Coverage item: partition · giá trị biên · rule · transition</div></div>\n<div class=\"tcc wb\"><div class=\"th\">⬜ White-box</div><div class=\"tb\">Dựa trên cấu trúc bên trong của test object: code, kiến trúc, data flow</div><div class=\"qk\"><span>Statement testing</span><span>Branch testing</span></div><div class=\"cv\">Coverage item: statement · branch</div></div>\n<div class=\"tcc ex\"><div class=\"th\">🧠 Experience-based</div><div class=\"tb\">Dựa trên kiến thức và kinh nghiệm của tester</div><div class=\"qk\"><span>Error guessing</span><span>Exploratory testing</span><span>Checklist-based testing</span></div><div class=\"cv\">Không đo coverage theo cấu trúc: dẫn dắt bằng danh sách lỗi, test charter hoặc checklist</div></div>\n</div>",
+      "cap": "Collaboration-based (user story, acceptance criteria, ATDD) là nhóm riêng ở mục 4.5."
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"kt\"><div class=\"kg\">⬛ BLACK-BOX</div><div class=\"kr\"><div class=\"kn\">Equivalence partitioning</div><div class=\"qk\"><span>partitions</span><span>processed in the same way</span><span>valid / invalid partitions</span><span>one value per partition</span><span>coverage = partitions tested ÷ total</span></div></div><div class=\"kr\"><div class=\"kn\">Boundary value analysis</div><div class=\"qk\"><span>extension of EP</span><span>ordered partitions</span><span>min / max values</span><span>2-value · 3-value</span><span>defects at boundaries</span></div></div><div class=\"kr\"><div class=\"kn\">Decision table testing</div><div class=\"qk\"><span>combinations of conditions</span><span>rules (columns)</span><span>conditions and actions</span><span>T · F · – · N/A</span><span>business rules</span><span>one test per rule</span></div></div><div class=\"kr\"><div class=\"kn\">State transition testing</div><div class=\"qk\"><span>states · events · transitions</span><span>guard conditions</span><span>state diagram / state table</span><span>valid vs invalid transitions</span><span>all states · valid transitions · all transitions</span></div></div><div class=\"kg\">⬜ WHITE-BOX</div><div class=\"kr\"><div class=\"kn\">Statement testing</div><div class=\"qk\"><span>executable statements</span><span>coverage = statements exercised ÷ total</span><span>100% does not test all decision logic</span></div></div><div class=\"kr\"><div class=\"kn\">Branch testing</div><div class=\"qk\"><span>branch = transfer of control</span><span>decision outcomes (true / false)</span><span>control flow graph</span><span>100% branch ⇒ 100% statement</span></div></div><div class=\"kg\">🧠 EXPERIENCE-BASED</div><div class=\"kr\"><div class=\"kn\">Error guessing</div><div class=\"qk\"><span>past failures</span><span>errors developers make</span><span>defect and failure data</span><span>fault attack</span><span>list of possible defects</span></div></div><div class=\"kr\"><div class=\"kn\">Exploratory testing</div><div class=\"qk\"><span>informal · no predefined tests</span><span>simultaneous design and execution</span><span>session-based · time-box</span><span>test charter</span><span>debriefing</span><span>poor specification or time pressure</span></div></div><div class=\"kr\"><div class=\"kn\">Checklist-based testing</div><div class=\"qk\"><span>checklist items as questions</span><span>from experience · standards · why software fails</span><span>high level</span><span>coverage up · repeatability down</span></div></div><div class=\"kg\">🤝 COLLABORATION-BASED</div><div class=\"kr\"><div class=\"kn\">User story</div><div class=\"qk\"><span>Card · Conversation · Confirmation (3 Cs)</span><span>As a … I want … so that …</span><span>INVEST</span></div></div><div class=\"kr\"><div class=\"kn\">Acceptance criteria</div><div class=\"qk\"><span>scenario-oriented (Given / When / Then)</span><span>rule-oriented (list or table)</span><span>conditions for acceptance</span></div></div><div class=\"kr\"><div class=\"kn\">ATDD</div><div class=\"qk\"><span>specification workshop</span><span>test-first</span><span>positive → negative → non-functional tests</span></div></div></div>",
+      "cap": "Keyword đặc trưng của từng kỹ thuật: những từ hay xuất hiện trong đề và đáp án."
+     },
+     {
+      "k": "p",
+      "t": "Các nhóm bổ trợ cho nhau: experience-based tìm được lỗi mà black-box và white-box bỏ sót, nhất là khi spec kém hoặc thiếu thời gian."
+     },
+     {
+      "k": "p",
+      "t": "Đừng lẫn nhóm kỹ thuật với test type:"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "⬛",
+        "Black-box testing (test type)",
+        "Dựa trên specification: tập trung vào input và output, không xét cấu trúc bên trong"
+       ],
+       [
+        "⬜",
+        "White-box testing (test type)",
+        "Dựa trên cấu trúc: suy ra test từ code, kiến trúc, workflow, data flow"
+       ],
+       [
+        "⚙️",
+        "Functional / non-functional",
+        "MỤC TIÊU của testing: hệ thống làm gì, và làm tốt tới đâu"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "4.1.1",
+      "q": "A tester derives test cases from the structure of the source code. Which category of test techniques is this?",
+      "o": [
+       "Black-box",
+       "White-box",
+       "Experience-based",
+       "Static analysis"
+      ],
+      "a": "b",
+      "why": "White-box (structural): test dựa trên cấu trúc bên trong (code, kiến trúc). Black-box dựa trên specification, experience-based dựa trên kinh nghiệm."
+     }
+    ]
+   },
+   {
+    "id": "ep",
+    "icon": "🗂️",
+    "label": "Equivalence Partitioning",
+    "starred": true,
+    "hook": "Tủ nhiều ngăn: mỗi ngăn thử một món",
+    "trap": "Bộ test TỐI THIỂU: mỗi giá trị phải thuộc một partition RIÊNG — nếu 2 giá trị rơi cùng 1 partition, đó không phải bộ tối thiểu.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "mỗi giá trị = 1 partition KHÁC NHAU",
+       "2 giá trị cùng partition = SAI",
+       "đếm CẢ partition invalid",
+       "Each Choice: min test = số partition của input NHIỀU partition nhất",
+       "Each Choice có ràng buộc: chia nhóm tương thích, lấy max mỗi nhóm rồi cộng",
+       "partition chồng nhau (cùng input): một giá trị phủ cả hai"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Chia giá trị thành các nhóm được xử lý giống nhau, mỗi nhóm test một đại diện."
+     },
+     {
+      "k": "f",
+      "t": "Coverage = partition đã test ÷ tổng partition"
+     },
+     {
+      "k": "p",
+      "t": "Tuổi hợp lệ 18–65 → 3 partition: dưới 18, từ 18 tới 65, trên 65."
+     },
+     {
+      "k": "wp",
+      "name": "Bảng equivalence partitioning",
+      "head": [
+       "Input",
+       "Partition",
+       "Loại",
+       "Giá trị test"
+      ],
+      "rows": [
+       [
+        "Số tiền",
+        "≤ 0",
+        "Invalid",
+        "-10"
+       ],
+       [
+        "Số tiền",
+        "1–5,000",
+        "Valid",
+        "2,500"
+       ],
+       [
+        "Số tiền",
+        "> 5,000",
+        "Invalid",
+        "6,000"
+       ],
+       [
+        "Số dư",
+        "≥ số tiền",
+        "Valid",
+        "10,000"
+       ],
+       [
+        "Số dư",
+        "< số tiền",
+        "Invalid",
+        "100"
+       ]
+      ],
+      "note": "Có 5 partition. EP coverage = số partition được chạm / 5."
+     },
+     {
+      "k": "sample",
+      "lo": "4.2.1",
+      "q": "An age field accepts values from 18 to 65 inclusive; younger and older ages are rejected. How many equivalence partitions exist (valid and invalid), and what is the minimum number of test cases for 100% EP coverage?",
+      "o": [
+       "2 partitions, 2 test cases",
+       "4 partitions, 4 test cases",
+       "3 partitions, 2 test cases",
+       "3 partitions, 3 test cases"
+      ],
+      "a": "d",
+      "why": "Có 3 partition: dưới 18 (invalid), 18–65 (valid), trên 65 (invalid). Mỗi partition cần ít nhất một test, kể cả partition không hợp lệ."
+     }
+    ]
+   },
+   {
+    "id": "bva",
+    "icon": "🚧",
+    "label": "Boundary Value Analysis",
+    "starred": true,
+    "hook": "Lỗi hay nấp ở hàng rào",
+    "trap": "“Một ranh giới” giữa hai partition (2 hoặc 3 giá trị) khác “cả một partition” có hai biên (4 hoặc 6 giá trị). Hàng xóm của biên nằm ở partition KỀ, kể cả partition không hợp lệ (ví dụ chính thức Quiz 11 Q26: các khoảng 0–10, 11–25, 26–50, 51–100 cho 10 giá trị, gồm cả −1 và 101). Giá trị nằm trong lòng partition, hoặc xa ranh giới (không phải biên hay hàng xóm gần nhất), không tính; partition mở (không giới hạn) thì không có biên phía đó. Coverage đo bằng PHẦN TRĂM: đếm bộ test phủ được bao nhiêu boundary value thật, chia cho tổng số boundary value.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "biên của partition hợp lệ + hàng xóm ở partition kề (kể cả không hợp lệ)",
+       "partition mở → KHÔNG có biên đó",
+       "tie-break: bộ ÍT giá trị nhất",
+       "the boundary value and its closest neighbor belonging to the adjacent partition",
+       "percentage of 2-value BVA coverage achieved"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "2️⃣",
+        "2-value",
+        "Biên + hàng xóm phía ngoài. Biên 18 → 17, 18"
+       ],
+       [
+        "3️⃣",
+        "3-value",
+        "Biên + hai hàng xóm. Biên 18 → 17, 18, 19"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Chỉ dùng cho partition có thứ tự (số, ngày tháng)."
+     },
+     {
+      "k": "p",
+      "t": "Định nghĩa chính thức: với mỗi biên, 2-value BVA lấy chính giá trị biên và hàng xóm gần nhất thuộc partition liền kề. Nếu 2 partition liền kề chạm trực tiếp nhau (vd. ≤100 và ≥101), hàng xóm của biên này có thể CHÍNH LÀ biên của partition kia, nên số giá trị riêng biệt cần test có thể ít hơn tưởng tượng."
+     },
+     {
+      "k": "wp",
+      "name": "Bảng boundary value analysis (miền hợp lệ 1–5,000)",
+      "head": [
+       "Biên",
+       "Giá trị biên",
+       "2-value",
+       "3-value"
+      ],
+      "rows": [
+       [
+        "Dưới",
+        "1",
+        "0, 1",
+        "0, 1, 2"
+       ],
+       [
+        "Trên",
+        "5,000",
+        "5,000, 5,001",
+        "4,999, 5,000, 5,001"
+       ]
+      ],
+      "note": "Tổng: 2-value = 4 giá trị (0, 1, 5000, 5001); 3-value = 6 giá trị (0, 1, 2, 4999, 5000, 5001)."
+     },
+     {
+      "k": "sample",
+      "lo": "4.2.2",
+      "q": "A discount applies to order totals from 100 to 500 euros (integers, inclusive). Which set of values achieves 100% two-value boundary value coverage?",
+      "o": [
+       "99, 100, 500, 501",
+       "100, 101, 499, 500",
+       "99, 100, 101, 499, 500, 501",
+       "100, 500"
+      ],
+      "a": "a",
+      "why": "2-value: mỗi biên cùng hàng xóm gần nhất ở partition kề: (99, 100) và (500, 501). Phương án c là bộ 3-value."
+     }
+    ]
+   },
+   {
+    "id": "dt",
+    "icon": "📊",
+    "label": "Decision table",
+    "starred": true,
+    "hook": "n điều kiện → 2ⁿ cột",
+    "trap": "Tìm test tăng coverage: xếp các test có sẵn vào rule, rồi tìm rule còn trống. Đếm số điều kiện khác nhau trước, rồi mới so action.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "n điều kiện → 2ⁿ rule",
+       "\"–\" = không quan tâm",
+       "can be merged into a single column",
+       "same actions",
+       "differ in only one condition",
+       "contradiction = dữ liệu khớp ≥ 2 rule với action khác nhau",
+       "omission = dữ liệu khớp 0 rule",
+       "đổi đáp án thành bộ điều kiện rồi đếm số rule khớp",
+       "“full” decision table = đủ mọi tổ hợp, KHÔNG gộp (2 điều kiện → 4 test)",
+       "tự suy ra bảng đầy đủ từ mô tả (2 điều kiện Boolean → 4 rule) rồi tìm rule CHƯA có test"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Mỗi cột (rule) là một tổ hợp điều kiện dẫn tới hành động. Bỏ tổ hợp infeasible; dấu “–” nghĩa là không quan tâm."
+     },
+     {
+      "k": "f",
+      "t": "Coverage = rule đã test ÷ tổng rule"
+     },
+     {
+      "k": "p",
+      "t": "Luật gộp cột: hai rule chỉ gộp được khi thoả CẢ HAI: action giống hệt nhau, và các điều kiện khác nhau ở đúng 1 điều kiện. Điều kiện đó thành dấu \"–\" (không quan tâm)."
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "✅",
+        "R4 và R8 (bảng atherosclerosis)",
+        "Chỉ cholesterol khác (200-239 và từ 240 trở lên); huyết áp và thuốc giống nhau, cùng kết quả high + prescribe medicine: gộp được"
+       ],
+       [
+        "❌",
+        "R3 và R5",
+        "Action giống, nhưng khác 2 điều kiện (cholesterol và huyết áp)"
+       ],
+       [
+        "❌",
+        "R1 và R2",
+        "Chỉ khác 1 điều kiện (thuốc), nhưng action khác (change và prescribe medicine)"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Decision table đã gộp (dấu – = không quan trọng)",
+      "head": [
+       "",
+       "R1",
+       "R2",
+       "R3",
+       "R4"
+      ],
+      "rows": [
+       [
+        "Số tiền hợp lệ (1–5,000)",
+        "Y",
+        "Y",
+        "Y",
+        "N"
+       ],
+       [
+        "Số dư đủ",
+        "Y",
+        "Y",
+        "N",
+        "–"
+       ],
+       [
+        "TK nhận tồn tại",
+        "Y",
+        "N",
+        "–",
+        "–"
+       ],
+       [
+        "Hành động",
+        "Chuyển tiền",
+        "Lỗi: không thấy TK",
+        "Lỗi: số dư không đủ",
+        "Lỗi: số tiền không hợp lệ"
+       ]
+      ],
+      "note": "Bảng đầy đủ có 8 cột, bảng gộp còn 4 rule nên cần tối thiểu 4 test."
+     },
+     {
+      "k": "sample",
+      "lo": "4.2.3",
+      "q": "A decision table has three Boolean conditions. How many rules does the full (non-collapsed) table have?",
+      "o": [
+       "3",
+       "6",
+       "8",
+       "9"
+      ],
+      "a": "c",
+      "why": "Bảng đầy đủ có tích số giá trị các điều kiện: 2 × 2 × 2 = 8 rule. Bảng đã gộp bằng dấu “–” thì số test tối thiểu bằng số cột còn lại."
+     }
+    ]
+   },
+   {
+    "id": "st",
+    "icon": "🪆",
+    "label": "State transition",
+    "starred": true,
+    "hook": "Búp bê Nga: con lớn chứa con nhỏ",
+    "trap": "Đừng nhầm với statement/branch coverage — đọc kỹ đề đang hỏi về kỹ thuật NÀO (state transition đo trạng thái, statement testing đo dòng lệnh) trước khi chọn đáp án. Khi so sánh các chuỗi test case để tìm \"coverage cao nhất\", đếm số TRANSITION KHÁC NHAU chứ không phải số event; kiểm tra chuỗi có feasible không trước khi đếm. Dạng câu khác: \"chuỗi nào chỉ chứa transition HỢP LỆ\" — chỉ cần 1 transition KHÔNG hợp lệ trong chuỗi là loại cả đáp án, bất kể phủ được bao nhiêu.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "all transitions ⊃ valid transitions ⊃ all states",
+       "safety-critical → all transitions",
+       "KHÁC statement/branch coverage",
+       "infeasible test case",
+       "achieves the highest valid transitions coverage",
+       "cùng 1 event từ 2 state khác nhau = 2 transition khác nhau",
+       "covers ONLY valid transitions",
+       "minimum number of tests to achieve valid transitions coverage",
+       "each test must start at the beginning state",
+       "each test ends when a transition arrives at the beginning state or in the final state",
+       "đếm mũi tên VÀO state đầu, kể cả vòng lặp tại chính state đầu",
+       "all states: tối thiểu bằng số state CUỐI (terminal)",
+       "event reset (vd. Change → n=0): bỏ mọi thứ trước đó; kiểm tra guard khi tới đích",
+       "vai trò [user]/[admin]: sau Login as admin chỉ còn event admin; mỗi test chỉ chứa một Login → cần ≥ số transition Login"
+      ]
+     },
+     {
+      "k": "f",
+      "t": "All transitions ⊃ valid transitions ⊃ all states"
+     },
+     {
+      "k": "p",
+      "t": "Đạt vòng ngoài thì tự đạt vòng trong, không có chiều ngược lại. Event lặp lại TỪ CÙNG 1 STATE không tính thêm transition — nhưng cùng tên event xuất phát từ 2 STATE KHÁC NHAU thì tính là 2 transition khác nhau."
+     },
+     {
+      "k": "p",
+      "t": "Một test case có thể infeasible: nếu chuỗi event đi tới 1 state mà event tiếp theo không có transition hợp lệ (vd. Add khi đã Full), đường đi đó không thực thi được như viết."
+     },
+     {
+      "k": "p",
+      "t": "Dạng câu \"số test tối thiểu\": mỗi test bắt đầu ở state đầu và kết thúc ngay khi có transition quay về state đầu hoặc vào state cuối. Đếm các transition KẾT THÚC test — mỗi test chỉ kết thúc bằng đúng 1 transition như vậy, nên số đó là cận dưới."
+     },
+     {
+      "k": "p",
+      "t": "Sau đó kiểm tra mọi transition còn lại (nhất là vòng lặp tự quay về cùng state, vì chúng không kết thúc test) có gài được vào các đường đi đó không. Gài được hết thì đáp án chính là cận dưới. Ví dụ hệ thống ticket: 3 transition kết thúc (Reopen từ IN PROGRESS, Reopen từ PENDING, Close) nên cần 3 test."
+     },
+     {
+      "k": "wp",
+      "name": "State table",
+      "head": [
+       "State",
+       "PIN đúng",
+       "PIN sai",
+       "Đăng xuất"
+      ],
+      "rows": [
+       [
+        "Login",
+        "Menu",
+        "Login",
+        "—"
+       ],
+       [
+        "Menu",
+        "—",
+        "—",
+        "Login"
+       ]
+      ],
+      "note": "Ô “—” là không có transition hợp lệ. Có 3 transition hợp lệ."
+     },
+     {
+      "k": "wp",
+      "name": "Test case rút ra (mỗi test kết thúc khi về state đầu)",
+      "head": [
+       "Test",
+       "Dãy"
+      ],
+      "rows": [
+       [
+        "TC1",
+        "Login –PIN sai→ Login"
+       ],
+       [
+        "TC2",
+        "Login –PIN đúng→ Menu –Đăng xuất→ Login"
+       ]
+      ],
+      "note": "2 test phủ 3/3 transition hợp lệ (100%)."
+     },
+     {
+      "k": "sample",
+      "lo": "4.2.4",
+      "q": "State table (empty = no valid transition): Idle: start → Running. Running: pause → Paused, stop → Idle. Paused: resume → Running, stop → Idle. A test executes Idle –start→ Running –pause→ Paused –resume→ Running. What valid transitions coverage is achieved?",
+      "o": [
+       "40%",
+       "50%",
+       "60%",
+       "75%"
+      ],
+      "a": "c",
+      "why": "Có 5 transition hợp lệ. Dãy đi qua 3 transition khác nhau (start, pause, resume): 3/5 = 60%."
+     }
+    ]
+   },
+   {
+    "id": "whitebox",
+    "icon": "🌿",
+    "label": "Branch ⊇ Statement",
+    "starred": false,
+    "hook": "Đi hết mọi ngã rẽ thì đã ghé mọi phòng",
+    "trap": "Statement testing đo dòng lệnh ĐÃ CHẠY — khác hoàn toàn state transition (đo trạng thái/chuyển trạng thái). Đề hay trộn mô tả 2 kỹ thuật này để gây nhiễu, đọc kỹ từ khoá \"statement/branch\" vs \"state/transition\".",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Branch ⊇ Statement",
+       "if không else → 100% statement, 50% branch",
+       "defect of omission",
+       "branch = mọi KẾT QUẢ của decision (đúng và sai)",
+       "path (mọi đường đi) KHÔNG phải branch"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "100% branch ⇒ 100% statement, không có chiều ngược lại."
+     },
+     {
+      "k": "f",
+      "t": "if (x > 0) { … }   // không có else\nx = 5 → 100% statement, 50% branch"
+     },
+     {
+      "k": "p",
+      "t": "Điểm yếu: không thấy defect of omission — chức năng bị thiếu hẳn."
+     },
+     {
+      "k": "sample",
+      "lo": "4.3.2",
+      "q": "Which statement about statement coverage and branch coverage is correct?",
+      "o": [
+       "100% statement coverage guarantees 100% branch coverage",
+       "The two are always equal",
+       "100% branch coverage guarantees 100% statement coverage",
+       "Branch coverage only counts decisions that have an else part"
+      ],
+      "a": "c",
+      "why": "Branch coverage mạnh hơn statement coverage: đạt 100% branch thì chắc chắn 100% statement, nhưng không đúng chiều ngược lại."
+     }
+    ]
+   },
+   {
+    "id": "experience",
+    "icon": "🕵️",
+    "label": "Error guessing, Exploratory, Checklist",
+    "starred": true,
+    "hook": "Thợ sửa xe, dân phượt, danh sách đi chợ",
+    "trap": "Có danh sách lỗi làm trước → error guessing. Học dần trong lúc test, dùng test charter (không có checklist cụ thể) → exploratory. Checklist-based LUÔN có checklist viết sẵn (dù high-level) — đây là từ khoá phân biệt với exploratory.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "error guessing = danh sách lỗi TRƯỚC",
+       "exploratory = test CHARTER, không checklist",
+       "checklist-based = CÓ checklist viết sẵn",
+       "error guessing dựa trên KINH NGHIỆM và kiến thức lỗi thường gặp; “solely”, “without preparation” → sai",
+       "exploratory không loại trừ kỹ thuật chính thức (có thể dùng 2-value BVA)",
+       "checklist: cập nhật sau mỗi defect mới (chỉnh item cụ thể hơn, không bỏ)"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🔧",
+        "Error guessing",
+        "Lập danh sách lỗi dự đoán từ kinh nghiệm rồi tấn công (fault attack)"
+       ],
+       [
+        "🧭",
+        "Exploratory",
+        "Vừa khám phá vừa test: time-box + test charter"
+       ],
+       [
+        "📝",
+        "Checklist-based",
+        "Checklist high-level → mỗi tester làm hơi khác → tăng coverage, giảm repeatability"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Test charter và ghi chú phiên exploratory",
+      "doc": [
+       [
+        "Charter",
+        "Khám phá luồng chuyển tiền khi mạng chập chờn"
+       ],
+       [
+        "Time-box",
+        "60 phút"
+       ],
+       [
+        "Ghi chú",
+        "Ngắt mạng giữa chừng → giao dịch bị trừ tiền hai lần (DEF-31)"
+       ],
+       [
+        "Câu hỏi",
+        "Có thông báo rõ khi timeout không?"
+       ],
+       [
+        "Tiếp theo",
+        "Thêm test lặp giao dịch"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Checklist cho checklist-based testing",
+      "doc": [
+       [
+        "☐",
+        "Thông báo lỗi dễ hiểu?"
+       ],
+       [
+        "☐",
+        "Thứ tự tab hợp lý?"
+       ],
+       [
+        "☐",
+        "Số tiền hiển thị đúng định dạng?"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "4.4.2",
+      "q": "A tester without written test cases explores the application in a time-boxed session guided by a short charter, learning from results to design further tests. Which technique is this?",
+      "o": [
+       "Error guessing",
+       "Exploratory testing",
+       "Checklist-based testing",
+       "Equivalence partitioning"
+      ],
+      "a": "b",
+      "why": "Exploratory testing: thiết kế, thực thi và đánh giá diễn ra đồng thời, thường có time-box và test charter."
+     }
+    ]
+   },
+   {
+    "id": "atdd",
+    "icon": "🤝",
+    "label": "ATDD & INVEST",
+    "starred": false,
+    "hook": "Mỗi test case phải trỏ về một acceptance criterion",
+    "trap": "Test nghe hay nhưng không thuộc AC nào là sai.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "workshop → AC → test case",
+       "\"As a…, I want…, so that…\"",
+       "INVEST không có \"Immutable\"",
+       "test case tốt: kiểm tra đúng AC VÀ expected result khớp AC",
+       "AC dùng để: xác định phạm vi story · đạt đồng thuận · mô tả kịch bản TÍCH CỰC và TIÊU CỰC · cơ sở acceptance test · lập kế hoạch và ước lượng",
+       "AC được viết khi refine user story (không phải lúc thiết kế test)",
+       "phủ AC “toàn diện”: đọc từ hạn định (regardless of, each tier) và kiểm tra từng biến thể"
+      ]
+     },
+     {
+      "k": "flow",
+      "items": [
+       "👥 Specification workshop",
+       "📋 Acceptance criteria",
+       "🧪 Test cases: positive → negative → non-functional"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable."
+     },
+     {
+      "k": "p",
+      "t": "Format chuẩn user story: “As a [role], I want [goal], so that [reason]” — đủ 3 phần."
+     },
+     {
+      "k": "wp",
+      "name": "User story và acceptance criteria (rule-oriented)",
+      "doc": [
+       [
+        "User story",
+        "Là người dùng đã đăng ký, tôi muốn chuyển tiền cho tài khoản khác để thanh toán cho bạn bè"
+       ],
+       [
+        "AC-1",
+        "Số tiền từ 1 đến 5,000"
+       ],
+       [
+        "AC-2",
+        "Số dư phải ≥ số tiền chuyển"
+       ],
+       [
+        "AC-3",
+        "Tài khoản nhận phải tồn tại"
+       ]
+      ],
+      "note": "INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable."
+     },
+     {
+      "k": "wp",
+      "name": "Acceptance test viết trước khi code",
+      "head": [
+       "Test",
+       "Số dư",
+       "Số tiền",
+       "TK nhận",
+       "Kết quả mong đợi"
+      ],
+      "rows": [
+       [
+        "AT1",
+        "10,000",
+        "1",
+        "Hợp lệ",
+        "Thành công, số dư còn 9,999"
+       ],
+       [
+        "AT2",
+        "10,000",
+        "5,000",
+        "Hợp lệ",
+        "Thành công, số dư còn 5,000"
+       ],
+       [
+        "AT3",
+        "10,000",
+        "0",
+        "Hợp lệ",
+        "Từ chối: số tiền tối thiểu là 1"
+       ],
+       [
+        "AT4",
+        "10,000",
+        "5,001",
+        "Hợp lệ",
+        "Từ chối: vượt hạn mức"
+       ],
+       [
+        "AT5",
+        "100",
+        "200",
+        "Hợp lệ",
+        "Từ chối: số dư không đủ"
+       ],
+       [
+        "AT6",
+        "10,000",
+        "100",
+        "Không tồn tại",
+        "Từ chối: không tìm thấy tài khoản"
+       ]
+      ],
+      "note": "Mỗi test trỏ về một acceptance criterion. Test được tạo trong workshop business–dev–tester, dev code cho tới khi các test pass."
+     },
+     {
+      "k": "sample",
+      "lo": "4.5.1",
+      "q": "In the INVEST mnemonic for good user stories, what does the letter “T” stand for?",
+      "o": [
+       "Traceable",
+       "Time-boxed",
+       "Tangible",
+       "Testable"
+      ],
+      "a": "d",
+      "why": "INVEST: Independent, Negotiable, Valuable, Estimable, Small, Testable."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c5",
+  "n": 5,
+  "icon": "📋",
+  "nick": "Quản lý test",
+  "topics": [
+   {
+    "id": "plan",
+    "icon": "🗺️",
+    "label": "Test plan",
+    "starred": true,
+    "hook": "Bản đồ tầm cao, không phải chỉ đường từng bước",
+    "trap": "Hết ngân sách hoặc hết giờ có thể là exit criterion hợp lệ, nếu stakeholder chấp nhận rủi ro. Entry/Exit criteria nằm trong mục TEST APPROACH của test plan — KHÔNG phải mục \"context\" (mục tiêu/phạm vi). Quiz 19 Q8: test objectives thuộc CONTEXT OF TESTING; đáp án “test levels nằm trong test approach” nói đúng một sự thật khác nhưng không trả lời thông tin mà đề đưa ra. Quiz 15 Q8: mẫu tài liệu thuộc COMMUNICATION, không phải stakeholders.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "entry/exit criteria thuộc TEST APPROACH",
+       "KHÔNG chứa test data/expected result chi tiết",
+       "entry: test object đã đạt exit criteria của level trước",
+       "entry: testware (user story, AC testable), môi trường, test data sẵn sàng",
+       "exit: test đã chạy, coverage đạt, không còn defect nghiêm trọng mở",
+       "metrics dùng trong dự án → TEST APPROACH (progress report chỉ báo số liệu thực tế)"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Test plan gồm 7 nhóm nội dung (5.1.1):"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🧭",
+        "Context of testing (CÁI GÌ, VÌ SAO)",
+        "Scope, test objectives, ràng buộc (constraints), test basis"
+       ],
+       [
+        "📌",
+        "Assumptions and constraints",
+        "Các giả định và ràng buộc của dự án test"
+       ],
+       [
+        "👥",
+        "Stakeholders",
+        "Vai trò, trách nhiệm, mức độ liên quan tới test; nhu cầu tuyển và đào tạo"
+       ],
+       [
+        "💬",
+        "Communication",
+        "Hình thức và tần suất giao tiếp; mẫu tài liệu (documentation templates)"
+       ],
+       [
+        "⚠️",
+        "Risk register",
+        "Product risk và project risk"
+       ],
+       [
+        "🛠️",
+        "Test approach (NHƯ THẾ NÀO)",
+        "Test levels, test types, test techniques, test deliverables, entry và exit criteria, mức độc lập, metrics, yêu cầu test data và test environment, điểm khác với test policy và test strategy"
+       ],
+       [
+        "💰",
+        "Budget and schedule",
+        "Ngân sách và lịch trình"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Test strategy mô tả chung ở cấp tổ chức hoặc chương trình; test approach là việc áp dụng cụ thể cho DỰ ÁN này và được ghi trong test plan (kể cả phần lệch so với test policy và strategy)."
+     },
+     {
+      "k": "wp",
+      "name": "Test plan (ví dụ điền 7 nhóm nội dung)",
+      "doc": [
+       [
+        "Context of testing",
+        "Scope: tính năng chuyển tiền v2.0. Objectives: xác nhận yêu cầu, giảm rủi ro giao dịch sai. Test basis: US-12 đến US-17"
+       ],
+       [
+        "Assumptions và constraints",
+        "Staging sẵn sàng từ tuần 2; không test trên dữ liệu thật"
+       ],
+       [
+        "Stakeholders",
+        "PO duyệt acceptance; dev lead; QA lead; cần 1 tester có kinh nghiệm security"
+       ],
+       [
+        "Communication",
+        "Progress report hằng tuần; completion report cuối release (mẫu TR-01)"
+       ],
+       [
+        "Risk register",
+        "R1 tính phí sai (product, cao); R2 môi trường trễ (project)"
+       ],
+       [
+        "Test approach",
+        "Level: component, system, acceptance. Kỹ thuật: EP, BVA, state transition. Entry: build ổn định. Exit: 100% test mức cao pass, không còn defect severity 1"
+       ],
+       [
+        "Budget và schedule",
+        "3 tester × 4 tuần"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "5.1.1",
+      "q": "Where in a test plan would you typically document the test objectives and the test basis?",
+      "o": [
+       "Context of testing",
+       "Test approach",
+       "Communication",
+       "Risk register"
+      ],
+      "a": "a",
+      "why": "Test objectives và test basis nằm trong context of testing (cái gì và vì sao). Test approach chứa levels, types, techniques, entry/exit criteria."
+     }
+    ]
+   },
+   {
+    "id": "relplan",
+    "icon": "🗓️",
+    "label": "Release vs Iteration planning",
+    "starred": false,
+    "hook": "Release = cả chuyến đi; iteration = chặng kế tiếp",
+    "trap": "Estimate test effort ASSOCIATED WITH USER STORIES là release; estimate test effort FOR ALL TESTING TASKS là iteration. Project and quality risk analyses là release; DETAILED risk analysis of user stories là iteration. \"Identify and refine functional and non-functional aspects of the test object\" là iteration, nên là đáp án của câu hỏi \"NOT release planning\" (một số lời giải quiz viết là \"functional and non-functional test conditions\"; cùng nghĩa).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "release planning",
+       "iteration planning",
+       "product backlog",
+       "iteration backlog",
+       "project and quality risk analyses",
+       "estimate test effort associated with user stories",
+       "estimate test effort for all testing tasks",
+       "detailed risk analysis of user stories",
+       "determine the testability of user stories",
+       "functional and non-functional aspects of the test object",
+       "viết user story testable và acceptance criteria → RELEASE (không phải iteration)"
+      ]
+     },
+     {
+      "k": "vs",
+      "a": [
+       "🗺️",
+       "Release planning",
+       "Nhìn trước tới lúc release sản phẩm. Định nghĩa và điều chỉnh product backlog, có thể tách user story lớn thành story nhỏ. Là cơ sở cho test approach và test plan xuyên suốt các iteration."
+      ],
+      "b": [
+       "🔍",
+       "Iteration planning",
+       "Nhìn trước tới cuối 1 iteration, làm việc với iteration backlog. Tester đi vào chi tiết từng user story."
+      ]
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"kt\"><div class=\"kr\"><div class=\"kn\">🗺️ Release planning</div><div class=\"qk\"><span>write testable user stories and acceptance criteria</span><span>participate in project and quality risk analyses</span><span>estimate test effort associated with user stories</span><span>determine the test approach</span><span>plan the testing for the release</span><span class=\"x\">product backlog</span><span class=\"x\">cả release</span></div></div><div class=\"kr\"><div class=\"kn\">🔍 Iteration planning</div><div class=\"qk\"><span>participate in the detailed risk analysis of user stories</span><span>determine the testability of user stories</span><span>break down user stories into tasks (particularly testing tasks)</span><span>estimate test effort for all testing tasks</span><span>identify and refine functional and non-functional aspects of the test object</span><span class=\"x\">iteration backlog</span><span class=\"x\">1 iteration</span></div></div></div>",
+      "cap": "Việc của tester ở từng cấp lập kế hoạch, theo cách quiz diễn đạt. Ô nét đứt = phạm vi của cấp đó."
+     },
+     {
+      "k": "p",
+      "t": "Release planning KHÔNG phải test planning: release planning là sự kiện lập kế hoạch Agile cho bản release, còn test planning là một test activity tạo ra test plan."
+     },
+     {
+      "k": "sample",
+      "lo": "5.1.2",
+      "q": "Which tester contribution is typical of iteration planning rather than release planning?",
+      "o": [
+       "Participating in writing high-level user stories for the product backlog",
+       "Defining the overall product vision",
+       "Estimating test effort for the tasks of the user stories selected for the iteration",
+       "Defining the release date"
+      ],
+      "a": "c",
+      "why": "Iteration planning: phân tích rủi ro chi tiết cho user story, chia thành task, ước lượng test effort của iteration. Release planning: tham gia viết user story và acceptance criteria ở mức cao."
+     }
+    ]
+   },
+   {
+    "id": "estimate",
+    "icon": "🧮",
+    "label": "3-point estimation",
+    "starred": false,
+    "hook": "Lạc quan + 4 × thường gặp + bi quan, rồi chia 6",
+    "trap": "",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "E=(a+4m+b)/6, SD=(b−a)/6",
+       "số liệu của 1 hạng mục mà đề hỏi cả nhóm → NHÂN; số liệu của cả nhóm mà đề hỏi 1 hạng mục → CHIA",
+       "hỏi E hay E ± SD? (tối đa = E + SD)"
+      ]
+     },
+     {
+      "k": "f",
+      "t": "E  = (a + 4m + b) / 6\nSD = (b − a) / 6"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "📚",
+        "Ratios",
+        "Dựa số liệu lịch sử"
+       ],
+       [
+        "📈",
+        "Extrapolation",
+        "Nối đà các iteration trước"
+       ],
+       [
+        "🗳️",
+        "Wideband Delphi",
+        "Chuyên gia ước lượng nhiều vòng (vd. planning poker)"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Ước lượng 3 điểm, E = (a + 4m + b) / 6 (person-days)",
+      "head": [
+       "Task",
+       "a",
+       "m",
+       "b",
+       "E"
+      ],
+      "rows": [
+       [
+        "Thiết kế test chuyển tiền",
+        "2",
+        "4",
+        "12",
+        "5.0"
+       ],
+       [
+        "Viết test API",
+        "3",
+        "5",
+        "7",
+        "5.0"
+       ],
+       [
+        "Test hồi quy",
+        "1",
+        "2",
+        "9",
+        "3.0"
+       ]
+      ],
+      "note": "Tổng ước lượng: 13 person-days."
+     },
+     {
+      "k": "sample",
+      "lo": "5.1.4",
+      "q": "Using the three-point estimation E = (a + 4m + b) / 6 with optimistic a = 3 days, most likely m = 6 days and pessimistic b = 15 days, what is the estimate?",
+      "o": [
+       "6 days",
+       "6.5 days",
+       "7 days",
+       "8 days"
+      ],
+      "a": "c",
+      "why": "E = (3 + 4×6 + 15) / 6 = 42 / 6 = 7 ngày."
+     }
+    ]
+   },
+   {
+    "id": "prio",
+    "icon": "🥇",
+    "label": "Prioritization",
+    "starred": true,
+    "hook": "Rủi ro, độ phủ, độ quan trọng",
+    "trap": "Test phủ nhiều nhưng trùng hết với cái đã chạy → xếp cuối.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "risk-based / coverage-based / requirements-based",
+       "coverage-based: chỉ tính phần MỚI",
+       "logical dependency",
+       "test execution schedule",
+       "dependencies must be satisfied first",
+       "a test case depends on a requirement being covered first",
+       "tính lại phần MỚI sau MỖI bước chọn"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🎲",
+        "Risk-based",
+        "Rủi ro cao chạy trước"
+       ],
+       [
+        "🧩",
+        "Coverage-based (additional)",
+        "Mỗi bước chọn test phủ thêm nhiều yêu cầu mới nhất"
+       ],
+       [
+        "⭐",
+        "Requirements-based",
+        "Theo thứ tự stakeholder xếp hạng"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Đề thật hay kết hợp priority VỚI logical dependency: một test case có số priority thấp vẫn phải chạy trước nếu một test ưu tiên cao hơn phụ thuộc logic vào nó. Quy tắc: thoả mãn dependency trước, rồi mới sắp theo priority trong phần còn lại."
+     },
+     {
+      "k": "p",
+      "t": "Dependency cũng có thể đi QUA một requirement thay vì trực tiếp giữa 2 test: \"TC4 phụ thuộc Req1\" nghĩa là bất kỳ test nào phủ Req1 (không nhất thiết 1 test cụ thể) phải chạy trước TC4 — chọn test khả dụng phủ requirement đó với coverage cao nhất."
+     },
+     {
+      "k": "wp",
+      "name": "Lịch chạy test theo ưu tiên và dependency (1 = ưu tiên cao nhất)",
+      "head": [
+       "Thứ tự",
+       "Test",
+       "Priority",
+       "Phụ thuộc"
+      ],
+      "rows": [
+       [
+        "1",
+        "TC-D Đăng nhập",
+        "5",
+        "—"
+       ],
+       [
+        "2",
+        "TC-G Tạo tài khoản nhận",
+        "3",
+        "TC-D"
+       ],
+       [
+        "3",
+        "TC-B Chuyển tiền thành công",
+        "1",
+        "TC-D, TC-G"
+       ],
+       [
+        "4",
+        "TC-C Xem lịch sử giao dịch",
+        "2",
+        "TC-D"
+       ]
+      ],
+      "note": "TC-B ưu tiên cao nhất nên kéo các prerequisite TC-D và TC-G lên trước nó, phần còn lại xếp theo priority."
+     },
+     {
+      "k": "sample",
+      "lo": "5.1.5",
+      "q": "TC1 (priority 1 = highest, no dependency), TC2 (priority 2, depends on TC3), TC3 (priority 3, no dependency). In which order should they run, considering priority and dependencies?",
+      "o": [
+       "TC1, TC2, TC3",
+       "TC1, TC3, TC2",
+       "TC3, TC1, TC2",
+       "TC2, TC1, TC3"
+      ],
+      "a": "b",
+      "why": "TC1 ưu tiên cao nhất và độc lập nên chạy trước. TC2 cần TC3, nên TC3 phải chạy trước TC2: TC1, TC3, TC2."
+     }
+    ]
+   },
+   {
+    "id": "pyrquad",
+    "icon": "🔺",
+    "label": "Pyramid vs Quadrants",
+    "starred": true,
+    "hook": "Kim tự tháp đo kích cỡ, nhà hàng đo mục đích",
+    "trap": "Usability thuộc Q3, không phải Q4 — Q4 chứa non-functional tests TRỪ usability, cộng thêm smoke tests. Testing quadrants KHÔNG gán cứng test type vào test level — bất kỳ test type nào vẫn chạy được ở bất kỳ level nào; quadrants chỉ nhóm level/type/activity/technique/work product theo trục business-tech facing và support-critique.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Pyramid = trục GRANULARITY",
+       "Quadrants = trục MỤC ĐÍCH",
+       "Usability = Q3, KHÔNG phải Q4",
+       "Q1: component + component integration tests",
+       "Q2: functional tests, examples, user story tests, UX prototypes, API testing, simulations",
+       "Q3: exploratory, usability, user acceptance testing",
+       "Q4: smoke tests + non-functional tests",
+       "business facing",
+       "technology facing",
+       "supporting the team (guides development)",
+       "critique the product (measures behavior against expectations)",
+       "any test type can be performed at any test level",
+       "help non-technical stakeholders understand test types",
+       "some test types are more relevant to certain test levels than others",
+       "pyramid: tầng dưới NHIỀU test; mọi tầng đều tự động hoá được nhưng vẫn cần test thủ công (exploratory)"
+      ]
+     },
+     {
+      "k": "svg",
+      "t": "<svg viewBox=\"0 0 280 140\" role=\"img\" aria-label=\"Test pyramid 3 tầng: đáy Unit nhiều, đỉnh E2E ít\">\n<title>Test Pyramid</title>\n<polygon points=\"140,10 166,52 114,52\" fill=\"#ffc6a5\"/>\n<polygon points=\"106,56 174,56 194,96 86,96\" fill=\"#f6a06b\"/>\n<polygon points=\"74,100 206,100 228,136 52,136\" fill=\"#ccdbb2\"/>\n<text x=\"140\" y=\"35\" text-anchor=\"middle\" font-size=\"10\" fill=\"#201e1d\" font-weight=\"700\">E2E</text>\n<text x=\"140\" y=\"80\" text-anchor=\"middle\" font-size=\"10\" fill=\"#201e1d\" font-weight=\"700\">Integration</text>\n<text x=\"140\" y=\"121\" text-anchor=\"middle\" font-size=\"10\" fill=\"#201e1d\" font-weight=\"700\">Unit / Component</text>\n</svg>",
+      "cap": "Trục granularity — đáy nhiều·nhanh·nhỏ, đỉnh ít·chậm·to"
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"quad\">\n<span></span><div class=\"qh\">NGHIỆP VỤ</div><div class=\"qh\">KỸ THUẬT</div>\n<div class=\"qrow\">SUPPORT</div>\n<div class=\"qc b\"><div class=\"qi\">🧾</div><div class=\"qn\">Q2 phục vụ kiểm order</div><div class=\"qk\"><span>Functional tests</span><span>Examples</span><span>User story tests</span><span>UX prototypes</span><span>API testing</span><span>Simulations</span><span class=\"x\">ATDD</span><span class=\"x\">BDD</span></div></div>\n<div class=\"qc t\"><div class=\"qi\">🍳</div><div class=\"qn\">Q1 bếp tự nếm</div><div class=\"qk\"><span>Component tests</span><span>Component integration tests</span><span class=\"x\">TDD</span></div></div>\n<div class=\"qrow\">CRITIQUE</div>\n<div class=\"qc b\"><div class=\"qi\">😋</div><div class=\"qn\">Q3 khách nếm</div><div class=\"qk\"><span>Exploratory testing</span><span>Usability testing</span><span>User acceptance testing</span></div></div>\n<div class=\"qc t\"><div class=\"qi\">🏥</div><div class=\"qn\">Q4 sở y tế</div><div class=\"qk\"><span>Smoke tests</span><span>Non-functional tests</span><span class=\"x\">Performance</span><span class=\"x\">Security</span></div></div>\n</div>",
+      "cap": "Ô đặc = từ khoá trong đề thi · ô nét đứt = thực hành liên quan"
+     },
+     {
+      "k": "vs",
+      "a": [
+       "🔺",
+       "Test pyramid",
+       "Đáy: unit nhiều, nhanh, nhỏ. Đỉnh: E2E ít, chậm, to. Trục là granularity."
+      ],
+      "b": [
+       "🍽️",
+       "Testing quadrants",
+       "🍳 Q1 bếp tự nếm — component và component integration tests<br>🧾 Q2 phục vụ kiểm order — functional tests, examples, user story tests, UX prototypes, API testing, simulations<br>😋 Q3 khách nếm — exploratory, usability, user acceptance testing<br>🏥 Q4 sở y tế — smoke tests, non-functional tests"
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "5.1.6",
+      "q": "In the test pyramid, which tests should be the most numerous (the base layer)?",
+      "o": [
+       "UI/end-to-end tests",
+       "API/service tests",
+       "Manual exploratory tests",
+       "Unit/component tests"
+      ],
+      "a": "d",
+      "why": "Test pyramid: nhiều unit/component test ở đáy (nhanh, rẻ, cô lập), ít end-to-end test ở đỉnh (chậm, đắt)."
+     }
+    ]
+   },
+   {
+    "id": "risk",
+    "icon": "🎲",
+    "label": "Risk = L × I",
+    "starred": false,
+    "hook": "Sản phẩm hỏng, hay dự án trễ?",
+    "trap": "Nhận diện rủi ro chưa phải là giảm thiểu — mitigation thuộc risk control. Scope creep (yêu cầu phình to liên tục) xếp vào nhóm Technical, KHÔNG phải Organizational — phản trực giác nhưng đúng theo syllabus.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "level = likelihood × impact",
+       "analysis ≠ control",
+       "scope creep = Technical"
+      ]
+     },
+     {
+      "k": "f",
+      "t": "Risk level = likelihood × impact"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "📦",
+        "Product risk",
+        "Chất lượng: tính sai tiền, lỗ hổng bảo mật, chậm"
+       ],
+       [
+        "📅",
+        "Project risk",
+        "Thực thi: tester nghỉ việc, trễ hạn, thiếu ngân sách"
+       ],
+       [
+        "🔎",
+        "Risk analysis",
+        "Identification + assessment"
+       ],
+       [
+        "🛡️",
+        "Risk control",
+        "Mitigation + monitoring"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "3 nhóm Project risk:"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🏢",
+        "Organizational",
+        "Thiếu kỹ năng, xung đột nhân sự, vấn đề tổ chức"
+       ],
+       [
+        "⚙️",
+        "Technical",
+        "Vấn đề kỹ thuật — bao gồm cả SCOPE CREEP (yêu cầu phình to)"
+       ],
+       [
+        "📦",
+        "Supplier",
+        "Bên thứ 3 giao trễ hoặc không đạt chất lượng"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Risk register",
+      "head": [
+       "Risk",
+       "Loại",
+       "L",
+       "I",
+       "Mức",
+       "Phản ứng"
+      ],
+      "rows": [
+       [
+        "Tính phí chuyển tiền sai",
+        "Product",
+        "4",
+        "5",
+        "20",
+        "Mitigation: BVA, decision table, review công thức"
+       ],
+       [
+        "Môi trường staging trễ",
+        "Project",
+        "3",
+        "3",
+        "9",
+        "Contingency: dùng môi trường dev tạm"
+       ],
+       [
+        "Lỗi cổng thanh toán đối tác",
+        "Product",
+        "2",
+        "4",
+        "8",
+        "Transfer: SLA với đối tác"
+       ],
+       [
+        "Giao diện lệch trên trình duyệt hiếm",
+        "Product",
+        "2",
+        "1",
+        "2",
+        "Acceptance: không test thêm"
+       ]
+      ],
+      "note": "Mức = likelihood × impact (thang 1–5)."
+     },
+     {
+      "k": "sample",
+      "lo": "5.2.1",
+      "q": "Which of the following is a product risk?",
+      "o": [
+       "The software might calculate interest incorrectly",
+       "A key tester leaves the project",
+       "The test environment will be delivered two weeks late",
+       "The budget for test tools is cut"
+      ],
+      "a": "a",
+      "why": "Product risk liên quan tới chất lượng sản phẩm (tính lãi sai). Các phương án còn lại (môi trường trễ, nhân sự, ngân sách) là project risk."
+     }
+    ]
+   },
+   {
+    "id": "config",
+    "icon": "🗃️",
+    "label": "Config mgmt vs Defect mgmt",
+    "starred": false,
+    "hook": "Quản phiên bản, hay quản vòng đời lỗi?",
+    "trap": "“Gán status cho defect” không phải configuration management.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Configuration = version + định danh WORK PRODUCT",
+       "Defect mgmt = vòng đời 1 DEFECT",
+       "configuration item đã duyệt chỉ đổi qua change control chính thức",
+       "đáp án sai về CM hay có từ hạn định: only, ambiguously, without"
+      ]
+     },
+     {
+      "k": "vs",
+      "a": [
+       "🗃️",
+       "Configuration mgmt",
+       "Định danh, version control, truy vết test item và testware; tạo baseline"
+      ],
+      "b": [
+       "🐞",
+       "Defect mgmt",
+       "Status, severity, priority của từng defect"
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Danh mục configuration item",
+      "head": [
+       "CI ID",
+       "Tên",
+       "Phiên bản",
+       "Vị trí",
+       "Trạng thái"
+      ],
+      "rows": [
+       [
+        "CI-001",
+        "Test plan chuyển tiền",
+        "v1.2",
+        "/docs/testplan_v1.2",
+        "Approved"
+       ],
+       [
+        "CI-014",
+        "Bộ test case API",
+        "v3.0",
+        "git: tests/api @a1b2c3",
+        "Baselined"
+       ],
+       [
+        "CI-020",
+        "Dữ liệu test",
+        "v2.1",
+        "/testdata/transfer_v2.1",
+        "Baselined"
+       ],
+       [
+        "CI-031",
+        "Script test E2E",
+        "v1.5",
+        "git: tests/e2e @d4e5f6",
+        "In review"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Bản ghi baseline",
+      "doc": [
+       [
+        "Baseline",
+        "BL-REL-2.0 (release 2.0)"
+       ],
+       [
+        "Gồm",
+        "CI-001 v1.2, CI-014 v3.0, CI-020 v2.1, CI-031 v1.5"
+       ],
+       [
+        "Build được test",
+        "2.0.14"
+       ],
+       [
+        "Thay đổi sau baseline",
+        "Chỉ qua change request, tạo phiên bản mới"
+       ],
+       [
+        "Truy vết",
+        "Kết quả TR-45 chạy trên build 2.0.14 với CI-014 v3.0"
+       ]
+      ],
+      "note": "Config management: định danh duy nhất, quản lý phiên bản, truy vết test item và testware. Vòng đời defect thuộc defect management."
+     },
+     {
+      "k": "sample",
+      "lo": "5.4.1",
+      "q": "What is a purpose of configuration management in testing?",
+      "o": [
+       "To prioritize defects for fixing",
+       "To estimate test effort",
+       "To uniquely identify, version-control and trace test items and testware",
+       "To measure test coverage"
+      ],
+      "a": "c",
+      "why": "Configuration management định danh duy nhất, quản lý phiên bản và truy vết test item và testware. Quản lý vòng đời defect là defect management."
+     }
+    ]
+   },
+   {
+    "id": "defect",
+    "icon": "🐞",
+    "label": "Defect report",
+    "starred": true,
+    "hook": "Đủ để người khác tái hiện được lỗi",
+    "trap": "Lỗi giao diện mà thiếu browser, device → đó là thông tin thiếu quan trọng nhất. Khi đề hỏi nên THÊM gì vào report, ưu tiên thông tin giúp dev tái hiện lỗi NHANH với cùng input/environment — không phải liệt kê hết mọi artefact (memory dump, database snapshot...) vì sẽ làm report khó đọc hơn.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Severity = tester đặt (tác động KỸ THUẬT)",
+       "Priority = PO/manager đặt (mức KHẨN)",
+       "KHÔNG chứa cách sửa code",
+       "environment configuration",
+       "allows the developer to reproduce the failure quickly",
+       "helps the developer find and fix the defect more efficiently",
+       "issuing organization and author including their role",
+       "priority to fix",
+       "câu “thiếu gì”: đối chiếu từng trường của report mẫu"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🆔",
+        "ID, tiêu đề, ngày, người báo",
+        ""
+       ],
+       [
+        "🧭",
+        "Test object và môi trường",
+        "browser, device, version"
+       ],
+       [
+        "👣",
+        "Steps to reproduce",
+        "kèm log, screenshot"
+       ],
+       [
+        "⚖️",
+        "Expected vs actual",
+        ""
+       ],
+       [
+        "🌡️",
+        "Severity",
+        "Tác động kỹ thuật — tester đặt"
+       ],
+       [
+        "⏰",
+        "Priority",
+        "Mức khẩn cần sửa — PO hoặc manager đặt"
+       ],
+       [
+        "📌",
+        "Status, references",
+        ""
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Không bao gồm: cách sửa code, tên developer gây ra failure, hay contact info của cả team."
+     },
+     {
+      "k": "wp",
+      "name": "Defect report",
+      "doc": [
+       [
+        "ID",
+        "DEF-17"
+       ],
+       [
+        "Tiêu đề",
+        "Chuyển 5,000 bị từ chối “vượt hạn mức”"
+       ],
+       [
+        "Ngày, tác giả",
+        "06/10, An (tester)"
+       ],
+       [
+        "Test object, môi trường",
+        "FinPay Android 2.0.14, staging"
+       ],
+       [
+        "Các bước",
+        "1. Đăng nhập user A (số dư 10,000). 2. Chuyển 5,000 cho ACC-002. 3. Nhấn Gửi"
+       ],
+       [
+        "Expected",
+        "Chuyển thành công, số dư còn 5,000 (AC-1)"
+       ],
+       [
+        "Actual",
+        "Báo “vượt hạn mức”, số dư giữ 10,000"
+       ],
+       [
+        "Severity, priority",
+        "Major, High"
+       ],
+       [
+        "Status",
+        "Open"
+       ],
+       [
+        "Tham chiếu",
+        "TC-002, US-15"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "5.5.1",
+      "q": "Which of the following is a typical element of a defect report?",
+      "o": [
+       "Test completion criteria of the project",
+       "Expected and actual results",
+       "A detailed test effort estimate",
+       "The names of all reviewers"
+      ],
+      "a": "b",
+      "why": "Defect report gồm ID, ngày, tác giả, môi trường, các bước tái hiện, expected và actual result, severity, priority, status, tham chiếu."
+     }
+    ]
+   },
+   {
+    "id": "reports",
+    "icon": "📈",
+    "label": "Progress vs Completion report",
+    "starred": true,
+    "hook": "Bản tin định kỳ, và báo cáo tổng kết",
+    "trap": "Progress report chỉ nêu test DỰ KIẾN cho kỳ tới, KHÔNG gồm kế hoạch chi tiết và phân bổ nguồn lực (thuộc test plan). Ngân sách không phải nội dung của báo cáo test. Đề hay trộn các mục của hai báo cáo vào cùng một danh sách: tách theo từ khoá ĐANG đi (progress) và ĐÃ xong (completion).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "Progress = ĐỊNH KỲ trong lúc test",
+       "Completion = CUỐI level/dự án",
+       "📈 PROGRESS: test period",
+       "📈 PROGRESS: tiến độ (sớm/trễ) + sai lệch đáng chú ý",
+       "📈 PROGRESS: impediments + workaround",
+       "📈 PROGRESS: test metrics",
+       "📈 PROGRESS: rủi ro MỚI hoặc ĐỔI trong kỳ",
+       "📈 PROGRESS: test dự kiến cho kỳ tới",
+       "🏁 COMPLETION: lý tưởng khi đã đạt exit criteria",
+       "🏁 COMPLETION: test summary",
+       "🏁 COMPLETION: đánh giá chất lượng test và sản phẩm so với objectives + exit criteria",
+       "🏁 COMPLETION: sai lệch so với test plan (lịch, thời gian, effort)",
+       "🏁 COMPLETION: unmitigated risks + defect chưa sửa",
+       "🏁 COMPLETION: lessons learned",
+       "🏁 COMPLETION: metrics tổng hợp từ các progress report",
+       "burn-down chart = công việc CÒN LẠI theo thời gian",
+       "burn-down phẳng = không tiến triển (team bị chặn), không phải đều đặn",
+       "Agile: task board, burn-down chart, defect summary",
+       "deviations xuất hiện ở CẢ progress và completion report"
+      ]
+     },
+     {
+      "k": "vs",
+      "a": [
+       "📈",
+       "Progress report",
+       "Định kỳ, trong lúc test — phục vụ monitoring & control"
+      ],
+      "b": [
+       "🏁",
+       "Completion report",
+       "Cuối test level hoặc dự án — tổng hợp từ các progress report"
+      ]
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🎚️",
+        "Mức chi tiết",
+        "Thay đổi theo dự án, tổ chức và SDLC; dự án phức tạp hoặc có quy định cần báo cáo chi tiết hơn"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Test progress report (trích)",
+      "doc": [
+       [
+        "Test period",
+        "02/12 đến 08/12"
+       ],
+       [
+        "Tiến độ",
+        "70/100 test đã chạy, trễ 1 ngày so với kế hoạch"
+       ],
+       [
+        "Impediments",
+        "Staging gián đoạn 2 ngày; workaround: dùng môi trường dev"
+       ],
+       [
+        "Metrics",
+        "Pass 85%; defect mở 12 (2 mức high)"
+       ],
+       [
+        "Rủi ro mới",
+        "R-07 cổng đối tác phản hồi chậm"
+       ],
+       [
+        "Kỳ tới",
+        "Regression và security test"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Test completion report (trích)",
+      "doc": [
+       [
+        "Test summary",
+        "100/100 test đã chạy, pass 97%"
+       ],
+       [
+        "Đánh giá",
+        "Đạt exit criteria, không còn defect severity 1"
+       ],
+       [
+        "Sai lệch so với plan",
+        "Trễ 2 ngày, thêm 3 person-days"
+       ],
+       [
+        "Chưa xử lý",
+        "3 defect mức low; risk R-07 được chấp nhận"
+       ],
+       [
+        "Lessons learned",
+        "Dựng môi trường sớm hơn; review story trước sprint"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "5.3.2",
+      "q": "Which content belongs to a test completion report rather than a test progress report?",
+      "o": [
+       "Impediments for testing",
+       "Test period",
+       "Testing planned for the next period",
+       "Lessons learned relevant to testing"
+      ],
+      "a": "d",
+      "why": "Lessons learned và test summary thuộc completion report. Test period, impediments, test dự kiến kỳ tới thuộc progress report."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "c6",
+  "n": 6,
+  "icon": "🛠️",
+  "nick": "Công cụ",
+  "topics": [
+   {
+    "id": "tooltypes",
+    "icon": "▶️",
+    "label": "Có bấm Run không?",
+    "starred": true,
+    "hook": "Không chạy → static tool, có chạy → execution tool",
+    "trap": "Không có loại \"defect management tools\": defect do management tools quản lý. Static testing tools hỗ trợ review và static analysis. Loại có thể hỗ trợ test EXECUTION là DevOps tools (pipeline, CI/CD) và non-functional testing tools; collaboration, management, design and implementation tools thì không. Spreadsheet cũng được tính là một test tool. Hay nhầm execution tool ↔ management tool (Quiz 9 Q39, Quiz 11 Q39, Quiz 14 Q31).",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "KHÔNG chạy → static tool",
+       "CÓ chạy → execution tool",
+       "tools supporting scalability and deployment standardization",
+       "difficult or impossible to perform manually",
+       "facilitate test execution",
+       "data preparation tool",
+       "execution tool = CHẠY script (mục đích chính)",
+       "management tool = QUẢN LÝ test, defect, traceability",
+       "“traceability tool” không phải một loại",
+       "DevOps tools = pipeline · workflow tracking · automated build · CI/CD",
+       "non-functional tools = test khó hoặc không thể làm thủ công (khác DevOps tools)"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Syllabus liệt kê 9 loại test tool."
+     },
+     {
+      "k": "svg",
+      "t": "<div class=\"kt\"><div class=\"kr\"><div class=\"kn\">📋 Management tools</div><div class=\"qk\"><span>manage the SDLC</span><span>manage requirements</span><span>manage tests</span><span>manage defects</span><span>manage configuration</span><span>increase test process efficiency</span><span class=\"x\">Jira</span><span class=\"x\">TestRail</span></div></div><div class=\"kr\"><div class=\"kn\">📄 Static testing tools</div><div class=\"qk\"><span>support reviews</span><span>support static analysis</span><span>the software is not executed</span><span class=\"x\">ESLint</span><span class=\"x\">SonarQube</span></div></div><div class=\"kr\"><div class=\"kn\">🧪 Test design and test implementation tools</div><div class=\"qk\"><span>generate test cases</span><span>generate test data</span><span>generate test procedures</span><span>data preparation tools</span><span class=\"x\">Postman</span><span class=\"x\">Cucumber</span></div></div><div class=\"kr\"><div class=\"kn\">▶️ Test execution and test coverage tools</div><div class=\"qk\"><span>automated test execution</span><span>coverage measurement</span><span class=\"x\">Jest</span><span class=\"x\">Playwright</span><span class=\"x\">Cypress</span></div></div><div class=\"kr\"><div class=\"kn\">⚡ Non-functional testing tools</div><div class=\"qk\"><span>difficult or impossible to perform manually</span><span>can facilitate test execution</span><span class=\"x\">k6</span><span class=\"x\">Lighthouse</span></div></div><div class=\"kr\"><div class=\"kn\">🚀 DevOps tools</div><div class=\"qk\"><span>delivery pipeline</span><span>workflow tracking</span><span>automated build</span><span>CI / CD</span><span>can facilitate test execution</span><span class=\"x\">GitHub Actions</span><span class=\"x\">Jenkins</span></div></div><div class=\"kr\"><div class=\"kn\">💬 Collaboration tools</div><div class=\"qk\"><span>facilitate communication</span><span class=\"x\">Slack</span><span class=\"x\">Teams</span></div></div><div class=\"kr\"><div class=\"kn\">📦 Scalability and deployment standardization tools</div><div class=\"qk\"><span>virtual machines</span><span>containerization tools</span><span class=\"x\">Docker</span></div></div><div class=\"kr\"><div class=\"kn\">🧰 Any other tool that assists in testing</div><div class=\"qk\"><span>a spreadsheet is a test tool in the context of testing</span><span class=\"x\">Excel</span></div></div></div>",
+      "cap": "Ô đặc = cách syllabus diễn đạt · ô nét đứt = tool ví dụ."
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "▶️",
+        "Execution tool",
+        "Mục đích chính: CHẠY automated test script, đo coverage. Ghi nhận defect chỉ là chức năng phụ"
+       ],
+       [
+        "📋",
+        "Management tool",
+        "Mục đích chính: QUẢN LÝ test case, defect, yêu cầu, truy vết (traceability) và báo cáo kết quả"
+       ]
+      ]
+     },
+     {
+      "k": "sample",
+      "lo": "6.1.1",
+      "q": "Which tool category's primary purpose is to run automated test scripts against the test object?",
+      "o": [
+       "Test execution tool",
+       "Test management tool",
+       "Static analysis tool",
+       "Collaboration tool"
+      ],
+      "a": "a",
+      "why": "Test execution tool chạy automated test script. Test management tool quản lý test case, defect, traceability. Static analysis phân tích code mà không chạy."
+     }
+    ]
+   },
+   {
+    "id": "automation",
+    "icon": "🤖",
+    "label": "Automation: lợi & rủi ro",
+    "starred": true,
+    "hook": "Robot không biết mệt, nhưng cần người bảo trì",
+    "trap": "Hay nhầm lợi ích ↔ rủi ro và câu LEAST (Quiz 14 Q15, Quiz 9 Q40, Quiz 11 Q40). “Tăng chất lượng sản phẩm” quá chung, đáp án chuẩn là nhất quán, khách quan, phản hồi sớm.",
+    "body": [
+     {
+      "k": "kw",
+      "items": [
+       "lợi: nhất quán, feedback nhanh",
+       "rủi ro: bảo trì bị đánh giá thấp, phụ thuộc vendor",
+       "KHÔNG phải rủi ro điển hình: tool tự đưa lỗi vào hệ thống đang test",
+       "đọc kỹ benefit vs risk, LEAST"
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Lợi ích (nhớ 4 ý chính):"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "⏱️",
+        "Giảm công việc thủ công lặp lại",
+        "Tiết kiệm thời gian"
+       ],
+       [
+        "🔁",
+        "Nhất quán, lặp lại được",
+        "Tránh lỗi đơn giản do con người"
+       ],
+       [
+        "📏",
+        "Đánh giá khách quan",
+        "Coverage và các phép đo quá phức tạp để làm thủ công"
+       ],
+       [
+        "⚡",
+        "Phản hồi sớm",
+        "Thực thi nhanh hơn; dễ có số liệu tiến độ test"
+       ],
+       [
+        "🧠",
+        "Tester có thêm thời gian",
+        "Thiết kế test sâu và hiệu quả hơn"
+       ]
+      ]
+     },
+     {
+      "k": "p",
+      "t": "Rủi ro (nhớ 4 ý chính):"
+     },
+     {
+      "k": "rows",
+      "items": [
+       [
+        "🎈",
+        "Kỳ vọng phi thực tế",
+        "Về lợi ích và độ dễ dùng của tool"
+       ],
+       [
+        "🧮",
+        "Ước lượng sai",
+        "Thời gian, chi phí, công sức: đưa tool vào, BẢO TRÌ script, đổi quy trình thủ công"
+       ],
+       [
+        "🔧",
+        "Dùng tool khi test thủ công phù hợp hơn",
+        "Hoặc dựa dẫm quá nhiều vào tool"
+       ],
+       [
+        "🏢",
+        "Phụ thuộc nhà cung cấp",
+        "Có thể ngừng hỗ trợ; công cụ mã nguồn mở có thể bị bỏ rơi"
+       ],
+       [
+        "🔌",
+        "Không tương thích",
+        "Với nền tảng phát triển hoặc không tuân thủ quy định"
+       ]
+      ]
+     },
+     {
+      "k": "wp",
+      "name": "Script test tự động (mã giả)",
+      "code": "login('user1')\nopenTransfer()\nenterAmount(5000)\nselectReceiver('ACC-002')\nsubmit()\nexpectMessage('Chuyển tiền thành công')"
+     },
+     {
+      "k": "sample",
+      "lo": "6.2.1",
+      "q": "Which of the following is a risk of test automation?",
+      "o": [
+       "More consistent execution of repetitive tests",
+       "Faster feedback on defects",
+       "Underestimating the effort needed to maintain automated test scripts",
+       "Reduced manual work"
+      ],
+      "a": "c",
+      "why": "Rủi ro: kỳ vọng phi thực tế, đánh giá thấp công sức bảo trì script, phụ thuộc nhà cung cấp, không tương thích. Các phương án còn lại là lợi ích."
+     }
+    ]
+   }
+  ]
+ }
+]

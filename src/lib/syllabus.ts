@@ -1,10 +1,25 @@
 import syllabus from "@data/syllabus.json";
+import mindmap from "@data/mindmap.json";
 
 export type Chapter = { id: number; title: string; q: number };
 export type SyllabusNode = { id: string; parent: string | null; title: string; summary: string; points: string[] };
 
+/** A content block of a mindmap topic (from the "Mindmap CTFL — nhớ bằng hình" artifact, see scripts/import-mindmap.mjs). */
+export type TopicBlock = { k: string; [key: string]: unknown };
+export type Topic = { id: string; icon: string; label: string; starred: boolean; hook: string; trap: string; body: TopicBlock[]; chapter: number };
+
 export const CHAPTERS: Chapter[] = syllabus.chapters;
-export const NODES: SyllabusNode[] = syllabus.nodes;
+
+/** Study topics per chapter, keyed by id. */
+export const TOPICS: Record<string, Topic> = Object.fromEntries(
+  (mindmap as { n: number; topics: Omit<Topic, "chapter">[] }[]).flatMap((c) => c.topics.map((t) => [t.id, { ...t, chapter: c.n }])),
+);
+
+/** Tree: root → six chapters → the mindmap topics. */
+export const NODES: SyllabusNode[] = [
+  ...syllabus.nodes.filter((n) => n.parent === null || n.parent === "root"),
+  ...Object.values(TOPICS).map((t) => ({ id: t.id, parent: "c" + t.chapter, title: `${t.icon} ${t.label}`, summary: t.hook, points: [] })),
+];
 
 export const NODE: Record<string, SyllabusNode> = {};
 export const KIDS: Record<string, string[]> = {};
@@ -30,7 +45,7 @@ export function depthOf(id: string): number {
   return d;
 }
 
-/** Sections and concepts: the nodes a member can mark as learned. */
+/** Topics: the nodes a member can mark as learned. */
 export const STUDY_IDS = NODES.filter((n) => n.parent && n.parent !== "root").map((n) => n.id);
 
 export type Palette = { tint: string; mid: string; ink: string; base: string };

@@ -1,10 +1,15 @@
 "use client";
 
+import { useRef } from "react";
 import { useApp } from "@/components/AppProvider";
 import { CheckIcon, ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
-import { CHAPTERS, KIDS, NODE, NODES, STUDY_IDS, chapterOf, depthOf, palette } from "@/lib/syllabus";
+import { TopicView } from "@/components/TopicView";
+import { CHAPTERS, KIDS, NODE, NODES, STUDY_IDS, TOPICS, chapterOf, depthOf, palette } from "@/lib/syllabus";
 
 type Row = { id: string; depth: number };
+
+/** Vietnamese letters the Caprasimo heading font lacks. */
+const VIET = /[\u01a0\u01a1\u01af\u01b0\u0110\u0111\u1ea0-\u1ef9]/;
 
 export default function MindmapPage() {
   const { tier, learned, expanded, setExpanded, selected, setSelected, openNode, toggleLearned, startSet, openLogin } = useApp();
@@ -21,14 +26,22 @@ export default function MindmapPage() {
   const selCh = chapterOf(selected);
   const selDepth = depthOf(selected);
   const kicker = selDepth === 0 ? "Syllabus overview" : selDepth === 1 ? `Chapter ${selCh} · ${CHAPTERS[selCh! - 1].q} exam questions` : `Chapter ${selCh} · ${CHAPTERS[selCh! - 1].title}`;
+  const detail = useRef<HTMLElement>(null);
+  // On narrow screens the panel sits below the tree: bring it into view.
+  const select = (id: string) => {
+    setSelected(id);
+    if (window.matchMedia("(max-width: 900px)").matches) requestAnimationFrame(() => detail.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+  };
   const learnedCount = STUDY_IDS.filter((id) => learned[id]).length;
+  const topic = TOPICS[selected];
+  const selPal = selCh ? palette(selCh) : null;
 
   return (
     <section style={{ display: "flex", flexDirection: "column", gap: 24, paddingTop: 24 }}>
       <div style={{ display: "flex", alignItems: "flex-end", gap: 16, flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 320px" }}>
           <h1 style={{ margin: "0 0 6px" }}>Syllabus mindmap</h1>
-          <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>Open a branch to go deeper. Select any node to read its key points.</p>
+          <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>Open a chapter, then pick a topic to see its memory hook, key terms, illustrations and exam traps.</p>
         </div>
         {logged && <span className="tag tag-accent-2" style={{ fontSize: 13, padding: "6px 14px" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>}
         <div style={{ display: "flex", gap: 8 }}>
@@ -38,7 +51,7 @@ export default function MindmapPage() {
       </div>
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
-        <div role="tree" style={{ flex: "1 1 460px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column" }}>
+        <div role="tree" style={{ flex: "1 1 400px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column" }}>
           {rows.map(({ id, depth: d }) => {
             const n = NODE[id];
             const kids = KIDS[id] || [];
@@ -65,10 +78,11 @@ export default function MindmapPage() {
                 </button>
                 <button
                   className="hov-shadow-md"
-                  onClick={() => setSelected(id)}
+                  onClick={() => select(id)}
                   style={{ display: "flex", alignItems: "center", gap: 8, border: `2px solid ${selected === id ? "var(--color-accent)" : "transparent"}`, background: st.bg, color: st.fg, fontFamily: st.font, fontSize: st.size, padding: "8px 16px", borderRadius: 999, cursor: "pointer", textAlign: "left", lineHeight: 1.25 }}
                 >
                   <span>{n.title}</span>
+                  {TOPICS[id]?.starred && <span title="Often on the exam" aria-label="Often on the exam" style={{ fontSize: 12 }}>⭐</span>}
                   {logged && learned[id] && <CheckIcon stroke="var(--color-accent-2-700)" />}
                   {kids.length > 0 && !open && <span style={{ fontFamily: "var(--font-body)", fontSize: 12, opacity: 0.75 }}>{kids.length} topics</span>}
                 </button>
@@ -77,11 +91,16 @@ export default function MindmapPage() {
           })}
         </div>
 
-        <aside style={{ flex: "0 1 380px", minWidth: 280, position: "sticky", top: 16 }}>
+        <aside ref={detail} className="mm-detail" style={{ flex: topic ? "1 1 520px" : "0 1 400px", minWidth: 280, borderRadius: 32, scrollMarginTop: 12 }}>
           <div className="card elev-md" style={{ padding: 28, gap: 14, background: "var(--color-surface)" }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-700)" }}>{kicker}</span>
-            <h3 style={{ margin: 0 }}>{sel.title}</h3>
-            <p style={{ margin: 0, fontSize: 15, textWrap: "pretty" }}>{sel.summary}</p>
+            <h3 style={{ margin: 0, ...(VIET.test(sel.title) ? { fontFamily: "var(--font-body)", fontWeight: 700 } : {}) }}>{sel.title}</h3>
+            {topic?.starred && <span className="tag tag-accent" style={{ alignSelf: "flex-start" }}>⭐ Often on the exam</span>}
+            {topic && selPal ? (
+              <TopicView topic={topic} color={selPal.base} ink={selPal.ink} />
+            ) : (
+              <p style={{ margin: 0, fontSize: 15, textWrap: "pretty" }}>{sel.summary}</p>
+            )}
             <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
               {sel.points.map((pt) => (
                 <div key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 14 }}>
