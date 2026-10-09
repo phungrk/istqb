@@ -1,8 +1,10 @@
+import { config, notFound } from "@/server/config";
 import { studyPlan } from "@/server/ai";
 import { coachContext } from "@/server/coach-context";
 import { requireTier } from "@/server/session";
 
 export async function POST() {
+  if (!config.pro) return notFound(); // Pricing and the AI coach are switched off (ENABLE_PRO=1 turns them on)
   const gate = await requireTier("pro");
   if ("error" in gate) return gate.error;
   const { weak, masteryTable } = await coachContext(gate.user);

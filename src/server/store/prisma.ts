@@ -11,6 +11,7 @@ const prisma = (g.prisma ??= new PrismaClient({ adapter: new PrismaPg({ connecti
 const toUser = (u: DbUser): User => ({
   id: u.id,
   email: u.email,
+  username: u.username,
   name: u.name,
   plan: u.plan,
   proUntil: u.proUntil?.toISOString() ?? null,
@@ -30,6 +31,26 @@ const toAttempt = (a: DbAttempt): Attempt => ({
 });
 
 export const prismaStore: Store = {
+  async getUserById(id) {
+    const u = await prisma.user.findUnique({ where: { id } });
+    return u && toUser(u);
+  },
+  async getCredentials(username) {
+    const u = await prisma.user.findUnique({ where: { username } });
+    return u?.passwordHash ? { user: toUser(u), passwordHash: u.passwordHash } : null;
+  },
+  async createCredentialUser(username, name, passwordHash) {
+    try {
+      return toUser(await prisma.user.create({ data: { username, name, passwordHash } }));
+    } catch (e) {
+      if ((e as { code?: string }).code === "P2002") return null; // unique violation: username taken
+      throw e;
+    }
+  },
+  async listUsernames(prefix) {
+    const rows = await prisma.user.findMany({ where: { username: { startsWith: prefix } }, select: { username: true } });
+    return rows.flatMap((r) => (r.username ? [r.username] : []));
+  },
   async getUserByEmail(email) {
     const u = await prisma.user.findUnique({ where: { email } });
     return u && toUser(u);

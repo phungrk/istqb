@@ -1,3 +1,4 @@
+import { config, notFound } from "@/server/config";
 import { z } from "zod";
 import { escapeHtml, type Question } from "@/lib/questions";
 import { sampleChapter } from "@/server/bank";
@@ -9,6 +10,7 @@ const Body = z.object({ chapter: z.number().int().min(1).max(6) });
 
 /** Five new questions for a chapter, or five bank questions from it if generation fails. */
 export async function POST(req: Request) {
+  if (!config.pro) return notFound(); // Pricing and the AI coach are switched off (ENABLE_PRO=1 turns them on)
   const gate = await requireTier("pro");
   if ("error" in gate) return gate.error;
   const parsed = Body.safeParse(await req.json().catch(() => null));

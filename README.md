@@ -5,10 +5,13 @@ Study the ISTQB® Certified Tester Foundation Level v4.0.1 syllabus as a mindmap
 | Tier | How | Gets |
 | --- | --- | --- |
 | Guest | no account | Mindmap, practice sets, mock exams. Results shown, not saved |
-| Member | Sign in with Google (Gmail), free | Saved attempts, dashboard, mindmap "learned" progress |
-| Pro | $5/month or $39/year | AI coach: explain wrong answers, chat, 7-day study plan, AI question sets |
+| Member | Sign in (free) | Saved attempts, dashboard, mindmap "learned" progress |
 
-Built from the Claude Design handoff in [`docs/HANDOFF.md`](docs/HANDOFF.md). The original prototype is in [`docs/design/`](docs/design).
+**Sign-in:** the dialog has a **Generate account** button that creates the next free username `user001` … `user100` with a random 8-digit password, shows it once and signs the user in. Those accounts then sign in with username + password (passwords are stored as scrypt hashes; 5 wrong tries lock a username for 10 minutes). If Google keys are set, "Continue with Google" is offered too.
+
+**Pricing and the AI coach are hidden** (design v2): no Pricing page, nav link or Pro upgrade; the AI Coach page says "Coming soon"; the checkout, Stripe webhook and `/api/coach/*` routes return 404. The code is kept — set `ENABLE_PRO=1` to turn it all back on.
+
+Built from the Claude Design handoffs in [`docs/HANDOFF.md`](docs/HANDOFF.md) and [`docs/HANDOFF_v2.md`](docs/HANDOFF_v2.md). The latest prototype is in [`docs/design/`](docs/design).
 
 ## Run it
 
@@ -17,29 +20,30 @@ npm install
 npm run dev        # http://localhost:3000
 ```
 
-With no `.env` everything runs in **demo mode**, so every screen works locally:
+With no `.env` it runs locally with a JSON file as the database (`.data/demo-db.json`) and a **Preview as Guest / Member** bar (development only, never in production).
 
-| Integration | Turns on when set | Demo-mode fallback |
+| Integration | Turns on when set | Without it |
 | --- | --- | --- |
-| Google sign-in (Auth.js) | `AUTH_SECRET`, `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET` | Fake Gmail dialog + "Preview as Guest / Member / Pro" bar |
-| Postgres (Prisma) | `DATABASE_URL` | JSON file at `.data/demo-db.json` |
-| Stripe Checkout | `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `STRIPE_PRICE_MONTHLY`, `STRIPE_PRICE_YEARLY` | Demo card form upgrades instantly |
-| AI coach (Claude) | `ANTHROPIC_API_KEY` | Canned answers, fallback plan, bank questions |
+| Session signing | `AUTH_SECRET` (**required in production**) | dev-only fallback secret |
+| Postgres (Prisma) | `DATABASE_URL` (**required on Vercel**, its filesystem is read-only) | JSON file at `.data/demo-db.json` |
+| Google sign-in (optional) | `AUTH_GOOGLE_ID`, `AUTH_GOOGLE_SECRET` | username/password only |
+| Pricing, Stripe, AI coach | `ENABLE_PRO=1` (+ Stripe and Anthropic keys) | hidden, APIs return 404 |
 
-Copy `.env.example` to `.env` and fill in the groups you want. The "Preview as" bar only appears while sign-in is in demo mode.
+Copy `.env.example` to `.env` and fill in what you need.
 
 ### Going live
 
-1. **Google:** create an OAuth client (Web), redirect URI `https://<host>/api/auth/callback/google`. Sign-in is limited to `@gmail.com` unless you change `ALLOWED_EMAIL_DOMAIN`.
-2. **Database:** set `DATABASE_URL`, then `npm run db:push` to create the tables (`prisma/schema.prisma`).
-3. **Stripe:** create two recurring prices ($5/month, $39/year). Point a webhook at `https://<host>/api/stripe/webhook` with `checkout.session.completed`, `customer.subscription.updated` and `customer.subscription.deleted`.
-4. **Claude:** set `ANTHROPIC_API_KEY`. The coach uses `claude-opus-5-5` at low effort with server-side refusal fallbacks (`src/server/ai.ts`).
+1. **Database:** set `DATABASE_URL`, then `npm run db:push` to create or update the tables (`prisma/schema.prisma`). Run it again after pulling schema changes (v2 added `username` and `passwordHash` to `User`).
+2. **Secret:** set `AUTH_SECRET` (`npx auth secret`).
+3. **Google (optional):** create an OAuth client (Web), redirect URI `https://<host>/api/auth/callback/google`. Sign-in is limited to `@gmail.com` unless you change `ALLOWED_EMAIL_DOMAIN`.
+4. **Stripe (only with `ENABLE_PRO=1`):** create two recurring prices ($5/month, $39/year). Point a webhook at `https://<host>/api/stripe/webhook` with `checkout.session.completed`, `customer.subscription.updated` and `customer.subscription.deleted`.
+5. **Claude (only with `ENABLE_PRO=1`):** set `ANTHROPIC_API_KEY`. The coach uses `claude-opus-5-5` at low effort with server-side refusal fallbacks (`src/server/ai.ts`).
 
 ## How it fits together
 
 - `src/app/*` — one route per screen: `/`, `/mindmap`, `/tests`, `/exam`, `/result`, `/dashboard`, `/coach`, `/pricing`.
 - `src/components/AppProvider.tsx` — client state (exam in progress, result, dialogs, coach chat). The exam and the last result live in `sessionStorage`, so a guest's result survives the Google sign-in redirect and is saved automatically once they're signed in.
-- `src/app/api/*` — all tier gating is server-side: attempts and learned topics need a member, `/api/coach/*` needs Pro. Bank questions are re-scored on the server when an attempt is saved.
+- `src/app/api/*` — all gating is server-side: attempts and learned topics need a signed-in user, `/api/coach/*` needs Pro (and `ENABLE_PRO=1`). `/api/account/*` handles username sign-in, sign-out and account generation. Bank questions are re-scored on the server when an attempt is saved.
 - `src/server/store` — one `Store` interface with a Prisma and a demo-file implementation.
 - `data/syllabus.json`, `data/questions.json` — the mindmap and question bank (server-only; sets are drawn by `src/server/bank.ts`).
 

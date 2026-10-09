@@ -13,7 +13,7 @@ const coachBubble = { background: "var(--color-surface)", borderRadius: "24px 24
 export default function CoachPage() {
   const router = useRouter();
   const params = useSearchParams();
-  const { tier, weak, chat, busy, plan, coachTab, setCoachTab, quizCh, setQuizCh, sendChat, makePlan, makeQuiz, toast } = useApp();
+  const { tier, flags, weak, chat, busy, plan, coachTab, setCoachTab, quizCh, setQuizCh, sendChat, makePlan, makeQuiz, toast } = useApp();
   const [input, setInput] = useState("");
   const scroller = useRef<HTMLDivElement>(null);
 
@@ -28,6 +28,19 @@ export default function CoachPage() {
   useEffect(() => {
     scroller.current?.scrollTo({ top: scroller.current.scrollHeight });
   }, [chat, busy]);
+
+  if (!flags.pro)
+    return (
+      <section style={{ display: "flex", flexDirection: "column", gap: 28, paddingTop: 24 }}>
+        <div style={{ maxWidth: 640, display: "flex", flexDirection: "column", gap: 14, padding: "40px 0" }}>
+          <span className="tag tag-accent" style={{ alignSelf: "flex-start" }}>Coming soon</span>
+          <h1 style={{ margin: 0 }}>AI exam coach</h1>
+          <p style={{ margin: 0, fontSize: 17, color: "var(--color-neutral-800)" }}>
+            The AI coach will explain wrong answers, chat about any syllabus topic, plan your study week and generate questions for your weak chapters. It is under development and will be available soon.
+          </p>
+        </div>
+      </section>
+    );
 
   if (tier !== "pro")
     return (

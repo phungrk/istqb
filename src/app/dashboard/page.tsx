@@ -2,7 +2,6 @@
 
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
-import { MailIcon } from "@/components/icons";
 import { STUDY_IDS } from "@/lib/syllabus";
 import { mastery, pct } from "@/lib/stats";
 
@@ -16,8 +15,8 @@ export default function DashboardPage() {
       <section style={{ display: "flex", flexDirection: "column", gap: 28, paddingTop: 24 }}>
         <div style={{ maxWidth: 560, display: "flex", flexDirection: "column", gap: 14, padding: "40px 0" }}>
           <h1 style={{ margin: 0 }}>Your progress lives here</h1>
-          <p style={{ margin: 0, fontSize: 17, color: "var(--color-neutral-800)" }}>Sign in with your Gmail account to save every attempt, see your score trend and find your weakest chapters. It&apos;s free.</p>
-          <button className="btn btn-primary" onClick={openLogin} style={{ alignSelf: "flex-start", fontSize: 16, padding: "12px 22px" }}><MailIcon />Sign in with Gmail</button>
+          <p style={{ margin: 0, fontSize: 17, color: "var(--color-neutral-800)" }}>Sign in to save every attempt, see your score trend and find your weakest chapters. It&apos;s free.</p>
+          <button className="btn btn-primary" onClick={openLogin} style={{ alignSelf: "flex-start", fontSize: 16, padding: "12px 22px" }}>Sign in</button>
         </div>
       </section>
     );
@@ -121,6 +120,12 @@ export default function DashboardPage() {
             <span style={{ fontFamily: "var(--font-heading)", fontSize: 26 }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>
             <button className="btn btn-ghost" onClick={() => router.push("/mindmap")} style={{ alignSelf: "flex-start", color: "var(--color-accent-2-800)" }}>Continue studying</button>
           </div>
+          {!flags.pro ? (
+            <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
+              <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>AI coach</span>
+              <span style={{ fontSize: 15, color: "var(--color-neutral-700)" }}>Coming soon</span>
+            </div>
+          ) : (
           <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>AI coach</span>
             <span style={{ fontSize: 15 }}>Weakest right now: <strong>Chapter {weak[0].id} · {weak[0].title}</strong></span>
@@ -132,6 +137,7 @@ export default function DashboardPage() {
               {tier === "pro" ? "Get a study plan" : "Unlock with Pro"}
             </button>
           </div>
+          )}
         </div>
       </div>
     </section>

@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import Google from "next-auth/providers/google";
 import { config } from "@/server/config";
 import { getStore } from "@/server/store";
+import { nameFromHandle } from "@/lib/names";
 
 export const { handlers, auth, signIn, signOut } = NextAuth({
   providers: [Google],
@@ -14,17 +15,8 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       const domain = config.allowedEmailDomain;
       if (domain && !email.endsWith("@" + domain)) return "/?signin=domain";
       const store = await getStore();
-      await store.upsertUser(email, profile?.name || nameFromEmail(email));
+      await store.upsertUser(email, profile?.name || nameFromHandle(email));
       return true;
     },
   },
 });
-
-export function nameFromEmail(email: string) {
-  return email
-    .split("@")[0]
-    .split(/[._]/)
-    .filter(Boolean)
-    .map((w) => w[0].toUpperCase() + w.slice(1))
-    .join(" ");
-}

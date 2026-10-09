@@ -6,7 +6,7 @@ import { CHAPTERS, palette } from "@/lib/syllabus";
 
 export default function HomePage() {
   const router = useRouter();
-  const { openNode } = useApp();
+  const { openNode, flags } = useApp();
   const list = { display: "flex", flexDirection: "column", gap: 8, fontSize: 14 } as const;
 
   return (
@@ -65,7 +65,7 @@ export default function HomePage() {
             </span>
           </div>
           <div className="card" style={{ padding: 26, gap: 12, background: "var(--color-accent-2-100)" }}>
-            <span className="card-kicker" style={{ color: "var(--color-accent-2-800)" }}>Sign in with Gmail · free</span>
+            <span className="card-kicker" style={{ color: "var(--color-accent-2-800)" }}>Sign in · free</span>
             <span className="card-title" style={{ fontSize: 22 }}>Track your results</span>
             <span style={list}>
               <span>Every attempt saved</span>
@@ -73,6 +73,7 @@ export default function HomePage() {
               <span>Mindmap study progress</span>
             </span>
           </div>
+          {flags.pro && (
           <div className="card" style={{ padding: 26, gap: 12, background: "var(--color-accent-100)" }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>Pro · $5 / month</span>
             <span className="card-title" style={{ fontSize: 22 }}>AI exam coach</span>
@@ -84,6 +85,7 @@ export default function HomePage() {
             </span>
             <button className="btn btn-primary" onClick={() => router.push("/pricing")} style={{ alignSelf: "flex-start", marginTop: 6 }}>See plans</button>
           </div>
+          )}
         </div>
       </div>
       <p style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>

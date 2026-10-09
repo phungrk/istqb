@@ -16,6 +16,96 @@ a{color:var(--color-accent-700)}
 a:hover{color:var(--color-accent-800)}
 button{font:inherit}
 .btn{white-space:nowrap;flex:none}
+.topic{--ink:var(--color-text);--ink-2:var(--color-neutral-800);--ink-3:var(--color-neutral-600);--line:var(--color-divider);--card:var(--color-neutral-100);--tbg:var(--color-bg);font-size:14px}
+.topic .hook{border-left:5px solid var(--c);padding:2px 0 2px 12px;margin:0 0 16px}
+.topic .hook .lbl,.topic .trap .lbl{font-size:12px;font-weight:700;color:var(--ink-3)}
+.topic .hook p{margin:2px 0 0;font-size:18px;font-weight:700;line-height:1.35;color:var(--ink)}
+.topic .b-label{font-size:11px;font-weight:700;color:var(--c-ink);text-transform:uppercase;letter-spacing:.04em;margin:0 0 6px}
+.topic .b-p{font-size:14.5px;line-height:1.6;color:var(--ink-2);margin:0 0 12px}
+.topic .b-f{font-family:ui-monospace,monospace;font-size:13.5px;line-height:1.5;background:var(--tbg);border:1px solid var(--line);border-radius:16px;padding:10px 12px;margin:0 0 12px;overflow-x:auto;white-space:pre-wrap}
+.topic .b-flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin:0 0 12px}
+.topic .fc{font-size:13.5px;padding:6px 12px;border-radius:999px;background:var(--tbg);border:1px solid var(--line);line-height:1.35}
+.topic .fa{color:var(--c-ink);font-weight:700}
+.topic .b-rows{list-style:none;margin:0 0 12px;padding:0;display:flex;flex-direction:column;gap:8px}
+.topic .b-rows li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.45}
+.topic .b-rows .ri{font-size:19px;width:26px;text-align:center;flex:none;line-height:1.2}
+.topic .b-rows b{font-weight:700;color:var(--ink)}
+.topic .b-rows .rd{color:var(--ink-2)}
+.topic .b-grid,.topic .b-vs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:0 0 12px}
+.topic .gc,.topic .vc{background:var(--tbg);border:1px solid var(--line);border-radius:20px;padding:11px 12px}
+.topic .gc .gi,.topic .vc .vi{font-size:24px;line-height:1.1}
+.topic .gc .gt,.topic .vc .vt{font-weight:700;font-size:16px;color:var(--ink);margin:4px 0;line-height:1.15;font-family:var(--font-body)}
+.topic .gc .gd{font-size:12px;color:var(--ink-2);line-height:1.35}
+.topic .vc{font-size:13.5px;line-height:1.45;color:var(--ink-2)}
+.topic .b-kwwrap{margin:0 0 14px}
+.topic .b-kw{display:flex;flex-wrap:wrap;gap:6px}
+.topic .kwc{font-size:12.5px;font-weight:600;padding:5px 11px;border-radius:999px;background:color-mix(in srgb,var(--c) 14%,var(--card));border:1px solid var(--c);color:var(--ink);line-height:1.35}
+.topic .b-svg{margin:0 0 14px;background:var(--tbg);border:1px solid var(--line);border-radius:20px;padding:12px 12px 10px;overflow-x:auto}
+.topic .b-svg svg{width:100%;max-width:420px;height:auto;display:block;margin:0 auto}
+.topic .b-svg .cap{font-size:11.5px;color:var(--ink-2);text-align:center;margin:6px 0 0}
+.topic .kt{display:flex;flex-direction:column;gap:7px}
+.topic .kg{font-size:10px;font-weight:700;color:var(--ink-3);letter-spacing:.05em;margin:6px 0 -1px}
+.topic .kr{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:12px;padding:7px 10px 8px}
+.topic .kn{font-weight:700;font-size:14px;color:var(--ink);line-height:1.2;margin-bottom:5px;font-family:var(--font-body)}
+.topic .qk{display:flex;flex-wrap:wrap;gap:3px}
+.topic .qk span{font-size:10.5px;line-height:1.25;padding:2px 7px;border-radius:999px;background:var(--tbg);border:1px solid var(--line);color:var(--ink);font-weight:600}
+.topic .qk span.x{border-style:dashed;border-color:var(--ink-3);color:var(--ink-2);font-weight:500}
+.topic .quad{display:grid;grid-template-columns:16px 1fr 1fr;gap:8px;align-items:stretch}
+.topic .qh{font-size:10px;font-weight:700;color:var(--ink-3);text-align:center;letter-spacing:.04em;align-self:end}
+.topic .qrow{writing-mode:vertical-rl;transform:rotate(180deg);font-size:10px;font-weight:700;color:var(--ink-3);letter-spacing:.06em;display:flex;align-items:center;justify-content:center}
+.topic .qc{border-radius:16px;padding:9px 7px 10px;border:1px solid;text-align:center}
+.topic .qc.b{background:var(--color-accent-2-100);border-color:var(--color-accent-2-500)}
+.topic .qc.t{background:var(--color-accent-100);border-color:var(--color-accent-400)}
+.topic .qi{font-size:22px;line-height:1}
+.topic .qn{font-weight:700;font-size:13px;line-height:1.15;margin:3px 0 6px;color:var(--ink);font-family:var(--font-body)}
+.topic .tcs{display:flex;flex-direction:column;gap:8px}
+.topic .tcc{border-radius:16px;border:1.5px solid;padding:9px 11px 10px}
+.topic .tcc.bb{background:color-mix(in srgb,var(--ink) 10%,var(--card));border-color:var(--ink)}
+.topic .tcc.wb{background:var(--card);border-color:var(--ink-3)}
+.topic .tcc.ex{background:var(--color-accent-100);border-color:var(--color-accent-400)}
+.topic .tcc .th{font-weight:700;font-size:15px;color:var(--ink);line-height:1.2;font-family:var(--font-body)}
+.topic .tcc .tb{font-size:11.5px;color:var(--ink-2);margin:2px 0 7px;line-height:1.4}
+.topic .tcc .cv{font-size:11px;color:var(--ink-2);margin-top:7px;border-top:1px dashed var(--ink-3);padding-top:5px;line-height:1.4}
+.topic .b-wp{background:var(--card);border:1px dashed var(--c);border-radius:20px;padding:11px 13px;margin:2px 0 12px}
+.topic .wp-doc{display:flex;flex-direction:column}
+.topic .wp-r{display:grid;grid-template-columns:96px 1fr;gap:8px;padding:5px 0;border-top:1px solid var(--line);font-size:13px;line-height:1.45}
+.topic .wp-r:first-child{border-top:none}
+.topic .wp-l{font-weight:700;color:var(--ink-2)}
+.topic .wp-scroll{overflow-x:auto}
+.topic .wp-t{border-collapse:collapse;font-size:12.5px;line-height:1.4;min-width:100%}
+.topic .wp-t th,.topic .wp-t td{border:1px solid var(--line);padding:5px 7px;text-align:left;vertical-align:top}
+.topic .wp-t th{background:color-mix(in srgb,var(--c) 14%,var(--card));font-weight:700}
+.topic .wp-t .nw{white-space:nowrap}
+.topic .wp-c{margin:0;background:var(--tbg);border:1px solid var(--line);border-radius:12px;padding:8px 10px;font-family:ui-monospace,monospace;font-size:12px;line-height:1.5;overflow-x:auto;white-space:pre}
+.topic .wp-n{margin:7px 0 0;font-size:12.5px;color:var(--ink-2);line-height:1.45}
+.topic .b-sample{background:var(--tbg);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:20px;padding:12px 14px;margin:2px 0 14px;line-height:1.5}
+.topic .b-sq{margin:0 0 8px}
+.topic .b-so div{margin:2px 0;color:var(--ink-2)}
+.topic .b-so b{color:var(--ink)}
+.topic .b-sa{margin-top:9px}
+.topic .b-sa summary{cursor:pointer;font-weight:700;color:var(--c-ink);padding:2px 0}
+.topic .b-sa p{margin:6px 0 0}
+.topic .trap{background:var(--color-accent-100);border:1px solid var(--color-accent-300);border-radius:20px;padding:11px 14px;margin:4px 0}
+.topic .trap .lbl{color:var(--color-accent-800)}
+.topic .trap p{margin:3px 0 0;line-height:1.5}
+.topic .b-syl{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:12px 14px 10px;margin:0 0 14px}
+.topic .b-syl details.lo{border-top:1px solid var(--line);padding:8px 0}
+.topic .b-syl details.lo:first-of-type{border-top:none;padding-top:2px}
+.topic .b-syl summary{cursor:pointer;display:flex;gap:8px;align-items:baseline;line-height:1.4;list-style:none}
+.topic .b-syl summary::-webkit-details-marker{display:none}
+.topic .b-syl summary::before{content:"›";color:var(--c-ink);font-weight:700;transition:transform .15s;display:inline-block}
+.topic .b-syl details[open]>summary::before{transform:rotate(90deg)}
+.topic .lo-id{font-weight:700;color:var(--c-ink);white-space:nowrap;font-size:13px}
+.topic .lo-k{font-size:11px;font-weight:700;padding:1px 7px;border-radius:999px;background:var(--tbg);border:1px solid var(--line);color:var(--ink-2)}
+.topic .lo-st{font-weight:600;color:var(--ink)}
+.topic .lo-body{padding:6px 0 2px 16px;font-size:13.5px;line-height:1.55;color:var(--ink-2)}
+.topic .lo-body p{margin:0 0 6px}
+.topic .lo-body ul{margin:0 0 6px;padding-left:18px}
+.topic .lo-sec{font-size:11px;font-weight:700;letter-spacing:.03em;color:var(--ink-3);text-transform:uppercase;margin:0 0 4px}
+.topic .lo-src{margin:6px 0 0;font-size:11px;color:var(--ink-3)}
+.topic mark{background:color-mix(in srgb,var(--c) 28%,transparent);color:var(--ink);border-radius:4px;padding:0 2px;font-weight:600}
+.mm-detail{position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto}
+@media(max-width:900px){.mm-detail{position:static;max-height:none;overflow:visible}}
 </style>
 </helmet>
 <div style="min-height:100vh; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); padding-bottom:96px">
@@ -34,10 +124,7 @@ button{font:inherit}
     </sc-for>
   </nav>
   <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ true }}">
-    <button class="btn btn-primary" onClick="{{ openLogin }}">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
-      Sign in with Gmail
-    </button>
+    <button class="btn btn-primary" onClick="{{ openLogin }}">Sign in</button>
   </sc-if>
   <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}">
     <div style="display:flex; align-items:center; gap:10px">
@@ -113,17 +200,7 @@ button{font:inherit}
           <span>Mindmap study progress</span>
         </span>
       </div>
-      <div class="card" style="padding:26px; gap:12px; background:var(--color-accent-100)">
-        <span class="card-kicker" style="color:var(--color-accent-800)">Pro · $5 / month</span>
-        <span class="card-title" style="font-size:22px">AI exam coach</span>
-        <span style="display:flex; flex-direction:column; gap:8px; font-size:14px">
-          <span>Explains every wrong answer</span>
-          <span>Chat about any syllabus topic</span>
-          <span>Study plan from your weak areas</span>
-          <span>Custom question sets on weak topics</span>
-        </span>
-        <button class="btn btn-primary" onClick="{{ goPricing }}" style="align-self:flex-start; margin-top:6px">See plans</button>
-      </div>
+
     </div>
   </div>
   <p style="font-size:12px; color:var(--color-neutral-700)">ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.</p>
@@ -136,7 +213,7 @@ button{font:inherit}
   <div style="display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap">
     <div style="flex:1 1 320px">
       <h1 style="margin:0 0 6px">Syllabus mindmap</h1>
-      <p style="margin:0; color:var(--color-neutral-700)">Open a branch to go deeper. Select any node to read its key points.</p>
+      <p style="margin:0; color:var(--color-neutral-700)">Open a chapter, then pick a topic to see its memory hook, key terms, illustrations and exam traps.</p>
     </div>
     <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}">
       <span class="tag tag-accent-2" style="font-size:13px; padding:6px 14px">{{ learnedLabel }}</span>
@@ -163,25 +240,33 @@ button{font:inherit}
         </div>
       </sc-for>
     </div>
-    <aside style="flex:0 1 380px; min-width:280px; position:sticky; top:16px">
+    <aside class="mm-detail" style="flex:{{ node.asideFlex }}; min-width:280px; border-radius:32px; scroll-margin-top:12px">
       <div class="card elev-md" style="padding:28px; gap:14px; background:var(--color-surface)">
         <span class="card-kicker" style="color:var(--color-accent-700)">{{ node.kicker }}</span>
-        <h3 style="margin:0">{{ node.title }}</h3>
-        <p style="margin:0; font-size:15px; text-wrap:pretty">{{ node.summary }}</p>
-        <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px">
-          <sc-for list="{{ node.points }}" as="p" hint-placeholder-count="3">
-            <div style="display:flex; gap:10px; align-items:flex-start; font-size:14px">
-              <span style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); margin-top:7px; flex:none"></span>
-              <span>{{ p }}</span>
-            </div>
-          </sc-for>
-        </div>
-        <sc-if value="{{ node.hasKids }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px">
-            <sc-for list="{{ node.kids }}" as="k" hint-placeholder-count="3">
-              <button class="tag tag-neutral" onClick="{{ k.select }}" style="border:0; cursor:pointer; font-size:12px; padding:5px 12px">{{ k.title }}</button>
+        <h3 style="margin:0; font-family:{{ node.titleFont }}; font-weight:{{ node.titleWeight }}">{{ node.title }}</h3>
+        <sc-if value="{{ node.isTopic }}" hint-placeholder-val="{{ false }}">
+          <sc-if value="{{ node.starred }}" hint-placeholder-val="{{ false }}">
+            <span class="tag tag-accent" style="align-self:flex-start">&#x2B50; Often on the exam</span>
+          </sc-if>
+          {{ node.topicEl }}
+        </sc-if>
+        <sc-if value="{{ node.isNotTopic }}" hint-placeholder-val="{{ true }}">
+          <p style="margin:0; font-size:15px; text-wrap:pretty">{{ node.summary }}</p>
+          <div style="display:flex; flex-direction:column; gap:10px; margin-top:4px">
+            <sc-for list="{{ node.points }}" as="p" hint-placeholder-count="3">
+              <div style="display:flex; gap:10px; align-items:flex-start; font-size:14px">
+                <span style="width:8px; height:8px; border-radius:50%; background:var(--color-accent); margin-top:7px; flex:none"></span>
+                <span>{{ p }}</span>
+              </div>
             </sc-for>
           </div>
+          <sc-if value="{{ node.hasKids }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:6px">
+              <sc-for list="{{ node.kids }}" as="k" hint-placeholder-count="3">
+                <button class="tag tag-neutral" onClick="{{ k.select }}" style="border:0; cursor:pointer; font-size:12px; padding:5px 12px">{{ k.title }}</button>
+              </sc-for>
+            </div>
+          </sc-if>
         </sc-if>
         <div style="display:flex; flex-wrap:wrap; gap:8px; margin-top:10px">
           <sc-if value="{{ node.canPractice }}" hint-placeholder-val="{{ false }}">
@@ -217,27 +302,60 @@ button{font:inherit}
   <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ false }}">
     <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--color-accent-2-100); border-radius:28px; padding:16px 22px">
       <span style="flex:1 1 300px; font-size:14px; color:var(--color-accent-2-900)">You can take any test now. Results are not saved until you sign in.</span>
-      <button class="btn btn-secondary" onClick="{{ openLogin }}">Sign in with Gmail</button>
+      <button class="btn btn-secondary" onClick="{{ openLogin }}">Sign in</button>
     </div>
   </sc-if>
-  <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px">
-    <sc-for list="{{ exams }}" as="e" hint-placeholder-count="6">
-      <div class="card" style="padding:24px; gap:10px; background:{{ e.bg }}">
-        <span class="card-kicker" style="color:var(--color-accent-700)">{{ e.kicker }}</span>
-        <span class="card-title" style="font-size:20px">{{ e.title }}</span>
-        <span style="font-size:14px; color:var(--color-neutral-800)">{{ e.sub }}</span>
-        <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:auto; padding-top:10px">
-          <span class="tag tag-neutral">{{ e.meta }}</span>
-          <sc-if value="{{ e.hasBest }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent-2">Best {{ e.best }}%</span></sc-if>
-          <button class="btn btn-primary" onClick="{{ e.start }}" style="margin-left:auto">Start</button>
-        </div>
+  <div style="display:flex; flex-direction:column; gap:32px">
+    <div style="display:flex; flex-direction:column; gap:16px">
+      <div>
+        <h2 style="margin:0 0 4px">By level</h2>
+        <p style="margin:0; color:var(--color-neutral-700); font-size:14px">Questions from all six chapters in the real exam's proportions (8/6/4/11/9/2).</p>
       </div>
-    </sc-for>
-    <div class="card" style="padding:24px; gap:10px; background:var(--color-accent-100)">
-      <span class="card-kicker" style="color:var(--color-accent-800)">Pro · AI generated</span>
-      <span class="card-title" style="font-size:20px">A set built from your weak topics</span>
-      <span style="font-size:14px; color:var(--color-neutral-800)">The coach writes new questions for the chapters where you score lowest.</span>
-      <button class="btn btn-primary" onClick="{{ goCoachQuiz }}" style="align-self:flex-start; margin-top:auto">{{ aiSetLabel }}</button>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px">
+        <sc-for list="{{ levelSets }}" as="ls" hint-placeholder-count="3">
+          <div class="card" style="padding:24px; gap:10px; background:var(--color-surface)">
+            <span class="card-kicker" style="color:var(--color-accent-700)">Level</span>
+            <span class="card-title" style="font-size:22px">{{ ls.label }}</span>
+            <span style="font-size:14px; color:var(--color-neutral-800)">{{ ls.sub }}</span>
+            <span style="font-size:12px; color:var(--color-neutral-700)">{{ ls.mix }}</span>
+            <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin-top:auto; padding-top:10px">
+              <span class="tag tag-neutral">{{ ls.timing }}</span>
+              <sc-if value="{{ ls.hasBest }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent-2">Best {{ ls.best }}%</span></sc-if>
+              <button class="btn btn-primary" onClick="{{ ls.start }}" style="margin-left:auto">Start</button>
+            </div>
+          </div>
+        </sc-for>
+
+      </div>
+    </div>
+    <div style="display:flex; flex-direction:column; gap:16px">
+      <div>
+        <h2 style="margin:0 0 4px">By chapter</h2>
+        <p style="margin:0; color:var(--color-neutral-700); font-size:14px">Pick a chapter and a length. Questions are drawn from that chapter.</p>
+      </div>
+      <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:16px">
+        <sc-for list="{{ chapterSets }}" as="cs" hint-placeholder-count="6">
+          <div class="card" style="padding:24px; gap:12px; background:{{ cs.tint }}">
+            <div style="display:flex; align-items:center; gap:12px">
+              <span style="width:40px; height:40px; flex:none; border-radius:50%; background:{{ cs.base }}; color:var(--color-bg); display:grid; place-items:center; font-family:var(--font-heading); font-size:18px">{{ cs.id }}</span>
+              <span class="card-title" style="font-size:19px; color:{{ cs.ink }}">{{ cs.title }}</span>
+            </div>
+            <div style="display:flex; gap:8px; flex-wrap:wrap; align-items:center">
+              <span class="tag tag-neutral">{{ cs.avail }} in bank</span>
+              <span style="font-size:12px; color:{{ cs.ink }}">{{ cs.q }} on exam</span>
+              <sc-if value="{{ cs.hasBest }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent-2">Best {{ cs.bestPct }}%</span></sc-if>
+            </div>
+            <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:auto">
+              <sc-for list="{{ cs.sizes }}" as="sz" hint-placeholder-count="3">
+                <button class="btn btn-secondary" onClick="{{ sz.start }}" disabled="{{ sz.disabled }}" style="background:var(--color-bg); display:flex; flex-direction:column; gap:0; line-height:1.15; padding:8px 6px; min-width:0">
+                  <span>{{ sz.label }}</span>
+                  <span style="font-family:var(--font-body); font-size:12px; font-weight:600; color:var(--color-neutral-700)">{{ sz.size }}q</span>
+                </button>
+              </sc-for>
+            </div>
+          </div>
+        </sc-for>
+      </div>
     </div>
   </div>
 </section>
@@ -263,12 +381,13 @@ button{font:inherit}
         <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap">
           <span style="font-size:14px; font-weight:700">Question {{ ex.num }} of {{ ex.total }}</span>
           <span class="tag tag-neutral">{{ ex.chLabel }}</span>
+          <sc-if value="{{ ex.multiSelect }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent">Select {{ ex.need }} answers</span></sc-if>
         </div>
         <p style="margin:0; font-size:20px; line-height:1.45; text-wrap:pretty">{{ ex.q }}</p>
         <div style="display:flex; flex-direction:column; gap:10px">
           <sc-for list="{{ ex.opts }}" as="o" hint-placeholder-count="4">
             <button onClick="{{ o.pick }}" style="display:flex; align-items:center; gap:14px; text-align:left; padding:12px 18px 12px 12px; border-radius:999px; background:{{ o.bg }}; border:2px solid {{ o.bd }}; cursor:{{ o.cursor }}; color:var(--color-text); font-size:15px" style-hover="box-shadow:var(--shadow-sm)">
-              <span style="width:34px; height:34px; flex:none; border-radius:50%; display:grid; place-items:center; font-weight:700; background:{{ o.dBg }}; color:{{ o.dFg }}">{{ o.letter }}</span>
+              <span style="width:34px; height:34px; flex:none; border-radius:{{ o.badgeRadius }}; display:grid; place-items:center; font-weight:700; background:{{ o.dBg }}; color:{{ o.dFg }}">{{ o.letter }}</span>
               <span>{{ o.text }}</span>
             </button>
           </sc-for>
@@ -277,10 +396,7 @@ button{font:inherit}
           <div style="border-radius:24px; padding:20px 22px; background:{{ ex.fbBg }}; display:flex; flex-direction:column; gap:8px">
             <span style="font-family:var(--font-heading); font-size:18px; color:{{ ex.fbFg }}">{{ ex.fbTitle }}</span>
             <span style="font-size:15px; color:var(--color-neutral-900)">{{ ex.explain }}</span>
-            <button class="btn btn-ghost" onClick="{{ ex.askAI }}" style="align-self:flex-start; color:var(--color-accent-700)">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"></path></svg>
-              {{ ex.askLabel }}
-            </button>
+
           </div>
         </sc-if>
       </div>
@@ -330,7 +446,7 @@ button{font:inherit}
   <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ false }}">
     <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--color-accent-2-100); border-radius:28px; padding:18px 22px">
       <span style="flex:1 1 300px; font-size:15px; color:var(--color-accent-2-900)">This result is not saved. Sign in with Gmail to keep it and follow your progress.</span>
-      <button class="btn btn-primary" onClick="{{ openLogin }}">Save my result</button>
+      <button class="btn btn-primary" onClick="{{ openLogin }}">Sign in to save</button>
     </div>
   </sc-if>
   <sc-if value="{{ res.savedNote }}" hint-placeholder-val="{{ false }}">
@@ -361,7 +477,7 @@ button{font:inherit}
           <span style="font-size:14px; color:var(--color-neutral-800)">Your answer: {{ v.yours }} · Correct: {{ v.right }}</span>
           <sc-if value="{{ v.bad }}" hint-placeholder-val="{{ false }}">
             <span style="font-size:14px; color:var(--color-neutral-800)">{{ v.explain }}</span>
-            <button class="btn btn-ghost" onClick="{{ v.askAI }}" style="align-self:flex-start; color:var(--color-accent-700)">{{ v.askLabel }}</button>
+
           </sc-if>
         </div>
       </sc-for>
@@ -377,7 +493,7 @@ button{font:inherit}
     <div style="max-width:560px; display:flex; flex-direction:column; gap:14px; padding:40px 0">
       <h1 style="margin:0">Your progress lives here</h1>
       <p style="margin:0; font-size:17px; color:var(--color-neutral-800)">Sign in with your Gmail account to save every attempt, see your score trend and find your weakest chapters. It's free.</p>
-      <button class="btn btn-primary" onClick="{{ openLogin }}" style="align-self:flex-start; font-size:16px; padding:12px 22px">Sign in with Gmail</button>
+      <button class="btn btn-primary" onClick="{{ openLogin }}" style="align-self:flex-start; font-size:16px; padding:12px 22px">Sign in</button>
     </div>
   </sc-if>
   <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}">
@@ -440,8 +556,7 @@ button{font:inherit}
         </div>
         <div style="background:var(--color-accent-100); border-radius:32px; padding:24px; display:flex; flex-direction:column; gap:8px">
           <span class="card-kicker" style="color:var(--color-accent-800)">AI coach</span>
-          <span style="font-size:15px">Weakest right now: <strong>{{ dash.weakest }}</strong></span>
-          <button class="btn btn-primary" onClick="{{ goCoachPlan }}" style="align-self:flex-start">{{ dash.coachCta }}</button>
+          <span style="font-size:15px; color:var(--color-neutral-700)">Coming soon</span>
         </div>
       </div>
     </div>
@@ -451,176 +566,37 @@ button{font:inherit}
 
 <!-- COACH -->
 <sc-if value="{{ isCoach }}" hint-placeholder-val="{{ false }}">
-<section data-screen-label="AI Coach" style="display:flex; flex-direction:column; gap:24px; padding-top:24px">
-  <sc-if value="{{ notPro }}" hint-placeholder-val="{{ false }}">
-    <div style="display:flex; gap:40px; flex-wrap:wrap; align-items:center; padding:30px 0">
-      <div style="flex:1 1 420px; max-width:600px; display:flex; flex-direction:column; gap:14px">
-        <span class="tag tag-accent" style="align-self:flex-start">Pro</span>
-        <h1 style="margin:0">An exam coach that knows where you slip</h1>
-        <p style="margin:0; font-size:17px; color:var(--color-neutral-800)">It reads your results, explains each wrong answer, answers your questions about the syllabus, plans your week and writes new questions for your weakest chapters.</p>
-        <button class="btn btn-primary" onClick="{{ goPricing }}" style="align-self:flex-start; font-size:16px; padding:12px 22px">Upgrade to Pro</button>
-      </div>
-      <div style="flex:0 1 340px; display:flex; flex-direction:column; gap:10px">
-        <span style="align-self:flex-end; background:var(--color-accent-200); border-radius:24px 24px 6px 24px; padding:12px 16px; font-size:14px; max-width:280px">Why is 17 a boundary value for ages 18–65?</span>
-        <span style="align-self:flex-start; background:var(--color-surface); border-radius:24px 24px 24px 6px; padding:12px 16px; font-size:14px; max-width:300px">With 2-value BVA you test each boundary and its nearest neighbour outside the range. 17 is the closest invalid value below 18…</span>
-      </div>
-    </div>
-  </sc-if>
-  <sc-if value="{{ isPro }}" hint-placeholder-val="{{ false }}">
-    <div style="display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap">
-      <div style="flex:1 1 320px">
-        <h1 style="margin:0 0 6px">AI coach</h1>
-        <p style="margin:0; color:var(--color-neutral-700)">Weakest chapters from your results: {{ weakText }}</p>
-      </div>
-      <div style="display:flex; background:var(--color-surface); border-radius:999px; padding:4px; gap:4px">
-        <sc-for list="{{ coachTabs }}" as="t" hint-placeholder-count="3">
-          <button onClick="{{ t.pick }}" style="border:0; border-radius:999px; padding:9px 18px; font-weight:600; font-size:14px; cursor:pointer; background:{{ t.bg }}; color:{{ t.fg }}">{{ t.label }}</button>
-        </sc-for>
-      </div>
-    </div>
-
-    <sc-if value="{{ tabChat }}" hint-placeholder-val="{{ true }}">
-      <div style="background:var(--color-neutral-100); border-radius:32px; padding:24px; display:flex; flex-direction:column; gap:16px">
-        <div style="min-height:320px; max-height:480px; overflow-y:auto; display:flex; flex-direction:column; gap:12px">
-          <sc-if value="{{ chatEmpty }}" hint-placeholder-val="{{ true }}">
-            <div style="display:flex; flex-direction:column; gap:12px; padding:20px 0">
-              <span style="font-family:var(--font-heading); font-size:22px">Ask anything about the CTFL syllabus</span>
-              <div style="display:flex; flex-wrap:wrap; gap:8px">
-                <sc-for list="{{ suggestions }}" as="g" hint-placeholder-count="3">
-                  <button class="tag tag-accent" onClick="{{ g.send }}" style="border:0; cursor:pointer; font-size:13px; padding:7px 14px">{{ g.text }}</button>
-                </sc-for>
-              </div>
-            </div>
-          </sc-if>
-          <sc-for list="{{ chat }}" as="m" hint-placeholder-count="0">
-            <div style="align-self:{{ m.align }}; max-width:78%; background:{{ m.bg }}; border-radius:{{ m.radius }}; padding:12px 16px; font-size:15px; white-space:pre-wrap">{{ m.text }}</div>
-          </sc-for>
-          <sc-if value="{{ busy }}" hint-placeholder-val="{{ false }}">
-            <div style="align-self:flex-start; background:var(--color-surface); border-radius:24px; padding:12px 16px; font-size:14px; color:var(--color-neutral-700)">Coach is thinking…</div>
-          </sc-if>
-        </div>
-        <form onSubmit="{{ submitChat }}" style="display:flex; gap:10px">
-          <input class="input" value="{{ chatInput }}" onChange="{{ onChatInput }}" placeholder="e.g. What's the difference between confirmation and regression testing?" style="flex:1; min-height:44px">
-          <button class="btn btn-primary btn-icon" type="submit" style="width:44px; height:44px" aria-label="Send">
-            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"></path><path d="M22 2 11 13"></path></svg>
-          </button>
-        </form>
-      </div>
-    </sc-if>
-
-    <sc-if value="{{ tabPlan }}" hint-placeholder-val="{{ false }}">
-      <div style="background:var(--color-neutral-100); border-radius:32px; padding:28px; display:flex; flex-direction:column; gap:16px; max-width:820px">
-        <h3 style="margin:0">Study plan from your weak areas</h3>
-        <p style="margin:0; color:var(--color-neutral-800)">The coach looks at your mastery per chapter and builds a 7-day plan, heavier on the chapters where you lose most points.</p>
-        <button class="btn btn-primary" onClick="{{ makePlan }}" disabled="{{ busy }}" style="align-self:flex-start">{{ planCta }}</button>
-        <sc-if value="{{ hasPlan }}" hint-placeholder-val="{{ false }}">
-          <div style="background:var(--color-surface); border-radius:24px; padding:22px; white-space:pre-wrap; font-size:15px; line-height:1.6">{{ plan }}</div>
-        </sc-if>
-      </div>
-    </sc-if>
-
-    <sc-if value="{{ tabQuiz }}" hint-placeholder-val="{{ false }}">
-      <div style="background:var(--color-neutral-100); border-radius:32px; padding:28px; display:flex; flex-direction:column; gap:16px; max-width:820px">
-        <h3 style="margin:0">Custom question set</h3>
-        <p style="margin:0; color:var(--color-neutral-800)">Pick a chapter. The coach writes 5 new exam-style questions with explanations, in practice mode.</p>
-        <div style="display:flex; flex-wrap:wrap; gap:8px">
-          <sc-for list="{{ quizChs }}" as="c" hint-placeholder-count="6">
-            <button onClick="{{ c.pick }}" style="border:2px solid {{ c.bd }}; background:{{ c.bg }}; border-radius:999px; padding:8px 16px; cursor:pointer; font-size:14px; font-weight:600; color:var(--color-text)">{{ c.label }}</button>
-          </sc-for>
-        </div>
-        <button class="btn btn-primary" onClick="{{ makeQuiz }}" disabled="{{ busy }}" style="align-self:flex-start">{{ quizCta }}</button>
-      </div>
-    </sc-if>
-  </sc-if>
-</section>
-</sc-if>
-
-<!-- PRICING -->
-<sc-if value="{{ isPricing }}" hint-placeholder-val="{{ false }}">
-<section data-screen-label="Pricing" style="display:flex; flex-direction:column; gap:28px; padding-top:24px">
-  <div style="max-width:620px">
-    <h1 style="margin:0 0 8px">Plans</h1>
-    <p style="margin:0; font-size:17px; color:var(--color-neutral-800)">Studying is free. Pay only if you want the AI coach.</p>
-  </div>
-  <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:18px; align-items:stretch">
-    <sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
-      <div class="card" style="padding:30px; gap:14px; background:{{ p.bg }}; box-shadow:{{ p.shadow }}">
-        <span class="card-kicker" style="color:var(--color-accent-800)">{{ p.kicker }}</span>
-        <span style="font-family:var(--font-heading); font-size:28px">{{ p.name }}</span>
-        <div style="display:flex; align-items:baseline; gap:6px"><span style="font-family:var(--font-heading); font-size:44px; line-height:1">{{ p.price }}</span><span style="font-size:14px; color:var(--color-neutral-700)">{{ p.per }}</span></div>
-        <div style="display:flex; flex-direction:column; gap:10px; flex:1; padding-top:6px">
-          <sc-for list="{{ p.features }}" as="f" hint-placeholder-count="3">
-            <div style="display:flex; gap:10px; font-size:14px; align-items:flex-start">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--color-accent-2-700)" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20 6 9 17l-5-5"></path></svg>
-              <span>{{ f }}</span>
-            </div>
-          </sc-for>
-        </div>
-        <button class="btn {{ p.btnClass }}" onClick="{{ p.action }}" disabled="{{ p.current }}" style="padding:12px 20px; font-size:15px">{{ p.cta }}</button>
-      </div>
-    </sc-for>
+<section data-screen-label="AI Coach" style="display:flex; flex-direction:column; gap:28px; padding-top:24px">
+  <div style="max-width:640px; display:flex; flex-direction:column; gap:14px; padding:40px 0">
+    <span class="tag tag-accent" style="align-self:flex-start">Coming soon</span>
+    <h1 style="margin:0">AI exam coach</h1>
+    <p style="margin:0; font-size:17px; color:var(--color-neutral-800)">The AI coach will explain wrong answers, chat about any syllabus topic, plan your study week and generate questions for your weak chapters. It is under development and will be available soon.</p>
   </div>
 </section>
 </sc-if>
+
 </main>
 
 <!-- DIALOGS -->
 <sc-if value="{{ dlgLogin }}" hint-placeholder-val="{{ false }}">
   <div class="dialog-backdrop" onClick="{{ closeDialog }}" style="z-index:50">
     <div class="dialog" onClick="{{ stop }}" style="width:min(420px,100%); background:var(--color-neutral-100)">
-      <span class="dialog-title" style="font-size:24px">Sign in with Gmail</span>
-      <span class="dialog-body">Choose a Google account to continue to Testpath. We only read your name and email address.</span>
-      <button onClick="{{ loginDemo }}" style="display:flex; align-items:center; gap:12px; padding:12px 16px; border-radius:999px; border:2px solid var(--color-divider); background:var(--color-bg); cursor:pointer; text-align:left; color:var(--color-text)" style-hover="border-color:var(--color-accent)">
-        <span style="width:36px; height:36px; border-radius:50%; background:var(--color-accent-2-300); color:var(--color-accent-2-900); display:grid; place-items:center; font-weight:700">L</span>
-        <span style="display:flex; flex-direction:column; line-height:1.25"><span style="font-weight:600">Linh Nguyen</span><span style="font-size:13px; color:var(--color-neutral-700)">linh.nguyen@gmail.com</span></span>
-      </button>
-      <form onSubmit="{{ loginEmailSubmit }}" style="display:flex; flex-direction:column; gap:8px">
-        <div class="field"><label>Use another Gmail address</label><input class="input" type="email" value="{{ loginEmail }}" onChange="{{ onLoginEmail }}" placeholder="you@gmail.com" style="min-height:44px"></div>
+      <span class="dialog-title" style="font-size:24px">Sign in</span>
+      <div style="background:var(--color-accent-2-100); border-radius:20px; padding:12px 16px; font-size:13px; color:var(--color-accent-2-900)">
+        Demo account — Username: <strong>testpath</strong> · Password: <strong>ctfl2025</strong>
+      </div>
+      <form onSubmit="{{ loginSubmit }}" style="display:flex; flex-direction:column; gap:10px">
+        <div class="field"><label>Username</label><input class="input" value="{{ loginUser }}" onChange="{{ onLoginUser }}" placeholder="Enter username" style="min-height:44px" autocomplete="username"></div>
+        <div class="field"><label>Password</label><input class="input" type="password" value="{{ loginPass }}" onChange="{{ onLoginPass }}" placeholder="Enter password" style="min-height:44px" autocomplete="current-password"></div>
         <div class="dialog-actions">
           <button class="btn btn-ghost" type="button" onClick="{{ closeDialog }}">Cancel</button>
-          <button class="btn btn-primary" type="submit">Continue</button>
+          <button class="btn btn-primary" type="submit">Sign in</button>
         </div>
       </form>
     </div>
   </div>
 </sc-if>
 
-<sc-if value="{{ dlgCheckout }}" hint-placeholder-val="{{ false }}">
-  <div class="dialog-backdrop" onClick="{{ closeDialog }}" style="z-index:50">
-    <div class="dialog" onClick="{{ stop }}" style="width:min(460px,100%); background:var(--color-neutral-100)">
-      <span class="dialog-title" style="font-size:24px">Upgrade to Pro</span>
-      <div style="display:flex; gap:10px">
-        <sc-for list="{{ billingOpts }}" as="b" hint-placeholder-count="2">
-          <button onClick="{{ b.pick }}" style="flex:1; display:flex; flex-direction:column; gap:2px; text-align:left; padding:14px 16px; border-radius:24px; border:2px solid {{ b.bd }}; background:{{ b.bg }}; cursor:pointer; color:var(--color-text)">
-            <span style="font-weight:700">{{ b.label }}</span>
-            <span style="font-size:13px; color:var(--color-neutral-700)">{{ b.price }}</span>
-          </button>
-        </sc-for>
-      </div>
-      <div class="field"><label>Card number</label><input class="input" value="4242 4242 4242 4242" style="min-height:44px"></div>
-      <div style="display:flex; gap:10px">
-        <div class="field" style="flex:1"><label>Expiry</label><input class="input" value="12 / 28" style="min-height:44px"></div>
-        <div class="field" style="flex:1"><label>CVC</label><input class="input" value="123" style="min-height:44px"></div>
-      </div>
-      <div class="dialog-actions">
-        <button class="btn btn-ghost" onClick="{{ closeDialog }}">Cancel</button>
-        <button class="btn btn-primary" onClick="{{ pay }}">{{ payLabel }}</button>
-      </div>
-    </div>
-  </div>
-</sc-if>
-
-<sc-if value="{{ dlgUpgrade }}" hint-placeholder-val="{{ false }}">
-  <div class="dialog-backdrop" onClick="{{ closeDialog }}" style="z-index:50">
-    <div class="dialog" onClick="{{ stop }}" style="background:var(--color-neutral-100)">
-      <span class="dialog-title" style="font-size:24px">Explanations by the AI coach are a Pro feature</span>
-      <span class="dialog-body">Pro adds a coach that explains why your answer was wrong, chats about any topic, plans your study week and writes questions for your weak chapters.</span>
-      <div class="dialog-actions">
-        <button class="btn btn-ghost" onClick="{{ closeDialog }}">Not now</button>
-        <button class="btn btn-primary" onClick="{{ goPricingClose }}">See plans</button>
-      </div>
-    </div>
-  </div>
 </sc-if>
 
 <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
@@ -646,68 +622,52 @@ const CH=[
  {id:5,title:'Managing the Test Activities',q:9},
  {id:6,title:'Test Tools',q:2}];
 const pal=id=>id%2?{tint:'var(--color-accent-100)',mid:'var(--color-accent-200)',ink:'var(--color-accent-800)',base:'var(--color-accent)'}:{tint:'var(--color-accent-2-100)',mid:'var(--color-accent-2-200)',ink:'var(--color-accent-2-800)',base:'var(--color-accent-2)'};
-const NODES=[
-['root',null,'ISTQB CTFL v4.0.1','The Foundation Level syllabus in six chapters. The exam has 40 multiple-choice questions, 60 minutes and a pass mark of 65% (26 correct).',['Questions per chapter follow the syllabus weighting','K1 = remember, K2 = understand, K3 = apply','Chapter 4 carries the most questions (11)']],
-['c1','root','1 · Fundamentals of Testing','What testing is, why it is needed, the seven principles and the test process.',['8 exam questions','180 minutes of study time in the syllabus']],
-['1.1','c1','1.1 What is Testing?','Testing is a set of activities to discover defects and evaluate the quality of software work products. It covers verification and validation, static and dynamic testing.',['Objectives: evaluate work products, trigger failures and find defects, ensure coverage, reduce risk, build confidence','Testing triggers failures; debugging finds, analyses and removes their causes','Testing is more than test execution']],
-['1.2','c1','1.2 Why is Testing Necessary?','Testing is a cost-effective way to detect defects and helps meet contractual, legal and regulatory requirements.',['Testing is a form of quality control (QC); QA is process-oriented','A person makes an error → it produces a defect → the defect may cause a failure','Root cause: the fundamental reason a problem occurred']],
-['1.3','c1','1.3 Testing Principles','Seven principles that apply across all testing.',['Testing shows the presence, not the absence of defects','Exhaustive testing is impossible','Early testing saves time and money','Defects cluster together','Tests wear out','Testing is context dependent','Absence-of-defects fallacy']],
-['1.4','c1','1.4 Test Activities, Testware and Roles','Planning, monitoring and control, analysis, design, implementation, execution and completion. Context decides how they are carried out.',['Testware: plans, conditions, cases, scripts, data, logs, reports','Traceability links test basis, testware, results and defects','Two main roles: test management and testing']],
-['1.5','c1','1.5 Essential Skills and Good Practices','Testers need domain knowledge, technical skills, communication and critical thinking.',['Whole-team approach: quality is everyone\'s responsibility','Independent testers find different kinds of failures','Too much independence can isolate testers']],
-['c2','root','2 · Testing Throughout the SDLC','How testing fits sequential, iterative and agile lifecycles; test levels and test types.',['6 exam questions','130 minutes']],
-['2.1','c2','2.1 Testing in the Context of an SDLC','The lifecycle model affects scope, timing, documentation and automation of testing.',['Every development activity has a matching test activity','Test-first approaches: TDD, ATDD, BDD','DevOps and CI/CD give fast feedback','Shift-left: test earlier; retrospectives improve the process']],
-['2.2','c2','2.2 Test Levels and Test Types','Levels group test activities organised together; types group them by quality characteristic.',['Levels: component, component integration, system, system integration, acceptance','Types: functional, non-functional, black-box, white-box','Confirmation testing checks a fix; regression testing checks nothing else broke']],
-['2.3','c2','2.3 Maintenance Testing','Testing changes to a system in production.',['Triggers: modification, upgrade or migration, retirement','Scope depends on risk and size of the change','Impact analysis decides regression scope']],
-['c3','root','3 · Static Testing','Examining work products without executing them, by review or static analysis.',['4 exam questions','80 minutes']],
-['3.1','c3','3.1 Static Testing Basics','Almost any work product can be examined statically: requirements, code, test plans, user stories.',['Finds defects early, often before dynamic testing is possible','Finds things dynamic testing cannot, e.g. unreachable code or gaps in requirements','Static testing finds defects directly; dynamic testing finds failures']],
-['3.2','c3','3.2 Feedback and Review Process','Planning, review initiation, individual review, communication and analysis, fixing and reporting.',['Roles: manager, author, moderator, scribe, reviewer, review leader','From least to most formal: informal review, walkthrough, technical review, inspection','Success factors: clear objectives, small chunks, training, management support']],
-['c4','root','4 · Test Analysis and Design','Techniques to derive test conditions, test cases and test data.',['11 exam questions, the heaviest chapter','390 minutes','Most K3 (apply) questions come from here']],
-['4.1','c4','4.1 Test Techniques Overview','Techniques fall into black-box, white-box and experience-based groups.',['Black-box: based on specified behaviour','White-box: based on internal structure','Experience-based: based on tester knowledge']],
-['4.2','c4','4.2 Black-Box Test Techniques','Specification-based techniques, each with its own coverage measure.',['Coverage = items exercised ÷ total items','You must be able to apply all four (K3)']],
-['ep','4.2','Equivalence Partitioning','Divide data into partitions expected to be processed the same way. One value per partition is enough.',['Covers valid and invalid partitions','Coverage = partitions exercised ÷ total partitions','Test each invalid partition on its own']],
-['bva','4.2','Boundary Value Analysis','Test the edges of ordered partitions, where defects tend to hide.',['2-value BVA: the boundary and its nearest neighbour in the adjacent partition','3-value BVA: the boundary and both neighbours','Range 18–65 with 2-value BVA → 17, 18, 65, 66']],
-['dt','4.2','Decision Table Testing','Model combinations of conditions and the resulting actions. Each column is a rule.',['n Boolean conditions → up to 2ⁿ columns','Coverage = columns exercised ÷ feasible columns','Tables can be minimised by merging columns']],
-['st','4.2','State Transition Testing','Model behaviour that depends on the current state and events, e.g. lockout after failed logins.',['All states, valid transitions (0-switch) and all transitions coverage','Valid transitions coverage is the most widely used','A state table also shows invalid transitions']],
-['4.3','c4','4.3 White-Box Test Techniques','Structure-based techniques measured on code.',['Statement coverage: executable statements exercised','Branch coverage: branches exercised','100% branch coverage implies 100% statement coverage, not the reverse']],
-['4.4','c4','4.4 Experience-Based Techniques','Tester knowledge complements systematic techniques.',['Error guessing, often as fault attacks','Exploratory testing, often session-based with a charter','Checklist-based testing']],
-['4.5','c4','4.5 Collaboration-Based Approaches','Testers work with business and developers to write testable stories.',['User stories: Card, Conversation, Confirmation','INVEST criteria','Acceptance criteria and ATDD: tests written before the code']],
-['c5','root','5 · Managing the Test Activities','Planning, risk, monitoring, configuration and defect management.',['9 exam questions','335 minutes']],
-['5.1','c5','5.1 Test Planning','A test plan describes objectives, resources and processes for a test project.',['Entry criteria: preconditions to start; exit criteria: what must be achieved to finish','Estimation: ratios, extrapolation, Wideband Delphi, three-point','Test pyramid and testing quadrants guide the test mix']],
-['5.2','c5','5.2 Risk Management','Risk level = likelihood × impact. Risk analysis and risk control drive risk-based testing.',['Project risks: organisational, people, technical, supplier','Product risks: quality of the product itself, e.g. wrong calculations','Responses: mitigation, acceptance, transfer, contingency']],
-['5.3','c5','5.3 Monitoring, Control and Completion','Metrics show progress against the plan so you can act on deviations.',['Metrics: progress, defects, risk, coverage, cost','Test progress reports and test completion reports','Tailor reports to the audience']],
-['5.4','c5','5.4 Configuration Management','Identify, control and track testware and test items with versions.',['Every item uniquely identified and version controlled','Supports traceability and reproducibility']],
-['5.5','c5','5.5 Defect Management','A defect report records what happened so it can be fixed.',['Objectives: information to fix, track quality, improve the process','Content: ID, title, environment, steps, expected vs actual, severity, priority, status']],
-['c6','root','6 · Test Tools','Tool support for testing and the benefits and risks of automation.',['2 exam questions','20 minutes']],
-['6.1','c6','6.1 Tool Support for Testing','Tools support management, static testing, design, execution, non-functional testing, DevOps and collaboration.',['Tools help many activities, not only execution','Choose tools to fit the context']],
-['6.2','c6','6.2 Benefits and Risks of Automation','Automation saves repetitive effort but brings its own costs.',['Benefits: less manual work, consistency, objective measures, earlier feedback','Risks: unrealistic expectations, wrong effort estimates, over-reliance, vendor issues']]];
-const N={},KIDS={};NODES.forEach(([id,p,t,s,pts])=>{N[id]={id,p,t,s,pts};if(p)(KIDS[p]=KIDS[p]||[]).push(id)});
-const chOf=id=>{let n=N[id];while(n&&n.p&&n.p!=='root')n=N[n.p];return n&&n.id[0]==='c'?+n.id.slice(1):null};
-const depthOf=id=>{let d=0,n=N[id];while(n.p){d++;n=N[n.p]}return d};
-const STUDY=NODES.filter(n=>n[1]&&n[1]!=='root').map(n=>n[0]);
+const TOPIC_DATA={"efd":{"hook":"Domino: người nhầm → code sai → chạy sai","trap":"“Sửa lỗi” không phải mục tiêu của testing — đó là debugging. Tester KHÔNG tạo ra error — error do developer gây ra; tester chỉ gây failure và tìm defect. Bẫy hay gặp: đáp án sai chỉ vì đảo \"verifying\" và \"validating\" cho nhau (vd. \"validating that documented requirements are met\" thực ra mô tả VERIFICATION, không phải validation). Hay đảo failure ↔ defect (Quiz 9 Q2, Quiz 10 Q3, Quiz 16 Q11). Hay gán “cải tiến quy trình” cho testing, đó là QA (Quiz 16 Q1).","body":[{"k":"kw","items":["error = người","defect = trong code/tài liệu","failure = khi CHẠY","reduce the risk of inadequate quality","build confidence in the quality level","triggering failures and finding defects","testing determines that defects exist","debugging removes defects","maintaining communications is NOT a primary test objective","defect nằm trong WORK PRODUCT, dù ai đó đã tìm ra hay chưa","ensuring required coverage of a test object","cải tiến và đánh giá hiệu quả quy trình = QA, KHÔNG phải mục tiêu test"]},{"k":"flow","items":["🌱 Root cause — lý do gốc (vd. bị dí deadline)","🙋 Error — người sai sót","🐛 Defect — nằm lại trong work product (code, yêu cầu, tài liệu)","💥 Failure — quan sát được khi CHẠY"]},{"k":"rows","items":[["🎯","Test objective điển hình","Giảm rủi ro chất lượng kém; xây dựng niềm tin vào mức chất lượng; gây ra failure để tìm defect; đánh giá work product như requirement, user story, design, code"]]},{"k":"p","t":"Testing vs debugging trong 1 câu: testing XÁC ĐỊNH defect có tồn tại; debugging TÌM nguyên nhân gốc và LOẠI BỎ nó."},{"k":"p","t":"Debugging khác nhau tuỳ nguồn: khi STATIC testing tìm ra defect trực tiếp, debugging chỉ cần LOẠI BỎ nó (không cần reproduce hay chẩn đoán). Khi DYNAMIC testing gây ra failure, debugging phải TÌM nguyên nhân (defect) trước, phân tích, rồi mới loại bỏ."},{"k":"vs","a":["🛡️","QA","Hướng QUY TRÌNH · phòng ngừa (preventive) · trách nhiệm của MỌI người trong dự án"],"b":["🔍","Testing","Hướng SẢN PHẨM · sửa lỗi (corrective) · là một hình thức quality control"]},{"k":"p","t":"Phân biệt theo HOẠT ĐỘNG, không theo chức danh: dev viết unit test cũng là testing. Confirmation testing (chạy lại test đã fail sau khi sửa) là TESTING, không phải debugging."},{"k":"wp","name":"Ghi chú phân tích nguyên nhân gốc","doc":[["Failure","Chuyển 5,000 bị từ chối “vượt hạn mức” (quan sát khi chạy test)"],["Defect","TransferValidator: điều kiện amount < 5000, đúng phải là amount <= 5000"],["Error","Dev đọc “tối đa 5,000” thành “nhỏ hơn 5,000”"],["Root cause","Acceptance criteria mơ hồ, không có ví dụ biên; team bị dí deadline"],["Hành động","Sửa điều kiện; thêm test biên; bổ sung ví dụ vào acceptance criteria"]],"note":"Chuỗi: root cause → error → defect → failure."},{"k":"sample","lo":"1.2.3","q":"While running a test, a tester sees that the cart shows a 15% discount instead of the specified 10%. Which term describes this observation?","o":["Error","Failure","Defect","Root cause"],"a":"b","why":"Failure là hành vi sai quan sát được khi chạy. Error là sai sót của người, defect là lỗi nằm trong code hoặc tài liệu, root cause là lý do gốc xa nhất."}]},"activities":{"hook":"Hỏi WHAT trước, rồi mới tới HOW","trap":"Analysis ra test conditions. Design ra test cases và coverage items. Implementation ra test suites, test data, lịch chạy. Test Manager KHÔNG tự tay viết test case chi tiết — đó là việc của Tester (dù team nhỏ có thể kiêm nhiệm cả hai). Bẫy hay gặp trong đề: ước lượng effort là test PLANNING; dùng BVA để suy ra coverage item là test DESIGN; báo cáo defect tìm được khi chạy test là test EXECUTION; test environment REQUIREMENTS là đầu ra của design, còn DỰNG environment là ở implementation. Đúng 7 hoạt động: planning, monitoring and control, analysis, design, implementation, execution, completion. Monitoring and control không nằm giữa execution và completion (Quiz 10 Q5). Khi đề liệt kê nhiều task cho hai vai trò, nhìn ĐỘNG TỪ (xem từ khoá) (Quiz 8 Q6, Quiz 17 Q33, Quiz 19 Q33).","body":[{"k":"kw","items":["Analysis=WHAT, Design=HOW","Test Manager ≠ Tester","Monitoring & control CHẠY LIÊN TỤC","test procedures","test execution schedule","testware produced by","KHÔNG có activity “review” hay “reporting”","test condition (analysis) ≠ test case + test data cần có (design)","tạo/thu thập test data = implementation","👔 MANAGEMENT: kế hoạch · giám sát và kiểm soát · completion","👔 MANAGEMENT: báo cáo cho stakeholder","👔 MANAGEMENT: policy, strategy, resource, escalation","👔 MANAGEMENT: quy trình defect và change request","👔 MANAGEMENT: metrics, chọn tool, QUYẾT ĐỊNH về environment","🧑‍💻 TESTING: phân tích test basis, test condition","🧑‍💻 TESTING: thiết kế test case, test data","🧑‍💻 TESTING: DỰNG và KIỂM TRA environment, hạ tầng, tool cần dùng","🧑‍💻 TESTING: stub, driver, simulator","🧑‍💻 TESTING: thực thi, báo cáo defect tìm thấy","🧑‍💻 TESTING: review test do người khác viết","động từ: plan · monitor · control · report · decide → MANAGEMENT","động từ: analyze · design · implement · set up · verify · execute → TESTING","ngữ cảnh test: kỹ năng đội · loại phần mềm · SDLC · ràng buộc dự án · stakeholder","số dòng code KHÔNG phải yếu tố ngữ cảnh đáng kể"]},{"k":"flow","items":["🗺️ Planning","🔍 Analysis — WHAT","✏️ Design — HOW","🧰 Implementation — dựng thật","▶️ Execution — chạy","📦 Completion — dọn dẹp"]},{"k":"p","t":"📡 Monitoring & control chạy liên tục, song song với mọi bước."},{"k":"svg","t":"<div class=\"kt\"><div class=\"kr\"><div class=\"kn\">🗺️ Test planning</div><div class=\"qk\"><span>define test objectives</span><span>choose the test approach</span><span>estimate test effort</span><span>entry and exit criteria</span><span>approach depends on SDLC · product risks · regulations</span><span class=\"x\">test plan</span></div></div><div class=\"kr\"><div class=\"kn\">📡 Test monitoring and control</div><div class=\"qk\"><span>runs continuously</span><span>ongoing checks that the plan is followed</span><span>compare actual progress with the plan</span><span>take corrective actions</span><span>evaluate exit criteria</span><span class=\"x\">test progress report</span></div></div><div class=\"kr\"><div class=\"kn\">🔍 Test analysis</div><div class=\"qk\"><span>evaluate the test basis</span><span>identify features to test</span><span>define and prioritize test conditions</span><span>defects found in the test basis</span><span>assess testability of the test object</span><span>techniques used to identify test conditions</span><span class=\"x\">prioritized test conditions</span><span class=\"x\">defect reports (test basis)</span></div></div><div class=\"kr\"><div class=\"kn\">✏️ Test design</div><div class=\"qk\"><span>derive test cases from test conditions</span><span>identify coverage items</span><span>apply test techniques (EP, BVA)</span><span>specify test data and environment requirements</span><span class=\"x\">test cases</span><span class=\"x\">coverage items</span><span class=\"x\">test charters</span><span class=\"x\">test data requirements</span><span class=\"x\">test environment requirements</span></div></div><div class=\"kr\"><div class=\"kn\">🧰 Test implementation</div><div class=\"qk\"><span>organize test cases into test procedures</span><span>create automated test scripts</span><span>assemble test suites</span><span>create test data</span><span>build and verify the test environment</span><span>arrange the test execution schedule</span><span class=\"x\">test procedures</span><span class=\"x\">test suites</span><span class=\"x\">test execution schedule</span><span class=\"x\">stubs · drivers · simulators · service virtualization</span></div></div><div class=\"kr\"><div class=\"kn\">▶️ Test execution</div><div class=\"qk\"><span>execute test procedures per the schedule</span><span>compare actual and expected results</span><span>analyze discrepancies</span><span>report defects found by dynamic testing</span><span class=\"x\">test logs</span><span class=\"x\">defect reports</span></div></div><div class=\"kr\"><div class=\"kn\">📦 Test completion</div><div class=\"qk\"><span>at milestones: release · end of iteration · end of test level</span><span>archive reusable testware</span><span>shut down the test environment</span><span>analyze lessons learned</span><span class=\"x\">test completion report</span><span class=\"x\">lessons learned</span><span class=\"x\">action items</span><span class=\"x\">change requests (product backlog items)</span></div></div></div>","cap":"Ô đặc = cách đề thi chính thức diễn đạt task (bộ A đến D) · ô nét đứt = testware do activity tạo ra."},{"k":"vs","a":["👔","Test Manager","Chiến lược tổng thể, test policy, lập kế hoạch, quản lý resource, escalation, báo cáo cho stakeholder"],"b":["🧑‍💻","Tester","Phân tích/thiết kế/thực thi test chi tiết, viết defect report, đánh giá kỹ thuật"]},{"k":"sample","lo":"1.4.1","q":"Which test process activity answers the question “WHAT should be tested?” by analyzing the test basis and defining test conditions?","o":["Test design","Test implementation","Test analysis","Test planning"],"a":"c","why":"Test analysis trả lời WHAT (xác định test condition từ test basis). Test design trả lời HOW (thiết kế test case, test data cần có)."}]},"techcat":{"hook":"Nhìn vào spec, vào code, hay vào kinh nghiệm của mình?","trap":"Error guessing, exploratory, checklist-based là experience-based, KHÔNG phải black-box. Statement và branch là white-box. Nhóm kỹ thuật (cách suy ra test) và test type (functional, non-functional: mục tiêu) là hai trục khác nhau.","body":[{"k":"kw","items":["black-box test technique","white-box test technique","experience-based test technique","based on the specification","internal structure of the test object","knowledge and experience of the tester","góc nhìn người dùng = black-box (không phải white-box)","câu INCORRECT về white-box: tìm câu nói về người dùng hoặc specification"]},{"k":"svg","t":"<div class=\"tcs\">\n<div class=\"tcc bb\"><div class=\"th\">⬛ Black-box</div><div class=\"tb\">Dựa trên specification, không nhìn vào cấu trúc bên trong của test object</div><div class=\"qk\"><span>Equivalence partitioning</span><span>Boundary value analysis</span><span>Decision table testing</span><span>State transition testing</span></div><div class=\"cv\">Coverage item: partition · giá trị biên · rule · transition</div></div>\n<div class=\"tcc wb\"><div class=\"th\">⬜ White-box</div><div class=\"tb\">Dựa trên cấu trúc bên trong của test object: code, kiến trúc, data flow</div><div class=\"qk\"><span>Statement testing</span><span>Branch testing</span></div><div class=\"cv\">Coverage item: statement · branch</div></div>\n<div class=\"tcc ex\"><div class=\"th\">🧠 Experience-based</div><div class=\"tb\">Dựa trên kiến thức và kinh nghiệm của tester</div><div class=\"qk\"><span>Error guessing</span><span>Exploratory testing</span><span>Checklist-based testing</span></div><div class=\"cv\">Không đo coverage theo cấu trúc: dẫn dắt bằng danh sách lỗi, test charter hoặc checklist</div></div>\n</div>","cap":"Collaboration-based (user story, acceptance criteria, ATDD) là nhóm riêng ở mục 4.5."},{"k":"svg","t":"<div class=\"kt\"><div class=\"kg\">⬛ BLACK-BOX</div><div class=\"kr\"><div class=\"kn\">Equivalence partitioning</div><div class=\"qk\"><span>partitions</span><span>processed in the same way</span><span>valid / invalid partitions</span><span>one value per partition</span><span>coverage = partitions tested ÷ total</span></div></div><div class=\"kr\"><div class=\"kn\">Boundary value analysis</div><div class=\"qk\"><span>extension of EP</span><span>ordered partitions</span><span>min / max values</span><span>2-value · 3-value</span><span>defects at boundaries</span></div></div><div class=\"kr\"><div class=\"kn\">Decision table testing</div><div class=\"qk\"><span>combinations of conditions</span><span>rules (columns)</span><span>conditions and actions</span><span>T · F · – · N/A</span><span>business rules</span><span>one test per rule</span></div></div><div class=\"kr\"><div class=\"kn\">State transition testing</div><div class=\"qk\"><span>states · events · transitions</span><span>guard conditions</span><span>state diagram / state table</span><span>valid vs invalid transitions</span><span>all states · valid transitions · all transitions</span></div></div><div class=\"kg\">⬜ WHITE-BOX</div><div class=\"kr\"><div class=\"kn\">Statement testing</div><div class=\"qk\"><span>executable statements</span><span>coverage = statements exercised ÷ total</span><span>100% does not test all decision logic</span></div></div><div class=\"kr\"><div class=\"kn\">Branch testing</div><div class=\"qk\"><span>branch = transfer of control</span><span>decision outcomes (true / false)</span><span>control flow graph</span><span>100% branch ⇒ 100% statement</span></div></div><div class=\"kg\">🧠 EXPERIENCE-BASED</div><div class=\"kr\"><div class=\"kn\">Error guessing</div><div class=\"qk\"><span>past failures</span><span>errors developers make</span><span>defect and failure data</span><span>fault attack</span><span>list of possible defects</span></div></div><div class=\"kr\"><div class=\"kn\">Exploratory testing</div><div class=\"qk\"><span>informal · no predefined tests</span><span>simultaneous design and execution</span><span>session-based · time-box</span><span>test charter</span><span>debriefing</span><span>poor specification or time pressure</span></div></div><div class=\"kr\"><div class=\"kn\">Checklist-based testing</div><div class=\"qk\"><span>checklist items as questions</span><span>from experience · standards · why software fails</span><span>high level</span><span>coverage up · repeatability down</span></div></div><div class=\"kg\">🤝 COLLABORATION-BASED</div><div class=\"kr\"><div class=\"kn\">User story</div><div class=\"qk\"><span>Card · Conversation · Confirmation (3 Cs)</span><span>As a … I want … so that …</span><span>INVEST</span></div></div><div class=\"kr\"><div class=\"kn\">Acceptance criteria</div><div class=\"qk\"><span>scenario-oriented (Given / When / Then)</span><span>rule-oriented (list or table)</span><span>conditions for acceptance</span></div></div><div class=\"kr\"><div class=\"kn\">ATDD</div><div class=\"qk\"><span>specification workshop</span><span>test-first</span><span>positive → negative → non-functional tests</span></div></div></div>","cap":"Keyword đặc trưng của từng kỹ thuật: những từ hay xuất hiện trong đề và đáp án."},{"k":"p","t":"Các nhóm bổ trợ cho nhau: experience-based tìm được lỗi mà black-box và white-box bỏ sót, nhất là khi spec kém hoặc thiếu thời gian."},{"k":"p","t":"Đừng lẫn nhóm kỹ thuật với test type:"},{"k":"rows","items":[["⬛","Black-box testing (test type)","Dựa trên specification: tập trung vào input và output, không xét cấu trúc bên trong"],["⬜","White-box testing (test type)","Dựa trên cấu trúc: suy ra test từ code, kiến trúc, workflow, data flow"],["⚙️","Functional / non-functional","MỤC TIÊU của testing: hệ thống làm gì, và làm tốt tới đâu"]]},{"k":"sample","lo":"4.1.1","q":"A tester derives test cases from the structure of the source code. Which category of test techniques is this?","o":["Black-box","White-box","Experience-based","Static analysis"],"a":"b","why":"White-box (structural): test dựa trên cấu trúc bên trong (code, kiến trúc). Black-box dựa trên specification, experience-based dựa trên kinh nghiệm."}]},"pyrquad":{"hook":"Kim tự tháp đo kích cỡ, nhà hàng đo mục đích","trap":"Usability thuộc Q3, không phải Q4 — Q4 chứa non-functional tests TRỪ usability, cộng thêm smoke tests. Testing quadrants KHÔNG gán cứng test type vào test level — bất kỳ test type nào vẫn chạy được ở bất kỳ level nào; quadrants chỉ nhóm level/type/activity/technique/work product theo trục business-tech facing và support-critique.","body":[{"k":"kw","items":["Pyramid = trục GRANULARITY","Quadrants = trục MỤC ĐÍCH","Usability = Q3, KHÔNG phải Q4","Q1: component + component integration tests","Q2: functional tests, examples, user story tests, UX prototypes, API testing, simulations","Q3: exploratory, usability, user acceptance testing","Q4: smoke tests + non-functional tests","business facing","technology facing","supporting the team (guides development)","critique the product (measures behavior against expectations)","any test type can be performed at any test level","help non-technical stakeholders understand test types","some test types are more relevant to certain test levels than others","pyramid: tầng dưới NHIỀU test; mọi tầng đều tự động hoá được nhưng vẫn cần test thủ công (exploratory)"]},{"k":"svg","t":"<svg viewBox=\"0 0 280 140\" role=\"img\" aria-label=\"Test pyramid 3 tầng: đáy Unit nhiều, đỉnh E2E ít\">\n<title>Test Pyramid</title>\n<polygon points=\"140,10 166,52 114,52\" fill=\"#ffc6a5\"/>\n<polygon points=\"106,56 174,56 194,96 86,96\" fill=\"#f6a06b\"/>\n<polygon points=\"74,100 206,100 228,136 52,136\" fill=\"#ccdbb2\"/>\n<text x=\"140\" y=\"35\" text-anchor=\"middle\" font-size=\"10\" fill=\"#201e1d\" font-weight=\"700\">E2E</text>\n<text x=\"140\" y=\"80\" text-anchor=\"middle\" font-size=\"10\" fill=\"#201e1d\" font-weight=\"700\">Integration</text>\n<text x=\"140\" y=\"121\" text-anchor=\"middle\" font-size=\"10\" fill=\"#201e1d\" font-weight=\"700\">Unit / Component</text>\n</svg>","cap":"Trục granularity — đáy nhiều·nhanh·nhỏ, đỉnh ít·chậm·to"},{"k":"svg","t":"<div class=\"quad\">\n<span></span><div class=\"qh\">NGHIỆP VỤ</div><div class=\"qh\">KỸ THUẬT</div>\n<div class=\"qrow\">SUPPORT</div>\n<div class=\"qc b\"><div class=\"qi\">🧾</div><div class=\"qn\">Q2 phục vụ kiểm order</div><div class=\"qk\"><span>Functional tests</span><span>Examples</span><span>User story tests</span><span>UX prototypes</span><span>API testing</span><span>Simulations</span><span class=\"x\">ATDD</span><span class=\"x\">BDD</span></div></div>\n<div class=\"qc t\"><div class=\"qi\">🍳</div><div class=\"qn\">Q1 bếp tự nếm</div><div class=\"qk\"><span>Component tests</span><span>Component integration tests</span><span class=\"x\">TDD</span></div></div>\n<div class=\"qrow\">CRITIQUE</div>\n<div class=\"qc b\"><div class=\"qi\">😋</div><div class=\"qn\">Q3 khách nếm</div><div class=\"qk\"><span>Exploratory testing</span><span>Usability testing</span><span>User acceptance testing</span></div></div>\n<div class=\"qc t\"><div class=\"qi\">🏥</div><div class=\"qn\">Q4 sở y tế</div><div class=\"qk\"><span>Smoke tests</span><span>Non-functional tests</span><span class=\"x\">Performance</span><span class=\"x\">Security</span></div></div>\n</div>","cap":"Ô đặc = từ khoá trong đề thi · ô nét đứt = thực hành liên quan"},{"k":"vs","a":["🔺","Test pyramid","Đáy: unit nhiều, nhanh, nhỏ. Đỉnh: E2E ít, chậm, to. Trục là granularity."],"b":["🍽️","Testing quadrants","🍳 Q1 bếp tự nếm — component và component integration tests<br>🧾 Q2 phục vụ kiểm order — functional tests, examples, user story tests, UX prototypes, API testing, simulations<br>😋 Q3 khách nếm — exploratory, usability, user acceptance testing<br>🏥 Q4 sở y tế — smoke tests, non-functional tests"]},{"k":"sample","lo":"5.1.6","q":"In the test pyramid, which tests should be the most numerous (the base layer)?","o":["UI/end-to-end tests","API/service tests","Manual exploratory tests","Unit/component tests"],"a":"d","why":"Test pyramid: nhiều unit/component test ở đáy (nhanh, rẻ, cô lập), ít end-to-end test ở đỉnh (chậm, đắt)."}]}};
+const SLO_DATA={"efd":[{"lo":"1.1.1","k":"K1","statement":"Identify typical <mark>test objectives</mark>","section":"1.1.1 Test Objectives","keywords":["coverage","defect","failure","quality","risk","test object","test objective"],"excerpt":[{"t":"p","html":"The typical <mark>test objectives</mark> are:"},{"t":"li","html":"Causing <mark>failures</mark> and finding <mark>defects</mark>"},{"t":"li","html":"Ensuring required <mark>coverage</mark> of a <mark>test object</mark>"},{"t":"li","html":"Reducing the <mark>risk</mark> level of inadequate software <mark>quality</mark>"},{"t":"li","html":"Verifying that a <mark>test object</mark> complies with contractual, legal, and regulatory requirements"},{"t":"li","html":"Building confidence in the <mark>quality</mark> of the <mark>test object</mark>"},{"t":"li","html":"Validating whether the <mark>test object</mark> is complete and works as expected by the stakeholders"},{"t":"p","html":"<mark>Test objectives</mark> can vary, depending upon the context, which includes the work product being tested, the test level, <mark>risks</mark>, the software development lifecycle (SDLC) being followed, and factors related to the business context, e.g., corporate structure, competitive considerations, or time to market."}]},{"lo":"1.1.2","k":"K2","statement":"Differentiate testing from <mark>debugging</mark>","section":"1.1.2 Testing and Debugging","keywords":["confirmation testing","debugging","defect","dynamic testing","failure","static testing","test object"],"excerpt":[{"t":"p","html":"Testing and <mark>debugging</mark> are separate activities. … Testing can trigger <mark>failures</mark> that are caused by <mark>defects</mark> in the software (<mark>dynamic testing</mark>) or can directly find <mark>defects</mark> in the <mark>test object</mark> (<mark>static testing</mark>). … When <mark>dynamic testing</mark> (see chapter 4) triggers a <mark>failure</mark>, <mark>debugging</mark> is concerned with finding causes of this <mark>failure</mark> (<mark>defects</mark>), analyzing these causes, and eliminating them. … The typical <mark>debugging</mark> process in this case involves:"},{"t":"li","html":"Reproduction of a <mark>failure</mark>"},{"t":"li","html":"Diagnosis (finding the <mark>defect</mark>)"},{"t":"li","html":"Fixing the <mark>defect</mark>"},{"t":"p","html":"Subsequent <mark>confirmation testing</mark> checks whether the fixes resolved the problem. … Preferably, <mark>confirmation testing</mark> is done by the same person who performed the initial test. … Subsequent regression testing can also be performed, to check whether the fixes are causing <mark>failures</mark> in other parts of the <mark>test object</mark> (see section 2.2.3 for more information on <mark>confirmation testing</mark> and regression testing). … When <mark>static testing</mark> identifies a <mark>defect</mark>, <mark>debugging</mark> is concerned with removing it. … There is no need for reproduction or diagnosis, since <mark>static testing</mark> directly finds <mark>defects</mark>, and cannot cause <mark>failures</mark> (see chapter 3)."}]},{"lo":"1.2.2","k":"K1","statement":"Recall the relation between testing and <mark>quality</mark> assurance","section":"1.2.2 Testing and Quality Assurance (QA)","keywords":["defect","quality"],"excerpt":[{"t":"p","html":"While people often use the terms “testing” and “<mark>quality</mark> assurance” (QA) interchangeably, testing and QA are not the same. … Testing is a product-oriented, corrective approach that focuses on those activities supporting the achievement of appropriate levels of <mark>quality</mark>. … Testing is a major form of <mark>quality</mark> control, while others include formal methods (model checking and proof of correctness), simulation and prototyping. … In testing they are used to fix <mark>defects</mark>, while in QA they provide feedback on how well the development and test processes are performing."}]},{"lo":"1.2.3","k":"K2","statement":"Distinguish between <mark>root cause</mark>, <mark>error</mark>, <mark>defect</mark>, and <mark>failure</mark>","section":"1.2.3 Errors, Defects, Failures, and Root Causes","keywords":["defect","error","failure","root cause"],"excerpt":[{"t":"p","html":"Human beings make <mark>errors</mark> (mistakes), which produce <mark>defects</mark> (faults, bugs), which in turn may result in <mark>failures</mark>. … Humans make <mark>errors</mark> for various reasons, such as time pressure, complexity of work products, processes, infrastructure or interactions, or simply because they are tired or lack adequate training. … <mark>Defects</mark> can be found in documentation, such as a requirements specification or a test script, in source code, or in a supporting work product such as a build file. … <mark>Defects</mark> in work products produced earlier in the SDLC, if undetected, often lead to defective work products later in the lifecycle. … If a <mark>defect</mark> in code is executed, the system may fail to do what it should do, or do something it shouldn’t, causing a <mark>failure</mark>. … Some <mark>defects</mark> will always result in a <mark>failure</mark> if executed, while others will only result in a <mark>failure</mark> in specific circumstances, and some may never result in a <mark>failure</mark>. … <mark>Errors</mark> and <mark>defects</mark> are not the only cause of <mark>failures</mark>. … <mark>Failures</mark> can also be caused by environmental conditions, such as when radiation or electromagnetic fields cause <mark>defects</mark> in firmware. … A <mark>root cause</mark> is a fundamental reason for the occurrence of a problem (e.g., a situation that leads to an <mark>error</mark>). … <mark>Root causes</mark> are identified through <mark>root cause</mark> analysis, which is typically performed when a <mark>failure</mark> occurs or a <mark>defect</mark> is identified. … It is believed that further similar <mark>failures</mark> or <mark>defects</mark> can be prevented or their frequency reduced by addressing the <mark>root cause</mark>, such as by removing it."}]}],"activities":[{"lo":"1.4.1","k":"K2","statement":"Explain the different test <mark>activities</mark> and related tasks","section":"1.4.1 Test Activities and Tasks","keywords":["activities","analysis","change requests","completion","control","coverage","coverage items","defect","end of iteration","lessons learned","product backlog items","release","report","risk","set up","stakeholder","test analysis","test basis","test case","test cases","test charters","test completion","test completion report","test condition","test data","test data requirements","test design","test execution","test execution schedule","test implementation","test level","test monitoring","test object","test objective","test planning","test procedures","test process","test suites","test technique","testware"],"excerpt":[{"t":"p","html":"A <mark>test process</mark> usually consists of the main groups of <mark>activities</mark> described below. … Although many of these <mark>activities</mark> may appear to follow a logical sequence, they are often implemented iteratively or in parallel. … These testing <mark>activities</mark> usually need to be tailored to the system and the project. … <mark>Test planning</mark> consists of defining the <mark>test objectives</mark> and then selecting an approach that best achieves the objectives within the constraints imposed by the overall context. … <mark>Test planning</mark> is further explained in section 5.1."},{"t":"p","html":"<mark>Test monitoring</mark> and test <mark>control</mark>. … <mark>Test monitoring</mark> involves the ongoing checking of all test <mark>activities</mark> and the comparison of actual progress against the plan. … Test <mark>control</mark> involves taking the actions necessary to meet the <mark>test objectives</mark>. … <mark>Test monitoring</mark> and test <mark>control</mark> are further explained in section 5.3. … <mark>Test analysis</mark> includes analyzing the <mark>test basis</mark> to identify testable features. … Associated <mark>test conditions</mark> are defined and prioritized, taking the related <mark>risks</mark> and <mark>risk</mark> levels into account (see section 5.2). … The <mark>test basis</mark> and the <mark>test object</mark> are also evaluated to identify <mark>defects</mark> they may contain and to assess their testability. … <mark>Test analysis</mark> is often supported by the use of <mark>test techniques</mark> (see chapter 4). … <mark>Test analysis</mark> answers the question “what to test?” in terms of measurable <mark>coverage</mark> criteria. … <mark>Test design</mark> includes elaborating the <mark>test conditions</mark> into <mark>test cases</mark> and other <mark>testware</mark> (e.g., <mark>test charters</mark>). … This activity often involves the identification of <mark>coverage items</mark>, which serve as a guide to specify <mark>test case</mark> inputs. … <mark>Test techniques</mark> (see chapter 4) can be used to support this activity. … <mark>Test design</mark> also includes defining the <mark>test data requirements</mark>, designing the test environment and identifying the necessary infrastructure and tools. … <mark>Test design</mark> answers the question “how to test?”. … <mark>Test implementation</mark> includes creating or acquiring the <mark>testware</mark> necessary for <mark>test execution</mark> (e.g., <mark>test data</mark>). … <mark>Test cases</mark> can be organized into <mark>test procedures</mark>, which are often assembled into <mark>test suites</mark>. … <mark>Test procedures</mark> are prioritized and arranged within a <mark>test execution schedule</mark> for efficient <mark>test execution</mark> (see section 5.1.5). … The test environment is built and verified to be <mark>set up</mark> correctly. … <mark>Test execution</mark> includes running the tests in accordance with the <mark>test execution schedule</mark> (test runs). … <mark>Test execution</mark> may be manual or automated. … <mark>Test execution</mark> can take many forms, including continuous testing or pair testing sessions. … This <mark>analysis</mark> allows us to <mark>report</mark> the anomalies based on the failures observed (see section 5.5). … <mark>Test completion</mark> usually occurs at project milestones (e.g., <mark>release</mark>, <mark>end of iteration</mark>, <mark>test level</mark> <mark>completion</mark>). … For any unresolved <mark>defects</mark>, <mark>change requests</mark> or <mark>product backlog items</mark> are created. … Any <mark>testware</mark> that may be useful in the future is identified and archived or handed over to the appropriate teams. … The test <mark>activities</mark> are analyzed to identify <mark>lessons learned</mark> and improvements for future iterations, <mark>releases</mark>, or projects (see section 2.1.6). … A <mark>test completion report</mark> is created and communicated to the <mark>stakeholders</mark>."}]},{"lo":"1.4.2","k":"K2","statement":"Explain the impact of context on the test process","section":"1.4.2 Test Process in Context","keywords":["activities","coverage","regulations","reporting","resource","risk","stakeholder","strategy","test object","test technique","testware"],"excerpt":[{"t":"p","html":"… Test <mark>activities</mark> are an integral part of the development processes carried out within an organization. … Testing is also funded by <mark>stakeholders</mark> and its final goal is to help fulfill the <mark>stakeholders</mark>’ business needs. …"},{"t":"li","html":"<mark>Stakeholders</mark> (needs, expectations, requirements, willingness to cooperate, etc.)"},{"t":"li","html":"Business domain (criticality of the <mark>test object</mark>, identified <mark>risks</mark>, market needs, specific legal <mark>regulations</mark>, etc.)"},{"t":"li","html":"Project constraints (scope, time, budget, <mark>resources</mark>, etc.)"},{"t":"p","html":"These factors will have an impact on many test-related issues, including: test <mark>strategy</mark>, <mark>test techniques</mark> used, degree of test automation, required level of <mark>coverage</mark>, level of detail of <mark>testware</mark>, test <mark>reporting</mark>, etc."}]},{"lo":"1.4.5","k":"K2","statement":"Compare the different roles in testing","section":"1.4.5 Roles in Testing","keywords":["activities","control","management","test analysis","test completion","test design","test execution","test implementation","test manager","test monitoring","test planning","test process"],"excerpt":[{"t":"p","html":"In this syllabus, two principal roles in testing are covered: a test <mark>management</mark> role and a testing role. … The <mark>activities</mark> and tasks assigned to these two roles depend on factors such as the project and product context, the skills of the people in the roles, and the organization. … The test <mark>management</mark> role takes overall responsibility for the <mark>test process</mark>, test team and leadership of the test <mark>activities</mark>. … The test <mark>management</mark> role is mainly focused on the <mark>activities</mark> of <mark>test planning</mark>, <mark>test monitoring</mark>, test <mark>control</mark> and <mark>test completion</mark>. … The way in which the test <mark>management</mark> role is carried out varies depending on the context. … For example, in Agile software development, some of the test <mark>management</mark> tasks may be handled by the Agile team. … Tasks that span multiple teams or the entire organization may be performed by <mark>test managers</mark> outside of the development team. … The testing role is mainly focused on the <mark>activities</mark> of <mark>test analysis</mark>, <mark>test design</mark>, <mark>test implementation</mark> and <mark>test execution</mark>. … For example, the test <mark>management</mark> role can be performed by a team leader, by a <mark>test manager</mark>, by a development manager, etc. … It is also possible for one person to take on the roles of testing and test <mark>management</mark> at the same time."}]}],"techcat":[{"lo":"4.1.1","k":"K2","statement":"Distinguish <mark>black-box test techniques</mark>, <mark>white-box test techniques</mark> and <mark>experience-based</mark>","section":"4.1 Test Techniques Overview","keywords":["black-box","black-box test technique","coverage item","defect","experience-based","experience-based test technique","test case","test object","test technique","white-box","white-box test technique"],"excerpt":[{"t":"p","html":"<mark>Test techniques</mark> support the tester in test analysis (what to test) and in test design (how to test). … <mark>Test techniques</mark> help to develop a relatively small, but sufficient, set of <mark>test cases</mark> in a systematic way. … <mark>Test techniques</mark> also help the tester to define test conditions, identify <mark>coverage items</mark>, and identify test data during the test analysis and design. … Further information on <mark>test techniques</mark> can be found in the ISO/IEC/IEEE 29119-4 standard, and in (Beizer 1990, Craig 2002, Copeland 2004, Koomen 2006, Jorgensen 2014, Ammann 2016, Forgács 2019). … In this syllabus, <mark>test techniques</mark> are classified as <mark>black-box</mark>, <mark>white-box</mark>, and <mark>experience-based</mark>. … <mark>Black-box test techniques</mark> (also known as specification-based techniques) are based on an analysis of the specified behavior of the <mark>test object</mark> without reference to its internal structure. … Therefore, the <mark>test cases</mark> are independent of how the software is implemented. … Consequently, if the implementation changes, but the required behavior stays the same, then the <mark>test cases</mark> are still useful. … <mark>White-box test techniques</mark> (also known as structure-based techniques) are based on an analysis of the <mark>test object</mark>’s internal structure and processing. … As the <mark>test cases</mark> are dependent on how the software is designed, they can only be created after the design or implementation of the <mark>test object</mark>. … <mark>Experience-based test techniques</mark> effectively use the knowledge and experience of testers for the design and implementation of <mark>test cases</mark>. … The effectiveness of these <mark>test techniques</mark> depends heavily on the tester’s skills. … <mark>Experience-based test techniques</mark> can detect <mark>defects</mark> that may be missed using the <mark>black-box test techniques</mark> and <mark>white-box test techniques</mark>. … Hence, <mark>experience-based test techniques</mark> are complementary to the <mark>black-box test techniques</mark> and <mark>white-box test techniques</mark>."}]}],"pyrquad":[{"lo":"5.1.6","k":"K1","statement":"Recall the concepts of the <mark>test pyramid</mark>","section":"5.1.6 Test Pyramid","keywords":["component","pyramid","test level","test pyramid"],"excerpt":[{"t":"p","html":"The <mark>test pyramid</mark> is a model showing that different tests may have different granularity. … The <mark>test pyramid</mark> model supports the team in test automation and in test effort allocation by showing that different test objectives are supported by different levels of test automation. … The <mark>pyramid</mark> layers represent groups of tests. … For example, the original <mark>test pyramid</mark> model (Cohn 2009) defines three layers: “unit tests”, “service tests” and “UI tests”. … Another popular model defines unit (<mark>component</mark>) tests, integration (<mark>component</mark> integration) tests, and end-to-end tests. … Other <mark>test levels</mark> (see section 2.2.1) can also be used."}]},{"lo":"5.1.7","k":"K2","statement":"Summarize the <mark>testing quadrants</mark> and their relationships with <mark>test levels</mark> and <mark>test types</mark>","section":"5.1.7 Testing Quadrants","keywords":["api testing","business facing","component integration tests","component tests","critique the product","exploratory testing","functional tests","non-functional tests","quadrants","simulations","smoke tests","technology facing","test level","test type","testing quadrants","usability","usability testing","user acceptance testing","user story tests"],"excerpt":[{"t":"p","html":"The <mark>testing quadrants</mark>, defined by Brian Marick (Marick 2003, Crispin 2008), group the <mark>test levels</mark> with the appropriate <mark>test types</mark>, activities, test techniques and work products in the Agile software development. … The model supports test management in visualizing these to ensure that all appropriate <mark>test types</mark> and <mark>test levels</mark> are included in the SDLC and in understanding that some <mark>test types</mark> are more relevant to certain <mark>test levels</mark> than others. … This model also provides a way to differentiate and describe the <mark>test types</mark> to all stakeholders, including developers, testers, and business representatives. … In this model, tests can be <mark>business facing</mark> or <mark>technology facing</mark>. … Tests can also support the team (i.e., guide the development) or <mark>critique the product</mark> (i.e., measure its behavior against the expectations). … The combination of these two viewpoints determines the four <mark>quadrants</mark>:"},{"t":"li","html":"Quadrant Q1 (<mark>technology facing</mark>, support the team). This quadrant contains <mark>component tests</mark> and <mark>component integration tests</mark>. These tests should be automated and included in the CI process."},{"t":"li","html":"Quadrant Q2 (<mark>business facing</mark>, support the team). This quadrant contains <mark>functional tests</mark>, examples, <mark>user story tests</mark>, user experience prototypes, <mark>API testing</mark>, and <mark>simulations</mark>. These tests check the acceptance criteria and can be manual or automated."},{"t":"li","html":"Quadrant Q3 (<mark>business facing</mark>, <mark>critique the product</mark>). This quadrant contains <mark>exploratory testing</mark>, <mark>usability testing</mark>, <mark>user acceptance testing</mark>. These tests are user-oriented and often manual."},{"t":"li","html":"Quadrant Q4 (<mark>technology facing</mark>, <mark>critique the product</mark>). This quadrant contains <mark>smoke tests</mark> and <mark>non-functional tests</mark> (except <mark>usability</mark> tests). These tests are often automated."}]}]};
+const TOPIC_LIST=[["efd","c1","💥","Error → Defect → Failure",true],["principles","c1","🎣","7 nguyên tắc",false],["vv","c1","⚖️","Verification vs Validation",false],["activities","c1","🔁","7 test activities",true],["testware","c1","🔗","Testware & traceability",true],["independence","c1","🔭","Independence",false],["wholeteam","c1","🧑‍🤝‍🧑","Whole team",true],["sdlc","c2","♻️","Sequential vs Iterative SDLC",false],["levels","c2","🏠","5 test levels",false],["leveltype","c2","🔀","Level ≠ Type",true],["confreg","c2","🔄","Confirmation vs Regression",false],["maint","c2","🚚","Sửa, chuyển, dọn nhà",true],["testfirst","c2","✍️","Test-first TDD, ATDD, BDD",true],["shiftleft","c2","⬅️","Shift-left",true],["staticdyn","c3","📄","Static vs Dynamic",false],["reviews","c3","👥","4 loại review",true],["success","c3","🏆","Success factors",false],["techcat","c4","🌗","Black-box, White-box & Experience-based",true],["ep","c4","🗂️","Equivalence Partitioning",true],["bva","c4","🚧","Boundary Value Analysis",true],["dt","c4","📊","Decision table",true],["st","c4","🪆","State transition",true],["whitebox","c4","🌿","Branch ⊇ Statement",false],["experience","c4","🕵️","Error guessing, Exploratory, Checklist",true],["atdd","c4","🤝","ATDD & INVEST",false],["plan","c5","🗺️","Test plan",true],["relplan","c5","🗓️","Release vs Iteration planning",false],["estimate","c5","🧮","3-point estimation",false],["prio","c5","🥇","Prioritization",true],["pyrquad","c5","🔺","Pyramid vs Quadrants",true],["risk","c5","🎲","Risk = L × I",false],["config","c5","🗃️","Config mgmt vs Defect mgmt",false],["defect","c5","🐞","Defect report",true],["reports","c5","📈","Progress vs Completion report",true],["tooltypes","c6","▶️","Có bấm Run không?",true],["automation","c6","🤖","Automation: lợi & rủi ro",true]];
+const CH_DATA=[
+ {id:'c1',title:'Fundamentals of Testing',q:8,icon:'🧭',nick:'Nền móng',summary:'What testing is, why it is needed, the seven principles and the test process.',pts:['8 exam questions','Covers error→defect→failure, the 7 principles, test activities and roles']},
+ {id:'c2',title:'Testing Throughout the SDLC',q:6,icon:'🏗️',nick:'Test trong SDLC',summary:'How testing fits sequential, iterative and agile lifecycles; the test levels and types.',pts:['6 exam questions','Covers 5 test levels, test types, TDD/ATDD/BDD, shift-left and DevOps']},
+ {id:'c3',title:'Static Testing',q:4,icon:'🔍',nick:'Static testing',summary:'Examining work products without executing them, through review or static analysis.',pts:['4 exam questions','Covers static vs dynamic, review types from informal to inspection, success factors']},
+ {id:'c4',title:'Test Analysis and Design',q:11,icon:'🧪',nick:'Kỹ thuật test',summary:'Techniques to derive test conditions, test cases and test data from the test basis.',pts:['11 exam questions — the heaviest chapter','Covers EP, BVA, decision tables, state transitions, white-box techniques, experience-based, ATDD']},
+ {id:'c5',title:'Managing the Test Activities',q:9,icon:'📋',nick:'Quản lý',summary:'Planning, risk, monitoring and control, configuration and defect management.',pts:['9 exam questions','Covers test plan, pyramid/quadrants, risk, defect reports, metrics']},
+ {id:'c6',title:'Test Tools',q:2,icon:'🛠️',nick:'Tool support',summary:'Tool support for testing activities and the benefits and risks of automation.',pts:['2 exam questions','Covers tool categories and automation trade-offs']}
+];
+const N={},KIDS={};
+N['root']={id:'root',p:null,t:'ISTQB CTFL v4.0.1',s:'The Foundation Level syllabus in six chapters. 40 multiple-choice questions, 60 minutes, pass at 65%.',pts:['Chapter weights: 8/6/4/11/9/2 questions','K1 remember · K2 understand · K3 apply','Chapter 4 carries the most questions (11)']};
+KIDS['root']=[];
+CH_DATA.forEach(c=>{N[c.id]={id:c.id,p:'root',t:c.icon+' '+c.nick,s:c.summary,pts:c.pts,q:c.q,title:c.title};KIDS['root'].push(c.id);KIDS[c.id]=[]});
+TOPIC_LIST.forEach(([id,ch,icon,label,starred])=>{N[id]={id,p:ch,t:icon+' '+label,s:'',pts:[],starred};KIDS[ch].push(id)});
+const chOf=id=>{const n=N[id];if(!n||!n.p||n.p==='root')return n&&n.id[0]==='c'?+n.id.slice(1):null;return +N[id].p.slice(1)};
+const depthOf=id=>{let d=0,cur=id;while(N[cur]&&N[cur].p){d++;cur=N[cur].p}return d};
+const STUDY=TOPIC_LIST.map(t=>t[0]);
 const Q=[
-{ch:1,q:'Which of the following is a typical objective of testing?',o:['Fixing defects found in the code','Triggering failures and finding defects','Proving that the software has no defects','Writing the user requirements'],a:1,e:'Testing triggers failures and finds defects. Fixing them is debugging, and testing can never prove the absence of defects.'},
-{ch:1,q:'A developer makes a mistake that puts incorrect code into the system. When run, the system produces wrong output. Which sequence is correct?',o:['Defect → Error → Failure','Error → Defect → Failure','Failure → Defect → Error','Error → Failure → Defect'],a:1,e:'A human error (mistake) introduces a defect (fault, bug) in the work product. Executing the defect can cause a failure.'},
-{ch:1,q:'"Exhaustive testing is impossible." What does this principle imply?',o:['Only the happy path should be tested','Test effort should be focused using risk, techniques and priorities','All tests should be automated','Testing should continue until no defects remain'],a:1,e:'Since you cannot test every combination, test techniques, prioritisation and risk-based testing focus the effort.'},
-{ch:2,q:'Which test level focuses on the interactions and interfaces between components?',o:['Component testing','Component integration testing','System testing','Acceptance testing'],a:1,e:'Component integration testing tests interfaces and interactions between components. Component testing tests them in isolation.'},
-{ch:2,q:'What is the purpose of confirmation testing?',o:['To check that a fix has resolved the original defect','To check that a change has not broken other areas','To confirm that users accept the system','To confirm the test environment is ready'],a:0,e:'Confirmation testing re-runs the failed tests to confirm the fix. Checking for side effects elsewhere is regression testing.'},
-{ch:3,q:'Which review type is the most formal, follows a defined process with documented outputs and collects metrics?',o:['Informal review','Walkthrough','Technical review','Inspection'],a:3,e:'Inspection is the most formal review type. It follows the full generic process and collects metrics to improve the process.'},
-{ch:3,q:'Which is a benefit of static testing?',o:['It detects defects early, before dynamic testing is possible','It measures performance under load','It finds failures in running code','It replaces dynamic testing'],a:0,e:'Static testing can start on requirements and design, finding defects before any code runs. It complements dynamic testing, it does not replace it.'},
-{ch:4,q:'An age field accepts integers from 18 to 65 inclusive. Using 2-value boundary value analysis, which set covers all boundary values?',o:['17, 18, 65, 66','18, 65','17, 66','0, 18, 65, 100'],a:0,e:'2-value BVA tests each boundary (18, 65) and its nearest neighbour in the adjacent partition (17, 66).'},
-{ch:4,q:'A field accepts values 1–100. Values below 1 and above 100 are invalid. What is the minimum number of test cases to cover all equivalence partitions?',o:['1','2','3','4'],a:2,e:'There are three partitions: < 1 (invalid), 1–100 (valid), > 100 (invalid). One value from each gives 100% EP coverage.'},
-{ch:4,q:'What does achieving 100% branch coverage guarantee?',o:['100% statement coverage','That the code has no defects','100% path coverage','That every decision was evaluated only to true'],a:0,e:'Every statement lies on some branch, so exercising all branches executes all statements. The reverse is not true.'},
-{ch:4,q:'An account locks after three failed login attempts. Which technique fits best for testing this behaviour?',o:['Equivalence partitioning','Decision table testing','State transition testing','Statement testing'],a:2,e:'The result depends on what happened before (the number of failed attempts), so a state model with transitions fits best.'},
-{ch:5,q:'Which of the following is a product risk?',o:['The test environment is delivered late','The software calculates interest incorrectly','There are not enough skilled testers','The test budget is cut'],a:1,e:'Product risks concern the quality of the product itself. The others are project risks that affect how the project is run.'},
-{ch:5,q:'Which is a typical exit criterion?',o:['Testable requirements are available','Planned coverage is reached and no critical defects remain open','The test environment is ready','Test tools are installed'],a:1,e:'Exit criteria define what must be achieved to finish. The other options are entry criteria.'},
-{ch:6,q:'Which is a risk of test automation?',o:['Less repetitive manual work','Unrealistic expectations about what the tool can do','Greater consistency of tests','More objective assessment'],a:1,e:'Unrealistic expectations are a classic automation risk. The other options are benefits.'},
-{ch:6,q:'Which is a benefit of test automation?',o:['Test design is no longer needed','Time saved by reducing repetitive manual work','The tool needs no maintenance','All manual testing can be replaced'],a:1,e:'Automation reduces repetitive manual work. Test design and maintenance are still needed, and manual testing keeps its place.'}];
+{ch:1,q:'Which of the following is a typical objective of testing?',o:['Fixing defects found in the code','Triggering failures and finding defects','Proving that the software has no defects','Writing the user requirements'],a:[1],e:'Testing triggers failures and finds defects. Fixing them is debugging, and testing can never prove the absence of defects.'},
+{ch:1,q:'A developer makes a mistake that puts incorrect code into the system. When run, the system produces wrong output. Which sequence is correct?',o:['Defect → Error → Failure','Error → Defect → Failure','Failure → Defect → Error','Error → Failure → Defect'],a:[1],e:'A human error (mistake) introduces a defect (fault, bug) in the work product. Executing the defect can cause a failure.'},
+{ch:1,q:'"Exhaustive testing is impossible." What does this principle imply?',o:['Only the happy path should be tested','Test effort should be focused using risk, techniques and priorities','All tests should be automated','Testing should continue until no defects remain'],a:[1],e:'Since you cannot test every combination, test techniques, prioritisation and risk-based testing focus the effort.'},
+{ch:1,q:'Which TWO statements are among the seven testing principles? Select 2 answers.',o:['Exhaustive testing is possible for small applications','Defects cluster together','Testing shows the absence of defects','Early testing saves time and money','Tests become more effective the longer you run them'],a:[1,3],e:'Defects cluster together (principle 4) and early testing saves time and money (principle 3) are two of the seven principles. The others contradict or are not among the seven.'},
+{ch:2,q:'Which test level focuses on the interactions and interfaces between components?',o:['Component testing','Component integration testing','System testing','Acceptance testing'],a:[1],e:'Component integration testing tests interfaces and interactions between components. Component testing tests them in isolation.'},
+{ch:2,q:'What is the purpose of confirmation testing?',o:['To check that a fix has resolved the original defect','To check that a change has not broken other areas','To confirm that users accept the system','To confirm the test environment is ready'],a:[0],e:'Confirmation testing re-runs the failed tests to confirm the fix. Checking for side effects elsewhere is regression testing.'},
+{ch:3,q:'Which review type is the most formal, follows a defined process with documented outputs and collects metrics?',o:['Informal review','Walkthrough','Technical review','Inspection'],a:[3],e:'Inspection is the most formal review type. It follows the full generic process and collects metrics to improve the process.'},
+{ch:3,q:'Which is a benefit of static testing?',o:['It detects defects early, before dynamic testing is possible','It measures performance under load','It finds failures in running code','It replaces dynamic testing'],a:[0],e:'Static testing can start on requirements and design, finding defects before any code runs. It complements dynamic testing, it does not replace it.'},
+{ch:4,q:'An age field accepts integers from 18 to 65 inclusive. Using 2-value boundary value analysis, which set covers all boundary values?',o:['17, 18, 65, 66','18, 65','17, 66','0, 18, 65, 100'],a:[0],e:'2-value BVA tests each boundary (18, 65) and its nearest neighbour in the adjacent partition (17, 66).'},
+{ch:4,q:'A field accepts values 1–100. Values below 1 and above 100 are invalid. What is the minimum number of test cases to cover all equivalence partitions?',o:['1','2','3','4'],a:[2],e:'There are three partitions: < 1 (invalid), 1–100 (valid), > 100 (invalid). One value from each gives 100% EP coverage.'},
+{ch:4,q:'What does achieving 100% branch coverage guarantee?',o:['100% statement coverage','That the code has no defects','100% path coverage','That every decision was evaluated only to true'],a:[0],e:'Every statement lies on some branch, so exercising all branches executes all statements. The reverse is not true.'},
+{ch:4,q:'An account locks after three failed login attempts. Which technique fits best for testing this behaviour?',o:['Equivalence partitioning','Decision table testing','State transition testing','Statement testing'],a:[2],e:'The result depends on what happened before (the number of failed attempts), so a state model with transitions fits best.'},
+{ch:4,q:'Which TWO of the following are black-box test techniques? Select 2 answers.',o:['Statement coverage','Equivalence partitioning','Branch coverage','Boundary value analysis','Path coverage'],a:[1,3],e:'Equivalence partitioning and boundary value analysis are both black-box (specification-based) techniques. Statement, branch and path coverage are white-box techniques based on code structure.'},
+{ch:5,q:'Which of the following is a product risk?',o:['The test environment is delivered late','The software calculates interest incorrectly','There are not enough skilled testers','The test budget is cut'],a:[1],e:'Product risks concern the quality of the product itself. The others are project risks that affect how the project is run.'},
+{ch:5,q:'Which is a typical exit criterion?',o:['Testable requirements are available','Planned coverage is reached and no critical defects remain open','The test environment is ready','Test tools are installed'],a:[1],e:'Exit criteria define what must be achieved to finish. The other options are entry criteria.'},
+{ch:5,q:'A test manager wants to monitor progress. Which metric is most appropriate as an exit criterion?',o:['Number of test cases written','Defect discovery rate over the last three days','Percentage of planned test coverage achieved','Average test execution time','Number of testers assigned to the project'],a:[2],e:'Exit criteria measure ACHIEVED outcomes. Coverage percentage directly tracks completion against the plan. Discovery rate, timing and staffing are monitoring metrics, not exit conditions.'},
+{ch:6,q:'Which is a risk of test automation?',o:['Less repetitive manual work','Unrealistic expectations about what the tool can do','Greater consistency of tests','More objective assessment'],a:[1],e:'Unrealistic expectations are a classic automation risk. The other options are benefits.'},
+{ch:6,q:'Which is a benefit of test automation?',o:['Test design is no longer needed','Time saved by reducing repetitive manual work','The tool needs no maintenance','All manual testing can be replaced'],a:[1],e:'Automation reduces repetitive manual work. Test design and maintenance are still needed, and manual testing keeps its place.'}];
 const KEY='ctfl_proto_v1';
 const fmt=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 const daysAgo=d=>new Date(Date.now()-d*864e5).toISOString();
 const SEED=[
- {id:'s1',title:'Chapter 1 · Fundamentals of Testing',mode:'practice',date:daysAgo(6),correct:2,total:3,durSec:140,perCh:{1:[2,3]}},
- {id:'s2',title:'Mock Exam A',mode:'mock',date:daysAgo(4),correct:8,total:15,durSec:760,perCh:{1:[2,3],2:[2,2],3:[1,2],4:[1,4],5:[1,2],6:[1,2]}},
- {id:'s3',title:'Chapter 4 · Test Analysis and Design',mode:'practice',date:daysAgo(2),correct:2,total:4,durSec:300,perCh:{4:[2,4]}},
- {id:'s4',title:'Mock Exam B',mode:'mock',date:daysAgo(1),correct:10,total:15,durSec:690,perCh:{1:[3,3],2:[1,2],3:[2,2],4:[2,4],5:[1,2],6:[1,2]}}];
+ {id:'s1',title:'Chapter 1 · Short (10)',mode:'practice',date:daysAgo(6),correct:7,total:10,durSec:480,perCh:{1:[7,10]}},
+ {id:'s2',title:'Medium test · 20 questions',mode:'mock',date:daysAgo(4),correct:13,total:20,durSec:1020,perCh:{1:[3,4],2:[2,3],3:[2,2],4:[4,5],5:[1,4],6:[1,2]}},
+ {id:'s3',title:'Chapter 4 · Short (10)',mode:'practice',date:daysAgo(2),correct:6,total:10,durSec:600,perCh:{4:[6,10]}},
+ {id:'s4',title:'Long test · 40 questions',mode:'mock',date:daysAgo(1),correct:26,total:40,durSec:2100,perCh:{1:[5,8],2:[4,6],3:[3,4],4:[7,11],5:[6,9],6:[1,2]}}];
 
 class Component extends DCLogic {
   state = this.init();
@@ -716,7 +676,7 @@ class Component extends DCLogic {
     const tier=s.tier||this.props.demoTier||'guest';
     return {screen:'home',tier,user:s.user||(tier!=='guest'?{name:'Linh Nguyen',email:'linh.nguyen@gmail.com'}:null),attempts:s.attempts||(tier!=='guest'?SEED:[]),learned:s.learned||{},
       expanded:{root:true,c1:true,c4:true},sel:'root',mode:'practice',exam:null,result:null,dialog:null,pending:null,
-      chat:[],chatInput:'',busy:false,plan:'',quizCh:null,coachTab:'chat',toast:'',now:Date.now(),billing:'monthly',loginEmail:''};
+      chat:[],chatInput:'',busy:false,plan:'',quizCh:null,coachTab:'chat',toast:'',now:Date.now(),billing:'monthly',loginUser:'',loginPass:''};
   }
   componentDidMount(){
     this.iv=setInterval(()=>{const e=this.state.exam;if(e&&e.mode==='mock'){this.setState({now:Date.now()});if(e.limitSec-(Date.now()-e.started)/1000<=0)this.submit()}},1000);
@@ -734,13 +694,13 @@ class Component extends DCLogic {
     if(t==='guest'){this.setState({tier:'guest',user:null});return}
     this.setState(s=>({tier:t,user:s.user||{name:'Linh Nguyen',email:'linh.nguyen@gmail.com'},attempts:s.user?s.attempts:(s.attempts.length?s.attempts:SEED)}));
   }
-  login(email){
-    const name=email.split('@')[0].split(/[._]/).map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
+  login(username){
+    const name=username.split(/[._-]/).map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
     this.setState(s=>{
-      let attempts=s.attempts.length?s.attempts:(email==='linh.nguyen@gmail.com'?SEED:[]);
+      let attempts=s.attempts.length?s.attempts:(username==='testpath'?SEED:[]);
       let result=s.result;
       if(result&&!result.saved){attempts=[...attempts,result.attempt];result={...result,saved:true}}
-      return {user:{name,email},tier:s.tier==='guest'?'member':s.tier,attempts,result,dialog:s.pending==='checkout'?'checkout':null,pending:null,loginEmail:''};
+      return {user:{name,email},tier:s.tier==='guest'?'member':s.tier,attempts,result,dialog:s.pending==='checkout'?'checkout':null,pending:null,loginUser:'',loginPass:''};
     });
     this.toast('Signed in as '+email);
   }
@@ -748,13 +708,30 @@ class Component extends DCLogic {
     this.go('exam',{exam:{title:def.title,mode:this.state.mode,qs:def.qs,idx:0,answers:{},started:Date.now(),limitSec:def.min*60,def}});
   }
   pick(i){
-    this.setState(s=>{const e=s.exam;if(e.mode==='practice'&&e.answers[e.idx]!==undefined)return null;return {exam:{...e,answers:{...e.answers,[e.idx]:i}}}});
+    this.setState(s=>{
+      const e=s.exam; if(!e) return null;
+      const q=e.qs[e.idx], need=q.a.length, cur=e.answers[e.idx]||[];
+      if(e.mode==='practice'&&cur.length===need) return null;
+      let next;
+      if(need===1){ next=[i]; }
+      else if(cur.includes(i)) next=cur.filter(x=>x!==i);
+      else if(cur.length<need) next=[...cur,i];
+      else return null;
+      const answers={...e.answers};
+      if(next.length) answers[e.idx]=next; else delete answers[e.idx];
+      return{exam:{...e,answers}};
+    });
   }
   move(d){this.setState(s=>({exam:{...s.exam,idx:Math.max(0,Math.min(s.exam.qs.length-1,s.exam.idx+d))}}))}
   submit(){
-    const e=this.state.exam;if(!e)return;
-    let correct=0;const perCh={};
-    e.qs.forEach((q,i)=>{const ok=e.answers[i]===q.a;if(ok)correct++;const p=perCh[q.ch]||[0,0];perCh[q.ch]=[p[0]+(ok?1:0),p[1]+1]});
+    const e=this.state.exam; if(!e) return;
+    let correct=0; const perCh={};
+    e.qs.forEach((q,i)=>{
+      const chosen=e.answers[i]||[];
+      const ok=chosen.length===q.a.length&&q.a.every(x=>chosen.includes(x));
+      if(ok) correct++;
+      const p=perCh[q.ch]||[0,0]; perCh[q.ch]=[p[0]+(ok?1:0),p[1]+1];
+    });
     const attempt={id:'a'+Date.now(),title:e.title,mode:e.mode,date:new Date().toISOString(),correct,total:e.qs.length,durSec:Math.round((Date.now()-e.started)/1000),perCh};
     const logged=this.state.tier!=='guest';
     this.go('result',{exam:null,result:{...attempt,attempt,qs:e.qs,answers:e.answers,def:e.def,saved:logged,savedNow:logged},attempts:logged?[...this.state.attempts,attempt]:this.state.attempts});
@@ -770,8 +747,11 @@ class Component extends DCLogic {
   }
   askAI(q,chosen){
     if(this.state.tier!=='pro'){this.setState({dialog:'upgrade'});return}
-    const msg=`Explain this question. I answered "${chosen===undefined?'nothing':q.o[chosen]}" but the correct answer is "${q.o[q.a]}".\n\n${q.q}`;
-    this.go('coach',{coachTab:'chat'});this.send(msg);
+    const arr=Array.isArray(chosen)&&chosen.length?chosen:[];
+    const yours=arr.length?arr.map(i=>q.o[i]).join(' and '):'nothing';
+    const correct=q.a.map(i=>q.o[i]).join(' and ');
+    const msg=`Explain this ISTQB question. I answered "${yours}" but the correct answer is "${correct}".\n\n${q.q}`;
+    this.go('coach',{coachTab:'chat'}); this.send(msg);
   }
   async send(text){
     text=(text||'').trim();if(!text||this.state.busy)return;
@@ -794,57 +774,121 @@ class Component extends DCLogic {
     this.setState({busy:true});
     const r=await this.ai(`Write 5 new ISTQB CTFL v4.0.1 exam-style multiple-choice questions on Chapter ${ch} "${c.title}". Return ONLY a JSON array, no prose. Each item: {"q": string, "o": [4 option strings], "a": index 0-3 of the correct option, "e": one or two sentence explanation}.`);
     let qs=null;
-    try{const t=r.slice(r.indexOf('['),r.lastIndexOf(']')+1);qs=JSON.parse(t).filter(x=>x.q&&x.o&&x.o.length===4).map(x=>({...x,ch,a:+x.a}))}catch(e){}
+    try{const t=r.slice(r.indexOf('['),r.lastIndexOf(']')+1);qs=JSON.parse(t).filter(x=>x.q&&x.o&&x.o.length>=4).map(x=>({...x,ch,a:[+x.a]}))}catch(e){}
     if(!qs||!qs.length)qs=Q.filter(q=>q.ch===ch);
     this.setState({busy:false,mode:'practice'});
     this.startExam({title:`AI set · Chapter ${ch}`,qs,min:qs.length*2,key:'ai'+ch});
   }
-  openNode(id){const ex={...this.state.expanded,root:true};let n=N[id];while(n){ex[n.id]=true;n=N[n.p]}this.go('mindmap',{expanded:ex,sel:id})}
-  examDefs(){
-    const rot=[...Q].sort((a,b)=>(Q.indexOf(a)*7%15)-(Q.indexOf(b)*7%15));
-    return [{key:'mA',kicker:'Mock exam',title:'Mock Exam A',sub:'All six chapters, in syllabus order',qs:Q,min:22},
-      {key:'mB',kicker:'Mock exam',title:'Mock Exam B',sub:'All six chapters, mixed order',qs:rot,min:22},
-      ...CH.map(c=>{const qs=Q.filter(q=>q.ch===c.id);return {key:'c'+c.id,kicker:'Chapter '+c.id,title:`Chapter ${c.id} · ${c.title}`,sub:N['c'+c.id].s,qs,min:qs.length*2}})];
+  openNode(id){const ex={...this.state.expanded,root:true};let cur=id;while(N[cur]&&N[cur].p){ex[cur]=true;cur=N[cur].p}ex[cur]=true;this.go('mindmap',{expanded:ex,sel:id})}
+  renderBlock(b){
+    const it=b.items||[];
+    switch(b.k){
+      case 'kw':return`<div class="b-kwwrap"><div class="b-label">Key terms</div><div class="b-kw">${it.map(s=>`<span class="kwc">${s}</span>`).join('')}</div></div>`;
+      case 'p':return`<p class="b-p">${b.t}</p>`;
+      case 'f':return`<div class="b-f">${b.t}</div>`;
+      case 'flow':return`<div class="b-flow">${it.map(s=>`<span class="fc">${s}</span>`).join('<span class="fa">→</span>')}</div>`;
+      case 'rows':return`<ul class="b-rows">${it.map(r=>`<li><span class="ri">${r[0]}</span><span><b>${r[1]}</b>${r[2]?`<br><span class="rd">${r[2]}</span>`:''}</span></li>`).join('')}</ul>`;
+      case 'grid':return`<div class="b-grid">${it.map(r=>`<div class="gc"><div class="gi">${r[0]}</div><div class="gt">${r[1]}</div><div class="gd">${r[2]}</div></div>`).join('')}</div>`;
+      case 'vs':{const ra=b.a,rb=b.b;return`<div class="b-vs"><div class="vc"><div class="vi">${ra[0]}</div><div class="vt">${ra[1]}</div>${ra[2]||''}</div><div class="vc"><div class="vi">${rb[0]}</div><div class="vt">${rb[1]}</div>${rb[2]||''}</div></div>`;}
+      case 'wp':{let inner='';if(b.doc)inner=`<div class="wp-doc">${b.doc.map(r=>`<div class="wp-r"><div class="wp-l">${r[0]}</div><div class="wp-v">${r[1]}</div></div>`).join('')}</div>`;else if(b.head){const td=(tag,c)=>`<${tag}${String(c).length<=12?' class="nw"':''}>${c}</${tag}>`;inner=`<div class="wp-scroll"><table class="wp-t"><thead><tr>${b.head.map(h=>td('th',h)).join('')}</tr></thead><tbody>${b.rows.map(r=>`<tr>${r.map(c=>td('td',c)).join('')}</tr>`).join('')}</tbody></table></div>`;}else if(b.code)inner=`<pre class="wp-c">${b.code}</pre>`;return`<div class="b-wp"><div class="b-label">Sample work product · ${b.name}</div>${inner}${b.note?`<p class="wp-n">${b.note}</p>`:''}</div>`;}
+      case 'svg':return`<div class="b-svg">${b.t}${b.cap?`<p class="cap">${b.cap}</p>`:''}</div>`;
+      case 'sample':return`<div class="b-sample"><div class="b-label">Sample question · LO ${b.lo}</div><div class="b-sq">${b.q}</div><div class="b-so">${b.o.map((t,i)=>`<div><b>${'abcd'[i]})</b> ${t}</div>`).join('')}</div><details class="b-sa"><summary>Show answer</summary><p><b>Answer: ${b.a})</b> ${b.why}</p></details></div>`;
+      default:return'';
+    }
+  }
+  renderSylBox(topicId){
+    const los=SLO_DATA[topicId]; if(!los||!los.length) return '';
+    const renderExcerpt=items=>{let out='',lis=[];const flush=()=>{if(lis.length){out+=`<ul>${lis.map(l=>`<li>${l}</li>`).join('')}</ul>`;lis=[]}};for(const x of items){if(x.t==='p'){flush();out+=`<p>${x.html}</p>`}else if(x.t==='li')lis.push(x.html)}flush();return out};
+    const rows=los.map((lo,i)=>`<details class="lo"${i===0?' open':''}><summary><span class="lo-id">FL-${lo.lo}</span><span class="lo-k">${lo.k}</span><span class="lo-st">${lo.statement}</span></summary><div class="lo-body"><p class="lo-sec">Syllabus ${lo.section}</p>${renderExcerpt(lo.excerpt)}<p class="lo-src">Quoted from the ISTQB® CTFL Syllabus v4.0.1. Highlighted: this topic’s keywords.</p></div></details>`).join('');
+    return `<div class="b-syl"><div class="b-label">📘 Syllabus · learning objectives</div>${rows}</div>`;
+  }
+  renderTopicHtml(topicId,palBase,palInk){
+    const d=TOPIC_DATA[topicId]; if(!d) return null;
+    let html=`<div class="hook"><span class="lbl">Remember it as</span><p>${d.hook}</p></div>`;
+    let sylDone=false;
+    for(const b of d.body){html+=this.renderBlock(b);if(!sylDone&&b.k==='kw'){html+=this.renderSylBox(topicId);sylDone=true}}
+    if(!sylDone)html+=this.renderSylBox(topicId);
+    if(d.trap)html+=`<div class="trap"><span class="lbl">🪤 Exam trap</span><p>${d.trap}</p></div>`;
+    return React.createElement('div',{className:'topic',style:{'--c':palBase,'--c-ink':palInk},dangerouslySetInnerHTML:{__html:html}});
+  }
+  weightedDist(n){
+    const tot=40,out={};
+    CH.forEach(c=>{out[c.id]=Math.floor(c.q/tot*n)});
+    let left=n-Object.values(out).reduce((a,b)=>a+b,0);
+    [...CH].sort((a,b)=>(b.q/tot*n-Math.floor(b.q/tot*n))-(a.q/tot*n-Math.floor(a.q/tot*n))).forEach(c=>{if(left-->0)out[c.id]++});
+    return out;
   }
   renderVals(){
     const s=this.state, tier=s.tier, logged=tier!=='guest', pro=tier==='pro';
     const passMark=this.props.passMark??65;
     const scr=s.screen, navKey=scr==='exam'||scr==='result'?'tests':scr;
-    const nav=[['mindmap','Mindmap'],['tests','Practice tests'],['dashboard','Dashboard'],['coach','AI Coach'],['pricing','Pricing']].map(([k,l])=>({label:l,go:()=>this.go(k),isCoach:k==='coach',bg:navKey===k?'var(--color-accent-200)':'transparent',color:navKey===k?'var(--color-accent-900)':'var(--color-text)'}));
+    const nav=[['mindmap','Mindmap'],['tests','Practice tests'],['dashboard','Dashboard']].map(([k,l])=>({label:l,go:()=>this.go(k),isCoach:false,bg:navKey===k?'var(--color-accent-200)':'transparent',color:navKey===k?'var(--color-accent-900)':'var(--color-text)'}));
     const chapters=CH.map(c=>({...c,...pal(c.id),open:()=>this.openNode('c'+c.id)}));
     const learnedCount=STUDY.filter(id=>s.learned[id]).length;
     // mindmap
-    const tree=[];const walk=(id,d)=>{const n=N[id],kids=KIDS[id]||[],open=!!s.expanded[id],ch=chOf(id),p=ch?pal(ch):null,sel=s.sel===id;
-      const st=d===0?{bg:'var(--color-text)',fg:'var(--color-bg)',font:'var(--font-heading)',size:19}:d===1?{bg:p.mid,fg:p.ink,font:'var(--font-heading)',size:17}:d===2?{bg:'var(--color-bg)',fg:'var(--color-text)',font:'var(--font-body)',size:15}:{bg:p.tint,fg:p.ink,font:'var(--font-body)',size:14};
-      tree.push({...st,id,title:n.t,ml:d<=1?d*14:14+(d-1)*34,pl:d===0?0:6,bl:d===0?'0':'2px solid var(--color-neutral-300)',hasLine:d>0,hasKids:kids.length>0,isOpen:kids.length>0&&open,isClosed:kids.length>0&&!open,togVis:kids.length?'visible':'hidden',togBg:kids.length?'var(--color-neutral-200)':'transparent',ring:sel?'var(--color-accent)':'transparent',learned:logged&&!!s.learned[id],hasCount:kids.length>0&&!open,count:kids.length+' topics',
+    const tree=[];
+    const walkMM=(id,d)=>{const n=N[id],kids=KIDS[id]||[],open=!!s.expanded[id],chNum=chOf(id),p=chNum?pal(chNum):null,sel=s.sel===id;
+      const st=d===0?{bg:'var(--color-text)',fg:'var(--color-bg)',font:'var(--font-heading)',size:19}:d===1?{bg:p.mid,fg:p.ink,font:'var(--font-heading)',size:17}:{bg:'var(--color-bg)',fg:'var(--color-text)',font:'var(--font-body)',size:15};
+      tree.push({...st,id,title:n.t,ml:d<=1?d*14:48,pl:d===0?0:6,bl:d===0?'0':'2px solid var(--color-neutral-300)',hasLine:d>0,hasKids:kids.length>0,isOpen:kids.length>0&&open,isClosed:kids.length>0&&!open,togVis:kids.length?'visible':'hidden',togBg:kids.length?'var(--color-neutral-200)':'transparent',ring:sel?'var(--color-accent)':'transparent',learned:logged&&!!s.learned[id],hasCount:kids.length>0&&!open,count:kids.length+' topics',starred:d===2&&!!n.starred,
         toggle:()=>this.setState(x=>({expanded:{...x.expanded,[id]:!x.expanded[id]}})),select:()=>this.setState({sel:id})});
-      if(open)kids.forEach(k=>walk(k,d+1))};walk('root',0);
+      if(open)kids.forEach(k=>walkMM(k,d+1))};
+    walkMM('root',0);
     const sn=N[s.sel],sch=chOf(s.sel),sd=depthOf(s.sel);
-    const node={title:sn.t,summary:sn.s,points:sn.pts,kicker:sd===0?'Syllabus overview':sd===1?`Chapter ${sch} · ${CH[sch-1].q} exam questions`:`Chapter ${sch} · ${CH[sch-1].title}`,
-      hasKids:!!KIDS[s.sel],kids:(KIDS[s.sel]||[]).map(k=>({title:N[k].t,select:()=>this.openNode(k)})),
-      canPractice:!!sch,practice:()=>{const d=this.examDefs().find(x=>x.key==='c'+sch);this.setState({mode:'practice'},()=>this.startExam(d))},
+    const isTopic=sd===2,selPalD=sch?pal(sch):null;
+    const VIET=/[ƠơƯưĐđẠ-ỹ]/;
+    const topicEl=isTopic&&selPalD?this.renderTopicHtml(s.sel,selPalD.base,selPalD.ink):null;
+    const expandAll=()=>this.setState({expanded:Object.fromEntries(['root','c1','c2','c3','c4','c5','c6'].map(k=>[k,true]))});
+    const collapseAll=()=>this.setState({expanded:{root:true}});
+    const node={title:sn.t,kicker:sd===0?'Syllabus overview':sd===1?('Chapter '+sch+' · '+sn.q+' exam questions'):('Chapter '+sch+' · '+N[sn.p].title),
+      summary:sn.s,points:sn.pts||[],
+      hasKids:!!(KIDS[s.sel]&&KIDS[s.sel].length),kids:(KIDS[s.sel]||[]).map(k=>({title:N[k].t,select:()=>this.openNode(k)})),
+      isTopic,isNotTopic:!isTopic,starred:!!sn.starred,topicEl,
+      titleFont:VIET.test(sn.t)?'var(--font-body)':'var(--font-heading)',
+      titleWeight:VIET.test(sn.t)?'700':'normal',
+      asideFlex:isTopic?'1 1 520px':'0 1 400px',
+      canPractice:!!sch,
+      practice:()=>{const qs=Q.filter(q=>q.ch===sch);const sz=Math.min(3,qs.length);this.setState({mode:'practice'},()=>this.startExam({title:'Chapter '+sch+' · Short ('+sz+')',qs:qs.slice(0,sz),min:Math.round(sz*1.5),def:{kind:'chapter',chapter:sch,size:sz}}))},
       canMark:logged&&sd>=2,guestHint:!logged&&sd>=2,markLabel:s.learned[s.sel]?'Learned ✓ (undo)':'Mark as learned',
       toggleLearned:()=>this.setState(x=>({learned:{...x.learned,[x.sel]:!x.learned[x.sel]}}))};
     // tests
+    const TSIZES=[{size:10,label:'Short',sub:'A quick check across all six chapters.'},{size:20,label:'Medium',sub:'Half an exam, weighted like the real one.'},{size:40,label:'Long',sub:'Full exam format: 40 questions in the syllabus mix.'}];
+    const CSIZES=[{size:3,label:'Short'},{size:5,label:'Medium'},{size:10,label:'Long'}];
     const best={};s.attempts.forEach(a=>{const p=Math.round(a.correct/a.total*100);best[a.title]=Math.max(best[a.title]||0,p)});
-    const exams=this.examDefs().map(d=>({...d,bg:d.key[0]==='m'?'var(--color-surface)':'var(--color-neutral-100)',meta:`${d.qs.length} questions${s.mode==='mock'?` · ${d.min} min`:''}`,hasBest:logged&&best[d.title]!==undefined,best:best[d.title],start:()=>this.startExam(d)}));
+    const counts={};Q.forEach(q=>{counts[q.ch]=(counts[q.ch]||0)+1});
+    const levelSets=TSIZES.map(({size,label,sub})=>{
+      const dist=this.weightedDist(size);
+      const qs=[];CH.forEach(c=>{const pool=Q.filter(q=>q.ch===c.id);qs.push(...pool.slice(0,dist[c.id]||0))});
+      const actual=qs.length?qs:Q.slice(0,Math.min(size,Q.length));
+      const mix=CH.filter(c=>actual.filter(q=>q.ch===c.id).length>0).map(c=>`Ch${c.id}×${actual.filter(q=>q.ch===c.id).length}`).join(' · ');
+      const title=`${label} test · ${size} questions`;
+      const b=logged?best[title]:undefined;
+      return{label,sub,size,mix,timing:`${actual.length} questions${s.mode==='mock'?` · ${Math.round(actual.length*1.5)} min`:''}`,hasBest:b!==undefined,best:b,start:()=>this.startExam({title,qs:actual,min:Math.round(actual.length*1.5),def:{kind:'level',size}})};
+    });
+    const chapterSets=CH.map(c=>{
+      const p=pal(c.id); const avail=counts[c.id]||0;
+      const bests=CSIZES.map(({size,label})=>{const t=`Chapter ${c.id} · ${label} (${size})`;return logged&&best[t]!==undefined?best[t]:null}).filter(x=>x!==null);
+      return{...c,...p,avail,bestPct:bests.length?Math.max(...bests):null,hasBest:bests.length>0,
+        sizes:CSIZES.map(({size,label})=>{const qs=Q.filter(q=>q.ch===c.id);const title=`Chapter ${c.id} · ${label} (${size})`;return{label,size,disabled:avail<size,start:()=>this.startExam({title,qs:qs.slice(0,size),min:Math.round(size*1.5),def:{kind:'chapter',chapter:c.id,size}})}})};
+    });
     const modes=[['practice','Practice'],['mock','Mock exam']].map(([k,l])=>({label:l,pick:()=>this.setState({mode:k}),bg:s.mode===k?'var(--color-accent)':'transparent',fg:s.mode===k?'var(--color-bg)':'var(--color-text)'}));
     // exam
     let ex={};
-    if(s.exam){const e=s.exam,q=e.qs[e.idx],ch=e.answers[e.idx],prac=e.mode==='practice',reveal=prac&&ch!==undefined,left=e.limitSec-(s.now-e.started)/1000;
+    if(s.exam){const e=s.exam,q=e.qs[e.idx],chosen=e.answers[e.idx]||[],need=q.a.length,prac=e.mode==='practice',reveal=prac&&chosen.length===need,right=reveal&&q.a.every(x=>chosen.includes(x)),left=e.limitSec-(s.now-e.started)/1000;
+      const ansCount=e.qs.filter((qq,i)=>(e.answers[i]||[]).length===qq.a.length).length;
       ex={title:e.title,modeLabel:prac?'Practice · instant feedback':'Mock exam · timed',timed:!prac,timeLeft:fmt(left),timerBg:left<120?'var(--color-accent-200)':'var(--color-surface)',timerFg:left<120?'var(--color-accent-900)':'var(--color-text)',
-        num:e.idx+1,total:e.qs.length,chLabel:`Chapter ${q.ch} · ${CH[q.ch-1].title}`,q:q.q,reveal,explain:q.e,
-        fbTitle:ch===q.a?'Correct':'Not quite',fbBg:ch===q.a?'var(--color-accent-2-100)':'var(--color-accent-100)',fbFg:ch===q.a?'var(--color-accent-2-800)':'var(--color-accent-800)',
-        askLabel:pro?'Ask the AI coach to explain':'Ask the AI coach (Pro)',askAI:()=>this.askAI(q,ch),
+        num:e.idx+1,total:e.qs.length,chLabel:`Chapter ${q.ch} · ${CH[q.ch-1].title}`,q:q.q,reveal,explain:q.e,need,multiSelect:need>1,
+        fbTitle:right?'Correct':'Not quite',fbBg:right?'var(--color-accent-2-100)':'var(--color-accent-100)',fbFg:right?'var(--color-accent-2-800)':'var(--color-accent-800)',
+        askLabel:pro?'Ask the AI coach to explain':'Ask the AI coach (Pro)',askAI:()=>this.askAI(q,chosen),
         opts:q.o.map((t,i)=>{let bg='var(--color-bg)',bd='var(--color-divider)',dBg='var(--color-surface)',dFg='var(--color-text)';
-          if(reveal){if(i===q.a){bg='var(--color-accent-2-100)';bd='var(--color-accent-2-600)';dBg='var(--color-accent-2-600)';dFg='var(--color-bg)'}else if(i===ch){bg='var(--color-accent-100)';bd='var(--color-accent-600)';dBg='var(--color-accent-600)';dFg='var(--color-bg)'}}
-          else if(i===ch){bg='var(--color-accent-100)';bd='var(--color-accent)';dBg='var(--color-accent)';dFg='var(--color-bg)'}
-          return {letter:'ABCD'[i],text:t,pick:()=>this.pick(i),bg,bd,dBg,dFg,cursor:reveal?'default':'pointer'}}),
+          const isChosen=chosen.includes(i);
+          if(reveal){if(q.a.includes(i)){bg='var(--color-accent-2-100)';bd='var(--color-accent-2-600)';dBg='var(--color-accent-2-600)';dFg='var(--color-bg)'}else if(isChosen){bg='var(--color-accent-100)';bd='var(--color-accent-600)';dBg='var(--color-accent-600)';dFg='var(--color-bg)'}}
+          else if(isChosen){bg='var(--color-accent-100)';bd='var(--color-accent)';dBg='var(--color-accent)';dFg='var(--color-bg)'}
+          return{letter:'ABCDE'[i],text:t,pick:()=>this.pick(i),bg,bd,dBg,dFg,cursor:reveal?'default':'pointer',badgeRadius:need>1?'10px':'50%'}}),
         isFirst:e.idx===0,isLast:e.idx===e.qs.length-1,notLast:e.idx<e.qs.length-1,prev:()=>this.move(-1),next:()=>this.move(1),submit:()=>this.submit(),
-        answeredLabel:`${Object.keys(e.answers).length} of ${e.qs.length} answered`,
-        dots:e.qs.map((qq,i)=>{const a=e.answers[i];let bg='var(--color-neutral-200)',fg='var(--color-text)';
-          if(a!==undefined)bg=prac?(a===qq.a?'var(--color-accent-2-300)':'var(--color-accent-300)'):'var(--color-accent-200)';
-          if(i===e.idx){bg='var(--color-text)';fg='var(--color-bg)'}return {n:i+1,bg,fg,go:()=>this.setState(x=>({exam:{...x.exam,idx:i}}))}})};}
+        answeredLabel:`${ansCount} of ${e.qs.length} answered`,
+        dots:e.qs.map((qq,i)=>{const a=e.answers[i]||[],done=a.length===qq.a.length;let bg='var(--color-neutral-200)',fg='var(--color-text)';
+          if(a.length)bg=prac&&done?(qq.a.every(x=>a.includes(x))?'var(--color-accent-2-300)':'var(--color-accent-300)'):'var(--color-accent-200)';
+          if(i===e.idx){bg='var(--color-text)';fg='var(--color-bg)'}return{n:i+1,bg,fg,go:()=>this.setState(x=>({exam:{...x.exam,idx:i}}))}})};}
     // result
     let res={};
     if(s.result){const r=s.result,pct=Math.round(r.correct/r.total*100),pass=pct>=passMark;
@@ -853,7 +897,7 @@ class Component extends DCLogic {
         headline:pass?'You passed this set':'Not yet at the pass mark',sub:`Pass mark is ${passMark}%. Time taken ${fmt(r.durSec)}.${pass?'':' The chapter bars show where to focus.'}`,
         savedNote:logged&&r.saved,retry:()=>{this.setState({mode:r.mode},()=>this.startExam(r.def))},
         chRows:Object.entries(r.perCh).map(([c,[k,t]])=>({title:`${c} · ${CH[c-1].title}`,label:`${k}/${t}`,w:Math.round(k/t*100)+'%',color:k/t*100>=passMark?'var(--color-accent-2-600)':'var(--color-accent)'})),
-        review:r.qs.map((q,i)=>{const a=r.answers[i],ok=a===q.a;return {n:i+1,ch:'Chapter '+q.ch,q:q.q,ok,bad:!ok,badgeBg:ok?'var(--color-accent-2-600)':'var(--color-accent-600)',yours:a===undefined?'—':'ABCD'[a],right:'ABCD'[q.a],explain:q.e,askLabel:pro?'Explain with AI coach':'Explain with AI coach (Pro)',askAI:()=>this.askAI(q,a)}})};}
+        review:r.qs.map((q,i)=>{const a=r.answers[i]||[],ok=a.length===q.a.length&&q.a.every(x=>a.includes(x));const ltrs=arr=>[...arr].sort().map(x=>'ABCDE'[x]).join(', ');return{n:i+1,ch:'Chapter '+q.ch,q:q.q,ok,bad:!ok,badgeBg:ok?'var(--color-accent-2-600)':'var(--color-accent-600)',yours:a.length?ltrs(a):'—',right:ltrs(q.a),explain:q.e,askLabel:pro?'Explain with AI coach':'Explain with AI coach (Pro)',askAI:()=>this.askAI(q,a)}})};}
     // dashboard
     const at=[...s.attempts].sort((a,b)=>a.date<b.date?-1:1),pcts=at.map(a=>Math.round(a.correct/a.total*100));
     const mast=this.mastery(),weak=this.weak();
@@ -863,7 +907,7 @@ class Component extends DCLogic {
     const dash={stats:[{label:'Attempts',value:at.length,bg:'var(--color-surface)'},{label:'Average score',value:pcts.length?avg+'%':'—',bg:'var(--color-surface)'},{label:'Best score',value:pcts.length?Math.max(...pcts)+'%':'—',bg:'var(--color-accent-2-100)'},{label:'Last mock exam',value:lastMock!==undefined?lastMock+'%':'—',bg:'var(--color-accent-100)'}],
       readyText:lastMock===undefined?'Take a mock exam to see if you are ready.':lastMock>=passMark?`Your last mock exam is above the ${passMark}% pass mark. Keep it there.`:`Your last mock exam is ${passMark-lastMock} points below the ${passMark}% pass mark.`,
       bars:at.slice(-8).map((a,i)=>{const p=Math.round(a.correct/a.total*100);return {pct:p,h:Math.max(6,p*1.6)+'px',color:p>=passMark?'var(--color-accent-2-500)':'var(--color-accent-400)'}}),
-      passLine:(passMark*1.6+20)+'px',empty:!at.length,
+      passLine:(passMark*1.6)+'px',empty:!at.length,
       mastery:mast.map(c=>({title:`${c.id} · ${c.title}`,label:c.pct===null?'—':c.pct+'%',w:(c.pct||0)+'%',color:c.pct!==null&&c.pct>=passMark?'var(--color-accent-2-600)':'var(--color-accent)'})),
       rows:[...at].reverse().slice(0,8).map(a=>{const p=Math.round(a.correct/a.total*100);return {date:new Date(a.date).toLocaleDateString('en-GB',{day:'numeric',month:'short'}),title:a.title,mode:a.mode==='mock'?'Mock':'Practice',score:`${a.correct}/${a.total} · ${p}%`,status:p>=passMark?'Pass':'Below',tagClass:p>=passMark?'tag-accent-2':'tag-accent'}}),
       weakest:`Chapter ${weak[0].id} · ${weak[0].title}`,coachCta:pro?'Get a study plan':'Unlock with Pro'};
@@ -873,29 +917,29 @@ class Component extends DCLogic {
     const quizChs=CH.map(c=>({label:`${c.id} · ${c.title}${weak[0].id===c.id?' (weakest)':''}`,pick:()=>this.setState({quizCh:c.id}),bg:qch===c.id?'var(--color-accent-100)':'var(--color-bg)',bd:qch===c.id?'var(--color-accent)':'var(--color-divider)'}));
     const plans=[
       {kicker:'No account',name:'Guest',price:'Free',per:'',features:['Syllabus mindmap','Practice sets and mock exams','Instant answers and explanations'],cta:tier==='guest'?'Current plan':'Included',current:true,btnClass:'btn-secondary',action:()=>{},bg:'var(--color-neutral-100)',shadow:'none'},
-      {kicker:'Sign in with Gmail',name:'Member',price:'Free',per:'',features:['Everything in Guest','Every attempt saved','Score trend and chapter mastery','Mindmap study progress'],cta:tier==='member'?'Current plan':logged?'Included':'Sign in with Gmail',current:logged,btnClass:'btn-secondary',action:()=>this.setState({dialog:'login'}),bg:'var(--color-accent-2-100)',shadow:'none'},
+      {kicker:'Free account',name:'Member',price:'Free',per:'',features:['Everything in Guest','Every attempt saved','Score trend and chapter mastery','Mindmap study progress'],cta:tier==='member'?'Current plan':logged?'Included':'Sign in',current:logged,btnClass:'btn-secondary',action:()=>this.setState({dialog:'login'}),bg:'var(--color-accent-2-100)',shadow:'none'},
       {kicker:'Most help',name:'Pro',price:'$5',per:'/ month',features:['Everything in Member','AI explanations for wrong answers','Chat with the AI coach','Study plan from your weak areas','AI question sets on weak topics'],cta:pro?'Current plan':'Upgrade to Pro',current:pro,btnClass:'btn-primary',action:()=>this.setState(logged?{dialog:'checkout'}:{dialog:'login',pending:'checkout'}),bg:'var(--color-accent-100)',shadow:'var(--shadow-md)'}];
     const billingOpts=[['monthly','Monthly','$5 / month'],['yearly','Yearly','$39 / year · save 35%']].map(([k,l,p])=>({label:l,price:p,pick:()=>this.setState({billing:k}),bg:s.billing===k?'var(--color-accent-100)':'var(--color-bg)',bd:s.billing===k?'var(--color-accent)':'var(--color-divider)'}));
     const demoTiers=[['guest','Guest'],['member','Member'],['pro','Pro']].map(([k,l])=>({label:l,pick:()=>this.setTier(k),bg:tier===k?'var(--color-accent)':'transparent',fg:'var(--color-bg)'}));
     const name=s.user?s.user.name:'';
     return {
-      nav,chapters,tree,node,exams,modes,ex,res,dash,coachTabs,quizChs,plans,billingOpts,demoTiers,passMark,
+      nav,chapters,tree,node,expandAll,collapseAll,levelSets,chapterSets,modes,ex,res,dash,demoTiers,passMark,
       isGuest:!logged,isLogged:logged,isPro:pro,notPro:!pro,
-      isHome:scr==='home',isMindmap:scr==='mindmap',isTests:scr==='tests',isExam:scr==='exam'&&!!s.exam,isResult:scr==='result'&&!!s.result,isDashboard:scr==='dashboard',isCoach:scr==='coach',isPricing:scr==='pricing',
+      isHome:scr==='home',isMindmap:scr==='mindmap',isTests:scr==='tests',isExam:scr==='exam'&&!!s.exam,isResult:scr==='result'&&!!s.result,isDashboard:scr==='dashboard',isCoach:scr==='coach',
       initial:name?name[0]:'',userEmail:s.user?s.user.email:'',firstName:name.split(' ')[0],tierLabel:pro?'Pro member':'Member · free',
       learnedLabel:`${learnedCount} of ${STUDY.length} topics learned`,
       modeHelp:s.mode==='practice'?'Practice mode: no timer, and you see the right answer and explanation after each question.':'Mock exam mode: timed like the real exam, answers revealed only when you submit.',
       aiSetLabel:pro?'Create a set':'Unlock with Pro',
-      goHome:()=>this.go('home'),goMindmap:()=>this.go('mindmap'),goTests:()=>this.go('tests'),goPricing:()=>this.go('pricing'),goDashboard:()=>this.go('dashboard'),
-      goCoachQuiz:()=>pro?this.go('coach',{coachTab:'quiz'}):this.go('pricing'),goCoachPlan:()=>pro?this.go('coach',{coachTab:'plan'}):this.go('pricing'),
-      goPricingClose:()=>this.go('pricing',{dialog:null}),
+      goHome:()=>this.go('home'),goMindmap:()=>this.go('mindmap'),goTests:()=>this.go('tests'),goDashboard:()=>this.go('dashboard'),
+      
+      
       quitExam:()=>this.go('tests',{exam:null}),
       openLogin:()=>this.setState({dialog:'login'}),closeDialog:()=>this.setState({dialog:null,pending:null}),stop:e=>e.stopPropagation(),
       signOut:()=>{this.setState({tier:'guest',user:null,attempts:[],learned:{},chat:[],plan:''});this.go('home');this.toast('Signed out')},
-      loginDemo:()=>this.login('linh.nguyen@gmail.com'),loginEmail:s.loginEmail,onLoginEmail:e=>this.setState({loginEmail:e.target.value}),
-      loginEmailSubmit:e=>{e.preventDefault();const v=s.loginEmail.trim();if(!/^[^@\s]+@gmail\.com$/i.test(v)){this.toast('Please enter a Gmail address');return}this.login(v.toLowerCase())},
-      dlgLogin:s.dialog==='login',dlgCheckout:s.dialog==='checkout',dlgUpgrade:s.dialog==='upgrade',
-      payLabel:s.billing==='monthly'?'Pay $5':'Pay $39',pay:()=>{this.setState({tier:'pro',dialog:null});this.go('coach');this.toast('Welcome to Pro. Your AI coach is ready.')},
+      loginUser:s.loginUser,loginPass:s.loginPass,onLoginUser:e=>this.setState({loginUser:e.target.value}),onLoginPass:e=>this.setState({loginPass:e.target.value}),
+      loginSubmit:e=>{e.preventDefault();const u=(s.loginUser||'').trim();if(!u){this.toast('Please enter a username');return}this.login(u)},
+      dlgLogin:s.dialog==='login',
+      
       hasToast:!!s.toast,toast:s.toast,showDemoBar:this.props.showDemoBar??true,
       weakText:weak.map(c=>`${c.id} · ${c.title}${c.pct!==null?` (${c.pct}%)`:''}`).join(', '),
       tabChat:s.coachTab==='chat',tabPlan:s.coachTab==='plan',tabQuiz:s.coachTab==='quiz',

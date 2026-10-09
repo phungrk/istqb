@@ -1,80 +1,129 @@
 import "server-only";
-import { createHmac, timingSafeEqual } from "crypto";
+import { createHmac, randomBytes, randomInt, scrypt as scryptCb, timingSafeEqual } from "crypto";
+import { promisify } from "util";
 import { cookies } from "next/headers";
-import { auth, nameFromEmail } from "@/auth";
-import { config, isDemoAuth } from "./config";
+import { auth } from "@/auth";
+import { config } from "./config";
 import { getStore, type User } from "./store";
 import type { Attempt } from "@/lib/stats";
+import { nameFromHandle } from "@/lib/names";
 
-const DEMO_COOKIE = "tp_demo";
-const secret = () => process.env.AUTH_SECRET || "testpath-demo-only-secret";
+const scrypt = promisify(scryptCb) as (pw: string, salt: Buffer, len: number) => Promise<Buffer>;
+const COOKIE = "tp_session";
+
+function secret() {
+  const s = process.env.AUTH_SECRET;
+  if (s) return s;
+  if (process.env.NODE_ENV === "production") throw new Error("AUTH_SECRET must be set in production");
+  return "testpath-dev-only-secret";
+}
 const sign = (v: string) => createHmac("sha256", secret()).update(v).digest("base64url");
 
 export type Tier = "guest" | "member" | "pro";
 
-/** A Pro plan whose paid period has ended counts as member. */
+/** A Pro plan whose paid period has ended counts as member. Pro is off unless ENABLE_PRO=1. */
 export function tierOf(user: User | null): Tier {
   if (!user) return "guest";
-  if (user.plan === "pro" && (!user.proUntil || new Date(user.proUntil) > new Date())) return "pro";
+  if (config.pro && user.plan === "pro" && (!user.proUntil || new Date(user.proUntil) > new Date())) return "pro";
   return "member";
 }
 
+/** Username/password session first, then Google (Auth.js) when configured. */
 export async function getCurrentUser(): Promise<User | null> {
   const store = await getStore();
-  if (!isDemoAuth()) {
-    const session = await auth();
-    const email = session?.user?.email?.toLowerCase();
-    return email ? store.getUserByEmail(email) : null;
+  const raw = (await cookies()).get(COOKIE)?.value;
+  if (raw) {
+    const [id, mac] = raw.split(".");
+    const expected = sign(id);
+    if (mac && mac.length === expected.length && timingSafeEqual(Buffer.from(mac), Buffer.from(expected))) {
+      const user = await store.getUserById(Buffer.from(id, "base64url").toString());
+      if (user) return user;
+    }
   }
-  const raw = (await cookies()).get(DEMO_COOKIE)?.value;
-  if (!raw) return null;
-  const [value, mac] = raw.split(".");
-  const expected = sign(value);
-  if (!mac || mac.length !== expected.length || !timingSafeEqual(Buffer.from(mac), Buffer.from(expected))) return null;
-  return store.getUserByEmail(Buffer.from(value, "base64url").toString());
+  if (config.google) {
+    const email = (await auth())?.user?.email?.toLowerCase();
+    if (email) return store.getUserByEmail(email);
+  }
+  return null;
 }
 
 /** Gate for API routes. Returns the user or a ready-made error response. */
 export async function requireTier(min: "member" | "pro"): Promise<{ user: User } | { error: Response }> {
   const user = await getCurrentUser();
-  const tier = tierOf(user);
   if (!user) return { error: Response.json({ error: "Sign in required" }, { status: 401 }) };
-  if (min === "pro" && tier !== "pro") return { error: Response.json({ error: "Pro plan required" }, { status: 403 }) };
+  if (min === "pro" && tierOf(user) !== "pro") return { error: Response.json({ error: "Pro plan required" }, { status: 403 }) };
   return { user };
 }
 
-// ── Demo mode only ────────────────────────────────────────────────────────────
+export async function startSession(userId: string) {
+  const id = Buffer.from(userId).toString("base64url");
+  (await cookies()).set(COOKIE, id + "." + sign(id), {
+    httpOnly: true,
+    sameSite: "lax",
+    secure: process.env.NODE_ENV === "production",
+    path: "/",
+    maxAge: 60 * 60 * 24 * 90,
+  });
+}
 
-export const DEMO_ACCOUNT = { email: "linh.nguyen@gmail.com", name: "Linh Nguyen" };
+export async function endSession() {
+  (await cookies()).delete(COOKIE);
+}
 
-export async function demoSignIn(email: string): Promise<User> {
-  if (!isDemoAuth()) throw new Error("Demo sign-in is disabled when Google sign-in is configured");
-  email = email.toLowerCase();
-  const domain = config.allowedEmailDomain;
-  if (domain && !email.endsWith("@" + domain)) throw new Error("Please use a Gmail address");
+// ── Passwords ─────────────────────────────────────────────────────────────────
+
+export async function hashPassword(password: string) {
+  const salt = randomBytes(16);
+  return `scrypt$${salt.toString("base64url")}$${(await scrypt(password, salt, 32)).toString("base64url")}`;
+}
+
+export async function verifyPassword(password: string, stored: string) {
+  const [alg, salt, hash] = stored.split("$");
+  if (alg !== "scrypt" || !salt || !hash) return false;
+  const actual = await scrypt(password, Buffer.from(salt, "base64url"), 32);
+  const expected = Buffer.from(hash, "base64url");
+  return actual.length === expected.length && timingSafeEqual(actual, expected);
+}
+
+/** Next free userNNN, an 8-digit password, stored hashed. Null when all are taken. */
+export async function generateAccount(): Promise<{ user: User; password: string } | null> {
   const store = await getStore();
-  const isDemoAccount = email === DEMO_ACCOUNT.email;
-  const user = await store.upsertUser(email, isDemoAccount ? DEMO_ACCOUNT.name : nameFromEmail(email));
-  if (isDemoAccount && !(await store.listAttempts(user.id)).length) {
-    for (const a of seedAttempts()) await store.addAttempt(user.id, { ...a, answers: [] });
+  const { prefix, max } = config.generatedAccounts;
+  const taken = new Set(await store.listUsernames(prefix));
+  for (let n = 1; n <= max; n++) {
+    const username = prefix + String(n).padStart(3, "0");
+    if (taken.has(username)) continue;
+    const password = String(randomInt(0, 100_000_000)).padStart(8, "0");
+    const user = await store.createCredentialUser(username, nameFromHandle(username), await hashPassword(password));
+    if (user) return { user, password }; // null = taken by a concurrent request; try the next number
   }
-  const value = Buffer.from(email).toString("base64url");
-  (await cookies()).set(DEMO_COOKIE, value + "." + sign(value), { httpOnly: true, sameSite: "lax", path: "/", maxAge: 60 * 60 * 24 * 30 });
-  return user;
+  return null;
 }
 
-export async function demoSignOut() {
-  (await cookies()).delete(DEMO_COOKIE);
-}
+// ── Local preview only ────────────────────────────────────────────────────────
 
 const daysAgo = (d: number) => new Date(Date.now() - d * 864e5).toISOString();
+
+/** Signs in a seeded "preview" account so every screen has data. Dev only. */
+export async function previewSignIn(): Promise<User> {
+  if (!config.devTools) throw new Error("Preview is only available locally");
+  const store = await getStore();
+  let user = (await store.getCredentials("preview"))?.user ?? null;
+  if (!user) {
+    user = await store.createCredentialUser("preview", "Linh Nguyen", await hashPassword(randomBytes(12).toString("hex")));
+    if (!user) throw new Error("Could not create the preview account");
+    for (const a of seedAttempts()) await store.addAttempt(user.id, { ...a, answers: [] });
+  }
+  await startSession(user.id);
+  return user;
+}
 
 /** The prototype's sample history, so the dashboard has something to show. */
 function seedAttempts(): Omit<Attempt, "id">[] {
   return [
-    { title: "Chapter 1 · Fundamentals of Testing", setKey: "c1", mode: "practice", createdAt: daysAgo(6), correct: 2, total: 3, durationSec: 140, perChapter: { 1: [2, 3] } },
-    { title: "Mock Exam A", setKey: "mA", mode: "mock", createdAt: daysAgo(4), correct: 8, total: 15, durationSec: 760, perChapter: { 1: [2, 3], 2: [2, 2], 3: [1, 2], 4: [1, 4], 5: [1, 2], 6: [1, 2] } },
-    { title: "Chapter 4 · Test Analysis and Design", setKey: "c4", mode: "practice", createdAt: daysAgo(2), correct: 2, total: 4, durationSec: 300, perChapter: { 4: [2, 4] } },
-    { title: "Mock Exam B", setKey: "mB", mode: "mock", createdAt: daysAgo(1), correct: 10, total: 15, durationSec: 690, perChapter: { 1: [3, 3], 2: [1, 2], 3: [2, 2], 4: [2, 4], 5: [1, 2], 6: [1, 2] } },
+    { title: "Chapter 1 · Short (10)", setKey: "ch1-10", mode: "practice", createdAt: daysAgo(6), correct: 7, total: 10, durationSec: 540, perChapter: { 1: [7, 10] } },
+    { title: "Medium test · 20 questions", setKey: "lvl-20", mode: "mock", createdAt: daysAgo(4), correct: 11, total: 20, durationSec: 1620, perChapter: { 1: [3, 4], 2: [2, 3], 3: [1, 2], 4: [2, 6], 5: [2, 4], 6: [1, 1] } },
+    { title: "Chapter 4 · Short (10)", setKey: "ch4-10", mode: "practice", createdAt: daysAgo(2), correct: 5, total: 10, durationSec: 780, perChapter: { 4: [5, 10] } },
+    { title: "Long test · 40 questions", setKey: "lvl-40", mode: "mock", createdAt: daysAgo(1), correct: 27, total: 40, durationSec: 3300, perChapter: { 1: [7, 8], 2: [4, 6], 3: [3, 4], 4: [6, 11], 5: [6, 9], 6: [1, 2] } },
   ];
 }

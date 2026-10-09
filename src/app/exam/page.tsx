@@ -11,7 +11,7 @@ import { formatClock } from "@/lib/stats";
 
 export default function ExamPage() {
   const router = useRouter();
-  const { exam, setExam, submit, askAI, tier, hydrated } = useApp();
+  const { exam, setExam, submit, askAI, tier, hydrated, flags } = useApp();
   const [now, setNow] = useState(() => Date.now());
 
   // Only on arrival: after Submit/Leave the exam is cleared while navigating away.
@@ -102,10 +102,12 @@ export default function ExamPage() {
               <div style={{ borderRadius: 24, padding: "20px 22px", background: right ? "var(--color-accent-2-100)" : "var(--color-accent-100)", display: "flex", flexDirection: "column", gap: 8 }}>
                 <span style={{ fontFamily: "var(--font-heading)", fontSize: 18, color: right ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>{right ? "Correct" : "Not quite"}</span>
                 <Html html={q.explanation} style={{ fontSize: 15, color: "var(--color-neutral-900)" }} />
-                <button className="btn btn-ghost" onClick={() => askAI(q, chosen)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
-                  <SparklesIcon />
-                  {tier === "pro" ? "Ask the AI coach to explain" : "Ask the AI coach (Pro)"}
-                </button>
+                {flags.pro && (
+                  <button className="btn btn-ghost" onClick={() => askAI(q, chosen)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
+                    <SparklesIcon />
+                    {tier === "pro" ? "Ask the AI coach to explain" : "Ask the AI coach (Pro)"}
+                  </button>
+                )}
               </div>
             )}
           </div>

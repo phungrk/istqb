@@ -3,18 +3,20 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useApp } from "./AppProvider";
-import { MailIcon } from "./icons";
 
 const NAV = [
   ["/mindmap", "Mindmap"],
   ["/tests", "Practice tests"],
   ["/dashboard", "Dashboard"],
+] as const;
+/** Shown only when pricing and the AI coach are enabled (ENABLE_PRO=1). */
+const PRO_NAV = [
   ["/coach", "AI Coach"],
   ["/pricing", "Pricing"],
 ] as const;
 
 export function Header() {
-  const { user, tier, openLogin, signOut } = useApp();
+  const { user, tier, flags, openLogin, signOut } = useApp();
   const pathname = usePathname();
   // Exam and Result belong to Practice tests.
   const active = pathname === "/exam" || pathname === "/result" ? "/tests" : pathname;
@@ -26,7 +28,7 @@ export function Header() {
         <span style={{ fontFamily: "var(--font-heading)", fontSize: 21 }}>Testpath</span>
       </Link>
       <nav style={{ display: "flex", gap: 4, flexWrap: "wrap", marginLeft: 12, flex: "1 1 auto", minWidth: 0 }}>
-        {NAV.map(([href, label]) => {
+        {[...NAV, ...(flags.pro ? PRO_NAV : [])].map(([href, label]) => {
           const on = active === href;
           return (
             <Link
@@ -42,16 +44,13 @@ export function Header() {
         })}
       </nav>
       {!user ? (
-        <button className="btn btn-primary" onClick={openLogin}>
-          <MailIcon />
-          Sign in with Gmail
-        </button>
+        <button className="btn btn-primary" onClick={openLogin}>Sign in</button>
       ) : (
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--color-accent-2-300)", color: "var(--color-accent-2-900)", display: "grid", placeItems: "center", fontWeight: 700 }}>{user.name[0]}</span>
           <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
-            <span style={{ fontSize: 13, fontWeight: 600 }}>{user.email}</span>
-            <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{tier === "pro" ? "Pro member" : "Member · free"}</span>
+            <span style={{ fontSize: 13, fontWeight: 600 }}>{user.handle}</span>
+            <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{tier === "pro" ? "Pro member" : flags.pro ? "Member · free" : "Member"}</span>
           </div>
           <button className="btn btn-ghost" onClick={signOut} style={{ fontSize: 13 }}>Sign out</button>
         </div>

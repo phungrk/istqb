@@ -4,7 +4,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApp, type Tier } from "./AppProvider";
 
-const DEMO = { name: "Linh Nguyen", email: "linh.nguyen@gmail.com" };
 const stop = (e: React.MouseEvent) => e.stopPropagation();
 
 function Backdrop({ children, width, onClose }: { children: React.ReactNode; width?: number; onClose: () => void }) {
@@ -17,53 +16,96 @@ function Backdrop({ children, width, onClose }: { children: React.ReactNode; wid
   );
 }
 
-const accountRow = { display: "flex", alignItems: "center", gap: 12, padding: "12px 16px", borderRadius: 999, border: "2px solid var(--color-divider)", background: "var(--color-bg)", cursor: "pointer", textAlign: "left", color: "var(--color-text)" } as const;
+const googleRow = { display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "11px 16px", borderRadius: 999, border: "2px solid var(--color-divider)", background: "var(--color-bg)", cursor: "pointer", color: "var(--color-text)", fontWeight: 600, fontSize: 14 } as const;
+
+function GenerateBox() {
+  const { generateAccount, toast } = useApp();
+  const [creds, setCreds] = useState<{ username: string; password: string } | null>(null);
+  const [busy, setBusy] = useState(false);
+  const box = { background: "var(--color-accent-2-100)", borderRadius: 20, padding: "12px 16px", fontSize: 13, color: "var(--color-accent-2-900)", display: "flex", flexDirection: "column", gap: 8 } as const;
+
+  if (creds)
+    return (
+      <div style={box} role="status">
+        <span style={{ fontWeight: 700 }}>Your account is ready and you are signed in.</span>
+        <span style={{ fontSize: 15 }}>
+          Username: <strong>{creds.username}</strong> · Password: <strong style={{ fontVariantNumeric: "tabular-nums", letterSpacing: ".04em" }}>{creds.password}</strong>
+        </span>
+        <span>Save it now: the password can&apos;t be shown again.</span>
+        <button
+          className="btn btn-secondary"
+          style={{ alignSelf: "flex-start", background: "var(--color-bg)" }}
+          onClick={() => navigator.clipboard?.writeText(`Username: ${creds.username}\nPassword: ${creds.password}`).then(() => toast("Copied"), () => toast("Copy failed"))}
+        >
+          Copy username & password
+        </button>
+      </div>
+    );
+  return (
+    <div style={{ ...box, flexDirection: "row", alignItems: "center", flexWrap: "wrap" }}>
+      <span style={{ flex: "1 1 180px" }}>New here? Get a free account in one click.</span>
+      <button
+        className="btn btn-secondary"
+        disabled={busy}
+        style={{ background: "var(--color-bg)" }}
+        onClick={async () => {
+          setBusy(true);
+          setCreds(await generateAccount());
+          setBusy(false);
+        }}
+      >
+        {busy ? "Creating…" : "Generate account"}
+      </button>
+    </div>
+  );
+}
 
 function LoginDialog() {
-  const { flags, closeDialog, loginDemo, loginGoogle, toast } = useApp();
-  const [email, setEmail] = useState("");
+  const { flags, user, closeDialog, loginPassword, loginGoogle, toast } = useApp();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   return (
     <Backdrop width={420} onClose={closeDialog}>
-      <span className="dialog-title" style={{ fontSize: 24 }}>Sign in with Gmail</span>
-      <span className="dialog-body">Choose a Google account to continue to Testpath. We only read your name and email address.</span>
-      {flags.auth === "google" ? (
-        <>
-          <button className="hov-border-accent" onClick={loginGoogle} style={accountRow}>
-            <span style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--color-accent-2-300)", color: "var(--color-accent-2-900)", display: "grid", placeItems: "center", fontWeight: 700 }}>G</span>
-            <span style={{ fontWeight: 600 }}>Continue with Google</span>
-          </button>
-          <div className="dialog-actions">
-            <button className="btn btn-ghost" type="button" onClick={closeDialog}>Cancel</button>
-          </div>
-        </>
+      <span className="dialog-title" style={{ fontSize: 24 }}>Sign in</span>
+      <GenerateBox />
+      {user ? (
+        <div className="dialog-actions">
+          <button className="btn btn-primary" onClick={closeDialog}>Done</button>
+        </div>
       ) : (
         <>
-          <button className="hov-border-accent" onClick={() => loginDemo(DEMO.email)} style={accountRow}>
-            <span style={{ width: 36, height: 36, borderRadius: "50%", background: "var(--color-accent-2-300)", color: "var(--color-accent-2-900)", display: "grid", placeItems: "center", fontWeight: 700 }}>L</span>
-            <span style={{ display: "flex", flexDirection: "column", lineHeight: 1.25 }}>
-              <span style={{ fontWeight: 600 }}>{DEMO.name}</span>
-              <span style={{ fontSize: 13, color: "var(--color-neutral-700)" }}>{DEMO.email}</span>
-            </span>
-          </button>
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              const v = email.trim();
-              if (!/^[^@\s]+@gmail\.com$/i.test(v)) return toast("Please enter a Gmail address");
-              void loginDemo(v.toLowerCase());
-              setEmail("");
+              if (!username.trim() || !password) return toast("Enter your username and password");
+              void loginPassword(username.trim(), password);
             }}
-            style={{ display: "flex", flexDirection: "column", gap: 8 }}
+            style={{ display: "flex", flexDirection: "column", gap: 10 }}
           >
             <div className="field">
-              <label htmlFor="login-email">Use another Gmail address</label>
-              <input id="login-email" className="input" type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="you@gmail.com" style={{ minHeight: 44 }} />
+              <label htmlFor="login-user">Username</label>
+              <input id="login-user" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username" autoComplete="username" style={{ minHeight: 44 }} />
+            </div>
+            <div className="field">
+              <label htmlFor="login-pass">Password</label>
+              <input id="login-pass" className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" autoComplete="current-password" style={{ minHeight: 44 }} />
             </div>
             <div className="dialog-actions">
               <button className="btn btn-ghost" type="button" onClick={closeDialog}>Cancel</button>
-              <button className="btn btn-primary" type="submit">Continue</button>
+              <button className="btn btn-primary" type="submit">Sign in</button>
             </div>
           </form>
+          {flags.google && (
+            <>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, color: "var(--color-neutral-700)" }}>
+                <span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />or<span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />
+              </div>
+              <button className="hov-border-accent" onClick={loginGoogle} style={googleRow}>
+                <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, color: "var(--color-accent)" }}>G</span>
+                Continue with Google
+              </button>
+            </>
+          )}
         </>
       )}
     </Backdrop>
@@ -138,8 +180,8 @@ function UpgradeDialog() {
 }
 
 function DemoBar() {
-  const { tier, setDemoTier } = useApp();
-  const tiers: [Tier, string][] = [["guest", "Guest"], ["member", "Member"], ["pro", "Pro"]];
+  const { tier, setDemoTier, flags } = useApp();
+  const tiers: [Tier, string][] = [["guest", "Guest"], ["member", "Member"], ...(flags.pro ? [["pro", "Pro"] as [Tier, string]] : [])];
   return (
     <div style={{ position: "fixed", right: 20, bottom: 20, display: "flex", alignItems: "center", gap: 6, background: "var(--color-neutral-900)", color: "var(--color-bg)", borderRadius: 999, padding: "6px 6px 6px 16px", zIndex: 40, boxShadow: "var(--shadow-lg)" }}>
       <span style={{ fontSize: 12, fontWeight: 600, marginRight: 4 }}>Preview as</span>
@@ -155,13 +197,14 @@ export function Overlays() {
   return (
     <>
       {dialog === "login" && <LoginDialog />}
-      {dialog === "checkout" && <CheckoutDialog />}
-      {dialog === "upgrade" && <UpgradeDialog />}
+      {/* Pricing and the AI coach are hidden unless ENABLE_PRO=1. */}
+      {flags.pro && dialog === "checkout" && <CheckoutDialog />}
+      {flags.pro && dialog === "upgrade" && <UpgradeDialog />}
       {toastText && (
         <div role="status" style={{ position: "fixed", left: "50%", top: 20, transform: "translateX(-50%)", background: "var(--color-neutral-900)", color: "var(--color-bg)", borderRadius: 999, padding: "12px 22px", fontSize: 14, fontWeight: 600, zIndex: 60, boxShadow: "var(--shadow-lg)" }}>{toastText}</div>
       )}
-      {/* Tier switcher exists only while sign-in runs in demo mode. */}
-      {flags.auth === "demo" && <DemoBar />}
+      {/* Tier switcher for local development only. */}
+      {flags.devTools && <DemoBar />}
     </>
   );
 }

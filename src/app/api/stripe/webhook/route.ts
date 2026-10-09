@@ -1,8 +1,10 @@
+import { config, notFound } from "@/server/config";
 import type Stripe from "stripe";
 import { getStore } from "@/server/store";
 import { getStripe } from "@/server/stripe";
 
 export async function POST(req: Request) {
+  if (!config.pro) return notFound(); // Pricing and the AI coach are switched off (ENABLE_PRO=1 turns them on)
   const secret = process.env.STRIPE_WEBHOOK_SECRET;
   const sig = req.headers.get("stripe-signature");
   if (!secret || !sig) return new Response("Webhook not configured", { status: 400 });
@@ -18,8 +20,7 @@ export async function POST(req: Request) {
   switch (event.type) {
     case "checkout.session.completed": {
       const s = event.data.object;
-      const email = s.metadata?.email ?? s.customer_details?.email;
-      const user = email ? await store.getUserByEmail(email.toLowerCase()) : null;
+      const user = s.client_reference_id ? await store.getUserById(s.client_reference_id) : null;
       if (user) {
         const customer = typeof s.customer === "string" ? s.customer : (s.customer?.id ?? null);
         await store.updateUser(user.id, { plan: "pro", proUntil: null, stripeCustomerId: customer });

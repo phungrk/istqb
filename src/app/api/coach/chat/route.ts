@@ -1,3 +1,4 @@
+import { config, notFound } from "@/server/config";
 import { z } from "zod";
 import { coachChat } from "@/server/ai";
 import { coachContext } from "@/server/coach-context";
@@ -8,6 +9,7 @@ const Body = z.object({
 });
 
 export async function POST(req: Request) {
+  if (!config.pro) return notFound(); // Pricing and the AI coach are switched off (ENABLE_PRO=1 turns them on)
   const gate = await requireTier("pro");
   if ("error" in gate) return gate.error;
   const parsed = Body.safeParse(await req.json().catch(() => null));

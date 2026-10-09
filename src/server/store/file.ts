@@ -5,7 +5,7 @@ import type { Attempt } from "@/lib/stats";
 import type { NewAttempt, Store, User } from "./types";
 
 /** Demo-mode store: one JSON file under .data/. Not for production. */
-type Db = { users: User[]; attempts: (Attempt & { userId: string })[]; learned: { userId: string; nodeId: string }[] };
+type Db = { users: (User & { passwordHash?: string })[]; attempts: (Attempt & { userId: string })[]; learned: { userId: string; nodeId: string }[] };
 
 const FILE = path.join(process.cwd(), ".data", "demo-db.json");
 
@@ -37,30 +37,55 @@ function write<T>(fn: (db: Db) => T): Promise<T> {
   return run;
 }
 
+/** Never hand the password hash out with the user. */
+const pub = (u: (User & { passwordHash?: string }) | undefined): User | null => {
+  if (!u) return null;
+  const { passwordHash: _h, ...rest } = u;
+  return { ...rest, username: rest.username ?? null };
+};
+
 const uid = (p: string) => p + Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
 
 export const fileStore: Store = {
+  async getUserById(id) {
+    return pub((await load()).users.find((u) => u.id === id));
+  },
   async getUserByEmail(email) {
-    return (await load()).users.find((u) => u.email === email) ?? null;
+    return pub((await load()).users.find((u) => u.email === email));
+  },
+  async getCredentials(username) {
+    const u = (await load()).users.find((x) => x.username === username);
+    return u?.passwordHash ? { user: pub(u)!, passwordHash: u.passwordHash } : null;
+  },
+  createCredentialUser(username, name, passwordHash) {
+    return write((db) => {
+      if (db.users.some((u) => u.username === username)) return null;
+      const u = { id: uid("u"), email: null, username, name, plan: "member" as const, proUntil: null, stripeCustomerId: null, passwordHash };
+      db.users.push(u);
+      return pub(u);
+    });
+  },
+  async listUsernames(prefix) {
+    return (await load()).users.flatMap((u) => (u.username?.startsWith(prefix) ? [u.username] : []));
   },
   async getUserByStripeCustomer(customerId) {
-    return (await load()).users.find((u) => u.stripeCustomerId === customerId) ?? null;
+    return pub((await load()).users.find((u) => u.stripeCustomerId === customerId));
   },
   upsertUser(email, name) {
     return write((db) => {
       let u = db.users.find((x) => x.email === email);
       if (!u) {
-        u = { id: uid("u"), email, name, plan: "member", proUntil: null, stripeCustomerId: null };
+        u = { id: uid("u"), email, username: null, name, plan: "member", proUntil: null, stripeCustomerId: null };
         db.users.push(u);
       }
-      return u;
+      return pub(u)!;
     });
   },
   updateUser(id, patch) {
     return write((db) => {
       const u = db.users.find((x) => x.id === id);
       if (!u) throw new Error("User not found");
-      return Object.assign(u, patch);
+      return pub(Object.assign(u, patch))!;
     });
   },
   async listAttempts(userId) {

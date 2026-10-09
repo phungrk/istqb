@@ -19,11 +19,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const user = await getCurrentUser();
   const store = await getStore();
   const initial: Initial = {
-    user: user && { email: user.email, name: user.name },
+    user: user && { handle: user.email ?? user.username ?? user.name, name: user.name },
     tier: tierOf(user),
     attempts: user ? await store.listAttempts(user.id) : [],
     learned: user ? await store.listLearned(user.id) : [],
-    flags: { auth: config.auth, payments: config.payments, passMark: PASS_MARK },
+    flags: { google: config.google, devTools: config.devTools, pro: config.pro, payments: config.payments, passMark: PASS_MARK },
   };
 
   return (

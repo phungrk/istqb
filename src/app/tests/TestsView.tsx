@@ -16,7 +16,7 @@ const LEVEL_SUB: Record<number, string> = {
 
 export function TestsView({ counts }: { counts: Record<number, number> }) {
   const router = useRouter();
-  const { tier, attempts, mode, setMode, startSet, openLogin, setCoachTab } = useApp();
+  const { tier, attempts, mode, setMode, startSet, openLogin, setCoachTab, flags } = useApp();
   const logged = tier !== "guest";
   const pro = tier === "pro";
 
@@ -52,7 +52,7 @@ export function TestsView({ counts }: { counts: Record<number, number> }) {
       {!logged && (
         <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", background: "var(--color-accent-2-100)", borderRadius: 28, padding: "16px 22px" }}>
           <span style={{ flex: "1 1 300px", fontSize: 14, color: "var(--color-accent-2-900)" }}>You can take any test now. Results are not saved until you sign in.</span>
-          <button className="btn btn-secondary" onClick={openLogin}>Sign in with Gmail</button>
+          <button className="btn btn-secondary" onClick={openLogin}>Sign in</button>
         </div>
       )}
 
@@ -79,6 +79,7 @@ export function TestsView({ counts }: { counts: Record<number, number> }) {
               </div>
             );
           })}
+          {flags.pro && (
           <div className="card" style={{ padding: 24, gap: 10, background: "var(--color-accent-100)" }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>Pro · AI generated</span>
             <span className="card-title" style={{ fontSize: 22 }}>A set built from your weak topics</span>
@@ -91,6 +92,7 @@ export function TestsView({ counts }: { counts: Record<number, number> }) {
               {pro ? "Create a set" : "Unlock with Pro"}
             </button>
           </div>
+          )}
         </div>
       </div>
 

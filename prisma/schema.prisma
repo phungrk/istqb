@@ -14,7 +14,9 @@ enum Plan {
 
 model User {
   id               String         @id @default(cuid())
-  email            String         @unique
+  email            String?        @unique
+  username         String?        @unique
+  passwordHash     String?
   name             String
   plan             Plan           @default(member)
   proUntil         DateTime?

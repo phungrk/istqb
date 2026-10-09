@@ -8,8 +8,10 @@ import { htmlToText, score, type Answers, type Mode, type Question, type SetSpec
 import { weakest, type Attempt } from "@/lib/stats";
 
 export type Tier = "guest" | "member" | "pro";
-export type Flags = { auth: "google" | "demo"; payments: "stripe" | "demo"; passMark: number };
-export type Me = { email: string; name: string };
+/** pro = pricing + AI coach (hidden unless ENABLE_PRO=1); devTools = local "Preview as" bar. */
+export type Flags = { google: boolean; devTools: boolean; pro: boolean; payments: "stripe" | "demo"; passMark: number };
+/** handle = email for Google users, username for generated accounts. */
+export type Me = { handle: string; name: string };
 export type Initial = { user: Me | null; tier: Tier; attempts: Attempt[]; learned: string[]; flags: Flags };
 
 /** A drawn set of questions. `spec` lets "Try again" draw a fresh set of the same kind. */
@@ -104,7 +106,7 @@ function useAppState(initial: Initial) {
     setExamState(ssGet<ExamState>(SS.exam));
     setResultState(ssGet<ResultState>(SS.result));
     setHydrated(true);
-    if (initial.user && ssGet(SS.signingIn)) toast("Signed in as " + initial.user.email);
+    if (initial.user && ssGet(SS.signingIn)) toast("Signed in as " + initial.user.handle);
     ssSet(SS.signingIn, null);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -143,17 +145,28 @@ function useAppState(initial: Initial) {
     setPending(null);
   }, []);
 
-  const loginDemo = useCallback(
-    async (email: string) => {
-      const { ok, data } = await postJson<{ error?: string }>("/api/demo/login", { email });
+  const loginPassword = useCallback(
+    async (username: string, password: string) => {
+      const { ok, data } = await postJson<{ error?: string; username?: string }>("/api/account/login", { username, password });
       if (!ok) return toast(data.error || "Could not sign in");
       setDialog(pending === "checkout" ? "checkout" : null);
       setPending(null);
-      toast("Signed in as " + email);
+      toast("Signed in as " + data.username);
       refresh();
     },
     [pending, refresh, toast],
   );
+
+  /** Creates userNNN with an 8-digit password and signs it in. The dialog shows the credentials once. */
+  const generateAccount = useCallback(async () => {
+    const { ok, data } = await postJson<{ error?: string; username?: string; password?: string }>("/api/account/generate");
+    if (!ok || !data.username || !data.password) {
+      toast(data.error || "Could not create an account");
+      return null;
+    }
+    refresh();
+    return { username: data.username, password: data.password };
+  }, [refresh, toast]);
 
   const loginGoogle = useCallback(() => {
     ssSet(SS.signingIn, true);
@@ -162,14 +175,14 @@ function useAppState(initial: Initial) {
   }, [pathname, pending]);
 
   const signOut = useCallback(async () => {
-    if (flags.auth === "demo") await postJson("/api/demo/logout");
-    else await googleSignOut({ redirect: false });
+    await postJson("/api/account/logout");
+    if (flags.google) await googleSignOut({ redirect: false });
     setChat([]);
     setPlan("");
     router.push("/");
     refresh();
     toast("Signed out");
-  }, [flags.auth, refresh, router, toast]);
+  }, [flags.google, refresh, router, toast]);
 
   const setDemoTier = useCallback(
     async (t: Tier) => {
@@ -315,7 +328,7 @@ function useAppState(initial: Initial) {
   return {
     flags, user, tier, attempts, learned, hydrated,
     mode, setMode, exam, setExam, result, startExam, startSet, retry, submit,
-    dialog, setDialog, pending, setPending, openLogin, closeDialog, loginDemo, loginGoogle, signOut, setDemoTier, upgrade,
+    dialog, setDialog, pending, setPending, openLogin, closeDialog, loginPassword, generateAccount, loginGoogle, signOut, setDemoTier, upgrade,
     toastText, toast,
     expanded, setExpanded, selected, setSelected, openNode, toggleLearned,
     weak, chat, busy, plan, coachTab, setCoachTab, quizCh, setQuizCh, sendChat, askAI, makePlan, makeQuiz,

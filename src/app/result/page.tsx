@@ -47,7 +47,7 @@ export default function ResultPage() {
 
       {!logged && (
         <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", background: "var(--color-accent-2-100)", borderRadius: 28, padding: "18px 22px" }}>
-          <span style={{ flex: "1 1 300px", fontSize: 15, color: "var(--color-accent-2-900)" }}>This result is not saved. Sign in with Gmail to keep it and follow your progress.</span>
+          <span style={{ flex: "1 1 300px", fontSize: 15, color: "var(--color-accent-2-900)" }}>This result is not saved. Sign in to keep it and follow your progress.</span>
           <button className="btn btn-primary" onClick={openLogin}>Save my result</button>
         </div>
       )}
@@ -86,9 +86,11 @@ export default function ResultPage() {
                 {!ok && (
                   <>
                     <Html html={q.explanation} style={{ fontSize: 14, color: "var(--color-neutral-800)" }} />
-                    <button className="btn btn-ghost" onClick={() => askAI(q, a)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
-                      {tier === "pro" ? "Explain with AI coach" : "Explain with AI coach (Pro)"}
-                    </button>
+                    {flags.pro && (
+                      <button className="btn btn-ghost" onClick={() => askAI(q, a)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
+                        {tier === "pro" ? "Explain with AI coach" : "Explain with AI coach (Pro)"}
+                      </button>
+                    )}
                   </>
                 )}
               </div>
