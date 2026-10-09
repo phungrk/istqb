@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { usePathname, useRouter } from "next/navigation";
 import { signIn as googleSignIn, signOut as googleSignOut } from "next-auth/react";
 import { NODE, chapterTitle } from "@/lib/syllabus";
-import { score, type ExamDef, type Mode, type Question } from "@/lib/questions";
+import { htmlToText, score, type Answers, type Mode, type Question, type SetSpec } from "@/lib/questions";
 import { weakest, type Attempt } from "@/lib/stats";
 
 export type Tier = "guest" | "member" | "pro";
@@ -12,13 +12,13 @@ export type Flags = { auth: "google" | "demo"; payments: "stripe" | "demo"; pass
 export type Me = { email: string; name: string };
 export type Initial = { user: Me | null; tier: Tier; attempts: Attempt[]; learned: string[]; flags: Flags };
 
-/** The parts of an exam definition needed to (re)start it. */
-export type ExamSet = Pick<ExamDef, "key" | "title" | "questions" | "minutes">;
-export type ExamState = { set: ExamSet; mode: Mode; idx: number; answers: Record<number, number>; started: number };
+/** A drawn set of questions. `spec` lets "Try again" draw a fresh set of the same kind. */
+export type ExamSet = { key: string; title: string; questions: Question[]; minutes: number; spec?: SetSpec };
+export type ExamState = { set: ExamSet; mode: Mode; idx: number; answers: Answers; started: number };
 export type ResultState = {
   set: ExamSet;
   mode: Mode;
-  answers: Record<number, number>;
+  answers: Answers;
   correct: number;
   total: number;
   durationSec: number;
@@ -119,7 +119,7 @@ function useAppState(initial: Initial) {
       setKey: result.set.key,
       mode: result.mode,
       durationSec: result.durationSec,
-      questions: result.set.questions.map((q) => ({ id: q.id, chapter: q.chapter, answerIndex: q.answerIndex, source: q.source })),
+      questions: result.set.questions.map((q) => ({ id: q.id, chapter: q.chapter, answers: q.answers, source: q.source })),
       answers: result.answers,
     })
       .then(({ ok, data }) => {
@@ -205,6 +205,24 @@ function useAppState(initial: Initial) {
     [mode, router, setExam],
   );
 
+  /** Draw a fresh random set from the bank and start it. */
+  const startSet = useCallback(
+    async (spec: SetSpec, m: Mode = mode) => {
+      const params = new URLSearchParams(Object.entries(spec).map(([k, v]) => [k, String(v)]));
+      const res = await fetch("/api/sets?" + params, { cache: "no-store" });
+      const set = (await res.json().catch(() => null)) as ExamSet | null;
+      if (!res.ok || !set?.questions?.length) return toast("Could not load questions");
+      startExam(set, m);
+    },
+    [mode, startExam, toast],
+  );
+
+  /** Same kind of set again: a new draw when it came from the bank, otherwise the same questions. */
+  const retry = useCallback(
+    (set: ExamSet, m: Mode) => (set.spec ? startSet(set.spec, m) : startExam(set, m)),
+    [startExam, startSet],
+  );
+
   const submit = useCallback(() => {
     if (!exam) return;
     const s = score(exam.set.questions, exam.answers);
@@ -266,9 +284,10 @@ function useAppState(initial: Initial) {
   );
 
   const askAI = useCallback(
-    (q: Question, chosen: number | undefined) => {
+    (q: Question, chosen: number[] | undefined) => {
       if (tier !== "pro") return setDialog("upgrade");
-      const msg = `Explain this question. I answered "${chosen === undefined ? "nothing" : q.options[chosen]}" but the correct answer is "${q.options[q.answerIndex]}".\n\n${q.question}`;
+      const opts = (idx: number[] | undefined) => (idx?.length ? idx.map((i) => `"${htmlToText(q.options[i])}"`).join(" and ") : "nothing");
+      const msg = `Explain this question. I answered ${opts(chosen)} but the correct answer is ${opts(q.answers)}.\n\n${htmlToText(q.stem)}`;
       setCoachTab("chat");
       router.push("/coach");
       void sendChat(msg);
@@ -295,7 +314,7 @@ function useAppState(initial: Initial) {
 
   return {
     flags, user, tier, attempts, learned, hydrated,
-    mode, setMode, exam, setExam, result, startExam, submit,
+    mode, setMode, exam, setExam, result, startExam, startSet, retry, submit,
     dialog, setDialog, pending, setPending, openLogin, closeDialog, loginDemo, loginGoogle, signOut, setDemoTier, upgrade,
     toastText, toast,
     expanded, setExpanded, selected, setSelected, openNode, toggleLearned,

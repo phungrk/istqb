@@ -2,13 +2,12 @@
 
 import { useApp } from "@/components/AppProvider";
 import { CheckIcon, ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
-import { examDef } from "@/lib/questions";
 import { CHAPTERS, KIDS, NODE, NODES, STUDY_IDS, chapterOf, depthOf, palette } from "@/lib/syllabus";
 
 type Row = { id: string; depth: number };
 
 export default function MindmapPage() {
-  const { tier, learned, expanded, setExpanded, selected, setSelected, openNode, toggleLearned, startExam, openLogin } = useApp();
+  const { tier, learned, expanded, setExpanded, selected, setSelected, openNode, toggleLearned, startSet, openLogin } = useApp();
   const logged = tier !== "guest";
 
   const rows: Row[] = [];
@@ -100,7 +99,7 @@ export default function MindmapPage() {
             )}
             <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 10 }}>
               {selCh && (
-                <button className="btn btn-primary" onClick={() => { const d = examDef("c" + selCh); if (d) startExam(d, "practice"); }}>Practise this chapter</button>
+                <button className="btn btn-primary" onClick={() => startSet({ kind: "chapter", chapter: selCh, size: 10 }, "practice")}>Practise this chapter</button>
               )}
               {logged && selDepth >= 2 && (
                 <button className="btn btn-secondary" onClick={() => toggleLearned(selected)}>{learned[selected] ? "Learned ✓ (undo)" : "Mark as learned"}</button>

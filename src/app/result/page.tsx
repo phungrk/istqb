@@ -3,13 +3,15 @@
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
+import { Html } from "@/components/Html";
 import { CheckIcon, XIcon } from "@/components/icons";
+import { isCorrect, letters } from "@/lib/questions";
 import { chapterTitle } from "@/lib/syllabus";
 import { formatClock } from "@/lib/stats";
 
 export default function ResultPage() {
   const router = useRouter();
-  const { result: r, hydrated, tier, flags, startExam, openLogin, askAI } = useApp();
+  const { result: r, hydrated, tier, flags, retry, openLogin, askAI } = useApp();
   const logged = tier !== "guest";
   const passMark = flags.passMark;
 
@@ -36,7 +38,7 @@ export default function ResultPage() {
             Pass mark is {passMark}%. Time taken {formatClock(r.durationSec)}.{pass ? "" : " The chapter bars show where to focus."}
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
-            <button className="btn btn-primary" onClick={() => startExam(r.set, r.mode)}>Try again</button>
+            <button className="btn btn-primary" onClick={() => retry(r.set, r.mode)}>Try again</button>
             <button className="btn btn-secondary" onClick={() => router.push("/tests")}>All tests</button>
             {logged && <button className="btn btn-secondary" onClick={() => router.push("/dashboard")}>Open dashboard</button>}
           </div>
@@ -70,20 +72,20 @@ export default function ResultPage() {
           <h4 style={{ margin: 0 }}>Review answers</h4>
           {r.set.questions.map((q, i) => {
             const a = r.answers[i];
-            const ok = a === q.answerIndex;
+            const ok = isCorrect(q, a);
             return (
               <div key={q.id + i} style={{ background: "var(--color-neutral-100)", borderRadius: 28, padding: "20px 22px", display: "flex", flexDirection: "column", gap: 8 }}>
                 <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                   <span aria-label={ok ? "Correct" : "Wrong"} style={{ width: 28, height: 28, borderRadius: "50%", flex: "none", display: "grid", placeItems: "center", background: ok ? "var(--color-accent-2-600)" : "var(--color-accent-600)", color: "var(--color-bg)" }}>
                     {ok ? <CheckIcon strokeWidth={3} /> : <XIcon strokeWidth={3} />}
                   </span>
-                  <span style={{ fontSize: 13, fontWeight: 700 }}>Q{i + 1} · Chapter {q.chapter}</span>
+                  <span style={{ fontSize: 13, fontWeight: 700 }}>Q{i + 1} · Chapter {q.chapter}{q.lo ? ` · LO ${q.lo}` : ""}</span>
                 </div>
-                <span style={{ fontSize: 15 }}>{q.question}</span>
-                <span style={{ fontSize: 14, color: "var(--color-neutral-800)" }}>Your answer: {a === undefined ? "—" : "ABCD"[a]} · Correct: {"ABCD"[q.answerIndex]}</span>
+                <Html html={q.stem} style={{ fontSize: 15 }} />
+                <span style={{ fontSize: 14, color: "var(--color-neutral-800)" }}>Your answer: {letters(a)} · Correct: {letters(q.answers)}</span>
                 {!ok && (
                   <>
-                    <span style={{ fontSize: 14, color: "var(--color-neutral-800)" }}>{q.explanation}</span>
+                    <Html html={q.explanation} style={{ fontSize: 14, color: "var(--color-neutral-800)" }} />
                     <button className="btn btn-ghost" onClick={() => askAI(q, a)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                       {tier === "pro" ? "Explain with AI coach" : "Explain with AI coach (Pro)"}
                     </button>

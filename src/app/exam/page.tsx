@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { ClockIcon, SparklesIcon } from "@/components/icons";
+import { Html } from "@/components/Html";
+import { LETTERS, isCorrect } from "@/lib/questions";
 import { chapterTitle } from "@/lib/syllabus";
 import { formatClock } from "@/lib/stats";
 
@@ -32,16 +34,27 @@ export default function ExamPage() {
   if (!exam) return null;
   const e = exam;
   const q = e.set.questions[e.idx];
-  const chosen = e.answers[e.idx];
+  const chosen = e.answers[e.idx] ?? [];
+  const need = q.answers.length;
   const practice = e.mode === "practice";
-  const reveal = practice && chosen !== undefined;
+  // Practice mode reveals the answer once the required number of options is picked.
+  const reveal = practice && chosen.length === need;
+  const right = isCorrect(q, chosen);
   const total = e.set.questions.length;
   const isLast = e.idx === total - 1;
   const lowTime = left < 120;
 
   const pick = (i: number) => {
     if (reveal) return;
-    setExam({ ...e, answers: { ...e.answers, [e.idx]: i } });
+    let next: number[];
+    if (need === 1) next = [i];
+    else if (chosen.includes(i)) next = chosen.filter((x) => x !== i);
+    else if (chosen.length < need) next = [...chosen, i];
+    else return;
+    const answers = { ...e.answers };
+    if (next.length) answers[e.idx] = next;
+    else delete answers[e.idx];
+    setExam({ ...e, answers });
   };
   const go = (idx: number) => setExam({ ...e, idx: Math.max(0, Math.min(total - 1, idx)) });
 
@@ -64,29 +77,31 @@ export default function ExamPage() {
           <div style={{ background: "var(--color-neutral-100)", borderRadius: 32, padding: 32, display: "flex", flexDirection: "column", gap: 20 }}>
             <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
               <span style={{ fontSize: 14, fontWeight: 700 }}>Question {e.idx + 1} of {total}</span>
-              <span className="tag tag-neutral">Chapter {q.chapter} · {chapterTitle(q.chapter)}</span>
+              <span className="tag tag-neutral">Chapter {q.chapter} · {chapterTitle(q.chapter)}{q.lo ? ` · LO ${q.lo}` : ""}</span>
+              {need > 1 && <span className="tag tag-accent">Select {need} answers</span>}
             </div>
-            <p style={{ margin: 0, fontSize: 20, lineHeight: 1.45, textWrap: "pretty" }}>{q.question}</p>
+            <Html html={q.stem} style={{ fontSize: 18, lineHeight: 1.5, textWrap: "pretty" }} />
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {q.options.map((text, i) => {
                 let bg = "var(--color-bg)", bd = "var(--color-divider)", dBg = "var(--color-surface)", dFg = "var(--color-text)";
+                const isChosen = chosen.includes(i);
                 if (reveal) {
-                  if (i === q.answerIndex) { bg = "var(--color-accent-2-100)"; bd = "var(--color-accent-2-600)"; dBg = "var(--color-accent-2-600)"; dFg = "var(--color-bg)"; }
-                  else if (i === chosen) { bg = "var(--color-accent-100)"; bd = "var(--color-accent-600)"; dBg = "var(--color-accent-600)"; dFg = "var(--color-bg)"; }
-                } else if (i === chosen) { bg = "var(--color-accent-100)"; bd = "var(--color-accent)"; dBg = "var(--color-accent)"; dFg = "var(--color-bg)"; }
+                  if (q.answers.includes(i)) { bg = "var(--color-accent-2-100)"; bd = "var(--color-accent-2-600)"; dBg = "var(--color-accent-2-600)"; dFg = "var(--color-bg)"; }
+                  else if (isChosen) { bg = "var(--color-accent-100)"; bd = "var(--color-accent-600)"; dBg = "var(--color-accent-600)"; dFg = "var(--color-bg)"; }
+                } else if (isChosen) { bg = "var(--color-accent-100)"; bd = "var(--color-accent)"; dBg = "var(--color-accent)"; dFg = "var(--color-bg)"; }
                 return (
-                  <button key={i} className="hov-shadow-sm" aria-pressed={i === chosen} onClick={() => pick(i)}
+                  <button key={i} className="hov-shadow-sm" aria-pressed={isChosen} onClick={() => pick(i)}
                     style={{ display: "flex", alignItems: "center", gap: 14, textAlign: "left", padding: "12px 18px 12px 12px", borderRadius: 999, background: bg, border: `2px solid ${bd}`, cursor: reveal ? "default" : "pointer", color: "var(--color-text)", fontSize: 15 }}>
-                    <span style={{ width: 34, height: 34, flex: "none", borderRadius: "50%", display: "grid", placeItems: "center", fontWeight: 700, background: dBg, color: dFg }}>{"ABCD"[i]}</span>
-                    <span>{text}</span>
+                    <span style={{ width: 34, height: 34, flex: "none", borderRadius: need > 1 ? 10 : "50%", display: "grid", placeItems: "center", fontWeight: 700, background: dBg, color: dFg }}>{LETTERS[i]}</span>
+                    <Html as="span" className="opt-html" html={text} />
                   </button>
                 );
               })}
             </div>
             {reveal && (
-              <div style={{ borderRadius: 24, padding: "20px 22px", background: chosen === q.answerIndex ? "var(--color-accent-2-100)" : "var(--color-accent-100)", display: "flex", flexDirection: "column", gap: 8 }}>
-                <span style={{ fontFamily: "var(--font-heading)", fontSize: 18, color: chosen === q.answerIndex ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>{chosen === q.answerIndex ? "Correct" : "Not quite"}</span>
-                <span style={{ fontSize: 15, color: "var(--color-neutral-900)" }}>{q.explanation}</span>
+              <div style={{ borderRadius: 24, padding: "20px 22px", background: right ? "var(--color-accent-2-100)" : "var(--color-accent-100)", display: "flex", flexDirection: "column", gap: 8 }}>
+                <span style={{ fontFamily: "var(--font-heading)", fontSize: 18, color: right ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>{right ? "Correct" : "Not quite"}</span>
+                <Html html={q.explanation} style={{ fontSize: 15, color: "var(--color-neutral-900)" }} />
                 <button className="btn btn-ghost" onClick={() => askAI(q, chosen)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                   <SparklesIcon />
                   {tier === "pro" ? "Ask the AI coach to explain" : "Ask the AI coach (Pro)"}
@@ -106,8 +121,9 @@ export default function ExamPage() {
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 8 }}>
             {e.set.questions.map((qq, i) => {
               const a = e.answers[i];
+              const done = !!a && a.length === qq.answers.length;
               let bg = "var(--color-neutral-200)", fg = "var(--color-text)";
-              if (a !== undefined) bg = practice ? (a === qq.answerIndex ? "var(--color-accent-2-300)" : "var(--color-accent-300)") : "var(--color-accent-200)";
+              if (a?.length) bg = practice && done ? (isCorrect(qq, a) ? "var(--color-accent-2-300)" : "var(--color-accent-300)") : "var(--color-accent-200)";
               if (i === e.idx) { bg = "var(--color-text)"; fg = "var(--color-bg)"; }
               return (
                 <button key={i} aria-label={`Question ${i + 1}`} aria-current={i === e.idx} onClick={() => go(i)} style={{ aspectRatio: "1", borderRadius: "50%", border: 0, cursor: "pointer", fontWeight: 700, fontSize: 13, background: bg, color: fg }}>{i + 1}</button>

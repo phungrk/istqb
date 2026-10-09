@@ -45,7 +45,7 @@ model AttemptAnswer {
   attemptId   String
   attempt     Attempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
   questionId  String
-  chosenIndex Int?
+  chosen      Int[]
 
   @@id([attemptId, questionId])
 }

@@ -41,10 +41,19 @@ Copy `.env.example` to `.env` and fill in the groups you want. The "Preview as" 
 - `src/components/AppProvider.tsx` — client state (exam in progress, result, dialogs, coach chat). The exam and the last result live in `sessionStorage`, so a guest's result survives the Google sign-in redirect and is saved automatically once they're signed in.
 - `src/app/api/*` — all tier gating is server-side: attempts and learned topics need a member, `/api/coach/*` needs Pro. Bank questions are re-scored on the server when an attempt is saved.
 - `src/server/store` — one `Store` interface with a Prisma and a demo-file implementation.
-- `data/syllabus.json`, `data/questions.json` — the mindmap and question bank.
+- `data/syllabus.json`, `data/questions.json` — the mindmap and question bank (server-only; sets are drawn by `src/server/bank.ts`).
 
-## Question bank
+## Practice tests and the question bank
 
-`data/questions.json` holds the **15 sample questions** from the prototype. Mock exams use every question at the real exam's pace (1.5 min each). Once every chapter has at least as many questions as the real exam asks (8/6/4/11/9/2), mock exams switch to the real format automatically: 40 questions in 60 minutes.
+`data/questions.json` holds **915 questions** imported from the "Quiz 1–25 – ISTQB CTFL" artifacts (Quiz 6 and 7 don't exist; duplicates across quizzes are kept once, and one Quiz 25 question whose figure is missing is skipped). Per chapter: 183 / 138 / 92 / 250 / 206 / 46. Images live in `public/q/`.
+
+The Practice tests page has two parts, each in Short (10), Medium (20) or Long (40) questions:
+
+- **By level:** questions from all six chapters in the real exam's proportions (8/6/4/11/9/2), in syllabus order. Long = the real exam format.
+- **By chapter:** questions from one chapter only.
+
+Every start draws a fresh random set on the server (`GET /api/sets`), and "Try again" draws a new one. Mock exam mode allows 1.5 minutes per question (60 min for 40). Questions can have 5 options or 2 correct answers ("Select 2 answers"); they are only marked correct when every right option is chosen.
+
+To rebuild the bank after editing the quizzes, save each quiz page and run `scripts/import-quizzes.mjs` (usage at the top of the file).
 
 ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.

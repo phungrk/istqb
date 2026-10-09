@@ -12,7 +12,7 @@ export type User = {
 };
 
 export type NewAttempt = Omit<Attempt, "id" | "createdAt"> & {
-  answers: { questionId: string; chosenIndex: number | null }[];
+  answers: { questionId: string; chosen: number[] }[];
   createdAt?: string;
 };
 

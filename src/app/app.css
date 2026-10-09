@@ -11,3 +11,25 @@ button { font: inherit; }
 .hov-shadow-md:hover { box-shadow: var(--shadow-md) !important; }
 .hov-shadow-sm:hover { box-shadow: var(--shadow-sm) !important; }
 .hov-border-accent:hover { border-color: var(--color-accent) !important; }
+
+/* Question content imported from the quizzes: paragraphs, lists, tables, images, diagrams. */
+.qhtml > :first-child { margin-top: 0; }
+.qhtml > :last-child { margin-bottom: 0; }
+.qhtml p { margin: 0 0 10px; }
+.qhtml ul, .qhtml ol { margin: 0 0 10px; padding-left: 22px; }
+.qhtml li > p { margin: 0 0 4px; }
+.qhtml blockquote { margin: 0 0 10px; padding: 8px 14px; border-left: 3px solid var(--color-neutral-400); background: color-mix(in srgb, var(--color-surface) 60%, transparent); border-radius: 0 16px 16px 0; }
+.qhtml img { display: block; max-width: 100%; height: auto; margin: 8px 0; border-radius: 16px; background: #fff; }
+.qhtml table { border-collapse: collapse; font-size: 0.85em; margin: 0 0 10px; background: var(--color-bg); border-radius: 12px; overflow: hidden; }
+.qhtml th, .qhtml td { padding: 6px 10px; border: 1px solid var(--color-divider); text-align: left; vertical-align: top; }
+.qhtml th { font-weight: 700; background: var(--color-surface); }
+.qhtml code, .qhtml pre { font-family: ui-monospace, monospace; font-size: 0.9em; }
+.qhtml pre { white-space: pre-wrap; background: var(--color-bg); padding: 10px 12px; border-radius: 12px; }
+.qhtml .fig, .qhtml .fg { margin: 0 0 10px; overflow-x: auto; }
+.qhtml .fw { font-weight: 700; }
+.qhtml .cap { font-size: 12px; color: var(--color-neutral-700); margin: 4px 0 2px; }
+.qhtml svg { max-width: 100%; height: auto; }
+/* Figures from the source quizzes use these theme variables. */
+.qhtml { --border: var(--color-divider); --border-strong: var(--color-neutral-500); --text-primary: var(--color-text); --text-secondary: var(--color-neutral-700); --text-accent: var(--color-accent-700); --surface-1: var(--color-surface); --surface-2: var(--color-neutral-100); --bg-accent: var(--color-accent-100); }
+.opt-html p { margin: 0; }
+.opt-html img { margin: 4px 0; max-height: 220px; }
