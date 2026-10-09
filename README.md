@@ -49,6 +49,8 @@ The mindmap is root → six chapters → **36 study topics** imported from the "
 
 To refresh it after editing the artifact, save the page and run `node scripts/import-mindmap.mjs <file>.html .`. The chapter and root nodes still come from `data/syllabus.json`.
 
+Each topic also has a **Syllabus · learning objectives** block: the CTFL v4.0.1 LOs it covers (code, K-level, statement) and the syllabus sentences that contain the topic's keywords, with those keywords highlighted. It is built by `python3 scripts/import-syllabus.py <ISTQB_CTFL_Syllabus_v4.0.1.pdf> .` (needs `pdftotext`) into `data/syllabus-lo.json`. The topic → LO mapping is the `MAP` table at the top of that script; keywords are the syllabus's official chapter keywords found in the topic plus the English terms of its key-term chips.
+
 ## Practice tests and the question bank
 
 `data/questions.json` holds **915 questions** imported from the "Quiz 1–25 – ISTQB CTFL" artifacts (Quiz 6 and 7 don't exist; duplicates across quizzes are kept once, and one Quiz 25 question whose figure is missing is skipped). Per chapter: 183 / 138 / 92 / 250 / 206 / 46. Images live in `public/q/`.

@@ -3,10 +3,13 @@
 import { useRef } from "react";
 import { useApp } from "@/components/AppProvider";
 import { CheckIcon, ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
-import { TopicView } from "@/components/TopicView";
+import { TopicView, type LoExcerpt } from "@/components/TopicView";
+import syllabusLo from "@data/syllabus-lo.json";
 import { CHAPTERS, KIDS, NODE, NODES, STUDY_IDS, TOPICS, chapterOf, depthOf, palette } from "@/lib/syllabus";
 
 type Row = { id: string; depth: number };
+
+const LO_BY_TOPIC = syllabusLo as Record<string, LoExcerpt[]>;
 
 /** Vietnamese letters the Caprasimo heading font lacks. */
 const VIET = /[\u01a0\u01a1\u01af\u01b0\u0110\u0111\u1ea0-\u1ef9]/;
@@ -97,7 +100,7 @@ export default function MindmapPage() {
             <h3 style={{ margin: 0, ...(VIET.test(sel.title) ? { fontFamily: "var(--font-body)", fontWeight: 700 } : {}) }}>{sel.title}</h3>
             {topic?.starred && <span className="tag tag-accent" style={{ alignSelf: "flex-start" }}>⭐ Often on the exam</span>}
             {topic && selPal ? (
-              <TopicView topic={topic} color={selPal.base} ink={selPal.ink} />
+              <TopicView topic={topic} color={selPal.base} ink={selPal.ink} los={LO_BY_TOPIC[topic.id]} />
             ) : (
               <p style={{ margin: 0, fontSize: 15, textWrap: "pretty" }}>{sel.summary}</p>
             )}

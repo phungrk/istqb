@@ -1,5 +1,8 @@
 import type { Topic, TopicBlock } from "@/lib/syllabus";
 
+/** Syllabus learning objective with the sentences that carry this topic's keywords (built by scripts/import-syllabus.py). */
+export type LoExcerpt = { lo: string; k: string; statement: string; section: string; keywords: string[]; excerpt: { t: "p" | "li"; html: string }[] };
+
 /*
  * Renders a mindmap topic. The blocks mirror the source artifact's renderer: most
  * strings may carry inline HTML (sanitised at import by scripts/import-mindmap.mjs),
@@ -43,10 +46,31 @@ function blockHtml(b: TopicBlock): string {
   }
 }
 
-export function TopicView({ topic, color, ink }: { topic: Topic; color: string; ink: string }) {
+/** LO statements and excerpts are escaped syllabus text with <mark> added by the import script. */
+function syllabusHtml(los: LoExcerpt[]): string {
+  if (!los.length) return "";
+  const lo = (e: LoExcerpt, i: number) => {
+    let body = "";
+    let list: string[] = [];
+    const flush = () => { if (list.length) body += `<ul>${list.join("")}</ul>`; list = []; };
+    for (const x of e.excerpt) {
+      if (x.t === "li") list.push(`<li>${x.html}</li>`);
+      else { flush(); body += `<p>${x.html}</p>`; }
+    }
+    flush();
+    return `<details class="lo"${i === 0 ? " open" : ""}><summary><span class="lo-id">FL-${e.lo}</span><span class="lo-k">${e.k}</span><span class="lo-st">${e.statement}</span></summary><div class="lo-body"><div class="lo-sec">Syllabus ${E(e.section)}</div>${body}</div></details>`;
+  };
+  return `<div class="b-syl"><div class="b-label">📘 Syllabus · learning objectives</div>${los.map(lo).join("")}<p class="lo-src">Quoted from the ISTQB® CTFL Syllabus v4.0.1. Highlighted: this topic's keywords.</p></div>`;
+}
+
+export function TopicView({ topic, color, ink, los = [] }: { topic: Topic; color: string; ink: string; los?: LoExcerpt[] }) {
+  // The syllabus block goes right after the first key-terms block.
+  const kwAt = topic.body.findIndex((b) => b.k === "kw");
+  const blocks = topic.body.map(blockHtml);
+  blocks.splice(kwAt + 1, 0, syllabusHtml(los));
   const html =
     `<div class="hook"><span class="lbl">Remember it as</span><p>${topic.hook}</p></div>` +
-    topic.body.map(blockHtml).join("") +
+    blocks.join("") +
     (topic.trap ? `<div class="trap"><span class="lbl">🪤 Exam trap</span><p>${topic.trap}</p></div>` : "");
   return <div className="topic" style={{ "--c": color, "--c-ink": ink } as React.CSSProperties} dangerouslySetInnerHTML={{ __html: html }} />;
 }

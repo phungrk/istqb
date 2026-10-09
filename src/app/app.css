@@ -129,3 +129,21 @@ button { font: inherit; }
 /* Mindmap detail panel: sticky with its own scroll beside the tree, plain flow when stacked. */
 .mm-detail { position: sticky; top: 16px; max-height: calc(100vh - 32px); overflow-y: auto; }
 @media (max-width: 900px) { .mm-detail { position: static; max-height: none; overflow: visible; } }
+
+/* Syllabus learning objectives quoted inside a topic; <mark> = the topic's keywords. */
+.topic .b-syl { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 12px 14px 10px; margin: 0 0 14px; }
+.topic .b-syl details.lo { border-top: 1px solid var(--line); padding: 8px 0; }
+.topic .b-syl details.lo:first-of-type { border-top: none; padding-top: 2px; }
+.topic .b-syl summary { cursor: pointer; display: flex; gap: 8px; align-items: baseline; line-height: 1.4; list-style: none; }
+.topic .b-syl summary::-webkit-details-marker { display: none; }
+.topic .b-syl summary::before { content: "›"; color: var(--c-ink); font-weight: 700; transition: transform .15s; display: inline-block; }
+.topic .b-syl details[open] > summary::before { transform: rotate(90deg); }
+.topic .lo-id { font-weight: 700; color: var(--c-ink); white-space: nowrap; font-size: 13px; }
+.topic .lo-k { font-size: 11px; font-weight: 700; padding: 1px 7px; border-radius: 999px; background: var(--tbg); border: 1px solid var(--line); color: var(--ink-2); }
+.topic .lo-st { font-weight: 600; color: var(--ink); }
+.topic .lo-body { padding: 6px 0 2px 16px; font-size: 13.5px; line-height: 1.55; color: var(--ink-2); }
+.topic .lo-body p { margin: 0 0 6px; }
+.topic .lo-body ul { margin: 0 0 6px; padding-left: 18px; }
+.topic .lo-sec { font-size: 11px; font-weight: 700; letter-spacing: .03em; color: var(--ink-3); text-transform: uppercase; margin: 0 0 4px; }
+.topic .lo-src { margin: 6px 0 0; font-size: 11px; color: var(--ink-3); }
+.topic mark { background: color-mix(in srgb, var(--c) 28%, transparent); color: var(--ink); border-radius: 4px; padding: 0 2px; font-weight: 600; }
