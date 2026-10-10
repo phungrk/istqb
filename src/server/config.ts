@@ -19,12 +19,12 @@ export const config = {
   /** Sign-in with Google is limited to this domain. Empty string allows any Google account. */
   allowedEmailDomain: process.env.ALLOWED_EMAIL_DOMAIN ?? "gmail.com",
   appUrl: process.env.APP_URL ?? "http://localhost:3000",
-  /** "Forgot password? Contact me" link in the sign-in dialog (mailto: or https:). Hidden when unset. */
-  contactUrl: process.env.CONTACT_URL || null,
+  /** Where the Contact page sends people (forgotten passwords, questions). */
+  contactEmail: process.env.CONTACT_EMAIL?.trim() || "phungnc@gmail.com",
   /** The site owner's sign-in for /admin. Both must be set; the password lives only in the environment. */
   admin:
-    process.env.ADMIN_USERNAME && process.env.ADMIN_PASSWORD
-      ? { username: process.env.ADMIN_USERNAME.trim().toLowerCase(), password: process.env.ADMIN_PASSWORD }
+    process.env.ADMIN_USERNAME?.trim() && process.env.ADMIN_PASSWORD?.trim()
+      ? { username: process.env.ADMIN_USERNAME.trim().toLowerCase(), password: process.env.ADMIN_PASSWORD.trim() }
       : null,
   /** Generated accounts: user001 … user100. */
   generatedAccounts: { prefix: "user", max: Number(process.env.GENERATED_ACCOUNT_LIMIT ?? 100) },

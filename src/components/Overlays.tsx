@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp, type Tier } from "./AppProvider";
 
@@ -117,10 +118,10 @@ function LoginDialog() {
                     {/* A generated password is shown in clear so it can be read and written down. */}
                     <input id="login-pass" className="input" type={locked ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} disabled={locked} placeholder="Enter password" autoComplete={locked ? "new-password" : "current-password"} style={{ minHeight: 44, fontVariantNumeric: "tabular-nums", letterSpacing: locked ? ".04em" : undefined }} />
                   </div>
-                  {flags.contactUrl && !locked && (
+                  {!locked && (
                     <span style={{ padding: "4px 2px", fontSize: 12, color: "var(--color-accent-2-900)", textAlign: "right" }}>
                       Forgot password?{" "}
-                      <a href={flags.contactUrl} target="_blank" rel="noreferrer" style={{ color: "inherit" }}>Contact me</a>
+                      <Link href="/contact" onClick={closeDialog} style={{ color: "inherit" }}>Contact me</Link>
                     </span>
                   )}
                   <div className="dialog-actions" style={{ marginTop: "auto" }}>

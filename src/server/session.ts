@@ -96,7 +96,7 @@ export async function adminSignIn(username: string, password: string): Promise<U
   const admin = config.admin;
   if (!admin || username !== admin.username) return null;
   const digest = (s: string) => createHmac("sha256", "admin").update(s).digest();
-  if (!timingSafeEqual(digest(password), digest(admin.password))) return null;
+  if (!timingSafeEqual(digest(password.trim()), digest(admin.password))) return null;
   const store = await getStore();
   const existing = (await store.getCredentials(username))?.user;
   // The stored hash is never used for the admin: the environment is the source of truth.
