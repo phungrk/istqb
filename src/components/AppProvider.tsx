@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { signIn as googleSignIn, signOut as googleSignOut } from "next-auth/react";
 import { NODE, chapterTitle } from "@/lib/syllabus";
 import { track, flushNow } from "@/lib/track";
-import { htmlToText, score, type Answers, type Mode, type Question, type SetSpec } from "@/lib/questions";
+import { htmlToText, score, specKey, type Answers, type Mode, type Question, type SetSpec } from "@/lib/questions";
 import { weakest, type Attempt } from "@/lib/stats";
 
 export type Tier = "guest" | "member" | "pro";
@@ -250,16 +250,27 @@ function useAppState(initial: Initial) {
     [mode, router, setExam],
   );
 
+  /** Key of the set being fetched, so its button can show a spinner (and others wait). */
+  const [loadingSet, setLoadingSet] = useState<string | null>(null);
+
   /** Draw a fresh random set from the bank and start it. */
   const startSet = useCallback(
     async (spec: SetSpec, m: Mode = mode) => {
-      const params = new URLSearchParams(Object.entries(spec).map(([k, v]) => [k, String(v)]));
-      const res = await fetch("/api/sets?" + params, { cache: "no-store" });
-      const set = (await res.json().catch(() => null)) as ExamSet | null;
-      if (!res.ok || !set?.questions?.length) return toast("Could not load questions");
-      startExam(set, m);
+      if (loadingSet) return;
+      setLoadingSet(specKey(spec));
+      try {
+        const params = new URLSearchParams(Object.entries(spec).map(([k, v]) => [k, String(v)]));
+        const res = await fetch("/api/sets?" + params, { cache: "no-store" });
+        const set = (await res.json().catch(() => null)) as ExamSet | null;
+        if (!res.ok || !set?.questions?.length) return toast(res.status === 401 ? "Sign in to take this test" : "Could not load questions");
+        startExam(set, m);
+      } catch {
+        toast("Could not load questions. Check your connection.");
+      } finally {
+        setLoadingSet(null);
+      }
     },
-    [mode, startExam, toast],
+    [loadingSet, mode, startExam, toast],
   );
 
   /** Same kind of set again: a new draw when it came from the bank, otherwise the same questions. */
@@ -367,7 +378,7 @@ function useAppState(initial: Initial) {
 
   return {
     flags, user, tier, attempts, learned, hydrated,
-    mode, setMode, exam, setExam, noteTime, result, startExam, startSet, retry, submit,
+    mode, setMode, exam, setExam, noteTime, loadingSet, result, startExam, startSet, retry, submit,
     dialog, setDialog, pending, setPending, openLogin, closeDialog, loginPassword, generateAccount, loginGoogle, signOut, setDemoTier, upgrade,
     toastText, toast,
     expanded, setExpanded, selected, setSelected, openNode, toggleLearned,

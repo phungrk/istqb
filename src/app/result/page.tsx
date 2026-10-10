@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { Html } from "@/components/Html";
+import { Spinner } from "@/components/Loading";
 import { CheckIcon, XIcon } from "@/components/icons";
 import { isCorrect, letters } from "@/lib/questions";
 import { chapterTitle } from "@/lib/syllabus";
@@ -11,7 +12,7 @@ import { formatClock } from "@/lib/stats";
 
 export default function ResultPage() {
   const router = useRouter();
-  const { result: r, hydrated, tier, flags, retry, openLogin, askAI } = useApp();
+  const { result: r, hydrated, tier, flags, retry, openLogin, askAI, loadingSet } = useApp();
   const logged = tier !== "guest";
   const passMark = flags.passMark;
 
@@ -38,7 +39,9 @@ export default function ResultPage() {
             Pass mark is {passMark}%. Time taken {formatClock(r.durationSec)}.{pass ? "" : " The chapter bars show where to focus."}
           </p>
           <div style={{ display: "flex", gap: 10, flexWrap: "wrap", marginTop: 10 }}>
-            <button className="btn btn-primary" onClick={() => retry(r.set, r.mode)}>Try again</button>
+            <button className="btn btn-primary" onClick={() => retry(r.set, r.mode)} disabled={!!loadingSet} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              {loadingSet && <Spinner />} Try again
+            </button>
             <button className="btn btn-secondary" onClick={() => router.push("/tests")}>All tests</button>
             {logged && <button className="btn btn-secondary" onClick={() => router.push("/dashboard")}>Open dashboard</button>}
           </div>
@@ -52,6 +55,11 @@ export default function ResultPage() {
         </div>
       )}
       {logged && r.saved && <span className="tag tag-accent-2" style={{ alignSelf: "flex-start", fontSize: 13, padding: "6px 14px" }}>Saved to your dashboard</span>}
+      {logged && !r.saved && !r.saveFailed && (
+        <span role="status" className="tag tag-neutral" style={{ alignSelf: "flex-start", fontSize: 13, padding: "6px 14px", display: "inline-flex", alignItems: "center", gap: 8 }}>
+          <Spinner /> Saving your result…
+        </span>
+      )}
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
         <div style={{ flex: "0 1 380px", minWidth: 280, background: "var(--color-surface)", borderRadius: 32, padding: 26, display: "flex", flexDirection: "column", gap: 16 }}>

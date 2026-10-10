@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp, type Tier } from "./AppProvider";
 import { PasswordInput } from "./PasswordInput";
+import { Spinner } from "./Loading";
 
 const stop = (e: React.MouseEvent) => e.stopPropagation();
 
@@ -64,7 +65,7 @@ function GeneratePanel({ creds, onCreated }: { creds: Creds | null; onCreated: (
               if (made) onCreated(made);
             }}
           >
-            {busy ? "Creating…" : "Generate account"}
+            {busy ? <><Spinner /> Creating…</> : "Generate account"}
           </button>
         </>
       )}
@@ -77,6 +78,7 @@ function LoginDialog() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [creds, setCreds] = useState<Creds | null>(null);
+  const [submitting, setSubmitting] = useState(false);
   const locked = !!creds;
   const onCreated = (c: Creds) => {
     setCreds(c);
@@ -106,7 +108,9 @@ function LoginDialog() {
                   onSubmit={(e) => {
                     e.preventDefault();
                     if (!username.trim() || !password) return toast("Enter your username and password");
-                    void loginPassword(username.trim(), password);
+                    if (submitting) return;
+                    setSubmitting(true);
+                    void loginPassword(username.trim(), password).finally(() => setSubmitting(false));
                   }}
                   style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}
                 >
@@ -127,7 +131,9 @@ function LoginDialog() {
                   )}
                   <div className="dialog-actions" style={{ marginTop: "auto" }}>
                     <button className="btn btn-ghost" type="button" onClick={closeDialog}>Cancel</button>
-                    <button className="btn btn-primary" type="submit">Sign in</button>
+                    <button className="btn btn-primary" type="submit" disabled={submitting} aria-busy={submitting} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+                      {submitting && <Spinner />} {submitting ? "Signing in" : "Sign in"}
+                    </button>
                   </div>
                 </form>
                 {flags.google && !locked && (

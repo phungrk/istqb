@@ -3,11 +3,13 @@
 import { useState } from "react";
 import { useApp } from "@/components/AppProvider";
 import { PasswordInput } from "@/components/PasswordInput";
+import { Spinner } from "@/components/Loading";
 
 export function AdminLogin({ configured, signedInAs }: { configured: boolean; signedInAs: string | null }) {
   const { loginPassword, signOut, toast } = useApp();
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [submitting, setSubmitting] = useState(false);
 
   return (
     <section style={{ display: "flex", justifyContent: "center", paddingTop: 48 }}>
@@ -31,7 +33,9 @@ export function AdminLogin({ configured, signedInAs }: { configured: boolean; si
             onSubmit={(e) => {
               e.preventDefault();
               if (!username.trim() || !password) return toast("Enter the admin username and password");
-              void loginPassword(username.trim(), password);
+              if (submitting) return;
+              setSubmitting(true);
+              void loginPassword(username.trim(), password).finally(() => setSubmitting(false));
             }}
             style={{ display: "flex", flexDirection: "column", gap: 10 }}
           >
@@ -43,7 +47,9 @@ export function AdminLogin({ configured, signedInAs }: { configured: boolean; si
               <label htmlFor="admin-pass">Password</label>
               <PasswordInput id="admin-pass" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" style={{ minHeight: 44 }} />
             </div>
-            <button className="btn btn-primary" type="submit" style={{ alignSelf: "flex-start", marginTop: 4 }}>Sign in</button>
+            <button className="btn btn-primary" type="submit" disabled={submitting} aria-busy={submitting} style={{ alignSelf: "flex-start", marginTop: 4, display: "inline-flex", alignItems: "center", gap: 8 }}>
+              {submitting && <Spinner />} {submitting ? "Signing in" : "Sign in"}
+            </button>
           </form>
         )}
       </div>

@@ -158,3 +158,10 @@ button { font: inherit; }
 }
 /* Generated credentials: read-only but still legible */
 .login-dialog .input:disabled { opacity: 1; color: var(--color-text); font-weight: 700; cursor: not-allowed; background: color-mix(in srgb, var(--color-accent-2-100) 60%, var(--color-bg)); }
+
+/* Loading states */
+@keyframes tp-spin { to { transform: rotate(360deg); } }
+@keyframes tp-pulse { 50% { opacity: .45; } }
+.spinner { display: inline-block; width: 1em; height: 1em; flex: none; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: tp-spin .7s linear infinite; vertical-align: -0.15em; }
+.skeleton { background: var(--color-neutral-200); border-radius: 20px; animation: tp-pulse 1.4s ease-in-out infinite; }
+@media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2s; } .skeleton { animation: none; } }

@@ -3,9 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
-import { SIZES, levelDistribution, minutesFor, pad2, specTitle, type LevelCounts, type Mode, type SetSpec } from "@/lib/questions";
+import { SIZES, levelDistribution, minutesFor, pad2, specKey, specTitle, type LevelCounts, type Mode, type SetSpec } from "@/lib/questions";
 import { CHAPTERS, palette } from "@/lib/syllabus";
 import { pct } from "@/lib/stats";
+import { Spinner } from "@/components/Loading";
 
 const MODES: [Mode, string][] = [["practice", "Practice"], ["mock", "Mock exam"]];
 
@@ -20,7 +21,8 @@ const upsell = { display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap
 
 export function TestsView({ counts, levels }: { counts: Record<number, number>; levels: LevelCounts }) {
   const router = useRouter();
-  const { tier, attempts, mode, setMode, startSet, openLogin, setCoachTab, flags } = useApp();
+  const { tier, attempts, mode, setMode, startSet, openLogin, setCoachTab, flags, loadingSet } = useApp();
+  const loadingOf = (spec: SetSpec) => loadingSet === specKey(spec);
   const logged = tier !== "guest";
   const pro = tier === "pro";
 
@@ -71,7 +73,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
         {logged ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {SIZES.map(({ size, label }) => (
-              <LevelGroup key={size} size={size} label={label} sub={size === 40 ? LONG_SUB : LEVEL_SUB[size]} levels={levels} best={best} onStart={(spec) => startSet(spec)} />
+              <LevelGroup key={size} size={size} label={label} sub={size === 40 ? LONG_SUB : LEVEL_SUB[size]} levels={levels} best={best} loadingSet={loadingSet} onStart={(spec) => startSet(spec)} />
             ))}
           </div>
         ) : (
@@ -89,7 +91,9 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: "auto", paddingTop: 10 }}>
                   <span className="tag tag-neutral">{timing(size)}</span>
                   {b !== undefined && <span className="tag tag-accent-2">Best {b}%</span>}
-                  <button className="btn btn-primary" onClick={() => startSet(spec)} style={{ marginLeft: "auto" }}>Start</button>
+                  <button className="btn btn-primary" onClick={() => startSet(spec)} disabled={!!loadingSet} aria-busy={loadingOf(spec)} style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 8 }}>
+                    {loadingOf(spec) && <Spinner />} {loadingOf(spec) ? "Loading" : "Start"}
+                  </button>
                 </div>
               </div>
             );
@@ -159,13 +163,16 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
                     <button
                       key={size}
                       className="btn btn-secondary"
-                      disabled={avail < size}
+                      disabled={avail < size || !!loadingSet}
+                      aria-busy={loadingOf({ kind: "chapter", chapter: c.id, size })}
                       title={mode === "mock" ? `${minutesFor(size)} minutes` : undefined}
                       onClick={() => startSet({ kind: "chapter", chapter: c.id, size })}
                       style={{ background: "var(--color-bg)", display: "flex", flexDirection: "column", gap: 0, lineHeight: 1.15, padding: "8px 6px", minWidth: 0 }}
                     >
                       <span>{label}</span>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: "var(--color-neutral-700)" }}>{size} questions</span>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: "var(--color-neutral-700)" }}>
+                        {loadingOf({ kind: "chapter", chapter: c.id, size }) ? <Spinner label="Loading" /> : `${size} questions`}
+                      </span>
                     </button>
                   ))}
                 </div>
@@ -189,7 +196,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
 const SHOWN = 12;
 
 /** Member view of one level: numbered tests as tiles, the next untaken one a click away. */
-function LevelGroup({ size, label, sub, levels, best, onStart }: { size: 10 | 20 | 40; label: string; sub: string; levels: LevelCounts; best: Record<string, number>; onStart: (spec: SetSpec) => void }) {
+function LevelGroup({ size, label, sub, levels, best, loadingSet, onStart }: { size: 10 | 20 | 40; label: string; sub: string; levels: LevelCounts; best: Record<string, number>; loadingSet: string | null; onStart: (spec: SetSpec) => void }) {
   const [open, setOpen] = useState(false);
   const isLong = size === 40;
   const count = isLong ? levels.long : size === 10 ? levels.short : levels.medium;
@@ -234,18 +241,23 @@ function LevelGroup({ size, label, sub, levels, best, onStart }: { size: 10 | 20
                   role="listitem"
                   className="hov-border-accent"
                   onClick={() => onStart(t.spec)}
+                  disabled={!!loadingSet}
+                  aria-busy={loadingSet === specKey(t.spec)}
                   title={isLong ? `${t.name} · ${t.size} questions` : t.title}
                   aria-label={`${isLong ? t.name : t.title}${has ? `, best ${t.best}%` : ", not taken yet"}`}
                   style={{ border: `2px solid ${has ? "var(--color-accent-2-300)" : "transparent"}`, background: has ? "var(--color-accent-2-100)" : "var(--color-bg)", borderRadius: 20, padding: "10px 8px", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 2, fontFamily: "var(--font-body)", color: "var(--color-text)" }}
                 >
                   <span style={{ fontFamily: "var(--font-heading)", fontSize: 18 }}>{t.n}</span>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: has ? "var(--color-accent-2-800)" : "var(--color-neutral-700)" }}>{has ? `Best ${t.best}%` : `${t.size}q`}</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: has ? "var(--color-accent-2-800)" : "var(--color-neutral-700)" }}>{loadingSet === specKey(t.spec) ? <Spinner label="Loading" /> : has ? `Best ${t.best}%` : `${t.size}q`}</span>
                 </button>
               );
             })}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-            <button className="btn btn-primary" onClick={() => onStart(next.spec)}>{isLong ? `Start ${next.name}` : `Start test ${next.n}`}</button>
+            <button className="btn btn-primary" onClick={() => onStart(next.spec)} disabled={!!loadingSet} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
+              {loadingSet === specKey(next.spec) && <Spinner />}
+              {isLong ? `Start ${next.name}` : `Start test ${next.n}`}
+            </button>
             {count > SHOWN && <button className="btn btn-ghost" onClick={() => setOpen((o) => !o)} aria-expanded={open}>{open ? "Show fewer" : `Show all ${count}`}</button>}
           </div>
         </>
