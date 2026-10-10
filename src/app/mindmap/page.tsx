@@ -64,14 +64,21 @@ export default function MindmapPage() {
           <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>Open a chapter, then pick a topic to see its memory hook, key terms, illustrations and exam traps.</p>
         </div>
         {logged && <span className="tag tag-accent-2" style={{ fontSize: 13, padding: "6px 14px" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>}
-        <div style={{ display: "flex", gap: 8 }}>
-          <button className="btn btn-secondary" onClick={() => setExpanded(Object.fromEntries(NODES.filter((n) => KIDS[n.id]).map((n) => [n.id, true])))}>Expand all</button>
-          <button className="btn btn-secondary" onClick={() => setExpanded({ root: true })}>Collapse</button>
-        </div>
       </div>
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
-        <div role="tree" style={{ flex: "1 1 400px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column" }}>
+        <div style={{ flex: "1 1 400px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 12 }}>
+        {/* Tree controls live inside the tree panel, so it's clear they open and close the chapters below. */}
+        <div role="toolbar" aria-label="Syllabus tree" aria-controls="syllabus-tree" style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", paddingBottom: 12, borderBottom: "1px solid var(--color-divider)" }}>
+          <span style={{ flex: "1 1 auto", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>Syllabus tree</span>
+          <button className="btn btn-ghost" onClick={() => setExpanded(Object.fromEntries(NODES.filter((n) => KIDS[n.id]).map((n) => [n.id, true])))} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, padding: "6px 12px" }}>
+            <ChevronDownIcon /> Expand all
+          </button>
+          <button className="btn btn-ghost" onClick={() => setExpanded({ root: true })} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, padding: "6px 12px" }}>
+            <ChevronRightIcon /> Collapse all
+          </button>
+        </div>
+        <div role="tree" id="syllabus-tree" aria-label="Syllabus" style={{ display: "flex", flexDirection: "column" }}>
           {rows.map(({ id, depth: d }) => {
             const n = NODE[id];
             const kids = KIDS[id] || [];
@@ -109,6 +116,7 @@ export default function MindmapPage() {
               </div>
             );
           })}
+        </div>
         </div>
 
         <aside ref={detail} className="mm-detail" style={{ flex: topic ? "1 1 520px" : "0 1 400px", minWidth: 280, borderRadius: 32, scrollMarginTop: 12 }}>
