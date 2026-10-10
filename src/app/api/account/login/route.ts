@@ -21,9 +21,14 @@ export async function POST(req: Request) {
       ? await adminSignIn(username, password).then((user) => user && { user })
       : await (await getStore()).getCredentials(username).then(async (c) => (c && (await verifyPassword(password, c.passwordHash)) ? c : null));
   if (!creds) {
+    if (config.admin && username === config.admin.username) {
+      // Lengths only, never the values: enough to spot a mistyped or mis-pasted ADMIN_PASSWORD in the logs.
+      console.warn(`[admin] sign-in rejected: typed ${password.trim().length} chars, ADMIN_PASSWORD has ${config.admin.password.length}`);
+    }
     const n = (f && f.until > Date.now() - 600_000 ? f.n : 0) + 1;
     failures.set(username, { n, until: n >= 5 ? Date.now() + 600_000 : 0 });
-    return Response.json({ error: "Wrong username or password" }, { status: 401 });
+    const hint = /[^\x00-\x7F]/.test(password) ? " Your password has accented letters: turn off Vietnamese typing (Telex/VNI) and type it again." : "";
+    return Response.json({ error: "Wrong username or password." + hint }, { status: 401 });
   }
   failures.delete(username);
   await startSession(creds.user.id);

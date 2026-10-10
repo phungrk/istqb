@@ -1,6 +1,12 @@
 import "server-only";
 
 /** Integrations switch on when their env vars are present. */
+/** An env value as typed into a dashboard: surrounding spaces and quotes ("x" or 'x') are not part of it. */
+function envValue(name: string): string | undefined {
+  const v = process.env[name]?.trim().replace(/^(["'])(.*)\1$/, "$2").trim();
+  return v || undefined;
+}
+
 export const config = {
   /** Google sign-in is offered next to username/password when its keys are set. */
   google: !!(process.env.AUTH_GOOGLE_ID && process.env.AUTH_GOOGLE_SECRET),
@@ -23,8 +29,8 @@ export const config = {
   contactEmail: process.env.CONTACT_EMAIL?.trim() || "phungnc@gmail.com",
   /** The site owner's sign-in for /admin. Both must be set; the password lives only in the environment. */
   admin:
-    process.env.ADMIN_USERNAME?.trim() && process.env.ADMIN_PASSWORD?.trim()
-      ? { username: process.env.ADMIN_USERNAME.trim().toLowerCase(), password: process.env.ADMIN_PASSWORD.trim() }
+    envValue("ADMIN_USERNAME") && envValue("ADMIN_PASSWORD")
+      ? { username: envValue("ADMIN_USERNAME")!.toLowerCase(), password: envValue("ADMIN_PASSWORD")! }
       : null,
   /** Generated accounts: user001 … user100. */
   generatedAccounts: { prefix: "user", max: Number(process.env.GENERATED_ACCOUNT_LIMIT ?? 100) },

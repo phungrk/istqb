@@ -112,7 +112,7 @@ function LoginDialog() {
                 >
                   <div className="field">
                     <label htmlFor="login-user">Username</label>
-                    <input id="login-user" className="input" value={username} onChange={(e) => setUsername(e.target.value)} disabled={locked} placeholder="Enter username" autoComplete="username" style={{ minHeight: 44 }} />
+                    <input id="login-user" className="input" value={username} onChange={(e) => setUsername(e.target.value)} disabled={locked} placeholder="Enter username" autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} style={{ minHeight: 44 }} />
                   </div>
                   <div className="field">
                     <label htmlFor="login-pass">Password</label>

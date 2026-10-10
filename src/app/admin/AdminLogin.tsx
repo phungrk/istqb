@@ -37,7 +37,7 @@ export function AdminLogin({ configured, signedInAs }: { configured: boolean; si
           >
             <div className="field">
               <label htmlFor="admin-user">Username</label>
-              <input id="admin-user" className="input" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" style={{ minHeight: 44 }} />
+              <input id="admin-user" className="input" value={username} onChange={(e) => setUsername(e.target.value)} autoComplete="username" autoCapitalize="none" autoCorrect="off" spellCheck={false} style={{ minHeight: 44 }} />
             </div>
             <div className="field">
               <label htmlFor="admin-pass">Password</label>
