@@ -3,7 +3,7 @@
   {
    "lo": "1.1.1",
    "k": "K1",
-   "statement": "Identify typical <mark>test objectives</mark>",
+   "statement": "Identify typical test objectives",
    "section": "1.1.1 Test Objectives",
    "keywords": [
     "coverage",
@@ -17,42 +17,42 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "The typical <mark>test objectives</mark> are:"
+     "html": "The typical test objectives are:"
     },
     {
      "t": "li",
-     "html": "Causing <mark>failures</mark> and finding <mark>defects</mark>"
+     "html": "<mark>Causing failures and finding defects</mark>"
     },
     {
      "t": "li",
-     "html": "Ensuring required <mark>coverage</mark> of a <mark>test object</mark>"
+     "html": "<mark>Ensuring required coverage of a test object</mark>"
     },
     {
      "t": "li",
-     "html": "Reducing the <mark>risk</mark> level of inadequate software <mark>quality</mark>"
+     "html": "<mark>Reducing the risk level of inadequate software quality</mark>"
     },
     {
      "t": "li",
-     "html": "Verifying that a <mark>test object</mark> complies with contractual, legal, and regulatory requirements"
+     "html": "Verifying that a test object complies with contractual, legal, and regulatory requirements"
     },
     {
      "t": "li",
-     "html": "Building confidence in the <mark>quality</mark> of the <mark>test object</mark>"
+     "html": "<mark>Building confidence in the quality of the test object</mark>"
     },
     {
      "t": "li",
-     "html": "Validating whether the <mark>test object</mark> is complete and works as expected by the stakeholders"
+     "html": "Validating whether the test object is complete and works as expected by the stakeholders"
     },
     {
      "t": "p",
-     "html": "<mark>Test objectives</mark> can vary, depending upon the context, which includes the work product being tested, the test level, <mark>risks</mark>, the software development lifecycle (SDLC) being followed, and factors related to the business context, e.g., corporate structure, competitive considerations, or time to market."
+     "html": "Test objectives can vary, depending upon the context, which includes the work product being tested, the test level, risks, the software development lifecycle (SDLC) being followed, and factors related to the business context, e.g., corporate structure, competitive considerations, or time to market."
     }
    ]
   },
   {
    "lo": "1.1.2",
    "k": "K2",
-   "statement": "Differentiate testing from <mark>debugging</mark>",
+   "statement": "Differentiate testing from debugging",
    "section": "1.1.2 Testing and Debugging",
    "keywords": [
     "confirmation testing",
@@ -66,30 +66,30 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Testing and <mark>debugging</mark> are separate activities. … Testing can trigger <mark>failures</mark> that are caused by <mark>defects</mark> in the software (<mark>dynamic testing</mark>) or can directly find <mark>defects</mark> in the <mark>test object</mark> (<mark>static testing</mark>). … When <mark>dynamic testing</mark> (see chapter 4) triggers a <mark>failure</mark>, <mark>debugging</mark> is concerned with finding causes of this <mark>failure</mark> (<mark>defects</mark>), analyzing these causes, and eliminating them. … The typical <mark>debugging</mark> process in this case involves:"
+     "html": "Testing and debugging are separate activities. … <mark>Testing can trigger failures</mark> that are caused by defects in the software (dynamic testing) or <mark>can directly find defects</mark> in the test object (static testing). … When dynamic testing (see chapter 4) triggers a failure, <mark>debugging is concerned with finding causes of this failure</mark> (defects), analyzing these causes, and eliminating them. … The typical debugging process in this case involves:"
     },
     {
      "t": "li",
-     "html": "Reproduction of a <mark>failure</mark>"
+     "html": "Reproduction of a failure"
     },
     {
      "t": "li",
-     "html": "Diagnosis (finding the <mark>defect</mark>)"
+     "html": "Diagnosis (finding the defect)"
     },
     {
      "t": "li",
-     "html": "Fixing the <mark>defect</mark>"
+     "html": "Fixing the defect"
     },
     {
      "t": "p",
-     "html": "Subsequent <mark>confirmation testing</mark> checks whether the fixes resolved the problem. … Preferably, <mark>confirmation testing</mark> is done by the same person who performed the initial test. … Subsequent regression testing can also be performed, to check whether the fixes are causing <mark>failures</mark> in other parts of the <mark>test object</mark> (see section 2.2.3 for more information on <mark>confirmation testing</mark> and regression testing). … When <mark>static testing</mark> identifies a <mark>defect</mark>, <mark>debugging</mark> is concerned with removing it. … There is no need for reproduction or diagnosis, since <mark>static testing</mark> directly finds <mark>defects</mark>, and cannot cause <mark>failures</mark> (see chapter 3)."
+     "html": "Subsequent confirmation testing checks whether the fixes resolved the problem. … Preferably, confirmation testing is done by the same person who performed the initial test. … Subsequent regression testing can also be performed, to check whether the fixes are causing failures in other parts of the test object (see section 2.2.3 for more information on confirmation testing and regression testing). … When static testing identifies a defect, <mark>debugging is concerned with removing it</mark>. … There is no need for reproduction or diagnosis, since static testing directly finds defects, and cannot cause failures (see chapter 3)."
     }
    ]
   },
   {
    "lo": "1.2.2",
    "k": "K1",
-   "statement": "Recall the relation between testing and <mark>quality</mark> assurance",
+   "statement": "Recall the relation between testing and quality assurance",
    "section": "1.2.2 Testing and Quality Assurance (QA)",
    "keywords": [
     "defect",
@@ -98,14 +98,14 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "While people often use the terms “testing” and “<mark>quality</mark> assurance” (QA) interchangeably, testing and QA are not the same. … Testing is a product-oriented, corrective approach that focuses on those activities supporting the achievement of appropriate levels of <mark>quality</mark>. … Testing is a major form of <mark>quality</mark> control, while others include formal methods (model checking and proof of correctness), simulation and prototyping. … In testing they are used to fix <mark>defects</mark>, while in QA they provide feedback on how well the development and test processes are performing."
+     "html": "While people often use the terms “testing” and “quality assurance” (QA) interchangeably, testing and QA are not the same. … Testing is a product-oriented, corrective approach that focuses on those activities supporting the achievement of appropriate levels of quality. … Testing is a major form of quality control, while others include formal methods (model checking and proof of correctness), simulation and prototyping. … In testing they are used to fix defects, while in QA they <mark>provide feedback on how well the development and test processes are performing</mark>."
     }
    ]
   },
   {
    "lo": "1.2.3",
    "k": "K2",
-   "statement": "Distinguish between <mark>root cause</mark>, <mark>error</mark>, <mark>defect</mark>, and <mark>failure</mark>",
+   "statement": "Distinguish between root cause, error, defect, and failure",
    "section": "1.2.3 Errors, Defects, Failures, and Root Causes",
    "keywords": [
     "defect",
@@ -116,7 +116,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Human beings make <mark>errors</mark> (mistakes), which produce <mark>defects</mark> (faults, bugs), which in turn may result in <mark>failures</mark>. … Humans make <mark>errors</mark> for various reasons, such as time pressure, complexity of work products, processes, infrastructure or interactions, or simply because they are tired or lack adequate training. … <mark>Defects</mark> can be found in documentation, such as a requirements specification or a test script, in source code, or in a supporting work product such as a build file. … <mark>Defects</mark> in work products produced earlier in the SDLC, if undetected, often lead to defective work products later in the lifecycle. … If a <mark>defect</mark> in code is executed, the system may fail to do what it should do, or do something it shouldn’t, causing a <mark>failure</mark>. … Some <mark>defects</mark> will always result in a <mark>failure</mark> if executed, while others will only result in a <mark>failure</mark> in specific circumstances, and some may never result in a <mark>failure</mark>. … <mark>Errors</mark> and <mark>defects</mark> are not the only cause of <mark>failures</mark>. … <mark>Failures</mark> can also be caused by environmental conditions, such as when radiation or electromagnetic fields cause <mark>defects</mark> in firmware. … A <mark>root cause</mark> is a fundamental reason for the occurrence of a problem (e.g., a situation that leads to an <mark>error</mark>). … <mark>Root causes</mark> are identified through <mark>root cause</mark> analysis, which is typically performed when a <mark>failure</mark> occurs or a <mark>defect</mark> is identified. … It is believed that further similar <mark>failures</mark> or <mark>defects</mark> can be prevented or their frequency reduced by addressing the <mark>root cause</mark>, such as by removing it."
+     "html": "<mark>Human beings make errors</mark> (mistakes), <mark>which produce defects</mark> (faults, bugs), which in turn <mark>may result in failures</mark>. … Humans make errors for various reasons, such as time pressure, complexity of work products, processes, infrastructure or interactions, or simply because they are tired or lack adequate training. … <mark>Defects can be found in documentation</mark>, such as a requirements specification or a test script, in source code, or in a supporting work product such as a build file. … Defects in work products produced earlier in the SDLC, if undetected, often lead to defective work products later in the lifecycle. … If a defect in code is executed, the system may fail to do what it should do, or do something it shouldn’t, causing a failure. … Some defects will always result in a failure if executed, while others will only result in a failure in specific circumstances, and some may never result in a failure. … Errors and defects are not the only cause of failures. … Failures can also be caused by environmental conditions, such as when radiation or electromagnetic fields cause defects in firmware. … A root cause is a fundamental reason for the occurrence of a problem (e.g., a situation that leads to an error). … Root causes are identified through root cause analysis, which is typically performed when a failure occurs or a defect is identified. … It is believed that further similar failures or defects can be prevented or their frequency reduced by addressing the root cause, such as by removing it."
     }
    ]
   }
@@ -138,31 +138,31 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… Testing shows the presence, not the absence of <mark>defects</mark>. … Testing can show that <mark>defects</mark> are present in the test object, but cannot prove that there are no <mark>defects</mark> (Buxton 1970). … Testing reduces the probability of <mark>defects</mark> remaining undiscovered in the test object, but even if no <mark>defects</mark> are found, testing cannot prove test object correctness."
+     "html": "… <mark>Testing shows the presence, not the absence of defects</mark>. … Testing can show that defects are present in the test object, but <mark>cannot prove that there are no defects</mark> (Buxton 1970). … Testing reduces the probability of defects remaining undiscovered in the test object, but even if no defects are found, testing <mark>cannot prove test object correctness</mark>."
     },
     {
      "t": "p",
-     "html": "… <mark>Exhaustive testing is impossible</mark>. … Rather than attempting to test exhaustively, test techniques (see chapter 4), <mark>test case</mark> prioritization (see section 5.1.5), and risk-based testing (see section 5.2), should be used to focus test efforts."
+     "html": "… <mark>Exhaustive testing is impossible</mark>. … Rather than attempting to test exhaustively, test techniques (see chapter 4), test case prioritization (see section 5.1.5), and risk-based testing (see section 5.2), <mark>should be used to focus test efforts</mark>."
     },
     {
      "t": "p",
-     "html": "… <mark>Defects</mark> that are removed early in the process will not cause subsequent <mark>defects</mark> in derived work products. … The cost of quality will be reduced since fewer <mark>failures</mark> will occur later in the SDLC (Boehm 1981). … To find <mark>defects</mark> early, both static testing (see chapter 3) and dynamic testing (see chapter 4) should be started as early as possible."
+     "html": "… Defects that are removed early in the process will not cause subsequent defects in derived work products. … The cost of quality will be reduced since fewer failures will occur later in the SDLC (Boehm 1981). … To find defects early, both static testing (see chapter 3) and dynamic testing (see chapter 4) should be started as early as possible."
     },
     {
      "t": "p",
-     "html": "… <mark>Defects</mark> cluster together. … A small number of system components usually contain most of the <mark>defects</mark> discovered or are responsible for most of the operational <mark>failures</mark> (Enders 1975). … Predicted <mark>defect</mark> clusters, and actual <mark>defect</mark> clusters observed during testing or in operation, are an important input for risk-based testing (see section 5.2)."
+     "html": "… Defects cluster together. … A small number of system components usually contain most of the defects discovered or are responsible for most of the operational failures (Enders 1975). … Predicted defect clusters, and actual defect clusters observed during testing or in operation, are an important input for risk-based testing (see section 5.2)."
     },
     {
      "t": "p",
-     "html": "… If the same tests are repeated many times, they become increasingly ineffective in detecting new <mark>defects</mark> (Beizer 1990). …"
+     "html": "… If the same tests are repeated many times, they become increasingly ineffective in detecting new defects (Beizer 1990). …"
     },
     {
      "t": "p",
-     "html": "… Testing is <mark>context dependent</mark>. …"
+     "html": "… <mark>Testing is context dependent</mark>. …"
     },
     {
      "t": "p",
-     "html": "… Thoroughly testing all the specified requirements and fixing all the <mark>defects</mark> found could still produce a system that does not fulfill the users’ needs and expectations, that does not help in achieving the customer’s business goals, and that is inferior compared to other competing systems. … In addition to verification, <mark>validation</mark> should also be carried out (Boehm 1981)."
+     "html": "… Thoroughly testing all the specified requirements and fixing all the defects found <mark>could still produce a system that does not fulfill the users’ needs and expectations</mark>, that does not help in achieving the customer’s business goals, and that is inferior compared to other competing systems. … In addition to verification, validation should also be carried out (Boehm 1981)."
     }
    ]
   }
@@ -181,7 +181,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… While testing involves <mark>verification</mark>, i.e., checking whether the system meets specified requirements, it also involves <mark>validation</mark>, which means checking whether the system meets users’ and other stakeholders’ needs in its operational environment. … Static testing includes <mark>reviews</mark> (see chapter 3) and static analysis. …"
+     "html": "… While testing involves verification, i.e., <mark>checking whether the system meets specified requirements</mark>, it also involves validation, which means <mark>checking whether the system meets users’ and other stakeholders’ needs</mark> in its operational environment. … Static testing includes reviews (see chapter 3) and static analysis. …"
     }
    ]
   }
@@ -190,7 +190,7 @@
   {
    "lo": "1.4.1",
    "k": "K2",
-   "statement": "Explain the different test <mark>activities</mark> and related tasks",
+   "statement": "Explain the different test activities and related tasks",
    "section": "1.4.1 Test Activities and Tasks",
    "keywords": [
     "activities",
@@ -237,11 +237,11 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "A <mark>test process</mark> usually consists of the main groups of <mark>activities</mark> described below. … Although many of these <mark>activities</mark> may appear to follow a logical sequence, they are often implemented iteratively or in parallel. … These testing <mark>activities</mark> usually need to be tailored to the system and the project. … <mark>Test planning</mark> consists of defining the <mark>test objectives</mark> and then selecting an approach that best achieves the objectives within the constraints imposed by the overall context. … <mark>Test planning</mark> is further explained in section 5.1."
+     "html": "A test process usually consists of the main groups of activities described below. … Although many of these activities may appear to follow a logical sequence, they are often implemented iteratively or in parallel. … These testing activities usually need to be tailored to the system and the project. … Test planning consists of defining the test objectives and then selecting an approach that best achieves the objectives within the constraints imposed by the overall context. … Test planning is further explained in section 5.1."
     },
     {
      "t": "p",
-     "html": "<mark>Test monitoring</mark> and test <mark>control</mark>. … <mark>Test monitoring</mark> involves the ongoing checking of all test <mark>activities</mark> and the comparison of actual progress against the plan. … Test <mark>control</mark> involves taking the actions necessary to meet the <mark>test objectives</mark>. … <mark>Test monitoring</mark> and test <mark>control</mark> are further explained in section 5.3. … <mark>Test analysis</mark> includes analyzing the <mark>test basis</mark> to identify testable features. … Associated <mark>test conditions</mark> are defined and prioritized, taking the related <mark>risks</mark> and <mark>risk</mark> levels into account (see section 5.2). … The <mark>test basis</mark> and the <mark>test object</mark> are also evaluated to identify <mark>defects</mark> they may contain and to assess their testability. … <mark>Test analysis</mark> is often supported by the use of <mark>test techniques</mark> (see chapter 4). … <mark>Test analysis</mark> answers the question “what to test?” in terms of measurable <mark>coverage</mark> criteria. … <mark>Test design</mark> includes elaborating the <mark>test conditions</mark> into <mark>test cases</mark> and other <mark>testware</mark> (e.g., <mark>test charters</mark>). … This activity often involves the identification of <mark>coverage items</mark>, which serve as a guide to specify <mark>test case</mark> inputs. … <mark>Test techniques</mark> (see chapter 4) can be used to support this activity. … <mark>Test design</mark> also includes defining the <mark>test data requirements</mark>, designing the test environment and identifying the necessary infrastructure and tools. … <mark>Test design</mark> answers the question “how to test?”. … <mark>Test implementation</mark> includes creating or acquiring the <mark>testware</mark> necessary for <mark>test execution</mark> (e.g., <mark>test data</mark>). … <mark>Test cases</mark> can be organized into <mark>test procedures</mark>, which are often assembled into <mark>test suites</mark>. … <mark>Test procedures</mark> are prioritized and arranged within a <mark>test execution schedule</mark> for efficient <mark>test execution</mark> (see section 5.1.5). … The test environment is built and verified to be <mark>set up</mark> correctly. … <mark>Test execution</mark> includes running the tests in accordance with the <mark>test execution schedule</mark> (test runs). … <mark>Test execution</mark> may be manual or automated. … <mark>Test execution</mark> can take many forms, including continuous testing or pair testing sessions. … This <mark>analysis</mark> allows us to <mark>report</mark> the anomalies based on the failures observed (see section 5.5). … <mark>Test completion</mark> usually occurs at project milestones (e.g., <mark>release</mark>, <mark>end of iteration</mark>, <mark>test level</mark> <mark>completion</mark>). … For any unresolved <mark>defects</mark>, <mark>change requests</mark> or <mark>product backlog items</mark> are created. … Any <mark>testware</mark> that may be useful in the future is identified and archived or handed over to the appropriate teams. … The test <mark>activities</mark> are analyzed to identify <mark>lessons learned</mark> and improvements for future iterations, <mark>releases</mark>, or projects (see section 2.1.6). … A <mark>test completion report</mark> is created and communicated to the <mark>stakeholders</mark>."
+     "html": "Test monitoring and test control. … <mark>Test monitoring involves the ongoing checking of all test activities</mark> and the comparison of actual progress against the plan. … <mark>Test control involves taking the actions necessary to meet the test objectives</mark>. … Test monitoring and test control are further explained in section 5.3. … Test analysis includes <mark>analyzing the test basis to identify testable features</mark>. … <mark>Associated test conditions are defined and prioritized</mark>, taking the related risks and risk levels into account (see section 5.2). … The test basis and the test object are also evaluated to identify defects they may contain and to assess their testability. … Test analysis is often supported by the use of test techniques (see chapter 4). … <mark>Test analysis answers the question “what to test?”</mark> in terms of measurable coverage criteria. … Test design includes <mark>elaborating the test conditions into test cases</mark> and other testware (e.g., test charters). … This activity often involves the identification of coverage items, which serve as a guide to specify test case inputs. … Test techniques (see chapter 4) can be used to support this activity. … Test design also includes <mark>defining the test data requirements</mark>, <mark>designing the test environment</mark> and identifying the necessary infrastructure and tools. … <mark>Test design answers the question “how to test?”</mark>. … Test implementation includes <mark>creating or acquiring the testware necessary for test execution</mark> (e.g., test data). … <mark>Test cases can be organized into test procedures</mark>, which are often assembled into test suites. … Test procedures are prioritized and <mark>arranged within a test execution schedule</mark> for efficient test execution (see section 5.1.5). … <mark>The test environment is built and verified to be set up correctly</mark>. … Test execution includes <mark>running the tests in accordance with the test execution schedule</mark> (test runs). … Test execution may be manual or automated. … Test execution can take many forms, including continuous testing or pair testing sessions. … This analysis allows us to report the anomalies based on the failures observed (see section 5.5). … Test completion usually occurs at project milestones (e.g., release, end of iteration, test level completion). … For any unresolved defects, change requests or product backlog items are created. … Any testware that may be useful in the future is identified and archived or handed over to the appropriate teams. … The test activities are analyzed to identify lessons learned and improvements for future iterations, releases, or projects (see section 2.1.6). … A test completion report is created and communicated to the stakeholders."
     }
    ]
   },
@@ -266,23 +266,23 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… Test <mark>activities</mark> are an integral part of the development processes carried out within an organization. … Testing is also funded by <mark>stakeholders</mark> and its final goal is to help fulfill the <mark>stakeholders</mark>’ business needs. …"
+     "html": "… Test activities are an integral part of the development processes carried out within an organization. … Testing is also funded by stakeholders and its final goal is to help fulfill the stakeholders’ business needs. …"
     },
     {
      "t": "li",
-     "html": "<mark>Stakeholders</mark> (needs, expectations, requirements, willingness to cooperate, etc.)"
+     "html": "Stakeholders (needs, expectations, requirements, willingness to cooperate, etc.)"
     },
     {
      "t": "li",
-     "html": "Business domain (criticality of the <mark>test object</mark>, identified <mark>risks</mark>, market needs, specific legal <mark>regulations</mark>, etc.)"
+     "html": "Business domain (criticality of the test object, identified risks, market needs, specific legal regulations, etc.)"
     },
     {
      "t": "li",
-     "html": "Project constraints (scope, time, budget, <mark>resources</mark>, etc.)"
+     "html": "Project constraints (scope, time, budget, resources, etc.)"
     },
     {
      "t": "p",
-     "html": "These factors will have an impact on many test-related issues, including: test <mark>strategy</mark>, <mark>test techniques</mark> used, degree of test automation, required level of <mark>coverage</mark>, level of detail of <mark>testware</mark>, test <mark>reporting</mark>, etc."
+     "html": "These factors <mark>will have an impact on many test-related issues</mark>, including: test strategy, test techniques used, degree of test automation, required level of coverage, level of detail of testware, test reporting, etc."
     }
    ]
   },
@@ -308,7 +308,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In this syllabus, two principal roles in testing are covered: a test <mark>management</mark> role and a testing role. … The <mark>activities</mark> and tasks assigned to these two roles depend on factors such as the project and product context, the skills of the people in the roles, and the organization. … The test <mark>management</mark> role takes overall responsibility for the <mark>test process</mark>, test team and leadership of the test <mark>activities</mark>. … The test <mark>management</mark> role is mainly focused on the <mark>activities</mark> of <mark>test planning</mark>, <mark>test monitoring</mark>, test <mark>control</mark> and <mark>test completion</mark>. … The way in which the test <mark>management</mark> role is carried out varies depending on the context. … For example, in Agile software development, some of the test <mark>management</mark> tasks may be handled by the Agile team. … Tasks that span multiple teams or the entire organization may be performed by <mark>test managers</mark> outside of the development team. … The testing role is mainly focused on the <mark>activities</mark> of <mark>test analysis</mark>, <mark>test design</mark>, <mark>test implementation</mark> and <mark>test execution</mark>. … For example, the test <mark>management</mark> role can be performed by a team leader, by a <mark>test manager</mark>, by a development manager, etc. … It is also possible for one person to take on the roles of testing and test <mark>management</mark> at the same time."
+     "html": "In this syllabus, two principal roles in testing are covered: a test management role and a testing role. … The activities and tasks assigned to these two roles depend on factors such as the project and product context, the skills of the people in the roles, and the organization. … The test management role <mark>takes overall responsibility for the test process</mark>, test team and leadership of the test activities. … The test management role is mainly <mark>focused on the activities of test planning, test monitoring, test control and test completion</mark>. … The way in which the test management role is carried out varies depending on the context. … For example, in Agile software development, some of the test management tasks may be handled by the Agile team. … Tasks that span multiple teams or the entire organization may be performed by test managers outside of the development team. … The testing role is mainly <mark>focused on the activities of test analysis, test design, test implementation and test execution</mark>. … For example, the test management role can be performed by a team leader, by a test manager, by a development manager, etc. … It is also possible for one person to take on the roles of testing and test management at the same time."
     }
    ]
   }
@@ -317,7 +317,7 @@
   {
    "lo": "1.4.3",
    "k": "K2",
-   "statement": "Differentiate the <mark>testware</mark> that supports the test activities",
+   "statement": "Differentiate the testware that supports the test activities",
    "section": "1.4.3 Testware",
    "keywords": [
     "action items",
@@ -342,42 +342,42 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Testware</mark> is created as <mark>output</mark> work products from the test activities described in section 1.4.1. …"
+     "html": "<mark>Testware is created as output work products from the test activities</mark> described in section 1.4.1. …"
     },
     {
      "t": "li",
-     "html": "Test <mark>planning</mark> work products include: test plan, test schedule, risk register, entry criteria and <mark>exit criteria</mark> (see section 5.1). Risk register is a list of risks together with risk likelihood, risk impact and information about risk mitigation (see section 5.2). Test schedule, risk register, entry criteria and <mark>exit criteria</mark> are often a part of the test plan."
+     "html": "<mark>Test planning work products include: test plan, test schedule, risk register, entry criteria and exit criteria</mark> (see section 5.1). Risk register is a list of risks together with risk likelihood, risk impact and information about risk mitigation (see section 5.2). Test schedule, risk register, entry criteria and exit criteria are often a part of the test plan."
     },
     {
      "t": "li",
-     "html": "Test monitoring and test control work products include: test <mark>progress reports</mark> (see section 5.3.2), documentation of control directives (see section 5.3) and information about risks (see section 5.2)."
+     "html": "<mark>Test monitoring and test control work products include: test progress reports</mark> (see section 5.3.2), documentation of control directives (see section 5.3) and information about risks (see section 5.2)."
     },
     {
      "t": "li",
-     "html": "Test analysis work products include: (prioritized) <mark>test conditions</mark> (e.g., acceptance criteria, see section 4.5.2), and <mark>defect reports</mark> regarding <mark>defects</mark> in the <mark>test basis</mark> (if not fixed directly)."
+     "html": "Test analysis work products include: (prioritized) test conditions (e.g., acceptance criteria, see section 4.5.2), and defect reports regarding defects in the test basis (if not fixed directly)."
     },
     {
      "t": "li",
-     "html": "Test design work products include: (prioritized) <mark>test cases</mark>, test charters, <mark>coverage</mark> items, <mark>test data</mark> requirements and test environment requirements."
+     "html": "Test design work products include: (prioritized) test cases, test charters, coverage items, test data requirements and test environment requirements."
     },
     {
      "t": "li",
-     "html": "Test implementation work products include: test procedures, manual and automated test scripts, test suites, <mark>test data</mark>, test <mark>execution</mark> schedule, and test environment items. Examples of test environment items include: stubs, drivers, simulators, and service virtualizations."
+     "html": "Test implementation work products include: test procedures, manual and automated test scripts, test suites, test data, test execution schedule, and test environment items. Examples of test environment items include: stubs, drivers, simulators, and service virtualizations."
     },
     {
      "t": "li",
-     "html": "Test <mark>execution</mark> work products include: test logs, and <mark>defect reports</mark> (see section 5.5)."
+     "html": "<mark>Test execution work products include: test logs, and defect reports</mark> (see section 5.5)."
     },
     {
      "t": "li",
-     "html": "Test <mark>completion</mark> work products include: test <mark>completion report</mark> (see section 5.3.2), <mark>action items</mark> for improvement of subsequent projects or iterations, documented <mark>lessons learned</mark>, and <mark>change requests</mark> (e.g., as product backlog items)."
+     "html": "<mark>Test completion work products include: test completion report</mark> (see section 5.3.2), action items for improvement of subsequent projects or iterations, documented lessons learned, and change requests (e.g., as product backlog items)."
     }
    ]
   },
   {
    "lo": "1.4.4",
    "k": "K2",
-   "statement": "Explain the value of maintaining <mark>traceability</mark>",
+   "statement": "Explain the value of maintaining traceability",
    "section": "1.4.4 Traceability between the Test Basis and Testware",
    "keywords": [
     "completion report",
@@ -394,19 +394,19 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "To implement effective test monitoring and test control, it is important to establish and maintain <mark>traceability</mark> throughout the test process between the <mark>test basis</mark> elements, <mark>testware</mark> associated with these elements (e.g., <mark>test conditions</mark>, risks, <mark>test cases</mark>), <mark>test results</mark>, and <mark>defects</mark>. … Accurate <mark>traceability</mark> supports <mark>coverage</mark> evaluation, so it is very useful if measurable <mark>coverage</mark> criteria are defined in the <mark>test basis</mark>. … The <mark>coverage</mark> criteria can function as key performance indicators to drive the activities that show to what extent the test objectives have been achieved (see section 1.1.1). …"
+     "html": "To implement effective test monitoring and test control, it is important to <mark>establish and maintain traceability</mark> throughout the test process between the test basis elements, testware associated with these elements (e.g., test conditions, risks, test cases), test results, and defects. … <mark>Accurate traceability supports coverage evaluation</mark>, so it is very useful if measurable coverage criteria are defined in the test basis. … The coverage criteria can function as key performance indicators to drive the activities that show to what extent the test objectives have been achieved (see section 1.1.1). …"
     },
     {
      "t": "li",
-     "html": "<mark>Traceability</mark> of <mark>test cases</mark> to requirements can verify that the requirements are covered by <mark>test cases</mark>."
+     "html": "Traceability of test cases to requirements <mark>can verify that the requirements are covered by test cases</mark>."
     },
     {
      "t": "li",
-     "html": "<mark>Traceability</mark> of <mark>test results</mark> to risks can be used to evaluate the level of residual risk in a test object."
+     "html": "Traceability of test results to risks can be used to <mark>evaluate the level of residual risk</mark> in a test object."
     },
     {
      "t": "p",
-     "html": "In addition to evaluating <mark>coverage</mark>, good <mark>traceability</mark> makes it possible to determine the impact of changes, facilitates audits, and helps meet IT governance criteria. … Good <mark>traceability</mark> also makes test <mark>progress reports</mark> and test <mark>completion reports</mark> more easily understandable by including the status of <mark>test basis</mark> elements. … <mark>Traceability</mark> provides information to assess product quality, process capability, and project progress against business goals."
+     "html": "In addition to evaluating coverage, good traceability makes it possible to <mark>determine the impact of changes</mark>, facilitates audits, and helps meet IT governance criteria. … Good traceability also makes test progress reports and test completion reports more easily understandable by including the status of test basis elements. … Traceability provides information to assess product quality, process capability, and project progress against business goals."
     }
    ]
   }
@@ -415,7 +415,7 @@
   {
    "lo": "1.5.3",
    "k": "K2",
-   "statement": "Distinguish the benefits and drawbacks of <mark>independence</mark> of testing",
+   "statement": "Distinguish the benefits and drawbacks of independence of testing",
    "section": "1.5.3 Independence of Testing",
    "keywords": [
     "adversarial relationship",
@@ -430,11 +430,11 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "A certain degree of <mark>independence</mark> makes the tester more effective at finding <mark>defects</mark> due to differences between the author’s and the tester’s <mark>cognitive biases</mark> (cf. … <mark>Independence</mark> is not, however, a replacement for familiarity, e.g., developers can efficiently find many <mark>defects</mark> in their own code. … Work products can be tested by their author (no <mark>independence</mark>), by the author's peers from the same team (some <mark>independence</mark>), by testers from outside the author's team but within the organization (high <mark>independence</mark>), or by testers from outside the organization (<mark>very high</mark> <mark>independence</mark>). … For most projects, it is usually best to carry out testing with multiple levels of <mark>independence</mark> (e.g., developers performing component testing and component integration testing, test team performing system and system integration testing, and business representatives performing acceptance testing)."
+     "html": "A certain degree of independence <mark>makes the tester more effective at finding defects</mark> <mark>due to differences between the author’s and the tester’s cognitive biases</mark> (cf. … Independence is not, however, a replacement for familiarity, e.g., developers can efficiently find many defects in their own code. … Work products can be tested by their author (no independence), by the author's peers from the same team (some independence), <mark>by testers from outside the author's team but within the organization</mark> (high independence), or <mark>by testers from outside the organization</mark> (very high independence). … For most projects, it is usually best to carry out testing with multiple levels of independence (e.g., developers performing component testing and component integration testing, test team performing system and system integration testing, and business representatives performing acceptance testing)."
     },
     {
      "t": "p",
-     "html": "The main benefit of <mark>independence</mark> of testing is that independent testers are likely to recognize different kinds of <mark>failures</mark> and <mark>defects</mark> compared to developers because of their different backgrounds, technical perspectives, and biases. … Independent testers may be <mark>isolated from the development team</mark>, which may lead to a lack of collaboration, communication problems, or an <mark>adversarial relationship</mark> with the development team. … Developers may lose a sense of responsibility for <mark>quality</mark>. …"
+     "html": "The main benefit of independence of testing is that independent testers <mark>are likely to recognize different kinds of failures and defects</mark> compared to developers because of their different backgrounds, technical perspectives, and biases. … Independent testers <mark>may be isolated from the development team</mark>, which <mark>may lead to a lack of collaboration, communication problems, or an adversarial relationship</mark> with the development team. … <mark>Developers may lose a sense of responsibility for quality</mark>. …"
     }
    ]
   }
@@ -465,38 +465,38 @@
     },
     {
      "t": "li",
-     "html": "<mark>Testing knowledge</mark> (to increase effectiveness of testing, e.g., by using test techniques)"
+     "html": "Testing knowledge (<mark>to increase effectiveness of testing</mark>, e.g., by using test techniques)"
     },
     {
      "t": "li",
-     "html": "Thoroughness, carefulness, <mark>curiosity</mark>, <mark>attention to details</mark>, being methodical (to identify <mark>defects</mark>, especially the ones that are difficult to find)"
+     "html": "Thoroughness, carefulness, curiosity, attention to details, being methodical (to identify defects, especially the ones that are difficult to find)"
     },
     {
      "t": "li",
-     "html": "Good <mark>communication</mark> skills, active listening, being a <mark>team player</mark> (to interact effectively with all stakeholders, to convey information to others, to be understood, and to report and discuss <mark>defects</mark>)"
+     "html": "Good communication skills, active listening, being a team player (<mark>to interact effectively with all stakeholders</mark>, to convey information to others, to be understood, and to report and discuss defects)"
     },
     {
      "t": "li",
-     "html": "Analytical thinking, <mark>critical thinking</mark>, <mark>creativity</mark> (to increase effectiveness of testing)"
+     "html": "Analytical thinking, critical thinking, creativity (<mark>to increase effectiveness of testing</mark>)"
     },
     {
      "t": "li",
-     "html": "<mark>Technical knowledge</mark> (to increase efficiency of testing, e.g., by using appropriate test tools)"
+     "html": "Technical knowledge (<mark>to increase efficiency of testing</mark>, e.g., by using appropriate test tools)"
     },
     {
      "t": "li",
-     "html": "<mark>Domain knowledge</mark> (to be able to understand and to communicate with end users/business representatives)"
+     "html": "Domain knowledge (<mark>to be able to understand and to communicate with end users/business representatives</mark>)"
     },
     {
      "t": "p",
-     "html": "… This makes <mark>communication</mark> skills crucial for testers. … Some people may perceive testing as a destructive activity, even though it contributes greatly to project success and product <mark>quality</mark>. … To try to improve this view, information about <mark>defects</mark> and failures should be communicated in a constructive way."
+     "html": "… This makes communication skills crucial for testers. … Some people may perceive testing as a destructive activity, even though it contributes greatly to project success and product quality. … To try to improve this view, information about defects and failures should be communicated in a constructive way."
     }
    ]
   },
   {
    "lo": "1.5.2",
    "k": "K1",
-   "statement": "Recall the advantages of the <mark>whole</mark> team approach",
+   "statement": "Recall the advantages of the whole team approach",
    "section": "1.5.2 Whole Team Approach",
    "keywords": [
     "communication",
@@ -508,7 +508,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… The <mark>whole</mark> team approach – a practice coming from Extreme Programming (see section 2.1) – builds upon this skill. … In the <mark>whole</mark> team approach any team member with the necessary knowledge and skills can perform any task, and everyone is responsible for <mark>quality</mark>. … The team members share the same workspace (physical or virtual), as co-location facilitates <mark>communication</mark> and interaction. … The <mark>whole</mark> team approach improves team dynamics, enhances <mark>communication</mark> and collaboration within the team, and creates synergy by allowing the various skill sets within the team to be leveraged for the benefit of the project. … Testers work closely with other team members to ensure that the desired <mark>quality</mark> levels are achieved. … This includes collaborating with business representatives to help them create suitable acceptance tests and working with developers to agree on the test strategy and decide on <mark>test automation</mark> approaches. … Testers can thus transfer <mark>testing knowledge</mark> to other team members and influence the development of the product. … Depending on the context, the <mark>whole</mark> team approach may not always be appropriate. …"
+     "html": "… The whole team approach – a practice coming from Extreme Programming (see section 2.1) – builds upon this skill. … In the whole team approach <mark>any team member with the necessary knowledge and skills can perform any task</mark>, and <mark>everyone is responsible for quality</mark>. … The team members share the same workspace (physical or virtual), as co-location facilitates communication and interaction. … The whole team approach improves team dynamics, enhances communication and collaboration within the team, and creates synergy by allowing the various skill sets within the team to be leveraged for the benefit of the project. … Testers work closely with other team members to ensure that the desired quality levels are achieved. … This includes collaborating with business representatives to help them create suitable acceptance tests and working with developers to agree on the test strategy and decide on test automation approaches. … Testers can thus transfer testing knowledge to other team members and influence the development of the product. … Depending on the context, the whole team approach <mark>may not always be appropriate</mark>. …"
     }
    ]
   }
@@ -537,23 +537,23 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Testing must be adapted to the SDLC to succeed. The choice of the SDLC impacts on the:"
+     "html": "<mark>Testing must be adapted to the SDLC to succeed</mark>. <mark>The choice of the SDLC impacts</mark> on the:"
     },
     {
      "t": "li",
-     "html": "<mark>Scope and timing of test activities</mark> (e.g., <mark>test levels</mark> and test types)"
+     "html": "Scope and timing of test activities (e.g., test levels and test types)"
     },
     {
      "t": "li",
-     "html": "Choice of <mark>test techniques</mark> and <mark>test approach</mark>"
+     "html": "Choice of test techniques and test approach"
     },
     {
      "t": "li",
-     "html": "<mark>Extent of test automation</mark>"
+     "html": "Extent of test automation"
     },
     {
      "t": "p",
-     "html": "In <mark>sequential development models</mark>, in the initial phases testers typically participate in requirement <mark>reviews</mark>, <mark>test analysis</mark>, and test design. … In some <mark>iterative development models</mark> and <mark>incremental development models</mark>, it is assumed that each iteration delivers a working prototype or product increment. … This implies that in each iteration both static testing and dynamic testing may be performed at all <mark>test levels</mark>. … Frequent delivery of increments requires fast feedback and extensive <mark>regression testing</mark>. … <mark>Agile software development</mark> assumes that change may occur throughout the project. … Therefore, lightweight work product documentation and extensive <mark>test automation</mark> to make <mark>regression testing</mark> easier are favored in agile projects. … Also, most of the manual testing tends to be done using experience-based <mark>test techniques</mark> (see Section 4.4) that do not require extensive prior <mark>test analysis</mark> and design."
+     "html": "In sequential development models, in the initial phases <mark>testers typically participate in requirement reviews, test analysis, and test design</mark>. … In some iterative development models and incremental development models, it is assumed that <mark>each iteration delivers a working prototype or product increment</mark>. … This implies that in each iteration <mark>both static testing and dynamic testing may be performed at all test levels</mark>. … Frequent delivery of increments <mark>requires fast feedback and extensive regression testing</mark>. … Agile software development <mark>assumes that change may occur throughout the project</mark>. … Therefore, lightweight work product documentation and <mark>extensive test automation to make regression testing easier</mark> are favored in agile projects. … Also, most of the manual testing tends to be done using experience-based test techniques (see Section 4.4) that do not require extensive prior test analysis and design."
     }
    ]
   },
@@ -574,11 +574,11 @@
     },
     {
      "t": "li",
-     "html": "Different <mark>test levels</mark> (see chapter 2.2.1) have specific and different <mark>test objectives</mark>, which allows for testing to be appropriately comprehensive while avoiding redundancy"
+     "html": "Different test levels (see chapter 2.2.1) have specific and different test objectives, which allows for testing to be appropriately comprehensive while avoiding redundancy"
     },
     {
      "t": "li",
-     "html": "<mark>Test analysis</mark> and design for a given <mark>test level</mark> begins during the corresponding development phase of the SDLC, so that testing can adhere to the principle of early testing (see section 1.3)"
+     "html": "Test analysis and design for a given test level begins during the corresponding development phase of the SDLC, so that testing can adhere to the principle of early testing (see section 1.3)"
     }
    ]
   }
@@ -587,7 +587,7 @@
   {
    "lo": "2.2.1",
    "k": "K2",
-   "statement": "Distinguish the different <mark>test levels</mark>",
+   "statement": "Distinguish the different test levels",
    "section": "2.2.1 Test Levels",
    "keywords": [
     "acceptance testing",
@@ -613,35 +613,35 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In this syllabus, the following five <mark>test levels</mark> are described:"
+     "html": "In this syllabus, the following five test levels are described:"
     },
     {
      "t": "li",
-     "html": "<mark>Component testing</mark> (also known as unit testing) focuses on testing <mark>components</mark> in isolation. It often requires specific support, such as test harnesses or <mark>unit test frameworks</mark>. <mark>Component testing</mark> is normally <mark>performed by developers</mark> in their development environments."
+     "html": "Component testing (also known as unit testing) <mark>focuses on testing components in isolation</mark>. It often requires specific support, such as test harnesses or unit test frameworks. Component testing is normally performed by developers in their development environments."
     },
     {
      "t": "li",
-     "html": "<mark>Component integration testing</mark> (also known as unit <mark>integration testing</mark>) focuses on testing the <mark>interfaces and interactions between components</mark>. <mark>Component integration testing</mark> is heavily dependent on the integration strategy like <mark>bottom-up</mark>, <mark>top-down</mark> or <mark>big-bang</mark>."
+     "html": "Component integration testing (also known as unit integration testing) <mark>focuses on testing the interfaces and interactions between components</mark>. Component integration testing is heavily dependent on the integration strategy like bottom-up, top-down or big-bang."
     },
     {
      "t": "li",
-     "html": "<mark>System testing</mark> focuses on the overall behavior and capabilities of an entire system or product, often including functional testing of <mark>end-to-end tasks</mark> and the non-functional testing of quality characteristics. For some non-functional quality characteristics, it is preferable to test them on a complete system in a representative test environment (e.g., usability). Using simulations of subsystems is also possible. <mark>System testing</mark> may be performed by an independent test team, and is related to specifications for the system."
+     "html": "System testing <mark>focuses on the overall behavior and capabilities of an entire system</mark> or product, often including functional testing of end-to-end tasks and the non-functional testing of quality characteristics. For some non-functional quality characteristics, it is preferable to test them on a complete system in a representative test environment (e.g., usability). Using simulations of subsystems is also possible. System testing may be performed by an independent test team, and is related to specifications for the system."
     },
     {
      "t": "li",
-     "html": "<mark>System integration testing</mark> focuses on testing the interfaces of the system under test and other systems and <mark>external services</mark>. <mark>System integration testing</mark> requires suitable test environments preferably similar to the operational environment."
+     "html": "System integration testing <mark>focuses on testing the interfaces of the system under test and other systems</mark> and external services. System integration testing requires suitable test environments preferably similar to the operational environment."
     },
     {
      "t": "li",
-     "html": "<mark>Acceptance testing</mark> focuses on <mark>validation</mark> and on demonstrating readiness for deployment, which means that the system fulfills the user’s business needs. Ideally, <mark>acceptance testing</mark> should be performed by the intended users. The main forms of <mark>acceptance testing</mark> are: user <mark>acceptance testing</mark> (UAT), operational <mark>acceptance testing</mark>, contractual <mark>acceptance testing</mark> and regulatory <mark>acceptance testing</mark>, alpha testing and beta testing."
+     "html": "Acceptance testing <mark>focuses on validation and on demonstrating readiness for deployment</mark>, which means that the system fulfills the user’s business needs. Ideally, acceptance testing should be performed by the intended users. The main forms of acceptance testing are: user acceptance testing (UAT), operational acceptance testing, contractual acceptance testing and regulatory acceptance testing, alpha testing and beta testing."
     },
     {
      "t": "p",
-     "html": "<mark>Test levels</mark> are distinguished by the following non-exhaustive list of attributes, to avoid overlapping of test activities:"
+     "html": "<mark>Test levels are distinguished by the following non-exhaustive list of attributes</mark>, to avoid overlapping of test activities:"
     },
     {
      "t": "li",
-     "html": "<mark>Test object</mark>"
+     "html": "Test object"
     }
    ]
   }
@@ -650,7 +650,7 @@
   {
    "lo": "2.2.2",
    "k": "K2",
-   "statement": "Distinguish the different <mark>test types</mark>",
+   "statement": "Distinguish the different test types",
    "section": "2.2.2 Test Types",
    "keywords": [
     "appropriateness",
@@ -684,39 +684,39 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "A lot of <mark>test types</mark> exist and can be applied in projects. … In this syllabus, the following four <mark>test types</mark> are addressed: <mark>Functional testing</mark> evaluates the functions that a component or system should perform. … The functions are “what” the <mark>test object</mark> should do. … The main objective of <mark>functional testing</mark> is checking the <mark>functional</mark> <mark>completeness</mark>, <mark>functional</mark> <mark>correctness</mark> and <mark>functional</mark> <mark>appropriateness</mark>. … <mark>Non-functional testing</mark> evaluates attributes other than <mark>functional</mark> characteristics of a component or system. … <mark>Non-functional testing</mark> is the testing of “<mark>how well the system behaves</mark>”. … The main objective of nonfunctional testing is checking the <mark>non-functional</mark> quality characteristics. … The ISO/IEC 25010 standard provides the following classification of the <mark>non-functional</mark> quality characteristics:"
+     "html": "A lot of test types exist and can be applied in projects. … In this syllabus, the following four test types are addressed: <mark>Functional testing evaluates the functions that a component or system should perform</mark>. … <mark>The functions are “what” the test object should do</mark>. … The main objective of functional testing is checking the functional completeness, functional correctness and functional appropriateness. … <mark>Non-functional testing evaluates attributes other than functional characteristics</mark> of a component or system. … <mark>Non-functional testing is the testing of “how well the system behaves”</mark>. … The main objective of nonfunctional testing is checking the non-functional quality characteristics. … The ISO/IEC 25010 standard provides the following classification of the non-functional quality characteristics:"
     },
     {
      "t": "li",
-     "html": "<mark>Performance efficiency</mark>"
+     "html": "Performance efficiency"
     },
     {
      "t": "li",
-     "html": "<mark>Compatibility</mark>"
+     "html": "Compatibility"
     },
     {
      "t": "li",
-     "html": "<mark>Usability</mark> (also known as interaction capability)"
+     "html": "Usability (also known as interaction capability)"
     },
     {
      "t": "li",
-     "html": "<mark>Reliability</mark>"
+     "html": "Reliability"
     },
     {
      "t": "li",
-     "html": "<mark>Security</mark>"
+     "html": "Security"
     },
     {
      "t": "li",
-     "html": "<mark>Maintainability</mark>"
+     "html": "Maintainability"
     },
     {
      "t": "li",
-     "html": "<mark>Portability</mark> (also known as flexibility)"
+     "html": "Portability (also known as flexibility)"
     },
     {
      "t": "p",
-     "html": "It is sometimes appropriate for <mark>non-functional testing</mark> to start early in the SDLC (e.g., as part of reviews or <mark>component testing</mark>). … Many <mark>non-functional</mark> tests are derived from <mark>functional</mark> tests as they use the same <mark>functional</mark> tests, but check that while performing the function, a <mark>non-functional</mark> constraint is satisfied (e.g., checking that a function performs within a specified time, or a function can be ported to a new platform). … The late discovery of <mark>non-functional</mark> <mark>defects</mark> can pose a serious threat to the success of a project. … Nonfunctional testing sometimes needs a very specific test environment, such as a <mark>usability</mark> lab for <mark>usability</mark> testing. … <mark>Black-box testing</mark> (see section 4.2) is <mark>specification-based</mark> and derives tests from documentation not related to the internal structure of the <mark>test object</mark>. … The main objective of <mark>black-box testing</mark> is checking the system's behavior against its specifications. … <mark>White-box testing</mark> (see section 4.3) is <mark>structure-based</mark> and derives tests from the system's implementation or internal structure (e.g., code, <mark>architecture</mark>, work flows, and <mark>data flows</mark>). … The main objective of <mark>white-box testing</mark> is to cover the underlying structure by the tests to an acceptable <mark>level</mark>. … All the four above mentioned <mark>test types</mark> can be applied to all <mark>test levels</mark>, although the focus will be different at each <mark>level</mark>. … Different test techniques can be used to derive test conditions and test cases for all the mentioned <mark>test types</mark>."
+     "html": "It is sometimes appropriate for non-functional testing to start early in the SDLC (e.g., as part of reviews or component testing). … Many non-functional tests are derived from functional tests as they use the same functional tests, but check that while performing the function, a non-functional constraint is satisfied (e.g., checking that a function performs within a specified time, or a function can be ported to a new platform). … The late discovery of non-functional defects can pose a serious threat to the success of a project. … Nonfunctional testing sometimes needs a very specific test environment, such as a usability lab for usability testing. … Black-box testing (see section 4.2) is specification-based and derives tests from documentation not related to the internal structure of the test object. … The main objective of black-box testing is checking the system's behavior against its specifications. … White-box testing (see section 4.3) is structure-based and derives tests from the system's implementation or internal structure (e.g., code, architecture, work flows, and data flows). … The main objective of white-box testing is to cover the underlying structure by the tests to an acceptable level. … All the four above mentioned test types <mark>can be applied to all test levels</mark>, although <mark>the focus will be different at each level</mark>. … Different test techniques can be used to derive test conditions and test cases for all the mentioned test types."
     }
    ]
   }
@@ -725,7 +725,7 @@
   {
    "lo": "2.2.3",
    "k": "K2",
-   "statement": "Distinguish <mark>confirmation testing</mark> from <mark>regression testing</mark>",
+   "statement": "Distinguish confirmation testing from regression testing",
    "section": "2.2.3 Confirmation Testing and Regression Testing",
    "keywords": [
     "confirmation",
@@ -739,19 +739,19 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Changes are typically made to a component or system to either enhance it by adding a new feature or to fix it by removing a <mark>defect</mark>. … Testing should then also include <mark>confirmation testing</mark> and <mark>regression testing</mark>. … <mark>Confirmation testing</mark> confirms that an original <mark>defect</mark> has been successfully fixed. …"
+     "html": "Changes are typically made to a component or system to either enhance it by adding a new feature or to fix it by removing a defect. … Testing should then also include confirmation testing and regression testing. … <mark>Confirmation testing confirms that an original defect has been successfully fixed</mark>. …"
     },
     {
      "t": "li",
-     "html": "executing all tests that previously have <mark>failed</mark> due to the <mark>defect</mark>, or, also by"
+     "html": "<mark>executing all tests that previously have failed due to the defect</mark>, or, also by"
     },
     {
      "t": "li",
-     "html": "adding new tests to cover any changes that were needed to fix the <mark>defect</mark>"
+     "html": "adding new tests to cover any changes that were needed to fix the defect"
     },
     {
      "t": "p",
-     "html": "However, when time or money is short when fixing <mark>defects</mark>, <mark>confirmation testing</mark> might be restricted to simply exercising the test steps that should reproduce the failure caused by the <mark>defect</mark> and checking that the failure does not occur. … <mark>Regression testing</mark> confirms that no adverse consequences have been caused by a change, including a fix that has already been <mark>confirmation</mark> tested. … <mark>Regression testing</mark> may not be restricted to the test object itself but can also be related to the environment. … It is advisable first to perform an impact analysis to recognize the extent of the <mark>regression testing</mark>. … <mark>Regression</mark> test suites are run many times and generally the number of <mark>regression</mark> <mark>test cases</mark> will increase with each iteration or release, so <mark>regression testing</mark> is a strong candidate for automation. … Where CI is used, such as in DevOps (see section 2.1.4), it is good practice to also include automated <mark>regression</mark> tests. … Depending on the situation, this may include <mark>regression</mark> tests on different test levels. … <mark>Confirmation testing</mark> and/or <mark>regression testing</mark> for the test object are needed on all test levels if <mark>defects</mark> are fixed and/or changes are made on these test levels."
+     "html": "However, when time or money is short when fixing defects, confirmation testing might be restricted to simply exercising the test steps that should reproduce the failure caused by the defect and checking that the failure does not occur. … <mark>Regression testing confirms that no adverse consequences have been caused by a change</mark>, including a fix that has already been confirmation tested. … Regression testing may not be restricted to the test object itself but can also be related to the environment. … It is advisable first to perform an impact analysis to recognize the extent of the regression testing. … Regression test suites are run many times and generally the number of regression test cases will increase with each iteration or release, so regression testing is a strong candidate for automation. … Where CI is used, such as in DevOps (see section 2.1.4), it is good practice to also include automated regression tests. … Depending on the situation, this may include regression tests on different test levels. … Confirmation testing and/or regression testing for the test object are needed on all test levels if defects are fixed and/or changes are made on these test levels."
     }
    ]
   }
@@ -760,7 +760,7 @@
   {
    "lo": "2.3.1",
    "k": "K2",
-   "statement": "Summarize <mark>maintenance testing</mark> and its triggers",
+   "statement": "Summarize maintenance testing and its triggers",
    "section": "2.3 Maintenance Testing",
    "keywords": [
     "maintenance testing",
@@ -771,23 +771,23 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… The scope of <mark>maintenance testing</mark> typically depends on:"
+     "html": "… <mark>The scope of maintenance testing typically depends on</mark>:"
     },
     {
      "t": "p",
-     "html": "The triggers for maintenance and <mark>maintenance testing</mark> can be classified as follows:"
+     "html": "The triggers for maintenance and maintenance testing can be classified as follows:"
     },
     {
      "t": "li",
-     "html": "<mark>Modifications</mark>, such as planned enhancements (i.e., release-based), corrective changes or hot fixes."
+     "html": "<mark>Modifications, such as planned enhancements</mark> (i.e., release-based), corrective changes or hot fixes."
     },
     {
      "t": "li",
-     "html": "Upgrades or <mark>migrations</mark> of the operational environment, such as from one platform to another, which can require tests associated with the new environment as well as of the changed software, or tests of data conversion when data from another application is migrated into the system being maintained."
+     "html": "<mark>Upgrades or migrations of the operational environment</mark>, such as from one platform to another, which can require tests associated with the new environment as well as of the changed software, or tests of data conversion when data from another application is migrated into the system being maintained."
     },
     {
      "t": "li",
-     "html": "<mark>Retirement</mark>, such as when an application reaches the end of its life. When a system is retired, this can require testing of data archiving if long data retention periods are required. Testing of restore and retrieval procedures after archiving may also be needed in the event that certain data is required during the archiving period."
+     "html": "<mark>Retirement, such as when an application reaches the end of its life</mark>. When a system is retired, this <mark>can require testing of data archiving</mark> if long data retention periods are required. Testing of restore and retrieval procedures after archiving may also be needed in the event that certain data is required during the archiving period."
     }
    ]
   }
@@ -805,11 +805,11 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "TDD, ATDD and BDD are similar development approaches, where tests are defined as a means of directing development. Each of these approaches implements the principle of early testing (see section 1.3) and follows shift left (see section 2.1.5), since the tests are defined before the code is written. They support an iterative development model. These approaches are characterized as follows: Test-Driven Development (TDD):"
+     "html": "TDD, ATDD and BDD are similar development approaches, where tests are defined as a means of directing development. Each of these approaches implements the principle of early testing (see section 1.3) and follows shift left (see section 2.1.5), since <mark>the tests are defined before the code is written</mark>. They support an iterative development model. These approaches are characterized as follows: Test-Driven Development (TDD):"
     },
     {
      "t": "li",
-     "html": "Directs the coding through <mark>test cases</mark> (instead of extensive software design) (Beck 2003)"
+     "html": "<mark>Directs the coding through test cases</mark> (instead of extensive software design) (Beck 2003)"
     },
     {
      "t": "p",
@@ -817,7 +817,7 @@
     },
     {
      "t": "li",
-     "html": "Derives tests from <mark>acceptance criteria</mark> as part of the system design process (Gärtner 2011)"
+     "html": "<mark>Derives tests from acceptance criteria</mark> as part of the system design process (Gärtner 2011)"
     },
     {
      "t": "p",
@@ -825,11 +825,11 @@
     },
     {
      "t": "li",
-     "html": "Expresses the desired behavior of an application with <mark>test cases</mark> written in a simple form of natural language, which is easy to understand by stakeholders – usually using the Given/When/Then format (Chelimsky 2010)"
+     "html": "Expresses the desired behavior of an application with test cases written in a simple form of natural language, which is easy to understand by stakeholders – usually <mark>using the Given/When/Then format</mark> (Chelimsky 2010)"
     },
     {
      "t": "li",
-     "html": "<mark>Test cases</mark> should then automatically be translated into executable tests"
+     "html": "Test cases should then automatically be translated into executable tests"
     }
    ]
   }
@@ -838,7 +838,7 @@
   {
    "lo": "2.1.5",
    "k": "K2",
-   "statement": "Explain <mark>shift left</mark>",
+   "statement": "Explain shift left",
    "section": "2.1.5 Shift Left",
    "keywords": [
     "dynamic testing",
@@ -851,30 +851,30 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "The principle of early testing (see section 1.3) is sometimes referred to as <mark>shift left</mark> because it is an approach where testing is performed earlier in the SDLC. … <mark>Shift left</mark> basically suggests that testing should be done earlier (e.g., not waiting for code to be implemented or for components to be integrated), but it does not mean that testing later in the SDLC should be neglected. … There are some good practices that illustrate how to achieve a “<mark>shift left</mark>” in testing, which include:"
+     "html": "The principle of early testing (see section 1.3) is sometimes referred to as shift left because it is an approach where <mark>testing is performed earlier in the SDLC</mark>. … Shift left basically suggests that <mark>testing should be done earlier</mark> (e.g., not waiting for code to be implemented or for components to be integrated), but <mark>it does not mean that testing later in the SDLC should be neglected</mark>. … There are some good practices that illustrate how to achieve a “shift left” in testing, which include:"
     },
     {
      "t": "li",
-     "html": "Reviewing the specification from the perspective of testers. These <mark>review</mark> activities on specifications often find potential defects, such as ambiguities, incompleteness, and inconsistencies"
+     "html": "<mark>Reviewing the specification from the perspective of testers</mark>. These review activities on specifications often find potential defects, such as ambiguities, incompleteness, and inconsistencies"
     },
     {
      "t": "li",
-     "html": "Completing <mark>static analysis</mark> of source code prior to <mark>dynamic testing</mark>, or as part of an automated process"
+     "html": "<mark>Completing static analysis of source code prior to dynamic testing</mark>, or as part of an automated process"
     },
     {
      "t": "li",
-     "html": "Performing non-functional testing starting at the component <mark>test level</mark>, where possible. This is a form of <mark>shift left</mark> as these non-functional test types tend to be performed later in the SDLC when a complete system and a representative test environment are available"
+     "html": "<mark>Performing non-functional testing starting at the component test level</mark>, where possible. This is a form of shift left as these non-functional test types tend to be performed later in the SDLC when a complete system and a representative test environment are available"
     },
     {
      "t": "p",
-     "html": "<mark>Shift left</mark> might result in extra training, effort and/or costs earlier in the process but is expected to save efforts and/or costs later in the process. … For <mark>shift left</mark> it is important that stakeholders are convinced and bought into this concept."
+     "html": "Shift left <mark>might result in extra training, effort and/or costs earlier in the process</mark> but <mark>is expected to save efforts and/or costs later in the process</mark>. … For shift left it is important that stakeholders are convinced and bought into this concept."
     }
    ]
   },
   {
    "lo": "2.1.6",
    "k": "K2",
-   "statement": "Explain how <mark>retrospectives</mark> can be used as a mechanism for process improvement",
+   "statement": "Explain how retrospectives can be used as a mechanism for process improvement",
    "section": "2.1.6 Retrospectives and Process Improvement",
    "keywords": [
     "quality",
@@ -885,19 +885,19 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Retrospectives</mark> are often held at the end of a project or an iteration, at a release milestone, or can be held when needed. … The timing and organization of the <mark>retrospectives</mark> depend on the particular SDLC model being followed. …"
+     "html": "Retrospectives are often held at the end of a project or an iteration, at a release milestone, or can be held when needed. … The timing and organization of the retrospectives depend on the particular SDLC model being followed. …"
     },
     {
      "t": "p",
-     "html": "… <mark>Retrospectives</mark> are critical for the successful implementation of continuous improvement, and it is important that any recommended improvements are followed up. …"
+     "html": "… <mark>Retrospectives are critical for the successful implementation of continuous improvement</mark>, and it is important that any recommended improvements are followed up. …"
     },
     {
      "t": "li",
-     "html": "Increased <mark>quality</mark> of <mark>testware</mark> (e.g., by jointly reviewing the test processes)"
+     "html": "<mark>Increased quality of testware</mark> (e.g., by jointly reviewing the test processes)"
     },
     {
      "t": "li",
-     "html": "Improved <mark>quality</mark> of the <mark>test basis</mark> (e.g., as deficiencies in the extent and <mark>quality</mark> of the requirements could be addressed and solved)"
+     "html": "<mark>Improved quality of the test basis</mark> (e.g., as deficiencies in the extent and quality of the requirements could be addressed and solved)"
     }
    ]
   }
@@ -906,7 +906,7 @@
   {
    "lo": "3.1.1",
    "k": "K1",
-   "statement": "Recognize types of work products that can be examined by <mark>static testing</mark>",
+   "statement": "Recognize types of work products that can be examined by static testing",
    "section": "3.1.1 Work Products Examinable by Static Testing",
    "keywords": [
     "static analysis",
@@ -915,14 +915,14 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Almost any work product can be examined using <mark>static testing</mark>. … However, for <mark>static analysis</mark>, work products need a structure against which they can be checked (e.g., models, code or text with a formal syntax). … Work products that are not appropriate for <mark>static testing</mark> include those that are difficult to interpret by human beings and that should not be analyzed by tools (e.g., 3rd party executable code due to legal reasons)."
+     "html": "<mark>Almost any work product can be examined using static testing</mark>. … However, for static analysis, work products need a structure against which they can be checked (e.g., models, code or text with a formal syntax). … Work products that are <mark>not appropriate for static testing</mark> include those that are difficult to interpret by human beings and that <mark>should not be analyzed by tools</mark> (e.g., 3rd party executable code due to legal reasons)."
     }
    ]
   },
   {
    "lo": "3.1.3",
    "k": "K2",
-   "statement": "Compare and contrast <mark>static testing</mark> and <mark>dynamic testing</mark>",
+   "statement": "Compare and contrast static testing and dynamic testing",
    "section": "3.1.3 Differences between Static Testing and Dynamic Testing",
    "keywords": [
     "defect",
@@ -934,39 +934,39 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Static testing</mark> and <mark>dynamic testing</mark> practices complement each other. … They have similar objectives, such as supporting the detection of <mark>defects</mark> in work products (see section 1.1.1), but there are also some differences, such as:"
+     "html": "Static testing and dynamic testing practices complement each other. … They have similar objectives, such as supporting the detection of defects in work products (see section 1.1.1), but there are also some differences, such as:"
     },
     {
      "t": "li",
-     "html": "<mark>Static testing</mark> and <mark>dynamic testing</mark> (with analysis of <mark>failures</mark>) can both lead to the detection of <mark>defects</mark>, however there are some <mark>defect</mark> types that can only be found by either <mark>static</mark> or <mark>dynamic testing</mark>."
+     "html": "Static testing and dynamic testing (with analysis of failures) can both lead to the detection of defects, however <mark>there are some defect types that can only be found by either static or dynamic testing</mark>."
     },
     {
      "t": "li",
-     "html": "<mark>Static testing</mark> finds <mark>defects</mark> directly, while <mark>dynamic testing</mark> causes <mark>failures</mark> from which the associated <mark>defects</mark> are determined through subsequent analysis"
+     "html": "<mark>Static testing finds defects directly</mark>, while <mark>dynamic testing causes failures</mark> from which the associated defects are determined through subsequent analysis"
     },
     {
      "t": "li",
-     "html": "<mark>Static testing</mark> may more easily detect <mark>defects</mark> that lay on paths through the code that are rarely executed or hard to reach using <mark>dynamic testing</mark>"
+     "html": "Static testing may more easily detect defects that lay on paths through the code that are rarely executed or hard to reach using dynamic testing"
     },
     {
      "t": "li",
-     "html": "<mark>Static testing</mark> can be applied to non-executable work products, while <mark>dynamic testing</mark> can only be applied to executable work products"
+     "html": "<mark>Static testing can be applied to non-executable work products</mark>, while <mark>dynamic testing can only be applied to executable work products</mark>"
     },
     {
      "t": "li",
-     "html": "<mark>Static testing</mark> can be used to measure quality characteristics that are not dependent on executing code (e.g., maintainability), while <mark>dynamic testing</mark> can be used to measure quality characteristics that are dependent on executing code (e.g., performance efficiency)"
+     "html": "Static testing can be used to <mark>measure quality characteristics that are not dependent on executing code</mark> (e.g., maintainability), while dynamic testing can be used to <mark>measure quality characteristics that are dependent on executing code</mark> (e.g., performance efficiency)"
     },
     {
      "t": "p",
-     "html": "Typical <mark>defects</mark> that are easier and/or cheaper to find through <mark>static testing</mark> include:"
+     "html": "Typical defects that are easier and/or cheaper to find through static testing include:"
     },
     {
      "t": "li",
-     "html": "<mark>Defects</mark> in requirements (e.g., inconsistencies, ambiguities, contradictions, omissions, inaccuracies, duplications)"
+     "html": "Defects in requirements (e.g., inconsistencies, ambiguities, contradictions, omissions, inaccuracies, duplications)"
     },
     {
      "t": "li",
-     "html": "Design <mark>defects</mark> (e.g., inefficient database structures, poor modularization)"
+     "html": "Design defects (e.g., inefficient database structures, poor modularization)"
     }
    ]
   }
@@ -975,7 +975,7 @@
   {
    "lo": "3.2.3",
    "k": "K1",
-   "statement": "Recall which responsibilities are assigned to the principal roles when performing <mark>reviews</mark>",
+   "statement": "Recall which responsibilities are assigned to the principal roles when performing reviews",
    "section": "3.2.3 Roles and Responsibilities in Reviews",
    "keywords": [
     "manager",
@@ -986,38 +986,38 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Reviews</mark> involve various stakeholders, who may take on several roles. …"
+     "html": "Reviews involve various stakeholders, who may take on several roles. …"
     },
     {
      "t": "li",
-     "html": "<mark>Manager</mark> – decides what is to be reviewed and provides resources, such as staff and time for the <mark>review</mark>"
+     "html": "Manager – <mark>decides what is to be reviewed and provides resources</mark>, such as staff and time for the review"
     },
     {
      "t": "li",
-     "html": "Author – creates and fixes the work product under <mark>review</mark>"
+     "html": "Author – <mark>creates and fixes the work product under review</mark>"
     },
     {
      "t": "li",
-     "html": "Moderator (also known as the facilitator) – ensures the effective running of <mark>review</mark> meetings, including mediation, time management, and a safe <mark>review</mark> environment in which everyone can speak freely"
+     "html": "Moderator (also known as the facilitator) – <mark>ensures the effective running of review meetings</mark>, including mediation, time management, and a safe review environment in which everyone can speak freely"
     },
     {
      "t": "li",
-     "html": "<mark>Scribe</mark> (also known as recorder) – collates anomalies from reviewers and records <mark>review</mark> information, such as decisions and new anomalies found during the <mark>review</mark> meeting"
+     "html": "Scribe (also known as recorder) – <mark>collates anomalies from reviewers and records review information</mark>, such as decisions and new anomalies found during the review meeting"
     },
     {
      "t": "li",
-     "html": "Reviewer – performs <mark>reviews</mark>. A reviewer may be someone working on the project, a subject matter expert, or any other stakeholder"
+     "html": "Reviewer – performs reviews. A reviewer may be someone working on the project, a subject matter expert, or any other stakeholder"
     },
     {
      "t": "li",
-     "html": "<mark>Review leader</mark> – takes overall responsibility for the <mark>review</mark> such as deciding who will be involved, and organizing when and where the <mark>review</mark> will take place"
+     "html": "Review leader – <mark>takes overall responsibility for the review</mark> such as <mark>deciding who will be involved, and organizing when and where the review will take place</mark>"
     }
    ]
   },
   {
    "lo": "3.2.4",
    "k": "K2",
-   "statement": "Compare and contrast the different <mark>review</mark> types",
+   "statement": "Compare and contrast the different review types",
    "section": "3.2.4 Review Types",
    "keywords": [
     "informal review",
@@ -1031,23 +1031,23 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "There exist many <mark>review</mark> types ranging from <mark>informal reviews</mark> to formal <mark>reviews</mark>. … The same work product can be reviewed with different <mark>review</mark> types, e.g., first an informal one and later a more formal one. … Selecting the right <mark>review</mark> type is key to achieving the required <mark>review</mark> objectives (see section 3.2.5). … Some commonly used <mark>review</mark> types are:"
+     "html": "There exist many review types ranging from informal reviews to formal reviews. … The same work product can be reviewed with different review types, e.g., first an informal one and later a more formal one. … Selecting the right review type is key to achieving the required review objectives (see section 3.2.5). … Some commonly used review types are:"
     },
     {
      "t": "li",
-     "html": "<mark>Informal review</mark>. <mark>Informal reviews</mark> do not follow a defined process and do not require a formal documented output. The main objective is detecting anomalies."
+     "html": "Informal review. Informal reviews do not follow a defined process and do not require a formal documented output. The main objective is detecting anomalies."
     },
     {
      "t": "li",
-     "html": "<mark>Walkthrough</mark>. A <mark>walkthrough</mark>, which is led by the author, can serve many objectives, such as evaluating quality and building confidence in the work product, educating reviewers, gaining consensus, generating new ideas, motivating and enabling authors to improve and detecting anomalies. Reviewers might perform an individual <mark>review</mark> before the <mark>walkthrough</mark>, but this is not required."
+     "html": "Walkthrough. A walkthrough, <mark>which is led by the author</mark>, can serve many objectives, such as evaluating quality and building confidence in the work product, educating reviewers, gaining consensus, generating new ideas, motivating and enabling authors to improve and detecting anomalies. Reviewers might perform an individual review before the walkthrough, but this is not required."
     },
     {
      "t": "li",
-     "html": "<mark>Technical Review</mark>. A <mark>technical review</mark> is performed by technically qualified reviewers and led by a moderator. The objectives of a <mark>technical review</mark> are to gain consensus and make decisions regarding a technical problem, but also to detect anomalies, evaluate quality and build confidence in the work product, generate new ideas, and to motivate and enable authors to improve."
+     "html": "Technical Review. A technical review is performed by technically qualified reviewers and <mark>led by a moderator</mark>. The objectives of a technical review are to gain consensus and make decisions regarding a technical problem, but also to detect anomalies, evaluate quality and build confidence in the work product, generate new ideas, and to motivate and enable authors to improve."
     },
     {
      "t": "li",
-     "html": "<mark>Inspection</mark>. As <mark>inspections</mark> are the most formal type of <mark>review</mark>, they follow the complete generic process (see section 3.2.2). The main objective is to find the maximum number of anomalies. Other objectives are to evaluate quality, build confidence in the work product, and to motivate and enable authors to improve. Metrics are collected and used to improve the SDLC, including the <mark>inspection</mark> process. In <mark>inspections</mark>, the author cannot act as the <mark>review leader</mark> or <mark>scribe</mark>."
+     "html": "Inspection. As inspections are the most formal type of review, they follow the complete generic process (see section 3.2.2). The main objective is to find the maximum number of anomalies. Other objectives are to evaluate quality, build confidence in the work product, and to motivate and enable authors to improve. Metrics are collected and used to improve the SDLC, including the inspection process. In inspections, <mark>the author cannot act as the review leader or scribe</mark>."
     }
    ]
   }
@@ -1056,7 +1056,7 @@
   {
    "lo": "3.2.5",
    "k": "K1",
-   "statement": "Recall the <mark>factors</mark> that contribute to a successful <mark>review</mark>",
+   "statement": "Recall the factors that contribute to a successful review",
    "section": "3.2.5 Success Factors for Reviews",
    "keywords": [
     "exit criteria",
@@ -1067,35 +1067,35 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "There are several <mark>factors</mark> that determine the <mark>success</mark> of <mark>reviews</mark>, which include:"
+     "html": "There are several factors that determine the success of reviews, which include:"
     },
     {
      "t": "li",
-     "html": "Defining clear objectives and measurable <mark>exit criteria</mark>. Evaluation of participants should never be an objective"
+     "html": "Defining clear objectives and measurable exit criteria. <mark>Evaluation of participants should never be an objective</mark>"
     },
     {
      "t": "li",
-     "html": "Choosing the appropriate <mark>review</mark> type to achieve the given objectives, and to suit the type of work product, the <mark>review</mark> participants, the project needs and context"
+     "html": "Choosing the appropriate review type to achieve the given objectives, and to suit the type of work product, the review participants, the project needs and context"
     },
     {
      "t": "li",
-     "html": "Performing <mark>reviews</mark> on small chunks, so that reviewers do not lose concentration during an individual <mark>review</mark> and/or the <mark>review</mark> meeting (when held)"
+     "html": "Performing reviews on small chunks, so that reviewers do not lose concentration during an individual review and/or the review meeting (when held)"
     },
     {
      "t": "li",
-     "html": "Providing feedback from <mark>reviews</mark> to stakeholders and authors so they can improve the product and their activities (see section 3.2.1)"
+     "html": "Providing feedback from reviews to stakeholders and authors so they can improve the product and their activities (see section 3.2.1)"
     },
     {
      "t": "li",
-     "html": "Providing adequate time to participants to prepare for the <mark>review</mark>"
+     "html": "Providing adequate time to participants to prepare for the review"
     },
     {
      "t": "li",
-     "html": "Support from management for the <mark>review</mark> process"
+     "html": "<mark>Support from management for the review process</mark>"
     },
     {
      "t": "li",
-     "html": "Making <mark>reviews</mark> part of the organization’s culture, to promote learning and process improvement"
+     "html": "Making reviews part of the organization’s culture, to promote learning and process improvement"
     }
    ]
   }
@@ -1104,7 +1104,7 @@
   {
    "lo": "4.1.1",
    "k": "K2",
-   "statement": "Distinguish <mark>black-box test techniques</mark>, <mark>white-box test techniques</mark> and <mark>experience-based</mark>",
+   "statement": "Distinguish black-box test techniques, white-box test techniques and experience-based",
    "section": "4.1 Test Techniques Overview",
    "keywords": [
     "black-box",
@@ -1122,7 +1122,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Test techniques</mark> support the tester in test analysis (what to test) and in test design (how to test). … <mark>Test techniques</mark> help to develop a relatively small, but sufficient, set of <mark>test cases</mark> in a systematic way. … <mark>Test techniques</mark> also help the tester to define test conditions, identify <mark>coverage items</mark>, and identify test data during the test analysis and design. … Further information on <mark>test techniques</mark> can be found in the ISO/IEC/IEEE 29119-4 standard, and in (Beizer 1990, Craig 2002, Copeland 2004, Koomen 2006, Jorgensen 2014, Ammann 2016, Forgács 2019). … In this syllabus, <mark>test techniques</mark> are classified as <mark>black-box</mark>, <mark>white-box</mark>, and <mark>experience-based</mark>. … <mark>Black-box test techniques</mark> (also known as specification-based techniques) are based on an analysis of the specified behavior of the <mark>test object</mark> without reference to its internal structure. … Therefore, the <mark>test cases</mark> are independent of how the software is implemented. … Consequently, if the implementation changes, but the required behavior stays the same, then the <mark>test cases</mark> are still useful. … <mark>White-box test techniques</mark> (also known as structure-based techniques) are based on an analysis of the <mark>test object</mark>’s internal structure and processing. … As the <mark>test cases</mark> are dependent on how the software is designed, they can only be created after the design or implementation of the <mark>test object</mark>. … <mark>Experience-based test techniques</mark> effectively use the knowledge and experience of testers for the design and implementation of <mark>test cases</mark>. … The effectiveness of these <mark>test techniques</mark> depends heavily on the tester’s skills. … <mark>Experience-based test techniques</mark> can detect <mark>defects</mark> that may be missed using the <mark>black-box test techniques</mark> and <mark>white-box test techniques</mark>. … Hence, <mark>experience-based test techniques</mark> are complementary to the <mark>black-box test techniques</mark> and <mark>white-box test techniques</mark>."
+     "html": "Test techniques support the tester in test analysis (what to test) and in test design (how to test). … Test techniques help to develop a relatively small, but sufficient, set of test cases in a systematic way. … Test techniques also help the tester to define test conditions, identify coverage items, and identify test data during the test analysis and design. … Further information on test techniques can be found in the ISO/IEC/IEEE 29119-4 standard, and in (Beizer 1990, Craig 2002, Copeland 2004, Koomen 2006, Jorgensen 2014, Ammann 2016, Forgács 2019). … In this syllabus, test techniques are classified as black-box, white-box, and experience-based. … Black-box test techniques (also known as specification-based techniques) are <mark>based on an analysis of the specified behavior of the test object</mark> without reference to its internal structure. … Therefore, <mark>the test cases are independent of how the software is implemented</mark>. … Consequently, if the implementation changes, but the required behavior stays the same, then the test cases are still useful. … White-box test techniques (also known as structure-based techniques) are <mark>based on an analysis of the test object’s internal structure and processing</mark>. … As the test cases are dependent on how the software is designed, they <mark>can only be created after the design or implementation of the test object</mark>. … Experience-based test techniques <mark>effectively use the knowledge and experience of testers</mark> for the design and implementation of test cases. … The effectiveness of these test techniques <mark>depends heavily on the tester’s skills</mark>. … Experience-based test techniques <mark>can detect defects that may be missed using the black-box test techniques and white-box test techniques</mark>. … Hence, experience-based test techniques are complementary to the black-box test techniques and white-box test techniques."
     }
    ]
   }
@@ -1131,7 +1131,7 @@
   {
    "lo": "4.2.1",
    "k": "K3",
-   "statement": "Use <mark>equivalence partitioning</mark> to derive <mark>test cases</mark>",
+   "statement": "Use equivalence partitioning to derive test cases",
    "section": "4.2.1 Equivalence Partitioning",
    "keywords": [
     "coverage",
@@ -1144,11 +1144,11 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Equivalence Partitioning</mark> (EP) divides data into partitions (known as <mark>equivalence</mark> partitions) based on the expectation that all the elements of a given partition are to be processed in the same way by the test object. … The theory behind this technique is that if a <mark>test case</mark>, that tests one value from an <mark>equivalence</mark> partition, detects a defect, this defect should also be detected by <mark>test cases</mark> that test any other value from the same partition. … <mark>Equivalence</mark> partitions can be identified for any data element related to the test object, including inputs, outputs, configuration items, internal values, time-related values, and interface parameters. …"
+     "html": "Equivalence Partitioning (EP) <mark>divides data into partitions</mark> (known as equivalence partitions) based on the expectation that all the elements of a given partition <mark>are to be processed in the same way by the test object</mark>. … The theory behind this technique is that if a test case, that tests one value from an equivalence partition, detects a defect, this defect should also be detected by test cases that test any other value from the same partition. … Equivalence partitions can be identified for any data element related to the test object, including inputs, outputs, configuration items, internal values, time-related values, and interface parameters. …"
     },
     {
      "t": "p",
-     "html": "… Therefore, <mark>partitioning</mark> should be done with care. … In EP, the <mark>coverage</mark> items are the <mark>equivalence</mark> partitions. … To achieve 100% <mark>coverage</mark> with this test technique, <mark>test cases</mark> must exercise all identified partitions (including invalid partitions) by covering each partition at least once. … <mark>Coverage</mark> is measured as the number of partitions exercised by at least one <mark>test case</mark>, divided by the total number of identified partitions, and is expressed as a percentage. … Many test items include multiple sets of partitions (e.g., test items with more than one input parameter), which means that a <mark>test case</mark> will cover partitions from different sets of partitions. … The simplest <mark>coverage</mark> criterion in the case of multiple sets of partitions is called <mark>Each Choice</mark> <mark>coverage</mark> (Ammann 2016). … <mark>Each Choice</mark> <mark>coverage</mark> requires <mark>test cases</mark> to exercise each partition from each set of partitions at least once. … <mark>Each Choice</mark> <mark>coverage</mark> does not take into account combinations of partitions."
+     "html": "… Therefore, partitioning should be done with care. … In EP, the coverage items are the equivalence partitions. … To achieve 100% coverage with this test technique, <mark>test cases must exercise all identified partitions (including invalid partitions)</mark> <mark>by covering each partition at least once</mark>. … Coverage is measured as the number of partitions exercised by at least one test case, divided by the total number of identified partitions, and is expressed as a percentage. … Many test items include multiple sets of partitions (e.g., test items with more than one input parameter), which means that a test case will cover partitions from different sets of partitions. … The simplest coverage criterion in the case of multiple sets of partitions is called Each Choice coverage (Ammann 2016). … <mark>Each Choice coverage requires test cases to exercise each partition from each set of partitions at least once</mark>. … Each Choice coverage <mark>does not take into account combinations of partitions</mark>."
     }
    ]
   }
@@ -1157,7 +1157,7 @@
   {
    "lo": "4.2.2",
    "k": "K3",
-   "statement": "Use <mark>boundary value analysis</mark> to derive test cases",
+   "statement": "Use boundary value analysis to derive test cases",
    "section": "4.2.2 Boundary Value Analysis",
    "keywords": [
     "boundary",
@@ -1167,7 +1167,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Boundary Value Analysis</mark> (BVA) is a test technique based on exercising the boundaries of equivalence partitions. … The minimum and maximum values of a partition are its <mark>boundary</mark> values. … BVA focuses on the <mark>boundary</mark> values of the partitions because developers are more likely to make errors with these <mark>boundary</mark> values. … They differ in terms of <mark>coverage</mark> items per <mark>boundary</mark> that need to be exercised to achieve 100% <mark>coverage</mark>. … In 2-value BVA (Craig 2002, Myers 2011), for each <mark>boundary</mark> value there are two <mark>coverage</mark> items: this <mark>boundary</mark> value and its closest neighbor belonging to the adjacent partition. … To achieve 100% <mark>coverage</mark> with 2-value BVA, test cases must exercise all <mark>coverage</mark> items, i.e., all identified <mark>boundary</mark> values. … <mark>Coverage</mark> is measured as the number of <mark>boundary</mark> values that were exercised, divided by the total number of identified <mark>boundary</mark> values, and is expressed as a percentage. … In 3-value BVA (Koomen 2006, O’Regan 2019), for each <mark>boundary</mark> value there are three <mark>coverage</mark> items: this <mark>boundary</mark> value and both its neighbors. … Therefore, in 3-value BVA some of the <mark>coverage</mark> items may not be <mark>boundary</mark> values. … To achieve 100% <mark>coverage</mark> with 3-value BVA, test cases must exercise all <mark>coverage</mark> items, i.e., identified <mark>boundary</mark> values and their neighbors. … <mark>Coverage</mark> is measured as the number of <mark>boundary</mark> values and their neighbors exercised, divided by the total number of identified <mark>boundary</mark> values and their neighbors, and is expressed as a percentage. …"
+     "html": "Boundary Value Analysis (BVA) is a test technique <mark>based on exercising the boundaries of equivalence partitions</mark>. … <mark>The minimum and maximum values of a partition are its boundary values</mark>. … BVA focuses on the boundary values of the partitions because developers are more likely to make errors with these boundary values. … They differ in terms of coverage items per boundary that need to be exercised to achieve 100% coverage. … In 2-value BVA (Craig 2002, Myers 2011), for each boundary value there are two coverage items: <mark>this boundary value and its closest neighbor belonging to the adjacent partition</mark>. … To achieve 100% coverage with 2-value BVA, test cases must exercise all coverage items, i.e., all identified boundary values. … <mark>Coverage is measured as the number of boundary values that were exercised</mark>, divided by the total number of identified boundary values, and is expressed as a percentage. … In 3-value BVA (Koomen 2006, O’Regan 2019), for each boundary value there are three coverage items: <mark>this boundary value and both its neighbors</mark>. … Therefore, in 3-value BVA some of the coverage items may not be boundary values. … To achieve 100% coverage with 3-value BVA, test cases must exercise all coverage items, i.e., identified boundary values and their neighbors. … Coverage is measured as the number of boundary values and their neighbors exercised, divided by the total number of identified boundary values and their neighbors, and is expressed as a percentage. …"
     }
    ]
   }
@@ -1176,7 +1176,7 @@
   {
    "lo": "4.2.3",
    "k": "K3",
-   "statement": "Use <mark>decision table</mark> testing to derive test cases",
+   "statement": "Use decision table testing to derive test cases",
    "section": "4.2.3 Decision Table Testing",
    "keywords": [
     "contradiction",
@@ -1187,7 +1187,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Decision tables</mark> are used for testing the implementation of requirements that specify how different combinations of conditions result in different outcomes. … <mark>Decision tables</mark> are an effective way of recording complex logic, such as business rules. … When creating <mark>decision tables</mark>, the conditions and the resulting actions of the system are defined. … Each column corresponds to a <mark>decision</mark> rule that defines a unique combination of conditions, along with the associated actions. … In limited-entry <mark>decision tables</mark> all the values of the conditions and actions (except for irrelevant or infeasible ones; see below) are shown as Boolean values (true or false). … Alternatively, in extended-entry <mark>decision tables</mark> some or all the conditions and actions may also take on multiple values (e.g., ranges of numbers, equivalence partitions, discrete values). … A full <mark>decision table</mark> has enough columns to cover every combination of conditions. … <mark>Decision table</mark> minimization algorithms are out of scope of this syllabus. … In <mark>decision table</mark> testing, the <mark>coverage</mark> items are the columns containing feasible combinations of conditions. … To achieve 100% <mark>coverage</mark> with this technique, test cases must exercise all these columns. … <mark>Coverage</mark> is measured as the number of exercised columns, divided by the total number of feasible columns, and is expressed as a percentage. … The strength of <mark>decision table</mark> testing is that it provides a systematic approach to identify all the combinations of conditions, some of which might otherwise be overlooked. … It also helps to find any gaps or <mark>contradictions</mark> in the requirements. … If there are many conditions, exercising all the <mark>decision</mark> rules may be time consuming, since the number of rules grows exponentially with the number of conditions. … In such a case, to reduce the number of rules that need to be exercised, a minimized <mark>decision table</mark> or a riskbased approach may be used."
+     "html": "Decision tables are used for testing the implementation of requirements that specify how different combinations of conditions result in different outcomes. … Decision tables are an effective way of recording complex logic, such as business rules. … When creating decision tables, the conditions and the resulting actions of the system are defined. … Each column corresponds to a decision rule that defines a unique combination of conditions, along with the associated actions. … In limited-entry decision tables all the values of the conditions and actions (except for irrelevant or infeasible ones; see below) are shown as Boolean values (true or false). … Alternatively, in extended-entry decision tables some or all the conditions and actions may also take on multiple values (e.g., ranges of numbers, equivalence partitions, discrete values). … <mark>A full decision table has enough columns to cover every combination of conditions</mark>. … Decision table minimization algorithms are out of scope of this syllabus. … In decision table testing, the coverage items are the columns containing feasible combinations of conditions. … To achieve 100% coverage with this technique, <mark>test cases must exercise all these columns</mark>. … Coverage is measured as the number of exercised columns, divided by the total number of feasible columns, and is expressed as a percentage. … The strength of decision table testing is that it provides a systematic approach to identify all the combinations of conditions, some of which might otherwise be overlooked. … It also <mark>helps to find any gaps or contradictions in the requirements</mark>. … If there are many conditions, exercising all the decision rules may be time consuming, since <mark>the number of rules grows exponentially with the number of conditions</mark>. … In such a case, <mark>to reduce the number of rules that need to be exercised</mark>, a minimized decision table or a riskbased approach may be used."
     }
    ]
   }
@@ -1196,7 +1196,7 @@
   {
    "lo": "4.2.4",
    "k": "K3",
-   "statement": "Use <mark>state</mark> <mark>transition</mark> testing to derive <mark>test cases</mark>",
+   "statement": "Use state transition testing to derive test cases",
    "section": "4.2.4 State Transition Testing",
    "keywords": [
     "all states",
@@ -1210,11 +1210,11 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "A <mark>state</mark> diagram models the behavior of a system by showing its possible <mark>states</mark> and valid <mark>state</mark> <mark>transitions</mark>. … A <mark>transition</mark> is initiated by an event, which may be additionally qualified by a guard condition. … The <mark>transitions</mark> are assumed to be instantaneous and may sometimes result in the software taking action. … The common <mark>transition</mark> labeling syntax is as follows: “event [guard condition] / action”. … A <mark>state</mark> table is a model equivalent to a <mark>state</mark> diagram. … Its rows represent <mark>states</mark>, and its columns represent events (together with guard conditions if they exist). … Table entries (cells) represent <mark>transitions</mark>, and contain the target <mark>state</mark>, as well as the resulting actions, if defined. … In contrast to the <mark>state</mark> diagram, the <mark>state</mark> table explicitly shows invalid <mark>transitions</mark>, which are represented by empty cells. … A <mark>test case</mark> based on a <mark>state</mark> diagram or <mark>state</mark> table is usually represented as a sequence of events, which results in a sequence of <mark>state</mark> changes (and actions, if needed). … One <mark>test case</mark> may, and usually will, cover several <mark>transitions</mark> between <mark>states</mark>. … There exist many <mark>coverage</mark> criteria for <mark>state</mark> <mark>transition</mark> testing. …"
+     "html": "A state diagram models the behavior of a system by showing its possible states and valid state transitions. … A transition is initiated by an event, which may be additionally qualified by a guard condition. … The transitions are assumed to be instantaneous and may sometimes result in the software taking action. … The common transition labeling syntax is as follows: “event [guard condition] / action”. … A state table is a model equivalent to a state diagram. … Its rows represent states, and its columns represent events (together with guard conditions if they exist). … Table entries (cells) represent transitions, and contain the target state, as well as the resulting actions, if defined. … In contrast to the state diagram, <mark>the state table explicitly shows invalid transitions</mark>, which are represented by empty cells. … A test case based on a state diagram or state table is usually represented as a sequence of events, which results in a sequence of state changes (and actions, if needed). … One test case may, and usually will, cover several transitions between states. … There exist many coverage criteria for state transition testing. …"
     },
     {
      "t": "p",
-     "html": "In <mark>all states</mark> <mark>coverage</mark>, the <mark>coverage</mark> items are the <mark>states</mark>. … To achieve 100% <mark>all states</mark> <mark>coverage</mark>, <mark>test cases</mark> must ensure that all the <mark>states</mark> are exercised. … <mark>Coverage</mark> is measured as the number of exercised <mark>states</mark> divided by the total number of <mark>states</mark> and is expressed as a percentage. … In valid <mark>transitions</mark> <mark>coverage</mark> (also called 0-switch <mark>coverage</mark>), the <mark>coverage</mark> items are single valid <mark>transitions</mark>. … To achieve 100% valid <mark>transitions</mark> <mark>coverage</mark>, <mark>test cases</mark> must exercise all the valid <mark>transitions</mark>. … <mark>Coverage</mark> is measured as the number of exercised valid <mark>transitions</mark> divided by the total number of valid <mark>transitions</mark> and is expressed as a percentage. … In <mark>all transitions</mark> <mark>coverage</mark>, the <mark>coverage</mark> items are all the <mark>transitions</mark> shown in a <mark>state</mark> table. … To achieve 100% <mark>all transitions</mark> <mark>coverage</mark>, <mark>test cases</mark> must exercise all the valid <mark>transitions</mark> and attempt to execute invalid <mark>transitions</mark>. … Testing only one invalid <mark>transition</mark> in a single <mark>test case</mark> helps to avoid defect masking, i.e., a situation in which one defect prevents the detection of another. … <mark>Coverage</mark> is measured as the number of valid and invalid <mark>transitions</mark> exercised or attempted to be covered by executed <mark>test cases</mark>, divided by the total number of valid and invalid <mark>transitions</mark>, and is expressed as a percentage. … <mark>All states</mark> <mark>coverage</mark> is weaker than valid <mark>transitions</mark> <mark>coverage</mark>, because it can typically be achieved without exercising all the <mark>transitions</mark>. … Valid <mark>transitions</mark> <mark>coverage</mark> is the most widely used <mark>coverage</mark> criterion. … Achieving full valid <mark>transitions</mark> <mark>coverage</mark> guarantees full <mark>all states</mark> <mark>coverage</mark>. … Achieving full <mark>all transitions</mark> <mark>coverage</mark> guarantees both full <mark>all states</mark> <mark>coverage</mark> and full valid <mark>transitions</mark> <mark>coverage</mark> and should be a minimum requirement for mission and <mark>safety-critical</mark> software."
+     "html": "In all states coverage, the coverage items are the states. … To achieve 100% all states coverage, <mark>test cases must ensure that all the states are exercised</mark>. … Coverage is measured as the number of exercised states divided by the total number of states and is expressed as a percentage. … In valid transitions coverage (also called 0-switch coverage), the coverage items are single valid transitions. … To achieve 100% valid transitions coverage, <mark>test cases must exercise all the valid transitions</mark>. … Coverage is measured as the number of exercised valid transitions divided by the total number of valid transitions and is expressed as a percentage. … In all transitions coverage, the coverage items are all the transitions shown in a state table. … To achieve 100% all transitions coverage, <mark>test cases must exercise all the valid transitions and attempt to execute invalid transitions</mark>. … Testing only one invalid transition in a single test case helps to avoid defect masking, i.e., a situation in which one defect prevents the detection of another. … Coverage is measured as the number of valid and invalid transitions exercised or attempted to be covered by executed test cases, divided by the total number of valid and invalid transitions, and is expressed as a percentage. … <mark>All states coverage is weaker than valid transitions coverage</mark>, because it can typically be achieved without exercising all the transitions. … Valid transitions coverage is the most widely used coverage criterion. … <mark>Achieving full valid transitions coverage guarantees full all states coverage</mark>. … Achieving full all transitions coverage guarantees both full all states coverage and full valid transitions coverage and <mark>should be a minimum requirement for mission and safety-critical software</mark>."
     }
    ]
   }
@@ -1223,7 +1223,7 @@
   {
    "lo": "4.3.1",
    "k": "K2",
-   "statement": "Explain <mark>statement</mark> testing",
+   "statement": "Explain statement testing",
    "section": "4.3.1 Statement Testing and Statement Coverage",
    "keywords": [
     "branch",
@@ -1235,14 +1235,14 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In <mark>statement</mark> testing, the <mark>coverage</mark> items are executable <mark>statements</mark>. … The aim is to design test cases that exercise <mark>statements</mark> in the code until an acceptable level of <mark>coverage</mark> is achieved. … <mark>Coverage</mark> is measured as the number of <mark>statements</mark> exercised by the test cases divided by the total number of executable <mark>statements</mark> in the code, and is expressed as a percentage. … When 100% <mark>statement coverage</mark> is achieved, it ensures that all executable <mark>statements</mark> in the code have been exercised at least once. … In particular, this means that each <mark>statement</mark> with a <mark>defect</mark> will be executed, which may cause a failure demonstrating the presence of the <mark>defect</mark>. … However, exercising a <mark>statement</mark> with a test case will not detect <mark>defects</mark> in all cases. … For example, it may not detect <mark>defects</mark> that are data dependent (e.g., a division by zero that only fails when a denominator is set to zero). … Also, 100% <mark>statement coverage</mark> does not ensure that all the decision logic has been tested as, for instance, it may not exercise all the <mark>branches</mark> (see chapter 4.3.2) in the code."
+     "html": "In statement testing, the coverage items are executable statements. … The aim is to design test cases that exercise statements in the code until an acceptable level of coverage is achieved. … Coverage is measured as the number of statements exercised by the test cases divided by the total number of executable statements in the code, and is expressed as a percentage. … When 100% statement coverage is achieved, it ensures that all executable statements in the code have been exercised at least once. … In particular, this means that each statement with a defect will be executed, which may cause a failure demonstrating the presence of the defect. … However, exercising a statement with a test case will not detect defects in all cases. … For example, it may not detect defects that are data dependent (e.g., a division by zero that only fails when a denominator is set to zero). … Also, 100% statement coverage does not ensure that all the decision logic has been tested as, for instance, it <mark>may not exercise all the branches</mark> (see chapter 4.3.2) in the code."
     }
    ]
   },
   {
    "lo": "4.3.2",
    "k": "K2",
-   "statement": "Explain <mark>branch</mark> testing",
+   "statement": "Explain branch testing",
    "section": "4.3.2 Branch Testing and Branch Coverage",
    "keywords": [
     "branch",
@@ -1255,7 +1255,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "A <mark>branch</mark> is a transfer of control between two nodes in the control flow graph, which shows the possible sequences in which source code <mark>statements</mark> are executed in the test object. … In <mark>branch</mark> testing the <mark>coverage</mark> items are <mark>branches</mark> and the aim is to design test cases to exercise <mark>branches</mark> in the code until an acceptable level of <mark>coverage</mark> is achieved. … <mark>Coverage</mark> is measured as the number of <mark>branches</mark> exercised by the test cases divided by the total number of <mark>branches</mark> and is expressed as a percentage. … When 100% <mark>branch coverage</mark> is achieved, all <mark>branches</mark> in the code, unconditional and conditional, are exercised by test cases. … Conditional <mark>branches</mark> typically correspond to a true or false outcome from an “if...then” decision, an outcome from a switch/case <mark>statement</mark>, or a decision to exit or continue in a loop. … However, exercising a <mark>branch</mark> with a test case will not detect <mark>defects</mark> in all cases. … For example, it may not detect <mark>defects</mark> requiring the execution of a specific path in a code. … <mark>Branch coverage</mark> subsumes <mark>statement coverage</mark>. … This means that any set of test cases achieving 100% <mark>branch coverage</mark> also achieves 100% <mark>statement coverage</mark> (but not vice versa)."
+     "html": "A branch is a transfer of control between two nodes in the control flow graph, which shows the possible sequences in which source code statements are executed in the test object. … In branch testing the coverage items are branches and the aim is to design test cases to exercise branches in the code until an acceptable level of coverage is achieved. … Coverage is measured as the number of branches exercised by the test cases divided by the total number of branches and is expressed as a percentage. … When 100% branch coverage is achieved, all branches in the code, unconditional and conditional, are exercised by test cases. … <mark>Conditional branches typically correspond to a true or false outcome</mark> from an “if...then” decision, an outcome from a switch/case statement, or a decision to exit or continue in a loop. … However, exercising a branch with a test case will not detect defects in all cases. … For example, it <mark>may not detect defects requiring the execution of a specific path</mark> in a code. … <mark>Branch coverage subsumes statement coverage</mark>. … This means that <mark>any set of test cases achieving 100% branch coverage also achieves 100% statement coverage</mark> (but not vice versa)."
     }
    ]
   },
@@ -1271,7 +1271,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "A fundamental strength that all white-box test techniques share is that the entire software implementation is taken into account during testing, which facilitates <mark>defect</mark> detection even when the software specification is vague, outdated or incomplete. … A corresponding weakness is that if the software does not implement one or more requirements, white-box testing may not detect the resulting <mark>defects</mark> of omission (Watson 1996). … Performing only black-box testing does not provide a measure of actual code <mark>coverage</mark>. … White-box <mark>coverage</mark> measures provide an objective measurement of <mark>coverage</mark> and the necessary information to allow additional tests to be generated to increase this <mark>coverage</mark>, and subsequently increase confidence in the code."
+     "html": "A fundamental strength that all white-box test techniques share is that the entire software implementation is taken into account during testing, which facilitates defect detection even when the software specification is vague, outdated or incomplete. … A corresponding weakness is that if the software does not implement one or more requirements, white-box testing <mark>may not detect the resulting defects of omission</mark> (Watson 1996). … Performing only black-box testing does not provide a measure of actual code coverage. … White-box coverage measures provide an objective measurement of coverage and the necessary information to allow additional tests to be generated to increase this coverage, and subsequently increase confidence in the code."
     }
    ]
   }
@@ -1280,7 +1280,7 @@
   {
    "lo": "4.4.1",
    "k": "K2",
-   "statement": "Explain <mark>error guessing</mark>",
+   "statement": "Explain error guessing",
    "section": "4.4.1 Error Guessing",
    "keywords": [
     "defect",
@@ -1290,22 +1290,22 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Error guessing</mark> is a test technique used to anticipate the occurrence of <mark>errors</mark>, <mark>defects</mark>, and failures, based on the tester’s knowledge, including:"
+     "html": "Error guessing is a test technique used to <mark>anticipate the occurrence of errors, defects, and failures, based on the tester’s knowledge</mark>, including:"
     },
     {
      "t": "li",
-     "html": "The types of <mark>errors</mark> the developers tend to make and the types of <mark>defects</mark> that result from these <mark>errors</mark>"
+     "html": "The types of errors the developers tend to make and the types of defects that result from these errors"
     },
     {
      "t": "p",
-     "html": "In general, <mark>errors</mark>, <mark>defects</mark> and failures may be related to: input (e.g., correct input not accepted, parameters wrong or missing), output (e.g., wrong format, wrong result), logic (e.g., missing cases, wrong operator), computation (e.g., incorrect operand, wrong computation), interfaces (e.g., parameter mismatch, incompatible types), or data (e.g., incorrect initialization, wrong type). … Fault attacks are a way to implement <mark>error guessing</mark>. … This test technique requires the tester to create or acquire a list of possible <mark>errors</mark>, <mark>defects</mark> and failures, and to design tests that will identify <mark>defects</mark> associated with the <mark>errors</mark>, expose the <mark>defects</mark>, or cause the failures. … These lists can be built based on experience, <mark>defect</mark> and failure data, or from common knowledge about why software fails. … See (Whittaker 2002, Whittaker 2003, Andrews 2006) for more information on <mark>error guessing</mark> and fault attacks."
+     "html": "In general, errors, defects and failures may be related to: input (e.g., correct input not accepted, parameters wrong or missing), output (e.g., wrong format, wrong result), logic (e.g., missing cases, wrong operator), computation (e.g., incorrect operand, wrong computation), interfaces (e.g., parameter mismatch, incompatible types), or data (e.g., incorrect initialization, wrong type). … Fault attacks are a way to implement error guessing. … This test technique requires the tester to <mark>create or acquire a list of possible errors, defects and failures</mark>, and to design tests that will identify defects associated with the errors, expose the defects, or cause the failures. … These lists <mark>can be built based on experience</mark>, defect and failure data, or from common knowledge about why software fails. … See (Whittaker 2002, Whittaker 2003, Andrews 2006) for more information on error guessing and fault attacks."
     }
    ]
   },
   {
    "lo": "4.4.2",
    "k": "K2",
-   "statement": "Explain <mark>exploratory testing</mark>",
+   "statement": "Explain exploratory testing",
    "section": "4.4.2 Exploratory Testing",
    "keywords": [
     "coverage",
@@ -1316,14 +1316,14 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In <mark>exploratory testing</mark>, tests are simultaneously designed, executed, and evaluated while the tester learns about the test object. … <mark>Exploratory testing</mark> is sometimes performed using session-based testing to structure the testing. … In a session-based approach, <mark>exploratory testing</mark> is performed within a defined time box. … The tester uses a <mark>test charter</mark> containing test objectives to guide the testing. … <mark>Coverage</mark> items are identified and exercised during the test session. … <mark>Exploratory testing</mark> is useful when there are few or inadequate specifications or there is significant time pressure on the testing. … <mark>Exploratory testing</mark> is also useful to complement other more formal test techniques. … <mark>Exploratory testing</mark> will be more effective if the tester is experienced, has domain knowledge and has a high degree of essential skills, like analytical skills, curiosity and creativeness (see section 1.5.1). … <mark>Exploratory testing</mark> can incorporate the use of other test techniques (e.g., <mark>equivalence partitioning</mark>). … More information about <mark>exploratory testing</mark> can be found in (Kaner 1999, Whittaker 2009, Hendrickson 2013)."
+     "html": "In exploratory testing, tests are simultaneously designed, executed, and evaluated while the tester learns about the test object. … Exploratory testing is sometimes performed using session-based testing to structure the testing. … In a session-based approach, exploratory testing is performed within a defined time box. … <mark>The tester uses a test charter containing test objectives to guide the testing</mark>. … Coverage items are identified and exercised during the test session. … Exploratory testing is useful when there are few or inadequate specifications or there is significant time pressure on the testing. … Exploratory testing is also useful to complement other more formal test techniques. … Exploratory testing will be more effective if the tester is experienced, has domain knowledge and has a high degree of essential skills, like analytical skills, curiosity and creativeness (see section 1.5.1). … <mark>Exploratory testing can incorporate the use of other test techniques</mark> (e.g., equivalence partitioning). … More information about exploratory testing can be found in (Kaner 1999, Whittaker 2009, Hendrickson 2013)."
     }
    ]
   },
   {
    "lo": "4.4.3",
    "k": "K2",
-   "statement": "Explain <mark>checklist-based testing</mark>",
+   "statement": "Explain checklist-based testing",
    "section": "4.4.3 Checklist-Based Testing",
    "keywords": [
     "checklist",
@@ -1336,11 +1336,11 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In <mark>checklist-based testing</mark>, a tester designs, implements, and executes tests to cover test conditions from a <mark>checklist</mark>. … <mark>Checklists</mark> can be built based on experience, knowledge about what is important for the user, or an understanding of why and how software fails. … <mark>Checklists</mark> should not contain items that can be checked automatically, items better suited as entry criteria, exit criteria, or items that are too general (Brykczynski 1999)."
+     "html": "In checklist-based testing, <mark>a tester designs, implements, and executes tests to cover test conditions from a checklist</mark>. … Checklists <mark>can be built based on experience</mark>, knowledge about what is important for the user, or an understanding of why and how software fails. … Checklists should not contain items that can be checked automatically, items better suited as entry criteria, exit criteria, or items that are too general (Brykczynski 1999)."
     },
     {
      "t": "p",
-     "html": "<mark>Checklist</mark> items are often phrased in the form of a question. … <mark>Checklists</mark> can be created to support various test types, including functional and non-functional testing (e.g., 10 heuristics for usability testing (Nielsen 1994)). … Some <mark>checklist</mark> entries may gradually become less effective over time because the developers will learn to avoid making the same <mark>errors</mark>. … New entries may also need to be added to reflect newly found high severity <mark>defects</mark>. … Therefore, <mark>checklists</mark> should be regularly updated based on <mark>defect</mark> analysis. … However, care should be taken to avoid letting the <mark>checklist</mark> become too long (Gawande 2009). … In the absence of detailed <mark>test cases</mark>, <mark>checklist-based testing</mark> can provide guidelines and some degree of consistency for the testing. … If the <mark>checklists</mark> are high-level, some variability in the actual testing is likely to occur, resulting in potentially greater <mark>coverage</mark> but less repeatability."
+     "html": "Checklist items are often phrased in the form of a question. … Checklists can be created to support various test types, including functional and non-functional testing (e.g., 10 heuristics for usability testing (Nielsen 1994)). … Some checklist entries may gradually become less effective over time because the developers will learn to avoid making the same errors. … <mark>New entries may also need to be added</mark> to reflect newly found high severity defects. … Therefore, <mark>checklists should be regularly updated based on defect analysis</mark>. … However, care should be taken to avoid letting the checklist become too long (Gawande 2009). … In the absence of detailed test cases, checklist-based testing can provide guidelines and some degree of consistency for the testing. … If the checklists are high-level, some variability in the actual testing is likely to occur, resulting in potentially greater coverage but less repeatability."
     }
    ]
   }
@@ -1362,18 +1362,18 @@
     },
     {
      "t": "li",
-     "html": "Confirmation – the <mark>acceptance criteria</mark> (see section 4.5.2)"
+     "html": "Confirmation – the acceptance criteria (see section 4.5.2)"
     },
     {
      "t": "p",
-     "html": "The most common format for a user story is “As a [role], I want [goal to be accomplished], so that I can [resulting business value for the role]”, followed by the <mark>acceptance criteria</mark>. … Good user stories should be: Independent, Negotiable, Valuable, Estimable, Small and Testable (<mark>INVEST</mark>). …"
+     "html": "The most common format for a user story is “As a [role], <mark>I want [goal to be accomplished], so that I can [resulting business value for the role]</mark>”, followed by the acceptance criteria. … <mark>Good user stories should be: Independent, Negotiable, Valuable, Estimable, Small and Testable</mark> (INVEST). …"
     }
    ]
   },
   {
    "lo": "4.5.2",
    "k": "K2",
-   "statement": "Classify the different options for writing <mark>acceptance criteria</mark>",
+   "statement": "Classify the different options for writing acceptance criteria",
    "section": "4.5.2 Acceptance Criteria",
    "keywords": [
     "acceptance criteria"
@@ -1381,22 +1381,22 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Acceptance criteria</mark> for a user story are the conditions that an implementation of the user story must meet to be accepted by stakeholders. … From this perspective, <mark>acceptance criteria</mark> may be viewed as the test conditions that should be exercised by the tests. … <mark>Acceptance criteria</mark> are usually a result of the Conversation (see section 4.5.1). … <mark>Acceptance criteria</mark> are used to:"
+     "html": "Acceptance criteria for a user story are <mark>the conditions that an implementation of the user story must meet to be accepted by stakeholders</mark>. … From this perspective, acceptance criteria <mark>may be viewed as the test conditions that should be exercised by the tests</mark>. … <mark>Acceptance criteria are usually a result of the Conversation</mark> (see section 4.5.1). … Acceptance criteria are used to:"
     },
     {
      "t": "p",
-     "html": "There are several ways to write <mark>acceptance criteria</mark> for a user story. …"
+     "html": "There are several ways to write acceptance criteria for a user story. …"
     },
     {
      "t": "p",
-     "html": "Most <mark>acceptance criteria</mark> can be documented in one of these two formats. … However, the team may use another, custom format, as long as the <mark>acceptance criteria</mark> are well-defined and unambiguous."
+     "html": "Most acceptance criteria can be documented in one of these two formats. … However, the team may use another, custom format, as long as the acceptance criteria are well-defined and unambiguous."
     }
    ]
   },
   {
    "lo": "4.5.3",
    "k": "K3",
-   "statement": "Use acceptance test-driven development (ATDD) to derive <mark>test cases</mark>",
+   "statement": "Use acceptance test-driven development (ATDD) to derive test cases",
    "section": "4.5.3 Acceptance Test-driven Development (ATDD)",
    "keywords": [
     "acceptance criteria",
@@ -1406,7 +1406,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… <mark>Test cases</mark> are created prior to implementing the user story. … The <mark>test cases</mark> are created by team members with different perspectives, e.g., customers, developers, and testers (Adzic 2009). … <mark>Test cases</mark> may be executed manually or automated. … The first step is a specification <mark>workshop</mark> where the user story and (if not yet defined) its <mark>acceptance criteria</mark> are analyzed, discussed, and written by the team members. … The next step is to create the <mark>test cases</mark>. … The <mark>test cases</mark> are based on the <mark>acceptance criteria</mark> and can be seen as examples of how the software works. … Typically, the first <mark>test cases</mark> are positive, confirming the correct behavior without exceptions or error conditions, and comprising the sequence of activities executed if everything goes as expected. … After the positive <mark>test cases</mark> are done, the team should perform negative testing. … <mark>Test cases</mark> should be expressed in a way that is understandable for the stakeholders. … Typically, <mark>test cases</mark> contain sentences in natural language involving the necessary preconditions (if any), the inputs, and the postconditions. … The <mark>test cases</mark> must cover all the characteristics of the user story and should not go beyond the story. … However, the <mark>acceptance criteria</mark> may detail some of the issues described in the user story. … In addition, no two <mark>test cases</mark> should describe the same characteristics of the user story. … When captured in a format supported by a test automation framework, the developers can automate the <mark>test cases</mark> by writing the supporting code as they implement the feature described by a user story. …"
+     "html": "… Test cases are created prior to implementing the user story. … The test cases are created by team members with different perspectives, e.g., customers, developers, and testers (Adzic 2009). … Test cases may be executed manually or automated. … <mark>The first step is a specification workshop</mark> where the user story and (if not yet defined) its acceptance criteria are analyzed, discussed, and written by the team members. … The next step is to create the test cases. … <mark>The test cases are based on the acceptance criteria</mark> and can be seen as examples of how the software works. … Typically, the first test cases are positive, confirming the correct behavior without exceptions or error conditions, and comprising the sequence of activities executed if everything goes as expected. … After the positive test cases are done, <mark>the team should perform negative testing</mark>. … Test cases should be expressed in a way that is understandable for the stakeholders. … Typically, test cases contain sentences in natural language involving the necessary preconditions (if any), the inputs, and the postconditions. … The test cases <mark>must cover all the characteristics of the user story and should not go beyond the story</mark>. … However, the acceptance criteria may detail some of the issues described in the user story. … In addition, no two test cases should describe the same characteristics of the user story. … When captured in a format supported by a test automation framework, the developers can automate the test cases by writing the supporting code as they implement the feature described by a user story. …"
     }
    ]
   }
@@ -1415,7 +1415,7 @@
   {
    "lo": "5.1.1",
    "k": "K2",
-   "statement": "Exemplify the purpose and content of a <mark>test plan</mark>",
+   "statement": "Exemplify the purpose and content of a test plan",
    "section": "5.1.1 Purpose and Content of a Test Plan",
    "keywords": [
     "entry",
@@ -1436,42 +1436,42 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "A <mark>test plan</mark> describes the <mark>test objectives</mark>, resources and processes for a test project. … A <mark>test plan</mark>:"
+     "html": "A test plan describes the test objectives, resources and processes for a test project. … A test plan:"
     },
     {
      "t": "li",
-     "html": "Documents the means and schedule for achieving <mark>test objectives</mark>"
+     "html": "<mark>Documents the means and schedule for achieving test objectives</mark>"
     },
     {
      "t": "li",
-     "html": "Demonstrates that testing will adhere to the existing test policy and <mark>test strategy</mark> (or explains why the testing will deviate from them)"
+     "html": "Demonstrates that testing will adhere to the existing test policy and test strategy (or explains why the testing will deviate from them)"
     },
     {
      "t": "p",
-     "html": "Test planning guides the testers’ thinking and forces the testers to confront the future challenges related to <mark>risks</mark>, schedules, people, tools, costs, effort, etc. … The process of preparing a <mark>test plan</mark> is a useful way to think through the efforts needed to achieve the <mark>test objectives</mark>. … The typical content of a <mark>test plan</mark> includes:"
+     "html": "Test planning guides the testers’ thinking and forces the testers to confront the future challenges related to risks, schedules, people, tools, costs, effort, etc. … The process of preparing a test plan is a useful way to think through the efforts needed to achieve the test objectives. … The typical content of a test plan includes:"
     },
     {
      "t": "li",
-     "html": "Context of testing (e.g., test scope, <mark>test objectives</mark>, <mark>test basis</mark>)"
+     "html": "Context of testing (e.g., test scope, test objectives, test basis)"
     },
     {
      "t": "li",
-     "html": "<mark>Risk</mark> register (e.g., <mark>product risks</mark>, <mark>project risks</mark>)"
+     "html": "Risk register (e.g., product risks, project risks)"
     },
     {
      "t": "li",
-     "html": "<mark>Test approach</mark> (e.g., <mark>test levels</mark>, <mark>test types</mark>, <mark>test techniques</mark>, test deliverables, <mark>entry</mark> criteria and <mark>exit criteria</mark>, independence of testing, metrics to be collected, <mark>test data</mark> requirements, test environment requirements, deviations from the test policy and <mark>test strategy</mark>)"
+     "html": "Test approach (e.g., test levels, test types, test techniques, test deliverables, entry criteria and exit criteria, independence of testing, <mark>metrics to be collected</mark>, test data requirements, test environment requirements, deviations from the test policy and test strategy)"
     },
     {
      "t": "p",
-     "html": "More details about the <mark>test plan</mark> and its content can be found in the ISO/IEC/IEEE 29119-3 standard."
+     "html": "More details about the test plan and its content can be found in the ISO/IEC/IEEE 29119-3 standard."
     }
    ]
   },
   {
    "lo": "5.1.3",
    "k": "K2",
-   "statement": "Compare and contrast <mark>entry</mark> criteria and <mark>exit criteria</mark>",
+   "statement": "Compare and contrast entry criteria and exit criteria",
    "section": "5.1.3 Entry Criteria and Exit Criteria",
    "keywords": [
     "coverage",
@@ -1490,7 +1490,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Entry</mark> criteria define the preconditions for undertaking a given activity. … If <mark>entry</mark> criteria are not met, it is likely that the activity will prove to be more difficult, time-consuming, costly, and riskier. … <mark>Exit criteria</mark> define what must be achieved to declare an activity completed. … <mark>Entry</mark> criteria and <mark>exit criteria</mark> should be defined for each <mark>test level</mark>, and will differ based on the <mark>test objectives</mark>. … Typical <mark>entry</mark> criteria include: availability of resources (e.g., people, tools, environments, <mark>test data</mark>, budget, time), availability of <mark>testware</mark> (e.g., <mark>test basis</mark>, testable requirements, user stories, test cases), and initial quality level of a <mark>test object</mark> (e.g., all smoke tests have passed). … Typical <mark>exit criteria</mark> include: measures of thoroughness (e.g., achieved level of <mark>coverage</mark>, number of unresolved <mark>defects</mark>, <mark>defect</mark> density, number of failed test cases), and binary “yes/no” criteria (e.g., planned tests have been executed, static testing has been performed, all <mark>defects</mark> found are reported, all regression tests are automated). … Running out of time or budget can also be viewed as valid <mark>exit criteria</mark>. … Even without other <mark>exit criteria</mark> being satisfied, it can be acceptable to end testing under such circumstances, if the stakeholders have reviewed and accepted the <mark>risk</mark> to go live without further testing. … In Agile software development, <mark>exit criteria</mark> are often called Definition of Done, defining the team’s objective metrics for a releasable item. … <mark>Entry</mark> criteria that a <mark>user story</mark> must fulfill to start the development and/or testing activities are called Definition of Ready."
+     "html": "<mark>Entry criteria define the preconditions for undertaking a given activity</mark>. … If entry criteria are not met, it is likely that the activity will prove to be more difficult, time-consuming, costly, and riskier. … <mark>Exit criteria define what must be achieved to declare an activity completed</mark>. … Entry criteria and exit criteria <mark>should be defined for each test level</mark>, and will differ based on the test objectives. … Typical entry criteria include: availability of resources (e.g., people, tools, environments, test data, budget, time), availability of testware (e.g., test basis, testable requirements, user stories, test cases), and initial quality level of a test object (e.g., all smoke tests have passed). … Typical exit criteria include: measures of thoroughness (e.g., achieved level of coverage, number of unresolved defects, defect density, number of failed test cases), and binary “yes/no” criteria (e.g., <mark>planned tests have been executed</mark>, static testing has been performed, all defects found are reported, all regression tests are automated). … Running out of time or budget can also be viewed as valid exit criteria. … Even without other exit criteria being satisfied, it can be acceptable to end testing under such circumstances, if the stakeholders have reviewed and accepted the risk to go live without further testing. … In Agile software development, exit criteria are often called Definition of Done, defining the team’s objective metrics for a releasable item. … Entry criteria that a user story must fulfill to start the development and/or testing activities are called Definition of Ready."
     }
    ]
   }
@@ -1499,7 +1499,7 @@
   {
    "lo": "5.1.2",
    "k": "K1",
-   "statement": "Recognize how a tester adds value to <mark>iteration</mark> and <mark>release planning</mark>",
+   "statement": "Recognize how a tester adds value to iteration and release planning",
    "section": "5.1.2 Tester's Contribution to Iteration and Release Planning",
    "keywords": [
     "acceptance criteria",
@@ -1524,7 +1524,7 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In iterative SDLCs, typically two kinds of <mark>planning</mark> occur: <mark>release planning</mark> and <mark>iteration planning</mark>. … <mark>Release planning</mark> looks ahead to the <mark>release</mark> of a product, defines and re-defines the <mark>product backlog</mark>, and may involve refining larger user stories into a set of smaller user stories. … It also serves as the basis for the <mark>test approach</mark> and <mark>test plan</mark> across all <mark>iterations</mark>. … Testers involved in <mark>release planning</mark> participate in writing testable user stories and <mark>acceptance criteria</mark> (see section 4.5), participate in <mark>project and quality risk analyses</mark> (see section 5.2), estimate test effort associated with user stories (see section 5.1.4), <mark>determine the test approach</mark>, and <mark>plan the testing for the release</mark>. … <mark>Iteration planning</mark> looks ahead to the end of a single <mark>iteration</mark> and is concerned with the <mark>iteration backlog</mark>. … Testers involved in <mark>iteration planning</mark> participate in the <mark>detailed risk analysis of user stories</mark>, <mark>determine the testability of user stories</mark>, <mark>break down user stories into tasks</mark> (<mark>particularly testing tasks</mark>), estimate test effort for all testing tasks, and identify and refine functional and non-functional aspects of the <mark>test object</mark>."
+     "html": "In iterative SDLCs, typically two kinds of planning occur: release planning and iteration planning. … Release planning looks ahead to the release of a product, <mark>defines and re-defines the product backlog</mark>, and may involve refining larger user stories into a set of smaller user stories. … It also serves as the basis for the test approach and test plan across all iterations. … Testers involved in release planning <mark>participate in writing testable user stories and acceptance criteria</mark> (see section 4.5), <mark>participate in project and quality risk analyses</mark> (see section 5.2), <mark>estimate test effort associated with user stories</mark> (see section 5.1.4), determine the test approach, and plan the testing for the release. … Iteration planning looks ahead to the end of a single iteration and <mark>is concerned with the iteration backlog</mark>. … Testers involved in iteration planning <mark>participate in the detailed risk analysis of user stories</mark>, <mark>determine the testability of user stories</mark>, break down user stories into tasks (particularly testing tasks), <mark>estimate test effort for all testing tasks</mark>, and <mark>identify and refine functional and non-functional aspects of the test object</mark>."
     }
    ]
   }
@@ -1533,7 +1533,7 @@
   {
    "lo": "5.1.4",
    "k": "K3",
-   "statement": "Use <mark>estimation</mark> techniques to calculate the required test effort",
+   "statement": "Use estimation techniques to calculate the required test effort",
    "section": "5.1.4 Estimation Techniques",
    "keywords": [
     "estimation"
@@ -1541,11 +1541,11 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Test effort <mark>estimation</mark> involves predicting the amount of test-related work needed to meet the test objectives of a test project. … It is important to make it clear to the stakeholders that the estimate is based on a number of assumptions and is always subject to <mark>estimation</mark> error. … <mark>Estimation</mark> for small tasks is usually more accurate than for the large ones. … In this syllabus, the following four <mark>estimation</mark> techniques are described. … <mark>Estimation</mark> based on ratios. … The ratios of an organization’s own projects (e.g., taken from historical data) are generally the best source to use in the <mark>estimation</mark> process. …"
+     "html": "Test effort estimation involves predicting the amount of test-related work needed to meet the test objectives of a test project. … It is important to make it clear to the stakeholders that the estimate is based on a number of assumptions and is always subject to estimation error. … Estimation for small tasks is usually more accurate than for the large ones. … In this syllabus, the following four estimation techniques are described. … Estimation based on ratios. … The ratios of an organization’s own projects (e.g., taken from historical data) are generally the best source to use in the estimation process. …"
     },
     {
      "t": "p",
-     "html": "… In this iterative, expert-based technique, experts make experience-based <mark>estimations</mark>. … Each expert is then asked to make a new <mark>estimation</mark> based on that feedback, again in isolation. … Three-point <mark>estimation</mark>. … In this expert-based technique, three <mark>estimations</mark> are made by the experts: the most optimistic <mark>estimation</mark> (a), the most likely <mark>estimation</mark> (m) and the most pessimistic <mark>estimation</mark> (b). … For example, if the estimates (in personhours) are: a=6, m=9 and b=18, then the final <mark>estimation</mark> is 10±2 person-hours (i.e., between 8 and 12 person-hours), because E = (6 + 4*9 + 18) / 6 = 10 and SD = (18 – 6) / 6 = 2. … See (Kan 2003, Koomen 2006, Westfall 2009) for these and many other test <mark>estimation</mark> techniques."
+     "html": "… In this iterative, expert-based technique, experts make experience-based estimations. … Each expert is then asked to make a new estimation based on that feedback, again in isolation. … Three-point estimation. … In this expert-based technique, <mark>three estimations are made by the experts</mark>: the most optimistic estimation (a), the most likely estimation (m) and the most pessimistic estimation (b). … For example, if the estimates (in personhours) are: a=6, m=9 and b=18, then <mark>the final estimation is 10±2 person-hours</mark> (i.e., between 8 and 12 person-hours), because E = (6 + 4*9 + 18) / 6 = 10 and SD = (18 – 6) / 6 = 2. … See (Kan 2003, Koomen 2006, Westfall 2009) for these and many other test estimation techniques."
     }
    ]
   }
@@ -1554,7 +1554,7 @@
   {
    "lo": "5.1.5",
    "k": "K3",
-   "statement": "Apply <mark>test case</mark> <mark>prioritization</mark>",
+   "statement": "Apply test case prioritization",
    "section": "5.1.5 Test Case Prioritization",
    "keywords": [
     "coverage",
@@ -1569,23 +1569,23 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Once the <mark>test cases</mark> and test procedures are specified and assembled into test suites, these test suites can be arranged in a <mark>test execution schedule</mark> that defines the order in which they are to be run. … When prioritizing <mark>test cases</mark>, different factors can be taken into account. … The most commonly used <mark>test case</mark> <mark>prioritization</mark> strategies are as follows:"
+     "html": "Once the test cases and test procedures are specified and assembled into test suites, these test suites <mark>can be arranged in a test execution schedule that defines the order in which they are to be run</mark>. … When prioritizing test cases, different factors can be taken into account. … The most commonly used test case prioritization strategies are as follows:"
     },
     {
      "t": "li",
-     "html": "<mark>Risk-based</mark> <mark>prioritization</mark>, where the order of <mark>test execution</mark> is based on the results of risk analysis (see section 5.2.3). <mark>Test cases</mark> covering the most important risks are executed first."
+     "html": "Risk-based prioritization, where the order of test execution is based on the results of risk analysis (see section 5.2.3). <mark>Test cases covering the most important risks are executed first</mark>."
     },
     {
      "t": "li",
-     "html": "<mark>Coverage-based</mark> <mark>prioritization</mark>, where the order of <mark>test execution</mark> is based on <mark>coverage</mark> (e.g., statement <mark>coverage</mark>). <mark>Test cases</mark> achieving the highest <mark>coverage</mark> are executed first. In another variant, called additional <mark>coverage</mark> <mark>prioritization</mark>, the <mark>test case</mark> achieving the highest <mark>coverage</mark> is executed first; each subsequent <mark>test case</mark> is the one that achieves the highest additional <mark>coverage</mark>."
+     "html": "Coverage-based prioritization, where the order of test execution is based on coverage (e.g., statement coverage). <mark>Test cases achieving the highest coverage are executed first</mark>. In another variant, called additional coverage prioritization, the test case achieving the highest coverage is executed first; <mark>each subsequent test case is the one that achieves the highest additional coverage</mark>."
     },
     {
      "t": "li",
-     "html": "<mark>Requirements-based</mark> <mark>prioritization</mark>, where the order of <mark>test execution</mark> is based on the priorities of the requirements traced back to the corresponding <mark>test cases</mark>. Requirement priorities are defined by stakeholders. <mark>Test cases</mark> related to the most important requirements are executed first."
+     "html": "Requirements-based prioritization, where the order of test execution is based on the priorities of the requirements traced back to the corresponding test cases. Requirement priorities are defined by stakeholders. <mark>Test cases related to the most important requirements are executed first</mark>."
     },
     {
      "t": "p",
-     "html": "Ideally, <mark>test cases</mark> would be ordered to run based on their priority levels, using, for example, one of the above-mentioned <mark>prioritization</mark> strategies. … However, this practice may not work if the <mark>test cases</mark> or the features being tested have dependencies. … If a <mark>test case</mark> with a higher priority is dependent on a <mark>test case</mark> with a lower priority, the lower priority <mark>test case</mark> must be executed first. … The order of <mark>test execution</mark> must also take into account the availability of resources. …"
+     "html": "Ideally, test cases would be ordered to run based on their priority levels, using, for example, one of the above-mentioned prioritization strategies. … However, this practice may not work if the test cases or the features being tested have dependencies. … If a test case with a higher priority is dependent on a test case with a lower priority, <mark>the lower priority test case must be executed first</mark>. … The order of test execution must also take into account the availability of resources. …"
     }
    ]
   }
@@ -1594,7 +1594,7 @@
   {
    "lo": "5.1.6",
    "k": "K1",
-   "statement": "Recall the concepts of the <mark>test pyramid</mark>",
+   "statement": "Recall the concepts of the test pyramid",
    "section": "5.1.6 Test Pyramid",
    "keywords": [
     "component",
@@ -1605,14 +1605,14 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "The <mark>test pyramid</mark> is a model showing that different tests may have different granularity. … The <mark>test pyramid</mark> model supports the team in test automation and in test effort allocation by showing that different test objectives are supported by different levels of test automation. … The <mark>pyramid</mark> layers represent groups of tests. … For example, the original <mark>test pyramid</mark> model (Cohn 2009) defines three layers: “unit tests”, “service tests” and “UI tests”. … Another popular model defines unit (<mark>component</mark>) tests, integration (<mark>component</mark> integration) tests, and end-to-end tests. … Other <mark>test levels</mark> (see section 2.2.1) can also be used."
+     "html": "The test pyramid is a model showing that <mark>different tests may have different granularity</mark>. … The test pyramid model supports the team in test automation and in test effort allocation by showing that different test objectives are supported by different levels of test automation. … The pyramid layers represent groups of tests. … For example, the original test pyramid model (Cohn 2009) defines three layers: “unit tests”, “service tests” and “UI tests”. … Another popular model defines unit (component) tests, integration (component integration) tests, and end-to-end tests. … Other test levels (see section 2.2.1) can also be used."
     }
    ]
   },
   {
    "lo": "5.1.7",
    "k": "K2",
-   "statement": "Summarize the <mark>testing quadrants</mark> and their relationships with <mark>test levels</mark> and <mark>test types</mark>",
+   "statement": "Summarize the testing quadrants and their relationships with test levels and test types",
    "section": "5.1.7 Testing Quadrants",
    "keywords": [
     "api testing",
@@ -1638,23 +1638,23 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "The <mark>testing quadrants</mark>, defined by Brian Marick (Marick 2003, Crispin 2008), group the <mark>test levels</mark> with the appropriate <mark>test types</mark>, activities, test techniques and work products in the Agile software development. … The model supports test management in visualizing these to ensure that all appropriate <mark>test types</mark> and <mark>test levels</mark> are included in the SDLC and in understanding that some <mark>test types</mark> are more relevant to certain <mark>test levels</mark> than others. … This model also provides a way to differentiate and describe the <mark>test types</mark> to all stakeholders, including developers, testers, and business representatives. … In this model, tests can be <mark>business facing</mark> or <mark>technology facing</mark>. … Tests can also support the team (i.e., guide the development) or <mark>critique the product</mark> (i.e., measure its behavior against the expectations). … The combination of these two viewpoints determines the four <mark>quadrants</mark>:"
+     "html": "The testing quadrants, defined by Brian Marick (Marick 2003, Crispin 2008), group the test levels with the appropriate test types, activities, test techniques and work products in the Agile software development. … The model supports test management in visualizing these to ensure that all appropriate test types and test levels are included in the SDLC and in understanding that <mark>some test types are more relevant to certain test levels than others</mark>. … This model also provides a way to <mark>differentiate and describe the test types to all stakeholders</mark>, including developers, testers, and business representatives. … In this model, <mark>tests can be business facing or technology facing</mark>. … Tests can also <mark>support the team (i.e., guide the development)</mark> or <mark>critique the product (i.e., measure its behavior against the expectations)</mark>. … The combination of these two viewpoints determines the four quadrants:"
     },
     {
      "t": "li",
-     "html": "Quadrant Q1 (<mark>technology facing</mark>, support the team). This quadrant contains <mark>component tests</mark> and <mark>component integration tests</mark>. These tests should be automated and included in the CI process."
+     "html": "Quadrant Q1 (technology facing, support the team). <mark>This quadrant contains component tests and component integration tests</mark>. These tests should be automated and included in the CI process."
     },
     {
      "t": "li",
-     "html": "Quadrant Q2 (<mark>business facing</mark>, support the team). This quadrant contains <mark>functional tests</mark>, examples, <mark>user story tests</mark>, user experience prototypes, <mark>API testing</mark>, and <mark>simulations</mark>. These tests check the acceptance criteria and can be manual or automated."
+     "html": "Quadrant Q2 (business facing, support the team). <mark>This quadrant contains functional tests, examples, user story tests, user experience prototypes, API testing, and simulations</mark>. These tests check the acceptance criteria and can be manual or automated."
     },
     {
      "t": "li",
-     "html": "Quadrant Q3 (<mark>business facing</mark>, <mark>critique the product</mark>). This quadrant contains <mark>exploratory testing</mark>, <mark>usability testing</mark>, <mark>user acceptance testing</mark>. These tests are user-oriented and often manual."
+     "html": "Quadrant Q3 (business facing, critique the product). <mark>This quadrant contains exploratory testing, usability testing, user acceptance testing</mark>. These tests are user-oriented and often manual."
     },
     {
      "t": "li",
-     "html": "Quadrant Q4 (<mark>technology facing</mark>, <mark>critique the product</mark>). This quadrant contains <mark>smoke tests</mark> and <mark>non-functional tests</mark> (except <mark>usability</mark> tests). These tests are often automated."
+     "html": "Quadrant Q4 (technology facing, critique the product). <mark>This quadrant contains smoke tests and non-functional tests (except usability tests)</mark>. These tests are often automated."
     }
    ]
   }
@@ -1663,7 +1663,7 @@
   {
    "lo": "5.2.1",
    "k": "K1",
-   "statement": "Identify <mark>risk level</mark> by using <mark>risk</mark> likelihood and <mark>risk</mark> impact",
+   "statement": "Identify risk level by using risk likelihood and risk impact",
    "section": "5.2.1 Risk Definition and Risk Attributes",
    "keywords": [
     "risk",
@@ -1672,26 +1672,26 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Risk</mark> is a potential event, hazard, threat, or situation whose occurrence causes an adverse effect. … A <mark>risk</mark> can be characterized by two factors:"
+     "html": "Risk is a potential event, hazard, threat, or situation whose occurrence causes an adverse effect. … A risk can be characterized by two factors:"
     },
     {
      "t": "li",
-     "html": "<mark>Risk</mark> likelihood – the probability of the <mark>risk</mark> occurrence (greater than zero and less than one)"
+     "html": "Risk likelihood – the probability of the risk occurrence (greater than zero and less than one)"
     },
     {
      "t": "li",
-     "html": "<mark>Risk</mark> impact (harm) – the consequences of this occurrence"
+     "html": "Risk impact (harm) – the consequences of this occurrence"
     },
     {
      "t": "p",
-     "html": "These two factors express the <mark>risk level</mark>, which is a measure for the <mark>risk</mark>. … The higher the <mark>risk level</mark>, the more important is its treatment."
+     "html": "<mark>These two factors express the risk level</mark>, which is a measure for the risk. … The higher the risk level, the more important is its treatment."
     }
    ]
   },
   {
    "lo": "5.2.2",
    "k": "K2",
-   "statement": "Distinguish between <mark>project risks</mark> and <mark>product risks</mark>",
+   "statement": "Distinguish between project risks and product risks",
    "section": "5.2.2 Project Risks and Product Risks",
    "keywords": [
     "control",
@@ -1704,22 +1704,22 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In software testing one is generally concerned with two types of <mark>risks</mark>: <mark>project risks</mark> and <mark>product risks</mark>. … <mark>Project risks</mark> are related to the management and <mark>control</mark> of the project. … <mark>Project risks</mark> include:"
+     "html": "In software testing one is generally concerned with two types of risks: project risks and product risks. … <mark>Project risks are related to the management and control of the project</mark>. … Project risks include:"
     },
     {
      "t": "li",
-     "html": "<mark>Technical</mark> issues (e.g., <mark>scope creep</mark>, poor tool support)"
+     "html": "Technical issues (e.g., scope creep, poor tool support)"
     },
     {
      "t": "p",
-     "html": "<mark>Project risks</mark>, when they occur, may have an impact on the project schedule, budget or scope, which affects the project's ability to achieve its objectives. … <mark>Product risks</mark> are related to the product quality characteristics (e.g., described in the ISO 25010 quality model). … Examples of <mark>product risks</mark> include: missing or wrong functionality, incorrect calculations, runtime errors, poor architecture, inefficient algorithms, inadequate response time, poor user experience, security vulnerabilities. … <mark>Product risks</mark>, when they occur, may result in various negative consequences, including:"
+     "html": "Project risks, when they occur, may have an impact on the project schedule, budget or scope, which affects the project's ability to achieve its objectives. … Product risks are related to the product quality characteristics (e.g., described in the ISO 25010 quality model). … Examples of product risks include: missing or wrong functionality, incorrect calculations, runtime errors, poor architecture, inefficient algorithms, inadequate response time, poor user experience, security vulnerabilities. … Product risks, when they occur, may result in various negative consequences, including:"
     }
    ]
   },
   {
    "lo": "5.2.3",
    "k": "K2",
-   "statement": "Explain how <mark>product risk</mark> analysis may influence thoroughness and test scope",
+   "statement": "Explain how product risk analysis may influence thoroughness and test scope",
    "section": "5.2.3 Product Risk Analysis",
    "keywords": [
     "level",
@@ -1731,22 +1731,22 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "From a testing perspective, the goal of <mark>product risk</mark> analysis is to provide an awareness of <mark>product risk</mark> to focus the test effort in a way that minimizes the residual <mark>level</mark> of <mark>product risk</mark>. … Ideally, <mark>product risk</mark> analysis begins early in the SDLC. … <mark>Product risk</mark> analysis consists of <mark>risk</mark> identification and <mark>risk</mark> assessment. … <mark>Risk</mark> identification is about generating a comprehensive list of <mark>risks</mark>. … Stakeholders can identify <mark>risks</mark> by using various techniques and tools, e.g., brainstorming, workshops, interviews, or cause-effect diagrams. … <mark>Risk</mark> assessment involves: categorization of identified <mark>risks</mark>, determining their <mark>risk</mark> likelihood, <mark>risk</mark> impact and <mark>risk level</mark>, prioritizing, and proposing ways to handle them. … Categorization helps in assigning mitigation actions, because usually <mark>risks</mark> falling into the same category can be mitigated using a similar approach. … <mark>Risk</mark> assessment can use a quantitative or qualitative approach, or a mix of them. … In the quantitative approach the <mark>risk level</mark> is calculated as the multiplication of <mark>risk</mark> likelihood and <mark>risk</mark> impact. … In the qualitative approach the <mark>risk level</mark> can be determined using a <mark>risk</mark> matrix. … <mark>Product risk</mark> analysis may influence the thoroughness and test scope. …"
+     "html": "From a testing perspective, the goal of product risk analysis is to provide an awareness of product risk to focus the test effort in a way that minimizes the residual level of product risk. … Ideally, product risk analysis begins early in the SDLC. … <mark>Product risk analysis consists of risk identification and risk assessment</mark>. … Risk identification is about generating a comprehensive list of risks. … Stakeholders can identify risks by using various techniques and tools, e.g., brainstorming, workshops, interviews, or cause-effect diagrams. … Risk assessment involves: categorization of identified risks, determining their risk likelihood, risk impact and risk level, prioritizing, and proposing ways to handle them. … Categorization helps in assigning mitigation actions, because usually risks falling into the same category can be mitigated using a similar approach. … Risk assessment can use a quantitative or qualitative approach, or a mix of them. … In the quantitative approach <mark>the risk level is calculated as the multiplication of risk likelihood and risk impact</mark>. … In the qualitative approach the risk level can be determined using a risk matrix. … Product risk analysis may influence the thoroughness and test scope. …"
     },
     {
      "t": "li",
-     "html": "Determine the particular test <mark>levels</mark> and propose test types to be performed"
+     "html": "Determine the particular test levels and propose test types to be performed"
     },
     {
      "t": "li",
-     "html": "Determine whether any activities in addition to testing could be employed to reduce <mark>risk</mark>"
+     "html": "Determine whether any activities in addition to testing could be employed to reduce risk"
     }
    ]
   },
   {
    "lo": "5.2.4",
    "k": "K2",
-   "statement": "Explain what measures can be taken in response to analyzed <mark>product risks</mark>",
+   "statement": "Explain what measures can be taken in response to analyzed product risks",
    "section": "5.2.4 Product Risk Control",
    "keywords": [
     "analysis",
@@ -1760,23 +1760,23 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Product risk</mark> control comprises all measures that are taken in response to identified and assessed <mark>product risks</mark>. … <mark>Product risk</mark> control consists of <mark>risk</mark> mitigation and <mark>risk</mark> monitoring. … <mark>Risk</mark> mitigation involves implementing the actions proposed in <mark>risk</mark> assessment to reduce the <mark>risk level</mark>. … The aim of <mark>risk</mark> monitoring is to ensure that the mitigation actions are effective, to obtain further information to improve <mark>risk</mark> assessment, and to identify emerging <mark>risks</mark>. … With respect to <mark>product risk</mark> control, once a <mark>risk</mark> has been analyzed, several response options to <mark>risk</mark> are possible, e.g., <mark>risk</mark> mitigation by testing, <mark>risk</mark> acceptance, <mark>risk</mark> transfer, or a contingency plan (Veenendaal 2012). … Actions that can be taken to mitigate the <mark>product risks</mark> by testing are as follows:"
+     "html": "Product risk control comprises all measures that are taken in response to identified and assessed product risks. … <mark>Product risk control consists of risk mitigation and risk monitoring</mark>. … Risk mitigation involves implementing the actions proposed in risk assessment to reduce the risk level. … The aim of risk monitoring is to ensure that the mitigation actions are effective, to obtain further information to improve risk assessment, and to identify emerging risks. … With respect to product risk control, once a risk has been analyzed, several response options to risk are possible, e.g., risk mitigation by testing, risk acceptance, risk transfer, or a contingency plan (Veenendaal 2012). … Actions that can be taken to mitigate the product risks by testing are as follows:"
     },
     {
      "t": "li",
-     "html": "Select the testers with the right <mark>level</mark> of experience and skills, suitable for a given <mark>risk</mark> type"
+     "html": "Select the testers with the right level of experience and skills, suitable for a given risk type"
     },
     {
      "t": "li",
-     "html": "Apply an appropriate <mark>level</mark> of independence of testing"
+     "html": "Apply an appropriate level of independence of testing"
     },
     {
      "t": "li",
-     "html": "Perform <mark>reviews</mark> and static <mark>analysis</mark>"
+     "html": "Perform reviews and static analysis"
     },
     {
      "t": "li",
-     "html": "Apply the appropriate test techniques and coverage <mark>levels</mark>"
+     "html": "Apply the appropriate test techniques and coverage levels"
     }
    ]
   }
@@ -1785,7 +1785,7 @@
   {
    "lo": "5.4.1",
    "k": "K2",
-   "statement": "Summarize how <mark>configuration</mark> management supports testing",
+   "statement": "Summarize how configuration management supports testing",
    "section": "5.4 Configuration Management",
    "keywords": [
     "configuration",
@@ -1797,22 +1797,22 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "In testing, <mark>configuration</mark> management (CM) provides a discipline for identifying, controlling, and tracking work products such as <mark>test plans</mark>, test strategies, test conditions, <mark>test cases</mark>, test scripts, test results, test logs, and test reports as <mark>configuration</mark> items. … For a complex <mark>configuration</mark> item (e.g., a test environment), CM records the items it consists of, their relationships, and <mark>versions</mark>. … If the <mark>configuration</mark> item is approved for testing, it becomes a baseline and can only be changed through a formal change control process. … <mark>Configuration</mark> management keeps a record of changed <mark>configuration</mark> items when a new baseline is created. …"
+     "html": "In testing, configuration management (CM) <mark>provides a discipline for identifying, controlling, and tracking work products</mark> such as test plans, test strategies, test conditions, test cases, test scripts, test results, test logs, and test reports as configuration items. … For a complex configuration item (e.g., a test environment), CM records the items it consists of, their relationships, and versions. … If the configuration item is approved for testing, it becomes a baseline and <mark>can only be changed through a formal change control process</mark>. … Configuration management keeps a record of changed configuration items when a new baseline is created. …"
     },
     {
      "t": "li",
-     "html": "All <mark>configuration</mark> items, including test items (individual parts of the test object), are uniquely identified, <mark>version</mark> controlled, tracked for changes, and related to other <mark>configuration</mark> items so that traceability can be maintained throughout the test process"
+     "html": "All configuration items, including test items (individual parts of the test object), <mark>are uniquely identified, version controlled, tracked for changes</mark>, and related to other configuration items so that traceability can be maintained throughout the test process"
     },
     {
      "t": "li",
-     "html": "All identified documentation and software items are referenced unambiguously in <mark>testware</mark>"
+     "html": "All identified documentation and software items <mark>are referenced unambiguously in testware</mark>"
     }
    ]
   },
   {
    "lo": "5.5.1",
    "k": "K3",
-   "statement": "Prepare a <mark>defect</mark> report",
+   "statement": "Prepare a defect report",
    "section": "5.5 Defect Management",
    "keywords": [
     "defect",
@@ -1822,35 +1822,35 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Since one of the major test objectives is to find <mark>defects</mark>, an established <mark>defect management</mark> process is essential. … Although we refer to \"<mark>defects</mark>\" here, the reported anomalies may turn out to be real <mark>defects</mark> or something else (e.g., false–positive result, change request) - this is resolved during the process of dealing with the <mark>defect</mark> reports. … At a minimum, the <mark>defect management</mark> process includes a workflow for handling individual <mark>defects</mark> or anomalies from their discovery to their closure and rules for their classification. … The workflow typically comprises activities to log the reported anomalies, analyze and classify them, decide on a suitable response such as to fix or keep it as it is and finally to close the <mark>defect</mark> report. … It is advisable to handle <mark>defects</mark> from static testing (especially static analysis) in a similar way. … Typical <mark>defect</mark> reports have the following objectives:"
+     "html": "Since one of the major test objectives is to find defects, an established defect management process is essential. … Although we refer to \"defects\" here, the reported anomalies may turn out to be real defects or something else (e.g., false–positive result, change request) - this is resolved during the process of dealing with the defect reports. … At a minimum, the defect management process <mark>includes a workflow for handling individual defects or anomalies from their discovery to their closure</mark> and rules for their classification. … The workflow typically comprises activities to log the reported anomalies, analyze and classify them, decide on a suitable response such as to fix or keep it as it is and finally to close the defect report. … It is advisable to handle defects from static testing (especially static analysis) in a similar way. … Typical defect reports have the following objectives:"
     },
     {
      "t": "li",
-     "html": "Provide those responsible for handling and resolving reported <mark>defects</mark> with sufficient information to resolve the issue"
+     "html": "Provide those responsible for handling and resolving reported defects with sufficient information to resolve the issue"
     },
     {
      "t": "p",
-     "html": "A <mark>defect</mark> report logged during dynamic testing typically includes:"
+     "html": "A defect report logged during dynamic testing typically includes:"
     },
     {
      "t": "li",
-     "html": "Context of the <mark>defect</mark> (e.g., <mark>test case</mark> being run, test activity being performed, SDLC phase, and other relevant information such as the test technique, checklist or test data being used)"
+     "html": "Context of the defect (e.g., test case being run, test activity being performed, SDLC phase, and other relevant information such as the test technique, checklist or test data being used)"
     },
     {
      "t": "li",
-     "html": "Severity of the <mark>defect</mark> (degree of impact) on the interests of stakeholders or requirements"
+     "html": "Severity of the defect (degree of impact) on the interests of stakeholders or requirements"
     },
     {
      "t": "li",
-     "html": "Status of the <mark>defect</mark> (e.g., open, deferred, duplicate, waiting to be fixed, awaiting confirmation testing, re-opened, closed, rejected)"
+     "html": "Status of the defect (e.g., open, deferred, duplicate, waiting to be fixed, awaiting confirmation testing, re-opened, closed, rejected)"
     },
     {
      "t": "li",
-     "html": "References (e.g., to the <mark>test case</mark>)"
+     "html": "References (e.g., to the test case)"
     },
     {
      "t": "p",
-     "html": "Some of this data may be automatically included when using <mark>defect management</mark> tools (e.g., identifier, date, author and initial status). … Document templates for a <mark>defect</mark> report and example <mark>defect</mark> reports can be found in the ISO/IEC/IEEE 29119-3 standard, which refers to <mark>defect</mark> reports as incident reports."
+     "html": "Some of this data may be automatically included when using defect management tools (e.g., identifier, date, author and initial status). … Document templates for a defect report and example defect reports can be found in the ISO/IEC/IEEE 29119-3 standard, which refers to defect reports as incident reports."
     }
    ]
   }
@@ -1859,7 +1859,7 @@
   {
    "lo": "5.5.1",
    "k": "K3",
-   "statement": "Prepare a <mark>defect report</mark>",
+   "statement": "Prepare a defect report",
    "section": "5.5 Defect Management",
    "keywords": [
     "defect",
@@ -1873,31 +1873,31 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "Since one of the major test objectives is to find <mark>defects</mark>, an established <mark>defect</mark> management process is essential. … Although we refer to \"<mark>defects</mark>\" here, the reported anomalies may turn out to be real <mark>defects</mark> or something else (e.g., false–positive result, change request) - this is resolved during the process of dealing with the <mark>defect reports</mark>. … At a minimum, the <mark>defect</mark> management process includes a workflow for handling individual <mark>defects</mark> or anomalies from their discovery to their closure and rules for their classification. … The workflow typically comprises activities to log the reported anomalies, analyze and classify them, decide on a suitable response such as to fix or keep it as it is and finally to close the <mark>defect report</mark>. … It is advisable to handle <mark>defects</mark> from static testing (especially static analysis) in a similar way. … Typical <mark>defect reports</mark> have the following objectives:"
+     "html": "Since one of the major test objectives is to find defects, an established defect management process is essential. … Although we refer to \"defects\" here, the reported anomalies may turn out to be real defects or something else (e.g., false–positive result, change request) - this is resolved during the process of dealing with the defect reports. … At a minimum, the defect management process includes a workflow for handling individual defects or anomalies from their discovery to their closure and rules for their classification. … The workflow typically comprises activities to log the reported anomalies, analyze and classify them, decide on a suitable response such as to fix or keep it as it is and finally to close the defect report. … It is advisable to handle defects from static testing (especially static analysis) in a similar way. … Typical defect reports have the following objectives:"
     },
     {
      "t": "li",
-     "html": "Provide those responsible for handling and resolving reported <mark>defects</mark> with sufficient information to resolve the issue"
+     "html": "<mark>Provide those responsible for handling and resolving reported defects with sufficient information to resolve the issue</mark>"
     },
     {
      "t": "p",
-     "html": "A <mark>defect report</mark> logged during dynamic testing typically includes:"
+     "html": "A defect report logged during dynamic testing typically includes:"
     },
     {
      "t": "li",
-     "html": "Identification of the <mark>test object</mark> and test environment"
+     "html": "Identification of the test object and test environment"
     },
     {
      "t": "li",
-     "html": "Context of the <mark>defect</mark> (e.g., test case being run, test activity being performed, SDLC phase, and other relevant information such as the test technique, checklist or test data being used)"
+     "html": "Context of the defect (e.g., test case being run, test activity being performed, SDLC phase, and other relevant information such as the test technique, checklist or test data being used)"
     },
     {
      "t": "li",
-     "html": "Description of the <mark>failure</mark> to enable reproduction and resolution including the test steps that detected the anomaly, and any relevant test logs, database dumps, screenshots, or recordings"
+     "html": "Description of the failure <mark>to enable reproduction and resolution</mark> including the test steps that detected the anomaly, and any relevant test logs, database dumps, screenshots, or recordings"
     },
     {
      "t": "li",
-     "html": "<mark>Severity</mark> of the <mark>defect</mark> (degree of impact) on the interests of stakeholders or requirements"
+     "html": "Severity of the defect (degree of impact) on the interests of stakeholders or requirements"
     },
     {
      "t": "li",
@@ -1905,7 +1905,7 @@
     },
     {
      "t": "li",
-     "html": "Status of the <mark>defect</mark> (e.g., open, deferred, duplicate, waiting to be fixed, awaiting confirmation testing, re-opened, closed, rejected)"
+     "html": "Status of the defect (e.g., open, deferred, duplicate, waiting to be fixed, awaiting confirmation testing, re-opened, closed, rejected)"
     }
    ]
   }
@@ -1928,30 +1928,30 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "<mark>Test metrics</mark> are gathered to show <mark>progress</mark> against the planned test schedule and budget, the current quality of the test object, and the effectiveness of the test activities with respect to the test objectives or an iteration goal. … Test monitoring gathers a variety of metrics to support the test control and <mark>test completion</mark>. … Common <mark>test metrics</mark> include:"
+     "html": "<mark>Test metrics are gathered to show progress against the planned test schedule and budget</mark>, the current quality of the test object, and the effectiveness of the test activities with respect to the test objectives or an iteration goal. … Test monitoring gathers a variety of metrics to support the test control and test completion. … Common test metrics include:"
     },
     {
      "t": "li",
-     "html": "Project <mark>progress</mark> metrics (e.g., task <mark>completion</mark>, resource usage, test <mark>effort</mark>)"
+     "html": "Project progress metrics (e.g., task completion, resource usage, test effort)"
     },
     {
      "t": "li",
-     "html": "Test <mark>progress</mark> metrics (e.g., test case implementation <mark>progress</mark>, test environment preparation <mark>progress</mark>, number of test cases run/not run, passed/failed, test execution time)"
+     "html": "Test progress metrics (e.g., test case implementation progress, test environment preparation progress, number of test cases run/not run, passed/failed, test execution time)"
     },
     {
      "t": "li",
-     "html": "<mark>Defect</mark> metrics (e.g., number and priorities of <mark>defects</mark> found/fixed, <mark>defect</mark> density, <mark>defect</mark> detection percentage)"
+     "html": "Defect metrics (e.g., number and priorities of defects found/fixed, defect density, defect detection percentage)"
     },
     {
      "t": "li",
-     "html": "<mark>Risk</mark> metrics (e.g., residual <mark>risk</mark> level)"
+     "html": "Risk metrics (e.g., residual risk level)"
     }
    ]
   },
   {
    "lo": "5.3.2",
    "k": "K2",
-   "statement": "Summarize the purposes, content, and audiences for test <mark>reports</mark>",
+   "statement": "Summarize the purposes, content, and audiences for test reports",
    "section": "5.3.2 Purpose, Content and Audience for Test Reports",
    "keywords": [
     "defect",
@@ -1975,39 +1975,39 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… <mark>Test progress reports</mark> support the ongoing test control and must provide enough information to make modifications to the test schedule, resources, or <mark>test plan</mark>, when such changes are needed due to deviation from the plan or changed circumstances. … <mark>Test completion reports</mark> summarize a specific test activity (e.g., <mark>test level</mark>, test cycle, iteration) and can give information for subsequent testing. … During test monitoring and test control, the test team generates <mark>test progress reports</mark> for stakeholders to keep them informed. … <mark>Test progress reports</mark> are usually generated on a regular basis (e.g., daily, weekly, etc.) and include:"
+     "html": "… <mark>Test progress reports support the ongoing test control</mark> and must provide enough information to make modifications to the test schedule, resources, or test plan, when such changes are needed due to deviation from the plan or changed circumstances. … <mark>Test completion reports summarize a specific test activity</mark> (e.g., test level, test cycle, iteration) and can give information for subsequent testing. … During test monitoring and test control, the test team generates test progress reports for stakeholders to keep them informed. … Test progress reports <mark>are usually generated on a regular basis</mark> (e.g., daily, weekly, etc.) and include:"
     },
     {
      "t": "li",
-     "html": "Test <mark>progress</mark> (e.g., ahead or behind schedule), including any notable deviations"
+     "html": "Test progress (e.g., ahead or behind schedule), <mark>including any notable deviations</mark>"
     },
     {
      "t": "li",
-     "html": "<mark>Impediments</mark> for testing, and their <mark>workarounds</mark>"
+     "html": "Impediments for testing, and their workarounds"
     },
     {
      "t": "li",
-     "html": "<mark>Test metrics</mark> (see section 5.3.1 for examples)"
+     "html": "Test metrics (see section 5.3.1 for examples)"
     },
     {
      "t": "li",
-     "html": "New and changed <mark>risks</mark> within testing period"
+     "html": "New and changed risks within testing period"
     },
     {
      "t": "p",
-     "html": "A <mark>test completion report</mark> is prepared during <mark>test completion</mark>, when a project, <mark>test level</mark>, or test type is complete and when, ideally, its <mark>exit criteria</mark> have been met. … This <mark>report</mark> uses <mark>test progress reports</mark> and other data. … Typical <mark>test completion reports</mark> include:"
+     "html": "<mark>A test completion report is prepared during test completion</mark>, when a project, test level, or test type is complete and when, ideally, <mark>its exit criteria have been met</mark>. … <mark>This report uses test progress reports and other data</mark>. … Typical test completion reports include:"
     },
     {
      "t": "li",
-     "html": "<mark>Test summary</mark>"
+     "html": "Test summary"
     },
     {
      "t": "li",
-     "html": "Testing and product quality evaluation based on the original <mark>test plan</mark> (i.e., test objectives and <mark>exit criteria</mark>)"
+     "html": "Testing and product quality evaluation based on the original test plan (i.e., test objectives and exit criteria)"
     },
     {
      "t": "li",
-     "html": "Deviations from the <mark>test plan</mark> (e.g., differences from the planned test schedule, duration, and <mark>effort</mark>)."
+     "html": "Deviations from the test plan (e.g., differences from the planned test schedule, duration, and effort)."
     }
    ]
   }
@@ -2052,35 +2052,35 @@
     },
     {
      "t": "li",
-     "html": "Test <mark>management tools</mark> – increase the <mark>test process</mark> efficiency by facilitating management of the SDLC, requirements, tests, <mark>defects</mark>, configuration"
+     "html": "Test management tools – <mark>increase the test process efficiency by facilitating management of the SDLC, requirements, tests, defects, configuration</mark>"
     },
     {
      "t": "li",
-     "html": "<mark>Static testing</mark> tools – support the tester in performing <mark>reviews</mark> and <mark>static analysis</mark>"
+     "html": "Static testing tools – <mark>support the tester in performing reviews and static analysis</mark>"
     },
     {
      "t": "li",
-     "html": "<mark>Test design</mark> and <mark>test implementation</mark> tools – facilitate generation of <mark>test cases</mark>, <mark>test data</mark> and <mark>test procedures</mark>"
+     "html": "Test design and test implementation tools – <mark>facilitate generation of test cases, test data and test procedures</mark>"
     },
     {
      "t": "li",
-     "html": "<mark>Test execution</mark> and test <mark>coverage</mark> tools – facilitate <mark>automated test execution</mark> and <mark>coverage measurement</mark>"
+     "html": "Test execution and test coverage tools – <mark>facilitate automated test execution and coverage measurement</mark>"
     },
     {
      "t": "li",
-     "html": "<mark>Non-functional testing</mark> tools – allow the tester to perform <mark>non-functional testing</mark> that is <mark>difficult or impossible to perform manually</mark>"
+     "html": "Non-functional testing tools – <mark>allow the tester to perform non-functional testing that is difficult or impossible to perform manually</mark>"
     },
     {
      "t": "li",
-     "html": "<mark>DevOps tools</mark> – support the DevOps <mark>delivery pipeline</mark>, <mark>workflow tracking</mark>, <mark>automated build</mark> process(es), CI/CD"
+     "html": "DevOps tools – <mark>support the DevOps delivery pipeline, workflow tracking, automated build process(es), CI/CD</mark>"
     },
     {
      "t": "li",
-     "html": "Collaboration tools – <mark>facilitate communication</mark>"
+     "html": "Collaboration tools – facilitate communication"
     },
     {
      "t": "li",
-     "html": "<mark>Tools supporting scalability and deployment standardization</mark> (e.g., <mark>virtual machines</mark>, <mark>containerization tools</mark>)"
+     "html": "<mark>Tools supporting scalability and deployment standardization</mark> (e.g., virtual machines, containerization tools)"
     }
    ]
   }
@@ -2089,7 +2089,7 @@
   {
    "lo": "6.2.1",
    "k": "K1",
-   "statement": "Recall the benefits and <mark>risks</mark> of <mark>test automation</mark>",
+   "statement": "Recall the benefits and risks of test automation",
    "section": "6.2 Benefits and Risks of Test Automation",
    "keywords": [
     "automation",
@@ -2101,27 +2101,27 @@
    "excerpt": [
     {
      "t": "p",
-     "html": "… There are also some <mark>risks</mark>, which need analysis and mitigation. … Potential benefits of using <mark>test automation</mark> include:"
+     "html": "… There are also some risks, which need analysis and mitigation. … Potential benefits of using test automation include:"
     },
     {
      "t": "li",
-     "html": "More objective assessment (e.g., <mark>coverage</mark>) and providing measures that are too complicated for humans to determine"
+     "html": "More objective assessment (e.g., coverage) and providing measures that are too complicated for humans to determine"
     },
     {
      "t": "li",
-     "html": "Reduced test execution times to provide earlier <mark>defect</mark> detection, faster feedback and faster time to market"
+     "html": "<mark>Reduced test execution times to provide earlier defect detection, faster feedback</mark> and faster time to market"
     },
     {
      "t": "p",
-     "html": "Potential <mark>risks</mark> of using <mark>test automation</mark> include:"
+     "html": "Potential risks of using test automation include:"
     },
     {
      "t": "li",
-     "html": "The dependency on the tool vendor which may go out of business, retire the tool, sell the tool to a different vendor or provide poor support (e.g., responses to queries, upgrades, and <mark>defect</mark> fixes)."
+     "html": "<mark>The dependency on the tool vendor</mark> which may go out of business, retire the tool, sell the tool to a different vendor or provide poor support (e.g., responses to queries, upgrades, and defect fixes)."
     },
     {
      "t": "li",
-     "html": "The <mark>automation</mark> tool is not compatible with the development platform."
+     "html": "The automation tool is not compatible with the development platform."
     }
    ]
   }

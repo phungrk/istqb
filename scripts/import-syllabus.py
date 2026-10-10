@@ -4,7 +4,9 @@ objectives (LOs) it covers, with the syllabus sentences that contain the topic's
 (keywords wrapped in <mark>).
 
 Usage: python3 scripts/import-syllabus.py <ISTQB_CTFL_Syllabus_v4.0.1.pdf> [repo-dir]
-Needs `pdftotext` (poppler-utils). Run after scripts/import-mindmap.mjs.
+Needs `pdftotext` (poppler-utils). Run after scripts/import-mindmap.mjs, then run
+scripts/apply-highlights.mjs: the highlights shown on the site come from data/lo-highlights.json
+(verb phrases derived from each topic's Key terms), not from the keyword marks made here.
 
 A topic's keywords are the syllabus's official chapter keywords that appear anywhere in
 the topic, plus English terms from its key-term chips, illustration tags and label that

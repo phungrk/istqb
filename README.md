@@ -55,7 +55,9 @@ The mindmap is root → six chapters → **36 study topics** imported from the "
 
 To refresh it after editing the artifact, save the page and run `node scripts/import-mindmap.mjs <file>.html .`. The chapter and root nodes still come from `data/syllabus.json`.
 
-Each topic also has a **Syllabus · learning objectives** block: the CTFL v4.0.1 LOs it covers (code, K-level, statement) and the syllabus sentences that contain the topic's keywords, with those keywords highlighted. It is built by `python3 scripts/import-syllabus.py <ISTQB_CTFL_Syllabus_v4.0.1.pdf> .` (needs `pdftotext`) into `data/syllabus-lo.json`. The topic → LO mapping is the `MAP` table at the top of that script; keywords are the syllabus's official chapter keywords found in the topic plus the English terms of its key-term chips.
+Each topic also has a **Syllabus · learning objectives** block: the CTFL v4.0.1 LOs it covers (code, K-level, statement) and the syllabus sentences that contain the topic's keywords, with the exam-relevant phrases highlighted. It is built by `python3 scripts/import-syllabus.py <ISTQB_CTFL_Syllabus_v4.0.1.pdf> .` (needs `pdftotext`) into `data/syllabus-lo.json`. The topic → LO mapping is the `MAP` table at the top of that script; keywords are the syllabus's official chapter keywords found in the topic plus the English terms of its key-term chips.
+
+The highlights are curated in `data/lo-highlights.json`: per topic, verbatim verb phrases from the excerpts that follow from the topic's Key terms and decide exam answers (e.g. "Reducing the risk level of inadequate software quality", not "test objectives"). After editing it, or after re-running the import, run `node scripts/apply-highlights.mjs .` — it fails if a phrase no longer matches.
 
 ## Practice tests and the question bank
 
