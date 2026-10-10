@@ -5,17 +5,9 @@ import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { savedPassword, useApp } from "./AppProvider";
 import { EyeIcon, EyeOffIcon } from "./icons";
+import { MobileMenu } from "./MobileMenu";
+import { NAV, PRO_NAV } from "@/lib/nav";
 
-const NAV = [
-  ["/mindmap", "Mindmap"],
-  ["/tests", "Practice tests"],
-  ["/dashboard", "Dashboard"],
-] as const;
-/** Shown only when pricing and the AI coach are enabled (ENABLE_PRO=1). */
-const PRO_NAV = [
-  ["/coach", "AI Coach"],
-  ["/pricing", "Pricing"],
-] as const;
 
 export function Header() {
   const { user, tier, flags, openLogin, signOut } = useApp();
@@ -36,7 +28,7 @@ export function Header() {
         <span style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--color-accent)", display: "grid", placeItems: "center", color: "var(--color-bg)", fontFamily: "var(--font-heading)", fontSize: "var(--fs-18)" }}>T</span>
         <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-21)" }}>Testpath</span>
       </Link>
-      <nav style={{ display: "flex", gap: 4, flexWrap: "wrap", marginLeft: 12, flex: "1 1 auto", minWidth: 0 }}>
+      <nav className="hdr-desk" style={{ display: "flex", gap: 4, flexWrap: "wrap", marginLeft: 12, flex: "1 1 auto", minWidth: 0 }}>
         {[...NAV, ...(flags.pro ? PRO_NAV : []), ...(user?.admin ? ([["/admin", "Admin"]] as const) : [])].map(([href, label]) => {
           const on = active === href;
           return (
@@ -52,6 +44,8 @@ export function Header() {
           );
         })}
       </nav>
+      <MobileMenu active={pathname} />
+      <div className="hdr-desk" style={{ display: "flex" }}>
       {!user ? (
         <button className="btn btn-primary" onClick={openLogin}>Sign in</button>
       ) : (
@@ -79,6 +73,7 @@ export function Header() {
           <button className="btn btn-ghost" onClick={signOut} style={{ fontSize: "var(--fs-13)" }}>Sign out</button>
         </div>
       )}
+      </div>
     </header>
   );
 }

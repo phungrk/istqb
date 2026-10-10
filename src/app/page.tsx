@@ -2,6 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
+import { FirstView } from "@/components/FirstView";
 import { CHAPTERS, palette } from "@/lib/syllabus";
 
 export default function HomePage() {
@@ -10,32 +11,8 @@ export default function HomePage() {
   const list = { display: "flex", flexDirection: "column", gap: 8, fontSize: "var(--fs-14)" } as const;
 
   return (
-    <section style={{ display: "flex", flexDirection: "column", gap: 72, paddingTop: 40 }}>
-      <div style={{ display: "flex", flexWrap: "wrap", gap: 48, alignItems: "center" }}>
-        <div style={{ flex: "1 1 480px", maxWidth: 620 }}>
-          <span className="tag tag-accent-2">ISTQB® CTFL · Syllabus v4.0.1</span>
-          <h1 style={{ fontSize: "var(--fs-56)", margin: "18px 0 18px", textWrap: "pretty" }}>Pass the Foundation Level exam with a map, not a pile of notes.</h1>
-          <p style={{ fontSize: "var(--fs-18)", color: "var(--color-neutral-800)", maxWidth: 520, textWrap: "pretty" }}>
-            Study the whole syllabus as a mindmap, then test yourself on practice sets and timed mock exams. No account needed to start.
-          </p>
-          <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 28 }}>
-            <button className="btn btn-primary" onClick={() => router.push("/mindmap")} style={{ fontSize: "var(--fs-16)", padding: "12px 22px" }}>Open the mindmap</button>
-            <button className="btn btn-secondary" onClick={() => router.push("/tests")} style={{ fontSize: "var(--fs-16)", padding: "12px 22px" }}>Take a practice test</button>
-          </div>
-        </div>
-        <div aria-hidden style={{ flex: "0 1 380px", position: "relative", height: 360, minWidth: 300 }}>
-          <div style={{ position: "absolute", left: 0, top: 0, width: 300, height: 300, borderRadius: "50%", background: "var(--color-accent-200)" }} />
-          <div style={{ position: "absolute", right: 0, bottom: 0, width: 180, height: 180, borderRadius: "50%", background: "var(--color-accent-2-300)" }} />
-          <div style={{ position: "absolute", left: 48, top: 70, display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-72)", lineHeight: 1, color: "var(--color-accent-800)" }}>40</span>
-            <span style={{ fontSize: "var(--fs-15)", fontWeight: 600, color: "var(--color-accent-900)" }}>questions in 60 minutes</span>
-          </div>
-          <div style={{ position: "absolute", right: 36, bottom: 56, display: "flex", flexDirection: "column", gap: 2, textAlign: "right" }}>
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-40)", lineHeight: 1, color: "var(--color-accent-2-900)" }}>65%</span>
-            <span style={{ fontSize: "var(--fs-13)", fontWeight: 600, color: "var(--color-accent-2-900)" }}>to pass</span>
-          </div>
-        </div>
-      </div>
+    <section style={{ display: "flex", flexDirection: "column", gap: 72, paddingBottom: 24 }}>
+      <FirstView />
 
       <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
         <h2 style={{ margin: 0 }}>Six chapters</h2>
