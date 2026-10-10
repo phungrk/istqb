@@ -82,7 +82,8 @@ function LoginDialog() {
     setPassword(c.password);
   };
   return (
-    <div className="dialog-backdrop" onClick={closeDialog} style={{ zIndex: 50 }}>
+    // Once credentials are generated, a stray click outside must not throw them away.
+    <div className="dialog-backdrop" onClick={locked ? undefined : closeDialog} style={{ zIndex: 50 }}>
       <div className="dialog login-dialog" role="dialog" aria-modal="true" aria-labelledby="login-title" onClick={stop} style={{ background: "var(--color-neutral-100)" }}>
         <div className="login-grid">
           <GeneratePanel creds={creds} onCreated={onCreated} />
@@ -116,7 +117,7 @@ function LoginDialog() {
                     {/* A generated password is shown in clear so it can be read and written down. */}
                     <input id="login-pass" className="input" type={locked ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} disabled={locked} placeholder="Enter password" autoComplete={locked ? "new-password" : "current-password"} style={{ minHeight: 44, fontVariantNumeric: "tabular-nums", letterSpacing: locked ? ".04em" : undefined }} />
                   </div>
-                  {flags.contactUrl && (
+                  {flags.contactUrl && !locked && (
                     <span style={{ padding: "4px 2px", fontSize: 12, color: "var(--color-accent-2-900)", textAlign: "right" }}>
                       Forgot password?{" "}
                       <a href={flags.contactUrl} target="_blank" rel="noreferrer" style={{ color: "inherit" }}>Contact me</a>
@@ -127,7 +128,7 @@ function LoginDialog() {
                     <button className="btn btn-primary" type="submit">Sign in</button>
                   </div>
                 </form>
-                {flags.google && (
+                {flags.google && !locked && (
                   <>
                     <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, color: "var(--color-neutral-700)" }}>
                       <span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />or<span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />
