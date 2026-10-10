@@ -293,25 +293,27 @@ button { font: inherit; }
   .fv { grid-template-columns: minmax(0, 1fr); justify-items: center; padding: 32px 0; }
   .fv-copy { justify-self: stretch; }
 }
-/* Phones (design #2a): smaller title, no description, mini loop, one full-width CTA at the bottom of the screen. */
+/* Phones (design #2a): smaller title, no description, mini loop, one full-width CTA at the bottom of the screen.
+   Proportions are taken from a 393px-wide phone (iPhone 16) and scaled by --fv-u = 1px × width/393.
+   FirstView's fit script sets --fv-z (loop zoom) and --fv-gap (title→loop) so the CTA stays above the fold:
+   it squeezes the gap (down to 8px) before it shrinks the loop. */
 @media (max-width: 767px) {
   .fv {
-    display: flex; flex-direction: column; align-items: stretch; gap: 14px;
-    padding: 14px 4px 0; min-height: calc(100svh - 64px);
+    --fv-u: min(calc(100vw / 393), 1.12px);
+    display: flex; flex-direction: column; align-items: stretch; gap: calc(14 * var(--fv-u));
+    padding: calc(14 * var(--fv-u)) 4px 0; min-height: var(--fv-min, calc(100svh - 64px));
   }
-  .fv-copy { gap: 14px; }
-  .fv-tag { font-size: 12px; }
-  .fv-title { font-size: 32px; line-height: 1.1; }
+  .fv-copy { gap: calc(14 * var(--fv-u)); }
+  .fv-tag { font-size: max(11px, calc(12 * var(--fv-u))); }
+  .fv-title { font-size: calc(32 * var(--fv-u)); line-height: 1.1; }
   .fv-desc, .fv-cta-lg, .fv-loop-lg, .fv-only-lg { display: none; }
   .fv-only-sm { display: inline; }
-  .fv-loop-sm { display: block; margin: 44px auto 0; max-width: 100%; }
-  .fv-cta-sm { display: block; margin-top: auto; padding: 24px 0 calc(24px + env(safe-area-inset-bottom)); }
-}
-/* Short phones (iPhone SE, 375×667): 8px title→loop, loop scaled down so the CTA stays above the fold.
-   `zoom` (unlike transform) also shrinks the layout box. */
-@media (max-width: 767px) and (max-height: 740px) {
-  .fv-loop-sm { margin-top: calc(-6px / 0.84); zoom: 0.84; /* margin is zoomed too */ max-width: none; }
-  .fv-cta-sm { padding: 16px 0 calc(16px + env(safe-area-inset-bottom)); }
+  /* `zoom` (unlike transform) also scales the layout box; the margin is zoomed too, hence the division. */
+  .fv-loop-sm {
+    display: block; zoom: var(--fv-z, 1);
+    margin: calc((var(--fv-gap, 58px) - 14 * var(--fv-u)) / var(--fv-z, 1)) auto 0;
+  }
+  .fv-cta-sm { display: block; margin-top: auto; padding: calc(24 * var(--fv-u)) 0 calc(24 * var(--fv-u) + env(safe-area-inset-bottom)); }
 }
 
 /* ── Header on phones: logo + ☰ (design #2a) ───────────────────────────────── */

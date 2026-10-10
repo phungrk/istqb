@@ -1,14 +1,49 @@
 "use client";
 
 import Link from "next/link";
+import { useLayoutEffect, useRef } from "react";
+
+/**
+ * Phone fit, as a plain-JS body so the same code runs inline during SSR parsing (no flash before
+ * hydration) and from the layout effect. Reference: a 393px-wide phone, where the loop is 350px
+ * and sits 58px under the title. Fills the screen down to the CTA; when the height runs short it
+ * first squeezes the title→loop gap (down to 8px), then shrinks the loop.
+ */
+const FIT_JS = `
+var W = innerWidth, H = innerHeight, st = s.style;
+if (W > 767) { st.removeProperty("--fv-z"); st.removeProperty("--fv-gap"); st.removeProperty("--fv-min"); return; }
+var t = s.querySelector(".fv-title"), c = s.querySelector(".fv-cta-sm");
+if (!t || !c) return;
+var k = parseFloat(getComputedStyle(t).fontSize) / 32, y = scrollY;
+var top = s.getBoundingClientRect().top + y;
+var avail = H - (t.getBoundingClientRect().bottom + y) - c.offsetHeight;
+var z = Math.min(k, (s.clientWidth - 8) / 350), gap = 58 * k;
+if (avail < 350 * z + gap) { gap = Math.max(8, avail - 350 * z); if (avail < 350 * z + gap) z = Math.max(0.5, (avail - gap) / 350); }
+st.setProperty("--fv-z", z.toFixed(4));
+st.setProperty("--fv-gap", gap.toFixed(1) + "px");
+st.setProperty("--fv-min", Math.max(0, H - top) + "px");
+`;
 
 /**
  * Home first view, option 1c "Learn → Test → Fix" (design: First View Options #1c, phone #2a).
  * The loop's numbers are a static illustration for visitors, not the learner's own data.
  */
 export function FirstView() {
+  const ref = useRef<HTMLElement>(null);
+  useLayoutEffect(() => {
+    const s = ref.current;
+    if (!s) return;
+    // eslint-disable-next-line @typescript-eslint/no-implied-eval
+    const fit = new Function("s", FIT_JS) as (s: HTMLElement) => void;
+    const run = () => fit(s);
+    run();
+    document.fonts?.ready.then(run);
+    window.addEventListener("resize", run);
+    return () => window.removeEventListener("resize", run);
+  }, []);
+
   return (
-    <section className="fv" aria-labelledby="fv-title">
+    <section ref={ref} className="fv" aria-labelledby="fv-title" suppressHydrationWarning>
       <div className="fv-copy">
         <span className="tag tag-accent-2 fv-tag">
           <span className="fv-only-lg">ISTQB® CTFL · Syllabus v4.0.1</span>
@@ -27,6 +62,7 @@ export function FirstView() {
       <div className="fv-cta-sm">
         <Link href="/mindmap" className="btn btn-primary btn-block" style={{ fontSize: 16, minHeight: 48, marginTop: 0, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>Open Mindmap now</Link>
       </div>
+      <script dangerouslySetInnerHTML={{ __html: `(function(s){${FIT_JS}})(document.currentScript.parentElement)` }} />
     </section>
   );
 }
