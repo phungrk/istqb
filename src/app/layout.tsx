@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import "./organic.css";
 import "./app.css";
 import { AppProvider, type Initial } from "@/components/AppProvider";
@@ -34,9 +33,6 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <div style={{ minHeight: "100vh", background: "var(--color-bg)", color: "var(--color-text)", fontFamily: "var(--font-body)", paddingBottom: 96 }}>
             <Header />
             <main style={{ maxWidth: 1180, margin: "0 auto", padding: "0 28px" }}>{children}</main>
-            <footer style={{ maxWidth: 1180, margin: "64px auto 0", padding: "0 28px", fontSize: 13, color: "var(--color-neutral-700)" }}>
-              Questions or forgot your password? <Link href="/contact">Contact me</Link> · Anonymous usage (no names or emails) is recorded to improve the questions; Do Not Track is respected.
-            </footer>
             <Overlays />
           </div>
         </AppProvider>
