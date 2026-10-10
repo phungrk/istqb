@@ -29,8 +29,8 @@ export default function ResultPage() {
     <section style={{ display: "flex", flexDirection: "column", gap: 28, paddingTop: 24 }}>
       <div style={{ display: "flex", gap: 36, flexWrap: "wrap", alignItems: "center" }}>
         <div style={{ width: 220, height: 220, borderRadius: "50%", background: pass ? "var(--color-accent-2-200)" : "var(--color-accent-200)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: "none" }}>
-          <span style={{ fontFamily: "var(--font-heading)", fontSize: 64, lineHeight: 1, color: ringFg }}>{p}%</span>
-          <span style={{ fontSize: 14, fontWeight: 700, color: ringFg }}>{r.correct} / {r.total} correct</span>
+          <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-64)", lineHeight: 1, color: ringFg }}>{p}%</span>
+          <span style={{ fontSize: "var(--fs-14)", fontWeight: 700, color: ringFg }}>{r.correct} / {r.total} correct</span>
         </div>
         <div style={{ flex: "1 1 360px", display: "flex", flexDirection: "column", gap: 10 }}>
           <span className="card-kicker" style={{ color: "var(--color-accent-700)" }}>{r.set.title} · {r.mode === "mock" ? "Mock exam" : "Practice"}</span>
@@ -50,13 +50,13 @@ export default function ResultPage() {
 
       {!logged && (
         <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", background: "var(--color-accent-2-100)", borderRadius: 28, padding: "18px 22px" }}>
-          <span style={{ flex: "1 1 300px", fontSize: 15, color: "var(--color-accent-2-900)" }}>This result is not saved. Sign in to keep it and follow your progress.</span>
+          <span style={{ flex: "1 1 300px", fontSize: "var(--fs-15)", color: "var(--color-accent-2-900)" }}>This result is not saved. Sign in to keep it and follow your progress.</span>
           <button className="btn btn-primary" onClick={openLogin}>Save my result</button>
         </div>
       )}
-      {logged && r.saved && <span className="tag tag-accent-2" style={{ alignSelf: "flex-start", fontSize: 13, padding: "6px 14px" }}>Saved to your dashboard</span>}
+      {logged && r.saved && <span className="tag tag-accent-2" style={{ alignSelf: "flex-start", fontSize: "var(--fs-13)", padding: "6px 14px" }}>Saved to your dashboard</span>}
       {logged && !r.saved && !r.saveFailed && (
-        <span role="status" className="tag tag-neutral" style={{ alignSelf: "flex-start", fontSize: 13, padding: "6px 14px", display: "inline-flex", alignItems: "center", gap: 8 }}>
+        <span role="status" className="tag tag-neutral" style={{ alignSelf: "flex-start", fontSize: "var(--fs-13)", padding: "6px 14px", display: "inline-flex", alignItems: "center", gap: 8 }}>
           <Spinner /> Saving your result…
         </span>
       )}
@@ -66,7 +66,7 @@ export default function ResultPage() {
           <h4 style={{ margin: 0 }}>By chapter</h4>
           {Object.entries(r.perChapter).map(([c, [k, t]]) => (
             <div key={c} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 14, gap: 10 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "var(--fs-14)", gap: 10 }}>
                 <span>{c} · {chapterTitle(Number(c))}</span>
                 <span style={{ fontWeight: 700 }}>{k}/{t}</span>
               </div>
@@ -87,13 +87,13 @@ export default function ResultPage() {
                   <span aria-label={ok ? "Correct" : "Wrong"} style={{ width: 28, height: 28, borderRadius: "50%", flex: "none", display: "grid", placeItems: "center", background: ok ? "var(--color-accent-2-600)" : "var(--color-accent-600)", color: "var(--color-bg)" }}>
                     {ok ? <CheckIcon strokeWidth={3} /> : <XIcon strokeWidth={3} />}
                   </span>
-                  <span style={{ fontSize: 13, fontWeight: 700 }}>Q{i + 1} · Chapter {q.chapter}{q.lo ? ` · LO ${q.lo}` : ""}</span>
+                  <span style={{ fontSize: "var(--fs-13)", fontWeight: 700 }}>Q{i + 1} · Chapter {q.chapter}{q.lo ? ` · LO ${q.lo}` : ""}</span>
                 </div>
-                <Html html={q.stem} style={{ fontSize: 15 }} />
-                <span style={{ fontSize: 14, color: "var(--color-neutral-800)" }}>Your answer: {letters(a)} · Correct: {letters(q.answers)}</span>
+                <Html html={q.stem} style={{ fontSize: "var(--fs-15)" }} />
+                <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>Your answer: {letters(a)} · Correct: {letters(q.answers)}</span>
                 {!ok && (
                   <>
-                    <Html html={q.explanation} style={{ fontSize: 14, color: "var(--color-neutral-800)" }} />
+                    <Html html={q.explanation} style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }} />
                     {flags.pro && (
                       <button className="btn btn-ghost" onClick={() => askAI(q, a)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                         {tier === "pro" ? "Explain with AI coach" : "Explain with AI coach (Pro)"}

@@ -99,21 +99,21 @@ export default function MindmapPage() {
           <h1 style={{ margin: "0 0 6px" }}>Syllabus mindmap</h1>
           <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>Open a chapter, then pick a topic to see its memory hook, key terms, illustrations and exam traps.</p>
         </div>
-        {logged && <span className="tag tag-accent-2" style={{ fontSize: 13, padding: "6px 14px" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>}
+        {logged && <span className="tag tag-accent-2" style={{ fontSize: "var(--fs-13)", padding: "6px 14px" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>}
       </div>
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
         <div style={{ flex: "1 1 400px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 12 }}>
         {/* Tree controls live inside the tree panel, so it's clear they open and close the chapters below. */}
         <div role="toolbar" aria-label="Syllabus tree" aria-controls="syllabus-tree" style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", paddingBottom: 12, borderBottom: "1px solid var(--color-divider)" }}>
-          <span style={{ flex: "1 1 auto", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>Syllabus tree</span>
+          <span style={{ flex: "1 1 auto", fontSize: "var(--fs-12)", fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>Syllabus tree</span>
           {/* One toggle: expands everything, or collapses back to the chapters once everything is open. */}
           <button
             className="btn btn-ghost"
             aria-controls="syllabus-tree"
             aria-expanded={allOpen}
             onClick={() => setExpanded(allOpen ? { root: true } : Object.fromEntries(PARENTS.map((id) => [id, true])))}
-            style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, padding: "6px 12px" }}
+            style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: "var(--fs-13)", padding: "6px 12px" }}
           >
             {allOpen ? <ChevronRightIcon /> : <ChevronDownIcon />} {allOpen ? "Collapse all" : "Expand all"}
           </button>
@@ -149,9 +149,9 @@ export default function MindmapPage() {
                   style={{ display: "flex", alignItems: "center", gap: 8, border: `2px solid ${selected === id ? "var(--color-accent)" : "transparent"}`, background: st.bg, color: st.fg, fontFamily: st.font, fontSize: st.size, padding: "8px 16px", borderRadius: 999, cursor: "pointer", textAlign: "left", lineHeight: 1.25 }}
                 >
                   <span>{n.title}</span>
-                  {TOPICS[id]?.starred && <span title="Often on the exam" aria-label="Often on the exam" style={{ fontSize: 12 }}>⭐</span>}
+                  {TOPICS[id]?.starred && <span title="Often on the exam" aria-label="Often on the exam" style={{ fontSize: "var(--fs-12)" }}>⭐</span>}
                   {logged && learned[id] && <CheckIcon stroke="var(--color-accent-2-700)" />}
-                  {kids.length > 0 && !open && <span style={{ fontFamily: "var(--font-body)", fontSize: 12, opacity: 0.75 }}>{kids.length} topics</span>}
+                  {kids.length > 0 && !open && <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--fs-12)", opacity: 0.75 }}>{kids.length} topics</span>}
                 </button>
               </div>
             );
@@ -169,7 +169,7 @@ export default function MindmapPage() {
         >
           <div className="mm-sheet-bar">
             <span className="mm-sheet-handle" aria-hidden />
-            <button type="button" className="btn btn-ghost" onClick={closeSheet} aria-label="Close details" style={{ position: "absolute", right: 10, top: 6, padding: "6px 10px", display: "inline-flex", alignItems: "center", gap: 4, fontSize: 13 }}>
+            <button type="button" className="btn btn-ghost" onClick={closeSheet} aria-label="Close details" style={{ position: "absolute", right: 10, top: 6, padding: "6px 10px", display: "inline-flex", alignItems: "center", gap: 4, fontSize: "var(--fs-13)" }}>
               <XIcon /> Close
             </button>
           </div>
@@ -180,11 +180,11 @@ export default function MindmapPage() {
             {topic && selPal ? (
               <TopicView topic={topic} color={selPal.base} ink={selPal.ink} los={LO_BY_TOPIC[topic.id]} />
             ) : (
-              <p style={{ margin: 0, fontSize: 15, textWrap: "pretty" }}>{sel.summary}</p>
+              <p style={{ margin: 0, fontSize: "var(--fs-15)", textWrap: "pretty" }}>{sel.summary}</p>
             )}
             <div style={{ display: "flex", flexDirection: "column", gap: 10, marginTop: 4 }}>
               {sel.points.map((pt) => (
-                <div key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 14 }}>
+                <div key={pt} style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: "var(--fs-14)" }}>
                   <span style={{ width: 8, height: 8, borderRadius: "50%", background: "var(--color-accent)", marginTop: 7, flex: "none" }} />
                   <span>{pt}</span>
                 </div>
@@ -193,7 +193,7 @@ export default function MindmapPage() {
             {KIDS[selected] && (
               <div style={{ display: "flex", flexWrap: "wrap", gap: 8, marginTop: 6 }}>
                 {KIDS[selected].map((k) => (
-                  <button key={k} className="tag tag-neutral" onClick={() => openNode(k)} style={{ border: 0, cursor: "pointer", fontSize: 12, padding: "5px 12px" }}>{NODE[k].title}</button>
+                  <button key={k} className="tag tag-neutral" onClick={() => openNode(k)} style={{ border: 0, cursor: "pointer", fontSize: "var(--fs-12)", padding: "5px 12px" }}>{NODE[k].title}</button>
                 ))}
               </div>
             )}

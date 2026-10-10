@@ -32,7 +32,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         <AppProvider initial={initial}>
           <div style={{ minHeight: "100vh", background: "var(--color-bg)", color: "var(--color-text)", fontFamily: "var(--font-body)", paddingBottom: 96 }}>
             <Header />
-            <main style={{ maxWidth: 1180, margin: "0 auto", padding: "0 28px" }}>{children}</main>
+            <main className="page-gutter" style={{ maxWidth: 1180, margin: "0 auto", padding: "0 28px" }}>{children}</main>
             <Overlays />
           </div>
         </AppProvider>

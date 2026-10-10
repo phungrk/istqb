@@ -19,10 +19,10 @@ function Backdrop({ children, width, onClose }: { children: React.ReactNode; wid
   );
 }
 
-const googleRow = { display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "11px 16px", borderRadius: 999, border: "2px solid var(--color-divider)", background: "var(--color-bg)", cursor: "pointer", color: "var(--color-text)", fontWeight: 600, fontSize: 14 } as const;
+const googleRow = { display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "11px 16px", borderRadius: 999, border: "2px solid var(--color-divider)", background: "var(--color-bg)", cursor: "pointer", color: "var(--color-text)", fontWeight: 600, fontSize: "var(--fs-14)" } as const;
 
-const kicker = { fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--color-accent-2-700)" } as const;
-const panelTitle = { margin: 0, fontSize: 22, lineHeight: 1.2 } as const;
+const kicker = { fontSize: "var(--fs-11)", fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--color-accent-2-700)" } as const;
+const panelTitle = { margin: 0, fontSize: "var(--fs-22)", lineHeight: 1.2 } as const;
 
 type Creds = { username: string; password: string };
 
@@ -30,7 +30,7 @@ type Creds = { username: string; password: string };
 function GeneratePanel({ creds, onCreated }: { creds: Creds | null; onCreated: (c: Creds) => void }) {
   const { generateAccount, toast } = useApp();
   const [busy, setBusy] = useState(false);
-  const body = { margin: 0, fontSize: 13, lineHeight: 1.6, color: "var(--color-accent-2-800)" } as const;
+  const body = { margin: 0, fontSize: "var(--fs-13)", lineHeight: 1.6, color: "var(--color-accent-2-800)" } as const;
 
   return (
     <div style={{ background: "var(--color-accent-2-100)", justifyContent: "center" }}>
@@ -95,7 +95,7 @@ function LoginDialog() {
             <h2 id="login-title" style={panelTitle}>Sign in</h2>
             {user ? (
               <>
-                <p style={{ margin: 0, fontSize: 14, color: "var(--color-neutral-800)" }}>
+                <p style={{ margin: 0, fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>
                   Signed in as <strong>{user.handle}</strong>.
                 </p>
                 <div className="dialog-actions" style={{ marginTop: "auto" }}>
@@ -124,7 +124,7 @@ function LoginDialog() {
                     <PasswordInput key={locked ? "generated" : "typed"} defaultVisible={locked} id="login-pass" value={password} onChange={(e) => setPassword(e.target.value)} disabled={locked} placeholder="Enter password" autoComplete={locked ? "new-password" : "current-password"} style={{ minHeight: 44, fontVariantNumeric: "tabular-nums", letterSpacing: locked ? ".04em" : undefined }} />
                   </div>
                   {!locked && (
-                    <span style={{ padding: "4px 2px", fontSize: 12, color: "var(--color-accent-2-900)", textAlign: "right" }}>
+                    <span style={{ padding: "4px 2px", fontSize: "var(--fs-12)", color: "var(--color-accent-2-900)", textAlign: "right" }}>
                       Forgot password?{" "}
                       <Link href="/contact" onClick={closeDialog} style={{ color: "inherit" }}>Contact me</Link>
                     </span>
@@ -138,11 +138,11 @@ function LoginDialog() {
                 </form>
                 {flags.google && !locked && (
                   <>
-                    <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, color: "var(--color-neutral-700)" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>
                       <span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />or<span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />
                     </div>
                     <button className="hov-border-accent" onClick={loginGoogle} style={googleRow}>
-                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, color: "var(--color-accent)" }}>G</span>
+                      <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-16)", color: "var(--color-accent)" }}>G</span>
                       Continue with Google
                     </button>
                   </>
@@ -167,14 +167,14 @@ function CheckoutDialog() {
   const stripe = flags.payments === "stripe";
   return (
     <Backdrop width={460} onClose={closeDialog}>
-      <span className="dialog-title" style={{ fontSize: 24 }}>Upgrade to Pro</span>
+      <span className="dialog-title" style={{ fontSize: "var(--fs-24)" }}>Upgrade to Pro</span>
       <div style={{ display: "flex", gap: 10 }}>
         {opts.map(([k, label, price]) => {
           const on = billing === k;
           return (
             <button key={k} onClick={() => setBilling(k)} style={{ flex: 1, display: "flex", flexDirection: "column", gap: 2, textAlign: "left", padding: "14px 16px", borderRadius: 24, border: `2px solid ${on ? "var(--color-accent)" : "var(--color-divider)"}`, background: on ? "var(--color-accent-100)" : "var(--color-bg)", cursor: "pointer", color: "var(--color-text)" }}>
               <span style={{ fontWeight: 700 }}>{label}</span>
-              <span style={{ fontSize: 13, color: "var(--color-neutral-700)" }}>{price}</span>
+              <span style={{ fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>{price}</span>
             </button>
           );
         })}
@@ -213,7 +213,7 @@ function UpgradeDialog() {
   const router = useRouter();
   return (
     <Backdrop onClose={closeDialog}>
-      <span className="dialog-title" style={{ fontSize: 24 }}>Explanations by the AI coach are a Pro feature</span>
+      <span className="dialog-title" style={{ fontSize: "var(--fs-24)" }}>Explanations by the AI coach are a Pro feature</span>
       <span className="dialog-body">Pro adds a coach that explains why your answer was wrong, chats about any topic, plans your study week and writes questions for your weak chapters.</span>
       <div className="dialog-actions">
         <button className="btn btn-ghost" onClick={closeDialog}>Not now</button>
@@ -228,9 +228,9 @@ function DemoBar() {
   const tiers: [Tier, string][] = [["guest", "Guest"], ["member", "Member"], ...(flags.pro ? [["pro", "Pro"] as [Tier, string]] : [])];
   return (
     <div style={{ position: "fixed", right: 20, bottom: 20, display: "flex", alignItems: "center", gap: 6, background: "var(--color-neutral-900)", color: "var(--color-bg)", borderRadius: 999, padding: "6px 6px 6px 16px", zIndex: 40, boxShadow: "var(--shadow-lg)" }}>
-      <span style={{ fontSize: 12, fontWeight: 600, marginRight: 4 }}>Preview as</span>
+      <span style={{ fontSize: "var(--fs-12)", fontWeight: 600, marginRight: 4 }}>Preview as</span>
       {tiers.map(([k, label]) => (
-        <button key={k} onClick={() => setDemoTier(k)} style={{ border: 0, borderRadius: 999, padding: "6px 12px", fontSize: 12, fontWeight: 700, cursor: "pointer", background: tier === k ? "var(--color-accent)" : "transparent", color: "var(--color-bg)" }}>{label}</button>
+        <button key={k} onClick={() => setDemoTier(k)} style={{ border: 0, borderRadius: 999, padding: "6px 12px", fontSize: "var(--fs-12)", fontWeight: 700, cursor: "pointer", background: tier === k ? "var(--color-accent)" : "transparent", color: "var(--color-bg)" }}>{label}</button>
       ))}
     </div>
   );
@@ -245,7 +245,7 @@ export function Overlays() {
       {flags.pro && dialog === "checkout" && <CheckoutDialog />}
       {flags.pro && dialog === "upgrade" && <UpgradeDialog />}
       {toastText && (
-        <div role="status" style={{ position: "fixed", left: "50%", top: 20, transform: "translateX(-50%)", background: "var(--color-neutral-900)", color: "var(--color-bg)", borderRadius: 999, padding: "12px 22px", fontSize: 14, fontWeight: 600, zIndex: 60, boxShadow: "var(--shadow-lg)" }}>{toastText}</div>
+        <div role="status" style={{ position: "fixed", left: "50%", top: 20, transform: "translateX(-50%)", background: "var(--color-neutral-900)", color: "var(--color-bg)", borderRadius: 999, padding: "12px 22px", fontSize: "var(--fs-14)", fontWeight: 600, zIndex: 60, boxShadow: "var(--shadow-lg)" }}>{toastText}</div>
       )}
       {/* Tier switcher for local development only. */}
       {flags.devTools && <DemoBar />}

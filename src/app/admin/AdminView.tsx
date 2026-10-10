@@ -37,8 +37,8 @@ export function AdminView({ rows }: { rows: AdminRow[] }) {
         <div role="status" style={{ background: "var(--color-accent-2-100)", borderRadius: 24, padding: "16px 20px", display: "flex", alignItems: "center", gap: 16, flexWrap: "wrap", color: "var(--color-accent-2-900)" }}>
           <div style={{ flex: "1 1 260px", display: "flex", flexDirection: "column", gap: 4 }}>
             <strong>New password for {issued.username}</strong>
-            <span style={{ fontSize: 22, fontWeight: 700, letterSpacing: ".06em", fontVariantNumeric: "tabular-nums" }}>{issued.password}</span>
-            <span style={{ fontSize: 13 }}>Send it to the user now: it won&apos;t be shown again.</span>
+            <span style={{ fontSize: "var(--fs-22)", fontWeight: 700, letterSpacing: ".06em", fontVariantNumeric: "tabular-nums" }}>{issued.password}</span>
+            <span style={{ fontSize: "var(--fs-13)" }}>Send it to the user now: it won&apos;t be shown again.</span>
           </div>
           <button
             className="btn btn-secondary"
@@ -68,7 +68,7 @@ export function AdminView({ rows }: { rows: AdminRow[] }) {
                 <td style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{r.attempts}</td>
                 <td>{fmt(r.lastActive)}</td>
                 <td style={{ textAlign: "right" }}>
-                  <button className="btn btn-secondary" disabled={busy === r.username} onClick={() => reset(r.username)} style={{ fontSize: 13, padding: "6px 14px" }}>
+                  <button className="btn btn-secondary" disabled={busy === r.username} onClick={() => reset(r.username)} style={{ fontSize: "var(--fs-13)", padding: "6px 14px" }}>
                     {busy === r.username ? "Resetting…" : "Reset password"}
                   </button>
                 </td>

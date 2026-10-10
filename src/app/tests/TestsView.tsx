@@ -49,14 +49,14 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
         </div>
         <div role="radiogroup" aria-label="Mode" style={{ display: "flex", background: "var(--color-surface)", borderRadius: 999, padding: 4, gap: 4 }}>
           {MODES.map(([k, label]) => (
-            <button key={k} role="radio" aria-checked={mode === k} onClick={() => setMode(k)} style={{ border: 0, borderRadius: 999, padding: "9px 18px", fontWeight: 600, fontSize: 14, cursor: "pointer", background: mode === k ? "var(--color-accent)" : "transparent", color: mode === k ? "var(--color-bg)" : "var(--color-text)" }}>{label}</button>
+            <button key={k} role="radio" aria-checked={mode === k} onClick={() => setMode(k)} style={{ border: 0, borderRadius: 999, padding: "9px 18px", fontWeight: 600, fontSize: "var(--fs-14)", cursor: "pointer", background: mode === k ? "var(--color-accent)" : "transparent", color: mode === k ? "var(--color-bg)" : "var(--color-text)" }}>{label}</button>
           ))}
         </div>
       </div>
 
       {!logged && (
         <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", background: "var(--color-accent-2-100)", borderRadius: 28, padding: "16px 22px" }}>
-          <span style={{ flex: "1 1 300px", fontSize: 14, color: "var(--color-accent-2-900)", textWrap: "pretty" }}>
+          <span style={{ flex: "1 1 300px", fontSize: "var(--fs-14)", color: "var(--color-accent-2-900)", textWrap: "pretty" }}>
             You can take any test below now, but results are not saved. Create a free account to track your progress and unlock {memberTotal} level tests.
           </span>
           <button className="btn btn-secondary" onClick={openLogin}>Create a free account</button>
@@ -66,7 +66,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <div>
           <h2 style={{ margin: "0 0 4px" }}>By level</h2>
-          <p style={{ margin: 0, color: "var(--color-neutral-700)", fontSize: 14 }}>Questions from all six chapters in the real exam&apos;s proportions (8/6/4/11/9/2).</p>
+          <p style={{ margin: 0, color: "var(--color-neutral-700)", fontSize: "var(--fs-14)" }}>Questions from all six chapters in the real exam&apos;s proportions (8/6/4/11/9/2).</p>
         </div>
         {logged ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
@@ -83,9 +83,9 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
             return (
               <div key={size} className="card" style={{ padding: 24, gap: 10, background: "var(--color-surface)" }}>
                 <span className="card-kicker" style={{ color: "var(--color-accent-700)" }}>Level</span>
-                <span className="card-title" style={{ fontSize: 22 }}>{label}</span>
-                <span style={{ fontSize: 14, color: "var(--color-neutral-800)" }}>{LEVEL_SUB[size]}</span>
-                <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{mix(size)}</span>
+                <span className="card-title" style={{ fontSize: "var(--fs-22)" }}>{label}</span>
+                <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>{LEVEL_SUB[size]}</span>
+                <span style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>{mix(size)}</span>
                 <div style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", marginTop: "auto", paddingTop: 10 }}>
                   <span className="tag tag-neutral">{timing(size)}</span>
                   {b !== undefined && <span className="tag tag-accent-2">Best {b}%</span>}
@@ -99,8 +99,8 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
           {flags.pro && (
           <div className="card" style={{ padding: 24, gap: 10, background: "var(--color-accent-100)" }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>Pro · AI generated</span>
-            <span className="card-title" style={{ fontSize: 22 }}>A set built from your weak topics</span>
-            <span style={{ fontSize: 14, color: "var(--color-neutral-800)" }}>The coach writes new questions for the chapters where you score lowest.</span>
+            <span className="card-title" style={{ fontSize: "var(--fs-22)" }}>A set built from your weak topics</span>
+            <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>The coach writes new questions for the chapters where you score lowest.</span>
             <button
               className="btn btn-primary"
               onClick={() => { if (pro) { setCoachTab("quiz"); router.push("/coach"); } else router.push("/pricing"); }}
@@ -118,7 +118,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
       <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
         <div>
           <h2 style={{ margin: "0 0 4px" }}>By chapter</h2>
-          <p style={{ margin: 0, color: "var(--color-neutral-700)", fontSize: 14 }}>Pick a chapter and a length. Questions are drawn at random from that chapter.</p>
+          <p style={{ margin: 0, color: "var(--color-neutral-700)", fontSize: "var(--fs-14)" }}>Pick a chapter and a length. Questions are drawn at random from that chapter.</p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(300px,1fr))", gap: 16 }}>
           {CHAPTERS.map((c) => {
@@ -128,12 +128,12 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
             return (
               <div key={c.id} className="card" style={{ padding: 24, gap: 12, background: p.tint }}>
                 <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-                  <span style={{ width: 40, height: 40, flex: "none", borderRadius: "50%", background: p.base, color: "var(--color-bg)", display: "grid", placeItems: "center", fontFamily: "var(--font-heading)", fontSize: 18 }}>{c.id}</span>
-                  <span className="card-title" style={{ fontSize: 19, color: p.ink }}>{c.title}</span>
+                  <span style={{ width: 40, height: 40, flex: "none", borderRadius: "50%", background: p.base, color: "var(--color-bg)", display: "grid", placeItems: "center", fontFamily: "var(--font-heading)", fontSize: "var(--fs-18)" }}>{c.id}</span>
+                  <span className="card-title" style={{ fontSize: "var(--fs-19)", color: p.ink }}>{c.title}</span>
                 </div>
                 <div style={{ display: "flex", gap: 8, flexWrap: "wrap", alignItems: "center" }}>
                   <span className="tag tag-neutral">{avail} questions in the bank</span>
-                  <span style={{ fontSize: 12, color: p.ink }}>{c.q} on the exam</span>
+                  <span style={{ fontSize: "var(--fs-12)", color: p.ink }}>{c.q} on the exam</span>
                   {bests.length > 0 && <span className="tag tag-accent-2">Best {Math.max(...bests)}%</span>}
                 </div>
                 <div role="group" aria-label={`Start a Chapter ${c.id} test`} style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 8, marginTop: "auto" }}>
@@ -146,7 +146,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
                       style={{ border: `2px dashed ${p.ink}`, opacity: 0.6, display: "flex", flexDirection: "column", gap: 0, lineHeight: 1.15, padding: "8px 6px", minWidth: 0, color: p.ink }}
                     >
                       <span>{label}</span>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600 }}>Members</span>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--fs-12)", fontWeight: 600 }}>Members</span>
                     </button>
                   ) : (
                     <button
@@ -159,7 +159,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
                       style={{ background: "var(--color-bg)", display: "flex", flexDirection: "column", gap: 0, lineHeight: 1.15, padding: "8px 6px", minWidth: 0 }}
                     >
                       <span>{label}</span>
-                      <span style={{ fontFamily: "var(--font-body)", fontSize: 12, fontWeight: 600, color: "var(--color-neutral-700)" }}>
+                      <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--fs-12)", fontWeight: 600, color: "var(--color-neutral-700)" }}>
                         {loadingOf({ kind: "chapter", chapter: c.id, size }) ? <Spinner label="Loading" /> : `${size} questions`}
                       </span>
                     </button>
@@ -200,15 +200,15 @@ function LevelGroup({ size, label, sub, levels, best, loadingSet, onStart }: { s
       <div style={{ display: "flex", alignItems: "flex-start", gap: 16, flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 320px", display: "flex", flexDirection: "column", gap: 6 }}>
           <span className="card-kicker" style={{ color: "var(--color-accent-700)" }}>Level · {size} questions</span>
-          <span className="card-title" style={{ fontSize: 24 }}>{label}</span>
-          <span style={{ fontSize: 14, color: "var(--color-neutral-800)" }}>{sub}</span>
+          <span className="card-title" style={{ fontSize: "var(--fs-24)" }}>{label}</span>
+          <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>{sub}</span>
         </div>
         <div style={{ display: "flex", flexDirection: "column", alignItems: "flex-end", gap: 6 }}>
-          <span style={{ fontFamily: "var(--font-heading)", fontSize: 28, lineHeight: 1 }}>
-            {count} <span style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, color: "var(--color-neutral-700)" }}>tests</span>
+          <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-28)", lineHeight: 1 }}>
+            {count} <span style={{ fontFamily: "var(--font-body)", fontSize: "var(--fs-14)", fontWeight: 600, color: "var(--color-neutral-700)" }}>tests</span>
           </span>
           <span className="tag tag-neutral">{isLong ? `${count} quizzes` : `${levels.bankTotal} in bank ÷ ${size} = ${count}`}</span>
-          <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{done} of {count} taken</span>
+          <span style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>{done} of {count} taken</span>
         </div>
       </div>
       {count > 0 && (
@@ -228,8 +228,8 @@ function LevelGroup({ size, label, sub, levels, best, loadingSet, onStart }: { s
                   aria-label={`${isLong ? t.name : t.title}${has ? `, best ${t.best}%` : ", not taken yet"}`}
                   style={{ border: `2px solid ${has ? "var(--color-accent-2-300)" : "transparent"}`, background: has ? "var(--color-accent-2-100)" : "var(--color-bg)", borderRadius: 20, padding: "10px 8px", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 2, fontFamily: "var(--font-body)", color: "var(--color-text)" }}
                 >
-                  <span style={{ fontFamily: "var(--font-heading)", fontSize: 18 }}>{t.n}</span>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: has ? "var(--color-accent-2-800)" : "var(--color-neutral-700)" }}>{loadingSet === specKey(t.spec) ? <Spinner label="Loading" /> : has ? `Best ${t.best}%` : `${t.size}q`}</span>
+                  <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-18)" }}>{t.n}</span>
+                  <span style={{ fontSize: "var(--fs-12)", fontWeight: 600, color: has ? "var(--color-accent-2-800)" : "var(--color-neutral-700)" }}>{loadingSet === specKey(t.spec) ? <Spinner label="Loading" /> : has ? `Best ${t.best}%` : `${t.size}q`}</span>
                 </button>
               );
             })}

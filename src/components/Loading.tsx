@@ -7,7 +7,7 @@ export function Spinner({ label }: { label?: string }) {
 export function PageLoading({ label = "Loading…", blocks = 3 }: { label?: string; blocks?: number }) {
   return (
     <section aria-busy="true" style={{ display: "flex", flexDirection: "column", gap: 20, paddingTop: 28 }}>
-      <span role="status" style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 14, color: "var(--color-neutral-700)" }}>
+      <span role="status" style={{ display: "flex", alignItems: "center", gap: 10, fontSize: "var(--fs-14)", color: "var(--color-neutral-700)" }}>
         <span className="spinner" aria-hidden /> {label}
       </span>
       <span className="skeleton" style={{ height: 44, width: "min(420px, 70%)" }} />

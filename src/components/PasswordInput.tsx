@@ -26,7 +26,7 @@ export function PasswordInput({ defaultVisible = false, style, className = "inpu
       </button>
     </span>
     {accented && (
-      <span role="alert" style={{ display: "block", marginTop: 6, fontSize: 12, color: "var(--color-accent-800)" }}>
+      <span role="alert" style={{ display: "block", marginTop: 6, fontSize: "var(--fs-12)", color: "var(--color-accent-800)" }}>
         Accented letters detected — Vietnamese typing (Telex/VNI) may be on. Turn it off and retype.
       </span>
     )}

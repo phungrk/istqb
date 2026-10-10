@@ -17,7 +17,7 @@ export function AdminTabs({ tab, tabs }: { tab: string; tabs: readonly (readonly
           key={key}
           href={`/admin?tab=${key}`}
           aria-current={tab === key ? "page" : undefined}
-          style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px", borderRadius: 999, fontWeight: 600, fontSize: 14, textDecoration: "none", background: tab === key ? "var(--color-accent-200)" : "transparent", color: tab === key ? "var(--color-accent-900)" : "var(--color-text)" }}
+          style={{ display: "inline-flex", alignItems: "center", gap: 8, padding: "8px 16px", borderRadius: 999, fontWeight: 600, fontSize: "var(--fs-14)", textDecoration: "none", background: tab === key ? "var(--color-accent-200)" : "transparent", color: tab === key ? "var(--color-accent-900)" : "var(--color-text)" }}
         >
           {label}
           <PendingSpinner />

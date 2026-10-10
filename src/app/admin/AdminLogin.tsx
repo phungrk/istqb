@@ -15,15 +15,15 @@ export function AdminLogin({ configured, signedInAs }: { configured: boolean; si
     <section style={{ display: "flex", justifyContent: "center", paddingTop: 48 }}>
       <div className="card" style={{ width: "min(420px, 100%)", padding: 32, gap: 14, background: "var(--color-neutral-100)" }}>
         <span className="card-kicker" style={{ color: "var(--color-accent-700)" }}>Admin</span>
-        <h1 style={{ margin: 0, fontSize: 28 }}>Sign in to manage accounts</h1>
+        <h1 style={{ margin: 0, fontSize: "var(--fs-28)" }}>Sign in to manage accounts</h1>
         {!configured ? (
-          <p style={{ margin: 0, fontSize: 14, color: "var(--color-neutral-800)" }}>
+          <p style={{ margin: 0, fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>
             Admin isn&apos;t set up on this deployment. Add <code>ADMIN_USERNAME</code> and <code>ADMIN_PASSWORD</code> to the
             environment variables (Production), then redeploy.
           </p>
         ) : signedInAs ? (
           <>
-            <p style={{ margin: 0, fontSize: 14, color: "var(--color-neutral-800)" }}>
+            <p style={{ margin: 0, fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>
               You&apos;re signed in as <strong>{signedInAs}</strong>, which isn&apos;t the admin account. Sign out first, then sign in as admin.
             </p>
             <button className="btn btn-primary" style={{ alignSelf: "flex-start" }} onClick={() => void signOut()}>Sign out</button>

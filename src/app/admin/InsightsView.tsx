@@ -21,9 +21,9 @@ const num = (n: number) => n.toLocaleString();
 function Tile({ label, value, sub }: { label: string; value: string; sub?: string }) {
   return (
     <div style={{ background: "var(--color-neutral-100)", borderRadius: 24, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 2, minWidth: 0 }}>
-      <span style={{ fontSize: 12, fontWeight: 700, letterSpacing: ".04em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>{label}</span>
-      <span style={{ fontFamily: "var(--font-heading)", fontSize: 30, lineHeight: 1.1, fontVariantNumeric: "tabular-nums" }}>{value}</span>
-      {sub && <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{sub}</span>}
+      <span style={{ fontSize: "var(--fs-12)", fontWeight: 700, letterSpacing: ".04em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>{label}</span>
+      <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-30)", lineHeight: 1.1, fontVariantNumeric: "tabular-nums" }}>{value}</span>
+      {sub && <span style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>{sub}</span>}
     </div>
   );
 }
@@ -74,7 +74,7 @@ export function InsightsView({ data }: { data: Insights }) {
           <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>
             Anonymous usage from the last {data.days} days · {num(data.events)} events. Visitors with Do Not Track on are not counted.
           </p>
-          <p style={{ margin: "4px 0 0", fontSize: 12, color: "var(--color-neutral-700)" }}>
+          <p style={{ margin: "4px 0 0", fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>
             Event files are merged nightly (00:17 UTC).{" "}
             <button type="button" onClick={compact} disabled={compacting} style={{ background: "none", border: 0, padding: 0, font: "inherit", color: "var(--color-accent-700)", textDecoration: "underline", cursor: "pointer" }}>
               {compacting ? "Merging…" : "Merge now"}
@@ -84,7 +84,7 @@ export function InsightsView({ data }: { data: Insights }) {
         <div role="group" aria-label="Time range" style={{ display: "flex", background: "var(--color-surface)", borderRadius: 999, padding: 4, gap: 4 }}>
           {[7, 30, 90].map((d) => (
             <Link key={d} href={`/admin?tab=insights&days=${d}`} aria-current={d === data.days ? "true" : undefined}
-              style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", borderRadius: 999, fontSize: 13, fontWeight: 600, textDecoration: "none", background: d === data.days ? "var(--color-text)" : "transparent", color: d === data.days ? "var(--color-bg)" : "var(--color-text)" }}>
+              style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", borderRadius: 999, fontSize: "var(--fs-13)", fontWeight: 600, textDecoration: "none", background: d === data.days ? "var(--color-text)" : "transparent", color: d === data.days ? "var(--color-bg)" : "var(--color-text)" }}>
               {d} days <PendingSpinner />
             </Link>
           ))}
@@ -101,20 +101,20 @@ export function InsightsView({ data }: { data: Insights }) {
 
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: 16 }}>
         <div style={{ ...card, ...section }}>
-          <h2 style={{ margin: 0, fontSize: 20 }}>Funnel</h2>
+          <h2 style={{ margin: 0, fontSize: "var(--fs-20)" }}>Funnel</h2>
           {data.funnel.map((f) => (
-            <div key={f.label} style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 54px 44px", gap: 10, alignItems: "center", fontSize: 14 }}>
+            <div key={f.label} style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 54px 44px", gap: 10, alignItems: "center", fontSize: "var(--fs-14)" }}>
               <span style={{ display: "flex", flexDirection: "column", gap: 4, minWidth: 0 }}>
                 <span>{f.label}</span>
                 <Meter share={f.n / top} title={`${f.label}: ${f.n} of ${data.funnel[0].n} visitors`} />
               </span>
               <span style={{ textAlign: "right", fontWeight: 700, fontVariantNumeric: "tabular-nums" }}>{num(f.n)}</span>
-              <span style={{ textAlign: "right", fontSize: 12, color: "var(--color-neutral-700)", fontVariantNumeric: "tabular-nums" }}>{pct(f.n / top)}</span>
+              <span style={{ textAlign: "right", fontSize: "var(--fs-12)", color: "var(--color-neutral-700)", fontVariantNumeric: "tabular-nums" }}>{pct(f.n / top)}</span>
             </div>
           ))}
         </div>
         <div style={{ ...card, ...section }}>
-          <h2 style={{ margin: 0, fontSize: 20 }}>Visitors per day</h2>
+          <h2 style={{ margin: 0, fontSize: "var(--fs-20)" }}>Visitors per day</h2>
           <div role="img" aria-label="Visitors per day" style={{ display: "flex", alignItems: "flex-end", gap: 4, height: 140 }}>
             {data.daily.map((d) => (
               <span key={d.day} title={`${d.day}: ${d.visitors} visitors, ${d.submitted} tests finished`} style={{ flex: 1, height: "100%", display: "flex", alignItems: "flex-end" }}>
@@ -122,13 +122,13 @@ export function InsightsView({ data }: { data: Insights }) {
               </span>
             ))}
           </div>
-          <div style={{ display: "flex", justifyContent: "space-between", fontSize: 11, color: "var(--color-neutral-700)" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", fontSize: "var(--fs-11)", color: "var(--color-neutral-700)" }}>
             <span>{data.daily[0]?.day.slice(5)}</span>
             <span>{data.daily.at(-1)?.day.slice(5)}</span>
           </div>
           <details>
-            <summary style={{ cursor: "pointer", fontSize: 13, color: "var(--color-neutral-700)" }}>Show as table</summary>
-            <table className="table" style={{ width: "100%", fontSize: 13, marginTop: 8 }}>
+            <summary style={{ cursor: "pointer", fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>Show as table</summary>
+            <table className="table" style={{ width: "100%", fontSize: "var(--fs-13)", marginTop: 8 }}>
               <thead><tr><th style={{ textAlign: "left" }}>Day</th><th style={{ textAlign: "right" }}>Visitors</th><th style={{ textAlign: "right" }}>Tests finished</th></tr></thead>
               <tbody>{data.daily.map((d) => <tr key={d.day}><td>{d.day}</td><td style={{ textAlign: "right" }}>{d.visitors}</td><td style={{ textAlign: "right" }}>{d.submitted}</td></tr>)}</tbody>
             </table>
@@ -139,12 +139,12 @@ export function InsightsView({ data }: { data: Insights }) {
       <div style={section}>
         <div style={{ display: "flex", alignItems: "flex-end", gap: 12, flexWrap: "wrap" }}>
           <div style={{ flex: "1 1 320px" }}>
-            <h2 style={{ margin: "0 0 4px", fontSize: 22 }}>Questions</h2>
-            <p style={{ margin: 0, fontSize: 13, color: "var(--color-neutral-700)" }}>
+            <h2 style={{ margin: "0 0 4px", fontSize: "var(--fs-22)" }}>Questions</h2>
+            <p style={{ margin: 0, fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>
               From finished tests, re-scored on the server. Flags need at least 10 answers. <strong>Correct</strong> = share answering right; <strong>Discrimination</strong> &gt; 0.2 is healthy, below 0 means strong learners miss it.
             </p>
           </div>
-          <label style={{ display: "flex", alignItems: "center", gap: 6, fontSize: 13, fontWeight: 600 }}>
+          <label style={{ display: "flex", alignItems: "center", gap: 6, fontSize: "var(--fs-13)", fontWeight: 600 }}>
             <input type="checkbox" checked={flaggedOnly} onChange={(e) => setFlaggedOnly(e.target.checked)} /> Flagged only
           </label>
           <select className="input" value={chapter} onChange={(e) => setChapter(Number(e.target.value))} aria-label="Chapter" style={{ minHeight: 38, width: 140 }}>
@@ -158,15 +158,15 @@ export function InsightsView({ data }: { data: Insights }) {
         ) : (
           <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
             {shown.slice(0, 200).map((s) => <QuestionRow key={s.id} s={s} />)}
-            {shown.length > 200 && <p style={{ fontSize: 13, color: "var(--color-neutral-700)" }}>Showing 200 of {shown.length}. Narrow the filter to see more.</p>}
+            {shown.length > 200 && <p style={{ fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>Showing 200 of {shown.length}. Narrow the filter to see more.</p>}
           </div>
         )}
       </div>
 
       <div style={section}>
-        <h2 style={{ margin: 0, fontSize: 22 }}>Mindmap topics</h2>
+        <h2 style={{ margin: 0, fontSize: "var(--fs-22)" }}>Mindmap topics</h2>
         <div style={{ ...card, overflowX: "auto" }}>
-          <table className="table" style={{ width: "100%", minWidth: 520, fontSize: 14 }}>
+          <table className="table" style={{ width: "100%", minWidth: 520, fontSize: "var(--fs-14)" }}>
             <thead><tr><th style={{ textAlign: "left" }}>Topic</th><th style={{ textAlign: "right" }}>Opened</th><th style={{ textAlign: "right" }}>Marked learned</th><th style={{ textAlign: "right" }}>Syllabus LOs opened</th></tr></thead>
             <tbody>
               {data.topics.map((t) => (
@@ -186,43 +186,43 @@ function QuestionRow({ s }: { s: QuestionStat }) {
     <details style={{ background: "var(--color-neutral-100)", borderRadius: 20, padding: "12px 16px", border: strong ? "2px solid var(--color-accent-400)" : "2px solid transparent" }}>
       <summary style={{ cursor: "pointer", display: "grid", gridTemplateColumns: "minmax(0, 1fr) auto", gap: 12, alignItems: "center" }}>
         <span style={{ display: "flex", flexDirection: "column", gap: 4, minWidth: 0 }}>
-          <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>
+          <span style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>
             <strong style={{ color: "var(--color-text)" }}>{s.id}</strong> · Ch {s.chapter}{s.lo ? ` · LO ${s.lo}` : ""}
           </span>
-          <span style={{ fontSize: 14, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.stem}</span>
+          <span style={{ fontSize: "var(--fs-14)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{s.stem}</span>
           {s.flags.length > 0 && (
             <span style={{ display: "flex", gap: 6, flexWrap: "wrap" }}>
               {s.flags.map((f) => (
-                <span key={f} title={FLAG[f].tip} className={FLAG[f].strong ? "tag tag-accent" : "tag tag-neutral"} style={{ fontSize: 11, padding: "2px 9px" }}>
+                <span key={f} title={FLAG[f].tip} className={FLAG[f].strong ? "tag tag-accent" : "tag tag-neutral"} style={{ fontSize: "var(--fs-11)", padding: "2px 9px" }}>
                   {FLAG[f].strong ? "⚠ " : ""}{FLAG[f].label}
                 </span>
               ))}
             </span>
           )}
         </span>
-        <span style={{ display: "grid", gridTemplateColumns: "repeat(3, auto)", gap: "0 16px", fontSize: 12, textAlign: "right", color: "var(--color-neutral-700)" }}>
+        <span style={{ display: "grid", gridTemplateColumns: "repeat(3, auto)", gap: "0 16px", fontSize: "var(--fs-12)", textAlign: "right", color: "var(--color-neutral-700)" }}>
           <span>Answers</span><span>Correct</span><span>Discrim.</span>
-          <strong style={{ fontSize: 15, color: "var(--color-text)" }}>{s.n}</strong>
-          <strong style={{ fontSize: 15, color: "var(--color-text)" }}>{pct(s.p)}</strong>
-          <strong style={{ fontSize: 15, color: "var(--color-text)" }}>{s.r === null ? "—" : s.r.toFixed(2)}</strong>
+          <strong style={{ fontSize: "var(--fs-15)", color: "var(--color-text)" }}>{s.n}</strong>
+          <strong style={{ fontSize: "var(--fs-15)", color: "var(--color-text)" }}>{pct(s.p)}</strong>
+          <strong style={{ fontSize: "var(--fs-15)", color: "var(--color-text)" }}>{s.r === null ? "—" : s.r.toFixed(2)}</strong>
         </span>
       </summary>
       <div style={{ display: "flex", flexDirection: "column", gap: 8, marginTop: 12 }}>
-        <p style={{ margin: 0, fontSize: 14 }}>{s.stem}</p>
+        <p style={{ margin: 0, fontSize: "var(--fs-14)" }}>{s.stem}</p>
         {s.options.map((o, i) => {
           const right = s.correct.includes(i);
           const share = s.n ? s.picks[i] / s.n : 0;
           return (
-            <div key={i} style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 120px 70px", gap: 10, alignItems: "center", fontSize: 13 }}>
+            <div key={i} style={{ display: "grid", gridTemplateColumns: "minmax(0, 1fr) 120px 70px", gap: 10, alignItems: "center", fontSize: "var(--fs-13)" }}>
               <span>
-                <strong>{"ABCDE"[i]}.</strong> {o} {right && <span className="tag tag-accent-2" style={{ fontSize: 10, padding: "1px 7px" }}>✓ correct</span>}
+                <strong>{"ABCDE"[i]}.</strong> {o} {right && <span className="tag tag-accent-2" style={{ fontSize: "var(--fs-10)", padding: "1px 7px" }}>✓ correct</span>}
               </span>
               <Meter share={share} tone={right ? "good" : "muted"} title={`${"ABCDE"[i]}: picked by ${s.picks[i]} of ${s.n}`} />
               <span style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{s.picks[i]} · {pct(share)}</span>
             </div>
           );
         })}
-        <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>
+        <span style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>
           Left blank: {s.blank} · Median time: {s.medianSec === null ? "—" : `${Math.round(s.medianSec)}s`}
         </span>
       </div>

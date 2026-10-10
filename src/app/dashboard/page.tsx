@@ -15,8 +15,8 @@ export default function DashboardPage() {
       <section style={{ display: "flex", flexDirection: "column", gap: 28, paddingTop: 24 }}>
         <div style={{ maxWidth: 560, display: "flex", flexDirection: "column", gap: 14, padding: "40px 0" }}>
           <h1 style={{ margin: 0 }}>Your progress lives here</h1>
-          <p style={{ margin: 0, fontSize: 17, color: "var(--color-neutral-800)" }}>Sign in to save every attempt, see your score trend and find your weakest chapters. It&apos;s free.</p>
-          <button className="btn btn-primary" onClick={openLogin} style={{ alignSelf: "flex-start", fontSize: 16, padding: "12px 22px" }}>Sign in</button>
+          <p style={{ margin: 0, fontSize: "var(--fs-17)", color: "var(--color-neutral-800)" }}>Sign in to save every attempt, see your score trend and find your weakest chapters. It&apos;s free.</p>
+          <button className="btn btn-primary" onClick={openLogin} style={{ alignSelf: "flex-start", fontSize: "var(--fs-16)", padding: "12px 22px" }}>Sign in</button>
         </div>
       </section>
     );
@@ -49,8 +49,8 @@ export default function DashboardPage() {
       <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(180px,1fr))", gap: 16 }}>
         {stats.map((s) => (
           <div key={s.label} style={{ background: s.bg, borderRadius: 28, padding: 22, display: "flex", flexDirection: "column", gap: 4 }}>
-            <span style={{ fontSize: 13, fontWeight: 600, color: "var(--color-neutral-800)" }}>{s.label}</span>
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: 38, lineHeight: 1.1 }}>{s.value}</span>
+            <span style={{ fontSize: "var(--fs-13)", fontWeight: 600, color: "var(--color-neutral-800)" }}>{s.label}</span>
+            <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-38)", lineHeight: 1.1 }}>{s.value}</span>
           </div>
         ))}
       </div>
@@ -59,7 +59,7 @@ export default function DashboardPage() {
         <div style={{ ...panel, flex: "1 1 480px", minWidth: 0, background: "var(--color-neutral-100)", gap: 16 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 10, flexWrap: "wrap" }}>
             <h4 style={{ margin: 0 }}>Score trend</h4>
-            <span style={{ fontSize: 13, color: "var(--color-neutral-700)" }}>Dashed line = {passMark}% pass mark</span>
+            <span style={{ fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>Dashed line = {passMark}% pass mark</span>
           </div>
           <div style={{ position: "relative", height: 200, display: "flex", alignItems: "flex-end", gap: 12, paddingTop: 10 }}>
             <div style={{ position: "absolute", left: 0, right: 0, bottom: passMark * 1.6, borderTop: "2px dashed var(--color-accent-2-600)" }} />
@@ -67,19 +67,19 @@ export default function DashboardPage() {
               const p = pct(a);
               return (
                 <div key={a.id} style={{ flex: 1, maxWidth: 64, display: "flex", flexDirection: "column", alignItems: "center", gap: 6, height: "100%", justifyContent: "flex-end" }}>
-                  <span style={{ fontSize: 12, fontWeight: 700 }}>{p}%</span>
+                  <span style={{ fontSize: "var(--fs-12)", fontWeight: 700 }}>{p}%</span>
                   <div style={{ width: "100%", height: Math.max(6, p * 1.6), borderRadius: "999px 999px 12px 12px", background: p >= passMark ? "var(--color-accent-2-500)" : "var(--color-accent-400)" }} />
                 </div>
               );
             })}
           </div>
-          {!at.length && <span style={{ fontSize: 14, color: "var(--color-neutral-700)" }}>Take a test to see your trend.</span>}
+          {!at.length && <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-700)" }}>Take a test to see your trend.</span>}
         </div>
         <div style={{ ...panel, flex: "0 1 380px", minWidth: 280, background: "var(--color-surface)", gap: 14 }}>
           <h4 style={{ margin: 0 }}>Mastery by chapter</h4>
           {mastery(attempts).map((c) => (
             <div key={c.id} style={{ display: "flex", flexDirection: "column", gap: 5 }}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 10, fontSize: 13 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", gap: 10, fontSize: "var(--fs-13)" }}>
                 <span>{c.id} · {c.title}</span>
                 <span style={{ fontWeight: 700 }}>{c.pct === null ? "—" : c.pct + "%"}</span>
               </div>
@@ -117,18 +117,18 @@ export default function DashboardPage() {
         <div style={{ flex: "0 1 380px", minWidth: 280, display: "flex", flexDirection: "column", gap: 16 }}>
           <div style={{ background: "var(--color-accent-2-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-2-800)" }}>Mindmap progress</span>
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: 26 }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>
+            <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-26)" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>
             <button className="btn btn-ghost" onClick={() => router.push("/mindmap")} style={{ alignSelf: "flex-start", color: "var(--color-accent-2-800)" }}>Continue studying</button>
           </div>
           {!flags.pro ? (
             <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
               <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>AI coach</span>
-              <span style={{ fontSize: 15, color: "var(--color-neutral-700)" }}>Coming soon</span>
+              <span style={{ fontSize: "var(--fs-15)", color: "var(--color-neutral-700)" }}>Coming soon</span>
             </div>
           ) : (
           <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>AI coach</span>
-            <span style={{ fontSize: 15 }}>Weakest right now: <strong>Chapter {weak[0].id} · {weak[0].title}</strong></span>
+            <span style={{ fontSize: "var(--fs-15)" }}>Weakest right now: <strong>Chapter {weak[0].id} · {weak[0].title}</strong></span>
             <button
               className="btn btn-primary"
               onClick={() => { if (tier === "pro") { setCoachTab("plan"); router.push("/coach"); } else router.push("/pricing"); }}

@@ -183,3 +183,98 @@ button { font: inherit; }
 .spinner { display: inline-block; width: 1em; height: 1em; flex: none; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: tp-spin .7s linear infinite; vertical-align: -0.15em; }
 .skeleton { background: var(--color-neutral-200); border-radius: 20px; animation: tp-pulse 1.4s ease-in-out infinite; }
 @media (prefers-reduced-motion: reduce) { .spinner { animation-duration: 2s; } .skeleton { animation: none; } }
+
+/* ── Type scale ────────────────────────────────────────────────────────────────
+ * Components size text with var(--fs-N), N = the desktop size in px. On phones the
+ * scale steps up: captions/labels 12–14px, body 16–18px, headings 20px and up,
+ * line-height 1.4–1.6 for running text. */
+:root {
+  --fs-10: 10px;
+  --fs-11: 11px;
+  --fs-12: 12px;
+  --fs-13: 13px;
+  --fs-14: 14px;
+  --fs-15: 15px;
+  --fs-16: 16px;
+  --fs-17: 17px;
+  --fs-18: 18px;
+  --fs-19: 19px;
+  --fs-20: 20px;
+  --fs-21: 21px;
+  --fs-22: 22px;
+  --fs-24: 24px;
+  --fs-26: 26px;
+  --fs-28: 28px;
+  --fs-30: 30px;
+  --fs-38: 38px;
+  --fs-40: 40px;
+  --fs-44: 44px;
+  --fs-56: 56px;
+  --fs-64: 64px;
+  --fs-72: 72px;
+}
+@media (max-width: 640px) {
+  :root {
+    --fs-10: 12px;
+    --fs-11: 12px;
+    --fs-12: 12px;
+    --fs-13: 14px;
+    --fs-14: 16px;
+    --fs-15: 16px;
+    --fs-16: 17px;
+    --fs-17: 18px;
+    --fs-18: 18px;
+    --fs-19: 20px;
+    --fs-20: 20px;
+    --fs-21: 21px;
+    --fs-22: 22px;
+    --fs-24: 24px;
+    --fs-26: 24px;
+    --fs-28: 26px;
+    --fs-30: 28px;
+    --fs-38: 30px;
+    --fs-40: 32px;
+    --fs-44: 32px;
+    --fs-56: 40px;
+    --fs-64: 44px;
+    --fs-72: 48px;
+  }
+
+  /* Design-system classes */
+  body { font-size: 16px; line-height: 1.55; }
+  h1 { font-size: 30px; line-height: 1.2; }
+  h2 { font-size: 24px; line-height: 1.25; }
+  h3 { font-size: 22px; line-height: 1.3; }
+  h4 { font-size: 20px; line-height: 1.3; }
+  h5 { font-size: 18px; }
+  h6 { font-size: 14px; }
+  .field label { font-size: 14px; }
+  .input { font-size: 16px; } /* 16px also stops iOS zooming into fields */
+  .btn { font-size: 15px; }
+  .tag { font-size: 12px; }
+  .card-kicker { font-size: 12px; }
+  .card-title { font-size: 20px; }
+  .card-body { font-size: 16px; line-height: 1.5; }
+  .table { font-size: 16px; }
+  .table th { font-size: 12px; }
+  .dialog-title { font-size: 22px; }
+  .dialog-body { font-size: 16px; line-height: 1.5; }
+  .qhtml .cap { font-size: 13px; }
+
+  /* Mindmap topic content */
+  .topic { font-size: 16px; }
+  .topic .hook .lbl, .topic .trap .lbl, .topic .b-label, .topic .lo-sec, .topic .lo-src, .topic .lo-k, .topic .kg, .topic .qh, .topic .qrow { font-size: 12px; }
+  .topic .hook p { font-size: 20px; line-height: 1.4; }
+  .topic .b-p, .topic .b-rows li, .topic .lo-body, .topic .vc, .topic .wp-r { font-size: 16px; line-height: 1.55; }
+  .topic .b-f, .topic .fc, .topic .kwc, .topic .wp-n, .topic .lo-id, .topic .qn, .topic .kn, .topic .tm, .topic .cmp, .topic .wp-t, .topic .wp-c { font-size: 14px; line-height: 1.45; }
+  .topic .gc .gd, .topic .tcc .tb, .topic .tcc .cv, .topic .b-svg .cap, .topic .qk span { font-size: 12px; line-height: 1.4; }
+  .topic .gc .gt, .topic .vc .vt, .topic .tcc .th { font-size: 18px; }
+  .topic .b-syl summary { line-height: 1.45; }
+}
+
+/* Phones: a 16px page gutter and tighter cards leave room for 16–18px text. */
+@media (max-width: 640px) {
+  .page-gutter { padding-left: 16px !important; padding-right: 16px !important; }
+  .exam-card { padding: 20px !important; border-radius: 24px !important; }
+  .exam-option { border-radius: 24px !important; padding: 10px 14px 10px 10px !important; gap: 12px !important; }
+}

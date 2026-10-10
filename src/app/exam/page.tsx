@@ -85,7 +85,7 @@ export default function ExamPage() {
       <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
         <button className="btn btn-ghost" onClick={() => { abandon(); setExam(null); router.push("/tests"); }}>Leave test</button>
         <h3 style={{ margin: 0, flex: "1 1 240px" }}>{e.set.title}</h3>
-        <span className="tag tag-accent-2" style={{ fontSize: 13, padding: "5px 14px" }}>{practice ? "Practice · instant feedback" : "Mock exam · timed"}</span>
+        <span className="tag tag-accent-2" style={{ fontSize: "var(--fs-13)", padding: "5px 14px" }}>{practice ? "Practice · instant feedback" : "Mock exam · timed"}</span>
         {timed && (
           <span role="timer" style={{ display: "flex", alignItems: "center", gap: 8, background: lowTime ? "var(--color-accent-200)" : "var(--color-surface)", color: lowTime ? "var(--color-accent-900)" : "var(--color-text)", borderRadius: 999, padding: "7px 16px", fontWeight: 700, fontVariantNumeric: "tabular-nums" }}>
             <ClockIcon />
@@ -96,13 +96,13 @@ export default function ExamPage() {
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
         <div style={{ flex: "1 1 560px", minWidth: 0, display: "flex", flexDirection: "column", gap: 18 }}>
-          <div style={{ background: "var(--color-neutral-100)", borderRadius: 32, padding: 32, display: "flex", flexDirection: "column", gap: 20 }}>
+          <div className="exam-card" style={{ background: "var(--color-neutral-100)", borderRadius: 32, padding: 32, display: "flex", flexDirection: "column", gap: 20 }}>
             <div style={{ display: "flex", gap: 10, alignItems: "center", flexWrap: "wrap" }}>
-              <span style={{ fontSize: 14, fontWeight: 700 }}>Question {e.idx + 1} of {total}</span>
+              <span style={{ fontSize: "var(--fs-14)", fontWeight: 700 }}>Question {e.idx + 1} of {total}</span>
               <span className="tag tag-neutral">Chapter {q.chapter} · {chapterTitle(q.chapter)}{q.lo ? ` · LO ${q.lo}` : ""}</span>
               {need > 1 && <span className="tag tag-accent">Select {need} answers</span>}
             </div>
-            <Html html={q.stem} style={{ fontSize: 18, lineHeight: 1.5, textWrap: "pretty" }} />
+            <Html html={q.stem} style={{ fontSize: "var(--fs-18)", lineHeight: 1.5 }} />
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {q.options.map((text, i) => {
                 let bg = "var(--color-bg)", bd = "var(--color-divider)", dBg = "var(--color-surface)", dFg = "var(--color-text)";
@@ -112,8 +112,8 @@ export default function ExamPage() {
                   else if (isChosen) { bg = "var(--color-accent-100)"; bd = "var(--color-accent-600)"; dBg = "var(--color-accent-600)"; dFg = "var(--color-bg)"; }
                 } else if (isChosen) { bg = "var(--color-accent-100)"; bd = "var(--color-accent)"; dBg = "var(--color-accent)"; dFg = "var(--color-bg)"; }
                 return (
-                  <button key={i} className="hov-shadow-sm" aria-pressed={isChosen} onClick={() => pick(i)}
-                    style={{ display: "flex", alignItems: "center", gap: 14, textAlign: "left", padding: "12px 18px 12px 12px", borderRadius: 999, background: bg, border: `2px solid ${bd}`, cursor: reveal ? "default" : "pointer", color: "var(--color-text)", fontSize: 15 }}>
+                  <button key={i} aria-pressed={isChosen} onClick={() => pick(i)}
+                    className="hov-shadow-sm exam-option" style={{ display: "flex", alignItems: "center", gap: 14, textAlign: "left", padding: "12px 18px 12px 12px", borderRadius: 999, background: bg, border: `2px solid ${bd}`, cursor: reveal ? "default" : "pointer", color: "var(--color-text)", fontSize: "var(--fs-15)" }}>
                     <span style={{ width: 34, height: 34, flex: "none", borderRadius: need > 1 ? 10 : "50%", display: "grid", placeItems: "center", fontWeight: 700, background: dBg, color: dFg }}>{LETTERS[i]}</span>
                     <Html as="span" className="opt-html" html={text} />
                   </button>
@@ -122,8 +122,8 @@ export default function ExamPage() {
             </div>
             {reveal && (
               <div style={{ borderRadius: 24, padding: "20px 22px", background: right ? "var(--color-accent-2-100)" : "var(--color-accent-100)", display: "flex", flexDirection: "column", gap: 8 }}>
-                <span style={{ fontFamily: "var(--font-heading)", fontSize: 18, color: right ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>{right ? "Correct" : "Not quite"}</span>
-                <Html html={q.explanation} style={{ fontSize: 15, color: "var(--color-neutral-900)" }} />
+                <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-18)", color: right ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>{right ? "Correct" : "Not quite"}</span>
+                <Html html={q.explanation} style={{ fontSize: "var(--fs-15)", color: "var(--color-neutral-900)" }} />
                 {flags.pro && (
                   <button className="btn btn-ghost" onClick={() => askAI(q, chosen)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                     <SparklesIcon />
@@ -141,7 +141,7 @@ export default function ExamPage() {
         </div>
 
         <aside style={{ flex: "0 1 280px", minWidth: 240, background: "var(--color-surface)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 14 }}>
-          <span style={{ fontWeight: 700, fontSize: 14 }}>{Object.keys(e.answers).length} of {total} answered</span>
+          <span style={{ fontWeight: 700, fontSize: "var(--fs-14)" }}>{Object.keys(e.answers).length} of {total} answered</span>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 8 }}>
             {e.set.questions.map((qq, i) => {
               const a = e.answers[i];
@@ -150,7 +150,7 @@ export default function ExamPage() {
               if (a?.length) bg = practice && done ? (isCorrect(qq, a) ? "var(--color-accent-2-300)" : "var(--color-accent-300)") : "var(--color-accent-200)";
               if (i === e.idx) { bg = "var(--color-text)"; fg = "var(--color-bg)"; }
               return (
-                <button key={i} aria-label={`Question ${i + 1}`} aria-current={i === e.idx} onClick={() => go(i)} style={{ aspectRatio: "1", borderRadius: "50%", border: 0, cursor: "pointer", fontWeight: 700, fontSize: 13, background: bg, color: fg }}>{i + 1}</button>
+                <button key={i} aria-label={`Question ${i + 1}`} aria-current={i === e.idx} onClick={() => go(i)} style={{ aspectRatio: "1", borderRadius: "50%", border: 0, cursor: "pointer", fontWeight: 700, fontSize: "var(--fs-13)", background: bg, color: fg }}>{i + 1}</button>
               );
             })}
           </div>
