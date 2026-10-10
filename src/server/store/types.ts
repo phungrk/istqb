@@ -18,6 +18,19 @@ export type NewAttempt = Omit<Attempt, "id" | "createdAt"> & {
   createdAt?: string;
 };
 
+/** One anonymous usage event (see src/lib/track.ts and /api/events). */
+export type UsageEvent = {
+  /** Event type, e.g. "page_view", "topic_open", "exam_submit". */
+  t: string;
+  /** Server time, ISO. */
+  ts: string;
+  /** Random per-browser id; never an email or IP. */
+  anon: string;
+  /** Signed-in user, when known. */
+  uid?: string;
+  [key: string]: unknown;
+};
+
 export interface Store {
   getUserById(id: string): Promise<User | null>;
   getUserByEmail(email: string): Promise<User | null>;
@@ -35,4 +48,8 @@ export interface Store {
   addAttempt(userId: string, attempt: NewAttempt): Promise<Attempt>;
   listLearned(userId: string): Promise<string[]>;
   setLearned(userId: string, nodeId: string, learned: boolean): Promise<void>;
+  /** Appends a batch of usage events (all from the same request). */
+  addEvents(events: UsageEvent[]): Promise<void>;
+  /** Events with ts >= since, oldest first. */
+  listEvents(since: Date): Promise<UsageEvent[]>;
 }

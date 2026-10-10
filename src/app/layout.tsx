@@ -35,7 +35,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Header />
             <main style={{ maxWidth: 1180, margin: "0 auto", padding: "0 28px" }}>{children}</main>
             <footer style={{ maxWidth: 1180, margin: "64px auto 0", padding: "0 28px", fontSize: 13, color: "var(--color-neutral-700)" }}>
-              Questions or forgot your password? <Link href="/contact">Contact me</Link>
+              Questions or forgot your password? <Link href="/contact">Contact me</Link> · Anonymous usage (no names or emails) is recorded to improve the questions; Do Not Track is respected.
             </footer>
             <Overlays />
           </div>

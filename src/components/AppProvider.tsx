@@ -4,6 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import { usePathname, useRouter } from "next/navigation";
 import { signIn as googleSignIn, signOut as googleSignOut } from "next-auth/react";
 import { NODE, chapterTitle } from "@/lib/syllabus";
+import { track, flushNow } from "@/lib/track";
 import { htmlToText, score, type Answers, type Mode, type Question, type SetSpec } from "@/lib/questions";
 import { weakest, type Attempt } from "@/lib/stats";
 
@@ -76,6 +77,12 @@ async function postJson<T>(url: string, body?: unknown): Promise<{ ok: boolean; 
 function useAppState(initial: Initial) {
   const router = useRouter();
   const pathname = usePathname();
+  useEffect(() => track("page_view", { path: pathname }), [pathname]);
+  /** Milliseconds spent on each question of the running exam (for item timing in Insights). */
+  const examTimes = useRef<Record<number, number>>({});
+  const noteTime = useCallback((idx: number, ms: number) => {
+    examTimes.current[idx] = (examTimes.current[idx] ?? 0) + Math.min(ms, 600_000);
+  }, []);
   const { flags } = initial;
 
   const [user, setUser] = useState(initial.user);
@@ -170,6 +177,7 @@ function useAppState(initial: Initial) {
       const { ok, data } = await postJson<{ error?: string; username?: string; admin?: boolean }>("/api/account/login", { username, password });
       if (!ok) return toast(data.error || "Could not sign in");
       savePassword(data.admin || !data.username ? null : { u: data.username, p: password });
+      if (!data.admin) track("login");
       setDialog(pending === "checkout" ? "checkout" : null);
       setPending(null);
       toast("Signed in as " + data.username);
@@ -185,6 +193,7 @@ function useAppState(initial: Initial) {
       toast(data.error || "Could not create an account");
       return null;
     }
+    track("signup");
     return { username: data.username, password: data.password };
   }, [toast]);
 
@@ -234,6 +243,8 @@ function useAppState(initial: Initial) {
     (set: ExamSet, m: Mode = mode) => {
       setMode(m);
       setExam({ set, mode: m, idx: 0, answers: {}, started: Date.now() });
+      examTimes.current = {};
+      track("exam_start", { set: set.spec ? set.key : "ai", mode: m, n: set.questions.length });
       router.push("/exam");
     },
     [mode, router, setExam],
@@ -260,6 +271,13 @@ function useAppState(initial: Initial) {
   const submit = useCallback(() => {
     if (!exam) return;
     const s = score(exam.set.questions, exam.answers);
+    track("exam_submit", {
+      set: exam.set.spec ? exam.set.key : "ai",
+      mode: exam.mode,
+      sec: Math.round((Date.now() - exam.started) / 1000),
+      items: exam.set.questions.map((q, i) => ({ q: q.id, c: exam.answers[i] ?? [], ms: Math.round(examTimes.current[i] ?? 0) })),
+    });
+    flushNow();
     setResult({
       set: exam.set,
       mode: exam.mode,
@@ -290,6 +308,7 @@ function useAppState(initial: Initial) {
     (id: string) => {
       const next = !learned[id];
       setLearned((l) => ({ ...l, [id]: next }));
+      track("topic_learned", { topic: id, learned: next });
       void postJson("/api/learned", { nodeId: id, learned: next }).then(({ ok }) => {
         if (!ok) {
           setLearned((l) => ({ ...l, [id]: !next }));
@@ -348,7 +367,7 @@ function useAppState(initial: Initial) {
 
   return {
     flags, user, tier, attempts, learned, hydrated,
-    mode, setMode, exam, setExam, result, startExam, startSet, retry, submit,
+    mode, setMode, exam, setExam, noteTime, result, startExam, startSet, retry, submit,
     dialog, setDialog, pending, setPending, openLogin, closeDialog, loginPassword, generateAccount, loginGoogle, signOut, setDemoTier, upgrade,
     toastText, toast,
     expanded, setExpanded, selected, setSelected, openNode, toggleLearned,

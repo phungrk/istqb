@@ -58,7 +58,7 @@ function syllabusHtml(los: LoExcerpt[]): string {
       else { flush(); body += `<p>${x.html}</p>`; }
     }
     flush();
-    return `<details class="lo"${i === 0 ? " open" : ""}><summary><span class="lo-id">FL-${e.lo}</span><span class="lo-k">${e.k}</span><span class="lo-st">${e.statement}</span></summary><div class="lo-body"><div class="lo-sec">Syllabus ${E(e.section)}</div>${body}</div></details>`;
+    return `<details class="lo"${i === 0 ? " open data-auto" : ""}><summary><span class="lo-id">FL-${e.lo}</span><span class="lo-k">${e.k}</span><span class="lo-st">${e.statement}</span></summary><div class="lo-body"><div class="lo-sec">Syllabus ${E(e.section)}</div>${body}</div></details>`;
   };
   return `<div class="b-syl"><div class="b-label">📘 Syllabus · learning objectives</div>${los.map(lo).join("")}<p class="lo-src">Quoted from the ISTQB® CTFL Syllabus v4.0.1. Highlighted: the exam-deciding phrases behind this topic's key terms.</p></div>`;
 }

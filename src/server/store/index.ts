@@ -2,7 +2,7 @@ import "server-only";
 import { config } from "../config";
 import type { Store } from "./types";
 
-export type { Store, User, Plan, NewAttempt } from "./types";
+export type { Store, User, Plan, NewAttempt, UsageEvent } from "./types";
 
 let store: Promise<Store> | null = null;
 

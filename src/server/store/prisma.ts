@@ -3,7 +3,7 @@ import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient, type Attempt as DbAttempt, type User as DbUser } from "@/generated/prisma/client";
 import type { Attempt } from "@/lib/stats";
 import type { PerChapter } from "@/lib/questions";
-import type { Store, User } from "./types";
+import type { Store, UsageEvent, User } from "./types";
 
 const g = globalThis as unknown as { prisma?: PrismaClient };
 const prisma = (g.prisma ??= new PrismaClient({ adapter: new PrismaPg({ connectionString: process.env.DATABASE_URL }) }));
@@ -89,5 +89,14 @@ export const prismaStore: Store = {
   async setLearned(userId, nodeId, learned) {
     if (learned) await prisma.learnedTopic.upsert({ where: { userId_nodeId: { userId, nodeId } }, update: {}, create: { userId, nodeId } });
     else await prisma.learnedTopic.deleteMany({ where: { userId, nodeId } });
+  },
+  async addEvents(events) {
+    await prisma.event.createMany({
+      data: events.map(({ t, ts, anon, uid, ...data }) => ({ type: t, ts: new Date(ts), anon, userId: uid ?? null, data: data as object })),
+    });
+  },
+  async listEvents(since) {
+    const rows = await prisma.event.findMany({ where: { ts: { gte: since } }, orderBy: { ts: "asc" } });
+    return rows.map((r) => ({ ...(r.data as object), t: r.type, ts: r.ts.toISOString(), anon: r.anon, ...(r.userId ? { uid: r.userId } : {}) }) as UsageEvent);
   },
 };

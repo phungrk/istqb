@@ -2,12 +2,13 @@ import "server-only";
 import { promises as fs } from "fs";
 import path from "path";
 import type { Attempt } from "@/lib/stats";
-import type { NewAttempt, Store, User } from "./types";
+import type { NewAttempt, Store, UsageEvent, User } from "./types";
 
 /** Demo-mode store: one JSON file under .data/. Not for production. */
 type Db = { users: (User & { passwordHash?: string })[]; attempts: (Attempt & { userId: string })[]; learned: { userId: string; nodeId: string }[] };
 
 const FILE = path.join(process.cwd(), ".data", "demo-db.json");
+const EVENTS = path.join(process.cwd(), ".data", "events.ndjson");
 
 // Read the file on every call: Next.js bundles routes separately, so an
 // in-memory copy would go stale between the API routes and the pages.
@@ -116,5 +117,14 @@ export const fileStore: Store = {
       db.learned = db.learned.filter((l) => !(l.userId === userId && l.nodeId === nodeId));
       if (learned) db.learned.push({ userId, nodeId });
     });
+  },
+  async addEvents(events) {
+    await fs.mkdir(path.dirname(EVENTS), { recursive: true });
+    await fs.appendFile(EVENTS, events.map((e) => JSON.stringify(e) + "\n").join(""));
+  },
+  async listEvents(since) {
+    const text = await fs.readFile(EVENTS, "utf8").catch(() => "");
+    const from = since.toISOString();
+    return text.split("\n").flatMap((l) => (l ? [JSON.parse(l) as UsageEvent] : [])).filter((e) => e.ts >= from);
   },
 };

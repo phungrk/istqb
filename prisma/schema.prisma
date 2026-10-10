@@ -59,3 +59,15 @@ model LearnedTopic {
 
   @@id([userId, nodeId])
 }
+
+/// Anonymous usage events for /admin → Insights. `data` holds the event's own fields.
+model Event {
+  id     String   @id @default(cuid())
+  ts     DateTime
+  type   String
+  anon   String
+  userId String?
+  data   Json
+
+  @@index([ts])
+}

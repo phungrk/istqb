@@ -28,6 +28,15 @@ export function tierOf(user: User | null): Tier {
   return "member";
 }
 
+/** The signed-in username account's id from the cookie alone (no store lookup). For cheap tagging, not for auth. */
+export async function sessionUserId(): Promise<string | null> {
+  const raw = (await cookies()).get(COOKIE)?.value;
+  if (!raw) return null;
+  const [id, mac] = raw.split(".");
+  const expected = sign(id);
+  return mac && mac.length === expected.length && timingSafeEqual(Buffer.from(mac), Buffer.from(expected)) ? Buffer.from(id, "base64url").toString() : null;
+}
+
 /** Username/password session first, then Google (Auth.js) when configured. */
 export async function getCurrentUser(): Promise<User | null> {
   const store = await getStore();

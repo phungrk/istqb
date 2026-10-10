@@ -1,10 +1,11 @@
 "use client";
 
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useApp } from "@/components/AppProvider";
 import { CheckIcon, ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
 import { TopicView, type LoExcerpt } from "@/components/TopicView";
 import syllabusLo from "@data/syllabus-lo.json";
+import { track } from "@/lib/track";
 import { CHAPTERS, KIDS, NODE, NODES, STUDY_IDS, TOPICS, chapterOf, depthOf, palette } from "@/lib/syllabus";
 
 type Row = { id: string; depth: number };
@@ -33,8 +34,24 @@ export default function MindmapPage() {
   // On narrow screens the panel sits below the tree: bring it into view.
   const select = (id: string) => {
     setSelected(id);
+    if (TOPICS[id]) track("topic_open", { topic: id });
     if (window.matchMedia("(max-width: 900px)").matches) requestAnimationFrame(() => detail.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
   };
+  // Opening a syllabus LO in the detail panel (the <details> come from TopicView's HTML).
+  useEffect(() => {
+    const el = detail.current;
+    if (!el) return;
+    // The first LO starts open and fires one "toggle" on render: that one isn't the learner's doing.
+    const auto = new WeakSet<Element>();
+    const onToggle = (ev: Event) => {
+      const d = ev.target as HTMLDetailsElement;
+      if (d.hasAttribute?.("data-auto") && !auto.has(d)) return void auto.add(d);
+      const lo = d.classList?.contains("lo") && d.open ? d.querySelector(".lo-id")?.textContent?.replace("FL-", "") : null;
+      if (lo && TOPICS[selected]) track("lo_expand", { topic: selected, lo });
+    };
+    el.addEventListener("toggle", onToggle, true);
+    return () => el.removeEventListener("toggle", onToggle, true);
+  }, [selected]);
   const learnedCount = STUDY_IDS.filter((id) => learned[id]).length;
   const topic = TOPICS[selected];
   const selPal = selCh ? palette(selCh) : null;

@@ -1,7 +1,7 @@
 import "server-only";
 import { GetObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client, S3ServiceException } from "@aws-sdk/client-s3";
 import type { Attempt } from "@/lib/stats";
-import type { NewAttempt, Store, User } from "./types";
+import type { NewAttempt, Store, UsageEvent, User } from "./types";
 
 /*
  * Cloudflare R2 (S3-compatible object storage) used as a small document store:
@@ -12,6 +12,7 @@ import type { NewAttempt, Store, User } from "./types";
  *   index/stripe/{customer}.json    { id }   lookup for the Stripe webhook
  *   attempts/{userId}.json          Attempt[]
  *   learned/{userId}.json           string[] of mindmap topic ids
+ *   events/{YYYY-MM-DD}/{ts}-{rand}.ndjson   one batch of usage events (append-only)
  *
  * Writes are conditional: an index is created with If-None-Match: * (so a username
  * can't be claimed twice), and read-modify-write updates use If-Match on the ETag
@@ -155,5 +156,31 @@ export const r2Store: Store = {
       if (learned && i < 0) list.push(nodeId);
       if (!learned && i >= 0) list.splice(i, 1);
     });
+  },
+  async addEvents(events) {
+    if (!events.length) return;
+    const day = events[0].ts.slice(0, 10);
+    const key = `events/${day}/${Date.now()}-${crypto.randomUUID().slice(0, 8)}.ndjson`;
+    await s3.send(new PutObjectCommand({ Bucket: bucket, Key: key, Body: events.map((e) => JSON.stringify(e)).join("\n"), ContentType: "application/x-ndjson" }));
+  },
+  async listEvents(since) {
+    const keys: string[] = [];
+    for (let d = new Date(since.toISOString().slice(0, 10)); d <= new Date(); d = new Date(d.getTime() + 864e5)) {
+      let token: string | undefined;
+      do {
+        const res = await s3.send(new ListObjectsV2Command({ Bucket: bucket, Prefix: `events/${d.toISOString().slice(0, 10)}/`, ContinuationToken: token }));
+        for (const o of res.Contents ?? []) keys.push(o.Key!);
+        token = res.IsTruncated ? res.NextContinuationToken : undefined;
+      } while (token);
+    }
+    const out: UsageEvent[] = [];
+    for (let i = 0; i < keys.length; i += 32) {
+      const bodies = await Promise.all(
+        keys.slice(i, i + 32).map(async (Key) => (await s3.send(new GetObjectCommand({ Bucket: bucket, Key }))).Body!.transformToString()),
+      );
+      for (const b of bodies) for (const l of b.split("\n")) if (l) out.push(JSON.parse(l) as UsageEvent);
+    }
+    const from = since.toISOString();
+    return out.filter((e) => e.ts >= from).sort((a, b) => (a.ts < b.ts ? -1 : 1));
   },
 };

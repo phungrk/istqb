@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { track } from "@/lib/track";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { ClockIcon, SparklesIcon } from "@/components/icons";
@@ -11,7 +12,7 @@ import { formatClock } from "@/lib/stats";
 
 export default function ExamPage() {
   const router = useRouter();
-  const { exam, setExam, submit, askAI, tier, hydrated, flags } = useApp();
+  const { exam, setExam, noteTime, submit, askAI, tier, hydrated, flags } = useApp();
   const [now, setNow] = useState(() => Date.now());
 
   // Only on arrival: after Submit/Leave the exam is cleared while navigating away.
@@ -19,6 +20,27 @@ export default function ExamPage() {
     if (hydrated && !exam) router.replace("/tests");
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hydrated]);
+
+  // Time on each question, for item timing in Insights.
+  const idx = exam?.idx;
+  useEffect(() => {
+    if (idx === undefined) return;
+    const start = Date.now();
+    return () => noteTime(idx, Date.now() - start);
+  }, [idx, noteTime]);
+
+  // Leaving mid-test (Leave button, or closing the tab) counts as abandoning it.
+  const abandon = () => {
+    if (!exam) return;
+    track("exam_abandon", { set: exam.set.spec ? exam.set.key : "ai", at: exam.idx, answered: Object.keys(exam.answers).length, n: exam.set.questions.length });
+  };
+  const abandonRef = useRef(abandon);
+  abandonRef.current = abandon;
+  useEffect(() => {
+    const onHide = () => abandonRef.current();
+    addEventListener("pagehide", onHide);
+    return () => removeEventListener("pagehide", onHide);
+  }, []);
 
   const timed = exam?.mode === "mock";
   const left = exam ? exam.set.minutes * 60 - (now - exam.started) / 1000 : 0;
@@ -61,7 +83,7 @@ export default function ExamPage() {
   return (
     <section style={{ display: "flex", flexDirection: "column", gap: 22, paddingTop: 20 }}>
       <div style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap" }}>
-        <button className="btn btn-ghost" onClick={() => { setExam(null); router.push("/tests"); }}>Leave test</button>
+        <button className="btn btn-ghost" onClick={() => { abandon(); setExam(null); router.push("/tests"); }}>Leave test</button>
         <h3 style={{ margin: 0, flex: "1 1 240px" }}>{e.set.title}</h3>
         <span className="tag tag-accent-2" style={{ fontSize: 13, padding: "5px 14px" }}>{practice ? "Practice · instant feedback" : "Mock exam · timed"}</span>
         {timed && (
