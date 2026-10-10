@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useApp } from "@/components/AppProvider";
+import { PasswordInput } from "@/components/PasswordInput";
 
 export function AdminLogin({ configured, signedInAs }: { configured: boolean; signedInAs: string | null }) {
   const { loginPassword, signOut, toast } = useApp();
@@ -40,7 +41,7 @@ export function AdminLogin({ configured, signedInAs }: { configured: boolean; si
             </div>
             <div className="field">
               <label htmlFor="admin-pass">Password</label>
-              <input id="admin-pass" className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" style={{ minHeight: 44 }} />
+              <PasswordInput id="admin-pass" value={password} onChange={(e) => setPassword(e.target.value)} autoComplete="current-password" style={{ minHeight: 44 }} />
             </div>
             <button className="btn btn-primary" type="submit" style={{ alignSelf: "flex-start", marginTop: 4 }}>Sign in</button>
           </form>

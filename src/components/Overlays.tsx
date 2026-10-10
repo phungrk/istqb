@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp, type Tier } from "./AppProvider";
+import { PasswordInput } from "./PasswordInput";
 
 const stop = (e: React.MouseEvent) => e.stopPropagation();
 
@@ -116,7 +117,7 @@ function LoginDialog() {
                   <div className="field">
                     <label htmlFor="login-pass">Password</label>
                     {/* A generated password is shown in clear so it can be read and written down. */}
-                    <input id="login-pass" className="input" type={locked ? "text" : "password"} value={password} onChange={(e) => setPassword(e.target.value)} disabled={locked} placeholder="Enter password" autoComplete={locked ? "new-password" : "current-password"} style={{ minHeight: 44, fontVariantNumeric: "tabular-nums", letterSpacing: locked ? ".04em" : undefined }} />
+                    <PasswordInput key={locked ? "generated" : "typed"} defaultVisible={locked} id="login-pass" value={password} onChange={(e) => setPassword(e.target.value)} disabled={locked} placeholder="Enter password" autoComplete={locked ? "new-password" : "current-password"} style={{ minHeight: 44, fontVariantNumeric: "tabular-nums", letterSpacing: locked ? ".04em" : undefined }} />
                   </div>
                   {!locked && (
                     <span style={{ padding: "4px 2px", fontSize: 12, color: "var(--color-accent-2-900)", textAlign: "right" }}>
