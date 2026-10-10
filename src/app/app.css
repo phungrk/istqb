@@ -307,6 +307,12 @@ button { font: inherit; }
   .fv-loop-sm { display: block; margin: 44px auto 0; max-width: 100%; }
   .fv-cta-sm { display: block; margin-top: auto; padding: 24px 0 calc(24px + env(safe-area-inset-bottom)); }
 }
+/* Short phones (iPhone SE, 375×667): 8px title→loop, loop scaled down so the CTA stays above the fold.
+   `zoom` (unlike transform) also shrinks the layout box. */
+@media (max-width: 767px) and (max-height: 740px) {
+  .fv-loop-sm { margin-top: calc(-6px / 0.84); zoom: 0.84; /* margin is zoomed too */ max-width: none; }
+  .fv-cta-sm { padding: 16px 0 calc(16px + env(safe-area-inset-bottom)); }
+}
 
 /* ── Header on phones: logo + ☰ (design #2a) ───────────────────────────────── */
 .hdr-burger { display: none; }
