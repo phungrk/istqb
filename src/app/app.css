@@ -141,7 +141,8 @@ button { font: inherit; }
     transition: transform .28s cubic-bezier(.2, .8, .2, 1), visibility 0s linear .28s;
   }
   .mm-detail.is-open { transform: none; visibility: visible; transition: transform .28s cubic-bezier(.2, .8, .2, 1); }
-  .mm-detail > .card { border-radius: 0; box-shadow: none; padding-top: 8px !important; }
+  /* Side padding halved from 28px so content gets the width. */
+  .mm-detail > .card { border-radius: 0; box-shadow: none; padding: 8px 14px 28px !important; }
   .mm-sheet-bar { display: block; position: sticky; top: 0; z-index: 1; height: 48px; background: var(--color-surface); border-radius: 28px 28px 0 0; }
   .mm-sheet-handle { position: absolute; left: 50%; top: 10px; width: 44px; height: 5px; margin-left: -22px; border-radius: 999px; background: var(--color-neutral-400); }
   .mm-sheet-backdrop { display: block; position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--color-neutral-900) 45%, transparent); }
