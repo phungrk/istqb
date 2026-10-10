@@ -21,6 +21,11 @@ export const config = {
   appUrl: process.env.APP_URL ?? "http://localhost:3000",
   /** "Forgot password? Contact me" link in the sign-in dialog (mailto: or https:). Hidden when unset. */
   contactUrl: process.env.CONTACT_URL || null,
+  /** The site owner's sign-in for /admin. Both must be set; the password lives only in the environment. */
+  admin:
+    process.env.ADMIN_USERNAME && process.env.ADMIN_PASSWORD
+      ? { username: process.env.ADMIN_USERNAME.trim().toLowerCase(), password: process.env.ADMIN_PASSWORD }
+      : null,
   /** Generated accounts: user001 … user100. */
   generatedAccounts: { prefix: "user", max: Number(process.env.GENERATED_ACCOUNT_LIMIT ?? 100) },
 };

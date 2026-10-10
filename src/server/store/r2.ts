@@ -123,6 +123,12 @@ export const r2Store: Store = {
     if (await put(`index/email/${enc(email)}.json`, { id: user.id }, { ifNoneMatch: "*" })) return pub(user)!;
     return pub(await userByIndex("email", email))!; // lost a race: use the account created first
   },
+  async setPasswordHash(userId, passwordHash) {
+    await update<StoredUser | null, void>(`users/${userId}.json`, null, (u) => {
+      if (!u) throw new Error("User not found");
+      u.passwordHash = passwordHash;
+    });
+  },
   async updateUser(id, patch) {
     const user = await update<StoredUser | null, StoredUser>(`users/${id}.json`, null, (u) => {
       if (!u) throw new Error("User not found");

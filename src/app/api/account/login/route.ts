@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { getStore } from "@/server/store";
-import { startSession, verifyPassword } from "@/server/session";
+import { adminSignIn, startSession, verifyPassword } from "@/server/session";
+import { config } from "@/server/config";
 
 const Body = z.object({ username: z.string().trim().toLowerCase().min(1).max(64), password: z.string().min(1).max(200) });
 
@@ -15,8 +16,11 @@ export async function POST(req: Request) {
   const f = failures.get(username);
   if (f && f.until > Date.now()) return Response.json({ error: "Too many attempts. Try again in a few minutes." }, { status: 429 });
 
-  const creds = await (await getStore()).getCredentials(username);
-  if (!creds || !(await verifyPassword(password, creds.passwordHash))) {
+  const creds =
+    config.admin && username === config.admin.username
+      ? await adminSignIn(username, password).then((user) => user && { user })
+      : await (await getStore()).getCredentials(username).then(async (c) => (c && (await verifyPassword(password, c.passwordHash)) ? c : null));
+  if (!creds) {
     const n = (f && f.until > Date.now() - 600_000 ? f.n : 0) + 1;
     failures.set(username, { n, until: n >= 5 ? Date.now() + 600_000 : 0 });
     return Response.json({ error: "Wrong username or password" }, { status: 401 });

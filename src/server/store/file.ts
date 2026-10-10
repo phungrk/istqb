@@ -65,6 +65,13 @@ export const fileStore: Store = {
       return pub(u);
     });
   },
+  async setPasswordHash(userId, passwordHash) {
+    await write((db) => {
+      const u = db.users.find((x) => x.id === userId);
+      if (!u) throw new Error("User not found");
+      u.passwordHash = passwordHash;
+    });
+  },
   async listUsernames(prefix) {
     return (await load()).users.flatMap((u) => (u.username?.startsWith(prefix) ? [u.username] : []));
   },

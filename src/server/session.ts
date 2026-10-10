@@ -85,6 +85,34 @@ export async function verifyPassword(password: string, stored: string) {
   return actual.length === expected.length && timingSafeEqual(actual, expected);
 }
 
+const newPassword = () => String(randomInt(0, 100_000_000)).padStart(8, "0");
+
+// ── Admin ─────────────────────────────────────────────────────────────────────
+
+export const isAdmin = (user: User | null) => !!(config.admin && user?.username && user.username === config.admin.username);
+
+/** Checks the owner's credentials (ADMIN_USERNAME / ADMIN_PASSWORD) and returns their account, created on first sign-in. */
+export async function adminSignIn(username: string, password: string): Promise<User | null> {
+  const admin = config.admin;
+  if (!admin || username !== admin.username) return null;
+  const digest = (s: string) => createHmac("sha256", "admin").update(s).digest();
+  if (!timingSafeEqual(digest(password), digest(admin.password))) return null;
+  const store = await getStore();
+  const existing = (await store.getCredentials(username))?.user;
+  // The stored hash is never used for the admin: the environment is the source of truth.
+  return existing ?? (await store.createCredentialUser(username, "Admin", await hashPassword(randomBytes(16).toString("hex"))));
+}
+
+/** Gives a username account a new 8-digit password. Null when there is no such account. */
+export async function resetPassword(username: string): Promise<string | null> {
+  const store = await getStore();
+  const creds = await store.getCredentials(username);
+  if (!creds || isAdmin(creds.user)) return null;
+  const password = newPassword();
+  await store.setPasswordHash(creds.user.id, await hashPassword(password));
+  return password;
+}
+
 /** Next free userNNN, an 8-digit password, stored hashed. Null when all are taken. */
 export async function generateAccount(): Promise<{ user: User; password: string } | null> {
   const store = await getStore();
@@ -93,7 +121,7 @@ export async function generateAccount(): Promise<{ user: User; password: string 
   for (let n = 1; n <= max; n++) {
     const username = prefix + String(n).padStart(3, "0");
     if (taken.has(username)) continue;
-    const password = String(randomInt(0, 100_000_000)).padStart(8, "0");
+    const password = newPassword();
     const user = await store.createCredentialUser(username, nameFromHandle(username), await hashPassword(password));
     if (user) return { user, password }; // null = taken by a concurrent request; try the next number
   }

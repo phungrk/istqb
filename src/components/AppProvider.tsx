@@ -11,7 +11,7 @@ export type Tier = "guest" | "member" | "pro";
 /** pro = pricing + AI coach (hidden unless ENABLE_PRO=1); devTools = local "Preview as" bar. */
 export type Flags = { google: boolean; devTools: boolean; pro: boolean; payments: "stripe" | "demo"; passMark: number; contactUrl: string | null };
 /** handle = email for Google users, username for generated accounts. */
-export type Me = { handle: string; name: string };
+export type Me = { handle: string; name: string; admin?: boolean };
 export type Initial = { user: Me | null; tier: Tier; attempts: Attempt[]; learned: string[]; flags: Flags };
 
 /** A drawn set of questions. `spec` lets "Try again" draw a fresh set of the same kind. */

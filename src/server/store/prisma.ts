@@ -47,6 +47,9 @@ export const prismaStore: Store = {
       throw e;
     }
   },
+  async setPasswordHash(userId, passwordHash) {
+    await prisma.user.update({ where: { id: userId }, data: { passwordHash } });
+  },
   async listUsernames(prefix) {
     const rows = await prisma.user.findMany({ where: { username: { startsWith: prefix } }, select: { username: true } });
     return rows.flatMap((r) => (r.username ? [r.username] : []));

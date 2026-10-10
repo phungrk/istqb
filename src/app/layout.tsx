@@ -6,7 +6,7 @@ import { Header } from "@/components/Header";
 import { Overlays } from "@/components/Overlays";
 import { config } from "@/server/config";
 import { getStore } from "@/server/store";
-import { getCurrentUser, tierOf } from "@/server/session";
+import { getCurrentUser, isAdmin, tierOf } from "@/server/session";
 
 export const metadata: Metadata = {
   title: "Testpath · ISTQB CTFL study",
@@ -19,7 +19,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const user = await getCurrentUser();
   const store = await getStore();
   const initial: Initial = {
-    user: user && { handle: user.email ?? user.username ?? user.name, name: user.name },
+    user: user && { handle: user.email ?? user.username ?? user.name, name: user.name, admin: isAdmin(user) },
     tier: tierOf(user),
     attempts: user ? await store.listAttempts(user.id) : [],
     learned: user ? await store.listLearned(user.id) : [],

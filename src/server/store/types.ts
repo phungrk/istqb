@@ -26,6 +26,8 @@ export interface Store {
   /** Creates a username/password account; null when the username is taken. */
   createCredentialUser(username: string, name: string, passwordHash: string): Promise<User | null>;
   listUsernames(prefix: string): Promise<string[]>;
+  /** Replaces a username account's password hash (admin reset). */
+  setPasswordHash(userId: string, passwordHash: string): Promise<void>;
   getUserByStripeCustomer(customerId: string): Promise<User | null>;
   upsertUser(email: string, name: string): Promise<User>;
   updateUser(id: string, patch: Partial<Pick<User, "plan" | "proUntil" | "stripeCustomerId">>): Promise<User>;
