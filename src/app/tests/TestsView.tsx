@@ -17,8 +17,6 @@ const LEVEL_SUB: Record<number, string> = {
 };
 const LONG_SUB = "The published quizzes, one full 40-question test each, in their original order.";
 
-const upsell = { display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap", border: "2px dashed var(--color-accent-2-300)", borderRadius: 28, padding: "20px 24px" } as const;
-
 export function TestsView({ counts, levels }: { counts: Record<number, number>; levels: LevelCounts }) {
   const router = useRouter();
   const { tier, attempts, mode, setMode, startSet, openLogin, setCoachTab, flags, loadingSet } = useApp();
@@ -113,15 +111,6 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
           </div>
           )}
         </div>
-        <div style={upsell}>
-          <div style={{ flex: "1 1 320px", display: "flex", flexDirection: "column", gap: 6 }}>
-            <span style={{ fontFamily: "var(--font-heading)", fontSize: 20, color: "var(--color-accent-2-900)" }}>Want more than three tests?</span>
-            <span style={{ fontSize: 14, color: "var(--color-neutral-800)", textWrap: "pretty" }}>
-              Members get {levels.short} Short, {levels.medium} Medium and {levels.long} full Long tests. Every result is saved, so you can see which chapters are improving.
-            </span>
-          </div>
-          <button className="btn btn-primary" onClick={openLogin}>Create a free account</button>
-        </div>
         </>
         )}
       </div>
@@ -180,14 +169,6 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
             );
           })}
         </div>
-        {!logged && (
-          <div style={upsell}>
-            <span style={{ flex: "1 1 320px", fontSize: 14, color: "var(--color-neutral-800)", textWrap: "pretty" }}>
-              Guests can take Short chapter tests. Create a free account to unlock Medium and Long tests for every chapter.
-            </span>
-            <button className="btn btn-primary" onClick={openLogin}>Create a free account</button>
-          </div>
-        )}
       </div>
     </section>
   );
