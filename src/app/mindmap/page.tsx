@@ -15,6 +15,9 @@ const LO_BY_TOPIC = syllabusLo as Record<string, LoExcerpt[]>;
 /** Vietnamese letters the Caprasimo heading font lacks. */
 const VIET = /[\u01a0\u01a1\u01af\u01b0\u0110\u0111\u1ea0-\u1ef9]/;
 
+/** Nodes that have children, i.e. everything "Expand all" opens. */
+const PARENTS = NODES.filter((n) => KIDS[n.id]).map((n) => n.id);
+
 export default function MindmapPage() {
   const { tier, learned, expanded, setExpanded, selected, setSelected, openNode, toggleLearned, startSet, openLogin } = useApp();
   const logged = tier !== "guest";
@@ -52,6 +55,7 @@ export default function MindmapPage() {
     el.addEventListener("toggle", onToggle, true);
     return () => el.removeEventListener("toggle", onToggle, true);
   }, [selected]);
+  const allOpen = PARENTS.every((id) => expanded[id]);
   const learnedCount = STUDY_IDS.filter((id) => learned[id]).length;
   const topic = TOPICS[selected];
   const selPal = selCh ? palette(selCh) : null;
@@ -71,11 +75,15 @@ export default function MindmapPage() {
         {/* Tree controls live inside the tree panel, so it's clear they open and close the chapters below. */}
         <div role="toolbar" aria-label="Syllabus tree" aria-controls="syllabus-tree" style={{ display: "flex", alignItems: "center", gap: 8, flexWrap: "wrap", paddingBottom: 12, borderBottom: "1px solid var(--color-divider)" }}>
           <span style={{ flex: "1 1 auto", fontSize: 12, fontWeight: 700, letterSpacing: ".06em", textTransform: "uppercase", color: "var(--color-neutral-700)" }}>Syllabus tree</span>
-          <button className="btn btn-ghost" onClick={() => setExpanded(Object.fromEntries(NODES.filter((n) => KIDS[n.id]).map((n) => [n.id, true])))} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, padding: "6px 12px" }}>
-            <ChevronDownIcon /> Expand all
-          </button>
-          <button className="btn btn-ghost" onClick={() => setExpanded({ root: true })} style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, padding: "6px 12px" }}>
-            <ChevronRightIcon /> Collapse all
+          {/* One toggle: expands everything, or collapses back to the chapters once everything is open. */}
+          <button
+            className="btn btn-ghost"
+            aria-controls="syllabus-tree"
+            aria-expanded={allOpen}
+            onClick={() => setExpanded(allOpen ? { root: true } : Object.fromEntries(PARENTS.map((id) => [id, true])))}
+            style={{ display: "inline-flex", alignItems: "center", gap: 6, fontSize: 13, padding: "6px 12px" }}
+          >
+            {allOpen ? <ChevronRightIcon /> : <ChevronDownIcon />} {allOpen ? "Collapse all" : "Expand all"}
           </button>
         </div>
         <div role="tree" id="syllabus-tree" aria-label="Syllabus" style={{ display: "flex", flexDirection: "column" }}>
