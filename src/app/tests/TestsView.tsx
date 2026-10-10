@@ -14,6 +14,7 @@ const LEVEL_SUB: Record<number, string> = {
   20: "Half an exam, weighted like the real one.",
   40: "Full exam format: 40 questions in the syllabus mix.",
 };
+const LONG_SUB = "The published quizzes, one full 40-question test each, in their original order.";
 
 const upsell = { display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap", border: "2px dashed var(--color-accent-2-300)", borderRadius: 28, padding: "20px 24px" } as const;
 
@@ -70,7 +71,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
         {logged ? (
           <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
             {SIZES.map(({ size, label }) => (
-              <LevelGroup key={size} size={size} label={label} sub={LEVEL_SUB[size]} levels={levels} best={best} onStart={(spec) => startSet(spec)} />
+              <LevelGroup key={size} size={size} label={label} sub={size === 40 ? LONG_SUB : LEVEL_SUB[size]} levels={levels} best={best} onStart={(spec) => startSet(spec)} />
             ))}
           </div>
         ) : (
@@ -192,11 +193,16 @@ function LevelGroup({ size, label, sub, levels, best, onStart }: { size: 10 | 20
   const [open, setOpen] = useState(false);
   const isLong = size === 40;
   const count = isLong ? levels.long : size === 10 ? levels.short : levels.medium;
-  const tests = Array.from({ length: count }, (_, i) => {
-    const spec: SetSpec = isLong ? { kind: "long", n: i + 1 } : { kind: "numbered", size, n: i + 1 };
-    const title = specTitle(spec);
-    return { n: pad2(i + 1), spec, title, best: best[title] as number | undefined };
-  });
+  // Long tests are numbered by quiz (01–05, 08–25 …); Short/Medium run 01…count.
+  const tests = isLong
+    ? levels.longTests.map((t) => {
+        const spec: SetSpec = { kind: "long", n: t.n };
+        return { n: pad2(t.n), spec, title: specTitle(spec), name: t.title, size: t.size, best: best[specTitle(spec)] as number | undefined };
+      })
+    : Array.from({ length: count }, (_, i) => {
+        const spec: SetSpec = { kind: "numbered", size, n: i + 1 };
+        return { n: pad2(i + 1), spec, title: specTitle(spec), name: specTitle(spec), size: size as number, best: best[specTitle(spec)] as number | undefined };
+      });
   const done = tests.filter((t) => t.best !== undefined).length;
   const next = tests.find((t) => t.best === undefined) ?? tests[0];
   const shown = open ? tests : tests.slice(0, SHOWN);
@@ -213,7 +219,7 @@ function LevelGroup({ size, label, sub, levels, best, onStart }: { size: 10 | 20
           <span style={{ fontFamily: "var(--font-heading)", fontSize: 28, lineHeight: 1 }}>
             {count} <span style={{ fontFamily: "var(--font-body)", fontSize: 14, fontWeight: 600, color: "var(--color-neutral-700)" }}>tests</span>
           </span>
-          <span className="tag tag-neutral">{isLong ? `${count} tests set by admin` : `${levels.bankTotal} in bank ÷ ${size} = ${count}`}</span>
+          <span className="tag tag-neutral">{isLong ? `${count} quizzes` : `${levels.bankTotal} in bank ÷ ${size} = ${count}`}</span>
           <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{done} of {count} taken</span>
         </div>
       </div>
@@ -228,18 +234,18 @@ function LevelGroup({ size, label, sub, levels, best, onStart }: { size: 10 | 20
                   role="listitem"
                   className="hov-border-accent"
                   onClick={() => onStart(t.spec)}
-                  title={t.title}
-                  aria-label={`${t.title}${has ? `, best ${t.best}%` : ", not taken yet"}`}
+                  title={isLong ? `${t.name} · ${t.size} questions` : t.title}
+                  aria-label={`${isLong ? t.name : t.title}${has ? `, best ${t.best}%` : ", not taken yet"}`}
                   style={{ border: `2px solid ${has ? "var(--color-accent-2-300)" : "transparent"}`, background: has ? "var(--color-accent-2-100)" : "var(--color-bg)", borderRadius: 20, padding: "10px 8px", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: 2, fontFamily: "var(--font-body)", color: "var(--color-text)" }}
                 >
                   <span style={{ fontFamily: "var(--font-heading)", fontSize: 18 }}>{t.n}</span>
-                  <span style={{ fontSize: 12, fontWeight: 600, color: has ? "var(--color-accent-2-800)" : "var(--color-neutral-700)" }}>{has ? `Best ${t.best}%` : `${size}q`}</span>
+                  <span style={{ fontSize: 12, fontWeight: 600, color: has ? "var(--color-accent-2-800)" : "var(--color-neutral-700)" }}>{has ? `Best ${t.best}%` : `${t.size}q`}</span>
                 </button>
               );
             })}
           </div>
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
-            <button className="btn btn-primary" onClick={() => onStart(next.spec)}>Start test {next.n}</button>
+            <button className="btn btn-primary" onClick={() => onStart(next.spec)}>{isLong ? `Start ${next.name}` : `Start test ${next.n}`}</button>
             {count > SHOWN && <button className="btn btn-ghost" onClick={() => setOpen((o) => !o)} aria-expanded={open}>{open ? "Show fewer" : `Show all ${count}`}</button>}
           </div>
         </>

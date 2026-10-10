@@ -7,7 +7,8 @@
 // headless Chromium to capture the tables/diagrams. Quiz 8–25 embed a JSON QUIZ
 // object with HTML stems; their base64 images are written to public/q/.
 // HTML is sanitised (no scripts, event handlers or javascript: URLs) and the same
-// question appearing in several quizzes is kept once.
+// question appearing in several quizzes is kept once. Also writes data/long-tests.json:
+// one Long test per quiz, with its questions in the published order.
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
@@ -94,17 +95,31 @@ await browser.close();
 
 // De-duplicate: the same sample-exam question appears in several quizzes.
 const norm = (h) => h.replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/g, " ").replace(/\s+/g, " ").trim().toLowerCase();
-const seen = new Set();
+const seen = new Map(); // dedup key → id of the copy that is kept
+const keptId = {}; // every source question's id → the id it is stored under
 const uniq = out.filter((q) => {
   const k = norm(q.stem).slice(0, 400) + "|" + q.options.map(norm).sort().join("|");
+  keptId[q.id] = seen.get(k) ?? q.id;
   if (seen.has(k)) return false;
-  seen.add(k);
+  seen.set(k, q.id);
   return true;
 });
 const bad = uniq.filter((q) => !(q.chapter >= 1 && q.chapter <= 6) || !q.answers.length || q.answers.some((a) => a < 0 || a >= q.options.length));
 if (bad.length) throw new Error("Bad questions: " + bad.map((q) => q.id).join(", "));
 
 fs.writeFileSync(path.join(REPO, "data", "questions.json"), JSON.stringify(uniq, null, 1));
+
+// Long tests = the quizzes as published: each quiz's questions in their original order.
+// A question kept under another quiz's id (a duplicate) still counts for this quiz.
+const quizzes = {};
+for (const q of out) {
+  const [, n, k] = q.src.match(/Quiz (\d+) · Q(\d+)/);
+  (quizzes[n] ||= []).push([Number(k), keptId[q.id]]);
+}
+const longTests = Object.entries(quizzes)
+  .map(([n, qs]) => ({ n: Number(n), title: `Quiz ${n}`, questions: qs.sort((a, b) => a[0] - b[0]).map(([, id]) => id) }))
+  .sort((a, b) => a.n - b.n);
+fs.writeFileSync(path.join(REPO, "data", "long-tests.json"), JSON.stringify(longTests, null, 1) + "\n");
 const per = {};
 uniq.forEach((q) => (per[q.chapter] = (per[q.chapter] || 0) + 1));
-console.log("total", out.length, "unique", uniq.length, "per chapter", per, "images", fs.readdirSync(IMG_DIR).length);
+console.log("total", out.length, "unique", uniq.length, "per chapter", per, "images", fs.readdirSync(IMG_DIR).length, "long tests", longTests.map((t) => `${t.n}:${t.questions.length}`).join(" "));

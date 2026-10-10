@@ -59,8 +59,11 @@ export function specTitle(s: SetSpec) {
   return `${label} test · ${size} questions`;
 }
 
-/** How many numbered tests a level offers: Short and Medium split the whole bank; Long is set by the admin. */
-export type LevelCounts = { bankTotal: number; short: number; medium: number; long: number };
+/**
+ * How many numbered tests a level offers: Short and Medium split the whole bank; Long tests are the
+ * published quizzes (n = quiz number, so numbers can have gaps until every quiz is imported).
+ */
+export type LevelCounts = { bankTotal: number; short: number; medium: number; long: number; longTests: { n: number; title: string; size: number }[] };
 
 /** Real exam pace: 60 minutes for 40 questions. */
 export const minutesFor = (n: number) => Math.max(1, Math.round(n * 1.5));

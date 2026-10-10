@@ -37,8 +37,8 @@ const POOLS: Record<number, Question[]> = Object.fromEntries(
   CHAPTERS.map((c) => [c.id, BANK.filter((q) => q.chapter === c.id).sort((a, b) => hash(a.id) - hash(b.id) || a.id.localeCompare(b.id))]),
 );
 
-/** Long tests: fixed question lists from data/long-tests.json (edited by the admin). */
-const LONG: { n: number; questions: string[] }[] = (longTests as { n: number; questions: string[] }[]).map((t) => ({
+/** Long tests: one per published quiz, from data/long-tests.json (written by scripts/import-quizzes.mjs). */
+const LONG: { n: number; title: string; questions: string[] }[] = (longTests as { n: number; title: string; questions: string[] }[]).map((t) => ({
   ...t,
   questions: t.questions.filter((id) => BANK_BY_ID[id]),
 }));
@@ -48,6 +48,7 @@ export const levelCounts = (): LevelCounts => ({
   short: Math.floor(BANK.length / 10),
   medium: Math.floor(BANK.length / 20),
   long: LONG.length,
+  longTests: LONG.map((t) => ({ n: t.n, title: t.title, size: t.questions.length })),
 });
 
 /**
@@ -63,7 +64,8 @@ export function numberedSet(size: 10 | 20, n: number): Question[] {
     .sort(byLo);
 }
 
-export const longSet = (n: number): Question[] => (LONG.find((t) => t.n === n)?.questions ?? []).map((id) => BANK_BY_ID[id]).sort(byLo);
+/** Long test n = Quiz n, in the quiz's own question order. */
+export const longSet = (n: number): Question[] => (LONG.find((t) => t.n === n)?.questions ?? []).map((id) => BANK_BY_ID[id]);
 
 /** A fresh random set. Level sets follow the exam's chapter weighting and syllabus order. */
 export function drawSet(spec: SetSpec) {

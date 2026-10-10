@@ -25,8 +25,9 @@ export async function GET(req: Request) {
     if ("error" in gate) return gate.error;
   }
   const counts = levelCounts();
-  const max = spec.kind === "long" ? counts.long : spec.kind === "numbered" ? (spec.size === 10 ? counts.short : counts.medium) : Infinity;
-  if ("n" in spec && spec.n > max) return Response.json({ error: "No such test" }, { status: 404 });
+  const exists =
+    spec.kind === "long" ? counts.longTests.some((t) => t.n === spec.n) : spec.kind === "numbered" ? spec.n <= (spec.size === 10 ? counts.short : counts.medium) : true;
+  if (!exists) return Response.json({ error: "No such test" }, { status: 404 });
 
   return Response.json(drawSet(spec), { headers: { "Cache-Control": "no-store" } });
 }
