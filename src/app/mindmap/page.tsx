@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useApp } from "@/components/AppProvider";
-import { CheckIcon, ChevronDownIcon, ChevronRightIcon } from "@/components/icons";
+import { CheckIcon, ChevronDownIcon, ChevronRightIcon, XIcon } from "@/components/icons";
 import { TopicView, type LoExcerpt } from "@/components/TopicView";
 import syllabusLo from "@data/syllabus-lo.json";
 import { track } from "@/lib/track";
@@ -17,6 +17,9 @@ const VIET = /[\u01a0\u01a1\u01af\u01b0\u0110\u0111\u1ea0-\u1ef9]/;
 
 /** Nodes that have children, i.e. everything "Expand all" opens. */
 const PARENTS = NODES.filter((n) => KIDS[n.id]).map((n) => n.id);
+
+/** Same breakpoint as the .mm-detail sheet styles in app.css. */
+const SHEET_QUERY = "(max-width: 900px)";
 
 export default function MindmapPage() {
   const { tier, learned, expanded, setExpanded, selected, setSelected, openNode, toggleLearned, startSet, openLogin } = useApp();
@@ -34,12 +37,41 @@ export default function MindmapPage() {
   const selDepth = depthOf(selected);
   const kicker = selDepth === 0 ? "Syllabus overview" : selDepth === 1 ? `Chapter ${selCh} · ${CHAPTERS[selCh! - 1].q} exam questions` : `Chapter ${selCh} · ${CHAPTERS[selCh! - 1].title}`;
   const detail = useRef<HTMLElement>(null);
-  // On narrow screens the panel sits below the tree: bring it into view.
+  // On phones the detail panel is a bottom sheet (90% of the screen) that opens when a node is picked.
+  const [sheetOpen, setSheetOpen] = useState(false);
+  const opener = useRef<HTMLElement | null>(null);
+  const isPhone = () => window.matchMedia(SHEET_QUERY).matches;
   const select = (id: string) => {
     setSelected(id);
     if (TOPICS[id]) track("topic_open", { topic: id });
-    if (window.matchMedia("(max-width: 900px)").matches) requestAnimationFrame(() => detail.current?.scrollIntoView({ behavior: "smooth", block: "start" }));
+    if (isPhone()) {
+      if (!sheetOpen) opener.current = document.activeElement as HTMLElement | null;
+      setSheetOpen(true);
+      requestAnimationFrame(() => detail.current?.scrollTo({ top: 0 }));
+    }
   };
+  const closeSheet = () => {
+    setSheetOpen(false);
+    opener.current?.focus?.();
+  };
+  // While the sheet is open: lock the page behind it, close on Escape, and close if the screen grows to desktop.
+  useEffect(() => {
+    if (!sheetOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    detail.current?.focus({ preventScroll: true });
+    const onKey = (e: KeyboardEvent) => e.key === "Escape" && closeSheet();
+    const mq = window.matchMedia(SHEET_QUERY);
+    const onMq = () => !mq.matches && setSheetOpen(false);
+    addEventListener("keydown", onKey);
+    mq.addEventListener("change", onMq);
+    return () => {
+      document.body.style.overflow = prev;
+      removeEventListener("keydown", onKey);
+      mq.removeEventListener("change", onMq);
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [sheetOpen]);
   // Opening a syllabus LO in the detail panel (the <details> come from TopicView's HTML).
   useEffect(() => {
     const el = detail.current;
@@ -127,7 +159,20 @@ export default function MindmapPage() {
         </div>
         </div>
 
-        <aside ref={detail} className="mm-detail" style={{ flex: topic ? "1 1 520px" : "0 1 400px", minWidth: 280, borderRadius: 32, scrollMarginTop: 12 }}>
+        {sheetOpen && <div className="mm-sheet-backdrop" onClick={closeSheet} aria-hidden />}
+        <aside
+          ref={detail}
+          className={`mm-detail${sheetOpen ? " is-open" : ""}`}
+          tabIndex={-1}
+          aria-label={sel.title}
+          style={{ flex: topic ? "1 1 520px" : "0 1 400px", minWidth: 280, borderRadius: 32, outline: "none" }}
+        >
+          <div className="mm-sheet-bar">
+            <span className="mm-sheet-handle" aria-hidden />
+            <button type="button" className="btn btn-ghost" onClick={closeSheet} aria-label="Close details" style={{ position: "absolute", right: 10, top: 6, padding: "6px 10px", display: "inline-flex", alignItems: "center", gap: 4, fontSize: 13 }}>
+              <XIcon /> Close
+            </button>
+          </div>
           <div className="card elev-md" style={{ padding: 28, gap: 14, background: "var(--color-surface)" }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-700)" }}>{kicker}</span>
             <h3 style={{ margin: 0, ...(VIET.test(sel.title) ? { fontFamily: "var(--font-body)", fontWeight: 700 } : {}) }}>{sel.title}</h3>
