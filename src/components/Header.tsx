@@ -1,8 +1,10 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { useApp } from "./AppProvider";
+import { savedPassword, useApp } from "./AppProvider";
+import { EyeIcon, EyeOffIcon } from "./icons";
 
 const NAV = [
   ["/mindmap", "Mindmap"],
@@ -18,6 +20,13 @@ const PRO_NAV = [
 export function Header() {
   const { user, tier, flags, openLogin, signOut } = useApp();
   const pathname = usePathname();
+  // Read after mount: the password lives in this browser only, not in the server render.
+  const [pw, setPw] = useState<string | null>(null);
+  const [showPw, setShowPw] = useState(false);
+  useEffect(() => {
+    setPw(user ? savedPassword(user.handle) : null);
+    setShowPw(false);
+  }, [user]);
   // Exam and Result belong to Practice tests.
   const active = pathname === "/exam" || pathname === "/result" ? "/tests" : pathname;
 
@@ -50,7 +59,22 @@ export function Header() {
           <span style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--color-accent-2-300)", color: "var(--color-accent-2-900)", display: "grid", placeItems: "center", fontWeight: 700 }}>{user.name[0]}</span>
           <div style={{ display: "flex", flexDirection: "column", lineHeight: 1.2 }}>
             <span style={{ fontSize: 13, fontWeight: 600 }}>{user.handle}</span>
-            <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{user.admin ? "Admin" : tier === "pro" ? "Pro member" : flags.pro ? "Member · free" : "Member"}</span>
+            {pw ? (
+              <span style={{ fontSize: 12, color: "var(--color-neutral-600)", display: "flex", alignItems: "center", gap: 4 }}>
+                <span style={{ fontFamily: "ui-monospace, monospace" }}>pw:&nbsp;{showPw ? pw : "••••••••"}</span>
+                <button
+                  type="button"
+                  onClick={() => setShowPw((v) => !v)}
+                  aria-label={showPw ? "Hide password" : "Show password"}
+                  aria-pressed={showPw}
+                  style={{ background: "none", border: "none", padding: 2, cursor: "pointer", color: "var(--color-neutral-600)", display: "flex", alignItems: "center" }}
+                >
+                  {showPw ? <EyeOffIcon /> : <EyeIcon />}
+                </button>
+              </span>
+            ) : (
+              <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>{user.admin ? "Admin" : tier === "pro" ? "Pro member" : flags.pro ? "Member · free" : "Member"}</span>
+            )}
           </div>
           <button className="btn btn-ghost" onClick={signOut} style={{ fontSize: 13 }}>Sign out</button>
         </div>

@@ -131,7 +131,17 @@ button{font:inherit}
       <span style="width:34px; height:34px; border-radius:50%; background:var(--color-accent-2-300); color:var(--color-accent-2-900); display:grid; place-items:center; font-weight:700">{{ initial }}</span>
       <div style="display:flex; flex-direction:column; line-height:1.2">
         <span style="font-size:13px; font-weight:600">{{ userEmail }}</span>
-        <span style="font-size:12px; color:var(--color-neutral-700)">{{ tierLabel }}</span>
+        <span style="font-size:12px; color:var(--color-neutral-600); display:flex; align-items:center; gap:4px">
+          <span style="font-family:monospace">pw:&nbsp;{{ pwDisplay }}</span>
+          <button type="button" onClick="{{ togglePw }}" style="background:none;border:none;padding:2px;cursor:pointer;color:var(--color-neutral-600);display:flex;align-items:center">
+            <sc-if value="{{ showPw }}" hint-placeholder-val="{{ false }}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"></path><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path><line x1="1" y1="1" x2="23" y2="23"></line></svg>
+            </sc-if>
+            <sc-if value="{{ showPwHidden }}" hint-placeholder-val="{{ true }}">
+              <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.75" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            </sc-if>
+          </button>
+        </span>
       </div>
       <button class="btn btn-ghost" onClick="{{ signOut }}" style="font-size:13px">Sign out</button>
     </div>
@@ -686,7 +696,7 @@ class Component extends DCLogic {
     const tier=s.tier||this.props.demoTier||'guest';
     return {screen:'home',tier,user:s.user||(tier!=='guest'?{name:'Linh Nguyen',email:'linh.nguyen@gmail.com'}:null),attempts:s.attempts||(tier!=='guest'?SEED:[]),learned:s.learned||{},
       expanded:{root:true,c1:true,c4:true},sel:'root',mode:'practice',exam:null,result:null,dialog:null,pending:null,
-      chat:[],chatInput:'',busy:false,plan:'',quizCh:null,coachTab:'chat',toast:'',now:Date.now(),billing:'monthly',loginUser:'',loginPass:''};
+      chat:[],chatInput:'',busy:false,plan:'',quizCh:null,coachTab:'chat',toast:'',now:Date.now(),billing:'monthly',loginUser:'',loginPass:'',showPw:false};
   }
   componentDidMount(){
     this.iv=setInterval(()=>{const e=this.state.exam;if(e&&e.mode==='mock'){this.setState({now:Date.now()});if(e.limitSec-(Date.now()-e.started)/1000<=0)this.submit()}},1000);
@@ -710,7 +720,7 @@ class Component extends DCLogic {
       let attempts=s.attempts.length?s.attempts:(username==='testpath'?SEED:[]);
       let result=s.result;
       if(result&&!result.saved){attempts=[...attempts,result.attempt];result={...result,saved:true}}
-      return {user:{name,email},tier:s.tier==='guest'?'member':s.tier,attempts,result,dialog:s.pending==='checkout'?'checkout':null,pending:null,loginUser:'',loginPass:''};
+      return {user:{name,email,pw:s.loginPass||''},tier:s.tier==='guest'?'member':s.tier,attempts,result,dialog:s.pending==='checkout'?'checkout':null,pending:null,loginUser:'',loginPass:''};
     });
     this.toast('Signed in as '+email);
   }
@@ -936,7 +946,7 @@ class Component extends DCLogic {
       nav,chapters,tree,node,expandAll,collapseAll,levelSets,chapterSets,modes,ex,res,dash,demoTiers,passMark,
       isGuest:!logged,isLogged:logged,isPro:pro,notPro:!pro,
       isHome:scr==='home',isMindmap:scr==='mindmap',isTests:scr==='tests',isExam:scr==='exam'&&!!s.exam,isResult:scr==='result'&&!!s.result,isDashboard:scr==='dashboard',isCoach:scr==='coach',
-      initial:name?name[0]:'',userEmail:s.user?s.user.email:'',firstName:name.split(' ')[0],tierLabel:pro?'Pro member':'Member · free',
+      initial:name?name[0]:'',userEmail:s.user?s.user.email:'',firstName:name.split(' ')[0],pwDisplay:s.showPw?(s.user&&s.user.pw||''):'••••••••',showPw:s.showPw,showPwHidden:!s.showPw,togglePw:()=>this.setState(x=>({showPw:!x.showPw})),
       learnedLabel:`${learnedCount} of ${STUDY.length} topics learned`,
       modeHelp:s.mode==='practice'?'Practice mode: no timer, and you see the right answer and explanation after each question.':'Mock exam mode: timed like the real exam, answers revealed only when you submit.',
       aiSetLabel:pro?'Create a set':'Unlock with Pro',

@@ -33,6 +33,26 @@ type Dialog = "login" | "checkout" | "upgrade" | null;
 export type CoachTab = "chat" | "plan" | "quiz";
 
 const SS = { exam: "tp_exam", result: "tp_result", signingIn: "tp_signing_in" };
+
+/**
+ * The password typed at sign-in, kept in this browser so the header can show it on request
+ * (generated passwords are hard to remember). Never stored for the admin; cleared on sign-out.
+ */
+const PW_KEY = "tp_pw";
+export function savedPassword(handle: string): string | null {
+  try {
+    const v = JSON.parse(localStorage.getItem(PW_KEY) ?? "null") as { u: string; p: string } | null;
+    return v && v.u === handle ? v.p : null;
+  } catch {
+    return null;
+  }
+}
+const savePassword = (v: { u: string; p: string } | null) => {
+  try {
+    if (v) localStorage.setItem(PW_KEY, JSON.stringify(v));
+    else localStorage.removeItem(PW_KEY);
+  } catch {}
+};
 const ssGet = <T,>(k: string): T | null => {
   try {
     const v = sessionStorage.getItem(k);
@@ -147,8 +167,9 @@ function useAppState(initial: Initial) {
 
   const loginPassword = useCallback(
     async (username: string, password: string) => {
-      const { ok, data } = await postJson<{ error?: string; username?: string }>("/api/account/login", { username, password });
+      const { ok, data } = await postJson<{ error?: string; username?: string; admin?: boolean }>("/api/account/login", { username, password });
       if (!ok) return toast(data.error || "Could not sign in");
+      savePassword(data.admin || !data.username ? null : { u: data.username, p: password });
       setDialog(pending === "checkout" ? "checkout" : null);
       setPending(null);
       toast("Signed in as " + data.username);
@@ -175,6 +196,7 @@ function useAppState(initial: Initial) {
 
   const signOut = useCallback(async () => {
     await postJson("/api/account/logout");
+    savePassword(null);
     if (flags.google) await googleSignOut({ redirect: false });
     setChat([]);
     setPlan("");

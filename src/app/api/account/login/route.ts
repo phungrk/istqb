@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { getStore } from "@/server/store";
-import { adminSignIn, startSession, verifyPassword } from "@/server/session";
+import { adminSignIn, isAdmin, startSession, verifyPassword } from "@/server/session";
 import { config } from "@/server/config";
 
 const Body = z.object({ username: z.string().trim().toLowerCase().min(1).max(64), password: z.string().min(1).max(200) });
@@ -27,5 +27,5 @@ export async function POST(req: Request) {
   }
   failures.delete(username);
   await startSession(creds.user.id);
-  return Response.json({ ok: true, name: creds.user.name, username: creds.user.username });
+  return Response.json({ ok: true, name: creds.user.name, username: creds.user.username, admin: isAdmin(creds.user) });
 }
