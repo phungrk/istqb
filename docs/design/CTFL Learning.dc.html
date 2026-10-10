@@ -246,7 +246,7 @@ button{font:inherit}
         <h3 style="margin:0; font-family:{{ node.titleFont }}; font-weight:{{ node.titleWeight }}">{{ node.title }}</h3>
         <sc-if value="{{ node.isTopic }}" hint-placeholder-val="{{ false }}">
           <sc-if value="{{ node.starred }}" hint-placeholder-val="{{ false }}">
-            <span class="tag tag-accent" style="align-self:flex-start">&#x2B50; Often on the exam</span>
+            <span class="tag tag-accent" style="align-self:flex-start">⭐ Often on the exam</span>
           </sc-if>
           {{ node.topicEl }}
         </sc-if>
@@ -580,24 +580,34 @@ button{font:inherit}
 <!-- DIALOGS -->
 <sc-if value="{{ dlgLogin }}" hint-placeholder-val="{{ false }}">
   <div class="dialog-backdrop" onClick="{{ closeDialog }}" style="z-index:50">
-    <div class="dialog" onClick="{{ stop }}" style="width:min(420px,100%); background:var(--color-neutral-100)">
-      <span class="dialog-title" style="font-size:24px">Sign in</span>
-      <div style="background:var(--color-accent-2-100); border-radius:20px; padding:12px 16px; font-size:13px; color:var(--color-accent-2-900)">
-        Demo account — Username: <strong>testpath</strong> · Password: <strong>ctfl2025</strong>
-      </div>
-      <form onSubmit="{{ loginSubmit }}" style="display:flex; flex-direction:column; gap:10px">
-        <div class="field"><label>Username</label><input class="input" value="{{ loginUser }}" onChange="{{ onLoginUser }}" placeholder="Enter username" style="min-height:44px" autocomplete="username"></div>
-        <div class="field"><label>Password</label><input class="input" type="password" value="{{ loginPass }}" onChange="{{ onLoginPass }}" placeholder="Enter password" style="min-height:44px" autocomplete="current-password"></div>
-        <div class="dialog-actions">
-          <button class="btn btn-ghost" type="button" onClick="{{ closeDialog }}">Cancel</button>
-          <button class="btn btn-primary" type="submit">Sign in</button>
+    <div class="dialog" onClick="{{ stop }}" style="width:min(760px,96vw); padding:0; overflow:hidden; background:var(--color-neutral-100)">
+      <div style="display:grid; grid-template-columns:1fr 1fr; min-height:360px">
+        <!-- Left: Generate account -->
+        <div style="background:var(--color-accent-2-100); padding:32px 28px; display:flex; flex-direction:column; gap:16px; justify-content:center">
+          <span style="font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--color-accent-2-700)">New here?</span>
+          <h2 style="margin:0; font-family:var(--font-heading); font-size:22px; line-height:1.2; color:var(--color-accent-2-900)">Get a free account in one click</h2>
+          <p style="margin:0; font-size:13px; color:var(--color-accent-2-800); line-height:1.6">We generate a username and password for you — no email required. Save your progress and come back any time.</p>
+          <button class="btn btn-secondary" type="button" onClick="{{ generateAccount }}" style="align-self:flex-start; margin-top:4px">Generate account</button>
+        </div><div style="padding:32px 28px; display:flex; flex-direction:column; gap:14px">
+          <h2 style="margin:0; font-family:var(--font-heading); font-size:22px; color:var(--color-text)">Sign in</h2>
+          
+          <form onSubmit="{{ loginSubmit }}" style="display:flex; flex-direction:column; gap:10px; flex:1">
+            <div class="field"><label>Username</label><input class="input" value="{{ loginUser }}" onChange="{{ onLoginUser }}" placeholder="Enter username" style="min-height:44px" autocomplete="username"></div>
+            <div class="field"><label>Password</label><input class="input" type="password" value="{{ loginPass }}" onChange="{{ onLoginPass }}" placeholder="Enter password" style="min-height:44px" autocomplete="current-password"></div>
+            <div style="border-radius: 14px; padding: 10px 14px; font-size: 12px; color: var(--color-accent-2-900); text-align: right">Forgot password? <u>Contact me</u></div><div class="dialog-actions" style="margin-top:auto">
+              <button class="btn btn-ghost" type="button" onClick="{{ closeDialog }}">Cancel</button>
+              <button class="btn btn-primary" type="submit">Sign in</button>
+            </div>
+          </form>
         </div>
-      </form>
+        <!-- Right: Sign in -->
+        
+      </div>
     </div>
   </div>
 </sc-if>
 
-</sc-if>
+
 
 <sc-if value="{{ hasToast }}" hint-placeholder-val="{{ false }}">
   <div style="position:fixed; left:50%; top:20px; transform:translateX(-50%); background:var(--color-neutral-900); color:var(--color-bg); border-radius:999px; padding:12px 22px; font-size:14px; font-weight:600; z-index:60; box-shadow:var(--shadow-lg)">{{ toast }}</div>
@@ -938,6 +948,7 @@ class Component extends DCLogic {
       signOut:()=>{this.setState({tier:'guest',user:null,attempts:[],learned:{},chat:[],plan:''});this.go('home');this.toast('Signed out')},
       loginUser:s.loginUser,loginPass:s.loginPass,onLoginUser:e=>this.setState({loginUser:e.target.value}),onLoginPass:e=>this.setState({loginPass:e.target.value}),
       loginSubmit:e=>{e.preventDefault();const u=(s.loginUser||'').trim();if(!u){this.toast('Please enter a username');return}this.login(u)},
+      generateAccount:()=>{const adjs=['swift','calm','bold','keen','wise','bright','cool','deep'];const nouns=['tester','learner','coder','reader','solver','seeker','finder','maker'];const adj=adjs[Math.floor(Math.random()*adjs.length)];const noun=nouns[Math.floor(Math.random()*nouns.length)];const num=Math.floor(Math.random()*900)+100;const user=adj+noun+num;this.setState({loginUser:user,loginPass:'ctfl'+num});this.toast('Account generated — tap Sign in to continue')},
       dlgLogin:s.dialog==='login',
       
       hasToast:!!s.toast,toast:s.toast,showDemoBar:this.props.showDemoBar??true,

@@ -19,6 +19,8 @@ export const config = {
   /** Sign-in with Google is limited to this domain. Empty string allows any Google account. */
   allowedEmailDomain: process.env.ALLOWED_EMAIL_DOMAIN ?? "gmail.com",
   appUrl: process.env.APP_URL ?? "http://localhost:3000",
+  /** "Forgot password? Contact me" link in the sign-in dialog (mailto: or https:). Hidden when unset. */
+  contactUrl: process.env.CONTACT_URL || null,
   /** Generated accounts: user001 … user100. */
   generatedAccounts: { prefix: "user", max: Number(process.env.GENERATED_ACCOUNT_LIMIT ?? 100) },
 };

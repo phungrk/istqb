@@ -23,7 +23,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     tier: tierOf(user),
     attempts: user ? await store.listAttempts(user.id) : [],
     learned: user ? await store.listLearned(user.id) : [],
-    flags: { google: config.google, devTools: config.devTools, pro: config.pro, payments: config.payments, passMark: PASS_MARK },
+    flags: { google: config.google, devTools: config.devTools, pro: config.pro, payments: config.payments, passMark: PASS_MARK, contactUrl: config.contactUrl },
   };
 
   return (

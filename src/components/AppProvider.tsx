@@ -9,7 +9,7 @@ import { weakest, type Attempt } from "@/lib/stats";
 
 export type Tier = "guest" | "member" | "pro";
 /** pro = pricing + AI coach (hidden unless ENABLE_PRO=1); devTools = local "Preview as" bar. */
-export type Flags = { google: boolean; devTools: boolean; pro: boolean; payments: "stripe" | "demo"; passMark: number };
+export type Flags = { google: boolean; devTools: boolean; pro: boolean; payments: "stripe" | "demo"; passMark: number; contactUrl: string | null };
 /** handle = email for Google users, username for generated accounts. */
 export type Me = { handle: string; name: string };
 export type Initial = { user: Me | null; tier: Tier; attempts: Attempt[]; learned: string[]; flags: Flags };

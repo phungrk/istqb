@@ -18,44 +18,56 @@ function Backdrop({ children, width, onClose }: { children: React.ReactNode; wid
 
 const googleRow = { display: "flex", alignItems: "center", justifyContent: "center", gap: 10, padding: "11px 16px", borderRadius: 999, border: "2px solid var(--color-divider)", background: "var(--color-bg)", cursor: "pointer", color: "var(--color-text)", fontWeight: 600, fontSize: 14 } as const;
 
-function GenerateBox() {
+const kicker = { fontSize: 11, fontWeight: 700, letterSpacing: ".08em", textTransform: "uppercase", color: "var(--color-accent-2-700)" } as const;
+const panelTitle = { margin: 0, fontSize: 22, lineHeight: 1.2 } as const;
+
+/** Left half of the sign-in dialog: one-click account generation, then the new credentials. */
+function GeneratePanel() {
   const { generateAccount, toast } = useApp();
   const [creds, setCreds] = useState<{ username: string; password: string } | null>(null);
   const [busy, setBusy] = useState(false);
-  const box = { background: "var(--color-accent-2-100)", borderRadius: 20, padding: "12px 16px", fontSize: 13, color: "var(--color-accent-2-900)", display: "flex", flexDirection: "column", gap: 8 } as const;
+  const body = { margin: 0, fontSize: 13, lineHeight: 1.6, color: "var(--color-accent-2-800)" } as const;
 
-  if (creds)
-    return (
-      <div style={box} role="status">
-        <span style={{ fontWeight: 700 }}>Your account is ready and you are signed in.</span>
-        <span style={{ fontSize: 15 }}>
-          Username: <strong>{creds.username}</strong> · Password: <strong style={{ fontVariantNumeric: "tabular-nums", letterSpacing: ".04em" }}>{creds.password}</strong>
-        </span>
-        <span>Save it now: the password can&apos;t be shown again.</span>
-        <button
-          className="btn btn-secondary"
-          style={{ alignSelf: "flex-start", background: "var(--color-bg)" }}
-          onClick={() => navigator.clipboard?.writeText(`Username: ${creds.username}\nPassword: ${creds.password}`).then(() => toast("Copied"), () => toast("Copy failed"))}
-        >
-          Copy username & password
-        </button>
-      </div>
-    );
   return (
-    <div style={{ ...box, flexDirection: "row", alignItems: "center", flexWrap: "wrap" }}>
-      <span style={{ flex: "1 1 180px" }}>New here? Get a free account in one click.</span>
-      <button
-        className="btn btn-secondary"
-        disabled={busy}
-        style={{ background: "var(--color-bg)" }}
-        onClick={async () => {
-          setBusy(true);
-          setCreds(await generateAccount());
-          setBusy(false);
-        }}
-      >
-        {busy ? "Creating…" : "Generate account"}
-      </button>
+    <div style={{ background: "var(--color-accent-2-100)", justifyContent: "center" }}>
+      {creds ? (
+        <div role="status" style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <span style={kicker}>You&apos;re in</span>
+          <h2 style={{ ...panelTitle, color: "var(--color-accent-2-900)" }}>Your account is ready</h2>
+          <div style={{ background: "var(--color-bg)", borderRadius: 16, padding: "12px 14px", display: "grid", gridTemplateColumns: "auto 1fr", gap: "4px 12px", fontSize: 15 }}>
+            <span style={{ color: "var(--color-neutral-700)" }}>Username</span>
+            <strong>{creds.username}</strong>
+            <span style={{ color: "var(--color-neutral-700)" }}>Password</span>
+            <strong style={{ fontVariantNumeric: "tabular-nums", letterSpacing: ".04em" }}>{creds.password}</strong>
+          </div>
+          <p style={body}>Save it now: the password can&apos;t be shown again.</p>
+          <button
+            className="btn btn-secondary"
+            style={{ alignSelf: "flex-start", background: "var(--color-bg)" }}
+            onClick={() => navigator.clipboard?.writeText(`Username: ${creds.username}\nPassword: ${creds.password}`).then(() => toast("Copied"), () => toast("Copy failed"))}
+          >
+            Copy username & password
+          </button>
+        </div>
+      ) : (
+        <>
+          <span style={kicker}>New here?</span>
+          <h2 style={{ ...panelTitle, color: "var(--color-accent-2-900)" }}>Get a free account in one click</h2>
+          <p style={body}>We generate a username and password for you — no email required. Save your progress and come back any time.</p>
+          <button
+            className="btn btn-secondary"
+            disabled={busy}
+            style={{ alignSelf: "flex-start", marginTop: 4 }}
+            onClick={async () => {
+              setBusy(true);
+              setCreds(await generateAccount());
+              setBusy(false);
+            }}
+          >
+            {busy ? "Creating…" : "Generate account"}
+          </button>
+        </>
+      )}
     </div>
   );
 }
@@ -65,50 +77,67 @@ function LoginDialog() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   return (
-    <Backdrop width={420} onClose={closeDialog}>
-      <span className="dialog-title" style={{ fontSize: 24 }}>Sign in</span>
-      <GenerateBox />
-      {user ? (
-        <div className="dialog-actions">
-          <button className="btn btn-primary" onClick={closeDialog}>Done</button>
+    <div className="dialog-backdrop" onClick={closeDialog} style={{ zIndex: 50 }}>
+      <div className="dialog login-dialog" role="dialog" aria-modal="true" aria-labelledby="login-title" onClick={stop} style={{ background: "var(--color-neutral-100)" }}>
+        <div className="login-grid">
+          <GeneratePanel />
+          <div>
+            <h2 id="login-title" style={panelTitle}>Sign in</h2>
+            {user ? (
+              <>
+                <p style={{ margin: 0, fontSize: 14, color: "var(--color-neutral-800)" }}>
+                  Signed in as <strong>{user.handle}</strong>.
+                </p>
+                <div className="dialog-actions" style={{ marginTop: "auto" }}>
+                  <button className="btn btn-primary" onClick={closeDialog}>Done</button>
+                </div>
+              </>
+            ) : (
+              <>
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    if (!username.trim() || !password) return toast("Enter your username and password");
+                    void loginPassword(username.trim(), password);
+                  }}
+                  style={{ display: "flex", flexDirection: "column", gap: 10, flex: 1 }}
+                >
+                  <div className="field">
+                    <label htmlFor="login-user">Username</label>
+                    <input id="login-user" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username" autoComplete="username" style={{ minHeight: 44 }} />
+                  </div>
+                  <div className="field">
+                    <label htmlFor="login-pass">Password</label>
+                    <input id="login-pass" className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" autoComplete="current-password" style={{ minHeight: 44 }} />
+                  </div>
+                  {flags.contactUrl && (
+                    <span style={{ padding: "4px 2px", fontSize: 12, color: "var(--color-accent-2-900)", textAlign: "right" }}>
+                      Forgot password?{" "}
+                      <a href={flags.contactUrl} target="_blank" rel="noreferrer" style={{ color: "inherit" }}>Contact me</a>
+                    </span>
+                  )}
+                  <div className="dialog-actions" style={{ marginTop: "auto" }}>
+                    <button className="btn btn-ghost" type="button" onClick={closeDialog}>Cancel</button>
+                    <button className="btn btn-primary" type="submit">Sign in</button>
+                  </div>
+                </form>
+                {flags.google && (
+                  <>
+                    <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, color: "var(--color-neutral-700)" }}>
+                      <span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />or<span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />
+                    </div>
+                    <button className="hov-border-accent" onClick={loginGoogle} style={googleRow}>
+                      <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, color: "var(--color-accent)" }}>G</span>
+                      Continue with Google
+                    </button>
+                  </>
+                )}
+              </>
+            )}
+          </div>
         </div>
-      ) : (
-        <>
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              if (!username.trim() || !password) return toast("Enter your username and password");
-              void loginPassword(username.trim(), password);
-            }}
-            style={{ display: "flex", flexDirection: "column", gap: 10 }}
-          >
-            <div className="field">
-              <label htmlFor="login-user">Username</label>
-              <input id="login-user" className="input" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Enter username" autoComplete="username" style={{ minHeight: 44 }} />
-            </div>
-            <div className="field">
-              <label htmlFor="login-pass">Password</label>
-              <input id="login-pass" className="input" type="password" value={password} onChange={(e) => setPassword(e.target.value)} placeholder="Enter password" autoComplete="current-password" style={{ minHeight: 44 }} />
-            </div>
-            <div className="dialog-actions">
-              <button className="btn btn-ghost" type="button" onClick={closeDialog}>Cancel</button>
-              <button className="btn btn-primary" type="submit">Sign in</button>
-            </div>
-          </form>
-          {flags.google && (
-            <>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 12, color: "var(--color-neutral-700)" }}>
-                <span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />or<span style={{ flex: 1, height: 1, background: "var(--color-divider)" }} />
-              </div>
-              <button className="hov-border-accent" onClick={loginGoogle} style={googleRow}>
-                <span style={{ fontFamily: "var(--font-heading)", fontSize: 16, color: "var(--color-accent)" }}>G</span>
-                Continue with Google
-              </button>
-            </>
-          )}
-        </>
-      )}
-    </Backdrop>
+      </div>
+    </div>
   );
 }
 
