@@ -28,15 +28,39 @@ export const SIZES = [
 ] as const;
 export type Size = (typeof SIZES)[number]["size"];
 
-/** What to draw: one chapter, or the whole syllabus weighted like the real exam. */
-export type SetSpec = { kind: "chapter"; chapter: number; size: Size } | { kind: "level"; size: Size };
+/**
+ * What to draw:
+ * - chapter: random questions from one chapter
+ * - level: a random draw across the syllabus, weighted like the real exam (guests)
+ * - numbered: Short/Medium test number n, a fixed exam-weighted set (members)
+ * - long: Long test number n, a fixed list set by the admin (members)
+ */
+export type SetSpec =
+  | { kind: "chapter"; chapter: number; size: Size }
+  | { kind: "level"; size: Size }
+  | { kind: "numbered"; size: 10 | 20; n: number }
+  | { kind: "long"; n: number };
 
-export const specKey = (s: SetSpec) => (s.kind === "chapter" ? `ch${s.chapter}-${s.size}` : `lvl-${s.size}`);
+export const pad2 = (n: number) => String(n).padStart(2, "0");
+export const specSize = (s: SetSpec): Size => (s.kind === "long" ? 40 : s.size);
+
+export function specKey(s: SetSpec) {
+  if (s.kind === "chapter") return `ch${s.chapter}-${s.size}`;
+  if (s.kind === "numbered") return `lvl-${s.size}-${pad2(s.n)}`;
+  if (s.kind === "long") return `long-${pad2(s.n)}`;
+  return `lvl-${s.size}`;
+}
 
 export function specTitle(s: SetSpec) {
-  const label = SIZES.find((x) => x.size === s.size)?.label;
-  return s.kind === "chapter" ? `Chapter ${s.chapter} · ${label} (${s.size})` : `${label} test · ${s.size} questions`;
+  const size = specSize(s);
+  const label = SIZES.find((x) => x.size === size)?.label;
+  if (s.kind === "chapter") return `Chapter ${s.chapter} · ${label} (${size})`;
+  if (s.kind === "numbered" || s.kind === "long") return `${label} test ${pad2(s.n)} · ${size} questions`;
+  return `${label} test · ${size} questions`;
 }
+
+/** How many numbered tests a level offers: Short and Medium split the whole bank; Long is set by the admin. */
+export type LevelCounts = { bankTotal: number; short: number; medium: number; long: number };
 
 /** Real exam pace: 60 minutes for 40 questions. */
 export const minutesFor = (n: number) => Math.max(1, Math.round(n * 1.5));

@@ -311,8 +311,8 @@ button{font:inherit}
   </div>
   <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ false }}">
     <div style="display:flex; align-items:center; gap:14px; flex-wrap:wrap; background:var(--color-accent-2-100); border-radius:28px; padding:16px 22px">
-      <span style="flex:1 1 300px; font-size:14px; color:var(--color-accent-2-900)">You can take any test now. Results are not saved until you sign in.</span>
-      <button class="btn btn-secondary" onClick="{{ openLogin }}">Sign in</button>
+      <span style="flex:1 1 300px; font-size:14px; color:var(--color-accent-2-900); text-wrap:pretty">You can take any test below now, but results are not saved. Create a free account to track your progress and unlock {{ memberTotal }} level tests.</span>
+      <button class="btn btn-secondary" onClick="{{ openLogin }}">Create a free account</button>
     </div>
   </sc-if>
   <div style="display:flex; flex-direction:column; gap:32px">
@@ -321,6 +321,7 @@ button{font:inherit}
         <h2 style="margin:0 0 4px">By level</h2>
         <p style="margin:0; color:var(--color-neutral-700); font-size:14px">Questions from all six chapters in the real exam's proportions (8/6/4/11/9/2).</p>
       </div>
+      <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ true }}">
       <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:16px">
         <sc-for list="{{ levelSets }}" as="ls" hint-placeholder-count="3">
           <div class="card" style="padding:24px; gap:10px; background:var(--color-surface)">
@@ -335,8 +336,69 @@ button{font:inherit}
             </div>
           </div>
         </sc-for>
-
       </div>
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap; border:2px dashed var(--color-accent-2-300); border-radius:28px; padding:20px 24px">
+        <div style="flex:1 1 320px; display:flex; flex-direction:column; gap:6px">
+          <span style="font-family:var(--font-heading); font-size:20px; color:var(--color-accent-2-900)">Want more than three tests?</span>
+          <span style="font-size:14px; color:var(--color-neutral-800); text-wrap:pretty">Members get {{ guestTeaser }}. Every result is saved, so you can see which chapters are improving.</span>
+        </div>
+        <button class="btn btn-primary" onClick="{{ openLogin }}">Create a free account</button>
+      </div>
+      </sc-if>
+      <sc-if value="{{ isLogged }}" hint-placeholder-val="{{ false }}">
+      <div style="display:flex; flex-direction:column; gap:16px">
+        <sc-for list="{{ levelGroups }}" as="lg" hint-placeholder-count="3">
+          <div class="card" style="padding:24px; gap:18px; background:var(--color-surface)">
+            <div style="display:flex; align-items:flex-start; gap:16px; flex-wrap:wrap">
+              <div style="flex:1 1 320px; display:flex; flex-direction:column; gap:6px">
+                <span class="card-kicker" style="color:var(--color-accent-700)">Level · {{ lg.size }} questions</span>
+                <span class="card-title" style="font-size:24px">{{ lg.label }}</span>
+                <span style="font-size:14px; color:var(--color-neutral-800)">{{ lg.sub }}</span>
+              </div>
+              <div style="display:flex; flex-direction:column; align-items:flex-end; gap:6px">
+                <span style="font-family:var(--font-heading); font-size:28px; line-height:1">{{ lg.count }} <span style="font-family:var(--font-body); font-size:14px; font-weight:600; color:var(--color-neutral-700)">tests</span></span>
+                <span class="tag tag-neutral">{{ lg.formula }}</span>
+                <span style="font-size:12px; color:var(--color-neutral-700)">{{ lg.doneLabel }}</span>
+              </div>
+            </div>
+            <sc-if value="{{ lg.isGenerated }}" hint-placeholder-val="{{ true }}">
+              <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(92px,1fr)); gap:8px">
+                <sc-for list="{{ lg.tiles }}" as="t" hint-placeholder-count="12">
+                  <button onClick="{{ t.start }}" title="{{ t.title }}" style="border:2px solid {{ t.bd }}; background:{{ t.bg }}; border-radius:20px; padding:10px 8px; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:2px; font-family:var(--font-body); color:var(--color-text)" style-hover="border-color:var(--color-accent)">
+                    <span style="font-family:var(--font-heading); font-size:18px">{{ t.n }}</span>
+                    <span style="font-size:12px; font-weight:600; color:{{ t.subFg }}">{{ t.sub }}</span>
+                  </button>
+                </sc-for>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+                <button class="btn btn-primary" onClick="{{ lg.startNext }}">{{ lg.nextLabel }}</button>
+                <sc-if value="{{ lg.hasMore }}" hint-placeholder-val="{{ false }}">
+                  <button class="btn btn-ghost" onClick="{{ lg.toggle }}">{{ lg.moreLabel }}</button>
+                </sc-if>
+              </div>
+            </sc-if>
+            <sc-if value="{{ lg.isAdmin }}" hint-placeholder-val="{{ false }}">
+              <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:12px">
+                <sc-for list="{{ lg.fixed }}" as="f" hint-placeholder-count="4">
+                  <div style="background:var(--color-bg); border-radius:24px; padding:18px 20px; display:flex; flex-direction:column; gap:8px">
+                    <div style="display:flex; align-items:center; gap:10px">
+                      <span style="width:36px; height:36px; flex:none; border-radius:50%; background:var(--color-accent-2-200); color:var(--color-accent-2-900); display:grid; place-items:center; font-family:var(--font-heading); font-size:16px">{{ f.code }}</span>
+                      <span style="font-weight:700; font-size:16px">{{ f.name }}</span>
+                    </div>
+                    <span style="font-size:13px; color:var(--color-neutral-800); text-wrap:pretty">{{ f.desc }}</span>
+                    <span style="font-size:12px; color:var(--color-neutral-700)">{{ f.meta }}</span>
+                    <div style="display:flex; align-items:center; gap:8px; margin-top:auto; padding-top:6px">
+                      <sc-if value="{{ f.hasBest }}" hint-placeholder-val="{{ false }}"><span class="tag tag-accent-2">Best {{ f.best }}%</span></sc-if>
+                      <button class="btn btn-secondary" onClick="{{ f.start }}" style="margin-left:auto">Start</button>
+                    </div>
+                  </div>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+      </sc-if>
     </div>
     <div style="display:flex; flex-direction:column; gap:16px">
       <div>
@@ -357,15 +419,29 @@ button{font:inherit}
             </div>
             <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-top:auto">
               <sc-for list="{{ cs.sizes }}" as="sz" hint-placeholder-count="3">
+                <sc-if value="{{ sz.open }}" hint-placeholder-val="{{ true }}">
                 <button class="btn btn-secondary" onClick="{{ sz.start }}" disabled="{{ sz.disabled }}" style="background:var(--color-bg); display:flex; flex-direction:column; gap:0; line-height:1.15; padding:8px 6px; min-width:0">
                   <span>{{ sz.label }}</span>
                   <span style="font-family:var(--font-body); font-size:12px; font-weight:600; color:var(--color-neutral-700)">{{ sz.size }}q</span>
                 </button>
+                </sc-if>
+                <sc-if value="{{ sz.locked }}" hint-placeholder-val="{{ false }}">
+                <button class="btn btn-ghost" onClick="{{ openLogin }}" title="Create a free account to unlock" style="border:2px dashed {{ cs.ink }}; opacity:.6; display:flex; flex-direction:column; gap:0; line-height:1.15; padding:8px 6px; min-width:0; color:{{ cs.ink }}">
+                  <span>{{ sz.label }}</span>
+                  <span style="font-family:var(--font-body); font-size:12px; font-weight:600">Members</span>
+                </button>
+                </sc-if>
               </sc-for>
             </div>
           </div>
         </sc-for>
       </div>
+      <sc-if value="{{ isGuest }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex; align-items:center; gap:20px; flex-wrap:wrap; border:2px dashed var(--color-accent-2-300); border-radius:28px; padding:20px 24px">
+        <span style="flex:1 1 320px; font-size:14px; color:var(--color-neutral-800); text-wrap:pretty">Guests can take Short chapter tests. Create a free account to unlock Medium and Long tests for every chapter.</span>
+        <button class="btn btn-primary" onClick="{{ openLogin }}">Create a free account</button>
+      </div>
+      </sc-if>
     </div>
   </div>
 </section>
@@ -680,14 +756,17 @@ const Q=[
 {ch:5,q:'A test manager wants to monitor progress. Which metric is most appropriate as an exit criterion?',o:['Number of test cases written','Defect discovery rate over the last three days','Percentage of planned test coverage achieved','Average test execution time','Number of testers assigned to the project'],a:[2],e:'Exit criteria measure ACHIEVED outcomes. Coverage percentage directly tracks completion against the plan. Discovery rate, timing and staffing are monitoring metrics, not exit conditions.'},
 {ch:6,q:'Which is a risk of test automation?',o:['Less repetitive manual work','Unrealistic expectations about what the tool can do','Greater consistency of tests','More objective assessment'],a:[1],e:'Unrealistic expectations are a classic automation risk. The other options are benefits.'},
 {ch:6,q:'Which is a benefit of test automation?',o:['Test design is no longer needed','Time saved by reducing repetitive manual work','The tool needs no maintenance','All manual testing can be replaced'],a:[1],e:'Automation reduces repetitive manual work. Test design and maintenance are still needed, and manual testing keeps its place.'}];
+const BANK={1:96,2:72,3:48,4:132,5:108,6:24};
+const BANK_TOTAL=Object.values(BANK).reduce((a,b)=>a+b,0);
+const LONG_COUNT=6;
 const KEY='ctfl_proto_v1';
 const fmt=s=>{s=Math.max(0,Math.round(s));return String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0')};
 const daysAgo=d=>new Date(Date.now()-d*864e5).toISOString();
 const SEED=[
  {id:'s1',title:'Chapter 1 · Short (10)',mode:'practice',date:daysAgo(6),correct:7,total:10,durSec:480,perCh:{1:[7,10]}},
- {id:'s2',title:'Medium test · 20 questions',mode:'mock',date:daysAgo(4),correct:13,total:20,durSec:1020,perCh:{1:[3,4],2:[2,3],3:[2,2],4:[4,5],5:[1,4],6:[1,2]}},
+ {id:'s2',title:'Medium test 02 · 20 questions',mode:'mock',date:daysAgo(4),correct:13,total:20,durSec:1020,perCh:{1:[3,4],2:[2,3],3:[2,2],4:[4,5],5:[1,4],6:[1,2]}},
  {id:'s3',title:'Chapter 4 · Short (10)',mode:'practice',date:daysAgo(2),correct:6,total:10,durSec:600,perCh:{4:[6,10]}},
- {id:'s4',title:'Long test · 40 questions',mode:'mock',date:daysAgo(1),correct:26,total:40,durSec:2100,perCh:{1:[5,8],2:[4,6],3:[3,4],4:[7,11],5:[6,9],6:[1,2]}}];
+ {id:'s4',title:'Long test 01 · 40 questions',mode:'mock',date:daysAgo(1),correct:26,total:40,durSec:2100,perCh:{1:[5,8],2:[4,6],3:[3,4],4:[7,11],5:[6,9],6:[1,2]}}];
 
 class Component extends DCLogic {
   state = this.init();
@@ -696,7 +775,7 @@ class Component extends DCLogic {
     const tier=s.tier||this.props.demoTier||'guest';
     return {screen:'home',tier,user:s.user||(tier!=='guest'?{name:'Linh Nguyen',email:'linh.nguyen@gmail.com'}:null),attempts:s.attempts||(tier!=='guest'?SEED:[]),learned:s.learned||{},
       expanded:{root:true,c1:true,c4:true},sel:'root',mode:'practice',exam:null,result:null,dialog:null,pending:null,
-      chat:[],chatInput:'',busy:false,plan:'',quizCh:null,coachTab:'chat',toast:'',now:Date.now(),billing:'monthly',loginUser:'',loginPass:'',showPw:false};
+      chat:[],chatInput:'',busy:false,plan:'',quizCh:null,coachTab:'chat',toast:'',now:Date.now(),billing:'monthly',loginUser:'',loginPass:'',showPw:false,openLevels:{}};
   }
   componentDidMount(){
     this.iv=setInterval(()=>{const e=this.state.exam;if(e&&e.mode==='mock'){this.setState({now:Date.now()});if(e.limitSec-(Date.now()-e.started)/1000<=0)this.submit()}},1000);
@@ -888,8 +967,25 @@ class Component extends DCLogic {
       const p=pal(c.id); const avail=counts[c.id]||0;
       const bests=CSIZES.map(({size,label})=>{const t=`Chapter ${c.id} · ${label} (${size})`;return logged&&best[t]!==undefined?best[t]:null}).filter(x=>x!==null);
       return{...c,...p,avail,bestPct:bests.length?Math.max(...bests):null,hasBest:bests.length>0,
-        sizes:CSIZES.map(({size,label})=>{const qs=Q.filter(q=>q.ch===c.id);const title=`Chapter ${c.id} · ${label} (${size})`;return{label,size,disabled:avail<size,start:()=>this.startExam({title,qs:qs.slice(0,size),min:Math.round(size*1.5),def:{kind:'chapter',chapter:c.id,size}})}})};
+        sizes:CSIZES.map(({size,label})=>{const qs=Q.filter(q=>q.ch===c.id);const title=`Chapter ${c.id} · ${label} (${size})`;const open=logged||label==='Short';return{label,size,open,locked:!open,disabled:avail<size,start:()=>this.startExam({title,qs:qs.slice(0,size),min:Math.round(size*1.5),def:{kind:'chapter',chapter:c.id,size}})}})};
     });
+    const rot=(arr,k)=>arr.length?arr.map((_,i)=>arr[(i+k)%arr.length]):arr;
+    const buildQs=(size,offset)=>{const dist=this.weightedDist(size);const qs=[];CH.forEach(c=>{const pool=rot(Q.filter(q=>q.ch===c.id),offset);qs.push(...pool.slice(0,dist[c.id]||0))});return qs.length?qs:Q.slice(0,Math.min(size,Q.length))};
+    const genCount=size=>Math.floor(BANK_TOTAL/size);
+    const shown=12;
+    const levelGroups=TSIZES.map(({size,label,sub},li)=>{
+      const min=Math.round(size*1.5);
+      const isLong=label==='Long';
+      const count=isLong?LONG_COUNT:genCount(size), open=!!s.openLevels[label];
+      const all=Array.from({length:count},(_,i)=>{const n=String(i+1).padStart(2,'0');const title=`${label} test ${n} · ${size} questions`;const b=best[title];const has=b!==undefined;
+        return{n,title,has,bg:has?'var(--color-accent-2-100)':'var(--color-bg)',bd:has?'var(--color-accent-2-300)':'transparent',sub:has?`Best ${b}%`:`${size}q`,subFg:has?'var(--color-accent-2-800)':'var(--color-neutral-700)',start:()=>this.startExam({title,qs:buildQs(size,i),min,def:{kind:isLong?'long':'level',size,n:i+1}})}});
+      const done=all.filter(t=>t.has).length, next=all.find(t=>!t.has)||all[0];
+      return{label,size,sub,count,formula:isLong?`${count} tests set by admin`:`${BANK_TOTAL} in bank ÷ ${size} = ${count}`,doneLabel:`${done} of ${count} taken`,isGenerated:true,isAdmin:false,fixed:[],
+        tiles:open?all:all.slice(0,shown),hasMore:count>shown,moreLabel:open?'Show fewer':`Show all ${count}`,toggle:()=>this.setState(x=>({openLevels:{...x.openLevels,[label]:!x.openLevels[label]}})),
+        nextLabel:`Start test ${next.n}`,startNext:next.start};
+    });
+    const memberTotal=genCount(10)+genCount(20)+LONG_COUNT;
+    const guestTeaser=`${genCount(10)} Short, ${genCount(20)} Medium and ${LONG_COUNT} full Long tests`;
     const modes=[['practice','Practice'],['mock','Mock exam']].map(([k,l])=>({label:l,pick:()=>this.setState({mode:k}),bg:s.mode===k?'var(--color-accent)':'transparent',fg:s.mode===k?'var(--color-bg)':'var(--color-text)'}));
     // exam
     let ex={};
@@ -943,7 +1039,7 @@ class Component extends DCLogic {
     const demoTiers=[['guest','Guest'],['member','Member'],['pro','Pro']].map(([k,l])=>({label:l,pick:()=>this.setTier(k),bg:tier===k?'var(--color-accent)':'transparent',fg:'var(--color-bg)'}));
     const name=s.user?s.user.name:'';
     return {
-      nav,chapters,tree,node,expandAll,collapseAll,levelSets,chapterSets,modes,ex,res,dash,demoTiers,passMark,
+      nav,chapters,tree,node,expandAll,collapseAll,levelSets,levelGroups,memberTotal,guestTeaser,chapterSets,modes,ex,res,dash,demoTiers,passMark,
       isGuest:!logged,isLogged:logged,isPro:pro,notPro:!pro,
       isHome:scr==='home',isMindmap:scr==='mindmap',isTests:scr==='tests',isExam:scr==='exam'&&!!s.exam,isResult:scr==='result'&&!!s.result,isDashboard:scr==='dashboard',isCoach:scr==='coach',
       initial:name?name[0]:'',userEmail:s.user?s.user.email:'',firstName:name.split(' ')[0],pwDisplay:s.showPw?(s.user&&s.user.pw||''):'••••••••',showPw:s.showPw,showPwHidden:!s.showPw,togglePw:()=>this.setState(x=>({showPw:!x.showPw})),
