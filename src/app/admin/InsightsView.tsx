@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
+import { PendingSpinner } from "./AdminTabs";
 import type { Flag, Insights, QuestionStat } from "@/server/insights";
 
 const FLAG: Record<Flag, { label: string; tip: string; strong?: boolean }> = {
@@ -83,8 +84,8 @@ export function InsightsView({ data }: { data: Insights }) {
         <div role="group" aria-label="Time range" style={{ display: "flex", background: "var(--color-surface)", borderRadius: 999, padding: 4, gap: 4 }}>
           {[7, 30, 90].map((d) => (
             <Link key={d} href={`/admin?tab=insights&days=${d}`} aria-current={d === data.days ? "true" : undefined}
-              style={{ padding: "7px 14px", borderRadius: 999, fontSize: 13, fontWeight: 600, textDecoration: "none", background: d === data.days ? "var(--color-text)" : "transparent", color: d === data.days ? "var(--color-bg)" : "var(--color-text)" }}>
-              {d} days
+              style={{ display: "inline-flex", alignItems: "center", gap: 6, padding: "7px 14px", borderRadius: 999, fontSize: 13, fontWeight: 600, textDecoration: "none", background: d === data.days ? "var(--color-text)" : "transparent", color: d === data.days ? "var(--color-bg)" : "var(--color-text)" }}>
+              {d} days <PendingSpinner />
             </Link>
           ))}
         </div>

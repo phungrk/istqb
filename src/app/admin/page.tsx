@@ -1,11 +1,13 @@
 import type { Metadata } from "next";
-import Link from "next/link";
+import { Suspense } from "react";
 import { config } from "@/server/config";
 import { listAccounts } from "@/server/admin";
 import { computeInsights } from "@/server/insights";
 import { getCurrentUser, isAdmin } from "@/server/session";
+import { PageLoading } from "@/components/Loading";
 import { AdminView } from "./AdminView";
 import { AdminLogin } from "./AdminLogin";
+import { AdminTabs } from "./AdminTabs";
 import { InsightsView } from "./InsightsView";
 
 export const metadata: Metadata = { title: "Admin · Testpath", robots: { index: false } };
@@ -16,6 +18,14 @@ const TABS = [
   ["insights", "Insights"],
 ] as const;
 
+async function Accounts() {
+  return <AdminView rows={await listAccounts()} />;
+}
+
+async function Insights({ days }: { days: number }) {
+  return <InsightsView data={await computeInsights(days)} />;
+}
+
 /** Owner-only: accounts (password reset) and usage insights. Anyone else sees the admin sign-in form. */
 export default async function AdminPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }> }) {
   const user = await getCurrentUser();
@@ -24,21 +34,17 @@ export default async function AdminPage({ searchParams }: { searchParams: Promis
   const sp = await searchParams;
   const tab = sp.tab === "insights" ? "insights" : "accounts";
   const days = [7, 30, 90].includes(Number(sp.days)) ? Number(sp.days) : 30;
+  // The tabs render at once; each tab's data streams in behind its own fallback. The key makes a
+  // fresh boundary per tab/range, so switching shows the loading state instead of the old tab.
   return (
     <>
-      <nav aria-label="Admin sections" style={{ display: "flex", gap: 4, paddingTop: 20 }}>
-        {TABS.map(([key, label]) => (
-          <Link
-            key={key}
-            href={`/admin?tab=${key}`}
-            aria-current={tab === key ? "page" : undefined}
-            style={{ padding: "8px 16px", borderRadius: 999, fontWeight: 600, fontSize: 14, textDecoration: "none", background: tab === key ? "var(--color-accent-200)" : "transparent", color: tab === key ? "var(--color-accent-900)" : "var(--color-text)" }}
-          >
-            {label}
-          </Link>
-        ))}
-      </nav>
-      {tab === "insights" ? <InsightsView data={await computeInsights(days)} /> : <AdminView rows={await listAccounts()} />}
+      <AdminTabs tab={tab} tabs={TABS} />
+      <Suspense
+        key={`${tab}-${days}`}
+        fallback={<PageLoading label={tab === "insights" ? `Crunching ${days} days of usage data…` : "Loading accounts…"} blocks={tab === "insights" ? 5 : 2} />}
+      >
+        {tab === "insights" ? <Insights days={days} /> : <Accounts />}
+      </Suspense>
     </>
   );
 }
