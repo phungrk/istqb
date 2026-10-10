@@ -52,4 +52,9 @@ export interface Store {
   addEvents(events: UsageEvent[]): Promise<void>;
   /** Events with ts >= since, oldest first. */
   listEvents(since: Date): Promise<UsageEvent[]>;
+  /**
+   * Nightly housekeeping: merge each finished day's event batches into one object and drop
+   * days older than `keepDays`. Returns what it did. A no-op for stores that don't need it.
+   */
+  compactEvents(keepDays: number): Promise<{ compacted: { day: string; batches: number; events: number }[]; deletedDays: string[] }>;
 }

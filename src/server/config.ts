@@ -32,6 +32,10 @@ export const config = {
     envValue("ADMIN_USERNAME") && envValue("ADMIN_PASSWORD")
       ? { username: envValue("ADMIN_USERNAME")!.toLowerCase(), password: envValue("ADMIN_PASSWORD")! }
       : null,
+  /** Vercel Cron sends `Authorization: Bearer <CRON_SECRET>`; without it the cron route refuses. */
+  cronSecret: envValue("CRON_SECRET") ?? null,
+  /** Usage events older than this are deleted by the nightly compaction. */
+  eventRetentionDays: Number(process.env.EVENT_RETENTION_DAYS) || 365,
   /** Generated accounts: user001 … user100. */
   generatedAccounts: { prefix: "user", max: Number(process.env.GENERATED_ACCOUNT_LIMIT ?? 100) },
 };

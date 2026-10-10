@@ -2,7 +2,7 @@
 
 /**
  * Anonymous usage tracking for /admin → Insights. Events are queued and sent in
- * batches (every few seconds, and with sendBeacon when the page is hidden).
+ * batches (every 15 seconds, and with sendBeacon when the page is hidden).
  * The id is random and stays in this browser; nothing is sent when Do Not Track is on.
  */
 type Event = { t: string; [key: string]: unknown };
@@ -37,7 +37,7 @@ export function track(t: string, data: Record<string, unknown> = {}) {
   if (disabled()) return;
   queue.push({ t, ...data, at: Date.now() });
   if (!timer) {
-    timer = setInterval(() => flush(), 5000);
+    timer = setInterval(() => flush(), 15000);
     addEventListener("pagehide", () => flush(true));
     document.addEventListener("visibilitychange", () => document.visibilityState === "hidden" && flush(true));
   }

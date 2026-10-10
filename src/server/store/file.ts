@@ -127,4 +127,7 @@ export const fileStore: Store = {
     const from = since.toISOString();
     return text.split("\n").flatMap((l) => (l ? [JSON.parse(l) as UsageEvent] : [])).filter((e) => e.ts >= from);
   },
+  async compactEvents() {
+    return { compacted: [], deletedDays: [] }; // one append-only file: nothing to merge
+  },
 };

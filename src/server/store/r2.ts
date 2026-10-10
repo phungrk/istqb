@@ -1,5 +1,5 @@
 import "server-only";
-import { GetObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client, S3ServiceException } from "@aws-sdk/client-s3";
+import { DeleteObjectsCommand, GetObjectCommand, HeadObjectCommand, ListObjectsV2Command, PutObjectCommand, S3Client, S3ServiceException } from "@aws-sdk/client-s3";
 import type { Attempt } from "@/lib/stats";
 import type { NewAttempt, Store, UsageEvent, User } from "./types";
 
@@ -13,6 +13,7 @@ import type { NewAttempt, Store, UsageEvent, User } from "./types";
  *   attempts/{userId}.json          Attempt[]
  *   learned/{userId}.json           string[] of mindmap topic ids
  *   events/{YYYY-MM-DD}/{ts}-{rand}.ndjson   one batch of usage events (append-only)
+ *   events/{YYYY-MM-DD}/_day.ndjson          that day's batches merged by the nightly compaction
  *
  * Writes are conditional: an index is created with If-None-Match: * (so a username
  * can't be claimed twice), and read-modify-write updates use If-Match on the ETag
@@ -182,5 +183,64 @@ export const r2Store: Store = {
     }
     const from = since.toISOString();
     return out.filter((e) => e.ts >= from).sort((a, b) => (a.ts < b.ts ? -1 : 1));
+  },
+  async compactEvents(keepDays) {
+    const DAY = "_day.ndjson";
+    const listAll = async (Prefix: string, Delimiter?: string) => {
+      const keys: string[] = [];
+      const prefixes: string[] = [];
+      let token: string | undefined;
+      do {
+        const res = await s3.send(new ListObjectsV2Command({ Bucket: bucket, Prefix, Delimiter, ContinuationToken: token }));
+        for (const o of res.Contents ?? []) keys.push(o.Key!);
+        for (const p of res.CommonPrefixes ?? []) prefixes.push(p.Prefix!);
+        token = res.IsTruncated ? res.NextContinuationToken : undefined;
+      } while (token);
+      return { keys, prefixes };
+    };
+    const readText = async (Key: string) => (await s3.send(new GetObjectCommand({ Bucket: bucket, Key }))).Body!.transformToString();
+    const remove = async (keys: string[]) => {
+      for (let i = 0; i < keys.length; i += 1000)
+        await s3.send(new DeleteObjectsCommand({ Bucket: bucket, Delete: { Objects: keys.slice(i, i + 1000).map((Key) => ({ Key })), Quiet: true } }));
+    };
+
+    const today = new Date().toISOString().slice(0, 10);
+    const cutoff = new Date(Date.now() - keepDays * 864e5).toISOString().slice(0, 10);
+    const days = (await listAll("events/", "/")).prefixes.map((p) => p.slice("events/".length, -1)).sort();
+    const compacted: { day: string; batches: number; events: number }[] = [];
+    const deletedDays: string[] = [];
+
+    for (const day of days) {
+      const { keys } = await listAll(`events/${day}/`);
+      if (day < cutoff) {
+        await remove(keys);
+        deletedDays.push(day);
+        continue;
+      }
+      // Today is still being written; earlier days only get the odd late batch, which the next run picks up.
+      const batches = keys.filter((k) => !k.endsWith(DAY));
+      if (day >= today || !batches.length) continue;
+      const dayKey = `events/${day}/${DAY}`;
+      const etag = keys.includes(dayKey) ? (await s3.send(new HeadObjectCommand({ Bucket: bucket, Key: dayKey }))).ETag : undefined;
+      const parts: string[] = [];
+      if (etag) parts.push(await readText(dayKey));
+      for (let i = 0; i < batches.length; i += 32) parts.push(...(await Promise.all(batches.slice(i, i + 32).map(readText))));
+      const lines = parts.flatMap((t) => t.split("\n")).filter(Boolean);
+      lines.sort((a, b) => (JSON.parse(a).ts < JSON.parse(b).ts ? -1 : 1));
+      // Conditional write: if another compaction changed _day meanwhile, skip; the next run retries.
+      try {
+        await s3.send(new PutObjectCommand({
+          Bucket: bucket, Key: dayKey, Body: lines.join("\n"), ContentType: "application/x-ndjson",
+          ...(etag ? { IfMatch: etag } : { IfNoneMatch: "*" }),
+        }));
+      } catch (e) {
+        if (status(e) === 412 || status(e) === 409) continue;
+        throw e;
+      }
+      // Delete exactly the batches that were merged, never ones that arrived after the listing.
+      await remove(batches);
+      compacted.push({ day, batches: batches.length, events: lines.length });
+    }
+    return { compacted, deletedDays };
   },
 };

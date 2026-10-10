@@ -99,4 +99,9 @@ export const prismaStore: Store = {
     const rows = await prisma.event.findMany({ where: { ts: { gte: since } }, orderBy: { ts: "asc" } });
     return rows.map((r) => ({ ...(r.data as object), t: r.type, ts: r.ts.toISOString(), anon: r.anon, ...(r.userId ? { uid: r.userId } : {}) }) as UsageEvent);
   },
+  async compactEvents(keepDays) {
+    const cutoff = new Date(Date.now() - keepDays * 864e5);
+    await prisma.event.deleteMany({ where: { ts: { lt: cutoff } } });
+    return { compacted: [], deletedDays: [] }; // rows are indexed by ts: nothing to merge
+  },
 };

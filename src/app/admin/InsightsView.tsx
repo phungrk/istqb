@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useApp } from "@/components/AppProvider";
 import type { Flag, Insights, QuestionStat } from "@/server/insights";
 
 const FLAG: Record<Flag, { label: string; tip: string; strong?: boolean }> = {
@@ -39,6 +41,19 @@ const section = { display: "flex", flexDirection: "column", gap: 12 } as const;
 const card = { background: "var(--color-neutral-100)", borderRadius: 28, padding: "16px 20px" } as const;
 
 export function InsightsView({ data }: { data: Insights }) {
+  const { toast } = useApp();
+  const router = useRouter();
+  const [compacting, setCompacting] = useState(false);
+  const compact = async () => {
+    setCompacting(true);
+    const res = await fetch("/api/cron/compact", { method: "POST" });
+    const data = (await res.json().catch(() => null)) as { compacted?: { batches: number }[]; deletedDays?: string[] } | null;
+    setCompacting(false);
+    if (!res.ok || !data) return toast("Compaction failed");
+    const files = (data.compacted ?? []).reduce((n, c) => n + c.batches, 0);
+    toast(files ? `Merged ${files} files into ${data.compacted!.length} day files` : "Nothing to merge");
+    router.refresh();
+  };
   const [flaggedOnly, setFlaggedOnly] = useState(false);
   const [chapter, setChapter] = useState(0);
   const [q, setQ] = useState("");
@@ -57,6 +72,12 @@ export function InsightsView({ data }: { data: Insights }) {
           <h1 style={{ margin: "0 0 6px" }}>Insights</h1>
           <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>
             Anonymous usage from the last {data.days} days · {num(data.events)} events. Visitors with Do Not Track on are not counted.
+          </p>
+          <p style={{ margin: "4px 0 0", fontSize: 12, color: "var(--color-neutral-700)" }}>
+            Event files are merged nightly (00:17 UTC).{" "}
+            <button type="button" onClick={compact} disabled={compacting} style={{ background: "none", border: 0, padding: 0, font: "inherit", color: "var(--color-accent-700)", textDecoration: "underline", cursor: "pointer" }}>
+              {compacting ? "Merging…" : "Merge now"}
+            </button>
           </p>
         </div>
         <div role="group" aria-label="Time range" style={{ display: "flex", background: "var(--color-surface)", borderRadius: 999, padding: 4, gap: 4 }}>
