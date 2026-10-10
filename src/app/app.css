@@ -156,3 +156,5 @@ button { font: inherit; }
   .login-grid { grid-template-columns: 1fr; min-height: 0; }
   .login-grid > * { padding: 24px 20px; }
 }
+/* Generated credentials: read-only but still legible */
+.login-dialog .input:disabled { opacity: 1; color: var(--color-text); font-weight: 700; cursor: not-allowed; background: color-mix(in srgb, var(--color-accent-2-100) 60%, var(--color-bg)); }

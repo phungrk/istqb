@@ -157,16 +157,15 @@ function useAppState(initial: Initial) {
     [pending, refresh, toast],
   );
 
-  /** Creates userNNN with an 8-digit password and signs it in. The dialog shows the credentials once. */
+  /** Creates userNNN with an 8-digit password (not signed in yet). The dialog fills the form with it. */
   const generateAccount = useCallback(async () => {
     const { ok, data } = await postJson<{ error?: string; username?: string; password?: string }>("/api/account/generate");
     if (!ok || !data.username || !data.password) {
       toast(data.error || "Could not create an account");
       return null;
     }
-    refresh();
     return { username: data.username, password: data.password };
-  }, [refresh, toast]);
+  }, [toast]);
 
   const loginGoogle = useCallback(() => {
     ssSet(SS.signingIn, true);
