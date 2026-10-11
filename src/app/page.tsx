@@ -1,9 +1,16 @@
 "use client";
 
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { FirstView } from "@/components/FirstView";
 import { CHAPTERS, palette } from "@/lib/syllabus";
+
+const RESOURCES = [
+  ["/istqb-foundation-level", "CTFL exam guide", "Format, questions per chapter, K-levels, ISTQB levels and a study plan."],
+  ["/istqb-sample-questions", "Sample questions", "14 exam-style questions with answers and explanations."],
+  ["/glossary", "ISTQB glossary", "Key terms of the v4.0.1 syllabus in plain English, with exam tips."],
+] as const;
 
 export default function HomePage() {
   const router = useRouter();
@@ -65,6 +72,17 @@ export default function HomePage() {
           )}
         </div>
       </div>
+      <nav aria-labelledby="free-resources" style={{ display: "flex", flexDirection: "column", gap: 20 }}>
+        <h2 id="free-resources" style={{ margin: 0 }}>Free CTFL resources</h2>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(240px,1fr))", gap: 16 }}>
+          {RESOURCES.map(([href, title, text]) => (
+            <Link key={href} href={href} className="card hov-shadow-md" style={{ padding: 22, gap: 8, textDecoration: "none", color: "inherit" }}>
+              <span className="card-title" style={{ fontSize: "var(--fs-20)" }}>{title} →</span>
+              <span style={{ fontSize: "var(--fs-15)", color: "var(--color-neutral-800)" }}>{text}</span>
+            </Link>
+          ))}
+        </div>
+      </nav>
       <p style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>
         ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.
       </p>

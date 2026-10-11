@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { TERMS } from "@/lib/glossary";
 import { CHAPTERS } from "@/lib/syllabus";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { GlossaryList } from "./GlossaryList";
-import { Disclaimer, JsonLd } from "./shared";
+import { Disclaimer, JsonLd } from "@/components/Seo";
 
 export const metadata: Metadata = {
   title: "ISTQB Glossary: CTFL v4.0.1 key terms explained",
@@ -31,10 +32,11 @@ export default function GlossaryPage() {
       <span className="tag tag-accent-2" style={{ alignSelf: "flex-start" }}>Glossary</span>
       <h1 style={{ margin: 0 }}>ISTQB glossary for the CTFL exam</h1>
       <p style={{ margin: 0, fontSize: "var(--fs-17)", color: "var(--color-neutral-800)", maxWidth: 680 }}>
-        {TERMS.length} key terms from the Foundation Level syllabus v4.0.1, explained in plain English. Each term comes with the trap the exam likes to set and a link to the topic on the mindmap.
+        {TERMS.length} key terms from the Foundation Level syllabus v4.0.1, explained in plain English. Each term comes with the trap the exam likes to set and a link to the topic on the mindmap. New to the exam? Start with the{" "}
+        <Link href="/istqb-foundation-level">CTFL exam guide</Link>.
       </p>
       <GlossaryList items={items} chapters={CHAPTERS.map((c) => ({ id: c.id, title: c.title }))} />
-      <Disclaimer />
+      <Disclaimer glossary />
     </section>
   );
 }

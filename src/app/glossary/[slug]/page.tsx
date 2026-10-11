@@ -3,7 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TERM, TERMS, chapterName } from "@/lib/glossary";
 import { SITE_URL } from "@/lib/site";
-import { Disclaimer, JsonLd } from "../shared";
+import { Disclaimer, JsonLd } from "@/components/Seo";
 
 export const dynamicParams = false;
 
@@ -101,7 +101,7 @@ export default async function TermPage({ params }: { params: Promise<{ slug: str
         {prev ? <Link href={`/glossary/${prev.slug}`}>← {prev.term}</Link> : <span />}
         {next && <Link href={`/glossary/${next.slug}`}>{next.term} →</Link>}
       </nav>
-      <Disclaimer />
+      <Disclaimer glossary />
     </article>
   );
 }
