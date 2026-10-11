@@ -1,11 +1,11 @@
 import glossary from "@data/glossary.json";
 import syllabusLo from "@data/syllabus-lo.json";
+import { slugify } from "@/lib/slug";
 import { CHAPTERS, TOPICS, type Topic } from "@/lib/syllabus";
 
 type Raw = { t: string; ch: number; d: string; tip: string; see: string[]; topics?: string[] };
 export type Term = { term: string; slug: string; chapter: number; definition: string; tip: string; see: Term[]; topics: Topic[] };
 
-export const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
 const norm = (s: string) => s.toLowerCase().replace(/-/g, " ");
 
 const raw = glossary as Raw[];

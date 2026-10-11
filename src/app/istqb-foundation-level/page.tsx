@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Disclaimer, JsonLd } from "@/components/Seo";
 import { CHAPTERS, TOPICS } from "@/lib/syllabus";
 import { SITE_URL } from "@/lib/site";
+import { CHAPTER_PAGES, chapterUrl } from "@/lib/syllabusPages";
 
 export const metadata: Metadata = {
   title: "ISTQB Foundation Level (CTFL v4.0.1): exam format, syllabus, levels & fees",
@@ -96,7 +97,7 @@ export default function FoundationGuidePage() {
             {CHAPTERS.map((c) => (
               <tr key={c.id}>
                 <td style={td}>
-                  <strong>{c.id}. {c.title}</strong>
+                  <Link href={chapterUrl(CHAPTER_PAGES[c.id - 1])}><strong>{c.id}. {c.title}</strong></Link>
                   <span style={{ display: "block", fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>{topicsIn(c.id)} topics on the mindmap</span>
                 </td>
                 <td style={{ ...td, textAlign: "right" }}>{c.q}</td>

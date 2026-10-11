@@ -7,6 +7,7 @@ import { FirstView } from "@/components/FirstView";
 import { CHAPTERS, palette } from "@/lib/syllabus";
 
 const RESOURCES = [
+  ["/syllabus", "Syllabus explained", "All 6 chapters and 36 topics with exam traps and learning objectives."],
   ["/istqb-foundation-level", "CTFL exam guide", "Format, questions per chapter, K-levels, ISTQB levels and a study plan."],
   ["/istqb-sample-questions", "Sample questions", "14 exam-style questions with answers and explanations."],
   ["/glossary", "ISTQB glossary", "Key terms of the v4.0.1 syllabus in plain English, with exam tips."],

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { TERM, TERMS, chapterName } from "@/lib/glossary";
 import { SITE_URL } from "@/lib/site";
+import { topicHref } from "@/lib/syllabusPages";
 import { Disclaimer, JsonLd } from "@/components/Seo";
 
 export const dynamicParams = false;
@@ -85,8 +86,8 @@ export default async function TermPage({ params }: { params: Promise<{ slug: str
           <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "flex", flexDirection: "column", gap: 6 }}>
             {t.topics.map((tp) => (
               <li key={tp.id}>
-                <Link href={`/mindmap?topic=${tp.id}`}>{tp.icon} {tp.label}</Link>
-                <span style={{ color: "var(--color-neutral-700)", fontSize: "var(--fs-14)" }}> · mindmap, chapter {tp.chapter}</span>
+                <Link href={topicHref(tp.id)}>{tp.icon} {tp.label}</Link>
+                <span style={{ color: "var(--color-neutral-700)", fontSize: "var(--fs-14)" }}> · study notes, chapter {tp.chapter}</span>
               </li>
             ))}
           </ul>

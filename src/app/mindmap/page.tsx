@@ -1,11 +1,13 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { useApp } from "@/components/AppProvider";
 import { CheckIcon, ChevronDownIcon, ChevronRightIcon, XIcon } from "@/components/icons";
 import { TopicView, type LoExcerpt } from "@/components/TopicView";
 import syllabusLo from "@data/syllabus-lo.json";
 import { track } from "@/lib/track";
+import { topicHref } from "@/lib/syllabusPages";
 import { CHAPTERS, KIDS, NODE, NODES, STUDY_IDS, TOPICS, chapterOf, depthOf, palette } from "@/lib/syllabus";
 
 type Row = { id: string; depth: number };
@@ -187,7 +189,10 @@ export default function MindmapPage() {
             <h3 style={{ margin: 0, ...(VIET.test(sel.title) ? { fontFamily: "var(--font-body)", fontWeight: 700 } : {}) }}>{sel.title}</h3>
             {topic?.starred && <span className="tag tag-accent" style={{ alignSelf: "flex-start" }}>⭐ Often on the exam</span>}
             {topic && selPal ? (
-              <TopicView topic={topic} color={selPal.base} ink={selPal.ink} los={LO_BY_TOPIC[topic.id]} />
+              <>
+                <TopicView topic={topic} color={selPal.base} ink={selPal.ink} los={LO_BY_TOPIC[topic.id]} />
+                <Link href={topicHref(topic.id)} style={{ fontSize: "var(--fs-14)", alignSelf: "flex-start" }}>Open as a page with a practice question →</Link>
+              </>
             ) : (
               <p style={{ margin: 0, fontSize: "var(--fs-15)", textWrap: "pretty" }}>{sel.summary}</p>
             )}

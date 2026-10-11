@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { TERMS } from "@/lib/glossary";
+import { CHAPTER_PAGES, TOPIC_PAGES, chapterUrl, topicUrl } from "@/lib/syllabusPages";
 import { SITE_URL } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -10,6 +11,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     page("/tests", 0.9, "weekly"),
     page("/istqb-foundation-level", 0.9),
     page("/istqb-sample-questions", 0.9),
+    page("/syllabus", 0.9),
+    ...CHAPTER_PAGES.map((c) => page(chapterUrl(c), 0.8)),
+    ...TOPIC_PAGES.map((p) => page(topicUrl(p), 0.7)),
     page("/glossary", 0.8),
     ...TERMS.map((t) => page(`/glossary/${t.slug}`, 0.6)),
     page("/contact", 0.2),
