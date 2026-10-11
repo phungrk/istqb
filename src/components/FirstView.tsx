@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useLayoutEffect, useRef } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 
 /**
  * Phone fit, as a plain-JS body so the same code runs inline during SSR parsing (no flash before
@@ -77,6 +77,44 @@ function Badge({ n, sage, d }: { n: number; sage?: boolean; d: number }) {
   );
 }
 
+/*
+ * Intro animation (CSS, see .fv-anim in app.css). Everything starts dimmed, then:
+ * Learn → arc to Test → Test → arc to Fix gaps → Fix gaps → arc back to Learn,
+ * and with that last arc the Readiness circle lights up, its bars grow and 48 → 71% counts up.
+ * Times are seconds from page load; the resting state (and reduced motion) is fully lit.
+ */
+const STEP = [0.2, 1.3, 2.4];
+const ARC = [0.6, 1.7, 2.8];
+const ARC_LEN = 0.75;
+const CORE = ARC[2];
+const COUNT_AT = CORE + 0.45;
+const d = (t: number) => ({ "--d": `${t}s` }) as React.CSSProperties;
+
+/** Point on the loop circle; 0° is 3 o'clock, angles grow clockwise (SVG y points down). */
+const at = (cx: number, cy: number, r: number, deg: number) => {
+  const a = (deg * Math.PI) / 180;
+  return `${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`;
+};
+
+/** Counts from `from` to `to` once the reveal reaches it; renders the final value on the server. */
+function CountUp({ from, to, delay }: { from: number; to: number; delay: number }) {
+  const [n, setN] = useState(to);
+  useEffect(() => {
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    setN(from);
+    let raf = 0;
+    const start = performance.now() + delay * 1000;
+    const tick = (now: number) => {
+      const k = Math.min(1, Math.max(0, (now - start) / 900));
+      setN(Math.round(from + (to - from) * (1 - (1 - k) ** 3)));
+      if (k < 1) raf = requestAnimationFrame(tick);
+    };
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [from, to, delay]);
+  return <>{n}</>;
+}
+
 /** The learning loop: dashed circle, readiness in the middle, three step cards. */
 function Loop({ size }: { size: "lg" | "sm" }) {
   const lg = size === "lg";
@@ -96,22 +134,37 @@ function Loop({ size }: { size: "lg" | "sm" }) {
   return (
     <div className={`fv-loop fv-loop-${size}`} role="img" aria-label="The study loop: 1 Learn on the mindmap, 2 Test with a mock exam, 3 Fix the gaps you missed. Readiness climbs each round, for example from 48% to 71% over four rounds." style={{ width: g.w, height: g.h }}>
       <svg width={g.w} height={g.h} viewBox={`0 0 ${g.w} ${g.h}`} style={{ position: "absolute", inset: 0 }} aria-hidden>
-        <circle cx={g.cx} cy={g.cy} r={g.r} fill="none" stroke="var(--color-neutral-400)" strokeWidth={3} strokeDasharray={g.dash} strokeLinecap="round" />
-        <g fill="var(--color-neutral-600)">{g.arrows.map((d) => <path key={d} d={d} />)}</g>
+        <circle cx={g.cx} cy={g.cy} r={g.r} fill="none" stroke="var(--color-neutral-400)" strokeWidth={3} strokeDasharray={g.dash} strokeLinecap="round" opacity={0.45} />
+        {[[-90, 30], [30, 150], [150, 270]].map(([a, b], i) => {
+          const arc = `M ${at(g.cx, g.cy, g.r, a)} A ${g.r} ${g.r} 0 0 1 ${at(g.cx, g.cy, g.r, b)}`;
+          const id = `fv-arc-${size}-${i}`;
+          return (
+            <g key={id}>
+              {/* The lit arc keeps the dashes; a solid copy in a mask draws it in. */}
+              <mask id={id} maskUnits="userSpaceOnUse">
+                <path className="fv-draw" style={d(ARC[i])} d={arc} pathLength={1} fill="none" stroke="#fff" strokeWidth={12} />
+              </mask>
+              <path d={arc} fill="none" stroke={i === 2 ? "var(--color-accent-2-500)" : "var(--color-accent)"} strokeWidth={3.5} strokeDasharray={g.dash} strokeLinecap="round" mask={`url(#${id})`} />
+              <path className="fv-arrow" style={d(ARC[i] + ARC_LEN - 0.15)} d={g.arrows[i]} fill={i === 2 ? "var(--color-accent-2-700)" : "var(--color-accent-700)"} />
+            </g>
+          );
+        })}
       </svg>
 
-      <div aria-hidden style={{ position: "absolute", left: "50%", top: g.cy, transform: "translate(-50%,-50%)", width: g.core, height: g.core, borderRadius: "50%", background: "var(--color-accent-2-200)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: lg ? 4 : 3 }}>
+      <div aria-hidden className="fv-lit" style={{ ...d(CORE), position: "absolute", left: "50%", top: g.cy, transform: "translate(-50%,-50%)", width: g.core, height: g.core, borderRadius: "50%", background: "var(--color-accent-2-200)", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: lg ? 4 : 3 }}>
         <span style={{ fontSize: lg ? 12 : 11, fontWeight: 700, color: "var(--color-accent-2-900)" }}>Readiness</span>
         <div style={{ display: "flex", alignItems: "flex-end", gap: lg ? 6 : 4, height: g.bars[3] + (lg ? 4 : 0) }}>
           {g.bars.map((h, i) => (
-            <div key={h} style={{ width: g.bar, height: h, borderRadius: 999, background: ["var(--color-accent-2-400)", "var(--color-accent-2-400)", "var(--color-accent-2-500)", "var(--color-accent-2-700)"][i] }} />
+            <div key={h} className="fv-bar" style={{ ...d(CORE + 0.2 + i * 0.12), width: g.bar, height: h, borderRadius: 999, background: ["var(--color-accent-2-400)", "var(--color-accent-2-400)", "var(--color-accent-2-500)", "var(--color-accent-2-700)"][i] }} />
           ))}
         </div>
-        <span style={{ fontFamily: "var(--font-heading)", fontSize: g.big, lineHeight: 1, color: "var(--color-accent-2-900)" }}>48 → 71%</span>
-        {lg && <span style={{ fontSize: 11, fontWeight: 600, color: "var(--color-accent-2-800)" }}>over 4 rounds</span>}
+        <span className="fv-fade" style={{ ...d(COUNT_AT), fontFamily: "var(--font-heading)", fontSize: g.big, lineHeight: 1, color: "var(--color-accent-2-900)", fontVariantNumeric: "tabular-nums" }}>
+          48 → <CountUp from={48} to={71} delay={COUNT_AT} />%
+        </span>
+        {lg && <span className="fv-fade" style={{ ...d(COUNT_AT + 0.3), fontSize: 11, fontWeight: 600, color: "var(--color-accent-2-800)" }}>over 4 rounds</span>}
       </div>
 
-      <div aria-hidden style={{ ...card, left: "50%", top: 0, transform: "translateX(-50%)", width: lg ? 200 : 150 }}>
+      <div aria-hidden className="fv-lit" style={{ ...card, ...d(STEP[0]), left: "50%", top: 0, transform: "translateX(-50%)", width: lg ? 200 : 150 }}>
         {head(1, "Learn")}
         <div style={{ display: "flex", flexWrap: "wrap", gap: 4 }}>
           {[1, 1, 1, 1, 0, 0].map((on, i) => <Dot key={i} on={!!on} d={g.dot} />)}
@@ -119,7 +172,7 @@ function Loop({ size }: { size: "lg" | "sm" }) {
         <span style={small}>{lg ? "Mindmap: 4 of 6 chapters studied" : "Mindmap · 4/6 chapters"}</span>
       </div>
 
-      <div aria-hidden style={{ ...card, right: 0, bottom: lg ? 40 : 0, width: lg ? 210 : 140 }}>
+      <div aria-hidden className="fv-lit" style={{ ...card, ...d(STEP[1]), right: 0, bottom: lg ? 40 : 0, width: lg ? 210 : 140 }}>
         {head(2, "Test")}
         <span style={small}>{lg ? "Mock exam · 40 Q · 60 min" : "40 Q · 60 min"}</span>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: lg ? "baseline" : "center" }}>
@@ -128,7 +181,7 @@ function Loop({ size }: { size: "lg" | "sm" }) {
         </div>
       </div>
 
-      <div aria-hidden style={{ ...card, left: 0, bottom: lg ? 40 : 0, width: lg ? 210 : 140 }}>
+      <div aria-hidden className="fv-lit" style={{ ...card, ...d(STEP[2]), left: 0, bottom: lg ? 40 : 0, width: lg ? 210 : 140 }}>
         {head(3, "Fix gaps", true)}
         {lg && <span style={small}>Missed most in:</span>}
         <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>

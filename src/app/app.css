@@ -342,3 +342,18 @@ button { font: inherit; }
 
 /* Caprasimo has no Vietnamese diacritics: Vietnamese pages set headings in the body font. */
 :lang(vi) :is(h1, h2, h3, summary, .btn, .card-title) { font-family: var(--font-body); font-weight: 800; letter-spacing: -0.01em; }
+
+/* ── First view loop intro (FirstView.tsx): dimmed → lit in sequence. The base styles are the lit
+   state; each element's keyframes start dimmed and wait for its --d delay (fill-mode both). ─── */
+.fv-loop .fv-lit { animation: fv-lit 0.55s cubic-bezier(.2, .7, .3, 1) var(--d, 0s) both; }
+.fv-loop .fv-draw { stroke-dasharray: 1; stroke-dashoffset: 0; animation: fv-draw 0.75s ease-in-out var(--d, 0s) both; }
+.fv-loop .fv-arrow { animation: fv-fade 0.3s ease-out var(--d, 0s) both; }
+.fv-loop .fv-bar { transform-origin: bottom; animation: fv-grow 0.45s cubic-bezier(.2, .7, .3, 1) var(--d, 0s) both; }
+.fv-loop .fv-fade { animation: fv-fade 0.4s ease-out var(--d, 0s) both; }
+@keyframes fv-lit { from { opacity: 0.4; filter: saturate(0); scale: 0.96; } }
+@keyframes fv-draw { from { stroke-dashoffset: 1; } }
+@keyframes fv-fade { from { opacity: 0; } }
+@keyframes fv-grow { from { transform: scaleY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .fv-loop .fv-lit, .fv-loop .fv-draw, .fv-loop .fv-arrow, .fv-loop .fv-bar, .fv-loop .fv-fade { animation: none; }
+}
