@@ -2,6 +2,7 @@
 export const NAV = [
   ["/mindmap", "Mindmap"],
   ["/tests", "Practice tests"],
+  ["/glossary", "Glossary"],
   ["/dashboard", "Dashboard"],
 ] as const;
 /** Shown only when pricing and the AI coach are enabled (ENABLE_PRO=1). */

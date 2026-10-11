@@ -72,6 +72,15 @@ export default function MindmapPage() {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sheetOpen]);
+  // Deep link from the glossary: /mindmap?topic=<id> opens that topic (and its branch).
+  useEffect(() => {
+    const id = new URLSearchParams(location.search).get("topic");
+    if (!id || !TOPICS[id]) return;
+    openNode(id);
+    track("topic_open", { topic: id });
+    if (isPhone()) setSheetOpen(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   // Opening a syllabus LO in the detail panel (the <details> come from TopicView's HTML).
   useEffect(() => {
     const el = detail.current;

@@ -10,7 +10,7 @@ import { AdminLogin } from "./AdminLogin";
 import { AdminTabs } from "./AdminTabs";
 import { InsightsView } from "./InsightsView";
 
-export const metadata: Metadata = { title: "Admin · Testpath", robots: { index: false } };
+export const metadata: Metadata = { title: "Admin", robots: { index: false } };
 export const dynamic = "force-dynamic";
 
 const TABS = [

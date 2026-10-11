@@ -4,13 +4,21 @@ import "./app.css";
 import { AppProvider, type Initial } from "@/components/AppProvider";
 import { Header } from "@/components/Header";
 import { Overlays } from "@/components/Overlays";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { config } from "@/server/config";
 import { getStore } from "@/server/store";
 import { getCurrentUser, isAdmin, tierOf } from "@/server/session";
 
+const DESCRIPTION = "Free ISTQB CTFL v4.0.1 exam prep: learn the syllabus as a visual mindmap, then practise with chapter tests and timed 40-question mock exams.";
+
 export const metadata: Metadata = {
-  title: "Testpath · ISTQB CTFL study",
-  description: "Study the ISTQB CTFL v4.0.1 syllabus as a mindmap, then practise with sets and timed mock exams.",
+  metadataBase: new URL(SITE_URL),
+  title: { default: "Testpath · ISTQB CTFL v4.0.1 mindmap & mock exams", template: `%s · ${SITE_NAME}` },
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  openGraph: { type: "website", siteName: SITE_NAME, title: "Testpath · Pass the ISTQB CTFL exam", description: DESCRIPTION, locale: "en_US" },
+  twitter: { card: "summary_large_image" },
+  verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
 };
 
 const PASS_MARK = Number(process.env.NEXT_PUBLIC_PASS_MARK ?? 65);
