@@ -61,7 +61,7 @@ export function FirstView() {
   return (
     <section ref={ref} className="fv" aria-labelledby="fv-title" suppressHydrationWarning>
       <div className="fv-copy">
-        <span className="tag tag-accent-2 fv-tag">
+        <span className="tag tag-accent-2 fv-tag fv-reveal" style={d(TEXT_AT)}>
           <span className="fv-only-lg">ISTQB® CTFL · Syllabus v4.0.1</span>
           <span className="fv-only-sm">ISTQB® CTFL · v4.0.1</span>
         </span>
