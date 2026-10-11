@@ -83,6 +83,9 @@ export default function HomePage() {
             </Link>
           ))}
         </div>
+        <p lang="vi" style={{ margin: 0, fontSize: "var(--fs-15)" }}>
+          Tiếng Việt: <Link href="/vi/istqb-foundation-level">Hướng dẫn thi CTFL</Link> · <Link href="/vi/glossary">Thuật ngữ ISTQB</Link>
+        </p>
       </nav>
       <p style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>
         ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.

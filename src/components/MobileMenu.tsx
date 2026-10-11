@@ -19,7 +19,7 @@ export function MobileMenu({ active }: { active: string }) {
     ...(flags.pro ? PRO_NAV : []),
     ...(user?.admin ? ([["/admin", "Admin"]] as const) : []),
   ];
-  const current = active === "/exam" || active === "/result" ? "/tests" : active.startsWith("/glossary/") ? "/glossary" : active;
+  const current = active === "/exam" || active === "/result" ? "/tests" : /^(\/vi)?\/glossary(\/|$)/.test(active) ? "/glossary" : active;
   const close = (restoreFocus = true) => {
     setOpen(false);
     if (restoreFocus) requestAnimationFrame(() => burger.current?.focus());

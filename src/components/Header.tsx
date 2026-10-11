@@ -20,7 +20,7 @@ export function Header() {
     setShowPw(false);
   }, [user]);
   // Exam and Result belong to Practice tests.
-  const active = pathname === "/exam" || pathname === "/result" ? "/tests" : pathname.startsWith("/glossary/") ? "/glossary" : pathname;
+  const active = pathname === "/exam" || pathname === "/result" ? "/tests" : /^(\/vi)?\/glossary(\/|$)/.test(pathname) ? "/glossary" : pathname;
 
   return (
     <header className="page-gutter" style={{ maxWidth: 1180, margin: "0 auto", padding: "18px 28px", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
