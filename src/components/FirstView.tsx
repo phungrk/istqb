@@ -16,7 +16,8 @@ var t = s.querySelector(".fv-title"), c = s.querySelector(".fv-cta-sm");
 if (!t || !c) return;
 var k = parseFloat(getComputedStyle(t).fontSize) / 32, y = scrollY;
 var top = s.getBoundingClientRect().top + y;
-var avail = H - (t.getBoundingClientRect().bottom + y) - c.offsetHeight;
+// offsetTop ignores the title's intro translate; title and section share an offsetParent.
+var avail = H - (top + t.offsetTop - s.offsetTop + t.offsetHeight) - c.offsetHeight;
 var z = Math.min(k, (s.clientWidth - 8) / 350), gap = 58 * k;
 if (avail < 350 * z + gap) { gap = Math.max(8, avail - 350 * z); if (avail < 350 * z + gap) z = Math.max(0.5, (avail - gap) / 350); }
 st.setProperty("--fv-z", z.toFixed(4));
@@ -28,6 +29,21 @@ st.setProperty("--fv-min", Math.max(0, H - top) + "px");
  * Home first view, option 1c "Learn → Test → Fix" (design: First View Options #1c, phone #2a).
  * The loop's numbers are a static illustration for visitors, not the learner's own data.
  */
+/*
+ * Intro animation (CSS, see .fv-anim in app.css). Everything starts dimmed, then:
+ * Learn → arc to Test → Test → arc to Fix gaps → Fix gaps → arc back to Learn,
+ * and with that last arc the Readiness circle lights up, its bars grow and 48 → 71% counts up.
+ * Times are seconds from page load; the resting state (and reduced motion) is fully lit.
+ */
+const STEP = [0.2, 1.3, 2.4];
+const ARC = [0.6, 1.7, 2.8];
+const ARC_LEN = 0.75;
+const CORE = ARC[2];
+const COUNT_AT = CORE + 0.45;
+/** Title, description and CTA come in once the loop has finished (count-up ends at COUNT_AT + 0.9). */
+const TEXT_AT = COUNT_AT + 0.95;
+const d = (t: number) => ({ "--d": `${t}s` }) as React.CSSProperties;
+
 export function FirstView() {
   const ref = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
@@ -49,9 +65,9 @@ export function FirstView() {
           <span className="fv-only-lg">ISTQB® CTFL · Syllabus v4.0.1</span>
           <span className="fv-only-sm">ISTQB® CTFL · v4.0.1</span>
         </span>
-        <h1 id="fv-title" className="fv-title">Learn. Test. Fix the gaps. Repeat until you pass.</h1>
-        <p className="fv-desc">Each round makes your map more complete and your readiness score climb. When it stays above 65%, you are ready to book the exam.</p>
-        <div className="fv-cta-lg">
+        <h1 id="fv-title" className="fv-title fv-reveal" style={d(TEXT_AT)}>Learn. Test. Fix the gaps. Repeat until you pass.</h1>
+        <p className="fv-desc fv-reveal" style={d(TEXT_AT + 0.25)}>Each round makes your map more complete and your readiness score climb. When it stays above 65%, you are ready to book the exam.</p>
+        <div className="fv-cta-lg fv-reveal" style={d(TEXT_AT + 0.5)}>
           <Link href="/mindmap" className="btn btn-primary" style={{ fontSize: 16, padding: "12px 22px" }}>Open Mindmap now</Link>
         </div>
       </div>
@@ -59,7 +75,7 @@ export function FirstView() {
       <Loop size="lg" />
       <Loop size="sm" />
 
-      <div className="fv-cta-sm">
+      <div className="fv-cta-sm fv-reveal" style={d(TEXT_AT + 0.35)}>
         <Link href="/mindmap" className="btn btn-primary btn-block" style={{ fontSize: 16, minHeight: 48, marginTop: 0, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>Open Mindmap now</Link>
       </div>
       <script dangerouslySetInnerHTML={{ __html: `(function(s){${FIT_JS}})(document.currentScript.parentElement)` }} />
@@ -76,19 +92,6 @@ function Badge({ n, sage, d }: { n: number; sage?: boolean; d: number }) {
     <span style={{ width: d, height: d, flex: "none", borderRadius: "50%", background: sage ? "var(--color-accent-2-500)" : "var(--color-accent)", color: "var(--color-bg)", display: "grid", placeItems: "center", fontFamily: "var(--font-heading)", fontSize: d > 26 ? 16 : 13 }}>{n}</span>
   );
 }
-
-/*
- * Intro animation (CSS, see .fv-anim in app.css). Everything starts dimmed, then:
- * Learn → arc to Test → Test → arc to Fix gaps → Fix gaps → arc back to Learn,
- * and with that last arc the Readiness circle lights up, its bars grow and 48 → 71% counts up.
- * Times are seconds from page load; the resting state (and reduced motion) is fully lit.
- */
-const STEP = [0.2, 1.3, 2.4];
-const ARC = [0.6, 1.7, 2.8];
-const ARC_LEN = 0.75;
-const CORE = ARC[2];
-const COUNT_AT = CORE + 0.45;
-const d = (t: number) => ({ "--d": `${t}s` }) as React.CSSProperties;
 
 /** Point on the loop circle; 0° is 3 o'clock, angles grow clockwise (SVG y points down). */
 const at = (cx: number, cy: number, r: number, deg: number) => {

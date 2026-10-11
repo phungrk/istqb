@@ -357,3 +357,7 @@ button { font: inherit; }
 @media (prefers-reduced-motion: reduce) {
   .fv-loop .fv-lit, .fv-loop .fv-draw, .fv-loop .fv-arrow, .fv-loop .fv-bar, .fv-loop .fv-fade { animation: none; }
 }
+/* Copy and CTA rise in after the loop; opacity/translate only, so nothing shifts. */
+.fv .fv-reveal { animation: fv-rise 0.6s cubic-bezier(.2, .7, .3, 1) var(--d, 0s) both; }
+@keyframes fv-rise { from { opacity: 0; translate: 0 14px; } }
+@media (prefers-reduced-motion: reduce) { .fv .fv-reveal { animation: none; } }
