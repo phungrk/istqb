@@ -11,8 +11,8 @@ const steps = [
 
 export function ContactView({ email, username }: { email: string; username: string | null }) {
   const { toast } = useApp();
-  const subject = "Testpath: forgot my password";
-  const body = `Hi,\n\nI can't sign in to Testpath. My username is: ${username ?? "user___"}\n\nPlease send me a new password.\n\nThanks!`;
+  const subject = "Testpassed: forgot my password";
+  const body = `Hi,\n\nI can't sign in to Testpassed. My username is: ${username ?? "user___"}\n\nPlease send me a new password.\n\nThanks!`;
   const mailto = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 
   return (

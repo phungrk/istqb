@@ -113,7 +113,7 @@ button{font:inherit}
 <header style="max-width:1180px; margin:0 auto; padding:18px 28px; display:flex; align-items:center; gap:20px; flex-wrap:wrap">
   <button onClick="{{ goHome }}" style="display:flex; align-items:center; gap:10px; background:none; border:0; cursor:pointer; padding:0; color:var(--color-text)">
     <span style="width:34px; height:34px; border-radius:50%; background:var(--color-accent); display:grid; place-items:center; color:var(--color-bg); font-family:var(--font-heading); font-size:18px">T</span>
-    <span style="font-family:var(--font-heading); font-size:21px">Testpath</span>
+    <span style="font-family:var(--font-heading); font-size:21px">Testpassed</span>
   </button>
   <nav style="display:flex; gap:4px; flex-wrap:wrap; margin-left:12px; flex:1 1 auto; min-width:0">
     <sc-for list="{{ nav }}" as="n" hint-placeholder-count="5">
@@ -213,7 +213,7 @@ button{font:inherit}
 
     </div>
   </div>
-  <p style="font-size:12px; color:var(--color-neutral-700)">ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.</p>
+  <p style="font-size:12px; color:var(--color-neutral-700)">ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpassed is an independent study tool.</p>
 </section>
 </sc-if>
 
@@ -796,7 +796,7 @@ class Component extends DCLogic {
   login(username){
     const name=username.split(/[._-]/).map(w=>w[0].toUpperCase()+w.slice(1)).join(' ');
     this.setState(s=>{
-      let attempts=s.attempts.length?s.attempts:(username==='testpath'?SEED:[]);
+      let attempts=s.attempts.length?s.attempts:(username==='testpassed'?SEED:[]);
       let result=s.result;
       if(result&&!result.saved){attempts=[...attempts,result.attempt];result={...result,saved:true}}
       return {user:{name,email,pw:s.loginPass||''},tier:s.tier==='guest'?'member':s.tier,attempts,result,dialog:s.pending==='checkout'?'checkout':null,pending:null,loginUser:'',loginPass:''};

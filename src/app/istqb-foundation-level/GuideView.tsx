@@ -68,7 +68,7 @@ const C: Record<Lang, Content> = {
     faq: [
       ["Is the ISTQB Foundation exam hard?", "It is passable with focused study. Most questions test K1 and K2 understanding of the syllabus wording, and about a quarter are K3 questions on test techniques. The traps are usually in near-synonyms such as verification vs validation or defect vs failure."],
       ["How long should I study for CTFL?", "Many candidates need two to six weeks, depending on experience. A good rhythm is one syllabus chapter at a time, followed by a chapter test, then full mock exams in the last week."],
-      ["Which syllabus version is examined?", "The current exams are based on the CTFL v4.0 syllabus; v4.0.1 is a maintenance release with corrections. Testpath follows v4.0.1."],
+      ["Which syllabus version is examined?", "The current exams are based on the CTFL v4.0 syllabus; v4.0.1 is a maintenance release with corrections. Testpassed follows v4.0.1."],
       ["How much does the ISTQB Foundation exam cost?", "Fees are set by each national board or exam provider, so they vary by country and by whether you take the exam online or at a test centre. Check the provider listed on istqb.org for your country."],
       ["Can I take the exam online?", "Yes. Many ISTQB exam providers offer online proctored exams as well as test centres."],
       ["Does the CTFL certificate expire?", "No. ISTQB Foundation Level certificates are valid for life."],
@@ -114,7 +114,7 @@ const C: Record<Lang, Content> = {
     faq: [
       ["Thi ISTQB Foundation có khó không?", "Hoàn toàn có thể đậu nếu ôn tập có trọng tâm. Phần lớn câu hỏi kiểm tra mức K1, K2 về cách diễn đạt trong syllabus, khoảng một phần tư là câu K3 về kỹ thuật kiểm thử. Bẫy thường nằm ở các cặp từ gần nghĩa như verification và validation, defect và failure."],
       ["Cần ôn thi CTFL trong bao lâu?", "Nhiều người cần từ hai đến sáu tuần, tuỳ kinh nghiệm. Nhịp học tốt là mỗi lần một chương, làm bài test chương đó, và tuần cuối làm các đề thi thử đầy đủ."],
-      ["Đề thi theo syllabus phiên bản nào?", "Đề thi hiện tại dựa trên syllabus CTFL v4.0; v4.0.1 là bản bảo trì có sửa lỗi. Testpath theo v4.0.1."],
+      ["Đề thi theo syllabus phiên bản nào?", "Đề thi hiện tại dựa trên syllabus CTFL v4.0; v4.0.1 là bản bảo trì có sửa lỗi. Testpassed theo v4.0.1."],
       ["Có thi bằng tiếng Việt được không?", "Có đơn vị tổ chức thi cung cấp đề ISTQB Foundation bằng tiếng Việt. Tuy vậy, thuật ngữ trong công việc và tài liệu chủ yếu là tiếng Anh, nên hãy học thuật ngữ bằng tiếng Anh dù bạn thi bằng ngôn ngữ nào."],
       ["Lệ phí thi ISTQB Foundation là bao nhiêu?", "Lệ phí do từng hội đồng quốc gia hoặc đơn vị tổ chức thi đặt, nên khác nhau theo quốc gia và hình thức thi (online hay tại trung tâm). Hãy kiểm tra đơn vị tổ chức thi cho Việt Nam được liệt kê trên istqb.org."],
       ["Chứng chỉ CTFL có hết hạn không?", "Không. Chứng chỉ ISTQB Foundation Level có giá trị vĩnh viễn."],

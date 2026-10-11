@@ -15,7 +15,7 @@ function secret() {
   const s = process.env.AUTH_SECRET;
   if (s) return s;
   if (process.env.NODE_ENV === "production") throw new Error("AUTH_SECRET must be set in production");
-  return "testpath-dev-only-secret";
+  return "testpassed-dev-only-secret";
 }
 const sign = (v: string) => createHmac("sha256", secret()).update(v).digest("base64url");
 

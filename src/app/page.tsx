@@ -88,7 +88,7 @@ export default function HomePage() {
         </p>
       </nav>
       <p style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)" }}>
-        ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.
+        ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpassed is an independent study tool.
       </p>
     </section>
   );

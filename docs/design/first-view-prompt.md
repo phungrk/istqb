@@ -40,7 +40,7 @@ Bố cục grid 2 cột: `minmax(0,1fr) 600px`, gap 40px, align-items center, pa
 Cột dọc, nền `--color-bg`.
 
 **Header** (padding 8px 20px, flex space-between):
-- Logo: hình tròn 32px nền accent, chữ "T" Caprasimo + tên "Testpath" (Caprasimo 19px).
+- Logo: hình tròn 32px nền accent, chữ "T" Caprasimo + tên "Testpassed" (Caprasimo 19px).
 - Nút hamburger `.btn.btn-ghost` 44 × 44 (vùng chạm tối thiểu 44px), icon Lucide `menu` 22px. Bấm vào thì mở menu (mục 3).
 
 **Nội dung** (padding 14px 20px 0, gap 14px):

@@ -1,4 +1,4 @@
-# Testpath — ISTQB CTFL study site
+# Testpassed — ISTQB CTFL study site
 
 Study the ISTQB® Certified Tester Foundation Level v4.0.1 syllabus as a mindmap, then practise with chapter sets and timed mock exams.
 
@@ -34,7 +34,7 @@ Copy `.env.example` to `.env` and fill in what you need.
 
 ### Going live
 
-1. **Storage — Cloudflare R2:** in the Cloudflare dashboard, **R2 → Create bucket** (e.g. `testpath`), then **R2 → Manage API tokens → Create API token** with *Object Read & Write* on that bucket. Set `R2_ACCOUNT_ID` (shown on the R2 overview page), `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_BUCKET`. No schema step: data is stored as small JSON objects (`src/server/store/r2.ts`) with conditional writes, so concurrent requests don't overwrite each other and a username can't be handed out twice.
+1. **Storage — Cloudflare R2:** in the Cloudflare dashboard, **R2 → Create bucket** (e.g. `testpassed`), then **R2 → Manage API tokens → Create API token** with *Object Read & Write* on that bucket. Set `R2_ACCOUNT_ID` (shown on the R2 overview page), `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_BUCKET`. No schema step: data is stored as small JSON objects (`src/server/store/r2.ts`) with conditional writes, so concurrent requests don't overwrite each other and a username can't be handed out twice.
    *Or Postgres:* set `DATABASE_URL`, then `npm run db:push` (re-run after schema changes).
 2. **Secret:** set `AUTH_SECRET` (`npx auth secret`).
 3. **Google (optional):** create an OAuth client (Web), redirect URI `https://<host>/api/auth/callback/google`. Sign-in is limited to `@gmail.com` unless you change `ALLOWED_EMAIL_DOMAIN`.
@@ -72,4 +72,4 @@ Every start draws a fresh random set on the server (`GET /api/sets`), and "Try a
 
 To rebuild the bank after editing the quizzes, save each quiz page and run `scripts/import-quizzes.mjs` (usage at the top of the file).
 
-ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpath is an independent study tool.
+ISTQB® is a registered trademark of the International Software Testing Qualifications Board. Testpassed is an independent study tool.

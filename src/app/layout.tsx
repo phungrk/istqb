@@ -13,10 +13,10 @@ const DESCRIPTION = "Free ISTQB CTFL v4.0.1 exam prep: learn the syllabus as a v
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: { default: "Testpath · ISTQB CTFL v4.0.1 mindmap & mock exams", template: `%s · ${SITE_NAME}` },
+  title: { default: "Testpassed · ISTQB CTFL v4.0.1 mindmap & mock exams", template: `%s · ${SITE_NAME}` },
   description: DESCRIPTION,
   applicationName: SITE_NAME,
-  openGraph: { type: "website", siteName: SITE_NAME, title: "Testpath · Pass the ISTQB CTFL exam", description: DESCRIPTION, locale: "en_US" },
+  openGraph: { type: "website", siteName: SITE_NAME, title: "Testpassed · Pass the ISTQB CTFL exam", description: DESCRIPTION, locale: "en_US" },
   twitter: { card: "summary_large_image" },
   verification: process.env.GOOGLE_SITE_VERIFICATION ? { google: process.env.GOOGLE_SITE_VERIFICATION } : undefined,
 };

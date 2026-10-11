@@ -1,7 +1,7 @@
 # Handoff v2: CTFL Learning — sync from design prototype
 
 ## Overview
-This is the second handoff from the **Testpath / CTFL Learning** design prototype (`CTFL Learning.dc.html`). It replaces the v1 handoff. The prototype is a high-fidelity, fully clickable reference built with the Organic design system (cream/terracotta/sage palette, Caprasimo headings, Figtree body).
+This is the second handoff from the **Testpassed / CTFL Learning** design prototype (`CTFL Learning.dc.html`). It replaces the v1 handoff. The prototype is a high-fidelity, fully clickable reference built with the Organic design system (cream/terracotta/sage palette, Caprasimo headings, Figtree body).
 
 The design file is an **HTML prototype for reference only** — not production code. Recreate every screen in your Next.js/React codebase using existing patterns and libraries.
 
@@ -11,8 +11,8 @@ The design file is an **HTML prototype for reference only** — not production c
 
 ### 1. Login — username + password (no Gmail)
 - "Sign in with Gmail" replaced with a plain **username + password** form.
-- Demo credentials shown in the dialog: `testpath` / `ctfl2025`.
-- Any username is accepted; display name derived from it (`testpath` → "Testpath").
+- Demo credentials shown in the dialog: `testpassed` / `ctfl2025`.
+- Any username is accepted; display name derived from it (`testpassed` → "Testpassed").
 - No OAuth, no Google SDK dependency.
 
 ### 2. Practice tests screen — By level + By chapter

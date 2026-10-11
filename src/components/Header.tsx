@@ -26,7 +26,7 @@ export function Header() {
     <header className="page-gutter" style={{ maxWidth: 1180, margin: "0 auto", padding: "18px 28px", display: "flex", alignItems: "center", gap: 20, flexWrap: "wrap" }}>
       <Link href="/" style={{ display: "flex", alignItems: "center", gap: 10, textDecoration: "none", color: "var(--color-text)" }}>
         <span style={{ width: 34, height: 34, borderRadius: "50%", background: "var(--color-accent)", display: "grid", placeItems: "center", color: "var(--color-bg)", fontFamily: "var(--font-heading)", fontSize: "var(--fs-18)" }}>T</span>
-        <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-21)" }}>Testpath</span>
+        <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-21)" }}>Testpassed</span>
       </Link>
       <nav className="hdr-desk" style={{ display: "flex", gap: 4, flexWrap: "wrap", marginLeft: 12, flex: "1 1 auto", minWidth: 0 }}>
         {[...NAV, ...(flags.pro ? PRO_NAV : []), ...(user?.admin ? ([["/admin", "Admin"]] as const) : [])].map(([href, label]) => {

@@ -13,13 +13,13 @@ export function Disclaimer({ glossary, lang = "en" }: { glossary?: boolean; lang
     <p style={{ margin: "24px 0 0", fontSize: "var(--fs-13)", color: "var(--color-neutral-700)", maxWidth: 680 }}>
       {lang === "vi" ? (
         <>
-          {glossary && <>Định nghĩa do Testpath biên soạn để hỗ trợ ôn thi. Xem cách diễn đạt chính thức tại {OFFICIAL}. </>}
-          ISTQB® là nhãn hiệu đã đăng ký của International Software Testing Qualifications Board; Testpath là công cụ học độc lập, không liên kết với ISTQB.
+          {glossary && <>Định nghĩa do Testpassed biên soạn để hỗ trợ ôn thi. Xem cách diễn đạt chính thức tại {OFFICIAL}. </>}
+          ISTQB® là nhãn hiệu đã đăng ký của International Software Testing Qualifications Board; Testpassed là công cụ học độc lập, không liên kết với ISTQB.
         </>
       ) : (
         <>
-          {glossary && <>Definitions are written by Testpath to help you study. For the official wording, see the {OFFICIAL}. </>}
-          ISTQB® is a registered trademark of the International Software Testing Qualifications Board; Testpath is an independent study tool and is not
+          {glossary && <>Definitions are written by Testpassed to help you study. For the official wording, see the {OFFICIAL}. </>}
+          ISTQB® is a registered trademark of the International Software Testing Qualifications Board; Testpassed is an independent study tool and is not
           affiliated with it.
         </>
       )}

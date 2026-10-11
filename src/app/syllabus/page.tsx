@@ -21,7 +21,7 @@ export default function SyllabusIndexPage() {
           name: "ISTQB Certified Tester Foundation Level (CTFL) v4.0.1",
           description: "Study notes for the six chapters of the ISTQB CTFL v4.0.1 syllabus.",
           url: `${SITE_URL}/syllabus`,
-          provider: { "@type": "Organization", name: "Testpath", url: SITE_URL },
+          provider: { "@type": "Organization", name: "Testpassed", url: SITE_URL },
           hasPart: CHAPTER_PAGES.map((c) => ({ "@type": "LearningResource", name: `Chapter ${c.id}: ${c.title}`, url: `${SITE_URL}${chapterUrl(c)}` })),
         }}
       />

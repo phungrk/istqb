@@ -64,7 +64,7 @@ export function MobileMenu({ active }: { active: string }) {
           <div className="mm-menu-head">
             <Link href="/" onClick={() => close(false)} style={{ display: "flex", alignItems: "center", gap: 8, textDecoration: "none", color: "var(--color-text)" }}>
               <span className="mm-logo">T</span>
-              <span style={{ fontFamily: "var(--font-heading)", fontSize: 19 }}>Testpath</span>
+              <span style={{ fontFamily: "var(--font-heading)", fontSize: 19 }}>Testpassed</span>
             </Link>
             <button type="button" className="btn btn-secondary mm-menu-close" aria-label="Close menu" onClick={() => close()} data-autofocus>
               <XIcon size={22} />

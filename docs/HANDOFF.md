@@ -1,7 +1,7 @@
-# Handoff: Testpath — ISTQB CTFL e-learning site
+# Handoff: Testpassed — ISTQB CTFL e-learning site
 
 ## Overview
-Testpath is a study site for the ISTQB Certified Tester Foundation Level (CTFL) v4.0.1 exam. UI language: English. Three user tiers:
+Testpassed is a study site for the ISTQB Certified Tester Foundation Level (CTFL) v4.0.1 exam. UI language: English. Three user tiers:
 
 | Tier | How | Gets |
 | --- | --- | --- |
@@ -34,7 +34,7 @@ To view the prototype: open `design/CTFL Learning.dc.html` in a browser (served 
 Global layout: page bg `--color-bg` #f5ead8, content `max-width:1180px; margin:0 auto; padding:0 28px`. Header row: padding 18px 28px, flex, gap 20px, wraps.
 
 ### Header (all screens)
-- Brand: 34px circle `--color-accent` with "T" (Caprasimo 18px, color bg) + "Testpath" Caprasimo 21px. Click → Home.
+- Brand: 34px circle `--color-accent` with "T" (Caprasimo 18px, color bg) + "Testpassed" Caprasimo 21px. Click → Home.
 - Nav pills: Mindmap · Practice tests · Dashboard · AI Coach (+ "PRO" tag) · Pricing. 14px/600 Figtree, padding 8px 14px, radius 999px. Active: bg `--color-accent-200`, text `--color-accent-900`. Hover bg `--color-neutral-200`. Exam/Result screens highlight "Practice tests".
 - Right: Guest → `.btn.btn-primary` "Sign in with Gmail" (mail icon). Logged-in → 34px avatar circle (bg `--color-accent-2-300`, text `--color-accent-2-900`, initial), email 13px/600, tier label 12px `--color-neutral-700` ("Member · free" / "Pro member"), ghost "Sign out".
 
