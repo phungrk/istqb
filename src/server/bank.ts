@@ -1,11 +1,15 @@
 import "server-only";
 import bank from "@data/questions.json";
 import longTests from "@data/long-tests.json";
+import questionsVi from "@data/questions-vi.json";
 import { CHAPTERS } from "@/lib/syllabus";
 import { levelDistribution, minutesFor, specKey, specTitle, type LevelCounts, type Question, type SetSpec } from "@/lib/questions";
 
+/** Vietnamese translations by question id (scripts/translate-questions.mjs); may cover only part of the bank. */
+const VI = questionsVi as Record<string, Question["vi"]>;
+
 /** Imported from Quiz 1–25 (see scripts/import-quizzes.mjs). Server-only: ~1 MB. */
-export const BANK: Question[] = (bank as Question[]).map((q) => ({ ...q, source: "bank" as const }));
+export const BANK: Question[] = (bank as Question[]).map((q) => ({ ...q, source: "bank" as const, ...(VI[q.id] ? { vi: VI[q.id] } : {}) }));
 export const BANK_BY_ID: Record<string, Question> = Object.fromEntries(BANK.map((q) => [q.id, q]));
 
 export const chapterCounts = (): Record<number, number> =>

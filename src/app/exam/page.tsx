@@ -6,11 +6,13 @@ import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { ClockIcon, SparklesIcon } from "@/components/icons";
 import { Html } from "@/components/Html";
+import { Explanation, ViLine, VietnameseToggle, useVietnamese } from "@/components/Vietnamese";
 import { LETTERS, isCorrect } from "@/lib/questions";
 import { chapterTitle } from "@/lib/syllabus";
 import { formatClock } from "@/lib/stats";
 
 export default function ExamPage() {
+  const [vi, setVi] = useVietnamese();
   const router = useRouter();
   const { exam, setExam, noteTime, submit, askAI, tier, hydrated, flags } = useApp();
   const [now, setNow] = useState(() => Date.now());
@@ -86,6 +88,7 @@ export default function ExamPage() {
         <button className="btn btn-ghost" onClick={() => { abandon(); setExam(null); router.push("/tests"); }}>Leave test</button>
         <h3 style={{ margin: 0, flex: "1 1 240px" }}>{e.set.title}</h3>
         <span className="tag tag-accent-2" style={{ fontSize: "var(--fs-13)", padding: "5px 14px" }}>{practice ? "Practice · instant feedback" : "Mock exam · timed"}</span>
+        <VietnameseToggle questions={e.set.questions} on={vi} onChange={setVi} />
         {timed && (
           <span role="timer" style={{ display: "flex", alignItems: "center", gap: 8, background: lowTime ? "var(--color-accent-200)" : "var(--color-surface)", color: lowTime ? "var(--color-accent-900)" : "var(--color-text)", borderRadius: 999, padding: "7px 16px", fontWeight: 700, fontVariantNumeric: "tabular-nums" }}>
             <ClockIcon />
@@ -102,7 +105,10 @@ export default function ExamPage() {
               <span className="tag tag-neutral">Chapter {q.chapter} · {chapterTitle(q.chapter)}{q.lo ? ` · LO ${q.lo}` : ""}</span>
               {need > 1 && <span className="tag tag-accent">Select {need} answers</span>}
             </div>
-            <Html html={q.stem} style={{ fontSize: "var(--fs-18)", lineHeight: 1.5 }} />
+            <div>
+              <Html html={q.stem} style={{ fontSize: "var(--fs-18)", lineHeight: 1.5 }} />
+              {vi && <ViLine html={q.vi?.stem} size="var(--fs-16)" />}
+            </div>
             <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
               {q.options.map((text, i) => {
                 let bg = "var(--color-bg)", bd = "var(--color-divider)", dBg = "var(--color-surface)", dFg = "var(--color-text)";
@@ -115,7 +121,10 @@ export default function ExamPage() {
                   <button key={i} aria-pressed={isChosen} onClick={() => pick(i)}
                     className="hov-shadow-sm exam-option" style={{ display: "flex", alignItems: "center", gap: 14, textAlign: "left", padding: "12px 18px 12px 12px", borderRadius: 999, background: bg, border: `2px solid ${bd}`, cursor: reveal ? "default" : "pointer", color: "var(--color-text)", fontSize: "var(--fs-15)" }}>
                     <span style={{ width: 34, height: 34, flex: "none", borderRadius: need > 1 ? 10 : "50%", display: "grid", placeItems: "center", fontWeight: 700, background: dBg, color: dFg }}>{LETTERS[i]}</span>
-                    <Html as="span" className="opt-html" html={text} />
+                    <span style={{ minWidth: 0 }}>
+                      <Html as="span" className="opt-html" html={text} />
+                      {vi && <ViLine html={q.vi?.options[i]} size="var(--fs-14)" />}
+                    </span>
                   </button>
                 );
               })}
@@ -123,7 +132,7 @@ export default function ExamPage() {
             {reveal && (
               <div style={{ borderRadius: 24, padding: "20px 22px", background: right ? "var(--color-accent-2-100)" : "var(--color-accent-100)", display: "flex", flexDirection: "column", gap: 8 }}>
                 <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-18)", color: right ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>{right ? "Correct" : "Not quite"}</span>
-                <Html html={q.explanation} style={{ fontSize: "var(--fs-15)", color: "var(--color-neutral-900)" }} />
+                <Explanation q={q} on={vi} style={{ fontSize: "var(--fs-15)", color: "var(--color-neutral-900)" }} />
                 {flags.pro && (
                   <button className="btn btn-ghost" onClick={() => askAI(q, chosen)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                     <SparklesIcon />

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { Html } from "@/components/Html";
+import { Explanation, ViLine, VietnameseToggle, useVietnamese } from "@/components/Vietnamese";
 import { Spinner } from "@/components/Loading";
 import { CheckIcon, XIcon } from "@/components/icons";
 import { isCorrect, letters } from "@/lib/questions";
@@ -11,6 +12,7 @@ import { chapterTitle } from "@/lib/syllabus";
 import { formatClock } from "@/lib/stats";
 
 export default function ResultPage() {
+  const [vi, setVi] = useVietnamese();
   const router = useRouter();
   const { result: r, hydrated, tier, flags, retry, openLogin, askAI, loadingSet } = useApp();
   const logged = tier !== "guest";
@@ -77,7 +79,10 @@ export default function ResultPage() {
           ))}
         </div>
         <div style={{ flex: "1 1 520px", minWidth: 0, display: "flex", flexDirection: "column", gap: 12 }}>
-          <h4 style={{ margin: 0 }}>Review answers</h4>
+          <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+            <h4 style={{ margin: 0, flex: 1 }}>Review answers</h4>
+            <VietnameseToggle questions={r.set.questions} on={vi} onChange={setVi} />
+          </div>
           {r.set.questions.map((q, i) => {
             const a = r.answers[i];
             const ok = isCorrect(q, a);
@@ -89,11 +94,14 @@ export default function ResultPage() {
                   </span>
                   <span style={{ fontSize: "var(--fs-13)", fontWeight: 700 }}>Q{i + 1} · Chapter {q.chapter}{q.lo ? ` · LO ${q.lo}` : ""}</span>
                 </div>
-                <Html html={q.stem} style={{ fontSize: "var(--fs-15)" }} />
+                <div>
+                  <Html html={q.stem} style={{ fontSize: "var(--fs-15)" }} />
+                  {vi && <ViLine html={q.vi?.stem} size="var(--fs-14)" />}
+                </div>
                 <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>Your answer: {letters(a)} · Correct: {letters(q.answers)}</span>
                 {!ok && (
                   <>
-                    <Html html={q.explanation} style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }} />
+                    <Explanation q={q} on={vi} style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }} />
                     {flags.pro && (
                       <button className="btn btn-ghost" onClick={() => askAI(q, a)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                         {tier === "pro" ? "Explain with AI coach" : "Explain with AI coach (Pro)"}

@@ -16,6 +16,8 @@ export type Question = {
   answers: number[];
   explanation: string;
   source?: "bank" | "ai";
+  /** Vietnamese translation, shown under the English when the learner turns it on. */
+  vi?: { stem: string; options: string[]; explanation: string };
 };
 
 export type Mode = "practice" | "mock";
