@@ -44,6 +44,9 @@ const COUNT_AT = CORE + 0.45;
 const TEXT_AT = COUNT_AT + 0.95;
 const d = (t: number) => ({ "--d": `${t}s` }) as React.CSSProperties;
 
+const ctaLg = { fontSize: 16, padding: "12px 22px", minWidth: 230, justifyContent: "center", display: "inline-flex" } as const;
+const ctaSm = { fontSize: 16, minHeight: 48, marginTop: 0, display: "inline-flex", alignItems: "center", justifyContent: "center" } as const;
+
 export function FirstView() {
   const ref = useRef<HTMLElement>(null);
   useLayoutEffect(() => {
@@ -67,8 +70,10 @@ export function FirstView() {
         </span>
         <h1 id="fv-title" className="fv-title fv-reveal" style={d(TEXT_AT)}>Learn. Test. Fix the gaps. Repeat until you pass.</h1>
         <p className="fv-desc fv-reveal" style={d(TEXT_AT + 0.25)}>Each round makes your map more complete and your readiness score climb. When it stays above 65%, you are ready to book the exam.</p>
+        {/* Both CTAs share one wrapper, so they rise in together. */}
         <div className="fv-cta-lg fv-reveal" style={d(TEXT_AT + 0.5)}>
-          <Link href="/mindmap" className="btn btn-primary" style={{ fontSize: 16, padding: "12px 22px" }}>Open Mindmap now</Link>
+          <Link href="/mindmap" className="btn btn-primary" style={ctaLg}>Open Mindmap now</Link>
+          <Link href="/tests" className="btn btn-secondary" style={ctaLg}>Practice tests now</Link>
         </div>
       </div>
 
@@ -76,7 +81,8 @@ export function FirstView() {
       <Loop size="sm" />
 
       <div className="fv-cta-sm fv-reveal" style={d(TEXT_AT + 0.35)}>
-        <Link href="/mindmap" className="btn btn-primary btn-block" style={{ fontSize: 16, minHeight: 48, marginTop: 0, display: "inline-flex", alignItems: "center", justifyContent: "center" }}>Open Mindmap now</Link>
+        <Link href="/mindmap" className="btn btn-primary btn-block" style={ctaSm}>Open Mindmap now</Link>
+        <Link href="/tests" className="btn btn-secondary btn-block" style={ctaSm}>Practice tests now</Link>
       </div>
       <script dangerouslySetInnerHTML={{ __html: `(function(s){${FIT_JS}})(document.currentScript.parentElement)` }} />
     </section>
