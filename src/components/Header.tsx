@@ -44,6 +44,20 @@ export function Header() {
           );
         })}
       </nav>
+      {/* Phones: who is signed in (and their password, from this browser) next to the menu button. */}
+      {user && (
+        <div className="hdr-mob-acct">
+          <span className="hdr-mob-handle">{user.handle}</span>
+          {pw && (
+            <span className="hdr-mob-pw">
+              <span style={{ fontFamily: "ui-monospace, monospace" }}>{showPw ? pw : "••••••••"}</span>
+              <button type="button" onClick={() => setShowPw((v) => !v)} aria-label={showPw ? "Hide password" : "Show password"} aria-pressed={showPw}>
+                {showPw ? <EyeOffIcon size={16} /> : <EyeIcon size={16} />}
+              </button>
+            </span>
+          )}
+        </div>
+      )}
       <MobileMenu active={pathname} />
       <div className="hdr-desk" style={{ display: "flex" }}>
       {!user ? (
