@@ -109,6 +109,11 @@ export const fileStore: Store = {
       return attempt;
     });
   },
+  setMissedLos(userId, byId) {
+    return write((db) => {
+      for (const a of db.attempts) if (a.userId === userId && a.id in byId) a.missedLos = byId[a.id];
+    });
+  },
   async listLearned(userId) {
     return (await load()).learned.filter((l) => l.userId === userId).map((l) => l.nodeId);
   },

@@ -148,6 +148,11 @@ export const r2Store: Store = {
     await update<Attempt[], void>(`attempts/${userId}.json`, [], (list) => void list.push(attempt));
     return attempt;
   },
+  async setMissedLos(userId, byId) {
+    await update<Attempt[], void>(`attempts/${userId}.json`, [], (list) => {
+      for (const a of list) if (a.id in byId) a.missedLos = byId[a.id];
+    });
+  },
   async listLearned(userId) {
     return (await get<string[]>(`learned/${userId}.json`))?.value ?? [];
   },

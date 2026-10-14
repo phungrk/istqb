@@ -2,12 +2,14 @@ import { z } from "zod";
 import { isCorrect, score, type Answers } from "@/lib/questions";
 import { BANK_BY_ID } from "@/server/bank";
 import { getStore } from "@/server/store";
+import { missedLos, withMissedLos } from "@/server/attemptLos";
 import { requireTier } from "@/server/session";
 
 export async function GET() {
   const gate = await requireTier("member");
   if ("error" in gate) return gate.error;
-  return Response.json({ attempts: await (await getStore()).listAttempts(gate.user.id) });
+  const store = await getStore();
+  return Response.json({ attempts: await withMissedLos(store, gate.user.id, await store.listAttempts(gate.user.id)) });
 }
 
 const Body = z.object({
@@ -28,12 +30,6 @@ const Body = z.object({
     .max(200),
   answers: z.record(z.string(), z.array(z.number().int().min(0).max(4)).max(5)),
 });
-
-/** LOs (from the bank) of the questions answered wrong, sorted and unique. */
-function missedLos(items: { id: string; ok: boolean }[]) {
-  const los = new Set(items.flatMap((x) => (!x.ok && BANK_BY_ID[x.id]?.lo ? [BANK_BY_ID[x.id].lo!] : [])));
-  return [...los].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
-}
 
 /** Save an attempt. Bank questions are re-scored against the server's answer key. */
 export async function POST(req: Request) {

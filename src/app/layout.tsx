@@ -7,6 +7,7 @@ import { Overlays } from "@/components/Overlays";
 import { SITE_NAME, SITE_URL } from "@/lib/site";
 import { config } from "@/server/config";
 import { getStore } from "@/server/store";
+import { withMissedLos } from "@/server/attemptLos";
 import { getCurrentUser, isAdmin, tierOf } from "@/server/session";
 
 const DESCRIPTION = "Free ISTQB CTFL v4.0.1 exam prep: learn the syllabus as a visual mindmap, then practise with chapter tests and timed 40-question mock exams.";
@@ -29,7 +30,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const initial: Initial = {
     user: user && { handle: user.email ?? user.username ?? user.name, name: user.name, admin: isAdmin(user) },
     tier: tierOf(user),
-    attempts: user ? await store.listAttempts(user.id) : [],
+    attempts: user ? await withMissedLos(store, user.id, await store.listAttempts(user.id)) : [],
     learned: user ? await store.listLearned(user.id) : [],
     flags: { google: config.google, devTools: config.devTools, pro: config.pro, payments: config.payments, passMark: PASS_MARK },
   };

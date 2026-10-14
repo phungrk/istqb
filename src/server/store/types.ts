@@ -46,6 +46,8 @@ export interface Store {
   updateUser(id: string, patch: Partial<Pick<User, "plan" | "proUntil" | "stripeCustomerId">>): Promise<User>;
   listAttempts(userId: string): Promise<Attempt[]>;
   addAttempt(userId: string, attempt: NewAttempt): Promise<Attempt>;
+  /** Stores backfilled missedLos on existing attempts (stores that derive it on read leave this out). */
+  setMissedLos?(userId: string, byId: Record<string, string[] | null>): Promise<void>;
   listLearned(userId: string): Promise<string[]>;
   setLearned(userId: string, nodeId: string, learned: boolean): Promise<void>;
   /** Appends a batch of usage events (all from the same request). */
