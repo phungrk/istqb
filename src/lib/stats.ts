@@ -11,6 +11,8 @@ export type Attempt = {
   durationSec: number;
   perChapter: PerChapter;
   createdAt: string;
+  /** Syllabus LOs with at least one wrong answer in this attempt (bank questions only). Absent on attempts saved before it existed. */
+  missedLos?: string[];
 };
 
 export type ChapterMastery = Chapter & { pct: number | null };

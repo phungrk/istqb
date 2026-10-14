@@ -1,4 +1,6 @@
 import "server-only";
+import { BANK_BY_ID } from "@/server/bank";
+import { isCorrect } from "@/lib/questions";
 import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient, type Attempt as DbAttempt, type User as DbUser } from "@/generated/prisma/client";
 import type { Attempt } from "@/lib/stats";
@@ -17,6 +19,14 @@ const toUser = (u: DbUser): User => ({
   proUntil: u.proUntil?.toISOString() ?? null,
   stripeCustomerId: u.stripeCustomerId,
 });
+
+function missedFromAnswers(answers: { questionId: string; chosen: number[] }[]) {
+  const los = new Set(answers.flatMap((a) => {
+    const q = BANK_BY_ID[a.questionId];
+    return q?.lo && !isCorrect(q, a.chosen) ? [q.lo] : [];
+  }));
+  return [...los].sort((a, b) => a.localeCompare(b, undefined, { numeric: true }));
+}
 
 const toAttempt = (a: DbAttempt): Attempt => ({
   id: a.id,
@@ -70,9 +80,11 @@ export const prismaStore: Store = {
     return toUser(await prisma.user.update({ where: { id }, data }));
   },
   async listAttempts(userId) {
-    return (await prisma.attempt.findMany({ where: { userId }, orderBy: { createdAt: "asc" } })).map(toAttempt);
+    const rows = await prisma.attempt.findMany({ where: { userId }, orderBy: { createdAt: "asc" }, include: { answers: true } });
+    // No column for missedLos here: derive it from the stored answers.
+    return rows.map((r) => ({ ...toAttempt(r), missedLos: missedFromAnswers(r.answers) }));
   },
-  async addAttempt(userId, { answers, createdAt, ...a }) {
+  async addAttempt(userId, { answers, createdAt, missedLos, ...a }) {
     const row = await prisma.attempt.create({
       data: {
         ...a,
@@ -81,7 +93,7 @@ export const prismaStore: Store = {
         answers: { create: answers },
       },
     });
-    return toAttempt(row);
+    return { ...toAttempt(row), missedLos };
   },
   async listLearned(userId) {
     return (await prisma.learnedTopic.findMany({ where: { userId } })).map((l) => l.nodeId);

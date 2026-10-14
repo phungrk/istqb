@@ -1,20 +1,55 @@
-/** LO × quiz misses, from LO_x_Quiz.xlsx (sheet "LO x Quiz"), sorted by misses descending. Static for now. */
-export const LOQ_QUIZ = ["1", "2", "3", "4", "5", "8", "9", "10*", "11*", "14", "15", "16", "17", "18", "19", "20", "21", "22"];
-/** LO → mindmap topic id. */
-export const LOQ_TOPIC: Record<string, string> = {"4.2.4":"st","4.2.2":"bva","5.5.1":"defect","2.1.3":"testfirst","2.1.6":"sdlc","4.2.1":"ep","4.2.3":"dt","5.1.5":"prio","2.1.5":"shiftleft","2.2.2":"leveltype","4.1.1":"techcat","5.1.7":"pyrquad","1.1.1":"efd","1.4.1":"activities","1.5.1":"wholeteam","2.2.1":"levels","2.3.1":"maint","5.1.1":"plan","1.1.2":"efd","1.2.3":"efd","1.4.4":"testware","1.4.5":"activities","2.1.4":"sdlc","2.2.3":"confreg","3.2.4":"reviews","4.3.2":"whitebox","5.1.3":"plan","5.2.3":"risk","6.1.1":"tooltypes","6.2.1":"automation","1.5.3":"independence","3.1.3":"staticdyn","3.2.1":"reviews","3.2.2":"reviews","3.2.3":"reviews","4.3.3":"whitebox","4.4.3":"experience","4.5.3":"atdd","5.2.1":"risk","5.2.4":"risk","5.3.2":"reports","1.2.2":"vv","1.3.1":"principles","1.4.2":"activities","2.1.2":"sdlc","3.1.2":"staticdyn","3.2.5":"success","4.4.1":"experience","4.4.2":"experience","4.5.2":"atdd","5.1.4":"estimate","5.3.1":"reports","5.3.3":"reports","5.4.1":"config"};
-/** [lo, chapter, topic, misses] — misses[i] === "1" when the LO was missed in LOQ_QUIZ[i]. */
-export const LOQ: [string, number, string, string][] = [["4.2.4",4,"State transition","001011110111111011"],["4.2.2",4,"Boundary value analysis","110011001101000000"],["5.5.1",5,"Defect report","011100100101000001"],["2.1.3",2,"TDD/ATDD/BDD","001010001111000000"],["2.1.6",2,"Retrospective","000001001001000111"],["4.2.1",4,"Equivalence partitioning","101000001000101100"],["4.2.3",4,"Decision table","000001011001000011"],["5.1.5",5,"Ưu tiên test case","011000101000110000"],["2.1.5",2,"Shift-left","100100010001010000"],["2.2.2",2,"Test type","000001001101000100"],["4.1.1",4,"Nhóm kỹ thuật test","000001011100000100"],["5.1.7",5,"Testing quadrants","001110101000000000"],["1.1.1",1,"Mục tiêu của test","010011010000000000"],["1.4.1",1,"Hoạt động của test process","000000010001110000"],["1.5.1",1,"Kỹ năng và tâm lý tester","000000001010101000"],["2.2.1",2,"Test level","000000010010101000"],["2.3.1",2,"Maintenance testing","000000010100010100"],["5.1.1",5,"Test plan","000001010010001000"],["1.1.2",1,"Testing vs debugging","010011000000000000"],["1.2.3",1,"Error/defect/failure/root cause","000000110001000000"],["1.4.4",1,"Traceability","000000000101010000"],["1.4.5",1,"Vai trò test management vs testing","000001000000101000"],["2.1.4",2,"DevOps","000000000000001011"],["2.2.3",2,"Confirmation vs regression","000000000010100010"],["3.2.4",3,"Loại review","000000000101010000"],["4.3.2",4,"Branch coverage","000001010000000001"],["5.1.3",5,"Entry/exit criteria","000000001001000100"],["5.2.3",5,"Phân tích risk","000001000001001000"],["6.1.1",6,"Loại tool","000000101100000000"],["6.2.1",6,"Lợi ích/rủi ro automation","000000101100000000"],["1.5.3",1,"Mức độc lập","000000100001000000"],["3.1.3",3,"Static vs dynamic","000000000100010000"],["3.2.1",3,"Phản hồi sớm của stakeholder","000000010000010000"],["3.2.2",3,"Hoạt động của review","000010000010000000"],["3.2.3",3,"Vai trò trong review","000010000010000000"],["4.3.3",4,"Giá trị của white-box","000000000010100000"],["4.4.3",4,"Checklist-based","110000000000000000"],["4.5.3",4,"ATDD","000000010000000100"],["5.2.1",5,"Định nghĩa risk","000000100000001000"],["5.2.4",5,"Phản ứng với risk","000000000100100000"],["5.3.2",5,"Test report","000000100000001000"],["1.2.2",1,"QA vs testing","000000000001000000"],["1.3.1",1,"7 nguyên tắc testing","000000000000000001"],["1.4.2",1,"Ngữ cảnh của test process","000000000001000000"],["2.1.2",2,"Thực hành test tốt theo SDLC","000000000100000000"],["3.1.2",3,"Lợi ích static testing","000001000000000000"],["3.2.5",3,"Yếu tố thành công của review","000000000000010000"],["4.4.1",4,"Error guessing","000000001000000000"],["4.4.2",4,"Exploratory testing","000000100000000000"],["4.5.2",4,"Acceptance criteria","000000001000000000"],["5.1.4",5,"Ước lượng test","000000000000000001"],["5.3.1",5,"Metric và monitoring","000000010000000000"],["5.3.3",5,"Truyền đạt trạng thái test","000000000000000100"],["5.4.1",5,"Configuration management","000001000000000000"]];
+import type { Attempt } from "./stats";
+
+/** LO → [chapter mindmap topic id, short name] for every LO the question bank tags (names from LO_x_Quiz.xlsx). */
+export const LO_INFO: Record<string, [string, string]> = {
+  "1.1.1": ["efd", "Mục tiêu của test"], "1.1.2": ["efd", "Testing vs debugging"], "1.2.1": ["efd", "Vì sao testing cần thiết"],
+  "1.2.2": ["vv", "QA vs testing"], "1.2.3": ["efd", "Error/defect/failure/root cause"], "1.3.1": ["principles", "7 nguyên tắc testing"],
+  "1.4.1": ["activities", "Hoạt động của test process"], "1.4.2": ["activities", "Ngữ cảnh của test process"], "1.4.3": ["testware", "Testware"],
+  "1.4.4": ["testware", "Traceability"], "1.4.5": ["activities", "Vai trò test management vs testing"], "1.5.1": ["wholeteam", "Kỹ năng và tâm lý tester"],
+  "1.5.2": ["wholeteam", "Whole team approach"], "1.5.3": ["independence", "Mức độc lập"],
+  "2.1.1": ["sdlc", "Ảnh hưởng của SDLC lên testing"], "2.1.2": ["sdlc", "Thực hành test tốt theo SDLC"], "2.1.3": ["testfirst", "TDD/ATDD/BDD"],
+  "2.1.4": ["sdlc", "DevOps"], "2.1.5": ["shiftleft", "Shift-left"], "2.1.6": ["sdlc", "Retrospective"], "2.2.1": ["levels", "Test level"],
+  "2.2.2": ["leveltype", "Test type"], "2.2.3": ["confreg", "Confirmation vs regression"], "2.3.1": ["maint", "Maintenance testing"],
+  "3.1.1": ["staticdyn", "Work product cho static testing"], "3.1.2": ["staticdyn", "Lợi ích static testing"], "3.1.3": ["staticdyn", "Static vs dynamic"],
+  "3.2.1": ["reviews", "Phản hồi sớm của stakeholder"], "3.2.2": ["reviews", "Hoạt động của review"], "3.2.3": ["reviews", "Vai trò trong review"],
+  "3.2.4": ["reviews", "Loại review"], "3.2.5": ["success", "Yếu tố thành công của review"],
+  "4.1.1": ["techcat", "Nhóm kỹ thuật test"], "4.2.1": ["ep", "Equivalence partitioning"], "4.2.2": ["bva", "Boundary value analysis"],
+  "4.2.3": ["dt", "Decision table"], "4.2.4": ["st", "State transition"], "4.3.1": ["whitebox", "Statement coverage"], "4.3.2": ["whitebox", "Branch coverage"],
+  "4.3.3": ["whitebox", "Giá trị của white-box"], "4.4.1": ["experience", "Error guessing"], "4.4.2": ["experience", "Exploratory testing"],
+  "4.4.3": ["experience", "Checklist-based"], "4.5.1": ["atdd", "User story"], "4.5.2": ["atdd", "Acceptance criteria"], "4.5.3": ["atdd", "ATDD"],
+  "5.1.1": ["plan", "Test plan"], "5.1.2": ["relplan", "Release & iteration planning"], "5.1.3": ["plan", "Entry/exit criteria"], "5.1.4": ["estimate", "Ước lượng test"],
+  "5.1.5": ["prio", "Ưu tiên test case"], "5.1.6": ["pyrquad", "Test pyramid"], "5.1.7": ["pyrquad", "Testing quadrants"], "5.2.1": ["risk", "Định nghĩa risk"],
+  "5.2.2": ["risk", "Project vs product risk"], "5.2.3": ["risk", "Phân tích risk"], "5.2.4": ["risk", "Phản ứng với risk"], "5.3.1": ["reports", "Metric và monitoring"],
+  "5.3.2": ["reports", "Test report"], "5.3.3": ["reports", "Truyền đạt trạng thái test"], "5.4.1": ["config", "Configuration management"],
+  "5.5.1": ["defect", "Defect report"], "6.1.1": ["tooltypes", "Loại tool"], "6.2.1": ["automation", "Lợi ích/rủi ro automation"],
+};
 
 export type LoLevel = "weak" | "watch" | "low";
-export type LoRow = { lo: string; ch: number; topic: string; misses: boolean[]; n: number; pct: number; level: LoLevel };
+export type LoRow = { lo: string; ch: number; topic: string; topicId: string | null; misses: boolean[]; n: number; pct: number; level: LoLevel };
+export type LoQuiz = { label: string; title: string; date: string };
 
-/** Pure: rows for one chapter (or all), in sheet order (most missed first). */
-export function loRows(chapter?: number, data: [string, number, string, string][] = LOQ): LoRow[] {
-  return data
-    .filter(([, ch]) => !chapter || ch === chapter)
-    .map(([lo, ch, topic, m]) => {
-      const misses = [...m].map((c) => c === "1");
+/** Only well-formed syllabus LOs ("4.2.4"); a few bank tags are partial and are left out. */
+const isLo = (lo: string) => /^[1-6]\.\d+\.\d$/.test(lo);
+
+/**
+ * Pure: LO × quiz matrix from the user's own attempts. Only attempts that recorded missedLos count
+ * (older ones did not), oldest first as Quiz 1…N; rows are the LOs missed at least once, most missed first.
+ * Weak: missed in 2+ quizzes and at least a third of them; watch: 2+ quizzes otherwise; low: a single miss.
+ */
+export function loMatrix(attempts: Attempt[], chapter?: number): { quizzes: LoQuiz[]; rows: LoRow[] } {
+  const at = attempts.filter((a) => Array.isArray(a.missedLos)).sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1));
+  const quizzes = at.map((a, i) => ({ label: `Quiz ${i + 1}`, title: a.title, date: a.createdAt.slice(0, 10) }));
+  const N = at.length;
+  const los = [...new Set(at.flatMap((a) => a.missedLos!))].filter(isLo);
+  const rows = los
+    .map((lo): LoRow => {
+      const misses = at.map((a) => a.missedLos!.includes(lo));
       const n = misses.filter(Boolean).length;
-      return { lo, ch, topic, misses, n, pct: n / LOQ_QUIZ.length, level: n >= 6 ? "weak" : n >= 3 ? "watch" : "low" };
-    });
+      const pct = n / N;
+      const [topicId, topic] = LO_INFO[lo] ?? [null, `LO ${lo}`];
+      return { lo, ch: Number(lo[0]), topic, topicId, misses, n, pct, level: n < 2 ? "low" : pct >= 1 / 3 ? "weak" : "watch" };
+    })
+    .filter((r) => !chapter || r.ch === chapter)
+    .sort((a, b) => b.n - a.n || a.lo.localeCompare(b.lo, undefined, { numeric: true }));
+  return { quizzes, rows };
 }

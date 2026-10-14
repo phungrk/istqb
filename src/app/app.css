@@ -384,3 +384,5 @@ button { font: inherit; }
 }
 @media (max-width: 767px) { header.page-gutter { flex-wrap: nowrap !important; gap: 12px !important; } header.page-gutter > a { flex: none; } }
 .wlo-row:hover { background: var(--color-neutral-100); }
+/* Fail mark, after LO_x_Quiz.xlsx (bold ✗, dark red on pink): Organic's closest pair is accent-800 on accent-200. */
+.wlo-fail { justify-self: stretch; height: 26px; display: grid; place-items: center; border-radius: 8px; background: var(--color-accent-200); color: var(--color-accent-800); font-weight: 800; font-size: 15px; line-height: 1; }
