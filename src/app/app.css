@@ -383,3 +383,4 @@ button { font: inherit; }
   .hdr-mob-pw button { display: grid; place-items: center; width: 32px; height: 28px; padding: 0; border: 0; background: none; color: inherit; cursor: pointer; }
 }
 @media (max-width: 767px) { header.page-gutter { flex-wrap: nowrap !important; gap: 12px !important; } header.page-gutter > a { flex: none; } }
+.wlo-row:hover { background: var(--color-neutral-100); }

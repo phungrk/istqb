@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { STUDY_IDS } from "@/lib/syllabus";
 import { mastery, pct } from "@/lib/stats";
+import { WeakLOs } from "@/components/WeakLOs";
 
 export default function DashboardPage() {
   const router = useRouter();
@@ -90,6 +91,8 @@ export default function DashboardPage() {
           ))}
         </div>
       </div>
+
+      <WeakLOs />
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
         <div style={{ flex: "1 1 520px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 26, overflowX: "auto" }}>
