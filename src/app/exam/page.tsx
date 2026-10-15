@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { ClockIcon, SparklesIcon } from "@/components/icons";
 import { Html } from "@/components/Html";
+import { ExplainMistake } from "@/components/ExplainMistake";
 import { Explanation, ViLine, VietnameseToggle, useVietnamese } from "@/components/Vietnamese";
 import { LETTERS, isCorrect } from "@/lib/questions";
 import { chapterTitle } from "@/lib/syllabus";
@@ -133,6 +134,7 @@ export default function ExamPage() {
               <div style={{ borderRadius: 24, padding: "20px 22px", background: right ? "var(--color-accent-2-100)" : "var(--color-accent-100)", display: "flex", flexDirection: "column", gap: 8 }}>
                 <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-18)", color: right ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>{right ? "Correct" : "Not quite"}</span>
                 <Explanation q={q} on={vi} style={{ fontSize: "var(--fs-15)", color: "var(--color-neutral-900)" }} />
+                {!right && <ExplainMistake key={q.id} q={q} chosen={chosen} vi={vi} />}
                 {flags.pro && (
                   <button className="btn btn-ghost" onClick={() => askAI(q, chosen)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                     <SparklesIcon />

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { Html } from "@/components/Html";
+import { ExplainMistake } from "@/components/ExplainMistake";
 import { Explanation, ViLine, VietnameseToggle, useVietnamese } from "@/components/Vietnamese";
 import { Spinner } from "@/components/Loading";
 import { CheckIcon, XIcon } from "@/components/icons";
@@ -102,6 +103,7 @@ export default function ResultPage() {
                 {!ok && (
                   <>
                     <Explanation q={q} on={vi} style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }} />
+                    <ExplainMistake q={q} chosen={a ?? []} vi={vi} />
                     {flags.pro && (
                       <button className="btn btn-ghost" onClick={() => askAI(q, a)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
                         {tier === "pro" ? "Explain with AI coach" : "Explain with AI coach (Pro)"}
