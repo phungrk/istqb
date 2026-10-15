@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { Html } from "@/components/Html";
-import { ExplainMistake } from "@/components/ExplainMistake";
+import { ExplainMistake, ExplainMistakeIntro } from "@/components/ExplainMistake";
 import { Explanation, ViLine, VietnameseToggle, useVietnamese } from "@/components/Vietnamese";
 import { Spinner } from "@/components/Loading";
 import { CheckIcon, XIcon } from "@/components/icons";
@@ -84,6 +84,7 @@ export default function ResultPage() {
             <h4 style={{ margin: 0, flex: 1 }}>Review answers</h4>
             <VietnameseToggle questions={r.set.questions} on={vi} onChange={setVi} />
           </div>
+          {r.set.questions.some((q, i) => !isCorrect(q, r.answers[i])) && <ExplainMistakeIntro vi={vi} />}
           {r.set.questions.map((q, i) => {
             const a = r.answers[i];
             const ok = isCorrect(q, a);

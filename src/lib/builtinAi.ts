@@ -48,6 +48,13 @@ export function modelAvailability(): Promise<Availability> {
   return (modelCheck ??= g.LanguageModel.availability({ expectedInputs: EN, expectedOutputs: EN }).catch(() => "unavailable" as const));
 }
 
+/** After a successful run the model is on disk: re-check instead of reporting "downloadable" again. */
+export const MODEL_READY = "tp-model-ready";
+export function modelReady() {
+  modelCheck = Promise.resolve("available");
+  dispatchEvent(new Event(MODEL_READY));
+}
+
 /**
  * One streamed answer from a fresh session. Must start from a click: the first call may download
  * the model, which Chrome only allows after user activation. onProgress gets 0–1 while downloading.
