@@ -145,8 +145,8 @@ export function LoReview({ row, quizzes, onClose }: { row: LoRow; quizzes: numbe
               </button>
               <span style={{ fontSize: 12, color: "var(--color-neutral-700)", marginTop: -4 }} lang={vi ? "vi" : undefined}>
                 {vi
-                  ? "Gemini Nano trong Chrome tóm tắt ý chính, một ví dụ và một bẫy hay gặp trong đề thi, chỉ dựa trên đoạn syllabus ở trên. AI chạy trên máy bạn, miễn phí."
-                  : "Gemini Nano in Chrome writes the key points, an example and a common exam trap, using only the syllabus text above. It runs on your computer and is free."}
+                  ? "AI tóm tắt ý chính, một ví dụ và một bẫy hay gặp trong đề thi."
+                  : "AI summarizes the key points, an example and a common exam trap."}
                 {needsDownload(avail) && (vi ? " Lần đầu Chrome tải mô hình (vài GB, chỉ một lần)." : " First use downloads the model (several GB, one time only).")}
               </span>
               {ai.s === "error" && <span style={{ fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>The on-device model could not answer this time.</span>}
