@@ -27,8 +27,12 @@ function html(lines) {
   const out = [];
   let list = null;
   const close = () => { if (list) out.push(`<${list.tag}>${list.items.map((i) => `<li>${inline(i)}</li>`).join("")}</${list.tag}>`); list = null; };
+  let quote = null;
+  const closeQuote = () => { if (quote) out.push(`<blockquote><p>${quote.map(inline).join("<br />")}</p></blockquote>`); quote = null; };
   for (const raw of lines) {
     const line = raw.trim();
+    if (line.startsWith(">")) { close(); (quote ??= []).push(line.replace(/^>\s?/, "")); continue; }
+    closeQuote();
     const ul = line.match(/^[-*] (.*)$/);
     const ol = line.match(/^\d+\. (.*)$/);
     if (ul || ol) {
@@ -41,6 +45,7 @@ function html(lines) {
     }
   }
   close();
+  closeQuote();
   return out.join("\n");
 }
 
@@ -95,7 +100,7 @@ if (bad.length) throw new Error("Bad questions: " + bad.map((x) => x.key).join("
 const bankPath = path.join(ROOT, "data", "questions.json");
 const bank = JSON.parse(fs.readFileSync(bankPath, "utf8")).filter((q) => !q.id.startsWith(`q${NN}-`));
 const norm = (h) => h.replace(/<[^>]+>/g, " ").replace(/&[a-z]+;/g, " ").replace(/[^a-z0-9]+/gi, " ").trim().toLowerCase();
-const dedupKey = (q) => norm(q.stem).slice(0, 80) + "|" + q.options.map(norm).sort().join("|");
+const dedupKey = (q) => norm(q.stem) + "|" + q.options.map(norm).sort().join("|");
 const existing = new Map(bank.map((q) => [dedupKey(q), q.id]));
 const added = [];
 const ids = {};

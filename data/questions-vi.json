@@ -9823,5 +9823,405 @@
    "Các rủi ro mới trong chu kỳ test"
   ],
   "explanation": "<p>b) đúng. Branch coverage là một metric kỹ thuật được developer và technical tester sử dụng. Thông tin này không có ý nghĩa đối với đại diện nghiệp vụ. Các trở ngại, tiến độ kiểm thử và rủi ro mới đều là thông tin liên quan đến nghiệp vụ, phục vụ cho việc ra quyết định.</p>"
+ },
+ "q07-1": {
+  "stem": "<p>Điều nào sau đây là một ví dụ cho thấy vì sao testing là cần thiết?</p>",
+  "options": [
+   "Dynamic testing làm tăng chất lượng bằng cách khiến test object bị lỗi theo những cách mà người dùng không bao giờ có thể tạo ra",
+   "Static testing được developer sử dụng để phát hiện failure trong mã nguồn của họ sớm hơn so với dynamic testing",
+   "Static analysis cung cấp bằng chứng cho khách hàng rằng các thành phần của hệ thống không tạo ra output nào đã sẵn sàng để phát hành",
+   "Review làm tăng chất lượng của đặc tả yêu cầu và giúp giảm số thay đổi cần thực hiện trên các work product dẫn xuất"
+  ],
+  "explanation": "<p>d) đúng. Review là một hình thức static testing có thể áp dụng ngay từ đầu vòng đời phát triển phần mềm và được dùng để tìm defect, nhờ đó loại bỏ chúng trước khi các hoạt động phát triển tiếp theo lãng phí công sức vào những yêu cầu bị sai. Nếu defect không được phát hiện và loại bỏ sớm, thì khi defect được tìm thấy, các work product dẫn xuất như thiết kế và mã nguồn sẽ phải thay đổi vì chúng được xây dựng dựa trên yêu cầu bị sai.</p>"
+ },
+ "q07-3": {
+  "stem": "<p>Một trong các 'nguyên tắc của testing' nói rằng kiểm thử toàn bộ (exhaustive testing) là không thể. Điều nào sau đây là ví dụ về việc áp dụng nguyên tắc này trong thực tế?</p>",
+  "options": [
+   "Tạo các test case bao phủ mọi output có thể được đặc tả",
+   "Ghi lại tất cả các biến thể input có thể có và sắp xếp độ ưu tiên dựa trên mức độ quan trọng",
+   "Bắt đầu testing càng sớm càng tốt bằng review và các phương pháp static testing khác",
+   "Sử dụng equivalence partitioning và boundary value analysis để tạo test case"
+  ],
+  "explanation": "<p>d) đúng. Sử dụng equivalence partitioning và boundary value analysis để tạo test case là một cách áp dụng nguyên tắc này, vì các test technique này cung cấp một cách có hệ thống để chọn ra một tập con hữu hạn trong số tất cả các test case có thể có. Do không thể test mọi biến thể input, các kỹ thuật này chọn ra một tập con mang tính đại diện và có thể quản lý được.</p>"
+ },
+ "q07-4": {
+  "stem": "<p>Test activity nào liên quan đến việc làm việc với yêu cầu về test data, test condition, yêu cầu về test environment và test case?</p>",
+  "options": [
+   "Test design",
+   "Test execution",
+   "Test analysis",
+   "Test implementation"
+  ],
+  "explanation": "<p>a) đúng. Test design bao gồm việc sử dụng test condition để tạo test case và các testware cần thiết khác, chẳng hạn như yêu cầu về test data và test charter cho exploratory testing. Yêu cầu về test environment cũng được đặc tả ở bước này, bao gồm hạ tầng và công cụ cần thiết.</p>"
+ },
+ "q07-2": {
+  "stem": "<p>Phát biểu nào sau đây về quality assurance (QA) và/hoặc quality control (QC) là đúng?</p>",
+  "options": [
+   "QA được thực hiện như một phần của testing",
+   "Testing được thực hiện như một phần của QC",
+   "Testing là một tên gọi khác của QC",
+   "Testing được thực hiện như một phần của QA"
+  ],
+  "explanation": "<p>b) đúng. QC nhằm đạt được mức chất lượng phù hợp bằng cách tập trung vào việc phát hiện và sửa defect của sản phẩm. Testing là một phần quan trọng của QC và giúp phát hiện những defect này. Ngược lại, QA tập trung vào quy trình (ngăn ngừa defect), trong khi testing tập trung vào sản phẩm — vì vậy testing thuộc về QC, không phải QA.</p>"
+ },
+ "q07-5": {
+  "stem": "<p>Yếu tố nào sau đây CÓ KHẢ NĂNG NHẤT ảnh hưởng đến cách testing được thực hiện cho một test object cụ thể?</p>",
+  "options": [
+   "Mức kinh nghiệm trung bình của đội marketing trong tổ chức",
+   "Việc người dùng biết rằng một hệ thống mới đang được phát triển cho họ",
+   "Số năm kinh nghiệm của các thành viên trong đội test",
+   "Cơ cấu tổ chức của người dùng cuối đối với một ứng dụng nghe nhạc trực tuyến thương mại"
+  ],
+  "explanation": "<p>c) đúng. Số năm kinh nghiệm của các thành viên trong đội performance testing sẽ giúp xác định năng lực và kiến thức (ví dụ: về các công cụ và loại defect khác nhau) mà các thành viên sẽ áp dụng khi test. Kinh nghiệm của đội test ảnh hưởng trực tiếp đến việc chọn test technique và cách testing được thực hiện.</p>"
+ },
+ "q07-6": {
+  "stem": "<p>Phát biểu nào sau đây là ví dụ ĐÚNG về giá trị của traceability?</p>",
+  "options": [
+   "Traceability giữa các rủi ro đã được giảm thiểu và các test case đạt (pass) cung cấp phương tiện để xác định mức residual risk",
+   "Traceability giữa yêu cầu người dùng và kết quả test execution cung cấp phương tiện để đo tiến độ dự án so với mục tiêu kinh doanh",
+   "Traceability giữa tester và các test case bị lỗi (fail) cung cấp phương tiện để xác định trình độ kỹ năng của tester",
+   "Traceability giữa các rủi ro đã được xác định và các test condition đã viết cung cấp phương tiện để xác định rủi ro nào đáng để test"
+  ],
+  "explanation": "<p>b) đúng. Traceability giữa yêu cầu người dùng và kết quả test execution cho biết những yêu cầu người dùng nào đã được test, và do đó cung cấp phương tiện để đo tiến độ dự án (trong bối cảnh testing) so với mục tiêu kinh doanh.</p>"
+ },
+ "q07-7": {
+  "stem": "<p>Trường hợp nào sau đây CÓ KHẢ NĂNG NHẤT là ví dụ về việc tester sử dụng một kỹ năng chung (generic skill) khi test?</p>",
+  "options": [
+   "Tester có hiểu biết sâu về nhiều trò chơi máy tính nên hợp tác tốt với một developer cũng mê chơi game",
+   "Tester từng là phi công nên hiểu rõ hơn các acceptance criteria của hệ thống điều khiển trực thăng",
+   "Tester từng làm lập trình viên và dùng kỹ năng trong lĩnh vực này để giao tiếp tốt hơn với các business analyst",
+   "Tester rất cẩn thận để không mắc lỗi khi tạo test case một cách có phương pháp trước khi bắt đầu buổi exploratory testing"
+  ],
+  "explanation": "<p>b) đúng. Kiến thức nghiệp vụ (domain knowledge) có thể dùng để hiểu và giao tiếp với người dùng cuối và đại diện nghiệp vụ là một trong các kỹ năng chung mà tester cần có. Kinh nghiệm làm phi công giúp tester hiểu rõ hơn các acceptance criteria của hệ thống điều khiển trực thăng. Lưu ý: a) chỉ là sở thích cá nhân chung, c) là kiến thức kỹ thuật, và d) mô tả sự cẩn thận, không phải kỹ năng chung.</p>"
+ },
+ "q07-8": {
+  "stem": "<p>Điều nào sau đây là một ưu điểm của whole-team approach?</p>",
+  "options": [
+   "Cho phép các thành viên trong team đảm nhận bất kỳ vai trò nào vào bất kỳ lúc nào",
+   "Chỉ cần một team duy nhất để hỗ trợ toàn bộ dự án phát triển",
+   "Đưa đại diện nghiệp vụ vào làm việc cùng developer trong cùng một team",
+   "Tạo ra sự cộng hưởng (synergy) trong team, mang lại lợi ích cho toàn bộ dự án"
+  ],
+  "explanation": "<p>d) đúng. Bằng cách tận dụng hiệu quả nhất các bộ kỹ năng đa dạng của từng thành viên, whole-team approach thúc đẩy tương tác trong team tốt hơn, tăng cường giao tiếp và hợp tác, đồng thời tạo ra sự cộng hưởng trong team mang lại lợi ích cho toàn bộ dự án.</p>"
+ },
+ "q07-9": {
+  "stem": "<p>Phát biểu nào sau đây về SDLC được chọn là ĐÚNG?</p>",
+  "options": [
+   "Nếu áp dụng phát triển phần mềm agile, tự động hóa system test sẽ thay thế nhu cầu regression testing",
+   "Nếu áp dụng mô hình phát triển tuần tự (sequential), dynamic testing thường chỉ được thực hiện ở giai đoạn sau của vòng đời",
+   "Nếu áp dụng mô hình phát triển lặp (iterative), component testing thường được developer thực hiện thủ công",
+   "Nếu áp dụng mô hình phát triển tăng dần (incremental), static testing được thực hiện ở các increment đầu và dynamic testing ở các increment sau"
+  ],
+  "explanation": "<p>b) đúng. Nếu áp dụng mô hình phát triển tuần tự, ở giai đoạn đầu của vòng đời chưa có mã nguồn để thực thi, nên trong thời gian này static testing (ví dụ: review) được thực hiện. Ở giai đoạn sau, khi đã có mã nguồn để thực thi, dynamic testing mới có thể thực hiện. Tuy nhiên, lưu ý rằng việc chuẩn bị cho dynamic testing thường diễn ra sớm trong bất kỳ SDLC nào.</p>"
+ },
+ "q07-10": {
+  "stem": "<p>Điều nào sau đây là một thực hành testing tốt áp dụng cho mọi SDLC?</p>",
+  "options": [
+   "Tester nên review work product như một phần của giai đoạn phát triển tiếp theo",
+   "Tester nên review work product ngay khi có bản nháp",
+   "Tester nên review work product trước khi bắt đầu test analysis và test design",
+   "Tester nên review work product ngay sau khi chúng được công bố"
+  ],
+  "explanation": "<p>b) đúng. Tester nên review work product ngay khi có bản nháp để có thể test sớm theo cách tiếp cận shift-left. Defect trong work product được phát hiện càng sớm thì chi phí sửa càng thấp.</p>"
+ },
+ "q07-11": {
+  "stem": "<p>Điều nào sau đây là ví dụ về cách tiếp cận test-first trong phát triển?</p>",
+  "options": [
+   "Test-Driven Development",
+   "Coverage-Driven Development",
+   "Quality-Driven Development",
+   "Feature-Driven Development"
+  ],
+  "explanation": "<p>a) đúng. Test-Driven Development (TDD) là một ví dụ nổi tiếng về cách tiếp cận test-first trong phát triển. Trong TDD, test được viết trước code, sau đó code được viết để vượt qua các test đó.</p>"
+ },
+ "q07-12": {
+  "stem": "<p>Phát biểu nào sau đây về DevOps là ĐÚNG?</p>",
+  "options": [
+   "Để tăng tốc phát hành, continuous integration được dùng để khuyến khích developer đẩy code lên nhanh mà không cần hoàn thành component testing",
+   "Để có thể cập nhật và phát hành hệ thống thường xuyên hơn, cần nhiều regression test tự động để giảm nguy cơ hồi quy",
+   "Để đối xử bình đẳng giữa developer và bộ phận vận hành (operations), tester sẽ dành nhiều công sức hơn cho release testing do bộ phận vận hành thực hiện theo cách tiếp cận shift-right",
+   "Để tăng sự cộng hưởng giữa tester, developer và bộ phận vận hành, testing phải được tự động hóa hoàn toàn, không còn manual testing"
+  ],
+  "explanation": "<p>b) đúng. DevOps nâng cao testing theo nhiều cách, chẳng hạn như cung cấp phản hồi nhanh về chất lượng code, regression testing tự động giúp giảm thiểu rủi ro hồi quy, và thúc đẩy cách tiếp cận shift-left với việc đẩy code chất lượng cao kèm component test.</p>"
+ },
+ "q07-13": {
+  "stem": "<p>Hoạt động nào sau đây CÓ KHẢ NĂNG NHẤT được thực hiện như một phần của system testing?</p>",
+  "options": [
+   "Security testing cho một hệ thống quản lý tín dụng do một đội test độc lập thực hiện",
+   "Test giao diện giữa một hệ thống đổi ngoại tệ với một hệ thống ngân hàng bên ngoài",
+   "Beta testing cho một hệ thống học từ xa do các nhà phát triển học liệu thực hiện",
+   "Test tương tác giữa giao diện người dùng và cơ sở dữ liệu của một hệ thống nhân sự"
+  ],
+  "explanation": "<p>a) đúng. System testing kiểm tra hành vi và khả năng của toàn bộ hệ thống, bao gồm cả non-functional testing các đặc tính chất lượng, trong đó có security testing. Loại test này thường do một đội test độc lập thực hiện dựa trên đặc tả hệ thống. Phương án b) là system integration testing, c) là acceptance testing, và d) là component integration testing.</p>"
+ },
+ "q07-14": {
+  "stem": "<p>Phát biểu nào sau đây là ĐÚNG?</p>",
+  "options": [
+   "Số lượng regression test tăng lên khi dự án tiến triển, trong khi số lượng confirmation test giảm đi khi dự án tiến triển",
+   "Regression test được tạo và chạy khi test object được sửa, trong khi confirmation test được chạy mỗi khi test object được cải tiến",
+   "Regression testing quan tâm đến việc kiểm tra môi trường vận hành vẫn không thay đổi, trong khi confirmation testing quan tâm đến việc test các thay đổi của test object",
+   "Regression testing quan tâm đến các tác động bất lợi lên phần code không thay đổi, trong khi confirmation testing quan tâm đến việc test phần code đã thay đổi"
+  ],
+  "explanation": "<p>d) đúng. Regression testing đảm bảo rằng các thay đổi không gây ảnh hưởng tiêu cực đến phần mềm không thay đổi. Confirmation testing xác nhận rằng một defect đã được sửa – do đó nó quan tâm đến phần code đã thay đổi.</p>"
+ },
+ "q07-15": {
+  "stem": "<p>Điều nào sau đây là ví dụ về một defect có thể tìm thấy bằng static testing nhưng KHÔNG thể tìm thấy bằng dynamic testing?</p>",
+  "options": [
+   "Giao diện người dùng thiếu tính dễ sử dụng (usability)",
+   "Code không có đường đi (path) nào dẫn tới",
+   "Thời gian phản hồi kém đối với phần lớn số người dùng dự kiến",
+   "Các tính năng bắt buộc chưa được hiện thực trong code"
+  ],
+  "explanation": "<p>b) đúng. Code review có thể phát hiện code không thể đi tới bằng bất kỳ đường đi nào, trong khi dynamic test chỉ có thể thực thi code đi tới được và không thể xác định code nào không đi tới được nếu không chạy mọi tổ hợp input và trạng thái input có thể có, điều này không khả thi với code thực tế. Phương án a) và c) cần dynamic testing, còn d) có thể được tìm thấy bằng cả static testing lẫn dynamic testing.</p>"
+ },
+ "q07-16": {
+  "stem": "<p>Điều nào sau đây là lợi ích của việc nhận phản hồi sớm và thường xuyên từ stakeholder?</p>",
+  "options": [
+   "Quản lý biết được developer nào làm việc kém năng suất hơn",
+   "Cho phép quản lý dự án sắp xếp độ ưu tiên cho các tương tác với stakeholder",
+   "Giúp truyền đạt sớm các vấn đề chất lượng tiềm ẩn",
+   "Người dùng cuối hiểu rõ hơn vì sao việc bàn giao work product bị chậm trễ"
+  ],
+  "explanation": "<p>c) đúng. Nhận phản hồi từ stakeholder sớm và thường xuyên trong quá trình phát triển phần mềm có thể mang lại nhiều lợi ích, vì nó giúp truyền đạt sớm các vấn đề chất lượng tiềm ẩn, có thể ngăn ngừa hiểu lầm về yêu cầu, và đảm bảo mọi thay đổi trong yêu cầu của stakeholder được hiểu và thực hiện sớm hơn.</p>"
+ },
+ "q07-17": {
+  "stem": "<p>Cho các mô tả công việc sau:</p>\n<ol><li>Các đặc tính chất lượng cần đánh giá và exit criteria được lựa chọn</li><li>Mọi người đều có quyền truy cập vào work product</li><li>Các anomaly được xác định trong work product</li><li>Các anomaly được thảo luận</li></ol>\n<p>Và các hoạt động review sau</p>\n<ul><li>A. Individual review</li><li>B. Review initiation</li><li>C. Planning</li><li>D. Communication and analysis</li></ul>\n<p>Phương án nào sau đây ghép đúng NHẤT các mô tả công việc với các hoạt động?</p>",
+  "options": [
+   "1B, 2C, 3D, 4A",
+   "1B, 2D, 3C, 4A",
+   "1C, 2A, 3B, 4D",
+   "1C, 2B, 3A, 4D"
+  ],
+  "explanation": "<p>d) đúng.</p>\n<ul><li>1 (C) Planning: Xác định phạm vi review, mục đích, work product cần review, các đặc tính chất lượng cần đánh giá, các phần cần tập trung, exit criteria, thông tin hỗ trợ như tiêu chuẩn, công sức và khung thời gian</li><li>2 (B) Review initiation: Đảm bảo mọi người tham gia đều có quyền truy cập vào work product và các tài nguyên cần thiết, đồng thời làm rõ vai trò và trách nhiệm của họ</li><li>3 (A) Individual review: Đánh giá chất lượng của work product, xác định và ghi lại các anomaly, đề xuất và câu hỏi bằng các kỹ thuật review như checklist-based và scenario-based reviewing</li><li>4 (D) Communication and analysis: Phân tích và thảo luận từng anomaly, xác định trạng thái, người chịu trách nhiệm và các hành động cần thực hiện</li></ul>"
+ },
+ "q07-18": {
+  "stem": "<p>Cho các vai trò sau trong review:</p>\n<ol><li>Scribe</li><li>Review leader</li><li>Facilitator</li><li>Manager</li></ol>\n<p>Và các trách nhiệm sau trong review:</p>\n<ul><li>A. Đảm bảo các buổi họp review diễn ra hiệu quả và thiết lập một môi trường review an toàn</li><li>B. Ghi lại thông tin review, chẳng hạn như các quyết định và các anomaly mới được tìm thấy trong buổi họp review</li><li>C. Quyết định những gì cần được review và cung cấp nguồn lực, như nhân sự và thời gian cho review</li><li>D. Chịu trách nhiệm tổng thể về review, chẳng hạn như sắp xếp thời gian và địa điểm diễn ra review</li></ul>\n<p>Phương án nào sau đây ghép đúng NHẤT các vai trò với các trách nhiệm?</p>",
+  "options": [
+   "1A, 2B, 3D, 4C",
+   "1A, 2C, 3B, 4D",
+   "1B, 2D, 3A, 4C",
+   "1B, 2D, 3C, 4A"
+  ],
+  "explanation": "<p>c) đúng.</p>\n<ul><li>1. Scribe (B): chịu trách nhiệm thu thập phản hồi từ các reviewer và ghi lại thông tin review, chẳng hạn như các quyết định đã đưa ra và mọi anomaly mới được xác định trong buổi họp review</li><li>2. Review Leader (D): chịu trách nhiệm giám sát quy trình review, chẳng hạn như chọn thành viên đội review, lên lịch các buổi họp review và đảm bảo review được hoàn thành thành công</li><li>3. Facilitator (A): chịu trách nhiệm đảm bảo các buổi họp review diễn ra hiệu quả, bao gồm quản lý thời gian, điều phối thảo luận và tạo môi trường an toàn để mọi người có thể nêu ý kiến</li><li>4. Manager (C): chịu trách nhiệm quyết định những gì cần được review và cung cấp nguồn lực như nhân sự và thời gian</li></ul>"
+ },
+ "q07-19": {
+  "stem": "<p>Phát biểu nào sau đây mô tả đúng NHẤT sự khác biệt giữa decision table testing và branch testing?</p>",
+  "options": [
+   "Trong decision table testing, test case được tạo ra từ các câu lệnh quyết định trong code. Trong branch testing, test case được tạo ra từ hiểu biết về luồng điều khiển (control flow) của test object",
+   "Trong decision table testing, test case được tạo ra từ đặc tả mô tả logic nghiệp vụ. Trong branch testing, test case dựa trên việc dự đoán các defect tiềm ẩn trong mã nguồn",
+   "Trong decision table testing, test case được tạo ra từ hiểu biết về luồng điều khiển của test object. Trong branch testing, test case được tạo ra từ đặc tả mô tả logic nghiệp vụ",
+   "Trong decision table testing, test case độc lập với cách phần mềm được hiện thực. Trong branch testing, test case chỉ có thể được tạo sau khi thiết kế hoặc hiện thực code"
+  ],
+  "explanation": "<p>d) đúng. Decision table testing là một black-box test technique, nên nó dựa trên việc phân tích hành vi được đặc tả của test object mà không cần tham chiếu đến cấu trúc bên trong. Vì vậy, test case độc lập với cách phần mềm được hiện thực. Branch testing là một white-box test technique, nên test case dựa trên việc phân tích cấu trúc và cách xử lý bên trong của test object. Vì test case phụ thuộc vào cách phần mềm được thiết kế và viết code, chúng chỉ có thể được tạo sau khi thiết kế hoặc hiện thực test object.</p>"
+ },
+ "q07-20": {
+  "stem": "<p>Khách hàng của chuỗi rửa xe TestWash có thẻ ghi lại số lần rửa xe họ đã mua cho đến nay. Giá trị ban đầu là 0. Sau khi vào trạm rửa xe, hệ thống tăng số trên thẻ thêm một. Giá trị này là số thứ tự của lần rửa hiện tại. Dựa vào số này, hệ thống quyết định khách hàng được hưởng mức giảm giá nào.</p>\n<p>Cứ mỗi lần rửa thứ mười, hệ thống giảm giá 10%, và cứ mỗi lần rửa thứ hai mươi, hệ thống giảm thêm 40% (tức là tổng cộng giảm 50%).</p>\n<p>Bộ input data nào sau đây (được hiểu là số thứ tự của lần rửa hiện tại) đạt equivalence partition coverage cao nhất?</p>",
+  "options": [
+   "19, 20, 30",
+   "11, 12, 20",
+   "1, 10, 50",
+   "10, 29, 30, 31"
+  ],
+  "explanation": "<p>a) đúng. 19 bao phủ partition \"không giảm giá\", 20 bao phủ partition \"giảm giá 50%\", và 30 bao phủ partition \"giảm giá 10%\". Ba giá trị này bao phủ cả ba equivalence partition hợp lệ.</p>"
+ },
+ "q07-21": {
+  "stem": "<p>Bạn đang kiểm thử một form kiểm tra độ dài của mật khẩu được nhập vào có đúng hay không. Form chấp nhận mật khẩu có độ dài đúng và từ chối mật khẩu quá ngắn hoặc quá dài. Độ dài mật khẩu là đúng nếu có từ 6 đến 12 ký tự (tính cả hai đầu). Ngược lại, độ dài được coi là không đúng.</p>\n<p>Ban đầu, form trống (độ dài mật khẩu = 0). Bạn áp dụng boundary value analysis cho biến \"độ dài mật khẩu\".</p>\n<p>Bộ test case của bạn đạt 100% 2-value boundary value coverage. Nhóm quyết định rằng do component này có rủi ro cao, cần bổ sung test case để đảm bảo đạt 100% 3-value boundary value coverage.</p>\n<p>Cần kiểm thử thêm những độ dài mật khẩu nào để đạt được điều này?</p>",
+  "options": [
+   "4, 5, 13, 14",
+   "7, 11",
+   "1, 5, 13",
+   "1, 4, 7, 11, 14"
+  ],
+  "explanation": "<p>d) đúng. Miền giá trị của độ dài mật khẩu có ba equivalence partition:</p>\n<ul><li>mật khẩu quá ngắn {0, 1, …, 4, 5}</li><li>mật khẩu hợp lệ {6, 7, …, 11, 12}</li><li>mật khẩu quá dài {13, 14, …}</li></ul>\n<p>Để đạt coverage đầy đủ cho 3-value BVA, chúng ta cần kiểm thử các giá trị sau: 0, 1, 4, 5, 6, 7, 11, 12, 13, 14. Vì 2-value BVA đã được bao phủ, nghĩa là chúng ta đã kiểm thử các mật khẩu có độ dài: 0, 5, 6, 12 và 13. Do đó, các độ dài cần bao phủ thêm để chuyển từ 2-value sang 3-value là: 1, 4, 7, 11 và 14.</p>"
+ },
+ "q07-22": {
+  "stem": "<p>Decision table sau đây chứa các quy tắc để xác định nguy cơ xơ vữa động mạch:</p>\n<p><img class=\"qimg\" alt=\"Hình - Decision table về nguy cơ xơ vữa động mạch\" src=\"/q/36426eb4dd35e4b8.png\" loading=\"lazy\" /></p>\n<p>Bạn đã thiết kế các test case với dữ liệu đầu vào như sau:</p>\n<ul><li>TC1: Cholesterol = 125 mg/dl, Huyết áp = 141 mm Hg</li><li>TC2: Cholesterol = 200 mg/dl, Huyết áp = 201 mm Hg</li><li>TC3: Cholesterol = 124 mg/dl, Huyết áp = 201 mm Hg</li><li>TC4: Cholesterol = 109 mg/dl, Huyết áp = 200 mm Hg</li><li>TC5: Cholesterol = 201 mg/dl, Huyết áp = 140 mm Hg</li></ul>\n<p>Các test case này đạt decision table coverage là bao nhiêu?</p>",
+  "options": [
+   "40%",
+   "60%",
+   "80%",
+   "100%"
+  ],
+  "explanation": "<p>b) đúng. Decision table có năm cột. Mỗi test case bao phủ một cột trong số đó. TC1 và TC2 cùng bao phủ Rule 4, TC3 và TC4 cùng bao phủ Rule 2, TC5 bao phủ Rule 5. Vậy năm test case này bao phủ ba trên năm cột, đạt coverage là (3/5)*100% = 60%.</p>"
+ },
+ "q07-23": {
+  "stem": "<p>Một hệ thống lưu trữ có thể chứa tối đa ba phần tử và được mô hình hóa bằng state transition diagram sau. Biến N biểu thị số phần tử đang được lưu trữ.</p>\n<p><img class=\"qimg\" alt=\"Hình - State transition diagram của hệ thống lưu trữ\" src=\"/q/175c7ec2f5e157eb.png\" loading=\"lazy\" /></p>\n<p>Test case nào sau đây, được biểu diễn dưới dạng chuỗi sự kiện, đạt mức valid transitions coverage cao nhất?</p>",
+  "options": [
+   "Add, Remove, Add, Add, Add",
+   "Add, Add, Add, Add, Remove, Remove",
+   "Add, Add, Add, Remove, Remove",
+   "Add, Add, Add, Remove, Add"
+  ],
+  "explanation": "<p>c) đúng. Biến N biểu thị số phần tử đang được lưu trữ. Mỗi sự kiện \"Add\" làm N tăng 1, và mỗi sự kiện \"Remove\" làm N giảm 1. Lưu ý rằng khi sự kiện \"Add\" xảy ra trong lúc đang ở trạng thái NOT FULL, trạng thái chỉ chuyển sang FULL nếu N=2. Nếu N&lt;2, hệ thống vẫn ở trạng thái NOT FULL. Nếu N=0, không thể thực hiện \"Remove\". Tương tự, nếu N=3, không thể thực hiện \"Add\". Test c) thực thi Add / N := 1 (START → NOT FULL), Add [N &lt; 2], Add [N = 2] (NOT FULL → FULL), Remove (FULL → NOT FULL) và Remove [N &gt; 0], nên nó bao phủ 5 trên 5 valid transition, đạt 100% valid transitions coverage.</p>"
+ },
+ "q07-24": {
+  "stem": "<p>Bạn chạy hai test case, T1 và T2, trên cùng một đoạn code. Test T1 đạt 40% statement coverage và test T2 đạt 65% statement coverage.</p>\n<p>Câu nào sau đây chắc chắn phải đúng?</p>",
+  "options": [
+   "Test suite gồm hai test T1 và T2 đạt 105% statement coverage",
+   "Tồn tại ít nhất một statement chắc chắn đã được cả T1 và T2 thực thi",
+   "Ít nhất 5% số statement trong code được kiểm thử là không thể thực thi",
+   "Test suite gồm hai test T1 và T2 đạt branch coverage đầy đủ"
+  ],
+  "explanation": "<p>b) đúng. Nếu các statement được T1 và T2 thực thi hoàn toàn không trùng nhau, coverage của test suite {T1, T2} sẽ là 105%, điều này là không thể (xem đáp án a). Do đó, ít nhất 5% số statement có thể thực thi phải đã được cả T1 và T2 thực thi.</p>"
+ },
+ "q07-25": {
+  "stem": "<p>Cho chỉ số branch coverage được định nghĩa là BCov = (X / Y) * 100%.</p>\n<p>X và Y trong công thức này biểu thị gì?</p>",
+  "options": [
+   "X = số decision outcome được các test case thực thi; Y = tổng số decision outcome trong code",
+   "X = số branch có điều kiện được các test case thực thi; Y = tổng số branch trong code",
+   "X = số branch được các test case thực thi; Y = tổng số branch trong code",
+   "X = số branch có điều kiện được các test case thực thi; Y = tổng số decision outcome trong code"
+  ],
+  "explanation": "<p>c) đúng. Branch coverage được đo bằng số branch được các test case thực thi chia cho tổng số branch, và được biểu thị dưới dạng phần trăm. Một branch là một sự chuyển điều khiển giữa hai nút trong control flow graph. Mỗi sự chuyển điều khiển có thể là không điều kiện (tức là code tuần tự) hoặc có điều kiện (tức là một decision outcome) — vì vậy branch bao gồm cả hai loại.</p>"
+ },
+ "q07-26": {
+  "stem": "<p>Nhận định nào sau đây đưa ra lý do TỐT NHẤT cho việc sử dụng exploratory testing?</p>",
+  "options": [
+   "Tester không được cấp đủ thời gian cho việc thiết kế test và thực thi test",
+   "Test strategy hiện tại yêu cầu tester sử dụng các kỹ thuật test black-box chính thức",
+   "Đặc tả được viết bằng một ngôn ngữ hình thức có thể được xử lý bằng công cụ",
+   "Tester là thành viên của một nhóm agile và có kỹ năng lập trình tốt"
+  ],
+  "explanation": "<p>a) đúng. Exploratory testing hữu ích khi có ít đặc tả hoặc đặc tả không đầy đủ, hoặc khi việc kiểm thử chịu áp lực thời gian lớn. Exploratory testing cũng hữu ích để bổ trợ cho các kỹ thuật test khác mang tính chính thức hơn. Exploratory testing sẽ hiệu quả hơn nếu tester có kinh nghiệm, có kiến thức nghiệp vụ và có các kỹ năng thiết yếu ở mức cao, như kỹ năng phân tích, sự tò mò và tính sáng tạo.</p>"
+ },
+ "q07-27": {
+  "stem": "<p>Mục nào sau đây phù hợp NHẤT để làm một phần tử của checklist dùng trong checklist-based testing?</p>",
+  "options": [
+   "\"Developer đã mắc lỗi khi viết code\"",
+   "\"Statement coverage đạt được vượt quá 85%\"",
+   "\"Chương trình hoạt động đúng đối với các yêu cầu chức năng và phi chức năng\"",
+   "\"Các thông báo lỗi được viết bằng ngôn ngữ mà người dùng có thể hiểu\""
+  ],
+  "explanation": "<p>d) đúng. Đây là ví dụ về một test condition mà con người có thể kiểm tra. Checklist trong checklist-based testing chứa các test condition cụ thể và có thể kiểm chứng — a) nói về developer (không phải sản phẩm), b) là một chỉ số coverage (không phải test condition), và c) quá chung chung để làm một mục trong checklist.</p>"
+ },
+ "q07-28": {
+  "stem": "<p>Xem xét acceptance criteria sau của một user story được viết từ góc nhìn của chủ một cửa hàng trực tuyến.</p>\n<blockquote><p>Given người dùng đã đăng nhập và đang ở trang chủ,<br />When người dùng nhấn vào nút \"Add Item\",<br />Then form \"Create Item\" sẽ xuất hiện,<br />And người dùng có thể nhập tên và giá cho mặt hàng mới.</p></blockquote>\n<p>Acceptance criteria này được viết theo định dạng nào?</p>",
+  "options": [
+   "Rule-oriented",
+   "Scenario-oriented",
+   "Product-oriented",
+   "Process-oriented"
+  ],
+  "explanation": "<p>b) đúng. Đây là định dạng Given/When/Then, thuộc loại scenario-oriented. Cấu trúc Given/When/Then mô tả một kịch bản cụ thể: bối cảnh ban đầu (Given), hành động (When) và kết quả mong đợi (Then).</p>"
+ },
+ "q07-29": {
+  "stem": "<p>Nhóm của bạn phân tích user story sau để xác định acceptance criteria:</p>\n<ul><li>Là một khách hàng đã đăng ký, tôi muốn có thể xem các đơn hàng trước đây của mình trên website của công ty, để tôi có thể theo dõi các lần mua hàng của mình.</li></ul>\n<p>Test case nào sau đây sẽ KHÔNG liên quan đến user story này?</p>",
+  "options": [
+   "Đầu vào: khách hàng đăng nhập vào tài khoản của mình trên website và nhấn nút \"see order history\". Đầu ra mong đợi: hệ thống hiển thị danh sách tất cả các đơn hàng trước đây của khách hàng, bao gồm ngày, mã đơn hàng và tổng chi phí",
+   "Đầu vào: khách hàng nhấn vào một đơn hàng trong danh sách đơn hàng. Đầu ra mong đợi: hệ thống hiển thị từng mặt hàng đã mua, kèm theo giá và số lượng",
+   "Đầu vào: khách hàng nhấn nút \"Sort ascending\" trên màn hình lịch sử đơn hàng. Đầu ra mong đợi: hệ thống hiển thị lịch sử đơn hàng được sắp xếp theo mã đơn hàng tăng dần",
+   "Đầu vào: một khách hàng chưa đăng ký đăng ký làm khách hàng mới với một địa chỉ e-mail hợp lệ chưa tồn tại trong cơ sở dữ liệu khách hàng. Đầu ra mong đợi: hệ thống chấp nhận việc đăng ký và tạo tài khoản"
+  ],
+  "explanation": "<p>d) đúng. Test case này liên quan đến quy trình đăng ký, vốn không được đề cập trong user story. User story nói về việc xem các đơn hàng trước đây.</p>"
+ },
+ "q07-30": {
+  "stem": "<p>Nhóm của bạn làm theo quy trình sử dụng DevOps delivery pipeline. Ba bước đầu tiên của quy trình này là:</p>\n<ol><li>Phát triển code</li><li>Đưa code vào hệ thống version control và merge vào branch \"test\"</li><li>Thực hiện component testing cho code đã được đưa lên</li></ol>\n<p>Điều nào sau đây phù hợp NHẤT để làm entry criterion cho bước (2) của pipeline này?</p>",
+  "options": [
+   "Static analysis không trả về cảnh báo nào có mức độ nghiêm trọng cao đối với code được đưa lên",
+   "Hệ thống version control không báo xung đột nào khi merge code vào branch \"test\"",
+   "Các component test đã được biên dịch và sẵn sàng để thực thi",
+   "Statement coverage đạt ít nhất 80%"
+  ],
+  "explanation": "<p>a) đúng. Đây là điều có thể (và nên) được kiểm tra trước khi code được đưa vào version control. Entry criterion cho bước (2) phải có thể kiểm chứng được trước khi bước này bắt đầu — static analysis trên code đã phát triển phù hợp với điều này. Phương án b) xảy ra ngay trong bước (2), còn c) và d) liên quan đến bước (3).</p>"
+ },
+ "q07-31": {
+  "stem": "<p>Bạn muốn ước tính test effort cho dự án mới bằng estimation based on ratios. Bạn tính tỷ lệ effort giữa test và phát triển dựa trên dữ liệu trung bình của cả effort phát triển lẫn test effort từ bốn dự án trước đây tương tự dự án mới. Bảng sau thể hiện dữ liệu lịch sử này:</p>\n<p><img class=\"qimg\" alt=\"Hình - Effort phát triển và test effort của bốn dự án trước đây\" src=\"/q/eb43ee2339c94715.png\" loading=\"lazy\" /></p>\n<p>Effort phát triển ước tính cho dự án mới là $800,000. Bạn ước tính test effort của dự án này là bao nhiêu?</p>",
+  "options": [
+   "$40,000",
+   "$80,000",
+   "$81,250",
+   "$82,500"
+  ],
+  "explanation": "<p>b) đúng. Effort phát triển trung bình là $900,000 và test effort trung bình là $90,000 (tính từ bốn dự án). Tỷ lệ trung bình giữa test effort và effort phát triển là 1:10 ($90,000 : $900,000), nghĩa là theo dữ liệu lịch sử, trung bình test effort bằng 10% effort phát triển. Vậy nếu effort phát triển được ước tính là $800,000, test effort ước tính là: 10% * $800,000 = 0.1 * $800,000 = $80,000.</p>"
+ },
+ "q07-32": {
+  "stem": "<p>Bạn đang kiểm thử một ứng dụng web cho phép người dùng tìm kiếm (SEARCH) sản phẩm, xem (VIEW) chi tiết sản phẩm, thêm (ADD) sản phẩm vào giỏ hàng và đặt hàng (ORDER).</p>\n<p>Bạn đã chuẩn bị bảy test case sau, và bạn muốn thực thi tất cả. Các test cần được thực thi theo thứ tự tốt nhất, dựa trên test priority:</p>\n<p><img class=\"qimg\" alt=\"Hình - Bảy test case cùng mức ưu tiên\" src=\"/q/c5df6ff2a8d08d30.png\" loading=\"lazy\" /></p>\n<p>Bạn cũng đã xác định các logical dependency sau giữa các test case:</p>\n<ul><li>Chức năng SEARCH phải được kiểm thử trước thì mới kiểm thử được chức năng VIEW.</li><li>Chức năng VIEW phải được kiểm thử trước chức năng ADD.</li><li>Chức năng ADD phải được kiểm thử trước chức năng ORDER.</li></ul>\n<p>Test case nào nên được thực thi ở vị trí thứ tư?</p>",
+  "options": [
+   "TC3",
+   "TC1",
+   "TC7",
+   "TC2"
+  ],
+  "explanation": "<p>b) đúng. Với mỗi sản phẩm, bạn phải chạy SEARCH-VIEW-ADD trước khi chạy ORDER. Bạn có thể thêm nhiều sản phẩm hơn (theo cùng luồng đó) trước khi chạy ORDER. Dựa vào đó, TC1 hoặc TC2 phải được thực thi đầu tiên. Ưu tiên đầu tiên nên dành cho VIEW và ADD sản phẩm B, vì các test case của nó (TC6, TC4) được gán mức ưu tiên cao hơn. Vậy 3 test đầu tiên cần thực thi là TC2-TC4-TC6. Bây giờ cần cân nhắc nên chạy TC7 rồi mới chạy toàn bộ luồng cho sản phẩm A, hay chạy các TC của sản phẩm A trước. Vì TC7 có mức ưu tiên thấp hơn các test còn lại của sản phẩm A (TC1, TC3, TC5), nên các test này được thực thi trước. Thứ tự đầy đủ là: TC2-TC4-TC6-TC1-TC3-TC5-TC7, vì vậy test thứ tư là TC1.</p>"
+ },
+ "q07-33": {
+  "stem": "<p>Theo mô hình testing quadrants, loại nào sau đây thuộc quadrant Q1 (\"technology facing\" và \"support the team\")?</p>",
+  "options": [
+   "Usability testing",
+   "Functional testing",
+   "User acceptance testing",
+   "Component integration testing"
+  ],
+  "explanation": "<p>d) đúng. Component integration testing là kiểm thử hướng công nghệ (technology facing) và hỗ trợ nhóm (định hướng việc phát triển) (Q1). Usability testing và user acceptance testing thuộc Q3 (business facing, đánh giá sản phẩm), còn functional testing thuộc Q2 (business facing, hỗ trợ nhóm).</p>"
+ },
+ "q07-34": {
+  "stem": "<p>Cho các rủi ro sau:</p>\n<ol><li>Vòng lặp được cài đặt kém hiệu quả khiến hệ thống phản hồi chậm</li><li>Người tiêu dùng thay đổi sở thích</li><li>Phòng máy chủ bị ngập nước</li><li>Bệnh nhân trên một độ tuổi nhất định nhận được báo cáo không chính xác</li></ol>\n<p>Và các hoạt động mitigation sau:</p>\n<ul><li>A. Risk acceptance</li><li>B. Performance testing</li><li>C. Sử dụng boundary value analysis làm kỹ thuật test</li><li>D. Risk transfer</li></ul>\n<p>Phương án nào sau đây ghép các rủi ro với các hoạt động mitigation phù hợp NHẤT?</p>",
+  "options": [
+   "1C, 2D, 3A, 4B",
+   "1B, 2D, 3A, 4C",
+   "1B, 2A, 3D, 4C",
+   "1C, 2A, 3D, 4B"
+  ],
+  "explanation": "<p>c) đúng. Các cặp ghép đúng giữa rủi ro và mitigation là:</p>\n<ul><li>1. Hệ thống phản hồi chậm (1) có thể được kiểm thử bằng performance testing (B)</li><li>2. Sự thay đổi sở thích của người tiêu dùng (2) thường nằm ngoài tầm kiểm soát của chúng ta, nên thường chúng ta chấp nhận rủi ro này (A)</li><li>3. Phòng máy chủ bị ngập nước (3) có thể gây thiệt hại đáng kể, nên chúng ta nên chuyển giao rủi ro, ví dụ bằng cách mua hợp đồng bảo hiểm (D)</li><li>4. Việc bệnh nhân trên một độ tuổi nhất định nhận được báo cáo không chính xác (4) gợi ý một vấn đề tiềm ẩn về giá trị biên, có thể được phát hiện hiệu quả bằng các kỹ thuật như BVA (C)</li></ul>"
+ },
+ "q07-35": {
+  "stem": "<p>Chỉ số nào sau đây là một product quality metric?</p>",
+  "options": [
+   "Mean time to failure",
+   "Số lượng defect được tìm thấy",
+   "Requirements coverage",
+   "Defect detection percentage"
+  ],
+  "explanation": "<p>a) đúng. Product quality metric đo các đặc tính chất lượng. Mean time to failure đo độ trưởng thành (maturity), vì vậy nó là một product quality metric. Các phương án còn lại (số lượng defect được tìm thấy, requirements coverage, defect detection percentage) là các chỉ số dự án hoặc chỉ số quy trình.</p>"
+ },
+ "q07-36": {
+  "stem": "<p>Bạn là thành viên của một nhóm test ở Bắc Mỹ, đang phát triển sản phẩm cho một khách hàng ở châu Âu. Nhóm làm việc theo agile, áp dụng cách tiếp cận DevOps và sử dụng pipeline continuous integration/continuous delivery.</p>\n<p>Cách nào sau đây KÉM hiệu quả NHẤT để báo cáo tiến độ test cho khách hàng?</p>",
+  "options": [
+   "Gặp mặt trực tiếp",
+   "Dashboard",
+   "Email",
+   "Họp trực tuyến qua video"
+  ],
+  "explanation": "<p>a) đúng. Khách hàng ở địa điểm và múi giờ khác, nên việc giao tiếp trực tiếp có thể khó khăn. Dashboard, email và họp trực tuyến qua video đều hoạt động tốt bất kể khoảng cách địa lý và múi giờ.</p>"
+ },
+ "q07-37": {
+  "stem": "<p>Phương án nào sau đây mô tả TỐT NHẤT một ví dụ về cách configuration management (CM) hỗ trợ kiểm thử?</p>",
+  "options": [
+   "Khi có số phiên bản của môi trường, công cụ CM có thể truy xuất số phiên bản của các thư viện, stubs và drivers được dùng trong môi trường đó",
+   "Khi có bản ghi các giá trị đầu vào của test, công cụ CM có thể thực thi các test case cho các cấu hình này và tính toán test coverage",
+   "Khi có dữ liệu về ngày mua giấy phép phần mềm, công cụ CM tự động tạo thông tin về việc giấy phép sản phẩm sắp hết hạn",
+   "Khi có số phiên bản của test case, công cụ CM có thể tự động tạo dữ liệu test cho test case này"
+  ],
+  "explanation": "<p>a) đúng. Đối với một configuration item phức tạp (ví dụ: một môi trường test), CM ghi lại các thành phần cấu thành nó, mối quan hệ giữa chúng và phiên bản của chúng. Điều này giúp nhóm biết chính xác phiên bản nào của các component đã được dùng trong kiểm thử.</p>"
+ },
+ "q07-38": {
+  "stem": "<p>Bạn đang kiểm thử một hàm sắp xếp nhận đầu vào là một tập hợp số và trả về chính tập số đó được sắp xếp theo thứ tự tăng dần. Đây là log từ lần thực thi test:</p>\n<p><img class=\"qimg\" alt=\"Hình - Log thực thi test của lần chạy test 736\" src=\"/q/3c1c0f9b85b765ad.png\" loading=\"lazy\" /></p>\n<p>Phương án nào sau đây mô tả TỐT NHẤT failure, có thể dùng trong một defect report?</p>",
+  "options": [
+   "Hệ thống không sắp xếp được một số tập hợp số. Tham chiếu: TC3, TC4, TC5",
+   "Hệ thống dường như bỏ qua các giá trị trùng lặp khi sắp xếp. Tham chiếu: TC3, TC4, TC5",
+   "Hệ thống không sắp xếp được số âm. Tham chiếu: TC4, TC5",
+   "TC3, TC4 và TC5 có defect (dữ liệu đầu vào trùng lặp) và cần được sửa"
+  ],
+  "explanation": "<p>b) đúng. Từ kết quả test, có vẻ hệ thống bỏ qua các giá trị trùng lặp và sắp xếp danh sách mà không tính đến các phần tử lặp lại. Đây có lẽ là nguyên nhân gây ra failure ở TC3, TC4, TC5: đầu vào của mỗi test đều chứa giá trị trùng lặp, và đầu ra của mỗi test đều bị thiếu các giá trị đó. Thông tin như vậy có thể giúp developer tìm ra defect và sửa nó hiệu quả hơn. Một defect report tốt mô tả quy luật của failure quan sát được, chứ không chỉ ghi \"nó bị lỗi\".</p>"
+ },
+ "q07-39": {
+  "stem": "<p>Cho các mô tả sau:</p>\n<ol><li>Hỗ trợ theo dõi workflow</li><li>Tạo điều kiện thuận lợi cho giao tiếp</li><li>Virtual machines</li><li>Hỗ trợ review</li></ol>\n<p>Và các nhóm test tools sau:</p>\n<ul><li>A. Static testing tools</li><li>B. Công cụ hỗ trợ khả năng mở rộng và chuẩn hóa việc triển khai</li><li>C. Công cụ DevOps</li><li>D. Collaboration tools</li></ul>\n<p>Phương án nào sau đây ghép các mô tả với các nhóm công cụ phù hợp NHẤT?</p>",
+  "options": [
+   "1A, 2B, 3C, 4D",
+   "1B, 2D, 3C, 4A",
+   "1C, 2D, 3B, 4A",
+   "1D, 2C, 3A, 4B"
+  ],
+  "explanation": "<p>c) đúng. Xét từng nhóm công cụ được liệt kê và mô tả của chúng:</p>\n<ul><li>A. Static testing tools – hỗ trợ tester thực hiện review và static analysis (4)</li><li>B. Công cụ hỗ trợ khả năng mở rộng và chuẩn hóa việc triển khai – Ví dụ: virtual machines, công cụ containerization (3)</li><li>C. Công cụ DevOps – hỗ trợ DevOps delivery pipeline, theo dõi workflow, (các) quy trình build tự động, continuous integration/continuous delivery (CI/CD) (1)</li><li>D. Collaboration tools – tạo điều kiện thuận lợi cho giao tiếp (2)</li></ul>"
+ },
+ "q07-40": {
+  "stem": "<p>Điều nào sau đây NHIỀU KHẢ NĂNG NHẤT là một lợi ích của test automation?</p>",
+  "options": [
+   "Nó cung cấp các số đo coverage quá phức tạp để con người tự tính ra",
+   "Nó chia sẻ trách nhiệm kiểm thử với nhà cung cấp công cụ",
+   "Nó loại bỏ nhu cầu tư duy phản biện khi phân tích kết quả test",
+   "Nó tạo ra test case từ việc phân tích code chương trình"
+  ],
+  "explanation": "<p>a) đúng. Test automation có thể cung cấp các số đo quá phức tạp để con người tự tính ra, chẳng hạn như các số đo test coverage white-box cho mọi đoạn code trừ những đoạn đơn giản nhất. Các phương án b), c) và d) mô tả những nhận định không đúng — automation không chia sẻ trách nhiệm, không loại bỏ nhu cầu tư duy phản biện, và việc tạo test case từ phân tích code không phải là lợi ích điển hình của automation.</p>"
  }
 }

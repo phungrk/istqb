@@ -1,0 +1,26 @@
+{
+ "n": 7,
+ "md": "quiz7.md",
+ "lo": {
+  "1": "1.2.1", "2": "1.2.2", "3": "1.3.1", "4": "1.4.1", "5": "1.4.2", "6": "1.4.4", "7": "1.5.1", "8": "1.5.2",
+  "9": "2.1.1", "10": "2.1.2", "11": "2.1.3", "12": "2.1.4", "13": "2.2.1", "14": "2.2.3", "15": "3.1.3", "16": "3.2.1",
+  "17": "3.2.2", "18": "3.2.3", "19": "4.1.1", "20": "4.2.1", "21": "4.2.2", "22": "4.2.3", "23": "4.2.4", "24": "4.3.1",
+  "25": "4.3.2", "26": "4.4.2", "27": "4.4.3", "28": "4.5.2", "29": "4.5.3", "30": "5.1.3", "31": "5.1.4", "32": "5.1.5",
+  "33": "5.1.7", "34": "5.2.4", "35": "5.3.1", "36": "5.3.3", "37": "5.4.1", "38": "5.5.1", "39": "6.1.1", "40": "6.2.1"
+ },
+ "edits": {
+  "22": [["<p>The following decision table contains the rules for determining the risk of atherosclerosis (conditions: Cholesterol ≤124 / 125-200 / ≥201 mg/dl; Blood pressure ≤140 / ≥141 mm Hg; actions: risk level very low / medium / high / very high — 5 rules total).</p>", "<p>The following decision table contains the rules for determining the risk of atherosclerosis:</p>\n{{img:q07-dtable.png|Decision table for the risk of atherosclerosis}}", "replace"]],
+  "23": [[" (States: START, NOT_FULL, FULL, END; transitions E1-E5: Add from START to NOT_FULL, Add in NOT_FULL when N&lt;2, Add in NOT_FULL when N=2 to FULL, Remove from FULL to NOT_FULL, Remove in NOT_FULL when N&gt;0.)</p>", "</p>\n{{img:q07-states.png|State transition diagram of the storage system}}", "replace"]],
+  "31": [[" The table shows this historical data (P1: dev $800,000 / test $40,000; P2: dev $1,200,000 / test $130,000; P3: dev $600,000 / test $70,000; P4: dev $1,000,000 / test $120,000).</p>", " The table shows this historical data:</p>\n{{img:q07-ratio.png|Development and test effort of four historical projects}}", "replace"]],
+  "32": [[" The tests should be executed in the best order, based on test priority (TC1: SEARCH product A; TC2: SEARCH product B; TC3: VIEW product A details; TC4: VIEW product B details; TC5: ADD product A to shopping cart; TC6: ADD product B to shopping cart; TC7: place an ORDER — with product B test cases having higher priority).</p>", " The tests should be executed in the best order, based on test priority:</p>\n{{img:q07-priority.png|Seven test cases with their priorities}}", "replace"]],
+  "38": [["<p>You are testing a sort function that gets a set of numbers as input and returns the same set of numbers sorted in ascending order. The log from the test execution shows that TC3, TC4, TC5 failed — all involving input sets with duplicate numbers.</p>", "<p>You are testing a sort function that gets a set of numbers as input and returns the same set of numbers sorted in ascending order. This is the log from the test execution:</p>\n{{img:q07-log.png|Test execution log of test run 736}}", "replace"]]
+ },
+ "explanationEdits": {
+  "23": [
+   ["Let us refer to the transitions with E1, …, E5 as in the picture. ", ""],
+   ["Test c) can be written as E1, E2, E4, E5, E3 (so covers 5 out of 5 valid transitions, achieving 100% valid transitions coverage).", "Test c) exercises Add / N := 1 (START → NOT FULL), Add [N &lt; 2], Add [N = 2] (NOT FULL → FULL), Remove (FULL → NOT FULL) and Remove [N &gt; 0], so it covers 5 out of 5 valid transitions, achieving 100% valid transitions coverage."]
+  ],
+  "32": [["As TC7 has lower priority than the other tests, they should be tested first.", "As TC7 has a lower priority than the remaining product A tests (TC1, TC3, TC5), those are executed first."]],
+  "38": [["This is probably the cause of failures in TC3, TC4, TC5.", "This is probably the cause of failures in TC3, TC4, TC5: each of their inputs contains duplicates, and each output is missing them."]]
+ }
+}
