@@ -47,6 +47,9 @@ const LONG: { n: number; title: string; questions: string[] }[] = (longTests as 
   questions: t.questions.filter((id) => BANK_BY_ID[id]),
 }));
 
+/** How many bank questions each LO has, for "Practice this LO". */
+export const loCounts = (): Record<string, number> => BANK.reduce<Record<string, number>>((m, q) => (q.lo ? ((m[q.lo] = (m[q.lo] ?? 0) + 1), m) : m), {});
+
 export const levelCounts = (): LevelCounts => ({
   bankTotal: BANK.length,
   short: Math.floor(BANK.length / 10),
@@ -80,8 +83,11 @@ export function drawSet(spec: SetSpec) {
         ? numberedSet(spec.size, spec.n)
         : spec.kind === "long"
           ? longSet(spec.n)
+          : spec.kind === "lo"
+            ? pick(BANK.filter((q) => q.lo === spec.lo), 10)
           : Object.entries(levelDistribution(spec.size))
               .flatMap(([ch, n]) => sampleChapter(Number(ch), n))
               .sort(byLo);
-  return { key: specKey(spec), title: specTitle(spec), spec, questions, minutes: minutesFor(questions.length) };
+  const title = spec.kind === "lo" ? `${specTitle(spec)} · ${questions.length} questions` : specTitle(spec);
+  return { key: specKey(spec), title, spec, questions, minutes: minutesFor(questions.length) };
 }

@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { drawSet, levelCounts } from "@/server/bank";
+import { drawSet, levelCounts, loCounts } from "@/server/bank";
 import { requireTier } from "@/server/session";
 
 const size = z.coerce.number().pipe(z.union([z.literal(10), z.literal(20), z.literal(40)]));
@@ -8,6 +8,7 @@ const Spec = z.discriminatedUnion("kind", [
   z.object({ kind: z.literal("level"), size }),
   z.object({ kind: z.literal("numbered"), size: z.coerce.number().pipe(z.union([z.literal(10), z.literal(20)])), n: z.coerce.number().int().min(1) }),
   z.object({ kind: z.literal("long"), n: z.coerce.number().int().min(1) }),
+  z.object({ kind: z.literal("lo"), lo: z.string().regex(/^[1-6]\.\d+\.\d+$/) }),
 ]);
 
 /**
@@ -19,14 +20,14 @@ export async function GET(req: Request) {
   if (!parsed.success) return Response.json({ error: "Unknown set" }, { status: 400 });
   const spec = parsed.data;
 
-  const membersOnly = spec.kind === "numbered" || spec.kind === "long" || (spec.kind === "chapter" && spec.size > 10);
+  const membersOnly = spec.kind === "numbered" || spec.kind === "long" || spec.kind === "lo" || (spec.kind === "chapter" && spec.size > 10);
   if (membersOnly) {
     const gate = await requireTier("member");
     if ("error" in gate) return gate.error;
   }
   const counts = levelCounts();
   const exists =
-    spec.kind === "long" ? counts.longTests.some((t) => t.n === spec.n) : spec.kind === "numbered" ? spec.n <= (spec.size === 10 ? counts.short : counts.medium) : true;
+    spec.kind === "long" ? counts.longTests.some((t) => t.n === spec.n) : spec.kind === "lo" ? (loCounts()[spec.lo] ?? 0) > 0 : spec.kind === "numbered" ? spec.n <= (spec.size === 10 ? counts.short : counts.medium) : true;
   if (!exists) return Response.json({ error: "No such test" }, { status: 404 });
 
   return Response.json(drawSet(spec), { headers: { "Cache-Control": "no-store" } });

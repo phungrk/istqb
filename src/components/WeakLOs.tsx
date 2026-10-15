@@ -2,10 +2,9 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { NODE } from "@/lib/syllabus";
 import { loMatrix, type LoLevel } from "@/lib/loQuiz";
 import { useApp } from "@/components/AppProvider";
+import { LoReview } from "@/components/LoReview";
 
 const INK: Record<LoLevel, string> = {
   weak: "var(--color-accent-800)",
@@ -18,17 +17,16 @@ const pctText = (p: number) => `${Math.round(p * 100)}%`;
 
 /** Dashboard panel: which syllabus LOs the user keeps missing, quiz by quiz (layout of LO_x_Quiz.xlsx). */
 export function WeakLOs() {
-  const router = useRouter();
   const { attempts } = useApp();
   const [ch, setCh] = useState(0);
   const [showAll, setShowAll] = useState(false);
+  const [focus, setFocus] = useState<string | null>(null);
   const all = loMatrix(attempts);
   const { quizzes, rows } = loMatrix(attempts, ch || undefined);
   const N = quizzes.length;
   const shown = showAll ? rows : rows.slice(0, TOP);
   const weakN = all.rows.filter((r) => r.level === "weak").length;
-  const topicOf = (id: string | null) => (id && NODE[id] ? id : null);
-  const open = (id: string | null) => { const t = topicOf(id); if (t) router.push(`/mindmap?topic=${t}`); };
+  const focusRow = all.rows.find((r) => r.lo === focus) ?? null;
   const grid = { display: "grid", gridTemplateColumns: `54px minmax(170px,1fr) repeat(${N},44px) 112px`, columnGap: 4, alignItems: "center", padding: "6px 12px" } as const;
 
   return (
@@ -37,7 +35,7 @@ export function WeakLOs() {
         <div style={{ maxWidth: 620 }}>
           <h4 style={{ margin: 0 }}>Weak learning objectives</h4>
           <p style={{ margin: "6px 0 0", fontSize: "var(--fs-14)", color: "var(--color-neutral-700)" }}>
-            Each row is a syllabus LO, each column a quiz you took. ✗ means you got at least one question on that LO wrong in that quiz.
+            Each row is a syllabus LO, each column a quiz you took. ✗ means you got at least one question on that LO wrong in that quiz. Click an LO to review it: syllabus text, practice questions on just that LO, and an AI summary.
             {N > 0 && ` ${all.rows.length} LOs missed across ${N} ${N === 1 ? "quiz" : "quizzes"}${weakN ? `, ${weakN} of them in 2+ quizzes and at least a third of all` : ""}.`}
           </p>
         </div>
@@ -72,12 +70,14 @@ export function WeakLOs() {
                   <span style={{ whiteSpace: "nowrap" }}>{r.n}/{N} quizzes · {pctText(r.pct)}</span>
                 </div>
                 <span style={{ fontFamily: "var(--font-heading)", fontSize: 22 }}>{r.topic}</span>
-                {topicOf(r.topicId) && (
-                  <button type="button" className="btn btn-ghost" onClick={() => open(r.topicId)} style={{ alignSelf: "flex-start", color: "var(--color-accent-800)", paddingLeft: 0 }}>Review in mindmap</button>
-                )}
+                <button type="button" className="btn btn-ghost" aria-pressed={focus === r.lo} onClick={() => setFocus(focus === r.lo ? null : r.lo)} style={{ alignSelf: "flex-start", color: "var(--color-accent-800)", paddingLeft: 0 }}>
+                  {focus === r.lo ? "Hide review" : "Review this LO"}
+                </button>
               </div>
             ))}
           </div>
+
+          {focusRow && <LoReview row={focusRow} quizzes={N} onClose={() => setFocus(null)} />}
 
           <div style={{ overflowX: "auto" }}>
             <div style={{ minWidth: 54 + 170 + N * 48 + 112 + 40 }}>
@@ -89,19 +89,14 @@ export function WeakLOs() {
               </div>
               {rows.length === 0 && <div style={{ padding: "12px", fontSize: "var(--fs-14)", color: "var(--color-neutral-700)" }}>No misses in Chapter {ch}.</div>}
               {shown.map((r) => {
-                const t = topicOf(r.topicId);
                 return (
                   <div key={r.lo} className="wlo-row" style={{ ...grid, borderRadius: 16 }}>
                     <span style={{ fontSize: "var(--fs-13)", fontWeight: 700, color: INK[r.level] }}>{r.lo}</span>
                     <span style={{ display: "flex", alignItems: "center", gap: 8, minWidth: 0 }}>
-                      {t ? (
-                        <button type="button" onClick={() => open(r.topicId)} title={`Open ${r.topic} in the mindmap`}
-                          style={{ border: 0, background: "none", padding: 0, font: "inherit", fontSize: "var(--fs-14)", fontWeight: 500, color: "inherit", cursor: "pointer", textAlign: "left", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textDecoration: "underline", textDecorationColor: "var(--color-neutral-300)", textUnderlineOffset: 3, minWidth: 0 }}>
-                          {r.topic}
-                        </button>
-                      ) : (
-                        <span style={{ fontSize: "var(--fs-14)", fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{r.topic}</span>
-                      )}
+                      <button type="button" onClick={() => setFocus(r.lo)} title={`Review LO ${r.lo}: syllabus, practice questions and AI summary`}
+                        style={{ border: 0, background: "none", padding: 0, font: "inherit", fontSize: "var(--fs-14)", fontWeight: focus === r.lo ? 700 : 500, color: "inherit", cursor: "pointer", textAlign: "left", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", textDecoration: "underline", textDecorationColor: "var(--color-neutral-300)", textUnderlineOffset: 3, minWidth: 0 }}>
+                        {r.topic}
+                      </button>
                       {r.level !== "low" && (
                         <span className={`tag ${r.level === "weak" ? "tag-accent" : "tag-neutral"}`} style={{ fontSize: 11, padding: "2px 8px", flex: "none" }}>{r.level === "weak" ? "Weak" : "Watch"}</span>
                       )}

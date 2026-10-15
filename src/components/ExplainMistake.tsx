@@ -54,7 +54,7 @@ type State =
   | { s: "error" };
 
 /** The on-device model's state on this device; "unavailable" until checked (and on browsers without it). */
-function useModel(): [Availability, (a: Availability) => void] {
+export function useModel(): [Availability, (a: Availability) => void] {
   const [a, setA] = useState<Availability>("unavailable");
   useEffect(() => {
     let live = true;
@@ -70,7 +70,7 @@ function useModel(): [Availability, (a: Availability) => void] {
   return [a, setA];
 }
 
-const needsDownload = (a: Availability) => a === "downloadable" || a === "downloading";
+export const needsDownload = (a: Availability) => a === "downloadable" || a === "downloading";
 
 /** What the feature is and what the first use downloads, in the learner's language. */
 function About({ vi, download }: { vi: boolean; download: boolean }) {

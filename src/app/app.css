@@ -386,3 +386,5 @@ button { font: inherit; }
 .wlo-row:hover { background: var(--color-neutral-100); }
 /* Fail mark, after LO_x_Quiz.xlsx (bold ✗, dark red on pink): Organic's closest pair is accent-800 on accent-200. */
 .wlo-fail { justify-self: stretch; height: 26px; display: grid; place-items: center; border-radius: 8px; background: var(--color-accent-200); color: var(--color-accent-800); font-weight: 800; font-size: 15px; line-height: 1; }
+/* LO review (dashboard): syllabus keywords highlighted like the mindmap's topic excerpts. */
+.lo-syllabus mark { background: var(--color-accent-200); color: inherit; border-radius: 4px; padding: 0 2px; font-weight: 600; }
