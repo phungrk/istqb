@@ -1,0 +1,136 @@
+{
+ "n": 6,
+ "md": "quiz6.md",
+ "long": "numbered",
+ "lo": {
+  "1": "1.1.1",
+  "2": "1.2.1",
+  "3": "1.3.1",
+  "4": "1.4.1",
+  "5": "1.4.2",
+  "6": "1.4.5",
+  "7": "1.5.1",
+  "8": "1.5.2",
+  "9": "2.1.2",
+  "10": "2.1.3",
+  "11": "2.1.5",
+  "12": "2.1.6",
+  "13": "2.2.1",
+  "14": "2.2.3",
+  "15": "3.1.2",
+  "16": "3.2.1",
+  "17": "3.2.4",
+  "18": "3.2.5",
+  "19": "4.1.1",
+  "20": "4.2.1",
+  "21": "4.2.2",
+  "22": "4.2.3",
+  "23": "4.2.4",
+  "25": "4.3.3",
+  "26": "4.4.1",
+  "27": "4.4.2",
+  "28": "4.5.2",
+  "29": "4.5.3",
+  "30": "5.1.2",
+  "31": "5.1.3",
+  "32": "5.1.4",
+  "33": "5.1.5",
+  "34": "5.1.7",
+  "35": "5.2.4",
+  "36": "5.3.3",
+  "37": "5.4.1",
+  "38": "5.5.1",
+  "39": "6.1.1",
+  "40": "6.2.1",
+  "A1": "1.1.2",
+  "A2": "1.2.2",
+  "A3": "1.2.3",
+  "A4": "1.4.3",
+  "A5": "1.4.4",
+  "A6": "1.5.3",
+  "A7": "2.1.1",
+  "A8": "2.1.4",
+  "A9": "2.2.2",
+  "A10": "2.3.1",
+  "A11": "3.1.1",
+  "A12": "3.1.3",
+  "A13": "3.2.2",
+  "A14": "3.2.3",
+  "A15": "4.2.2",
+  "A16": "4.3.2",
+  "A17": "4.4.3",
+  "A18": "4.5.1",
+  "A19": "5.1.1",
+  "A20": "5.1.4",
+  "A21": "5.1.6",
+  "A22": "5.2.1",
+  "A23": "5.2.2",
+  "A24": "5.2.3",
+  "A25": "5.3.1",
+  "A26": "5.3.2"
+ },
+ "edits": {
+  "14": [
+   [
+    "<p>Tests are repeated once",
+    "<div class=\"fig\"><div class=\"fg\"><table><tr><th>Test</th><th>Test case</th><th>Execution</th><th>Result</th></tr><tr><td>1</td><td>TC1</td><td>1</td><td>Failed</td></tr><tr><td>2</td><td>TC2</td><td>1</td><td>Passed</td></tr><tr><td>3</td><td>TC3</td><td>1</td><td>Failed</td></tr><tr><td>4</td><td>TC1</td><td>2</td><td>Passed</td></tr><tr><td>5</td><td>TC2</td><td>2</td><td>Failed</td></tr><tr><td>6</td><td>TC3</td><td>2</td><td>Failed</td></tr><tr><td>7</td><td>TC1</td><td>3</td><td>Passed</td></tr><tr><td>8</td><td>TC2</td><td>3</td><td>Passed</td></tr><tr><td>9</td><td>TC3</td><td>3</td><td>Passed</td></tr></table></div></div>",
+    "before"
+   ]
+  ],
+  "22": [
+   [
+    "<p>Decision table describing the implemented features looks as follows (conditions: member?, deadline missed?, 15th rental?; actions: discount, gift T-Shirt).</p>",
+    "<p>The decision table describing the implemented features looks as follows:</p>\n{{img:q06-dtable.png|Decision table}}",
+    "replace"
+   ]
+  ],
+  "23": [
+   [
+    "shown below. The system starts in the INIT state and ends its operation in the OFF state.</p>",
+    "{{img:q06-states.png|State transition diagram}}",
+    "after"
+   ]
+  ],
+  "33": [
+   [
+    "Consider the following list of test cases, priorities (i.e., a smaller number means a higher priority), and dependencies (TC001 – no dependency; TC002 – depends on TC001; TC003 – depends on TC001; TC004 – depends on TC002 and TC003; TC005 – depends on TC003).</p>",
+    "Consider the following list of test cases, priorities (i.e., a smaller number means a higher priority), and dependencies:</p>\n{{img:q06-priority.png|Test cases with priorities and dependencies}}",
+    "replace"
+   ]
+  ],
+  "A4": [
+   [
+    "Consider the following testware (a test charter).</p>",
+    "{{img:q06-charter.png|Test charter #04.018}}",
+    "after"
+   ]
+  ],
+  "A20": [
+   [
+    "(13 has the most votes).</p>",
+    "{{img:q06-poker.png|Planning poker estimates, rounds 1 to 3}}",
+    "after"
+   ]
+  ]
+ },
+ "explanationEdits": {
+  "17": [
+   [
+    "The meeting led by the author is not allowed for inspections and is typically not done in technical reviews (a moderator is needed in walkthroughs and is allowed for informal reviews)",
+    "The meeting led by the author is not allowed for inspections and is typically not done in technical reviews (a moderator is needed), but it is allowed in walkthroughs and informal reviews"
+   ]
+  ],
+  "33": [
+   [
+    "Test TC 001 must come first, followed by TC 002, to satisfy dependencies.",
+    "Test TC 001 must come first, followed by TC 002, to satisfy dependencies (TC 003, TC 004 and TC 005 all depend on TC 002)."
+   ]
+  ],
+  "A26": [
+   [
+    "Branch testing is a technical metric",
+    "Branch coverage is a technical metric"
+   ]
+  ]
+ }
+}

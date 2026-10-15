@@ -181,7 +181,7 @@ function LevelGroup({ size, label, sub, levels, best, loadingSet, onStart }: { s
   const [open, setOpen] = useState(false);
   const isLong = size === 40;
   const count = isLong ? levels.long : size === 10 ? levels.short : levels.medium;
-  // Long tests are numbered by quiz (01–05, 08–25 …); Short/Medium run 01…count.
+  // Long tests are numbered by quiz (01–06, 08–25 …); Short/Medium run 01…count.
   const tests = isLong
     ? levels.longTests.map((t) => {
         const spec: SetSpec = { kind: "long", n: t.n };
