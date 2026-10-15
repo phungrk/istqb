@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Zoom JA-VI Translator (Spike)",
+  "version": "0.0.1",
+  "description": "Technical spike: verify Chrome Translator API (ja -> vi) and Zoom Web caption DOM.",
+  "permissions": [],
+  "host_permissions": ["https://*.zoom.us/wc/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.zoom.us/wc/*"],
+      "js": ["probe-isolated.js"],
+      "run_at": "document_idle",
+      "all_frames": true
+    },
+    {
+      "matches": ["https://*.zoom.us/wc/*"],
+      "js": ["probe-main.js"],
+      "run_at": "document_idle",
+      "all_frames": true,
+      "world": "MAIN"
+    }
+  ],
+  "action": {
+    "default_title": "Translator API spike",
+    "default_popup": "spike.html"
+  }
+}

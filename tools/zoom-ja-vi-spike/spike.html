@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Translator API spike</title>
+  <style>
+    body { font: 13px/1.4 system-ui, sans-serif; width: 440px; margin: 12px; }
+    button { padding: 6px 10px; margin-right: 6px; }
+    pre { background: #111; color: #cfe; padding: 8px; max-height: 320px; overflow: auto; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h3>Spike 1 &mdash; extension page context</h3>
+  <p>Tests <code>Translator</code> (ja&rarr;vi) from an extension page. Click is the user activation needed for model download.</p>
+  <button id="run">Run probe</button>
+  <button id="copy">Copy JSON</button>
+  <pre id="out">Idle.</pre>
+  <script src="translator-probe.js"></script>
+  <script src="spike.js"></script>
+</body>
+</html>
