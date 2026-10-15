@@ -72,53 +72,19 @@ export function useModel(): [Availability, (a: Availability) => void] {
 
 export const needsDownload = (a: Availability) => a === "downloadable" || a === "downloading";
 
-/** What the feature is and what the first use downloads, in the learner's language. */
-function About({ vi, download }: { vi: boolean; download: boolean }) {
-  return vi ? (
-    <div lang="vi" style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <p style={{ margin: 0 }}>
-        <strong>Explain my mistake</strong> dùng Gemini Nano, mô hình AI nhỏ có sẵn trong Google Chrome. AI chạy ngay trên máy tính của bạn: câu trả lời không gửi lên server nào và hoàn toàn miễn phí.
-      </p>
-      <p style={{ margin: 0 }}>
-        Với mỗi câu bạn làm sai, AI chỉ dựa vào lời giải chính thức và đoạn syllabus của LO đó để giải thích vì sao lựa chọn của bạn sai, vì sao đáp án đúng, kèm một mẹo để nhớ. AI vẫn có thể nhầm: đáp án chính thức luôn là căn cứ.
-      </p>
-      {download && (
-        <p style={{ margin: 0, color: "var(--color-accent-800)", fontWeight: 600 }}>
-          Lần dùng đầu tiên, Chrome cần tải mô hình Gemini Nano về máy (vài GB, chỉ tải một lần; Chrome yêu cầu ổ đĩa còn trống khoảng 22 GB). Hãy giữ tab này mở đến khi tải xong. Những lần sau giải thích hiện ra ngay.
-        </p>
-      )}
-      <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>Chỉ hoạt động trên Chrome máy tính (Windows, macOS, Linux, ChromeOS) đủ mạnh; không có trên điện thoại hay trình duyệt khác.</p>
-    </div>
-  ) : (
-    <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-      <p style={{ margin: 0 }}>
-        <strong>Explain my mistake</strong> uses Gemini Nano, a small AI model built into Google Chrome. It runs on your computer, so your answers are not sent to any server, and it is free.
-      </p>
-      <p style={{ margin: 0 }}>
-        For each question you got wrong, it uses only the official explanation and the syllabus text for that LO to explain why your choice is wrong, why the correct answer is right, and one tip to remember. It can still be wrong: the official answer always wins.
-      </p>
-      {download && (
-        <p style={{ margin: 0, color: "var(--color-accent-800)", fontWeight: 600 }}>
-          First use: Chrome downloads the Gemini Nano model (several GB, one time only; Chrome asks for about 22 GB of free disk space). Keep this tab open until it finishes. After that, explanations start right away.
-        </p>
-      )}
-      <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>Works in Chrome on a capable desktop or laptop (Windows, macOS, Linux, ChromeOS); not on phones or other browsers.</p>
-    </div>
+/** One line for learners whose Chrome has not downloaded the model yet; nothing otherwise. */
+function DownloadNote({ vi }: { vi: boolean }) {
+  return (
+    <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }} lang={vi ? "vi" : undefined}>
+      {vi ? "Lần đầu dùng, Chrome cần tải AI Gemini Nano về máy (vài GB, chỉ một lần)." : "First use: Chrome downloads its Gemini Nano AI model (several GB, one time only)."}
+    </span>
   );
 }
 
-/** One-time intro above a list of answers (result page); renders nothing where the model cannot run. */
+/** The download note once above a list of answers (result page), only while the model is not on the device. */
 export function ExplainMistakeIntro({ vi }: { vi: boolean }) {
   const [a] = useModel();
-  if (a === "unavailable") return null;
-  return (
-    <div style={{ background: "var(--color-accent-100)", borderRadius: 24, padding: "16px 20px", display: "flex", flexDirection: "column", gap: 8, fontSize: "var(--fs-14)" }}>
-      <span style={{ display: "flex", alignItems: "center", gap: 6, fontWeight: 700, color: "var(--color-accent-800)" }}>
-        <SparklesIcon /> {vi ? "Mới: AI giải thích lỗi sai ngay trên máy bạn" : "New: AI explains your mistakes on your own device"}
-      </span>
-      <About vi={vi} download={needsDownload(a)} />
-    </div>
-  );
+  return needsDownload(a) ? <DownloadNote vi={vi} /> : null;
 }
 
 /**
@@ -126,7 +92,7 @@ export function ExplainMistakeIntro({ vi }: { vi: boolean }) {
  * where the model cannot run (other browsers, phones, low-end hardware), so the static explanation
  * stays the fallback. With Vietnamese on, the answer is translated on-device when Chrome can.
  */
-export function ExplainMistake({ q, chosen, vi, about = false }: { q: Question; chosen: number[]; vi: boolean; about?: boolean }) {
+export function ExplainMistake({ q, chosen, vi, note = false }: { q: Question; chosen: number[]; vi: boolean; note?: boolean }) {
   const [avail] = useModel();
   const [st, setSt] = useState<State>({ s: "idle" });
   const abort = useRef<AbortController | null>(null);
@@ -181,17 +147,7 @@ export function ExplainMistake({ q, chosen, vi, about = false }: { q: Question; 
           <span className="tag tag-neutral" style={{ fontSize: 11, padding: "2px 8px", marginLeft: 4 }}>on-device AI</span>
         </button>
       )}
-      {st.s === "idle" && download && about && (
-        <span style={{ fontSize: 12, color: "var(--color-neutral-700)", marginTop: -4 }} lang={vi ? "vi" : undefined}>
-          {vi ? "Lần đầu: Chrome tải mô hình Gemini Nano (vài GB, chỉ một lần)." : "First use downloads the Gemini Nano model (several GB, one time only)."}
-        </span>
-      )}
-      {st.s === "idle" && about && (
-        <details className="vi-original" style={{ fontSize: "var(--fs-13)", marginTop: -4 }}>
-          <summary>{vi ? "Tính năng này là gì?" : "What is this?"}</summary>
-          <div style={{ marginTop: 6 }}><About vi={vi} download={download} /></div>
-        </details>
-      )}
+      {st.s === "idle" && download && note && <DownloadNote vi={vi} />}
       {st.s === "error" && <span style={{ fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>The on-device model could not answer this time.</span>}
       {st.s === "loading" && (
         <span role="status" style={{ fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>
