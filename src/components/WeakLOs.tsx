@@ -30,7 +30,7 @@ export function WeakLOs({ attempts: viewed, readOnly = false }: { attempts?: Att
   const shown = showAll ? rows : rows.slice(0, TOP);
   const weakN = all.rows.filter((r) => r.level === "weak").length;
   const focusRow = all.rows.find((r) => r.lo === focus) ?? null;
-  const grid = { display: "grid", gridTemplateColumns: `54px minmax(170px,1fr) repeat(${N},44px) 112px`, columnGap: 4, alignItems: "center", padding: "6px 12px" } as const;
+  const grid = { display: "grid", gridTemplateColumns: `54px minmax(170px,1fr) 112px repeat(${N},44px)`, columnGap: 4, alignItems: "center", padding: "6px 12px" } as const;
 
   return (
     <div data-screen-label="Weak LOs" style={{ background: "var(--color-surface)", borderRadius: 32, padding: 28, display: "flex", flexDirection: "column", gap: 22 }}>
@@ -87,8 +87,8 @@ export function WeakLOs({ attempts: viewed, readOnly = false }: { attempts?: Att
               <div style={{ ...grid, fontSize: 11, fontWeight: 700, color: "var(--color-neutral-700)" }}>
                 <span>LO</span>
                 <span>Topic</span>
+                <span style={{ textAlign: "right", paddingRight: 10 }}>Tỷ lệ quiz sai</span>
                 {quizzes.map((q) => <span key={q.label} title={`${q.title} · ${q.date}`} style={{ textAlign: "center", whiteSpace: "nowrap" }}>{q.label}</span>)}
-                <span style={{ textAlign: "right" }}>Tỷ lệ quiz sai</span>
               </div>
               {rows.length === 0 && <div style={{ padding: "12px", fontSize: "var(--fs-14)", color: "var(--color-neutral-700)" }}>No misses in Chapter {ch}.</div>}
               {shown.map((r) => {
@@ -104,6 +104,12 @@ export function WeakLOs({ attempts: viewed, readOnly = false }: { attempts?: Att
                         <span className={`tag ${r.level === "weak" ? "tag-accent" : "tag-neutral"}`} style={{ fontSize: 11, padding: "2px 8px", flex: "none" }}>{r.level === "weak" ? "Weak" : "Watch"}</span>
                       )}
                     </span>
+                    <span style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 8, paddingRight: 10 }}>
+                      <span style={{ width: 36, height: 7, borderRadius: 999, background: "var(--color-neutral-200)", overflow: "hidden" }}>
+                        <span style={{ display: "block", height: "100%", width: `${r.pct * 100}%`, background: BAR[r.level] }} />
+                      </span>
+                      <span style={{ fontSize: "var(--fs-13)", fontWeight: 700, minWidth: 34, textAlign: "right" }} title={`${r.n}/${N} quizzes`}>{pctText(r.pct)}</span>
+                    </span>
                     {r.misses.map((m, i) =>
                       m ? (
                         <span key={i} className="wlo-fail" title={`${quizzes[i].label} (${quizzes[i].title}): failed`} aria-label={`${quizzes[i].label}: failed`}>✗</span>
@@ -111,12 +117,6 @@ export function WeakLOs({ attempts: viewed, readOnly = false }: { attempts?: Att
                         <span key={i} aria-label={`${quizzes[i].label}: ok`} />
                       ),
                     )}
-                    <span style={{ display: "flex", alignItems: "center", justifyContent: "flex-end", gap: 8 }}>
-                      <span style={{ width: 36, height: 7, borderRadius: 999, background: "var(--color-neutral-200)", overflow: "hidden" }}>
-                        <span style={{ display: "block", height: "100%", width: `${r.pct * 100}%`, background: BAR[r.level] }} />
-                      </span>
-                      <span style={{ fontSize: "var(--fs-13)", fontWeight: 700, minWidth: 34, textAlign: "right" }} title={`${r.n}/${N} quizzes`}>{pctText(r.pct)}</span>
-                    </span>
                   </div>
                 );
               })}
