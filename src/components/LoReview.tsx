@@ -31,7 +31,7 @@ type Ai = { s: "idle" } | { s: "loading"; progress: number | null } | { s: "stre
  * record, a practice set of questions on just this LO, the mindmap topic, and, where Chrome has
  * Gemini Nano, an on-device summary of key points, an example and an exam trap.
  */
-export function LoReview({ row, quizzes, onClose }: { row: LoRow; quizzes: number; onClose: () => void }) {
+export function LoReview({ row, quizzes, onClose, readOnly = false }: { row: LoRow; quizzes: number; onClose: () => void; readOnly?: boolean }) {
   const { startSet, loadingSet } = useApp();
   const [vi] = useVietnamese();
   const [data, setData] = useState<Excerpt | null | "missing">(null);
@@ -108,6 +108,8 @@ export function LoReview({ row, quizzes, onClose }: { row: LoRow; quizzes: numbe
         <button type="button" className="btn btn-ghost" onClick={onClose} aria-label="Close LO review" style={{ flex: "none" }}>Close</button>
       </div>
 
+      {!readOnly && (
+        <>
       <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
         <button type="button" className="btn btn-primary" disabled={!!loadingSet} onClick={() => startSet(spec, "practice")}>
           {practicing ? "Loading…" : "Practice this LO"}
@@ -117,6 +119,8 @@ export function LoReview({ row, quizzes, onClose }: { row: LoRow; quizzes: numbe
       <span style={{ fontSize: "var(--fs-12)", color: "var(--color-neutral-700)", marginTop: -6 }}>
         Up to 10 questions on LO {row.lo} in practice mode, with the answer and explanation after each one.
       </span>
+        </>
+      )}
 
       {data === null && <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-700)" }}>Loading the syllabus…</span>}
       {ex && (

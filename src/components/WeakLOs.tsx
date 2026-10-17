@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import type { Attempt } from "@/lib/stats";
 import { loMatrix, type LoLevel } from "@/lib/loQuiz";
 import { useApp } from "@/components/AppProvider";
 import { LoReview } from "@/components/LoReview";
@@ -16,8 +17,10 @@ const TOP = 10;
 const pctText = (p: number) => `${Math.round(p * 100)}%`;
 
 /** Dashboard panel: which syllabus LOs the user keeps missing, quiz by quiz (layout of LO_x_Quiz.xlsx). */
-export function WeakLOs() {
-  const { attempts } = useApp();
+export function WeakLOs({ attempts: viewed, readOnly = false }: { attempts?: Attempt[]; readOnly?: boolean } = {}) {
+  const { attempts: mine } = useApp();
+  // Admin "view as": another learner's attempts, shown read-only.
+  const attempts = viewed ?? mine;
   const [ch, setCh] = useState(0);
   const [showAll, setShowAll] = useState(false);
   const [focus, setFocus] = useState<string | null>(null);
@@ -77,7 +80,7 @@ export function WeakLOs() {
             ))}
           </div>
 
-          {focusRow && <LoReview row={focusRow} quizzes={N} onClose={() => setFocus(null)} />}
+          {focusRow && <LoReview row={focusRow} quizzes={N} onClose={() => setFocus(null)} readOnly={readOnly} />}
 
           <div style={{ overflowX: "auto" }}>
             <div style={{ minWidth: 54 + 170 + N * 48 + 112 + 40 }}>

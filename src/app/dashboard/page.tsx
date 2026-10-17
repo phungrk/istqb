@@ -1,15 +1,39 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { STUDY_IDS } from "@/lib/syllabus";
-import { mastery, pct } from "@/lib/stats";
+import { mastery, pct, weakest, type Attempt } from "@/lib/stats";
 import { WeakLOs } from "@/components/WeakLOs";
+
+type Account = { username: string; name: string; attempts: number; lastActive: string | null };
+type Viewed = { username: string; name: string; attempts: Attempt[]; learned: Record<string, boolean> };
 
 export default function DashboardPage() {
   const router = useRouter();
-  const { user, tier, attempts, learned, weak, flags, openLogin, setCoachTab } = useApp();
+  const { user, tier, attempts: myAttempts, learned: myLearned, weak: myWeak, flags, openLogin, setCoachTab } = useApp();
   const passMark = flags.passMark;
+  const isAdmin = !!user?.admin;
+  // Admin only: pick another learner and show their dashboard read-only. The API checks admin again.
+  const [accounts, setAccounts] = useState<Account[] | null>(null);
+  const [viewed, setViewed] = useState<Viewed | null>(null);
+  const [viewErr, setViewErr] = useState<string | null>(null);
+  useEffect(() => {
+    if (!isAdmin) return;
+    fetch("/api/admin/dashboard", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d: { accounts: Account[] }) => setAccounts(d.accounts))
+      .catch(() => setAccounts([]));
+  }, [isAdmin]);
+  const viewAs = async (username: string) => {
+    setViewErr(null);
+    if (!username) return setViewed(null);
+    const r = await fetch(`/api/admin/dashboard?username=${encodeURIComponent(username)}`, { cache: "no-store" }).catch(() => null);
+    const d = r?.ok ? ((await r.json()) as Omit<Viewed, "learned"> & { learned: string[] }) : null;
+    if (!d) return setViewErr("Could not load that account.");
+    setViewed({ ...d, learned: Object.fromEntries(d.learned.map((id) => [id, true])) });
+  };
 
   if (!user)
     return (
@@ -22,6 +46,10 @@ export default function DashboardPage() {
       </section>
     );
 
+  const attempts = viewed?.attempts ?? myAttempts;
+  const learned = viewed?.learned ?? myLearned;
+  const weak = viewed ? weakest(viewed.attempts) : myWeak;
+  const name = viewed ? viewed.name || viewed.username : user.name;
   const at = [...attempts].sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1));
   const pcts = at.map(pct);
   const avg = pcts.length ? Math.round(pcts.reduce((x, y) => x + y, 0) / pcts.length) : 0;
@@ -42,8 +70,22 @@ export default function DashboardPage() {
 
   return (
     <section style={{ display: "flex", flexDirection: "column", gap: 28, paddingTop: 24 }}>
+      {isAdmin && (
+        <div data-screen-label="Admin view as" style={{ background: viewed ? "var(--color-accent-100)" : "var(--color-neutral-100)", borderRadius: 24, padding: "12px 16px", display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
+          <label htmlFor="view-as" style={{ fontSize: "var(--fs-14)", fontWeight: 700 }}>Admin · view dashboard of</label>
+          <select id="view-as" value={viewed?.username ?? ""} onChange={(e) => void viewAs(e.target.value)} disabled={!accounts}
+            style={{ font: "inherit", fontSize: "var(--fs-14)", padding: "6px 10px", borderRadius: 12, border: "1px solid var(--color-divider)", background: "var(--color-bg)", maxWidth: "100%" }}>
+            <option value="">{accounts ? "My own dashboard" : "Loading accounts…"}</option>
+            {accounts?.map((a) => (
+              <option key={a.username} value={a.username}>{a.username}{a.name && a.name !== a.username ? ` · ${a.name}` : ""} · {a.attempts} attempts</option>
+            ))}
+          </select>
+          {viewed && <span className="tag tag-accent" style={{ fontSize: 12 }}>Read-only: viewing {viewed.username}</span>}
+          {viewErr && <span style={{ fontSize: "var(--fs-13)", color: "var(--color-accent-800)" }}>{viewErr}</span>}
+        </div>
+      )}
       <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        <h1 style={{ margin: 0 }}>Hi {user.name.split(" ")[0]}, here&apos;s where you stand</h1>
+        <h1 style={{ margin: 0 }}>{viewed ? `${name}'s dashboard` : <>Hi {name.split(" ")[0]}, here&apos;s where you stand</>}</h1>
         <p style={{ margin: 0, color: "var(--color-neutral-700)" }}>{readyText}</p>
       </div>
 
@@ -92,7 +134,7 @@ export default function DashboardPage() {
         </div>
       </div>
 
-      <WeakLOs />
+      <WeakLOs key={viewed?.username ?? "me"} attempts={viewed ? attempts : undefined} readOnly={!!viewed} />
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
         <div style={{ flex: "1 1 520px", minWidth: 0, background: "var(--color-neutral-100)", borderRadius: 32, padding: 26, overflowX: "auto" }}>
@@ -121,7 +163,7 @@ export default function DashboardPage() {
           <div style={{ background: "var(--color-accent-2-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-2-800)" }}>Mindmap progress</span>
             <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-26)" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>
-            <button className="btn btn-ghost" onClick={() => router.push("/mindmap")} style={{ alignSelf: "flex-start", color: "var(--color-accent-2-800)" }}>Continue studying</button>
+            {!viewed && <button className="btn btn-ghost" onClick={() => router.push("/mindmap")} style={{ alignSelf: "flex-start", color: "var(--color-accent-2-800)" }}>Continue studying</button>}
           </div>
           {!flags.pro ? (
             <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
@@ -132,6 +174,7 @@ export default function DashboardPage() {
           <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
             <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>AI coach</span>
             <span style={{ fontSize: "var(--fs-15)" }}>Weakest right now: <strong>Chapter {weak[0].id} · {weak[0].title}</strong></span>
+            {!viewed && (
             <button
               className="btn btn-primary"
               onClick={() => { if (tier === "pro") { setCoachTab("plan"); router.push("/coach"); } else router.push("/pricing"); }}
@@ -139,6 +182,7 @@ export default function DashboardPage() {
             >
               {tier === "pro" ? "Get a study plan" : "Unlock with Pro"}
             </button>
+            )}
           </div>
           )}
         </div>
