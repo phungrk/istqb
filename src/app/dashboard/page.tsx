@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useApp } from "@/components/AppProvider";
 import { STUDY_IDS } from "@/lib/syllabus";
-import { mastery, pct, weakest, type Attempt } from "@/lib/stats";
+import { mastery, pct, type Attempt } from "@/lib/stats";
 import { WeakLOs } from "@/components/WeakLOs";
 
 type Account = { username: string; name: string; attempts: number; lastActive: string | null };
@@ -12,7 +12,7 @@ type Viewed = { username: string; name: string; attempts: Attempt[]; learned: Re
 
 export default function DashboardPage() {
   const router = useRouter();
-  const { user, tier, attempts: myAttempts, learned: myLearned, weak: myWeak, flags, openLogin, setCoachTab } = useApp();
+  const { user, attempts: myAttempts, learned: myLearned, flags, openLogin } = useApp();
   const passMark = flags.passMark;
   const isAdmin = !!user?.admin;
   // Admin only: pick another learner and show their dashboard read-only. The API checks admin again.
@@ -48,7 +48,6 @@ export default function DashboardPage() {
 
   const attempts = viewed?.attempts ?? myAttempts;
   const learned = viewed?.learned ?? myLearned;
-  const weak = viewed ? weakest(viewed.attempts) : myWeak;
   const name = viewed ? viewed.name || viewed.username : user.name;
   const at = [...attempts].sort((a, b) => (a.createdAt < b.createdAt ? -1 : 1));
   const pcts = at.map(pct);
@@ -165,26 +164,6 @@ export default function DashboardPage() {
             <span style={{ fontFamily: "var(--font-heading)", fontSize: "var(--fs-26)" }}>{learnedCount} of {STUDY_IDS.length} topics learned</span>
             {!viewed && <button className="btn btn-ghost" onClick={() => router.push("/mindmap")} style={{ alignSelf: "flex-start", color: "var(--color-accent-2-800)" }}>Continue studying</button>}
           </div>
-          {!flags.pro ? (
-            <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
-              <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>AI coach</span>
-              <span style={{ fontSize: "var(--fs-15)", color: "var(--color-neutral-700)" }}>Coming soon</span>
-            </div>
-          ) : (
-          <div style={{ background: "var(--color-accent-100)", borderRadius: 32, padding: 24, display: "flex", flexDirection: "column", gap: 8 }}>
-            <span className="card-kicker" style={{ color: "var(--color-accent-800)" }}>AI coach</span>
-            <span style={{ fontSize: "var(--fs-15)" }}>Weakest right now: <strong>Chapter {weak[0].id} · {weak[0].title}</strong></span>
-            {!viewed && (
-            <button
-              className="btn btn-primary"
-              onClick={() => { if (tier === "pro") { setCoachTab("plan"); router.push("/coach"); } else router.push("/pricing"); }}
-              style={{ alignSelf: "flex-start" }}
-            >
-              {tier === "pro" ? "Get a study plan" : "Unlock with Pro"}
-            </button>
-            )}
-          </div>
-          )}
         </div>
       </div>
     </section>
