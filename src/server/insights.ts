@@ -35,6 +35,8 @@ export type Insights = {
   daily: { day: string; visitors: number; submitted: number }[];
   questions: QuestionStat[];
   topics: { id: string; label: string; opens: number; learned: number; loExpands: number }[];
+  /** "Bí kíp phòng thi" modal on Practice tests: who opened it. */
+  tips: { opens: number; visitors: number; guests: number; users: { username: string; opens: number; last: string }[] };
 };
 
 type Item = { q: string; c: number[]; ms: number; ok: boolean };
@@ -146,6 +148,32 @@ export async function computeInsights(days: number): Promise<Insights> {
     return { day, visitors: new Set(today.map((e) => e.anon)).size, submitted: today.filter((e) => e.t === "exam_submit").length };
   }).reverse();
 
+  // ── "Bí kíp phòng thi" opens, with the signed-in users named ──
+  const tipEvents = events.filter((e) => e.t === "tips_open");
+  const byUser = new Map<string, { opens: number; last: string }>();
+  for (const e of tipEvents) {
+    if (!e.uid) continue;
+    const u = byUser.get(e.uid) ?? { opens: 0, last: e.ts };
+    u.opens++;
+    if (e.ts > u.last) u.last = e.ts;
+    byUser.set(e.uid, u);
+  }
+  const store = await getStore();
+  const users = (
+    await Promise.all(
+      [...byUser].map(async ([uid, u]) => {
+        const user = await store.getUserById(uid);
+        return { username: user?.username ?? user?.email ?? user?.name ?? "(deleted account)", ...u };
+      }),
+    )
+  ).sort((a, b) => b.opens - a.opens || (a.last < b.last ? 1 : -1));
+  const tips = {
+    opens: tipEvents.length,
+    visitors: new Set(tipEvents.map((e) => e.anon)).size,
+    guests: new Set(tipEvents.filter((e) => !e.uid).map((e) => e.anon)).size,
+    users,
+  };
+
   return {
     days,
     since: since.toISOString(),
@@ -169,5 +197,6 @@ export async function computeInsights(days: number): Promise<Insights> {
     daily,
     questions,
     topics,
+    tips,
   };
 }

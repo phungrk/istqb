@@ -7,6 +7,7 @@ import { SIZES, levelDistribution, minutesFor, pad2, specKey, specTitle, type Le
 import { CHAPTERS, palette } from "@/lib/syllabus";
 import { pct } from "@/lib/stats";
 import { Spinner } from "@/components/Loading";
+import { ExamTips } from "@/components/ExamTips";
 
 const MODES: [Mode, string][] = [["practice", "Practice"], ["mock", "Mock exam"]];
 
@@ -40,6 +41,7 @@ export function TestsView({ counts, levels }: { counts: Record<number, number>; 
       <div style={{ display: "flex", alignItems: "flex-end", gap: 20, flexWrap: "wrap" }}>
         <div style={{ flex: "1 1 360px" }}>
           <h1 style={{ margin: "0 0 6px" }}>Practice tests</h1>
+          <ExamTips />
           <p style={{ margin: 0, color: "var(--color-neutral-700)", maxWidth: 560 }}>
             {mode === "practice"
               ? "Practice mode: no timer, and you see the right answer and explanation after each question."
