@@ -102,6 +102,14 @@ export const prismaStore: Store = {
     if (learned) await prisma.learnedTopic.upsert({ where: { userId_nodeId: { userId, nodeId } }, update: {}, create: { userId, nodeId } });
     else await prisma.learnedTopic.deleteMany({ where: { userId, nodeId } });
   },
+  // No counter table: a counter is the number of "counter:<name>" event rows, which compaction keeps.
+  async getCounter(name) {
+    return prisma.event.count({ where: { type: `counter:${name}` } });
+  },
+  async incrementCounter(name, by = 1) {
+    await prisma.event.createMany({ data: Array.from({ length: by }, () => ({ type: `counter:${name}`, ts: new Date(), anon: "-", data: {} })) });
+    return prisma.event.count({ where: { type: `counter:${name}` } });
+  },
   async addEvents(events) {
     await prisma.event.createMany({
       data: events.map(({ t, ts, anon, uid, ...data }) => ({ type: t, ts: new Date(ts), anon, userId: uid ?? null, data: data as object })),
@@ -113,7 +121,7 @@ export const prismaStore: Store = {
   },
   async compactEvents(keepDays) {
     const cutoff = new Date(Date.now() - keepDays * 864e5);
-    await prisma.event.deleteMany({ where: { ts: { lt: cutoff } } });
+    await prisma.event.deleteMany({ where: { ts: { lt: cutoff }, NOT: { type: { startsWith: "counter:" } } } });
     return { compacted: [], deletedDays: [] }; // rows are indexed by ts: nothing to merge
   },
 };

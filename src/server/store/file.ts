@@ -5,7 +5,7 @@ import type { Attempt } from "@/lib/stats";
 import type { NewAttempt, Store, UsageEvent, User } from "./types";
 
 /** Demo-mode store: one JSON file under .data/. Not for production. */
-type Db = { users: (User & { passwordHash?: string })[]; attempts: (Attempt & { userId: string })[]; learned: { userId: string; nodeId: string }[] };
+type Db = { users: (User & { passwordHash?: string })[]; attempts: (Attempt & { userId: string })[]; learned: { userId: string; nodeId: string }[]; counters?: Record<string, number> };
 
 const FILE = path.join(process.cwd(), ".data", "demo-db.json");
 const EVENTS = path.join(process.cwd(), ".data", "events.ndjson");
@@ -113,6 +113,12 @@ export const fileStore: Store = {
     return write((db) => {
       for (const a of db.attempts) if (a.userId === userId && a.id in byId) a.missedLos = byId[a.id];
     });
+  },
+  async getCounter(name) {
+    return (await load()).counters?.[name] ?? 0;
+  },
+  incrementCounter(name, by = 1) {
+    return write((db) => ((db.counters ??= {})[name] = (db.counters[name] ?? 0) + by));
   },
   async listLearned(userId) {
     return (await load()).learned.filter((l) => l.userId === userId).map((l) => l.nodeId);

@@ -153,6 +153,12 @@ export const r2Store: Store = {
       for (const a of list) if (a.id in byId) a.missedLos = byId[a.id];
     });
   },
+  async getCounter(name) {
+    return (await get<{ n: number }>(`counters/${enc(name)}.json`))?.value.n ?? 0;
+  },
+  async incrementCounter(name, by = 1) {
+    return update<{ n: number }, number>(`counters/${enc(name)}.json`, { n: 0 }, (c) => (c.n += by));
+  },
   async listLearned(userId) {
     return (await get<string[]>(`learned/${userId}.json`))?.value ?? [];
   },

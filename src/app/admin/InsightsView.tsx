@@ -167,7 +167,7 @@ export function InsightsView({ data }: { data: Insights }) {
         <div>
           <h2 style={{ margin: "0 0 4px", fontSize: "var(--fs-22)" }}>Bí kíp phòng thi</h2>
           <p style={{ margin: 0, fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>
-            Who opened the exam-tips modal on Practice tests in the last {data.days} days. Signed-in users are named; guests are counted by browser.
+            Who opened and liked the exam-tips modal on Practice tests in the last {data.days} days. Signed-in users are named; guests are counted by browser. Every click is one like.
           </p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
@@ -175,20 +175,22 @@ export function InsightsView({ data }: { data: Insights }) {
           <Tile label="Visitors" value={num(data.tips.visitors)} sub="distinct browsers" />
           <Tile label="Signed-in users" value={num(data.tips.users.length)} />
           <Tile label="Guests" value={num(data.tips.guests)} sub="not signed in" />
+          <Tile label="Likes" value={num(data.tips.likes)} sub={`all time · ${num(data.tips.likesInPeriod)} in ${data.days} days (${num(data.tips.guestLikes)} by guests)`} />
         </div>
         <div style={{ ...card, overflowX: "auto" }}>
           <table className="table" style={{ width: "100%", minWidth: 420, fontSize: "var(--fs-14)" }}>
-            <thead><tr><th style={{ textAlign: "left" }}>User</th><th style={{ textAlign: "right" }}>Opens</th><th style={{ textAlign: "left" }}>Last opened</th></tr></thead>
+            <thead><tr><th style={{ textAlign: "left" }}>User</th><th style={{ textAlign: "right" }}>Opens</th><th style={{ textAlign: "right" }}>Likes</th><th style={{ textAlign: "left" }}>Last activity</th></tr></thead>
             <tbody>
               {data.tips.users.map((u) => (
                 <tr key={u.username}>
                   <td style={{ fontWeight: 700 }}>{u.username}</td>
                   <td style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{u.opens}</td>
+                  <td style={{ textAlign: "right", fontVariantNumeric: "tabular-nums" }}>{u.likes}</td>
                   <td>{new Date(u.last).toLocaleString(undefined, { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit" })}</td>
                 </tr>
               ))}
               {data.tips.users.length === 0 && (
-                <tr><td colSpan={3} style={{ color: "var(--color-neutral-700)", padding: 16 }}>No signed-in user has opened it in this period.</td></tr>
+                <tr><td colSpan={4} style={{ color: "var(--color-neutral-700)", padding: 16 }}>No signed-in user has opened it in this period.</td></tr>
               )}
             </tbody>
           </table>

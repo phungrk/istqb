@@ -36,7 +36,16 @@ export type Insights = {
   questions: QuestionStat[];
   topics: { id: string; label: string; opens: number; learned: number; loExpands: number }[];
   /** "Bí kíp phòng thi" modal on Practice tests: who opened it. */
-  tips: { opens: number; visitors: number; guests: number; users: { username: string; opens: number; last: string }[] };
+  tips: {
+    opens: number;
+    visitors: number;
+    guests: number;
+    /** Likes by anyone, all time (the running total shown in the modal), and clicks logged in this period. */
+    likes: number;
+    likesInPeriod: number;
+    guestLikes: number;
+    users: { username: string; opens: number; likes: number; last: string }[];
+  };
 };
 
 type Item = { q: string; c: number[]; ms: number; ok: boolean };
@@ -148,16 +157,18 @@ export async function computeInsights(days: number): Promise<Insights> {
     return { day, visitors: new Set(today.map((e) => e.anon)).size, submitted: today.filter((e) => e.t === "exam_submit").length };
   }).reverse();
 
-  // ── "Bí kíp phòng thi" opens, with the signed-in users named ──
+  // ── "Bí kíp phòng thi" opens and likes, with the signed-in users named ──
   const tipEvents = events.filter((e) => e.t === "tips_open");
-  const byUser = new Map<string, { opens: number; last: string }>();
-  for (const e of tipEvents) {
-    if (!e.uid) continue;
-    const u = byUser.get(e.uid) ?? { opens: 0, last: e.ts };
-    u.opens++;
-    if (e.ts > u.last) u.last = e.ts;
-    byUser.set(e.uid, u);
-  }
+  const likeEvents = events.filter((e) => e.t === "tips_like");
+  const byUser = new Map<string, { opens: number; likes: number; last: string }>();
+  const touch = (uid: string, ts: string, key: "opens" | "likes") => {
+    const u = byUser.get(uid) ?? { opens: 0, likes: 0, last: ts };
+    u[key]++;
+    if (ts > u.last) u.last = ts;
+    byUser.set(uid, u);
+  };
+  for (const e of tipEvents) if (e.uid) touch(e.uid, e.ts, "opens");
+  for (const e of likeEvents) if (e.uid) touch(e.uid, e.ts, "likes");
   const store = await getStore();
   const users = (
     await Promise.all(
@@ -166,11 +177,14 @@ export async function computeInsights(days: number): Promise<Insights> {
         return { username: user?.username ?? user?.email ?? user?.name ?? "(deleted account)", ...u };
       }),
     )
-  ).sort((a, b) => b.opens - a.opens || (a.last < b.last ? 1 : -1));
+  ).sort((a, b) => b.opens + b.likes - (a.opens + a.likes) || (a.last < b.last ? 1 : -1));
   const tips = {
     opens: tipEvents.length,
     visitors: new Set(tipEvents.map((e) => e.anon)).size,
     guests: new Set(tipEvents.filter((e) => !e.uid).map((e) => e.anon)).size,
+    likes: await store.getCounter("tips-likes"),
+    likesInPeriod: likeEvents.length,
+    guestLikes: likeEvents.filter((e) => !e.uid).length,
     users,
   };
 

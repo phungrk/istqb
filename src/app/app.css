@@ -388,3 +388,9 @@ button { font: inherit; }
 .wlo-fail { justify-self: stretch; height: 26px; display: grid; place-items: center; border-radius: 8px; background: var(--color-accent-200); color: var(--color-accent-800); font-weight: 800; font-size: 15px; line-height: 1; }
 /* LO review (dashboard): syllabus keywords highlighted like the mindmap's topic excerpts. */
 .lo-syllabus mark { background: var(--color-accent-200); color: inherit; border-radius: 4px; padding: 0 2px; font-weight: 600; }
+
+/* Like button in the exam-tips modal: a quick pop on every click. */
+.tips-like { touch-action: manipulation; user-select: none; }
+.tips-like-pop { animation: tips-pop 260ms ease-out; }
+@keyframes tips-pop { 0% { transform: scale(1); } 40% { transform: scale(1.45) rotate(-12deg); } 100% { transform: scale(1); } }
+@media (prefers-reduced-motion: reduce) { .tips-like-pop { animation: none; } }

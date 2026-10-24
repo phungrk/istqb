@@ -50,6 +50,10 @@ export interface Store {
   setMissedLos?(userId: string, byId: Record<string, string[] | null>): Promise<void>;
   listLearned(userId: string): Promise<string[]>;
   setLearned(userId: string, nodeId: string, learned: boolean): Promise<void>;
+  /** A named running total (e.g. likes on the exam-tips modal). 0 when it was never incremented. */
+  getCounter(name: string): Promise<number>;
+  /** Adds `by` (default 1) to a named total and returns the new value. */
+  incrementCounter(name: string, by?: number): Promise<number>;
   /** Appends a batch of usage events (all from the same request). */
   addEvents(events: UsageEvent[]): Promise<void>;
   /** Events with ts >= since, oldest first. */

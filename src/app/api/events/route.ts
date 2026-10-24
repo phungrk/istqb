@@ -25,6 +25,7 @@ const Ev = z.discriminatedUnion("t", [
   z.object({ t: z.literal("ai_explain"), q: id, ok: z.boolean() }),
   z.object({ t: z.literal("ai_lo_review"), lo: id, ok: z.boolean() }),
   z.object({ t: z.literal("tips_open") }),
+  z.object({ t: z.literal("tips_like") }),
 ]);
 const Body = z.object({
   anon: z.string().regex(/^[a-zA-Z0-9-]{8,64}$/),

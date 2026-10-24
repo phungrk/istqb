@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { XIcon } from "@/components/icons";
 import { flushNow, track } from "@/lib/track";
-import { Lightbulb } from "lucide-react";
+import { Lightbulb, ThumbsUp } from "lucide-react";
 
 const sub = { margin: "0 0 4px", fontSize: "var(--fs-14)", fontWeight: 700, color: "var(--color-accent-2-800)" } as const;
 const p = { margin: 0 } as const;
@@ -31,12 +31,46 @@ export function ExamTips() {
   const opener = useRef<HTMLButtonElement>(null);
   const closeBtn = useRef<HTMLButtonElement>(null);
 
+  // Likes: every click is one like, guest or member. Clicks show at once and go to the server in small batches.
+  const [likes, setLikes] = useState<number | null>(null);
+  const [liked, setLiked] = useState(false);
+  const [pop, setPop] = useState(0);
+  const pending = useRef(0);
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const sendLikes = (keepalive = false) => {
+    if (timer.current) clearTimeout(timer.current);
+    timer.current = null;
+    const count = Math.min(pending.current, 50);
+    if (!count) return;
+    pending.current -= count;
+    fetch("/api/tips/like", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ count }), keepalive })
+      .then((r) => (r.ok ? r.json() : Promise.reject()))
+      .then((d: { likes: number }) => setLikes(d.likes + pending.current))
+      .catch(() => setLikes((l) => (l === null ? l : Math.max(0, l - count))));
+    if (pending.current) sendLikes(keepalive);
+  };
+  const like = () => {
+    pending.current++;
+    setLikes((l) => (l ?? 0) + 1);
+    setLiked(true);
+    setPop((n) => n + 1);
+    track("tips_like");
+    timer.current ??= setTimeout(() => sendLikes(), 400);
+  };
+
   const show = () => {
     track("tips_open");
     flushNow();
     setOpen(true);
+    fetch("/api/tips/like", { cache: "no-store" })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d: { likes: number } | null) => d && setLikes(d.likes + pending.current))
+      .catch(() => {});
   };
   const hide = () => {
+    sendLikes(true);
+    flushNow();
     setOpen(false);
     opener.current?.focus();
   };
@@ -45,11 +79,14 @@ export function ExamTips() {
     if (!open) return;
     closeBtn.current?.focus();
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && hide();
+    const onLeave = () => sendLikes(true);
     addEventListener("keydown", onKey);
+    addEventListener("pagehide", onLeave);
     const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       removeEventListener("keydown", onKey);
+      removeEventListener("pagehide", onLeave);
       document.body.style.overflow = prev;
     };
   }, [open]);
@@ -115,7 +152,20 @@ export function ExamTips() {
 
             <p style={{ ...p, fontWeight: 700, fontSize: "var(--fs-16)" }}>Good luck!!</p>
 
-            <div className="dialog-actions" style={{ marginTop: 0 }}>
+            <div className="dialog-actions" style={{ marginTop: 0, alignItems: "center", justifyContent: "space-between" }}>
+              <button
+                type="button"
+                className="btn btn-secondary tips-like"
+                onClick={like}
+                aria-label={`Like${likes !== null ? `, ${likes} lượt` : ""}`}
+                style={{ display: "inline-flex", alignItems: "center", gap: 8 }}
+              >
+                <span key={pop} className={pop ? "tips-like-pop" : undefined} style={{ display: "inline-flex" }}>
+                  <ThumbsUp size={17} strokeWidth={2.5} fill={liked ? "currentColor" : "none"} aria-hidden />
+                </span>
+                Like
+                <span aria-live="polite" style={{ fontVariantNumeric: "tabular-nums", minWidth: "1ch" }}>{likes ?? "·"}</span>
+              </button>
               <button type="button" className="btn btn-primary" onClick={hide}>
                 Đã hiểu
               </button>
