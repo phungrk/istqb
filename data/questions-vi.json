@@ -371,7 +371,7 @@
   "explanation": "<p>d) đúng. Điều này được đảm bảo bởi quản lý defect (defect management), không phải bởi quy trình configuration management.</p>\n<ul>\n<li>\n<p>a) không đúng. Khi người dùng báo cáo một failure của phần mềm, nhờ việc định danh duy nhất các commit, có thể tập hợp lại các file từ phiên bản phần mềm mà người dùng đã sử dụng (cũng như các phiên bản tương ứng của test script) và nhờ đó tái hiện failure và định vị defect nhanh hơn</p>\n</li>\n<li>\n<p>b) không đúng. Nếu một thay đổi trong môi trường test gây ra vấn đề bất ngờ trong quá trình test, configuration management cho phép tester quay lại phiên bản trước của môi trường. Điều này đảm bảo việc test có thể tiếp tục mà không bị ảnh hưởng bởi thay đổi đó</p>\n</li>\n<li>\n<p>c) không đúng. Configuration management đảm bảo rằng mọi tài liệu đã được định danh (ví dụ: đặc tả yêu cầu) và các thành phần phần mềm đều được tham chiếu rõ ràng, không mơ hồ trong tài liệu test (ví dụ: test plan)</p>\n</li>\n</ul>"
  },
  "q08-38": {
-  "stem": "<p>Xem xét báo cáo defect sau đây cho một ứng dụng mua sắm trên web:</p>\n<blockquote>\n<p><strong>Ứng dụng:</strong> WebShop v0.99\n<strong>Defect:</strong> Nút đăng nhập không hoạt động\n<strong>Các bước tái hiện:</strong>\n1. Mở website\n2. Nhấn vào nút đăng nhập\n<strong>Kết quả mong đợi:</strong> Người dùng phải được chuyển hướng đến trang đăng nhập.\n<strong>Kết quả thực tế:</strong> Nút đăng nhập không phản hồi khi được nhấn.\n<strong>Mức độ nghiêm trọng (Severity):</strong> High\n<strong>Độ ưu tiên (Priority):</strong> Urgent</p>\n</blockquote>\n<p>Thông tin QUAN TRỌNG NHẤT nào đang bị thiếu trong báo cáo defect này?</p>",
+  "stem": "<p>Xem xét báo cáo defect sau đây cho một ứng dụng mua sắm trên web:</p>\n<blockquote>\n<p><strong>Ứng dụng:</strong> WebShop v0.99<br />\n<strong>Defect:</strong> Nút đăng nhập không hoạt động<br />\n<strong>Các bước tái hiện:</strong><br />\n1. Mở website<br />\n2. Nhấn vào nút đăng nhập<br />\n<strong>Kết quả mong đợi:</strong> Người dùng phải được chuyển hướng đến trang đăng nhập.<br />\n<strong>Kết quả thực tế:</strong> Nút đăng nhập không phản hồi khi được nhấn.<br />\n<strong>Mức độ nghiêm trọng (Severity):</strong> High<br />\n<strong>Độ ưu tiên (Priority):</strong> Urgent</p>\n</blockquote>\n<p>Thông tin QUAN TRỌNG NHẤT nào đang bị thiếu trong báo cáo defect này?</p>",
   "options": [
    "Tên của tester và ngày",
    "Các thành phần của môi trường test và số phiên bản của chúng",
@@ -682,7 +682,7 @@
   "explanation": "<p>d) đúng. Conversation giải thích phần mềm sẽ được sử dụng như thế nào và thường cho phép nhóm xác định các acceptance criteria có ý nghĩa, từ đó có được tầm nhìn chung về những gì cần bàn giao.</p>\n<ul>\n<li>\n<p>a) không đúng. Planning poker có thể ước lượng công sức cho một user story đã được viết. Nó không giúp hiểu những gì cần bàn giao</p>\n</li>\n<li>\n<p>b) không đúng. Review không phải là một thực hành viết user story cộng tác</p>\n</li>\n<li>\n<p>c) không đúng. Iteration planning là một thực hành liên quan đến dự án, dùng để lập kế hoạch công việc, không phải để hiểu những gì cần bàn giao</p>\n</li>\n</ul>"
  },
  "q09-29": {
-  "stem": "<p>Bạn vừa bắt đầu thiết kế test case cho user story sau.</p>\n<blockquote>\n<p>Là một khách hàng,\ntôi muốn có thể lọc kết quả tìm kiếm theo khoảng giá, để tôi có thể tìm sản phẩm trong phạm vi ngân sách của mình dễ dàng hơn.</p>\n</blockquote>\n<p>Acceptance criteria:</p>\n<ol>\n<li>Bộ lọc phải hoạt động với tất cả các phiên bản của ứng dụng từ phiên bản 3.0 trở lên</li>\n<li>Bộ lọc phải cho phép khách hàng đặt khoảng giá với giá tối thiểu và giá tối đa</li>\n<li>Kết quả tìm kiếm phải cập nhật động khi khách hàng điều chỉnh bộ lọc khoảng giá</li>\n</ol>\n<p>Trong mọi test case, điều kiện tiên quyết như sau: chỉ có hai sản phẩm khả dụng là sản phẩm A và B. Sản phẩm A có giá $100 và sản phẩm B có giá $110.</p>\n<p>Đâu là ví dụ TỐT NHẤT về một test case cho user story này?</p>",
+  "stem": "<p>Bạn vừa bắt đầu thiết kế test case cho user story sau.</p>\n<blockquote>\n<p>Là một khách hàng,<br />\ntôi muốn có thể lọc kết quả tìm kiếm theo khoảng giá, để tôi có thể tìm sản phẩm trong phạm vi ngân sách của mình dễ dàng hơn.</p>\n</blockquote>\n<p>Acceptance criteria:</p>\n<ol>\n<li>Bộ lọc phải hoạt động với tất cả các phiên bản của ứng dụng từ phiên bản 3.0 trở lên</li>\n<li>Bộ lọc phải cho phép khách hàng đặt khoảng giá với giá tối thiểu và giá tối đa</li>\n<li>Kết quả tìm kiếm phải cập nhật động khi khách hàng điều chỉnh bộ lọc khoảng giá</li>\n</ol>\n<p>Trong mọi test case, điều kiện tiên quyết như sau: chỉ có hai sản phẩm khả dụng là sản phẩm A và B. Sản phẩm A có giá $100 và sản phẩm B có giá $110.</p>\n<p>Đâu là ví dụ TỐT NHẤT về một test case cho user story này?</p>",
   "options": [
    "Vào trang web và đặt bộ lọc hiển thị giá từ $90 đến $100. Kết quả mong đợi: kết quả chỉ hiển thị sản phẩm A. Đặt giá tối đa thành $110. Kết quả mong đợi: kết quả giờ bao gồm cả sản phẩm A và B",
    "Vào trang web. Kết quả mong đợi: giá tối thiểu và tối đa mặc định lần lượt là $100 và $110. Thêm sản phẩm C vào kho với giá $120. Làm mới trang web của khách hàng. Kết quả mong đợi: giá tối đa mặc định đổi thành $120",
@@ -774,7 +774,7 @@
   "explanation": "<p>d) đúng. Configuration management cung cấp một quy tắc làm việc để nhận diện, kiểm soát và theo dõi các sản phẩm công việc. Configuration management lưu lại hồ sơ các configuration item đã thay đổi khi một baseline mới được tạo. Bằng configuration management, có thể quay lại một baseline trước đó để tái hiện các kết quả test trước đó.</p>\n<ul>\n<li>\n<p>a) không đúng. Risk management bao gồm phân tích rủi ro và kiểm soát rủi ro. Không hoạt động nào trong số này hỗ trợ việc tập hợp lại các file cấu thành bản phát hành, vì các hoạt động này xử lý rủi ro, không phải configuration item</p>\n</li>\n<li>\n<p>b) không đúng. Test monitoring liên quan đến việc thu thập thông tin về kiểm thử. Thông tin này được dùng để đánh giá tiến độ kiểm thử và đo lường xem exit criteria hoặc các tác vụ kiểm thử gắn với exit criteria có được thỏa mãn hay không, chẳng hạn như đáp ứng các mục tiêu về coverage của product risk, yêu cầu hoặc các acceptance criteria khác. Test control sử dụng thông tin từ test monitoring để đưa ra, dưới dạng các chỉ thị kiểm soát, hướng dẫn và các hành động khắc phục cần thiết nhằm đạt được việc kiểm thử hiệu quả và hiệu suất nhất. Không hoạt động nào trong số này xử lý việc quản lý configuration item</p>\n</li>\n<li>\n<p>c) không đúng. Whole team approach dựa trên kỹ năng của tester trong việc làm việc hiệu quả trong bối cảnh nhóm và đóng góp tích cực vào mục tiêu của nhóm. Vì vậy, nó tập trung vào các vấn đề liên quan đến nhóm, không phải configuration item</p>\n</li>\n</ul>"
  },
  "q09-38": {
-  "stem": "<p>Xem xét defect report sau cho một Hệ thống Cho mượn Sách (Book Lending System).</p>\n<blockquote>\n<p><strong>Defect ID:</strong> 001 | <strong>Title:</strong> Không thể trả sách |\n<strong>Severity:</strong> High | <strong>Priority:</strong> (trống)\n<strong>Environment:</strong> Windows 10, Google Chrome\n<strong>Description:</strong> Khi cố gắng trả sách bằng tính năng Book Return, hệ thống không ghi nhận việc trả và cuốn sách vẫn ở trạng thái đang được người dùng mượn.\n<strong>Steps to Reproduce:</strong>\n1. Đăng nhập vào Book Lending System bằng một người dùng đã mượn sách.\n2. Nhấn nút \"Book Return\" cho cuốn sách đã được mượn.\n3. Hệ thống không ghi nhận việc trả và cuốn sách vẫn ở trạng thái đang mượn.\n<strong>Expected Result:</strong> Cuốn sách phải được trả và không còn hiển thị là đang được người dùng mượn.\n<strong>Actual Result:</strong> Cuốn sách vẫn ở trạng thái đang được người dùng mượn và không được ghi nhận là đã trả trong hệ thống.\n<strong>Attachments:</strong> [danh sách trống]</p>\n</blockquote>\n<p>Điều nào sau đây CÓ KHẢ NĂNG NHẤT giúp developer tái hiện failure một cách nhanh chóng?</p>",
+  "stem": "<p>Xem xét defect report sau cho một Hệ thống Cho mượn Sách (Book Lending System).</p>\n<blockquote>\n<p><strong>Defect ID:</strong> 001 | <strong>Title:</strong> Không thể trả sách |<br />\n<strong>Severity:</strong> High | <strong>Priority:</strong> (trống)<br />\n<strong>Environment:</strong> Windows 10, Google Chrome<br />\n<strong>Description:</strong> Khi cố gắng trả sách bằng tính năng Book Return, hệ thống không ghi nhận việc trả và cuốn sách vẫn ở trạng thái đang được người dùng mượn.<br />\n<strong>Steps to Reproduce:</strong><br />\n1. Đăng nhập vào Book Lending System bằng một người dùng đã mượn sách.<br />\n2. Nhấn nút \"Book Return\" cho cuốn sách đã được mượn.<br />\n3. Hệ thống không ghi nhận việc trả và cuốn sách vẫn ở trạng thái đang mượn.<br />\n<strong>Expected Result:</strong> Cuốn sách phải được trả và không còn hiển thị là đang được người dùng mượn.<br />\n<strong>Actual Result:</strong> Cuốn sách vẫn ở trạng thái đang được người dùng mượn và không được ghi nhận là đã trả trong hệ thống.<br />\n<strong>Attachments:</strong> [danh sách trống]</p>\n</blockquote>\n<p>Điều nào sau đây CÓ KHẢ NĂNG NHẤT giúp developer tái hiện failure một cách nhanh chóng?</p>",
   "options": [
    "Bổ sung thông tin về những người dùng nào và những cuốn sách nào bị ảnh hưởng bởi failure vào mục \"Description\"",
    "Điền giá trị còn thiếu cho trường \"Priority\"",
@@ -1084,7 +1084,7 @@
   "explanation": "<p>a) đúng. Theo sơ đồ, chỉ cần một test: Login, Fail, Fail, Fail = 3, Wait, Login, Home. Nếu bạn bắt buộc phải thoát (exit) sau Wait thì sẽ cần test thứ hai, nhưng câu hỏi không cho biết là phải có exit.</p>"
  },
  "q10-29": {
-  "stem": "<p>Bạn đang tạo test case cho story sau, áp dụng cách tiếp cận ATDD.</p>\n<blockquote>\n<p>Là một chủ khách sạn\nTôi muốn đặt hết tất cả các phòng trên một tầng trước khi chuyển sang tầng tiếp theo\nĐể tôi có thể tối đa hóa hiệu quả của nhân viên dọn phòng</p>\n</blockquote>\n<p>Bạn quyết định áp dụng equivalence partitioning cho yêu cầu này và đã xác định các partition sau cho mức lấp đầy của một tầng:</p>\n<p>0 | 1 - tầng đầy | đặt quá số phòng</p>\n<p>Bạn cũng muốn chắc chắn rằng phần mềm dễ sử dụng đối với nhân viên và hoạt động nhanh khi xác định tầng nào còn phòng trống.</p>\n<p>Với thông tin này, thứ tự ưu tiên cho các test bạn sẽ thiết kế nên là gì?</p>",
+  "stem": "<p>Bạn đang tạo test case cho story sau, áp dụng cách tiếp cận ATDD.</p>\n<blockquote>\n<p>Là một chủ khách sạn<br />\nTôi muốn đặt hết tất cả các phòng trên một tầng trước khi chuyển sang tầng tiếp theo<br />\nĐể tôi có thể tối đa hóa hiệu quả của nhân viên dọn phòng</p>\n</blockquote>\n<p>Bạn quyết định áp dụng equivalence partitioning cho yêu cầu này và đã xác định các partition sau cho mức lấp đầy của một tầng:</p>\n<p>0 | 1 - tầng đầy | đặt quá số phòng</p>\n<p>Bạn cũng muốn chắc chắn rằng phần mềm dễ sử dụng đối với nhân viên và hoạt động nhanh khi xác định tầng nào còn phòng trống.</p>\n<p>Với thông tin này, thứ tự ưu tiên cho các test bạn sẽ thiết kế nên là gì?</p>",
   "options": [
    "0, 1-tầng đầy, đặt quá số phòng, usability, performance",
    "Performance, 1-tầng đầy, usability, đặt quá số phòng, 0",
@@ -1484,7 +1484,7 @@
   "explanation": "<p>c) đúng. Có 8 transition cần được thể hiện trong state transition diagram như đã mô tả trong câu hỏi.</p>"
  },
  "q11-29": {
-  "stem": "<p>Bạn đang tạo các test case cho story sau, áp dụng cách tiếp cận ATDD.</p>\n<blockquote>\n<p>Là chủ khách sạn\nTôi muốn đặt hết tất cả các phòng trên một tầng trước khi chuyển sang tầng tiếp theo\nĐể tôi có thể tối đa hóa hiệu quả của nhân viên dọn phòng</p>\n</blockquote>\n<p>Bạn quyết định áp dụng boundary value analysis cho yêu cầu này và đã xác định các phân vùng sau cho tình trạng sử dụng phòng của một tầng:</p>\n<p>0 | 1 - kín tầng | đặt quá số lượng (overbooked)</p>\n<p>Bạn cũng muốn đảm bảo phần mềm dễ sử dụng đối với nhân viên và xác định nhanh chóng những tầng nào còn phòng trống.</p>\n<p>Bạn đã thiết kế các test case sau:</p>\n<ol>\n<li>Kiểm thử với 1 người ở trên tầng</li>\n<li>Kiểm thử khi tầng đã kín và đảm bảo tầng tiếp theo được mở để đặt phòng</li>\n<li>Kiểm thử với 0 người ở trên tầng và đảm bảo tầng đó chỉ khả dụng khi các tầng thấp hơn đã được đặt kín</li>\n<li>Kiểm thử usability để đảm bảo nhân viên khách sạn thấy phần mềm dễ sử dụng</li>\n<li>Kiểm thử thời gian phản hồi khi hệ thống ở mức tải trung bình và khách sạn đã kín 80%</li>\n</ol>\n<p>Bạn đang thiếu gì?</p>",
+  "stem": "<p>Bạn đang tạo các test case cho story sau, áp dụng cách tiếp cận ATDD.</p>\n<blockquote>\n<p>Là chủ khách sạn<br />\nTôi muốn đặt hết tất cả các phòng trên một tầng trước khi chuyển sang tầng tiếp theo<br />\nĐể tôi có thể tối đa hóa hiệu quả của nhân viên dọn phòng</p>\n</blockquote>\n<p>Bạn quyết định áp dụng boundary value analysis cho yêu cầu này và đã xác định các phân vùng sau cho tình trạng sử dụng phòng của một tầng:</p>\n<p>0 | 1 - kín tầng | đặt quá số lượng (overbooked)</p>\n<p>Bạn cũng muốn đảm bảo phần mềm dễ sử dụng đối với nhân viên và xác định nhanh chóng những tầng nào còn phòng trống.</p>\n<p>Bạn đã thiết kế các test case sau:</p>\n<ol>\n<li>Kiểm thử với 1 người ở trên tầng</li>\n<li>Kiểm thử khi tầng đã kín và đảm bảo tầng tiếp theo được mở để đặt phòng</li>\n<li>Kiểm thử với 0 người ở trên tầng và đảm bảo tầng đó chỉ khả dụng khi các tầng thấp hơn đã được đặt kín</li>\n<li>Kiểm thử usability để đảm bảo nhân viên khách sạn thấy phần mềm dễ sử dụng</li>\n<li>Kiểm thử thời gian phản hồi khi hệ thống ở mức tải trung bình và khách sạn đã kín 80%</li>\n</ol>\n<p>Bạn đang thiếu gì?</p>",
   "options": [
    "Một kiểm thử với tầng có người ở một phần nhưng chưa kín",
    "Một kiểm thử về hiệu năng",
@@ -1984,7 +1984,7 @@
   "explanation": "<p>c) đúng. Retrospective giúp nhóm học hỏi từ các vấn đề và trở ngại gặp phải trong iteration, giúp tránh chúng trong các iteration sau.</p>"
  },
  "q12-40": {
-  "stem": "<p>Bạn nhận được defect report sau từ các developer với thông báo rằng bất thường được mô tả trong báo cáo kiểm thử này không thể tái hiện:</p>\n<blockquote>\n<p>Id: BUG-0561\nDefect: Công thức bảng tính không tính toán\nNgày: 2023-March-12 – Emily Clarke – Open</p>\n<p>Thành phần bảng tính của bộ ứng dụng không tính toán bất kỳ công thức mới nào do người dùng nhập. Các lần thử thêm công thức đơn giản như SUM hoặc AVERAGE liên tục cho ra ô trống thay vì kết quả tính toán. Vấn đề này xảy ra trên nhiều tài khoản người dùng. Không có thông báo lỗi nào được hiển thị; tuy nhiên, log lỗi cho thấy các vấn đề timeout khi thực hiện tính toán. Theo test case TC-2097, ứng dụng phải xử lý và hiển thị kết quả ngay khi nhập công thức. Tính năng này là thiết yếu đối với hoạt động của người dùng theo REQ-0556. Vấn đề này khẩn cấp và ảnh hưởng đến một quy trình nghiệp vụ quan trọng.</p>\n</blockquote>\n<p>Defect report này chưa có đầy đủ các chi tiết cần thiết và bạn dự định bổ sung chúng. Mục nào sau đây thường KHÔNG được đưa vào defect report ban đầu của tester?</p>",
+  "stem": "<p>Bạn nhận được defect report sau từ các developer với thông báo rằng bất thường được mô tả trong báo cáo kiểm thử này không thể tái hiện:</p>\n<blockquote>\n<p>Id: BUG-0561<br />\nDefect: Công thức bảng tính không tính toán<br />\nNgày: 2023-March-12 – Emily Clarke – Open</p>\n<p>Thành phần bảng tính của bộ ứng dụng không tính toán bất kỳ công thức mới nào do người dùng nhập. Các lần thử thêm công thức đơn giản như SUM hoặc AVERAGE liên tục cho ra ô trống thay vì kết quả tính toán. Vấn đề này xảy ra trên nhiều tài khoản người dùng. Không có thông báo lỗi nào được hiển thị; tuy nhiên, log lỗi cho thấy các vấn đề timeout khi thực hiện tính toán. Theo test case TC-2097, ứng dụng phải xử lý và hiển thị kết quả ngay khi nhập công thức. Tính năng này là thiết yếu đối với hoạt động của người dùng theo REQ-0556. Vấn đề này khẩn cấp và ảnh hưởng đến một quy trình nghiệp vụ quan trọng.</p>\n</blockquote>\n<p>Defect report này chưa có đầy đủ các chi tiết cần thiết và bạn dự định bổ sung chúng. Mục nào sau đây thường KHÔNG được đưa vào defect report ban đầu của tester?</p>",
   "options": [
    "Mọi bản dump cơ sở dữ liệu, ảnh chụp màn hình hoặc bản ghi hình liên quan",
    "Các bước để tái hiện vấn đề",
@@ -2212,7 +2212,7 @@
    "1, 10, 12, 25, 100",
    "6, 10, 12, 15, 99"
   ],
-  "explanation": "<p>c) đúng. Có thể xác định các equivalence partition hợp lệ sau:\n1. Giảm giá 10% (3, 6, 9, 12, 33, 66, 99)\n2. Giảm giá 20% (5, 15, 25…)\n3. Miễn phí (10, 20…100)\n4. Không giảm giá (1, 2, 4, 7, 8…)</p>\n<p>Coverage: 1 (không giảm giá), 10 (miễn phí), 12 (10%), 25 (20%), 100 (miễn phí) — bao phủ cả 4 partition.</p>"
+  "explanation": "<p>c) đúng. Có thể xác định các equivalence partition hợp lệ sau:<br />\n1. Giảm giá 10% (3, 6, 9, 12, 33, 66, 99)<br />\n2. Giảm giá 20% (5, 15, 25…)<br />\n3. Miễn phí (10, 20…100)<br />\n4. Không giảm giá (1, 2, 4, 7, 8…)</p>\n<p>Coverage: 1 (không giảm giá), 10 (miễn phí), 12 (10%), 25 (20%), 100 (miễn phí) — bao phủ cả 4 partition.</p>"
  },
  "q13-24": {
   "stem": "<p>Một đội phát triển phần mềm đang chuẩn bị phát hành một bản cập nhật lớn cho một nền tảng thương mại điện tử. Trong quá trình test, đội đang thực hiện review các yêu cầu và đặc tả để xác định các tính năng có thể test được và định nghĩa các test condition. Quá trình này thể hiện hoạt động test nào?</p>",
@@ -2355,7 +2355,7 @@
   "explanation": "<p>d) đúng. Thực thi một bộ test phức tạp bao phủ nhiều edge case đòi hỏi sự kiên nhẫn và cách tiếp cận có hệ thống, điều này nhấn mạnh tầm quan trọng của sự kỹ lưỡng và làm việc có phương pháp.</p>"
  },
  "q13-38": {
-  "stem": "<p>Xem xét defect report sau cho một ứng dụng ngân hàng di động:</p>\n<blockquote>\n<p>Ứng dụng: BankApp v2.1\nMôi trường: Staging\nDefect: Không thể nộp séc qua ứng dụng di động</p>\n<p>Các bước tái hiện:\n1. Đăng nhập vào BankApp.\n2. Đi đến mục \"Deposit\".\n3. Thử nộp một tờ séc bằng tính năng nộp tiền qua di động.</p>\n<p>Kết quả mong đợi: Tờ séc được quét và được chấp nhận để nộp.\nKết quả thực tế: Ứng dụng bị crash ngay sau khi quét séc.</p>\n<p>Severity: Medium\nPriority: High</p>\n</blockquote>\n<p>Bạn nhận được phản hồi sau từ đội quality assurance cho biết defect được mô tả trong báo cáo này không thể tái hiện được:</p>\n<blockquote>\n<p>2023-April-10 – Jane Smith – Open\nSau nhiều lần thử tái hiện vấn đề bằng cách quét các tờ séc khác nhau, ứng dụng không bị crash và hoạt động như mong đợi. Theo test case TC-2456, ứng dụng phải xử lý việc nộp séc một cách trơn tru. Chức năng này rất quan trọng như được nêu trong REQ-0456. Vấn đề đã được báo cáo trước đây nhưng giờ có vẻ đã được giải quyết.</p>\n</blockquote>\n<p>Thông tin quan trọng nào bị THIẾU trong defect report này mà lẽ ra sẽ hữu ích cho developer?</p>",
+  "stem": "<p>Xem xét defect report sau cho một ứng dụng ngân hàng di động:</p>\n<blockquote>\n<p>Ứng dụng: BankApp v2.1<br />\nMôi trường: Staging<br />\nDefect: Không thể nộp séc qua ứng dụng di động</p>\n<p>Các bước tái hiện:<br />\n1. Đăng nhập vào BankApp.<br />\n2. Đi đến mục \"Deposit\".<br />\n3. Thử nộp một tờ séc bằng tính năng nộp tiền qua di động.</p>\n<p>Kết quả mong đợi: Tờ séc được quét và được chấp nhận để nộp.<br />\nKết quả thực tế: Ứng dụng bị crash ngay sau khi quét séc.</p>\n<p>Severity: Medium<br />\nPriority: High</p>\n</blockquote>\n<p>Bạn nhận được phản hồi sau từ đội quality assurance cho biết defect được mô tả trong báo cáo này không thể tái hiện được:</p>\n<blockquote>\n<p>2023-April-10 – Jane Smith – Open<br />\nSau nhiều lần thử tái hiện vấn đề bằng cách quét các tờ séc khác nhau, ứng dụng không bị crash và hoạt động như mong đợi. Theo test case TC-2456, ứng dụng phải xử lý việc nộp séc một cách trơn tru. Chức năng này rất quan trọng như được nêu trong REQ-0456. Vấn đề đã được báo cáo trước đây nhưng giờ có vẻ đã được giải quyết.</p>\n</blockquote>\n<p>Thông tin quan trọng nào bị THIẾU trong defect report này mà lẽ ra sẽ hữu ích cho developer?</p>",
   "options": [
    "Thời gian ước tính để sửa defect, nhằm giúp ưu tiên defect hoặc đặt kỳ vọng về thời điểm nó có thể được giải quyết",
    "Tên của developer có code gây ra failure, nhằm hợp lý hóa việc giao defect cho đúng developer, có thể giúp sửa nhanh hơn",
@@ -2556,7 +2556,7 @@
   "explanation": "<p>c) đúng. Nguyên tắc #5 nói rằng \"Nếu cùng các test được lặp đi lặp lại nhiều lần, cuối cùng các test này sẽ không còn tìm ra defect mới nào nữa. Để phát hiện defect mới, các test và test data hiện có có thể cần được thay đổi, và có thể cần viết các test mới.\" Regression testing tự động với cùng các test case sẽ không mang lại phát hiện mới.</p>"
  },
  "q14-18": {
-  "stem": "<p>Xem xét các loại test sau (1-4) và các agile testing quadrant (A-D):</p>\n<ol>\n<li>Usability testing</li>\n<li>API testing</li>\n<li>Performance testing</li>\n<li>Unit integration testing</li>\n</ol>\n<p>A. Agile testing quadrant Q1: hướng công nghệ, hỗ trợ nhóm phát triển\nB. Agile testing quadrant Q2: hướng nghiệp vụ, hỗ trợ nhóm phát triển\nC. Agile testing quadrant Q3: hướng nghiệp vụ, đánh giá phản biện sản phẩm\nD. Agile testing quadrant Q4: hướng công nghệ, đánh giá phản biện sản phẩm</p>\n<p>Các loại test trên được ánh xạ vào các agile testing quadrant như thế nào?</p>",
+  "stem": "<p>Xem xét các loại test sau (1-4) và các agile testing quadrant (A-D):</p>\n<ol>\n<li>Usability testing</li>\n<li>API testing</li>\n<li>Performance testing</li>\n<li>Unit integration testing</li>\n</ol>\n<p>A. Agile testing quadrant Q1: hướng công nghệ, hỗ trợ nhóm phát triển<br />\nB. Agile testing quadrant Q2: hướng nghiệp vụ, hỗ trợ nhóm phát triển<br />\nC. Agile testing quadrant Q3: hướng nghiệp vụ, đánh giá phản biện sản phẩm<br />\nD. Agile testing quadrant Q4: hướng công nghệ, đánh giá phản biện sản phẩm</p>\n<p>Các loại test trên được ánh xạ vào các agile testing quadrant như thế nào?</p>",
   "options": [
    "1D, 2B, 3C, 4A",
    "1B, 2C, 3D, 4A",
@@ -2643,7 +2643,7 @@
    "50, 51, 55, 56, 60, 61",
    "49, 50, 54, 55, 60, 62"
   ],
-  "explanation": "<p>c) đúng. Bao gồm tất cả các giá trị biên cần thiết. Có thể xác định các partition sau:\n1. &lt;= 50, giá trị biên 50\n2. 51 – 55, giá trị biên 51, 55\n3. 56 – 60, giá trị biên 56, 60\n4. &gt;= 61, giá trị biên 61</p>\n<p>Giá trị biên theo glossary V.3.2: Giá trị nhỏ nhất hoặc lớn nhất của một equivalence partition có thứ tự.</p>"
+  "explanation": "<p>c) đúng. Bao gồm tất cả các giá trị biên cần thiết. Có thể xác định các partition sau:<br />\n1. &lt;= 50, giá trị biên 50<br />\n2. 51 – 55, giá trị biên 51, 55<br />\n3. 56 – 60, giá trị biên 56, 60<br />\n4. &gt;= 61, giá trị biên 61</p>\n<p>Giá trị biên theo glossary V.3.2: Giá trị nhỏ nhất hoặc lớn nhất của một equivalence partition có thứ tự.</p>"
  },
  "q14-27": {
   "stem": "<p>Bạn làm tester cho một ứng dụng học ngôn ngữ của một nền tảng giáo dục quốc tế.</p>\n<p>Nhiệm vụ của bạn là:</p>\n<p>\"Kiểm thử các thay đổi đối với một hệ thống đang vận hành (production), bao gồm đánh giá mức độ thành công của việc triển khai và phát hiện các hồi quy tiềm ẩn ở những phần không bị ảnh hưởng, thường chiếm phần lớn hệ thống\"</p>\n<p>Bạn CÓ KHẢ NĂNG NHẤT đang thực hiện loại kiểm thử nào?</p>",
@@ -2826,7 +2826,7 @@
   "explanation": "<p>a) đúng. White-box testing suy ra test case từ cấu trúc bên trong và cách xử lý của test object (ví dụ: code, câu lệnh, nhánh).</p>"
  },
  "q15-5": {
-  "stem": "<p>Hãy xem các định nghĩa sau và ghép từ khóa (1-4) với định nghĩa (A-D)</p>\n<ol>\n<li>Risk analysis</li>\n<li>Risk control</li>\n<li>Risk likelihood</li>\n<li>Risk impact</li>\n</ol>\n<p>A. Toàn bộ quá trình nhận diện rủi ro và đánh giá rủi ro\nB. Xác suất một rủi ro sẽ trở thành một kết quả hoặc sự kiện thực tế\nC. Thiệt hại sẽ gây ra nếu rủi ro trở thành một kết quả hoặc sự kiện thực tế\nD. Toàn bộ quá trình giảm thiểu rủi ro và giám sát rủi ro</p>",
+  "stem": "<p>Hãy xem các định nghĩa sau và ghép từ khóa (1-4) với định nghĩa (A-D)</p>\n<ol>\n<li>Risk analysis</li>\n<li>Risk control</li>\n<li>Risk likelihood</li>\n<li>Risk impact</li>\n</ol>\n<p>A. Toàn bộ quá trình nhận diện rủi ro và đánh giá rủi ro<br />\nB. Xác suất một rủi ro sẽ trở thành một kết quả hoặc sự kiện thực tế<br />\nC. Thiệt hại sẽ gây ra nếu rủi ro trở thành một kết quả hoặc sự kiện thực tế<br />\nD. Toàn bộ quá trình giảm thiểu rủi ro và giám sát rủi ro</p>",
   "options": [
    "1D, 2A, 3B, 4C",
    "1A, 2D, 3C, 4B",
@@ -2856,7 +2856,7 @@
   "explanation": "<p>d) đúng. Nếu các câu lệnh được thực thi bởi A và C hoàn toàn không trùng nhau, coverage kết hợp của chúng sẽ là 65% + 55% = 120%, điều này là không thể. Coverage luôn được định nghĩa là tỷ lệ phần trăm các phần tử được bao phủ và không thể vượt quá 100%. Do đó, ít nhất 20% số câu lệnh thực thi được phải được thực thi bởi cả A và C. (A+B = 95% và B+C = 85% đều dưới 100%, nên không đảm bảo có sự trùng lặp đối với các cặp này.)</p>"
  },
  "q15-8": {
-  "stem": "<p>Thông tin sau có thể được tìm thấy trong test plan không?</p>\n<p>Test Completion Report</p>\n<p>...</p>\n<ol>\n<li>\n<p>Tóm tắt\nGiai đoạn kiểm thử cho [Tên dự án] đã hoàn thành thành công. Báo cáo này cung cấp tổng quan về các hoạt động kiểm thử, kết quả và các khuyến nghị cải tiến trong tương lai.</p>\n</li>\n<li>\n<p>Mục tiêu\nCác mục tiêu chính của giai đoạn kiểm thử là:</p>\n</li>\n</ol>\n<ul>\n<li>Validate chức năng của [các module/tính năng cụ thể].</li>\n<li>Xác định và báo cáo các defect hoặc vấn đề.</li>\n<li>Đảm bảo tính tương thích trên nhiều môi trường khác nhau.</li>\n</ul>\n<p>...</p>\n<ol start=\"5\">\n<li>Kết quả kiểm thử</li>\n</ol>\n<ul>\n<li>Số test case đã thực thi: [Số test case đã thực thi]</li>\n<li>Pass: [Số test case đạt]</li>\n<li>Fail: [Số test case không đạt]</li>\n<li>Blocked: [Số test case bị chặn]</li>\n</ul>\n<ol start=\"6\">\n<li>Tóm tắt defect</li>\n</ol>\n<ul>\n<li>Tổng số defect được phát hiện: [Tổng số defect]</li>\n<li>Critical: [Số defect critical]</li>\n<li>Major: [Số defect major]</li>\n<li>Minor: [Số defect minor]</li>\n</ul>\n<ol start=\"7\">\n<li>Khuyến nghị</li>\n</ol>\n<ul>\n<li>Đưa ra các khuyến nghị cải tiến dựa trên kinh nghiệm kiểm thử.</li>\n<li>Đề xuất cho các quy trình hoặc công cụ kiểm thử trong tương lai có thể nâng cao hiệu quả.</li>\n</ul>",
+  "stem": "<p>Thông tin sau có thể được tìm thấy trong test plan không?</p>\n<p>Test Completion Report</p>\n<p>...</p>\n<ol>\n<li>\n<p>Tóm tắt<br />\nGiai đoạn kiểm thử cho [Tên dự án] đã hoàn thành thành công. Báo cáo này cung cấp tổng quan về các hoạt động kiểm thử, kết quả và các khuyến nghị cải tiến trong tương lai.</p>\n</li>\n<li>\n<p>Mục tiêu<br />\nCác mục tiêu chính của giai đoạn kiểm thử là:</p>\n</li>\n</ol>\n<ul>\n<li>Validate chức năng của [các module/tính năng cụ thể].</li>\n<li>Xác định và báo cáo các defect hoặc vấn đề.</li>\n<li>Đảm bảo tính tương thích trên nhiều môi trường khác nhau.</li>\n</ul>\n<p>...</p>\n<ol start=\"5\">\n<li>Kết quả kiểm thử</li>\n</ol>\n<ul>\n<li>Số test case đã thực thi: [Số test case đã thực thi]</li>\n<li>Pass: [Số test case đạt]</li>\n<li>Fail: [Số test case không đạt]</li>\n<li>Blocked: [Số test case bị chặn]</li>\n</ul>\n<ol start=\"6\">\n<li>Tóm tắt defect</li>\n</ol>\n<ul>\n<li>Tổng số defect được phát hiện: [Tổng số defect]</li>\n<li>Critical: [Số defect critical]</li>\n<li>Major: [Số defect major]</li>\n<li>Minor: [Số defect minor]</li>\n</ul>\n<ol start=\"7\">\n<li>Khuyến nghị</li>\n</ol>\n<ul>\n<li>Đưa ra các khuyến nghị cải tiến dựa trên kinh nghiệm kiểm thử.</li>\n<li>Đề xuất cho các quy trình hoặc công cụ kiểm thử trong tương lai có thể nâng cao hiệu quả.</li>\n</ul>",
   "options": [
    "Có, template test completion report có thể được tìm thấy trong phần giao tiếp (communication)",
    "Có, test progress report có thể được tìm thấy trong phần giao tiếp (communication)",
@@ -3046,7 +3046,7 @@
   "explanation": "<p>c) đúng. CY – BY = 21, 16 nên các đầu vào này tương ứng với phân vùng \"không giảm giá\" và phân vùng \"giảm giá sinh viên\" chưa được bao phủ. Các test case hiện có đã bao phủ phân vùng giảm giá trẻ em (D=1) và giảm giá người hưu trí (D=73).</p>"
  },
  "q15-27": {
-  "stem": "<p>Bài kiểm thử nào dưới đây được thực hiện như regression test và bài nào như confirmation test?</p>\n<ol>\n<li>Regression testing</li>\n<li>Confirmation testing</li>\n</ol>\n<p>a. Chạy các bài kiểm thử tự động trên toàn bộ môi trường hệ thống để đảm bảo rằng các thay đổi hoặc bản sửa gần đây trên môi trường production không gây ra defect mới ở các tính năng vốn đã ổn định\nb. Chạy các bài kiểm thử tự động của tính năng lọc (filter) vốn đã \"passed\" sau khi sửa tính năng sắp xếp (sorting)\nc. Kiểm thử để đảm bảo rằng những người dùng trước đây không thể đăng nhập vào hệ thống giờ đã đăng nhập được sau khi sửa chức năng đăng nhập\nd. Chạy các bài kiểm thử tự động của tính năng sắp xếp vốn đã \"failed\" do defect ở các sản phẩm, sau khi sửa các sản phẩm đó</p>",
+  "stem": "<p>Bài kiểm thử nào dưới đây được thực hiện như regression test và bài nào như confirmation test?</p>\n<ol>\n<li>Regression testing</li>\n<li>Confirmation testing</li>\n</ol>\n<p>a. Chạy các bài kiểm thử tự động trên toàn bộ môi trường hệ thống để đảm bảo rằng các thay đổi hoặc bản sửa gần đây trên môi trường production không gây ra defect mới ở các tính năng vốn đã ổn định<br />\nb. Chạy các bài kiểm thử tự động của tính năng lọc (filter) vốn đã \"passed\" sau khi sửa tính năng sắp xếp (sorting)<br />\nc. Kiểm thử để đảm bảo rằng những người dùng trước đây không thể đăng nhập vào hệ thống giờ đã đăng nhập được sau khi sửa chức năng đăng nhập<br />\nd. Chạy các bài kiểm thử tự động của tính năng sắp xếp vốn đã \"failed\" do defect ở các sản phẩm, sau khi sửa các sản phẩm đó</p>",
   "options": [
    "a-1, b-1, c-2, d-1",
    "a-2, b-1, c-2, d-2",
@@ -3133,7 +3133,7 @@
    "TC5",
    "TC6"
   ],
-  "explanation": "<p>b) đúng. Vì câu hỏi đề cập đến 'ưu tiên dựa trên coverage' chứ KHÔNG phải 'ưu tiên dựa trên coverage bổ sung', bạn chỉ cần tính coverage ban đầu—không cần gì thêm. Thứ tự thực thi:\n1. TC3 chạy đầu tiên → Coverage 35%, Độ ưu tiên High\n2. TC4 chạy thứ hai → Coverage 35%, Độ ưu tiên Low\n3. TC1 chạy thứ ba → Coverage 30%, Độ ưu tiên Low\n4. TC5 chạy thứ tư → Coverage 30%, Độ ưu tiên Very Low\n5. TC6 chạy thứ năm → Coverage 25%, Độ ưu tiên High\n6. TC2 chạy thứ sáu (CUỐI CÙNG) → Coverage 25%, Độ ưu tiên Medium</p>"
+  "explanation": "<p>b) đúng. Vì câu hỏi đề cập đến 'ưu tiên dựa trên coverage' chứ KHÔNG phải 'ưu tiên dựa trên coverage bổ sung', bạn chỉ cần tính coverage ban đầu—không cần gì thêm. Thứ tự thực thi:<br />\n1. TC3 chạy đầu tiên → Coverage 35%, Độ ưu tiên High<br />\n2. TC4 chạy thứ hai → Coverage 35%, Độ ưu tiên Low<br />\n3. TC1 chạy thứ ba → Coverage 30%, Độ ưu tiên Low<br />\n4. TC5 chạy thứ tư → Coverage 30%, Độ ưu tiên Very Low<br />\n5. TC6 chạy thứ năm → Coverage 25%, Độ ưu tiên High<br />\n6. TC2 chạy thứ sáu (CUỐI CÙNG) → Coverage 25%, Độ ưu tiên Medium</p>"
  },
  "q15-36": {
   "stem": "<p>Decision table sau chứa các quy tắc xác định nguy cơ xơ vữa động mạch.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/96c4767edfc3e984.png\" loading=\"lazy\" /></p>\n<p>Test case nào sẽ cho thấy có các quy tắc mâu thuẫn trong decision table?</p>",
@@ -3156,7 +3156,7 @@
   "explanation": "<p>a) đúng. Mặc dù mang tính chung, các kỹ năng sau đặc biệt phù hợp với tester: Kiến thức kỹ thuật (để tăng hiệu quả kiểm thử, ví dụ bằng cách sử dụng các công cụ kiểm thử phù hợp). Với một defect phát sinh từ tương tác phần mềm-phần cứng (vấn đề về thời gian), kiến thức kỹ thuật là thiết yếu để hiểu và chẩn đoán vấn đề.</p>"
  },
  "q15-38": {
-  "stem": "<p>Bạn nhận được báo cáo defect sau từ nhóm kiểm thử, cho biết điểm bất thường được mô tả đang gây ra gián đoạn đáng kể:</p>\n<p>'Ứng dụng bị crash khi tải file lên'</p>\n<p>2023-April-15 – Jane Smith\nỨng dụng bị crash khi tải lên các file lớn hơn 5MB bằng tính năng tải tài liệu trên trang quản lý dữ liệu. Đã tái hiện vấn đề bằng các file kiểm thử chuẩn 'Test_Doc_10MB.pdf' và 'Test_Doc_6MB.jpg' trên Staging test v2.4.1. Theo đặc tả tính năng, ứng dụng phải xử lý việc tải file lên mà không bị crash. Vấn đề này đã được đánh dấu độ ưu tiên cao do ảnh hưởng đến hoạt động hằng ngày, như được nêu trong REQ-1023.</p>\n<p>Thông tin quan trọng nào bị THIẾU trong báo cáo này mà lẽ ra sẽ hữu ích cho lập trình viên?</p>",
+  "stem": "<p>Bạn nhận được báo cáo defect sau từ nhóm kiểm thử, cho biết điểm bất thường được mô tả đang gây ra gián đoạn đáng kể:</p>\n<p>'Ứng dụng bị crash khi tải file lên'</p>\n<p>2023-April-15 – Jane Smith<br />\nỨng dụng bị crash khi tải lên các file lớn hơn 5MB bằng tính năng tải tài liệu trên trang quản lý dữ liệu. Đã tái hiện vấn đề bằng các file kiểm thử chuẩn 'Test_Doc_10MB.pdf' và 'Test_Doc_6MB.jpg' trên Staging test v2.4.1. Theo đặc tả tính năng, ứng dụng phải xử lý việc tải file lên mà không bị crash. Vấn đề này đã được đánh dấu độ ưu tiên cao do ảnh hưởng đến hoạt động hằng ngày, như được nêu trong REQ-1023.</p>\n<p>Thông tin quan trọng nào bị THIẾU trong báo cáo này mà lẽ ra sẽ hữu ích cho lập trình viên?</p>",
   "options": [
    "Mức độ nghiêm trọng của defect và kết quả mong đợi",
    "Môi trường kiểm thử và phiên bản ứng dụng",
@@ -3456,7 +3456,7 @@
   "explanation": "<p>d) đúng. Impact analysis có thể được thực hiện trước khi một thay đổi được tiến hành, để giúp quyết định có nên thực hiện thay đổi đó hay không, dựa trên các hậu quả tiềm tàng ở các khu vực khác của hệ thống.</p>"
  },
  "q16-28": {
-  "stem": "<p>Cho các loại review sau:</p>\n<ol>\n<li>Informal Review</li>\n<li>Walkthrough</li>\n<li>Technical Review</li>\n<li>Inspection</li>\n</ol>\n<p>Và các mô tả sau:</p>\n<p>A. Do tác giả dẫn dắt\nB. Tác giả không được đóng vai trò người ghi chép (scribe)\nC. Do người điều phối (moderator) dẫn dắt\nD. Mục tiêu chính là phát hiện các bất thường</p>\n<p>Phương án nào sau đây ghép các loại review với mô tả PHÙ HỢP NHẤT?</p>",
+  "stem": "<p>Cho các loại review sau:</p>\n<ol>\n<li>Informal Review</li>\n<li>Walkthrough</li>\n<li>Technical Review</li>\n<li>Inspection</li>\n</ol>\n<p>Và các mô tả sau:</p>\n<p>A. Do tác giả dẫn dắt<br />\nB. Tác giả không được đóng vai trò người ghi chép (scribe)<br />\nC. Do người điều phối (moderator) dẫn dắt<br />\nD. Mục tiêu chính là phát hiện các bất thường</p>\n<p>Phương án nào sau đây ghép các loại review với mô tả PHÙ HỢP NHẤT?</p>",
   "options": [
    "1B, 2A, 3C, 4D",
    "1D, 2A, 3C, 4B",
@@ -3657,7 +3657,7 @@
   "explanation": "<p>a) đúng. Statement testing là một kỹ thuật white-box testing trong đó coverage item là từng câu lệnh riêng lẻ trong code. Coverage được đo bằng số câu lệnh thực thi được đã được các test case thực thi chia cho tổng số câu lệnh thực thi được, biểu diễn dưới dạng phần trăm.</p>"
  },
  "q17-8": {
-  "stem": "<p>Xem xét phần sau của một test plan.</p>\n<ol>\n<li>\n<p>Unit Testing:\n- Developer thực hiện unit testing trên code của chính mình, đảm bảo phản hồi ngay lập tức và xử lý vấn đề nhanh chóng.</p>\n</li>\n<li>\n<p>Integration Testing:\n- Tester, tách biệt khỏi nhóm phát triển, thực hiện integration testing để xác nhận sự tương tác giữa các component đã được tích hợp.</p>\n</li>\n<li>\n<p>System Testing:\n- Một nhóm kiểm thử độc lập thực hiện system testing để đảm bảo đánh giá toàn diện và khách quan toàn bộ hệ thống.</p>\n</li>\n<li>\n<p>Performance Testing:\n- Các nhóm kiểm thử độc lập thực hiện performance testing để đưa ra đánh giá khách quan về khả năng phản hồi, khả năng mở rộng và độ ổn định của hệ thống trong nhiều điều kiện khác nhau.</p>\n</li>\n<li>\n<p>Security Testing:\n- Một nhóm kiểm thử bảo mật độc lập đánh giá khả năng chống truy cập trái phép của hệ thống và xác định các lỗ hổng, đảm bảo đánh giá bảo mật toàn diện và khách quan trong test plan.</p>\n</li>\n</ol>\n<p>Phần này thuộc mục nào của test plan?</p>",
+  "stem": "<p>Xem xét phần sau của một test plan.</p>\n<ol>\n<li>\n<p>Unit Testing:<br />\n- Developer thực hiện unit testing trên code của chính mình, đảm bảo phản hồi ngay lập tức và xử lý vấn đề nhanh chóng.</p>\n</li>\n<li>\n<p>Integration Testing:<br />\n- Tester, tách biệt khỏi nhóm phát triển, thực hiện integration testing để xác nhận sự tương tác giữa các component đã được tích hợp.</p>\n</li>\n<li>\n<p>System Testing:<br />\n- Một nhóm kiểm thử độc lập thực hiện system testing để đảm bảo đánh giá toàn diện và khách quan toàn bộ hệ thống.</p>\n</li>\n<li>\n<p>Performance Testing:<br />\n- Các nhóm kiểm thử độc lập thực hiện performance testing để đưa ra đánh giá khách quan về khả năng phản hồi, khả năng mở rộng và độ ổn định của hệ thống trong nhiều điều kiện khác nhau.</p>\n</li>\n<li>\n<p>Security Testing:<br />\n- Một nhóm kiểm thử bảo mật độc lập đánh giá khả năng chống truy cập trái phép của hệ thống và xác định các lỗ hổng, đảm bảo đánh giá bảo mật toàn diện và khách quan trong test plan.</p>\n</li>\n</ol>\n<p>Phần này thuộc mục nào của test plan?</p>",
   "options": [
    "Bối cảnh kiểm thử (context of testing)",
    "Test approach",
@@ -3777,7 +3777,7 @@
   "explanation": "<p>c) đúng. Brainstorming và mind mapping là các kỹ thuật được khuyến nghị để cùng nhau tạo ý tưởng và cấu trúc suy nghĩ xoay quanh user story. Các phương pháp này khuyến khích sự tham gia của mọi thành viên trong nhóm, thúc đẩy sự sáng tạo và đóng góp đa dạng, góp phần tạo nên sự hiểu biết chung và tầm nhìn toàn diện về những gì user story cần đạt được.</p>"
  },
  "q17-20": {
-  "stem": "<p>Bạn làm quản trị hệ thống cho một ứng dụng đăng tin bất động sản của một công ty quản lý bất động sản.</p>\n<p>Nhiệm vụ của bạn là:\n\"Đạt được sự tin tưởng rằng bạn có thể duy trì hệ thống hoạt động, và khôi phục nhanh chóng sau các sự cố bất lợi mà không phát sinh thêm rủi ro. Kiểm thử việc sao lưu và khôi phục bản sao lưu trên các môi trường khác nhau\"</p>\n<p>Những test level nào bạn có thể thực hiện?</p>\n<p>i. Component testing\nii. Component integration testing\niii. System testing\niv. System integration testing\nv. Acceptance testing</p>",
+  "stem": "<p>Bạn làm quản trị hệ thống cho một ứng dụng đăng tin bất động sản của một công ty quản lý bất động sản.</p>\n<p>Nhiệm vụ của bạn là:<br />\n\"Đạt được sự tin tưởng rằng bạn có thể duy trì hệ thống hoạt động, và khôi phục nhanh chóng sau các sự cố bất lợi mà không phát sinh thêm rủi ro. Kiểm thử việc sao lưu và khôi phục bản sao lưu trên các môi trường khác nhau\"</p>\n<p>Những test level nào bạn có thể thực hiện?</p>\n<p>i. Component testing<br />\nii. Component integration testing<br />\niii. System testing<br />\niv. System integration testing<br />\nv. Acceptance testing</p>",
   "options": [
    "iii",
    "v",
@@ -3797,7 +3797,7 @@
   "explanation": "<p>a) đúng. Kế hoạch chi tiết trong tương lai thường được đề cập trong các tài liệu lập kế hoạch kiểm thử hoặc test progress report, không phải trong completion report vốn tóm tắt các hoạt động đã hoàn thành.</p>"
  },
  "q17-22": {
-  "stem": "<p>Tham khảo các phát biểu sau về static testing và dynamic testing:</p>\n<p>i. Dynamic testing chỉ có thể áp dụng cho cả work product không thực thi được và work product thực thi được\nii. Static có thể gây ra failure trong code như biến có giá trị không xác định, biến chưa khai báo, code không thể tới được hoặc code trùng lặp\niii. Static testing có thể dễ dàng phát hiện hơn các defect nằm trên những đường đi trong code hiếm khi được thực thi hoặc khó tiếp cận bằng dynamic testing\niv. UML (Unified Modeling Language) Diagram, ER (Entity-Relationship) Diagram, BPMN (Business Process Model and Notation) Diagram, Data Flow Diagram (DFD) có thể được xem xét bằng static testing</p>\n<p>Đâu là SAI?</p>",
+  "stem": "<p>Tham khảo các phát biểu sau về static testing và dynamic testing:</p>\n<p>i. Dynamic testing chỉ có thể áp dụng cho cả work product không thực thi được và work product thực thi được<br />\nii. Static có thể gây ra failure trong code như biến có giá trị không xác định, biến chưa khai báo, code không thể tới được hoặc code trùng lặp<br />\niii. Static testing có thể dễ dàng phát hiện hơn các defect nằm trên những đường đi trong code hiếm khi được thực thi hoặc khó tiếp cận bằng dynamic testing<br />\niv. UML (Unified Modeling Language) Diagram, ER (Entity-Relationship) Diagram, BPMN (Business Process Model and Notation) Diagram, Data Flow Diagram (DFD) có thể được xem xét bằng static testing</p>\n<p>Đâu là SAI?</p>",
   "options": [
    "i, ii",
    "ii, iii, iv",
@@ -3867,7 +3867,7 @@
   "explanation": "<p>d) đúng. Các hoạt động trong quy trình review là: Planning - Review Initiation - Individual Review - Communication and Analysis - Fixing and Reporting.</p>"
  },
  "q17-29": {
-  "stem": "<p>Ghép các testware sau (1-4) với định nghĩa glossary đúng (A-D).</p>\n<ol>\n<li>Test case</li>\n<li>Test procedure</li>\n<li>Test charter</li>\n<li>Test suite</li>\n</ol>\n<p>A. Tài liệu ghi lại mục tiêu hoặc mục đích của một test session\nB. Một tập hợp các điều kiện tiên quyết, đầu vào, hành động (nếu có), kết quả mong đợi và điều kiện sau, được xây dựng dựa trên test condition\nC. Một chuỗi test case theo thứ tự thực thi, cùng với các hành động liên quan có thể cần để thiết lập điều kiện tiên quyết ban đầu và các hoạt động kết thúc sau khi thực thi\nD. Một tập hợp các test script hoặc test procedure được thực thi trong một lần chạy test cụ thể</p>",
+  "stem": "<p>Ghép các testware sau (1-4) với định nghĩa glossary đúng (A-D).</p>\n<ol>\n<li>Test case</li>\n<li>Test procedure</li>\n<li>Test charter</li>\n<li>Test suite</li>\n</ol>\n<p>A. Tài liệu ghi lại mục tiêu hoặc mục đích của một test session<br />\nB. Một tập hợp các điều kiện tiên quyết, đầu vào, hành động (nếu có), kết quả mong đợi và điều kiện sau, được xây dựng dựa trên test condition<br />\nC. Một chuỗi test case theo thứ tự thực thi, cùng với các hành động liên quan có thể cần để thiết lập điều kiện tiên quyết ban đầu và các hoạt động kết thúc sau khi thực thi<br />\nD. Một tập hợp các test script hoặc test procedure được thực thi trong một lần chạy test cụ thể</p>",
   "options": [
    "1B, 2D, 3A, 4C",
    "1D, 2C, 3A, 4B",
@@ -3897,7 +3897,7 @@
   "explanation": "<p>d) đúng. Một lợi ích chính của test automation là tiết kiệm thời gian nhờ giảm công việc thủ công lặp đi lặp lại, đặc biệt đối với regression testing.</p>"
  },
  "q17-32": {
-  "stem": "<p>Bạn đang thiết kế test case dựa trên decision table sau.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/aa15bb49299ecd8a.png\" loading=\"lazy\" /></p>\n<p>Kết quả mong đợi của từng test case sau là gì?</p>\n<p>TC1: Phụ nữ 18 tuổi, chưa đăng ký, có 4 năm kinh nghiệm;\nTC2: Nam giới 70 tuổi, đã đăng ký, có 4 năm kinh nghiệm;</p>",
+  "stem": "<p>Bạn đang thiết kế test case dựa trên decision table sau.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/aa15bb49299ecd8a.png\" loading=\"lazy\" /></p>\n<p>Kết quả mong đợi của từng test case sau là gì?</p>\n<p>TC1: Phụ nữ 18 tuổi, chưa đăng ký, có 4 năm kinh nghiệm;<br />\nTC2: Nam giới 70 tuổi, đã đăng ký, có 4 năm kinh nghiệm;</p>",
   "options": [
    "A, C",
    "C, A",
@@ -3957,7 +3957,7 @@
   "explanation": "<p>b) đúng. Xử lý các vấn đề liên quan đến công cụ (cấu hình và khắc phục sự cố một công cụ performance testing mới) đòi hỏi kiến thức kỹ thuật.</p>"
  },
  "q17-38": {
-  "stem": "<p>Một tester phát hiện một defect trong system testing, trong đó ảnh đại diện của người dùng không hiển thị đúng. Mục nào sau đây KHÔNG nên đưa vào defect report ở giai đoạn này?</p>\n<p>i. Các bước tái hiện defect\nii. Severity và priority của defect\niii. Hành vi mong đợi so với hành vi thực tế\niv. Thời gian ước tính để sửa defect\nv. Root cause và phân tích kỹ thuật chi tiết</p>",
+  "stem": "<p>Một tester phát hiện một defect trong system testing, trong đó ảnh đại diện của người dùng không hiển thị đúng. Mục nào sau đây KHÔNG nên đưa vào defect report ở giai đoạn này?</p>\n<p>i. Các bước tái hiện defect<br />\nii. Severity và priority của defect<br />\niii. Hành vi mong đợi so với hành vi thực tế<br />\niv. Thời gian ước tính để sửa defect<br />\nv. Root cause và phân tích kỹ thuật chi tiết</p>",
   "options": [
    "ii và iv",
    "iv và v",
@@ -3967,7 +3967,7 @@
   "explanation": "<p>b) đúng. Theo syllabus, một defect report thường bao gồm: mã định danh duy nhất, tiêu đề kèm tóm tắt ngắn, ngày phát hiện bất thường, tổ chức phát hành và tác giả (kèm vai trò), xác định test object và môi trường kiểm thử, bối cảnh của defect, mô tả failure (các bước, log, ảnh chụp màn hình), kết quả mong đợi và kết quả thực tế, severity, priority, trạng thái và các tham chiếu. Thời gian ước tính để sửa (iv) và root cause/phân tích kỹ thuật chi tiết (v) được developer xác định sau, không phải do tester xác định tại thời điểm báo cáo.</p>"
  },
  "q17-39": {
-  "stem": "<p>Xem xét user story sau:\n- Là một người thường xuyên đi máy bay, tôi muốn nhận thông báo về việc chuyến bay bị trễ, bị hủy hoặc đổi cửa ra máy bay qua phương thức tôi ưa thích (email hoặc SMS), để tôi có thể điều chỉnh kế hoạch cho phù hợp</p>\n<p>Và acceptance criteria của nó:</p>\n<ol>\n<li>Người dùng có thể đăng ký nhận thông báo chuyến bay bằng cách nhập số hiệu chuyến bay, ngày bay và phương thức thông báo ưa thích (email hoặc SMS)</li>\n<li>Người dùng phải cung cấp địa chỉ email hợp lệ (nếu chọn email) hoặc số điện thoại di động hợp lệ (nếu chọn SMS)</li>\n<li>Người dùng cần chọn khung thời gian muốn nhận thông báo (48 giờ trước khi khởi hành hoặc 24 giờ trước khi khởi hành)</li>\n<li>Hệ thống sẽ gửi thông báo qua phương thức người dùng đã chọn nếu trạng thái chuyến bay chuyển sang \"delayed\" hoặc \"canceled\"</li>\n<li>Người dùng có thể thay đổi phương thức thông báo ưa thích bất cứ lúc nào bằng cách lặp lại các bước 1-3</li>\n<li>Người dùng có thể hủy đăng ký nhận thông báo ngay sau khi đăng ký lần đầu hoặc sau khi thay đổi phương thức thông báo</li>\n</ol>\n<p>Test case nào sau đây sẽ KHÔNG liên quan đến user story này?</p>",
+  "stem": "<p>Xem xét user story sau:<br />\n- Là một người thường xuyên đi máy bay, tôi muốn nhận thông báo về việc chuyến bay bị trễ, bị hủy hoặc đổi cửa ra máy bay qua phương thức tôi ưa thích (email hoặc SMS), để tôi có thể điều chỉnh kế hoạch cho phù hợp</p>\n<p>Và acceptance criteria của nó:</p>\n<ol>\n<li>Người dùng có thể đăng ký nhận thông báo chuyến bay bằng cách nhập số hiệu chuyến bay, ngày bay và phương thức thông báo ưa thích (email hoặc SMS)</li>\n<li>Người dùng phải cung cấp địa chỉ email hợp lệ (nếu chọn email) hoặc số điện thoại di động hợp lệ (nếu chọn SMS)</li>\n<li>Người dùng cần chọn khung thời gian muốn nhận thông báo (48 giờ trước khi khởi hành hoặc 24 giờ trước khi khởi hành)</li>\n<li>Hệ thống sẽ gửi thông báo qua phương thức người dùng đã chọn nếu trạng thái chuyến bay chuyển sang \"delayed\" hoặc \"canceled\"</li>\n<li>Người dùng có thể thay đổi phương thức thông báo ưa thích bất cứ lúc nào bằng cách lặp lại các bước 1-3</li>\n<li>Người dùng có thể hủy đăng ký nhận thông báo ngay sau khi đăng ký lần đầu hoặc sau khi thay đổi phương thức thông báo</li>\n</ol>\n<p>Test case nào sau đây sẽ KHÔNG liên quan đến user story này?</p>",
   "options": [
    "Đầu vào: Khách hàng nhập số hiệu chuyến bay hợp lệ, chọn SMS làm phương thức thông báo và chọn nhận thông báo 48 giờ trước khi khởi hành. Đầu ra mong đợi: Hệ thống xác nhận đăng ký và gửi thông báo qua SMS nếu có bất kỳ thay đổi nào về trạng thái chuyến bay.",
    "Đầu vào: Khách hàng đăng nhập vào tài khoản để xem lại các chuyến bay đã đi với hãng hàng không. Đầu ra mong đợi: Hệ thống hiển thị danh sách các đặt chỗ chuyến bay trước đây và chi tiết của chúng.",
@@ -4097,7 +4097,7 @@
   "explanation": "<p>d) đúng. Một toán tử sai trong code là ví dụ về một defect (bug) trong code. Defect có thể được tìm thấy trong tài liệu, chẳng hạn như đặc tả yêu cầu hoặc test script, trong mã nguồn, hoặc trong một artifact hỗ trợ như file build. Defect trong các artifact được tạo ra sớm hơn trong SDLC, nếu không được phát hiện, thường dẫn đến các artifact bị lỗi ở giai đoạn sau của vòng đời.</p>"
  },
  "q18-12": {
-  "stem": "<p>Xem xét các loại test sau (1-4) và các agile testing quadrant (A-D):</p>\n<ol>\n<li>Unit test</li>\n<li>Smoke test</li>\n<li>Beta test</li>\n<li>User story test</li>\n</ol>\n<p>A. Agile testing quadrant Q1: hướng công nghệ, hỗ trợ nhóm phát triển\nB. Agile testing quadrant Q2: hướng nghiệp vụ, hỗ trợ nhóm phát triển\nC. Agile testing quadrant Q3: hướng nghiệp vụ, đánh giá phản biện sản phẩm\nD. Agile testing quadrant Q4: hướng công nghệ, đánh giá phản biện sản phẩm</p>\n<p>Các loại test trên được ánh xạ vào các agile testing quadrant như thế nào?</p>",
+  "stem": "<p>Xem xét các loại test sau (1-4) và các agile testing quadrant (A-D):</p>\n<ol>\n<li>Unit test</li>\n<li>Smoke test</li>\n<li>Beta test</li>\n<li>User story test</li>\n</ol>\n<p>A. Agile testing quadrant Q1: hướng công nghệ, hỗ trợ nhóm phát triển<br />\nB. Agile testing quadrant Q2: hướng nghiệp vụ, hỗ trợ nhóm phát triển<br />\nC. Agile testing quadrant Q3: hướng nghiệp vụ, đánh giá phản biện sản phẩm<br />\nD. Agile testing quadrant Q4: hướng công nghệ, đánh giá phản biện sản phẩm</p>\n<p>Các loại test trên được ánh xạ vào các agile testing quadrant như thế nào?</p>",
   "options": [
    "1A, 2C, 3D, 4B",
    "1A, 2D, 3C, 4B",
@@ -4197,7 +4197,7 @@
   "explanation": "<p>a) đúng. Một tin nhắn Slack ngắn gửi trưởng nhóm phát triển yêu cầu sửa nhanh là cực kỳ không phù hợp đối với một hệ thống safety-critical. Các defect nghiêm trọng đòi hỏi phân tích cẩn thận, tài liệu hóa và hành động có phối hợp, chứ không phải sửa nhanh.</p>"
  },
  "q18-22": {
-  "stem": "<p>Hãy xác định phát biểu nào sau đây (i-v) đúng với dynamic testing và phát biểu nào đúng với static testing</p>\n<p>i. Việc xác định các thành phần bị thiếu trong cấu trúc cơ sở dữ liệu dễ hơn với loại kiểm thử này\nii. Việc tìm các biến được khai báo nhưng không bao giờ được sử dụng dễ hơn với loại kiểm thử này\niii. Có thể xác định defect và failure với loại kiểm thử này\niv. Mục tiêu kiểm thử là xác định defect càng sớm càng tốt\nv. Việc xác định thời gian phản hồi không đáp ứng của giao diện bên ngoài dễ hơn với loại kiểm thử này</p>",
+  "stem": "<p>Hãy xác định phát biểu nào sau đây (i-v) đúng với dynamic testing và phát biểu nào đúng với static testing</p>\n<p>i. Việc xác định các thành phần bị thiếu trong cấu trúc cơ sở dữ liệu dễ hơn với loại kiểm thử này<br />\nii. Việc tìm các biến được khai báo nhưng không bao giờ được sử dụng dễ hơn với loại kiểm thử này<br />\niii. Có thể xác định defect và failure với loại kiểm thử này<br />\niv. Mục tiêu kiểm thử là xác định defect càng sớm càng tốt<br />\nv. Việc xác định thời gian phản hồi không đáp ứng của giao diện bên ngoài dễ hơn với loại kiểm thử này</p>",
   "options": [
    "iii, iv, v đúng với static testing; i, ii, iv đúng với dynamic testing",
    "i, ii, iv đúng với static testing; iii, v đúng với dynamic testing",
@@ -4207,7 +4207,7 @@
   "explanation": "<p>c) đúng. Phát biểu iv (mục tiêu xác định defect càng sớm càng tốt) áp dụng cho cả hai loại kiểm thử, không chỉ riêng dynamic testing. Static testing dễ phát hiện vấn đề về cấu trúc cơ sở dữ liệu (i) và biến không được sử dụng (ii) hơn; dynamic testing xác định failure (iii) và vấn đề về thời gian phản hồi (v).</p>"
  },
  "q18-23": {
-  "stem": "<p>Một ứng dụng video có các yêu cầu sau:</p>\n<p>Ứng dụng phải cho phép phát video ở các độ phân giải màn hình sau:\n1. 2560x1440(2K)\n2. 3840x2160(4K)\n3. 7680x4320(8K)</p>\n<p>Trên ba thiết bị:\n1. Điện thoại\n2. Máy tính bảng\n3. TV</p>\n<p>Điện thoại và máy tính bảng chỉ hỗ trợ độ phân giải video tối đa 2K, trong khi TV hỗ trợ video từ 4K trở lên. Bạn muốn áp dụng kỹ thuật kiểm thử Each Choice Equivalence Partitioning.</p>\n<p>Số lượng test case tối thiểu để đạt 100% coverage EP HỢP LỆ là bao nhiêu?</p>",
+  "stem": "<p>Một ứng dụng video có các yêu cầu sau:</p>\n<p>Ứng dụng phải cho phép phát video ở các độ phân giải màn hình sau:<br />\n1. 2560x1440(2K)<br />\n2. 3840x2160(4K)<br />\n3. 7680x4320(8K)</p>\n<p>Trên ba thiết bị:<br />\n1. Điện thoại<br />\n2. Máy tính bảng<br />\n3. TV</p>\n<p>Điện thoại và máy tính bảng chỉ hỗ trợ độ phân giải video tối đa 2K, trong khi TV hỗ trợ video từ 4K trở lên. Bạn muốn áp dụng kỹ thuật kiểm thử Each Choice Equivalence Partitioning.</p>\n<p>Số lượng test case tối thiểu để đạt 100% coverage EP HỢP LỆ là bao nhiêu?</p>",
   "options": [
    "3",
    "4",
@@ -4257,7 +4257,7 @@
   "explanation": "<p>a) đúng. Đây là maintainability testing, không phải maintenance testing. Các trigger của maintenance testing bao gồm sửa đổi (hot fix), chuyển đổi (nền tảng vận hành mới) và ngừng sử dụng (truy xuất dữ liệu đã lưu trữ).</p>"
  },
  "q18-28": {
-  "stem": "<p>Cho các loại review và đặc điểm review sau:</p>\n<p>a. Informal review\nb. Walkthrough\nc. Technical review\nd. Inspection</p>\n<ol>\n<li>Cuộc họp review là tùy chọn, lý tưởng nhất là do một facilitator đã được đào tạo dẫn dắt</li>\n<li>Việc chuẩn bị cá nhân trước cuộc họp review là tùy chọn</li>\n<li>Có thể được thực hiện dưới hình thức \"buddy check\"</li>\n<li>Tuân theo quy trình đã định nghĩa với đầu ra được tài liệu hóa chính thức, dựa trên các quy tắc và checklist</li>\n</ol>\n<p>Phương án nào sau đây ghép loại review với đặc điểm review PHÙ HỢP NHẤT?</p>",
+  "stem": "<p>Cho các loại review và đặc điểm review sau:</p>\n<p>a. Informal review<br />\nb. Walkthrough<br />\nc. Technical review<br />\nd. Inspection</p>\n<ol>\n<li>Cuộc họp review là tùy chọn, lý tưởng nhất là do một facilitator đã được đào tạo dẫn dắt</li>\n<li>Việc chuẩn bị cá nhân trước cuộc họp review là tùy chọn</li>\n<li>Có thể được thực hiện dưới hình thức \"buddy check\"</li>\n<li>Tuân theo quy trình đã định nghĩa với đầu ra được tài liệu hóa chính thức, dựa trên các quy tắc và checklist</li>\n</ol>\n<p>Phương án nào sau đây ghép loại review với đặc điểm review PHÙ HỢP NHẤT?</p>",
   "options": [
    "a - 3; b - 2; c - 1; d - 4",
    "a - 2; b - 3; c - 1; d - 4",
@@ -4297,7 +4297,7 @@
   "explanation": "<p>b) đúng. Usability testing đòi hỏi sự phán đoán của con người và đánh giá trải nghiệm người dùng mang tính chủ quan, điều không thể tự động hóa hiệu quả. Các công việc khác (bộ regression test, kiểm tra đa trình duyệt, xác minh khả năng phục hồi) rất phù hợp để tự động hóa.</p>"
  },
  "q18-32": {
-  "stem": "<p>Bạn đang thiết kế test case dựa trên decision table sau.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/5d628de5507a839a.png\" loading=\"lazy\" /></p>\n<p>Đến nay bạn đã thiết kế các test case sau:</p>\n<p>TC1: Nam 19 tuổi, chưa đăng ký, không có kinh nghiệm;\nTC2: Nữ 65 tuổi, chưa đăng ký, có 4 năm kinh nghiệm;\nTC3: Nam 30 tuổi, đã đăng ký, không có kinh nghiệm;\nTC4: Nữ 65 tuổi, đã đăng ký, có 4 năm kinh nghiệm;</p>\n<p>Decision table coverage đạt được bởi các test case này là bao nhiêu?</p>",
+  "stem": "<p>Bạn đang thiết kế test case dựa trên decision table sau.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/5d628de5507a839a.png\" loading=\"lazy\" /></p>\n<p>Đến nay bạn đã thiết kế các test case sau:</p>\n<p>TC1: Nam 19 tuổi, chưa đăng ký, không có kinh nghiệm;<br />\nTC2: Nữ 65 tuổi, chưa đăng ký, có 4 năm kinh nghiệm;<br />\nTC3: Nam 30 tuổi, đã đăng ký, không có kinh nghiệm;<br />\nTC4: Nữ 65 tuổi, đã đăng ký, có 4 năm kinh nghiệm;</p>\n<p>Decision table coverage đạt được bởi các test case này là bao nhiêu?</p>",
   "options": [
    "20%",
    "40%",
@@ -4357,7 +4357,7 @@
   "explanation": "<p>d) đúng. Tester độc lập với nền tảng đa dạng, quan điểm kỹ thuật và thiên kiến khác nhau có khả năng nhận ra các loại failure và defect khác so với developer, giúp tăng hiệu quả phát hiện.</p>"
  },
  "q18-38": {
-  "stem": "<p>Những mục nào sau đây thường được đưa vào một defect report được ghi nhận trong quá trình kiểm thử động?</p>\n<p>i. Tổ chức phát hành và tác giả, bao gồm vai trò của họ\nii. Kỹ thuật kiểm thử\niii. Giai đoạn SDLC\niv. Test data\nv. Trạng thái của defect\nvi. Tham chiếu (ví dụ: đến test case)</p>",
+  "stem": "<p>Những mục nào sau đây thường được đưa vào một defect report được ghi nhận trong quá trình kiểm thử động?</p>\n<p>i. Tổ chức phát hành và tác giả, bao gồm vai trò của họ<br />\nii. Kỹ thuật kiểm thử<br />\niii. Giai đoạn SDLC<br />\niv. Test data<br />\nv. Trạng thái của defect<br />\nvi. Tham chiếu (ví dụ: đến test case)</p>",
   "options": [
    "i, iv, v, vi",
    "i, iv, v",
@@ -4367,7 +4367,7 @@
   "explanation": "<p>d) đúng. Theo syllabus, một defect report thường bao gồm: mã định danh duy nhất; tiêu đề kèm tóm tắt ngắn; ngày phát hiện bất thường, tổ chức phát hành và tác giả, bao gồm vai trò của họ; xác định test object và môi trường kiểm thử; bối cảnh của defect; mô tả failure, các bước đã phát hiện ra bất thường và mọi test log, database dump, ảnh chụp màn hình hoặc bản ghi liên quan; kết quả mong đợi và kết quả thực tế; mức độ nghiêm trọng (severity); độ ưu tiên (priority); trạng thái; tham chiếu.</p>"
  },
  "q18-39": {
-  "stem": "<p>Xem xét user story sau:\n- Là một hệ thống quản lý chiến dịch email, tôi muốn có khả năng ưu tiên các chiến dịch email cho khách hàng tiêu chuẩn và khách hàng premium dựa trên kích thước danh sách người nhận, để tôi có thể tối ưu việc gửi và đảm bảo những thông tin có tác động lớn nhất được gửi kịp thời.</p>\n<p>Và acceptance criteria của nó:\n- AC1: Email của khách hàng premium phải được xử lý trước email của khách hàng tiêu chuẩn, bất kể số lượng người nhận.\n- AC2: Trong mỗi hạng khách hàng (tiêu chuẩn hoặc premium), các chiến dịch có danh sách người nhận nhỏ hơn phải được ưu tiên cao hơn\n- AC3: Nếu hai chiến dịch trong cùng hạng khách hàng có cùng số lượng người nhận, chúng phải được xử lý theo thứ tự nhận được</p>\n<p>Kịch bản kiểm thử nào sau đây KHÔNG hợp lệ dựa trên user story và acceptance criteria?</p>",
+  "stem": "<p>Xem xét user story sau:<br />\n- Là một hệ thống quản lý chiến dịch email, tôi muốn có khả năng ưu tiên các chiến dịch email cho khách hàng tiêu chuẩn và khách hàng premium dựa trên kích thước danh sách người nhận, để tôi có thể tối ưu việc gửi và đảm bảo những thông tin có tác động lớn nhất được gửi kịp thời.</p>\n<p>Và acceptance criteria của nó:<br />\nAC1: Email của khách hàng premium phải được xử lý trước email của khách hàng tiêu chuẩn, bất kể số lượng người nhận.<br />\nAC2: Trong mỗi hạng khách hàng (tiêu chuẩn hoặc premium), các chiến dịch có danh sách người nhận nhỏ hơn phải được ưu tiên cao hơn<br />\nAC3: Nếu hai chiến dịch trong cùng hạng khách hàng có cùng số lượng người nhận, chúng phải được xử lý theo thứ tự nhận được</p>\n<p>Kịch bản kiểm thử nào sau đây KHÔNG hợp lệ dựa trên user story và acceptance criteria?</p>",
   "options": [
    "Chiến dịch của khách hàng premium với 200 người nhận được gửi trước chiến dịch của khách hàng tiêu chuẩn với 100 người nhận",
    "Hai chiến dịch premium được tạo: một với 50 người nhận và một với 100 người nhận. Chiến dịch với 50 người nhận được gửi trước",
@@ -4587,7 +4587,7 @@
   "explanation": "<p>a) đúng. Acceptance testing tập trung vào validation (đáp ứng nhu cầu nghiệp vụ của người dùng) và chứng minh sự sẵn sàng để triển khai. (b) mô tả system testing; (c) mô tả verification trong system testing; (d) mô tả test object của system integration testing.</p>"
  },
  "q19-21": {
-  "stem": "<p>Hãy quyết định mục nào sau đây (i-vi) nên được đưa vào báo cáo tiến độ kiểm thử (test progress report):</p>\n<p>i. Tiến độ của giai đoạn kiểm thử hiện tại, bao gồm mọi sai lệch đáng chú ý\nii. Chi tiết về các defect chưa được giải quyết và tác động của chúng đến tiến độ dự án\niii. Kế hoạch chi tiết cho giai đoạn kiểm thử tiếp theo, bao gồm phân bổ nguồn lực\niv. Tóm tắt kiểm thử\nv. Khoảng thời gian kiểm thử\nvi. Rà soát và đánh giá ngân sách dự án và chi phí đã chi đến thời điểm hiện tại</p>",
+  "stem": "<p>Hãy quyết định mục nào sau đây (i-vi) nên được đưa vào báo cáo tiến độ kiểm thử (test progress report):</p>\n<p>i. Tiến độ của giai đoạn kiểm thử hiện tại, bao gồm mọi sai lệch đáng chú ý<br />\nii. Chi tiết về các defect chưa được giải quyết và tác động của chúng đến tiến độ dự án<br />\niii. Kế hoạch chi tiết cho giai đoạn kiểm thử tiếp theo, bao gồm phân bổ nguồn lực<br />\niv. Tóm tắt kiểm thử<br />\nv. Khoảng thời gian kiểm thử<br />\nvi. Rà soát và đánh giá ngân sách dự án và chi phí đã chi đến thời điểm hiện tại</p>",
   "options": [
    "i, ii, v",
    "i, iii, v",
@@ -4617,7 +4617,7 @@
   "explanation": "<p>b) đúng. Có thể xác định các phân vùng tương đương đầu vào hợp lệ sau: Số giờ: 1 (Dưới 1 giờ), 2 (Từ 1 đến 2 giờ), 3 (Trên 2 giờ); Cường độ: 4 (Rất thấp), 5 (Thấp), 6 (Trung bình), 7 (Cao), 8 (Turbo). Các phân vùng tương đương đầu vào hợp lệ còn thiếu là: (3), (5) và (8). Có thể bao phủ chúng bằng hai test case, ví dụ: TC4: Cường độ Thấp, 3 giờ; TC5: Cường độ Turbo, 0.5 giờ.</p>"
  },
  "q19-24": {
-  "stem": "<p>Cho các tác vụ kiểm thử sau:</p>\n<ol>\n<li>Tập hợp các test case thành test suite</li>\n<li>Chi tiết hóa các test condition thành test case và testware khác</li>\n<li>Xác định các tính năng có thể kiểm thử trong test basis</li>\n<li>Ghi log kết quả kiểm thử</li>\n<li>Bổ sung nguồn lực mới khi và ở nơi cần thiết</li>\n<li>Lập lịch kiểm thử</li>\n</ol>\n<p>Và các hoạt động kiểm thử sau:</p>\n<p>A. Test design\nB. Test planning\nC. Test monitoring and control\nD. Test analysis</p>\n<p>Phương án nào sau đây ghép tác vụ với hoạt động phù hợp NHẤT?</p>",
+  "stem": "<p>Cho các tác vụ kiểm thử sau:</p>\n<ol>\n<li>Tập hợp các test case thành test suite</li>\n<li>Chi tiết hóa các test condition thành test case và testware khác</li>\n<li>Xác định các tính năng có thể kiểm thử trong test basis</li>\n<li>Ghi log kết quả kiểm thử</li>\n<li>Bổ sung nguồn lực mới khi và ở nơi cần thiết</li>\n<li>Lập lịch kiểm thử</li>\n</ol>\n<p>Và các hoạt động kiểm thử sau:</p>\n<p>A. Test design<br />\nB. Test planning<br />\nC. Test monitoring and control<br />\nD. Test analysis</p>\n<p>Phương án nào sau đây ghép tác vụ với hoạt động phù hợp NHẤT?</p>",
   "options": [
    "A-1, B-6, C-5, D-2",
    "A-3, B-6, C-5, D-2",
@@ -4647,7 +4647,7 @@
   "explanation": "<p>b) đúng. Có 10 giá trị biên cho kết quả cuối cùng: 0, 59, 60, 69, 70, 79, 80, 89, 90 và 100. Các test case bao phủ bốn giá trị trong số đó (TC1 – 0, TC3 – 60, TC5 – 79, TC6 – 80). Do đó, các test case bao phủ 4/10 = 40%.</p>"
  },
  "q19-27": {
-  "stem": "<p>Bạn đang kiểm thử một ứng dụng học ngoại ngữ cho một học viện giáo dục.</p>\n<p>Nhiệm vụ của bạn là:\n\"Thực hiện các bước lẽ ra sẽ tái hiện failure do defect gây ra và kiểm tra rằng failure không còn xảy ra\"</p>\n<p>Trong iteration hiện tại, nhóm quyết định triển khai chức năng thanh toán.</p>\n<p>Bạn CÓ KHẢ NĂNG NHẤT đang thực hiện loại kiểm thử nào?</p>",
+  "stem": "<p>Bạn đang kiểm thử một ứng dụng học ngoại ngữ cho một học viện giáo dục.</p>\n<p>Nhiệm vụ của bạn là:<br />\n\"Thực hiện các bước lẽ ra sẽ tái hiện failure do defect gây ra và kiểm tra rằng failure không còn xảy ra\"</p>\n<p>Trong iteration hiện tại, nhóm quyết định triển khai chức năng thanh toán.</p>\n<p>Bạn CÓ KHẢ NĂNG NHẤT đang thực hiện loại kiểm thử nào?</p>",
   "options": [
    "Confirmation testing",
    "Regression Testing",
@@ -4667,7 +4667,7 @@
   "explanation": "<p>b) đúng. Trong giai đoạn Communication and Analysis, vì các bất thường (anomaly) được xác định trong review không nhất thiết là defect, nên tất cả các bất thường này cần được phân tích và thảo luận. Với mỗi bất thường, cần đưa ra quyết định về trạng thái, người chịu trách nhiệm và các hành động cần thiết. Việc này thường được thực hiện trong một cuộc họp review, trong đó những người tham gia cũng quyết định mức chất lượng của sản phẩm công việc được review và các hành động tiếp theo cần thực hiện.</p>"
  },
  "q19-29": {
-  "stem": "<p>R1: Lo ngại về quyền riêng tư của người dùng\nMô tả rủi ro: Người dùng có thể bày tỏ lo ngại về cách ứng dụng xử lý dữ liệu sức khỏe nhạy cảm, dẫn đến nguy cơ mất lòng tin.\nKhả năng xảy ra (L): Trung bình\nTác động (I): Cao\nRisk Level (L x I): Trung bình-Cao\nChiến lược giảm thiểu: Triển khai mã hóa dữ liệu mạnh mẽ. Truyền đạt rõ ràng chính sách quyền riêng tư của ứng dụng và việc tuân thủ các quy định bảo vệ dữ liệu.\nTrạng thái: Đang thực hiện</p>\n<p>R2: Vấn đề tương thích thiết bị\nMô tả rủi ro: Ứng dụng có thể gặp vấn đề tương thích với một số thiết bị theo dõi sức khỏe, làm hạn chế hiệu quả của ứng dụng.\nKhả năng xảy ra (L): Cao\nTác động (I): Trung bình\nRisk Level (L x I): Cao\nChiến lược giảm thiểu: Tiến hành kiểm thử tương thích kỹ lưỡng với nhiều loại thiết bị theo dõi sức khỏe. Thiết lập quan hệ đối tác với các nhà sản xuất thiết bị lớn.\nTrạng thái: Chưa bắt đầu</p>\n<p>Hoạt động kiểm thử nào tạo ra testware này làm đầu ra?</p>",
+  "stem": "<p>R1: Lo ngại về quyền riêng tư của người dùng<br />\nMô tả rủi ro: Người dùng có thể bày tỏ lo ngại về cách ứng dụng xử lý dữ liệu sức khỏe nhạy cảm, dẫn đến nguy cơ mất lòng tin.<br />\nKhả năng xảy ra (L): Trung bình<br />\nTác động (I): Cao<br />\nRisk Level (L x I): Trung bình-Cao<br />\nChiến lược giảm thiểu: Triển khai mã hóa dữ liệu mạnh mẽ. Truyền đạt rõ ràng chính sách quyền riêng tư của ứng dụng và việc tuân thủ các quy định bảo vệ dữ liệu.<br />\nTrạng thái: Đang thực hiện</p>\n<p>R2: Vấn đề tương thích thiết bị<br />\nMô tả rủi ro: Ứng dụng có thể gặp vấn đề tương thích với một số thiết bị theo dõi sức khỏe, làm hạn chế hiệu quả của ứng dụng.<br />\nKhả năng xảy ra (L): Cao<br />\nTác động (I): Trung bình<br />\nRisk Level (L x I): Cao<br />\nChiến lược giảm thiểu: Tiến hành kiểm thử tương thích kỹ lưỡng với nhiều loại thiết bị theo dõi sức khỏe. Thiết lập quan hệ đối tác với các nhà sản xuất thiết bị lớn.<br />\nTrạng thái: Chưa bắt đầu</p>\n<p>Hoạt động kiểm thử nào tạo ra testware này làm đầu ra?</p>",
   "options": [
    "Test planning",
    "Test analysis",
@@ -4707,7 +4707,7 @@
   "explanation": "<p>b) đúng. Có 5 quy tắc. TC1 bao phủ R1; TC2 bao phủ R5; TC3 bao phủ R2; TC4 bao phủ R2; TC5 bao phủ R5. Như vậy 3 trên 5 quy tắc được bao phủ. 60%.</p>"
  },
  "q19-33": {
-  "stem": "<p>Ghép các vai trò sau với các tác vụ kiểm thử phù hợp:</p>\n<ol>\n<li>Vai trò quản lý kiểm thử (test management role)</li>\n<li>Vai trò kiểm thử (testing role)</li>\n</ol>\n<p>A. Xác định mọi hạ tầng và công cụ cần thiết\nB. Trao đổi test completion report với các bên liên quan\nC. Điều phối technical review về môi trường kiểm thử\nD. Kiểm tra việc thiết lập stub, driver và simulator\nE. Nhập yêu cầu thay đổi cho các defect report đang mở</p>",
+  "stem": "<p>Ghép các vai trò sau với các tác vụ kiểm thử phù hợp:</p>\n<ol>\n<li>Vai trò quản lý kiểm thử (test management role)</li>\n<li>Vai trò kiểm thử (testing role)</li>\n</ol>\n<p>A. Xác định mọi hạ tầng và công cụ cần thiết<br />\nB. Trao đổi test completion report với các bên liên quan<br />\nC. Điều phối technical review về môi trường kiểm thử<br />\nD. Kiểm tra việc thiết lập stub, driver và simulator<br />\nE. Nhập yêu cầu thay đổi cho các defect report đang mở</p>",
   "options": [
    "1A, 1B, 1C, 1D, 2E",
    "1B, 1E, 2A, 2C, 2D",
@@ -4757,7 +4757,7 @@
   "explanation": "<p>c) đúng (phát biểu SAI). Mặc dù tester nên giữ thái độ hoài nghi chuyên nghiệp, việc tích cực chỉ trích chất lượng không giúp tăng cường sự cộng tác. Kỹ năng giao tiếp tốt, sự thấu cảm và cách báo cáo defect khéo léo mới là những điều tăng cường sự cộng tác.</p>"
  },
  "q19-38": {
-  "stem": "<p>Ứng dụng: MobileBank v2.3</p>\n<p>Defect: Chuyển tiền đến người nhận mới không thành công</p>\n<p>Các bước tái hiện:\n1. Đăng nhập vào ứng dụng\n2. Chạm \"Transfer Funds\"\n3. Chọn \"New Recipient\"\n4. Nhập thông tin người nhận (tên(TestJohn Doe), số tài khoản ngân hàng(3921874189244))\n5. Nhập số tiền chuyển\n6. Chạm \"Confirm\"</p>\n<p>Kết quả mong đợi: Chuyển tiền thành công và hiển thị thông báo xác nhận.\nKết quả thực tế: Thông báo lỗi: \"Transaction failed. Please try again later.\"</p>\n<p>Mức độ nghiêm trọng (Severity): High\nMức độ ưu tiên (Priority): Urgent</p>\n<p>Defect report chưa có đầy đủ các thông tin cần thiết và bạn dự định bổ sung. Mục nào sau đây thường KHÔNG được đưa vào defect report ban đầu của tester?</p>",
+  "stem": "<p>Ứng dụng: MobileBank v2.3</p>\n<p>Defect: Chuyển tiền đến người nhận mới không thành công</p>\n<p>Các bước tái hiện:<br />\n1. Đăng nhập vào ứng dụng<br />\n2. Chạm \"Transfer Funds\"<br />\n3. Chọn \"New Recipient\"<br />\n4. Nhập thông tin người nhận (tên(TestJohn Doe), số tài khoản ngân hàng(3921874189244))<br />\n5. Nhập số tiền chuyển<br />\n6. Chạm \"Confirm\"</p>\n<p>Kết quả mong đợi: Chuyển tiền thành công và hiển thị thông báo xác nhận.<br />\nKết quả thực tế: Thông báo lỗi: \"Transaction failed. Please try again later.\"</p>\n<p>Mức độ nghiêm trọng (Severity): High<br />\nMức độ ưu tiên (Priority): Urgent</p>\n<p>Defect report chưa có đầy đủ các thông tin cần thiết và bạn dự định bổ sung. Mục nào sau đây thường KHÔNG được đưa vào defect report ban đầu của tester?</p>",
   "options": [
    "Ngày quan sát thấy bất thường, tổ chức phát hành và tác giả, bao gồm vai trò của họ",
    "Mã định danh duy nhất và trạng thái của defect",
@@ -5038,7 +5038,7 @@
   "explanation": "<p>d) đúng. Configuration management là thực hành tốt nhất cho tình huống này. Nó bao gồm việc ghi nhận và cập nhật chi tiết thông tin mô tả phần mềm và phần cứng của một tổ chức. Điều này bao gồm quản lý phiên bản, theo dõi thay đổi, và đảm bảo mọi test case, script và dữ liệu được định danh và duy trì đúng cách trong suốt vòng đời phát triển và kiểm thử.</p>"
  },
  "q20-26": {
-  "stem": "<p>Một developer được yêu cầu triển khai các quy tắc nghiệp vụ sau:</p>\n<p>INPUT: value (integer number)\nIF (value ≥ 1000 AND value ≤ 2000) THEN write \"value OK\"\nELSE write \"value OK\"</p>\n<p>Bạn thiết kế test case bằng boundary value analysis 2 giá trị.</p>\n<p>Tập đầu vào kiểm thử nào sau đây đạt coverage lớn nhất?</p>",
+  "stem": "<p>Một developer được yêu cầu triển khai các quy tắc nghiệp vụ sau:</p>\n<p>INPUT: value (integer number)<br />\nIF (value ≥ 1000 AND value ≤ 2000) THEN write \"value OK\"<br />\nELSE write \"value OK\"</p>\n<p>Bạn thiết kế test case bằng boundary value analysis 2 giá trị.</p>\n<p>Tập đầu vào kiểm thử nào sau đây đạt coverage lớn nhất?</p>",
   "options": [
    "1000, 1001, 2000, 2001",
    "999, 1000, 1999, 2000",
@@ -5158,7 +5158,7 @@
   "explanation": "<p>c) đúng. Các work product có thể được kiểm thử bởi chính tác giả (không có tính độc lập), bởi đồng nghiệp của tác giả trong cùng nhóm (một mức độ độc lập nhất định), bởi tester ngoài nhóm của tác giả nhưng trong cùng tổ chức (độc lập cao), hoặc bởi tester từ bên ngoài tổ chức (độc lập rất cao).</p>"
  },
  "q20-38": {
-  "stem": "<p>Hãy xem defect report sau cho một ứng dụng ngân hàng di động:</p>\n<p>Ứng dụng: BankApp v2.1\nDefect: Không thể nộp séc qua ứng dụng di động</p>\n<p>Các bước tái hiện:\n1. Đăng nhập vào BankApp.\n2. Đi tới mục \"Deposit\".\n3. Thử nộp một tờ séc bằng tính năng nộp séc qua di động.</p>\n<p>Kết quả mong đợi: Tờ séc được quét và được chấp nhận để nộp.\nKết quả thực tế: Ứng dụng bị crash ngay sau khi quét séc.</p>\n<p>Severity: Medium\nPriority: High</p>\n<p>Bạn nhận được phản hồi sau từ nhóm quality assurance cho biết defect mô tả trong báo cáo này không thể tái hiện được:</p>\n<p>2023-April-10 – Jane Smith – Closed\nSau nhiều lần thử tái hiện vấn đề bằng cách quét các tờ séc khác nhau, ứng dụng không bị crash và hoạt động như mong đợi. Dựa trên test case TC-2456, ứng dụng phải xử lý việc nộp séc một cách trơn tru. Chức năng này rất quan trọng như được nêu trong REQ-0456. Vấn đề đã từng được báo cáo trước đây nhưng giờ có vẻ đã được giải quyết.</p>\n<p>Thông tin quan trọng nào bị THIẾU trong defect report này mà lẽ ra sẽ hữu ích cho developer?</p>",
+  "stem": "<p>Hãy xem defect report sau cho một ứng dụng ngân hàng di động:</p>\n<p>Ứng dụng: BankApp v2.1<br />\nDefect: Không thể nộp séc qua ứng dụng di động</p>\n<p>Các bước tái hiện:<br />\n1. Đăng nhập vào BankApp.<br />\n2. Đi tới mục \"Deposit\".<br />\n3. Thử nộp một tờ séc bằng tính năng nộp séc qua di động.</p>\n<p>Kết quả mong đợi: Tờ séc được quét và được chấp nhận để nộp.<br />\nKết quả thực tế: Ứng dụng bị crash ngay sau khi quét séc.</p>\n<p>Severity: Medium<br />\nPriority: High</p>\n<p>Bạn nhận được phản hồi sau từ nhóm quality assurance cho biết defect mô tả trong báo cáo này không thể tái hiện được:</p>\n<p>2023-April-10 – Jane Smith – Closed<br />\nSau nhiều lần thử tái hiện vấn đề bằng cách quét các tờ séc khác nhau, ứng dụng không bị crash và hoạt động như mong đợi. Dựa trên test case TC-2456, ứng dụng phải xử lý việc nộp séc một cách trơn tru. Chức năng này rất quan trọng như được nêu trong REQ-0456. Vấn đề đã từng được báo cáo trước đây nhưng giờ có vẻ đã được giải quyết.</p>\n<p>Thông tin quan trọng nào bị THIẾU trong defect report này mà lẽ ra sẽ hữu ích cho developer?</p>",
   "options": [
    "Thời gian ước tính để sửa defect, giúp xác định độ ưu tiên của defect hoặc đặt kỳ vọng về thời điểm nó có thể được giải quyết",
    "Tên của developer có code gây ra failure, để đơn giản hóa việc giao defect cho đúng developer, có thể giúp sửa nhanh hơn",
@@ -5169,7 +5169,7 @@
   "explanation": "<p>e) đúng. Không mục nào trong số này được liệt kê là thiết yếu trong syllabus. Một defect report được ghi nhận trong quá trình dynamic testing thường bao gồm: mã định danh duy nhất; tiêu đề tóm tắt ngắn gọn bất thường được báo cáo; ngày phát hiện bất thường, tổ chức phát hành và tác giả, bao gồm vai trò của họ; xác định test object và môi trường kiểm thử; bối cảnh của defect; mô tả failure để có thể tái hiện và giải quyết, bao gồm các bước đã phát hiện ra bất thường, cùng mọi test log, database dump, ảnh chụp màn hình hoặc bản ghi liên quan; kết quả mong đợi và kết quả thực tế; severity; priority; trạng thái; tài liệu tham chiếu.</p>"
  },
  "q20-39": {
-  "stem": "<p>Hãy xem user story sau:\n- Với vai trò là một hệ thống quản lý chiến dịch email, tôi muốn có khả năng ưu tiên các chiến dịch email cho khách hàng standard và premium dựa trên kích thước danh sách người nhận, để tôi có thể tối ưu việc gửi và đảm bảo những thông điệp có tác động lớn nhất được gửi kịp thời</p>\n<p>Và các acceptance criteria của nó:\n- AC1: Email của khách hàng premium phải được xử lý trước email của khách hàng standard, bất kể số lượng người nhận\n- AC2: Trong mỗi hạng khách hàng (standard hoặc premium), các chiến dịch có danh sách người nhận nhỏ hơn phải được ưu tiên cao hơn\n- AC3: Nếu hai chiến dịch trong cùng một hạng khách hàng có cùng số người nhận, chúng phải được xử lý theo thứ tự nhận được</p>\n<p>Đâu là ví dụ TỐT NHẤT về một test case cho user story này?</p>",
+  "stem": "<p>Hãy xem user story sau:<br />\n- Với vai trò là một hệ thống quản lý chiến dịch email, tôi muốn có khả năng ưu tiên các chiến dịch email cho khách hàng standard và premium dựa trên kích thước danh sách người nhận, để tôi có thể tối ưu việc gửi và đảm bảo những thông điệp có tác động lớn nhất được gửi kịp thời</p>\n<p>Và các acceptance criteria của nó:<br />\nAC1: Email của khách hàng premium phải được xử lý trước email của khách hàng standard, bất kể số lượng người nhận<br />\nAC2: Trong mỗi hạng khách hàng (standard hoặc premium), các chiến dịch có danh sách người nhận nhỏ hơn phải được ưu tiên cao hơn<br />\nAC3: Nếu hai chiến dịch trong cùng một hạng khách hàng có cùng số người nhận, chúng phải được xử lý theo thứ tự nhận được</p>\n<p>Đâu là ví dụ TỐT NHẤT về một test case cho user story này?</p>",
   "options": [
    "Kiểm thử rằng một chiến dịch email của khách hàng standard với 300 người nhận được xử lý trước một chiến dịch của khách hàng premium với 500 người nhận vì nó được gửi lên trước. Kết quả mong đợi: Chiến dịch của khách hàng standard được xử lý trước",
    "Kiểm thử rằng trong hạng khách hàng premium, một chiến dịch với 250 người nhận được xử lý sau một chiến dịch với 150 người nhận, bất kể thứ tự gửi lên",
@@ -5209,7 +5209,7 @@
   "explanation": "<p>d) đúng. Agile và các mô hình lặp chú trọng vào phản hồi nhanh và cập nhật thường xuyên, khiến regression testing tự động đặc biệt có lợi trong các mô hình SDLC này.</p>"
  },
  "q21-3": {
-  "stem": "<p>Trong số các work product được tạo ra trong SDLC, có danh sách sau:</p>\n<p>i. Test case và test plan\nii. Lịch trình và ngân sách\niii. Code của module và giao diện module\niv. Thư viện bên thứ ba đã được mã hóa\nv. Sơ đồ cơ sở dữ liệu</p>\n<p>Những mục nào có thể được review?</p>",
+  "stem": "<p>Trong số các work product được tạo ra trong SDLC, có danh sách sau:</p>\n<p>i. Test case và test plan<br />\nii. Lịch trình và ngân sách<br />\niii. Code của module và giao diện module<br />\niv. Thư viện bên thứ ba đã được mã hóa<br />\nv. Sơ đồ cơ sở dữ liệu</p>\n<p>Những mục nào có thể được review?</p>",
   "options": [
    "i, ii có thể được review; iii, iv, v thì không",
    "iii, iv có thể được review; i, ii, v thì không",
@@ -5259,7 +5259,7 @@
   "explanation": "<p>b) đúng (KHÔNG phải là lợi ích). Statement coverage tập trung vào việc thực thi các dòng code, không đánh giá giao diện người dùng hay trải nghiệm người dùng. Statement coverage cao cho thấy các đường thực thi của code đã được kiểm thử kỹ lưỡng nhưng không đề cập đến các khía cạnh usability như tính dễ sử dụng, thiết kế giao diện hay sự hài lòng của người dùng.</p>"
  },
  "q21-8": {
-  "stem": "<p>Thông tin sau có thể được tìm thấy trong test plan không?\n…</p>\n<p>Giao tiếp qua Email\n- Email sẽ là phương tiện chính để giao tiếp không đồng bộ trong nhóm kiểm thử. Hình thức giao tiếp này cho phép trao đổi thông tin chi tiết, chia sẻ tài liệu và cập nhật.\n- Email sẽ được dùng để giao tiếp không đồng bộ và để chia sẻ thông tin chi tiết, tài liệu và cập nhật.\n- Nhóm kiểm thử độc lập phải phản hồi email trong vòng [thời gian phản hồi, ví dụ: 24 giờ] để đảm bảo trao đổi thông tin kịp thời.\n…</p>",
+  "stem": "<p>Thông tin sau có thể được tìm thấy trong test plan không?<br />\n…</p>\n<p>Giao tiếp qua Email<br />\n- Email sẽ là phương tiện chính để giao tiếp không đồng bộ trong nhóm kiểm thử. Hình thức giao tiếp này cho phép trao đổi thông tin chi tiết, chia sẻ tài liệu và cập nhật.<br />\n- Email sẽ được dùng để giao tiếp không đồng bộ và để chia sẻ thông tin chi tiết, tài liệu và cập nhật.<br />\n- Nhóm kiểm thử độc lập phải phản hồi email trong vòng [thời gian phản hồi, ví dụ: 24 giờ] để đảm bảo trao đổi thông tin kịp thời.<br />\n…</p>",
   "options": [
    "Có, hình thức và tần suất giao tiếp có thể được tìm thấy trong phần communication (giao tiếp)",
    "Có, hình thức và tần suất giao tiếp với các bên liên quan có thể được tìm thấy trong phần stakeholders (các bên liên quan)",
@@ -5319,7 +5319,7 @@
   "explanation": "<p>b) đúng. Fault attack là một cách tiếp cận có phương pháp đối với error guessing, yêu cầu tester tạo hoặc thu thập danh sách các error, defect và failure có thể xảy ra, và thiết kế các test để xác định/làm lộ defect hoặc gây ra failure.</p>"
  },
  "q21-14": {
-  "stem": "<p>Cho các vai trò sau trong review:</p>\n<ol>\n<li>Facilitator</li>\n<li>Author</li>\n<li>Scribe</li>\n<li>Manager</li>\n</ol>\n<p>Và các trách nhiệm sau trong review:</p>\n<p>A. Tạo và chỉnh sửa work product đang được review\nB. Đảm bảo các buổi họp review diễn ra hiệu quả, bao gồm một môi trường review an toàn\nC. Quyết định những gì cần được review và phân bổ các nguồn lực cần thiết\nD. Tổng hợp các bất thường từ reviewer và ghi lại kết quả review</p>\n<p>Phương án nào sau đây ghép vai trò và trách nhiệm TỐT NHẤT</p>",
+  "stem": "<p>Cho các vai trò sau trong review:</p>\n<ol>\n<li>Facilitator</li>\n<li>Author</li>\n<li>Scribe</li>\n<li>Manager</li>\n</ol>\n<p>Và các trách nhiệm sau trong review:</p>\n<p>A. Tạo và chỉnh sửa work product đang được review<br />\nB. Đảm bảo các buổi họp review diễn ra hiệu quả, bao gồm một môi trường review an toàn<br />\nC. Quyết định những gì cần được review và phân bổ các nguồn lực cần thiết<br />\nD. Tổng hợp các bất thường từ reviewer và ghi lại kết quả review</p>\n<p>Phương án nào sau đây ghép vai trò và trách nhiệm TỐT NHẤT</p>",
   "options": [
    "1C, 2A, 3D, 4B",
    "1B, 2A, 3D, 4C",
@@ -5389,7 +5389,7 @@
   "explanation": "<p>d) đúng. Component integration testing tập trung vào các giao diện và tương tác giữa các component, không phải kiểm thử các component một cách độc lập (đó là component testing).</p>"
  },
  "q21-21": {
-  "stem": "<p>Những mục nào sau đây (i-v) nên được đưa vào test completion report?</p>\n<p>i. Các chỉ số kiểm thử dựa trên test progress report\nii. Các rủi ro mới và thay đổi trong kỳ kiểm thử\niii. Kiểm thử được lên kế hoạch cho kỳ tiếp theo\niv. Các rủi ro chưa được giảm thiểu, các defect chưa được sửa\nv. Các bài học kinh nghiệm liên quan đến kiểm thử</p>",
+  "stem": "<p>Những mục nào sau đây (i-v) nên được đưa vào test completion report?</p>\n<p>i. Các chỉ số kiểm thử dựa trên test progress report<br />\nii. Các rủi ro mới và thay đổi trong kỳ kiểm thử<br />\niii. Kiểm thử được lên kế hoạch cho kỳ tiếp theo<br />\niv. Các rủi ro chưa được giảm thiểu, các defect chưa được sửa<br />\nv. Các bài học kinh nghiệm liên quan đến kiểm thử</p>",
   "options": [
    "i, ii, iii",
    "ii, iii, iv, v",
@@ -5440,7 +5440,7 @@
   "explanation": "<p>b) đúng. Baseline trong Configuration Management là một phiên bản của các sản phẩm (artifact) đã được review và thống nhất chính thức, sau đó đóng vai trò là cơ sở cho việc phát triển tiếp theo và chỉ có thể được thay đổi thông qua một quy trình kiểm soát thay đổi chính thức.</p>"
  },
  "q21-26": {
-  "stem": "<p>Một developer được yêu cầu hiện thực quy tắc nghiệp vụ sau:</p>\n<p>INPUT: value (integer number)\nIF (value &lt; 1 OR value &gt; 100) THEN write \"value incorrect\"\nELSE write \"value OK\"</p>\n<p>Bạn thiết kế các test case bằng boundary value analysis 2 giá trị.</p>\n<p>Tập đầu vào kiểm thử nào sau đây đạt được coverage lớn nhất?</p>",
+  "stem": "<p>Một developer được yêu cầu hiện thực quy tắc nghiệp vụ sau:</p>\n<p>INPUT: value (integer number)<br />\nIF (value &lt; 1 OR value &gt; 100) THEN write \"value incorrect\"<br />\nELSE write \"value OK\"</p>\n<p>Bạn thiết kế các test case bằng boundary value analysis 2 giá trị.</p>\n<p>Tập đầu vào kiểm thử nào sau đây đạt được coverage lớn nhất?</p>",
   "options": [
    "-1, 0, 100, 101",
    "0, 1, 99, 100",
@@ -5480,7 +5480,7 @@
   "explanation": "<p>c) đúng. Use case và hướng dẫn sử dụng là ví dụ về test basis chứ không phải testware. Testware bao gồm test plan, test case, yêu cầu về test data, yêu cầu về môi trường kiểm thử, script kiểm thử tự động, trình giả lập, v.v.</p>"
  },
  "q21-30": {
-  "stem": "<p>Nhóm của bạn sử dụng kỹ thuật ước lượng ba điểm (three-point estimation) để ước lượng nỗ lực kiểm thử cho một tính năng mới được yêu cầu.</p>\n<p>Cho user story sau: \"Là một người mua sắm trực tuyến, tôi muốn có khả năng dễ dàng thay đổi số lượng sản phẩm trong giỏ hàng, Để tôi có thể điều chỉnh số lượng mua trước khi tiến hành thanh toán\"</p>\n<p>Các ước lượng sau đã được đưa ra:\n- Ước lượng khả dĩ nhất: 12 người-giờ\n- Ước lượng bi quan nhất: 18 người-giờ\n- Ước lượng lạc quan nhất: 9 người-giờ</p>\n<p>Ước lượng cuối cùng TỐI ĐA bao gồm sai số đo lường (SD) là bao nhiêu?</p>",
+  "stem": "<p>Nhóm của bạn sử dụng kỹ thuật ước lượng ba điểm (three-point estimation) để ước lượng nỗ lực kiểm thử cho một tính năng mới được yêu cầu.</p>\n<p>Cho user story sau: \"Là một người mua sắm trực tuyến, tôi muốn có khả năng dễ dàng thay đổi số lượng sản phẩm trong giỏ hàng, Để tôi có thể điều chỉnh số lượng mua trước khi tiến hành thanh toán\"</p>\n<p>Các ước lượng sau đã được đưa ra:<br />\n- Ước lượng khả dĩ nhất: 12 người-giờ<br />\n- Ước lượng bi quan nhất: 18 người-giờ<br />\n- Ước lượng lạc quan nhất: 9 người-giờ</p>\n<p>Ước lượng cuối cùng TỐI ĐA bao gồm sai số đo lường (SD) là bao nhiêu?</p>",
   "options": [
    "12,5 người-giờ",
    "14 người-giờ",
@@ -5520,7 +5520,7 @@
   "explanation": "<p>c) đúng, theo syllabus mục 1.4.5. Các vai trò trong kiểm thử. Vai trò quản lý kiểm thử chủ yếu tập trung vào các hoạt động test planning, test monitoring and control và test completion. Vai trò kiểm thử (testing) chủ yếu tập trung vào các hoạt động test analysis, test design, test implementation và test execution.</p>"
  },
  "q21-34": {
-  "stem": "<p>Bạn sẽ dùng lập luận nào dưới đây để thuyết phục quản lý của mình tổ chức các buổi retrospective vào cuối mỗi chu kỳ phát hành?</p>\n<p>i. Tăng hiệu năng của các môi trường kiểm thử\nii. Giảm số lượng test basis\niii. Tăng chất lượng testware\niv. Hợp tác tốt hơn giữa phát triển và kiểm thử</p>",
+  "stem": "<p>Bạn sẽ dùng lập luận nào dưới đây để thuyết phục quản lý của mình tổ chức các buổi retrospective vào cuối mỗi chu kỳ phát hành?</p>\n<p>i. Tăng hiệu năng của các môi trường kiểm thử<br />\nii. Giảm số lượng test basis<br />\niii. Tăng chất lượng testware<br />\niv. Hợp tác tốt hơn giữa phát triển và kiểm thử</p>",
   "options": [
    "i, iii, iv",
    "ii, iv",
@@ -5560,7 +5560,7 @@
   "explanation": "<p>a) đúng. Kiến thức nghiệp vụ giúp tester hiểu và dự đoán nhu cầu của người dùng và truyền đạt các phát hiện trong bối cảnh tác động đến kinh doanh, giúp việc giao tiếp với người dùng cuối và đại diện nghiệp vụ hiệu quả hơn.</p>"
  },
  "q21-38": {
-  "stem": "<p>Bạn đang kiểm thử một biểu mẫu nhập liệu chấp nhận đầu vào dạng văn bản cho tên người dùng trong một ứng dụng phần mềm. Log từ việc thực thi kiểm thử như sau:</p>\n<p>Environment configuration: User Entry Form Module v1.04, test case set: UCS-2, # of TCs: 4</p>\n<p>Test run ID: 1024</p>\n<p>Start 14:10:05.010\n14:10:05.010 Execution of TC1. Input: \"Alice\". Output: \"Alice\". Result: passed\n14:10:05.011 Execution of TC2. Input: \"B0b\". Output: \"B0b\". Result: passed\n14:10:05.012 Execution of TC3. Input: \"Charlie@007\". Output: \"Charlie007\". Result: failed\n14:10:05.013 Execution of TC4. Input: \"Dana12$\". Output: \"Dana12\". Result: failed</p>\n<p>End 14:10:05.014\nTotal time of test cycle: 0:00:00.004</p>\n<p>Điều nào sau đây mô tả failure TỐT NHẤT để có thể dùng trong một defect report?</p>",
+  "stem": "<p>Bạn đang kiểm thử một biểu mẫu nhập liệu chấp nhận đầu vào dạng văn bản cho tên người dùng trong một ứng dụng phần mềm. Log từ việc thực thi kiểm thử như sau:</p>\n<p>Environment configuration: User Entry Form Module v1.04, test case set: UCS-2, # of TCs: 4</p>\n<p>Test run ID: 1024</p>\n<p>Start 14:10:05.010<br />\n14:10:05.010 Execution of TC1. Input: \"Alice\". Output: \"Alice\". Result: passed<br />\n14:10:05.011 Execution of TC2. Input: \"B0b\". Output: \"B0b\". Result: passed<br />\n14:10:05.012 Execution of TC3. Input: \"Charlie@007\". Output: \"Charlie007\". Result: failed<br />\n14:10:05.013 Execution of TC4. Input: \"Dana12$\". Output: \"Dana12\". Result: failed</p>\n<p>End 14:10:05.014<br />\nTotal time of test cycle: 0:00:00.004</p>\n<p>Điều nào sau đây mô tả failure TỐT NHẤT để có thể dùng trong một defect report?</p>",
   "options": [
    "Hệ thống không chấp nhận ký tự đặc biệt trong tên người dùng. Tham chiếu: TC3, TC4",
    "Hệ thống sửa đổi đầu vào bằng cách loại bỏ các ký tự đặc biệt. Tham chiếu: TC3, TC4",
@@ -5570,7 +5570,7 @@
   "explanation": "<p>b) đúng. Từ kết quả kiểm thử, có vẻ hệ thống đang loại bỏ các ký tự đặc biệt khỏi đầu vào (\"Charlie@007\" → \"Charlie007\", \"Dana12$\" → \"Dana12\"), dẫn đến đầu ra không khớp với dữ liệu nhập dự định. Thông tin này giúp developer hiểu vấn đề cụ thể ảnh hưởng đến việc xử lý dữ liệu của biểu mẫu.</p>"
  },
  "q21-39": {
-  "stem": "<p>User Story:\n- Là một thành viên thư viện, tôi muốn có thể mượn sách trực tuyến để có thể đọc chúng lúc thuận tiện mà không cần đến thư viện.</p>\n<p>Acceptance Criteria:\n- Người dùng có thể đăng nhập vào hệ thống thư viện với vai trò \"Member\"\n- Thành viên có thể xem các sách có sẵn\n- Thành viên có thể chọn sách để thêm vào giỏ\n- Thành viên có thể mượn sách trực tuyến</p>\n<p>Test case nào sau đây sẽ KHÔNG liên quan đến user story này?</p>",
+  "stem": "<p>User Story:<br />\n- Là một thành viên thư viện, tôi muốn có thể mượn sách trực tuyến để có thể đọc chúng lúc thuận tiện mà không cần đến thư viện.</p>\n<p>Acceptance Criteria:<br />\n- Người dùng có thể đăng nhập vào hệ thống thư viện với vai trò \"Member\"<br />\n- Thành viên có thể xem các sách có sẵn<br />\n- Thành viên có thể chọn sách để thêm vào giỏ<br />\n- Thành viên có thể mượn sách trực tuyến</p>\n<p>Test case nào sau đây sẽ KHÔNG liên quan đến user story này?</p>",
   "options": [
    "Đầu vào: Thành viên đăng nhập vào tài khoản của mình trên hệ thống thư viện và tìm kiếm các sách có sẵn. Đầu ra mong đợi: Hệ thống hiển thị danh sách các sách có sẵn",
    "Đầu vào: Thành viên thêm các sách đã chọn vào giỏ trực tuyến của mình. Đầu ra mong đợi: Các sách được thêm thành công vào giỏ, hiển thị tổng số mục.",
@@ -5610,7 +5610,7 @@
   "explanation": "<p>b) đúng. Phương pháp luận SDLC ảnh hưởng đến mức độ chi tiết của test plan và test case. Các phương pháp luận SDLC khác nhau (ví dụ: agile so với tuần tự) đòi hỏi mức độ chi tiết tài liệu khác nhau cho các hoạt động kiểm thử.</p>"
  },
  "q22-3": {
-  "stem": "<p>Sau đây là danh sách các sản phẩm công việc được tạo ra trong SDLC</p>\n<p>i. Thủ tục kiểm thử (test procedure), script kiểm thử tự động và test data\nii. Một công cụ chỉnh sửa đồ họa thương mại có sẵn (COTS) dùng để tạo tài liệu marketing\niii. Các file cấu hình XML định nghĩa thiết lập cho một hệ thống quản lý nội dung mã nguồn mở\niv. Sơ đồ gói UML, sơ đồ đối tượng UML và sơ đồ hoạt động UML\nv. Hệ điều hành mã nguồn đóng của bên thứ ba không có sẵn file mã nguồn</p>\n<p>Những sản phẩm nào sau đây thường KHÔNG được kiểm thử bằng static testing?</p>",
+  "stem": "<p>Sau đây là danh sách các sản phẩm công việc được tạo ra trong SDLC</p>\n<p>i. Thủ tục kiểm thử (test procedure), script kiểm thử tự động và test data<br />\nii. Một công cụ chỉnh sửa đồ họa thương mại có sẵn (COTS) dùng để tạo tài liệu marketing<br />\niii. Các file cấu hình XML định nghĩa thiết lập cho một hệ thống quản lý nội dung mã nguồn mở<br />\niv. Sơ đồ gói UML, sơ đồ đối tượng UML và sơ đồ hoạt động UML<br />\nv. Hệ điều hành mã nguồn đóng của bên thứ ba không có sẵn file mã nguồn</p>\n<p>Những sản phẩm nào sau đây thường KHÔNG được kiểm thử bằng static testing?</p>",
   "options": [
    "i, ii, v",
    "ii, iii, v",
@@ -5720,7 +5720,7 @@
   "explanation": "<p>c) đúng. Theo syllabus (4.4.3 Checklist-Based Testing), các mục trong checklist thường được diễn đạt dưới dạng câu hỏi. Mỗi mục phải có thể được kiểm tra riêng biệt và trực tiếp. Các mục này có thể liên quan đến yêu cầu, thuộc tính giao diện đồ họa, đặc tính chất lượng hoặc các dạng test condition khác. Checklist có thể được tạo ra để hỗ trợ nhiều test type khác nhau, bao gồm functional testing và non-functional testing.</p>"
  },
  "q22-14": {
-  "stem": "<p>Cho các vai trò và trách nhiệm sau trong review:</p>\n<p>a. Manager\nb. Author\nc. Moderator\nd. Recorder\ne. Reviewer\nf. Review leader</p>\n<ol>\n<li>Xác định các defect tiềm ẩn trong sản phẩm công việc đang được review</li>\n<li>Sửa defect trong sản phẩm công việc</li>\n<li>Quyết định ai sẽ tham gia vào review</li>\n<li>Quyết định những gì sẽ được review và cung cấp nguồn lực</li>\n<li>Là người mà thành công của review thường phụ thuộc vào</li>\n<li>Tổng hợp các defect tiềm ẩn được tìm thấy trong hoạt động review cá nhân</li>\n</ol>\n<p>Trong các lựa chọn dưới đây, lựa chọn nào ghép đúng vai trò và trách nhiệm trong review?</p>",
+  "stem": "<p>Cho các vai trò và trách nhiệm sau trong review:</p>\n<p>a. Manager<br />\nb. Author<br />\nc. Moderator<br />\nd. Recorder<br />\ne. Reviewer<br />\nf. Review leader</p>\n<ol>\n<li>Xác định các defect tiềm ẩn trong sản phẩm công việc đang được review</li>\n<li>Sửa defect trong sản phẩm công việc</li>\n<li>Quyết định ai sẽ tham gia vào review</li>\n<li>Quyết định những gì sẽ được review và cung cấp nguồn lực</li>\n<li>Là người mà thành công của review thường phụ thuộc vào</li>\n<li>Tổng hợp các defect tiềm ẩn được tìm thấy trong hoạt động review cá nhân</li>\n</ol>\n<p>Trong các lựa chọn dưới đây, lựa chọn nào ghép đúng vai trò và trách nhiệm trong review?</p>",
   "options": [
    "a-3; b-2; c-5; d-6; e-1, f-4;",
    "a-4; b-1; c-5; d-6; e-2, f-3;",
@@ -5760,7 +5760,7 @@
   "explanation": "<p>b) đúng. Một trong bảy nguyên tắc kiểm thử là kiểm thử toàn diện là không thể. Kiểm thử mọi thứ (tất cả tổ hợp đầu vào và điều kiện tiên quyết) là không khả thi, trừ các trường hợp tầm thường. Nhóm không thể kỳ vọng tìm được 100% lỗi, ngay cả khi có quyền truy cập vào môi trường production.</p>"
  },
  "q22-18": {
-  "stem": "<p>Những mục nào sau đây thuộc báo cáo tiến độ kiểm thử (test progress report) và những mục nào thuộc báo cáo hoàn thành kiểm thử (test completion report)?</p>\n<p>a. Test progress report\nb. Test completion report</p>\n<ol>\n<li>Tóm tắt kiểm thử</li>\n<li>Giai đoạn kiểm thử</li>\n<li>Các rủi ro chưa được giảm thiểu, các defect chưa được sửa</li>\n<li>Các rủi ro mới và thay đổi trong giai đoạn kiểm thử</li>\n</ol>",
+  "stem": "<p>Những mục nào sau đây thuộc báo cáo tiến độ kiểm thử (test progress report) và những mục nào thuộc báo cáo hoàn thành kiểm thử (test completion report)?</p>\n<p>a. Test progress report<br />\nb. Test completion report</p>\n<ol>\n<li>Tóm tắt kiểm thử</li>\n<li>Giai đoạn kiểm thử</li>\n<li>Các rủi ro chưa được giảm thiểu, các defect chưa được sửa</li>\n<li>Các rủi ro mới và thay đổi trong giai đoạn kiểm thử</li>\n</ol>",
   "options": [
    "1-a, 2-b, 3-b, 4-a",
    "1-b, 2-a, 3-b, 4-a",
@@ -5780,7 +5780,7 @@
   "explanation": "<p>d) đúng. Điều này thể hiện cách tiếp cận Agile – tập trung vào việc chia nhỏ tính năng để mang lại giá trị theo từng phần tăng dần, thay vì tranh cãi hoặc chỉ đơn giản là nhượng bộ. User story nên đủ nhỏ để có thể hoàn thành trong một sprint, phù hợp với nguyên tắc INVEST.</p>"
  },
  "q22-20": {
-  "stem": "<p>Loại failure nào (1-4) phù hợp NHẤT với test level nào (A-D)?</p>\n<ol>\n<li>Luồng công việc của hệ thống không đáp ứng nhu cầu nghiệp vụ hoặc nhu cầu người dùng</li>\n<li>Hành vi API không được xử lý hoặc được xử lý không đúng</li>\n<li>Logic của module không chính xác</li>\n<li>Hành vi chức năng hoặc phi chức năng của hệ thống không chính xác hoặc không như mong đợi</li>\n</ol>\n<p>A. Component testing\nB. Component integration testing\nC. System testing\nD. Acceptance testing</p>",
+  "stem": "<p>Loại failure nào (1-4) phù hợp NHẤT với test level nào (A-D)?</p>\n<ol>\n<li>Luồng công việc của hệ thống không đáp ứng nhu cầu nghiệp vụ hoặc nhu cầu người dùng</li>\n<li>Hành vi API không được xử lý hoặc được xử lý không đúng</li>\n<li>Logic của module không chính xác</li>\n<li>Hành vi chức năng hoặc phi chức năng của hệ thống không chính xác hoặc không như mong đợi</li>\n</ol>\n<p>A. Component testing<br />\nB. Component integration testing<br />\nC. System testing<br />\nD. Acceptance testing</p>",
   "options": [
    "1B, 2A, 3D, 4C",
    "1D, 2B, 3C, 4A",
@@ -5817,7 +5817,7 @@
    "0, 69, 71, 89, 90, 99",
    "59, 60, 70, 89, 100"
   ],
-  "explanation": "<p>d) đúng. 59 (loại F), 60 (loại D), 70 (loại C), 89 (loại B), 100 (loại A + huy hiệu Hundred-Point Hero) – 6 phân vùng (trên tổng số 6):\n1. Loại \"A\" - [90;100]\n2. Loại \"B\" - [80;89]\n3. Loại \"C\" - [70;79]\n4. Loại \"D\" - [60;69]\n5. Loại \"F\" - [0;59]\n6. Huy hiệu \"Hundred-Point Hero\" - 100 điểm</p>"
+  "explanation": "<p>d) đúng. 59 (loại F), 60 (loại D), 70 (loại C), 89 (loại B), 100 (loại A + huy hiệu Hundred-Point Hero) – 6 phân vùng (trên tổng số 6):<br />\n1. Loại \"A\" - [90;100]<br />\n2. Loại \"B\" - [80;89]<br />\n3. Loại \"C\" - [70;79]<br />\n4. Loại \"D\" - [60;69]<br />\n5. Loại \"F\" - [0;59]<br />\n6. Huy hiệu \"Hundred-Point Hero\" - 100 điểm</p>"
  },
  "q22-24": {
   "stem": "<p>Trong một dự án kiểm thử, test manager chịu trách nhiệm phân bổ nguồn lực hiệu quả để đảm bảo các hoạt động kiểm thử hoàn thành đúng hạn, vì phạm vi kiểm thử ban đầu bị thay đổi giữa chừng trong quá trình thực thi kiểm thử. Test manager đang thực hiện hoạt động kiểm thử nào?</p>",
@@ -5837,7 +5837,7 @@
    "35 người-giờ",
    "45 người-giờ"
   ],
-  "explanation": "<p>b) đúng. Trong kỹ thuật ước lượng ba điểm:\nE = (lạc quan + 4 × khả dĩ nhất + bi quan) / 6 = (15 + (30 × 4) + 75) / 6 = 35\nSD = (bi quan – lạc quan) / 6 = (75 – 15) / 6 = 10\nƯớc lượng cuối cùng là 35 ± 10 người-giờ (tức là từ 25 đến 45 người-giờ).\nƯớc lượng cuối cùng TỐI ĐA bao gồm sai số đo lường là 45 cho cả ba bộ regression test.\nCó tổng cộng ba bộ regression test, do đó ước lượng cuối cùng TỐI ĐA bao gồm sai số đo lường để thực thi mỗi bộ test là 45 / 3 = 15.</p>"
+  "explanation": "<p>b) đúng. Trong kỹ thuật ước lượng ba điểm:<br />\nE = (lạc quan + 4 × khả dĩ nhất + bi quan) / 6 = (15 + (30 × 4) + 75) / 6 = 35<br />\nSD = (bi quan – lạc quan) / 6 = (75 – 15) / 6 = 10<br />\nƯớc lượng cuối cùng là 35 ± 10 người-giờ (tức là từ 25 đến 45 người-giờ).<br />\nƯớc lượng cuối cùng TỐI ĐA bao gồm sai số đo lường là 45 cho cả ba bộ regression test.<br />\nCó tổng cộng ba bộ regression test, do đó ước lượng cuối cùng TỐI ĐA bao gồm sai số đo lường để thực thi mỗi bộ test là 45 / 3 = 15.</p>"
  },
  "q22-26": {
   "stem": "<p>Bạn đang kiểm thử một bộ điều nhiệt cho hệ thống sưởi/điều hòa không khí. Bạn được cung cấp các yêu cầu sau:</p>\n<ul>\n<li>Khi nhiệt độ dưới 70 độ, bật hệ thống sưởi</li>\n<li>Khi nhiệt độ trên 75 độ, bật hệ thống điều hòa không khí</li>\n<li>Khi nhiệt độ nằm trong khoảng từ 70 đến 75 độ (bao gồm cả hai đầu), chỉ bật quạt</li>\n</ul>\n<p>Bộ test case của bạn đạt 100% 2-value boundary value coverage. Nhóm quyết định bổ sung test case để đảm bảo 100% 3-value boundary value coverage.</p>\n<p>Cần kiểm thử thêm những giá trị nhiệt độ nào để đạt được điều này?</p>",
@@ -5850,7 +5850,7 @@
   "explanation": "<p>b) đúng. Miền giá trị nhiệt độ có ba phân vùng tương đương:</p>\n<ul>\n<li>\n<p>Bật hệ thống sưởi: {…, 68, 69}</p>\n</li>\n<li>\n<p>Chỉ bật quạt: {70, 71, …, 74, 75}</p>\n</li>\n<li>\n<p>Bật hệ thống điều hòa không khí: {76, 77, …}</p>\n</li>\n</ul>\n<p>Để đạt coverage đầy đủ cho BVA 3 giá trị, chúng ta cần kiểm thử các giá trị sau: 68, 69, 70, 71, 74, 75, 76, 77. Vì BVA 2 giá trị đã được bao phủ, nghĩa là chúng ta đã kiểm thử: 69, 70, 75, 76. Do đó, các test case cần bổ sung để chuyển từ 2 giá trị sang 3 giá trị là: 68, 71, 74 và 77.</p>"
  },
  "q22-27": {
-  "stem": "<p>Ghép các loại kiểm thử liên quan đến thay đổi (a-b) với các thông tin sau (i-iv):</p>\n<p>a. Regression testing\nb. Confirmation testing</p>\n<p>i. Kiểm thử xác minh xem defect có bị đưa vào hoặc vẫn chưa được phát hiện ở những phần không thay đổi của phần mềm hay không\nii. Có thể được thực thi ở tất cả các test level\niii. Kiểm thử thường bao gồm việc chạy lại các test case trước đó đã thất bại do defect\niv. Bao gồm việc tạo các bài kiểm thử mới để bao phủ mọi thay đổi cần thiết để sửa defect</p>",
+  "stem": "<p>Ghép các loại kiểm thử liên quan đến thay đổi (a-b) với các thông tin sau (i-iv):</p>\n<p>a. Regression testing<br />\nb. Confirmation testing</p>\n<p>i. Kiểm thử xác minh xem defect có bị đưa vào hoặc vẫn chưa được phát hiện ở những phần không thay đổi của phần mềm hay không<br />\nii. Có thể được thực thi ở tất cả các test level<br />\niii. Kiểm thử thường bao gồm việc chạy lại các test case trước đó đã thất bại do defect<br />\niv. Bao gồm việc tạo các bài kiểm thử mới để bao phủ mọi thay đổi cần thiết để sửa defect</p>",
   "options": [
    "a - i, ii, iv; b - iii",
    "a - i, ii; b - iii, iv",
@@ -5860,7 +5860,7 @@
   "explanation": "<p>d) đúng. Regression testing xác minh xem defect có bị đưa vào hoặc vẫn chưa được phát hiện ở những phần không thay đổi của phần mềm hay không (i) và có thể được thực thi ở tất cả các test level (ii). Confirmation testing có thể được thực thi ở tất cả các test level (ii), thường bao gồm việc chạy lại các test case trước đó đã thất bại do defect (iii), và bao gồm việc tạo các bài kiểm thử mới để bao phủ mọi thay đổi cần thiết để sửa defect (iv).</p>"
  },
  "q22-28": {
-  "stem": "<p>Cho các mô tả công việc sau:</p>\n<ol>\n<li>Thảo luận các phát hiện từ review cá nhân trong một cuộc họp</li>\n<li>Phân phát sản phẩm công việc và làm rõ các vai trò</li>\n<li>Ghi lại defect trong một báo cáo để theo dõi tiếp</li>\n<li>Đánh giá chất lượng sản phẩm công việc bằng cách review dựa trên checklist</li>\n</ol>\n<p>Và các hoạt động review sau:</p>\n<p>A. Review Initiation\nB. Individual Review\nC. Communication and Analysis\nD. Fixing and Reporting</p>\n<p>Lựa chọn nào sau đây ghép ĐÚNG NHẤT các mô tả công việc với các hoạt động?</p>",
+  "stem": "<p>Cho các mô tả công việc sau:</p>\n<ol>\n<li>Thảo luận các phát hiện từ review cá nhân trong một cuộc họp</li>\n<li>Phân phát sản phẩm công việc và làm rõ các vai trò</li>\n<li>Ghi lại defect trong một báo cáo để theo dõi tiếp</li>\n<li>Đánh giá chất lượng sản phẩm công việc bằng cách review dựa trên checklist</li>\n</ol>\n<p>Và các hoạt động review sau:</p>\n<p>A. Review Initiation<br />\nB. Individual Review<br />\nC. Communication and Analysis<br />\nD. Fixing and Reporting</p>\n<p>Lựa chọn nào sau đây ghép ĐÚNG NHẤT các mô tả công việc với các hoạt động?</p>",
   "options": [
    "1A, 2C, 3D, 4B",
    "1С, 2A, 3B, 4D",
@@ -5960,7 +5960,7 @@
   "explanation": "<p>d) đúng. Mặc dù mang tính chung, các kỹ năng sau đặc biệt phù hợp với tester: kiến thức nghiệp vụ (domain knowledge) (để có thể hiểu và giao tiếp với người dùng cuối/đại diện nghiệp vụ). Nền tảng trong ngành y tế mang lại kiến thức nghiệp vụ có giá trị cho việc kiểm thử phần mềm y tế.</p>"
  },
  "q22-38": {
-  "stem": "<p>Bạn nhận được báo cáo defect sau từ một tester:</p>\n<p>\"Lỗi thanh toán trong hành trình mua hàng của khách vãng lai\n2024-Jan-15 - Mary Smith - Open\nKhi cố gắng hoàn tất một giao dịch mua hàng, sau khi thêm sản phẩm vào giỏ hàng, bằng cách sử dụng thẻ tín dụng VISA trên trang thanh toán, một thông báo lỗi xuất hiện với nội dung 'Invalid payment method.' Lỗi này xảy ra trên nhiều trình duyệt. Theo yêu cầu, tất cả các loại thẻ tín dụng chính đều phải được chấp nhận. Lỗi này đang chặn việc phát hành.\"</p>\n<p>Thông tin quan trọng nào đang BỊ THIẾU trong báo cáo defect này?</p>",
+  "stem": "<p>Bạn nhận được báo cáo defect sau từ một tester:</p>\n<p>\"Lỗi thanh toán trong hành trình mua hàng của khách vãng lai<br />\n2024-Jan-15 - Mary Smith - Open<br />\nKhi cố gắng hoàn tất một giao dịch mua hàng, sau khi thêm sản phẩm vào giỏ hàng, bằng cách sử dụng thẻ tín dụng VISA trên trang thanh toán, một thông báo lỗi xuất hiện với nội dung 'Invalid payment method.' Lỗi này xảy ra trên nhiều trình duyệt. Theo yêu cầu, tất cả các loại thẻ tín dụng chính đều phải được chấp nhận. Lỗi này đang chặn việc phát hành.\"</p>\n<p>Thông tin quan trọng nào đang BỊ THIẾU trong báo cáo defect này?</p>",
   "options": [
    "Mã định danh duy nhất và tiêu đề kèm tóm tắt ngắn gọn về bất thường",
    "Xác định test object và môi trường kiểm thử",
@@ -6217,7 +6217,7 @@
    "7",
    "8"
   ],
-  "explanation": "<p>b) đúng. Có 6 phân vùng HỢP LỆ cần bao phủ:\n1. Loại \"A\" - [90;100]\n2. Loại \"B\" - [80;89]\n3. Loại \"C\" - [70;79]\n4. Loại \"D\" - [60;69]\n5. Loại \"F\" - [0;59]\n6. Huy hiệu \"Hundred-Point Hero\" - 100 điểm</p>\n<p>Câu hỏi hỏi về số phân vùng chứ không phải số test case.</p>"
+  "explanation": "<p>b) đúng. Có 6 phân vùng HỢP LỆ cần bao phủ:<br />\n1. Loại \"A\" - [90;100]<br />\n2. Loại \"B\" - [80;89]<br />\n3. Loại \"C\" - [70;79]<br />\n4. Loại \"D\" - [60;69]<br />\n5. Loại \"F\" - [0;59]<br />\n6. Huy hiệu \"Hundred-Point Hero\" - 100 điểm</p>\n<p>Câu hỏi hỏi về số phân vùng chứ không phải số test case.</p>"
  },
  "q23-24": {
   "stem": "<p>Các yếu tố tổ chức ảnh hưởng đến test process như thế nào?</p>",
@@ -6287,7 +6287,7 @@
    "14,5 person-hours",
    "16 person-hours"
   ],
-  "explanation": "<p>a) đúng. Trong kỹ thuật three-point estimation:\nE = (lạc quan + 4 × khả dĩ nhất + bi quan) / 6 = (9 + (4 × 15) + 18) / 6 = 14.5\nSD = (bi quan – lạc quan) / 6 = (18 – 9) / 6 = 1.5\nƯớc lượng cuối cùng là 14.5 ± 1.5 person-hours (tức là từ 13 đến 16 person-hours).\nƯớc lượng cuối cùng TỐI ĐA tính cả sai số đo lường là 16 cho cả bốn bộ regression test.\nTổng cộng có 4 bộ regression test, do đó ước lượng cuối cùng TỐI ĐA tính cả sai số đo lường để thực thi mỗi bộ test là 16 / 4 = 4.</p>"
+  "explanation": "<p>a) đúng. Trong kỹ thuật three-point estimation:<br />\nE = (lạc quan + 4 × khả dĩ nhất + bi quan) / 6 = (9 + (4 × 15) + 18) / 6 = 14.5<br />\nSD = (bi quan – lạc quan) / 6 = (18 – 9) / 6 = 1.5<br />\nƯớc lượng cuối cùng là 14.5 ± 1.5 person-hours (tức là từ 13 đến 16 person-hours).<br />\nƯớc lượng cuối cùng TỐI ĐA tính cả sai số đo lường là 16 cho cả bốn bộ regression test.<br />\nTổng cộng có 4 bộ regression test, do đó ước lượng cuối cùng TỐI ĐA tính cả sai số đo lường để thực thi mỗi bộ test là 16 / 4 = 4.</p>"
  },
  "q23-31": {
   "stem": "<p>Phát biểu nào phản ánh chính xác mối quan hệ giữa test automation và testing thủ công?</p>",
@@ -6370,7 +6370,7 @@
   "explanation": "<p>d) đúng. Lựa chọn này mô tả chính xác nhất failure thực tế của hệ thống. Cả TC3 (\"1234-5678-9123\") và TC4 (\"12AB-CD34-EF56\") đều tuân thủ hoàn toàn quy tắc định dạng chữ-số XXXX-XXXX-XXXX. Việc hệ thống từ chối chúng với lỗi \"Invalid code format\" cho thấy một lỗ hổng đáng kể trong logic kiểm tra đối với các input hợp lệ. TC2 có nhóm đầu tiên không đầy đủ và TC5 chứa ký tự đặc biệt, nên việc từ chối chúng là hợp lý.</p>"
  },
  "q23-39": {
-  "stem": "<p>Xét user story sau:</p>\n<p>• Là một người mua hàng, tôi muốn có khả năng mua sản phẩm trên website để có thể sở hữu những món hàng tôi mong muốn</p>\n<p>Acceptance Criteria:</p>\n<p>• AC1: Người dùng có thể áp dụng một trong các mã coupon sau khi thanh toán:\n  - 'Saver5' để được giảm 5%\n  - 'Super10' để được giảm 10%\n  - 'Mega15' để được giảm 15%\n• AC2: Nếu người dùng mua đúng 5 sản phẩm, 'Bulk Buy Discount' 10% sẽ tự động được áp dụng cho đơn hàng\n• AC3: Coupon và giảm giá tự động không thể kết hợp. Hệ thống áp dụng mức giảm giá cao nhất có thể áp dụng\n• AC4: Nếu người dùng xóa sản phẩm khỏi giỏ hàng khiến 'Bulk Buy Discount' không còn áp dụng được, giảm giá tự động phải bị gỡ bỏ</p>\n<p>Lựa chọn nào sau đây KHÔNG phải là một kịch bản kiểm thử hợp lệ dựa trên user story và acceptance criteria?</p>",
+  "stem": "<p>Xét user story sau:</p>\n<p>• Là một người mua hàng, tôi muốn có khả năng mua sản phẩm trên website để có thể sở hữu những món hàng tôi mong muốn</p>\n<p>Acceptance Criteria:</p>\n<p>• AC1: Người dùng có thể áp dụng một trong các mã coupon sau khi thanh toán:<br />\n- 'Saver5' để được giảm 5%<br />\n- 'Super10' để được giảm 10%<br />\n- 'Mega15' để được giảm 15%<br />\n• AC2: Nếu người dùng mua đúng 5 sản phẩm, 'Bulk Buy Discount' 10% sẽ tự động được áp dụng cho đơn hàng<br />\n• AC3: Coupon và giảm giá tự động không thể kết hợp. Hệ thống áp dụng mức giảm giá cao nhất có thể áp dụng<br />\n• AC4: Nếu người dùng xóa sản phẩm khỏi giỏ hàng khiến 'Bulk Buy Discount' không còn áp dụng được, giảm giá tự động phải bị gỡ bỏ</p>\n<p>Lựa chọn nào sau đây KHÔNG phải là một kịch bản kiểm thử hợp lệ dựa trên user story và acceptance criteria?</p>",
   "options": [
    "Thêm bốn sản phẩm vào giỏ hàng và áp dụng mã coupon 'Super10'. Kết quả: Hệ thống chỉ áp dụng mức giảm 10% từ coupon 'Super10'",
    "Thêm năm sản phẩm vào giỏ hàng và không áp dụng mã coupon nào: Hệ thống tự động áp dụng 'Bulk Buy Discount' 10%, và giá cuối cùng phản ánh mức giảm này",
@@ -6811,7 +6811,7 @@
   "explanation": "<p>a) đúng. Phản hồi sớm và thường xuyên giúp phát hiện và xử lý những hiểu lầm về requirement sớm trong chu kỳ phát triển, trước khi chúng trở nên tốn kém để sửa. Nó cho phép trao đổi sớm về các vấn đề chất lượng tiềm ẩn.</p>"
  },
  "q25-4": {
-  "stem": "<p>Ghép test technique (A-C) với nhóm (1-3)</p>\n<ol>\n<li>Black-box test technique</li>\n<li>White-box test technique</li>\n<li>Experience-based test technique</li>\n</ol>\n<p>A. Branch Testing\nB. Checklist-Based Testing\nC. Decision Table Testing</p>",
+  "stem": "<p>Ghép test technique (A-C) với nhóm (1-3)</p>\n<ol>\n<li>Black-box test technique</li>\n<li>White-box test technique</li>\n<li>Experience-based test technique</li>\n</ol>\n<p>A. Branch Testing<br />\nB. Checklist-Based Testing<br />\nC. Decision Table Testing</p>",
   "options": [
    "1C, 2A, 3B",
    "1A, 2C, 3B",
@@ -6971,7 +6971,7 @@
   "explanation": "<p>d) đúng. Acceptance criteria được dùng để: xác định phạm vi của user story, đạt được đồng thuận giữa các stakeholder, mô tả cả kịch bản tích cực và tiêu cực, làm cơ sở cho acceptance testing của user story, và cho phép lập kế hoạch và ước lượng chính xác.</p>"
  },
  "q25-20": {
-  "stem": "<p>Bạn làm việc trên một ứng dụng theo dõi thể chất cho một nền tảng mạng xã hội dành cho một cộng đồng hoặc nhóm sở thích chuyên biệt.</p>\n<p>Nhiệm vụ của bạn là: \"Đánh giá các chức năng (\"what\") mà một test object cần thực hiện\"</p>\n<p>Bạn CÓ KHẢ NĂNG NHẤT đang thực hiện những test level nào?</p>\n<p>i. Component testing\nii. Component integration testing\niii. System testing\niv. System integration testing\nv. Acceptance testing</p>",
+  "stem": "<p>Bạn làm việc trên một ứng dụng theo dõi thể chất cho một nền tảng mạng xã hội dành cho một cộng đồng hoặc nhóm sở thích chuyên biệt.</p>\n<p>Nhiệm vụ của bạn là: \"Đánh giá các chức năng (\"what\") mà một test object cần thực hiện\"</p>\n<p>Bạn CÓ KHẢ NĂNG NHẤT đang thực hiện những test level nào?</p>\n<p>i. Component testing<br />\nii. Component integration testing<br />\niii. System testing<br />\niv. System integration testing<br />\nv. Acceptance testing</p>",
   "options": [
    "iv, v",
    "iii, iv, v",
@@ -7001,7 +7001,7 @@
   "explanation": "<p>b) đúng. Các thực hành static testing và dynamic testing bổ sung cho nhau. Static testing có thể được dùng để đo lường các đặc tính chất lượng không phụ thuộc vào việc thực thi code (ví dụ: khả năng bảo trì), trong khi dynamic testing có thể được dùng để đo lường các đặc tính chất lượng phụ thuộc vào việc thực thi code (ví dụ: hiệu quả hiệu năng).</p>"
  },
  "q25-23": {
-  "stem": "<p>Bạn đang kiểm thử chức năng lọc của một cửa hàng trực tuyến. Người dùng có thể lọc sản phẩm theo kích cỡ và danh mục sản phẩm. Yêu cầu của hệ thống quy định các điều kiện sau:</p>\n<p>Kích cỡ: S, M, L, XL, 9, 10,\nDanh mục sản phẩm: T-shirts, Pants, Sneakers, Sandals, Slippers</p>\n<p>Chỉ T-shirts, Pants mới có thể có kích cỡ S, M, L, XL và chỉ Giày mới có thể có kích cỡ 9, 10. Form có cơ chế kiểm tra hợp lệ tích hợp sẵn, không cho phép bạn vi phạm quy tắc này.</p>\n<p>Bạn muốn áp dụng kỹ thuật kiểm thử Each Choice Equivalence Partitioning.</p>\n<p>Số test case tối thiểu để đạt 100% EP coverage là bao nhiêu?</p>",
+  "stem": "<p>Bạn đang kiểm thử chức năng lọc của một cửa hàng trực tuyến. Người dùng có thể lọc sản phẩm theo kích cỡ và danh mục sản phẩm. Yêu cầu của hệ thống quy định các điều kiện sau:</p>\n<p>Kích cỡ: S, M, L, XL, 9, 10,<br />\nDanh mục sản phẩm: T-shirts, Pants, Sneakers, Sandals, Slippers</p>\n<p>Chỉ T-shirts, Pants mới có thể có kích cỡ S, M, L, XL và chỉ Giày mới có thể có kích cỡ 9, 10. Form có cơ chế kiểm tra hợp lệ tích hợp sẵn, không cho phép bạn vi phạm quy tắc này.</p>\n<p>Bạn muốn áp dụng kỹ thuật kiểm thử Each Choice Equivalence Partitioning.</p>\n<p>Số test case tối thiểu để đạt 100% EP coverage là bao nhiêu?</p>",
   "options": [
    "7",
    "10",
@@ -7011,7 +7011,7 @@
   "explanation": "<p>a) đúng. Có 11 EP cần bao phủ:</p>\n<ul>\n<li>\n<p>6 Kích cỡ: 1(S), 2(M), 3(L), 4(XL), 5(9), 6(10)</p>\n</li>\n<li>\n<p>5 Danh mục sản phẩm: 7(T-shirts), 8(Pants), 9(Sneakers), 10(Sandals), 11(Slippers)</p>\n</li>\n</ul>\n<p>Kỹ thuật Each Choice Equivalence Partitioning yêu cầu mỗi phân vùng được dùng ít nhất một lần và bạn có thể kết hợp các phân vùng hợp lệ trong một test case. Do đó cần 7 test case, ví dụ:</p>\n<ul>\n<li>\n<p>TC1. T-shirts + S</p>\n</li>\n<li>\n<p>TC2. T-shirts + M</p>\n</li>\n<li>\n<p>TC3. Pants + L</p>\n</li>\n<li>\n<p>TC4. Pants + XL</p>\n</li>\n<li>\n<p>TC5. Sneakers + 9</p>\n</li>\n<li>\n<p>TC6. Sandals + 10</p>\n</li>\n<li>\n<p>TC7. Slippers + 9</p>\n</li>\n</ul>"
  },
  "q25-24": {
-  "stem": "<p>Yếu tố nào sau đây (i-v) có ảnh hưởng ĐÁNG KỂ đến quy trình kiểm thử?</p>\n<p>i. Loại phần mềm và kiến trúc sản phẩm\nii. Kỹ năng, kiến thức và mức độ kinh nghiệm của các thành viên đội kiểm thử\niii. Số tiền khả dụng trên thẻ tín dụng của dự án để chạy automated test trong môi trường production\niv. Mức độ kinh nghiệm kiểm thử trung bình của các stakeholder\nv. Số dòng code của sản phẩm đang được kiểm thử</p>",
+  "stem": "<p>Yếu tố nào sau đây (i-v) có ảnh hưởng ĐÁNG KỂ đến quy trình kiểm thử?</p>\n<p>i. Loại phần mềm và kiến trúc sản phẩm<br />\nii. Kỹ năng, kiến thức và mức độ kinh nghiệm của các thành viên đội kiểm thử<br />\niii. Số tiền khả dụng trên thẻ tín dụng của dự án để chạy automated test trong môi trường production<br />\niv. Mức độ kinh nghiệm kiểm thử trung bình của các stakeholder<br />\nv. Số dòng code của sản phẩm đang được kiểm thử</p>",
   "options": [
    "i, ii có ảnh hưởng đáng kể; iii, iv, v không có",
    "i, iii, iv có ảnh hưởng đáng kể; ii, v không có",
@@ -7078,7 +7078,7 @@
    "2 person-hours",
    "2,5 person-hours"
   ],
-  "explanation": "<p>c) đúng. Trong kỹ thuật three-point estimation:\nE = (lạc quan + 4 × khả dĩ nhất + bi quan) / 6 = (1 + (4 × 2.5) + 4) / 6 = 2.5\nSD = (bi quan – lạc quan) / 6 = (4 – 1) / 6 = 0.5\nƯớc lượng cuối cùng là 2.5 ± 0.5 person-hours (tức là từ 2 đến 3 person-hours).\nƯớc lượng cuối cùng TỐI THIỂU, tính cả sai số đo lường, là 2 person-hours.</p>"
+  "explanation": "<p>c) đúng. Trong kỹ thuật three-point estimation:<br />\nE = (lạc quan + 4 × khả dĩ nhất + bi quan) / 6 = (1 + (4 × 2.5) + 4) / 6 = 2.5<br />\nSD = (bi quan – lạc quan) / 6 = (4 – 1) / 6 = 0.5<br />\nƯớc lượng cuối cùng là 2.5 ± 0.5 person-hours (tức là từ 2 đến 3 person-hours).<br />\nƯớc lượng cuối cùng TỐI THIỂU, tính cả sai số đo lường, là 2 person-hours.</p>"
  },
  "q25-31": {
   "stem": "<p>Các công cụ DevOps hỗ trợ quy trình phát triển phần mềm bằng cách:</p>",
@@ -7141,7 +7141,7 @@
   "explanation": "<p>d) đúng. Thách thức các giả định của stakeholder là một lợi ích của tính độc lập của tester, và ở đây developer và product owner đều đang giả định những điều khác nhau về acceptance criteria. Tester độc lập đã phát hiện và chất vấn sự khác biệt này trong buổi refinement.</p>"
  },
  "q25-38": {
-  "stem": "<p>Bạn nhận được phản hồi sau từ các developer về một defect report, nói rằng bất thường được mô tả trong báo cáo này không thể tái hiện:</p>\n<p>Id: BUG-0561\nDefect: Spreadsheet formulas not calculating\nDate: 2023-March-12 – Emily Clarke – Open</p>\n<p>Thành phần bảng tính của bộ ứng dụng không tính toán bất kỳ công thức mới nào do người dùng nhập. Các lần thử thêm công thức đơn giản như SUM hoặc AVERAGE đều cho ra ô trống thay vì kết quả tính toán. Vấn đề này xảy ra trên nhiều tài khoản người dùng. Không có thông báo lỗi nào được hiển thị; tuy nhiên, error log cho thấy lỗi timeout khi thực hiện tính toán. Theo test case TC-2097, ứng dụng phải xử lý và hiển thị kết quả ngay khi nhập công thức. Tính năng này là thiết yếu đối với hoạt động của người dùng theo REQ-0556.</p>\n<p>Thông tin nào sau đây sẽ CÓ GIÁ TRỊ NHẤT nếu được bổ sung vào defect report này để giúp developer hiểu và giải quyết vấn đề?</p>",
+  "stem": "<p>Bạn nhận được phản hồi sau từ các developer về một defect report, nói rằng bất thường được mô tả trong báo cáo này không thể tái hiện:</p>\n<p>Id: BUG-0561<br />\nDefect: Spreadsheet formulas not calculating<br />\nDate: 2023-March-12 – Emily Clarke – Open</p>\n<p>Thành phần bảng tính của bộ ứng dụng không tính toán bất kỳ công thức mới nào do người dùng nhập. Các lần thử thêm công thức đơn giản như SUM hoặc AVERAGE đều cho ra ô trống thay vì kết quả tính toán. Vấn đề này xảy ra trên nhiều tài khoản người dùng. Không có thông báo lỗi nào được hiển thị; tuy nhiên, error log cho thấy lỗi timeout khi thực hiện tính toán. Theo test case TC-2097, ứng dụng phải xử lý và hiển thị kết quả ngay khi nhập công thức. Tính năng này là thiết yếu đối với hoạt động của người dùng theo REQ-0556.</p>\n<p>Thông tin nào sau đây sẽ CÓ GIÁ TRỊ NHẤT nếu được bổ sung vào defect report này để giúp developer hiểu và giải quyết vấn đề?</p>",
   "options": [
    "Các rủi ro chưa được giảm thiểu",
    "Ngày phát hiện bất thường và tác giả",
@@ -7152,7 +7152,7 @@
   "explanation": "<p>c) đúng. Thông tin này ảnh hưởng trực tiếp đến cách phân bổ nguồn lực để xử lý defect. Hiểu được severity giúp ưu tiên defect so với các vấn đề khác, và biết priority giúp đội phát triển lên lịch sửa theo nhu cầu kinh doanh. Báo cáo đã có ngày, tác giả và tài liệu tham chiếu (TC-2097, REQ-0556).</p>"
  },
  "q25-39": {
-  "stem": "<p>Xem user story sau:</p>\n<p>• Là một hệ thống quản lý chiến dịch email, tôi muốn có khả năng ưu tiên các chiến dịch email cho khách hàng standard và premium dựa trên kích thước danh sách người nhận, để tôi có thể tối ưu việc gửi và đảm bảo các thông điệp có tác động lớn nhất được gửi kịp thời</p>\n<p>Và acceptance criteria của nó:</p>\n<p>• AC1: Email của khách hàng premium phải được xử lý trước email của khách hàng standard, bất kể số lượng người nhận\n• AC2: Trong mỗi hạng khách hàng (standard hoặc premium), các chiến dịch có danh sách người nhận nhỏ hơn phải được ưu tiên cao hơn\n• AC3: Nếu hai chiến dịch trong cùng hạng khách hàng có cùng số người nhận, chúng phải được xử lý theo thứ tự nhận được</p>\n<p>Hai test case đã được tạo:</p>\n<p>• TC1. Một chiến dịch standard với 1000 người nhận bị hoãn lại để ưu tiên một chiến dịch standard với 100 người nhận\n• TC2. Một chiến dịch standard với 1000 người nhận bị hoãn lại để ưu tiên một chiến dịch premium với 100 người nhận</p>\n<p>Acceptance criteria nào chưa được các test case bao phủ một cách TOÀN DIỆN?</p>",
+  "stem": "<p>Xem user story sau:</p>\n<p>• Là một hệ thống quản lý chiến dịch email, tôi muốn có khả năng ưu tiên các chiến dịch email cho khách hàng standard và premium dựa trên kích thước danh sách người nhận, để tôi có thể tối ưu việc gửi và đảm bảo các thông điệp có tác động lớn nhất được gửi kịp thời</p>\n<p>Và acceptance criteria của nó:</p>\n<p>• AC1: Email của khách hàng premium phải được xử lý trước email của khách hàng standard, bất kể số lượng người nhận<br />\n• AC2: Trong mỗi hạng khách hàng (standard hoặc premium), các chiến dịch có danh sách người nhận nhỏ hơn phải được ưu tiên cao hơn<br />\n• AC3: Nếu hai chiến dịch trong cùng hạng khách hàng có cùng số người nhận, chúng phải được xử lý theo thứ tự nhận được</p>\n<p>Hai test case đã được tạo:</p>\n<p>• TC1. Một chiến dịch standard với 1000 người nhận bị hoãn lại để ưu tiên một chiến dịch standard với 100 người nhận<br />\n• TC2. Một chiến dịch standard với 1000 người nhận bị hoãn lại để ưu tiên một chiến dịch premium với 100 người nhận</p>\n<p>Acceptance criteria nào chưa được các test case bao phủ một cách TOÀN DIỆN?</p>",
   "options": [
    "AC1, AC2 và AC3 đều chưa được bao phủ toàn diện",
    "AC1 và AC3 chưa được bao phủ toàn diện",
@@ -7162,7 +7162,7 @@
   "explanation": "<p>a) đúng. Mặc dù các test hiện có có đụng đến các AC này, chúng không bao phủ hết các kịch bản có thể xảy ra cho từng quy tắc:</p>\n<ul>\n<li>\n<p>AC1 cần một test so sánh trực tiếp chiến dịch premium và standard trong đó chiến dịch standard có số người nhận nhỏ hơn, để kiểm tra rằng chiến dịch premium vẫn được ưu tiên</p>\n</li>\n<li>\n<p>AC2 cần kiểm thử việc ưu tiên danh sách nhỏ hơn trong hạng premium, không chỉ hạng standard</p>\n</li>\n<li>\n<p>AC3 cần một test với thời điểm gửi lệch nhau cho các chiến dịch trong cùng hạng có cùng số người nhận</p>\n</li>\n</ul>"
  },
  "q25-40": {
-  "stem": "<p>Những best practice nào sau đây để đạt được cách tiếp cận \"shift-left\" thường thuộc trách nhiệm của developer thay vì tester?</p>\n<p>i. TDD\nii. Component Integration testing\niii. Alpha testing\niv. BDD\nv. Kiểm thử bảo mật component</p>",
+  "stem": "<p>Những best practice nào sau đây để đạt được cách tiếp cận \"shift-left\" thường thuộc trách nhiệm của developer thay vì tester?</p>\n<p>i. TDD<br />\nii. Component Integration testing<br />\niii. Alpha testing<br />\niv. BDD<br />\nv. Kiểm thử bảo mật component</p>",
   "options": [
    "i, ii",
    "i, ii, v",
@@ -7465,7 +7465,7 @@
    "A-3, B-4, C-3, D-3, E-4",
    "A-3, B-4, C-1, D-2, E-4"
   ],
-  "explanation": "<p>a) đúng. - A. Test case (đã được ưu tiên) → 3. Test design - B. Test data → 4. Test implementation - C. Yêu cầu về môi trường test → 3. Test design - D. Test condition (đã được ưu tiên) → 2. Test analysis - E. Các thành phần của môi trường test → 4. Test implementation</p>"
+  "explanation": "<p>a) đúng.<br />\nA. Test case (đã được ưu tiên) → 3. Test design<br />\nB. Test data → 4. Test implementation<br />\nC. Yêu cầu về môi trường test → 3. Test design<br />\nD. Test condition (đã được ưu tiên) → 2. Test analysis<br />\nE. Các thành phần của môi trường test → 4. Test implementation</p>"
  },
  "q01-30": {
   "stem": "<p>Xác định mục nào sau đây (i-vi) nên có trong defect report:</p>\n<ul><li>i. Mã định danh duy nhất, độ ưu tiên sửa và thông tin xác định môi trường test</li><li>ii. Tên của developer đã gây ra failure</li><li>iii. Ngày phát hiện bất thường, tổ chức phát hành và tác giả, bao gồm vai trò của họ</li><li>iv. Thông tin liên hệ của tất cả thành viên trong team dự án</li><li>v. Hướng dẫn chi tiết cách sửa nguyên nhân</li><li>vi. Tiêu đề kèm tóm tắt ngắn về bất thường được báo cáo</li></ul>",
@@ -7535,7 +7535,7 @@
    "ii, v đúng với static testing; i, iii, iv đúng với dynamic testing",
    "ii, iv, v đúng với static testing; i, ii, iii đúng với dynamic testing"
   ],
-  "explanation": "<p>a) đúng. - (i.) đúng với dynamic testing - (ii.) đúng với cả static testing và dynamic testing - (iii.) đúng với static testing - (iv.) đúng với dynamic testing - (v.) đúng với static testing</p>"
+  "explanation": "<p>a) đúng.<br />\n(i.) đúng với dynamic testing<br />\n(ii.) đúng với cả static testing và dynamic testing<br />\n(iii.) đúng với static testing<br />\n(iv.) đúng với dynamic testing<br />\n(v.) đúng với static testing</p>"
  },
  "q01-37": {
   "stem": "<p>Phát biểu nào sau đây mô tả ĐÚNG NHẤT một lợi ích điển hình đối với testing của các buổi họp retrospective?</p>",
@@ -7595,7 +7595,7 @@
    "i, ii, vi",
    "ii, iii, vi"
   ],
-  "explanation": "<p>d) đúng. - i. Test condition (đã được ưu tiên) – test analysis - ii. Yêu cầu về test data và test environment – test design - iii. Coverage item – test design - iv. Test data – test implementation - v. Defect report về các defect trong test basis – test analysis - vi. Test charter – test design</p>"
+  "explanation": "<p>d) đúng.<br />\ni. Test condition (đã được ưu tiên) – test analysis<br />\nii. Yêu cầu về test data và test environment – test design<br />\niii. Coverage item – test design<br />\niv. Test data – test implementation<br />\nv. Defect report về các defect trong test basis – test analysis<br />\nvi. Test charter – test design</p>"
  },
  "q02-3": {
   "stem": "<p>Các đặc điểm nào (1-4) phù hợp NHẤT với các test level nào (A-D)?</p>\n<ul><li>Lý tưởng nhất, việc test nên được thực hiện bởi người dùng dự kiến và tập trung vào validation cũng như chứng minh sự sẵn sàng để triển khai</li><li>Việc test đòi hỏi test environment phù hợp, tốt nhất là tương tự môi trường vận hành</li><li>Việc test có thể được thực hiện bởi một đội test độc lập và liên quan đến đặc tả của hệ thống</li><li>Việc test thường được thực hiện bởi developer trong môi trường phát triển của họ</li></ul>\n<ul><li>A. Component testing</li><li>B. System testing</li><li>C. System integration testing</li><li>D. Acceptance testing</li></ul>",
@@ -7605,7 +7605,7 @@
    "1D, 2B, 3C, 4A",
    "1B, 2D, 3C, 4A"
   ],
-  "explanation": "<p>b) đúng. - 1D (Acceptance testing) vì acceptance testing tập trung vào validation, chứng minh sự sẵn sàng để triển khai, và lý tưởng nhất là được thực hiện bởi người dùng dự kiến - 2C (System integration testing) vì system integration testing đòi hỏi test environment phù hợp, tốt nhất là tương tự môi trường vận hành - 3B (System testing) vì system testing liên quan đến đặc tả hệ thống và có thể được thực hiện bởi một đội test độc lập - 4A (Component testing) vì component testing thường được thực hiện bởi developer trong môi trường phát triển của họ</p>"
+  "explanation": "<p>b) đúng.<br />\n1D (Acceptance testing) vì acceptance testing tập trung vào validation, chứng minh sự sẵn sàng để triển khai, và lý tưởng nhất là được thực hiện bởi người dùng dự kiến<br />\n2C (System integration testing) vì system integration testing đòi hỏi test environment phù hợp, tốt nhất là tương tự môi trường vận hành<br />\n3B (System testing) vì system testing liên quan đến đặc tả hệ thống và có thể được thực hiện bởi một đội test độc lập<br />\n4A (Component testing) vì component testing thường được thực hiện bởi developer trong môi trường phát triển của họ</p>"
  },
  "q02-4": {
   "stem": "<p>Công cụ quản lý (management tools) hỗ trợ hoạt động test nào?</p>",
@@ -7635,7 +7635,7 @@
    "i, iii, iv",
    "iii, v, vi"
   ],
-  "explanation": "<p>a) đúng. - (i.) Đúng. Test basis (ví dụ: các mô hình) - (ii.) Sai. Code đã mã hóa quá phức tạp đối với con người và nếu được mã hóa đúng cách thì hầu hết các công cụ sẽ không phân tích được - (iii.) Đúng. Testware - (iv.) Sai. Các work product không phù hợp cho static testing bao gồm những thứ khó diễn giải đối với con người và không nên được phân tích bằng công cụ (ví dụ: code thực thi của bên thứ ba vì lý do pháp lý) - (v.) Đúng. Test basis (ví dụ: đặc tả, source code, hợp đồng, mô hình, v.v.) - (vi.) Sai. Phần mềm và dịch vụ Commercial-Off-The-Shelf (COTS) thường được xây dựng và cung cấp bởi một nhà cung cấp bên thứ ba</p>"
+  "explanation": "<p>a) đúng.<br />\n(i.) Đúng. Test basis (ví dụ: các mô hình)<br />\n(ii.) Sai. Code đã mã hóa quá phức tạp đối với con người và nếu được mã hóa đúng cách thì hầu hết các công cụ sẽ không phân tích được<br />\n(iii.) Đúng. Testware<br />\n(iv.) Sai. Các work product không phù hợp cho static testing bao gồm những thứ khó diễn giải đối với con người và không nên được phân tích bằng công cụ (ví dụ: code thực thi của bên thứ ba vì lý do pháp lý)<br />\n(v.) Đúng. Test basis (ví dụ: đặc tả, source code, hợp đồng, mô hình, v.v.)<br />\n(vi.) Sai. Phần mềm và dịch vụ Commercial-Off-The-Shelf (COTS) thường được xây dựng và cung cấp bởi một nhà cung cấp bên thứ ba</p>"
  },
  "q02-7": {
   "stem": "<p>Cho các tác vụ test sau:</p>\n<ul><li>Chi tiết hóa test condition thành test case và các testware khác</li><li>Xác định các tính năng có thể test được trong test basis</li><li>Bổ sung thêm nguồn lực khi nào và ở đâu cần thiết</li><li>Lập lịch test</li></ul>\n<p>Và các hoạt động test sau:</p>\n<ul><li>A. Test design</li><li>B. Test planning</li><li>C. Test monitoring và test control</li><li>D. Test analysis</li></ul>\n<p>Phương án nào sau đây ghép ĐÚNG NHẤT các tác vụ với các hoạt động?</p>",
@@ -7645,7 +7645,7 @@
    "A-1, B-4, C-3, D-2",
    "A-1, B-3, C-4, D-2"
   ],
-  "explanation": "<p>c) đúng. - A. Test design – 1. Chi tiết hóa test condition thành test case và các testware khác - B. Test planning – 4. Lập lịch test - C. Test monitoring và test control – 3. Bổ sung thêm nguồn lực khi nào và ở đâu cần thiết - D. Test analysis – 2. Xác định các tính năng có thể test được trong test basis</p>"
+  "explanation": "<p>c) đúng.<br />\nA. Test design – 1. Chi tiết hóa test condition thành test case và các testware khác<br />\nB. Test planning – 4. Lập lịch test<br />\nC. Test monitoring và test control – 3. Bổ sung thêm nguồn lực khi nào và ở đâu cần thiết<br />\nD. Test analysis – 2. Xác định các tính năng có thể test được trong test basis</p>"
  },
  "q02-8": {
   "stem": "<p>Tester tham gia vào những tác vụ nào trong iteration planning? (Chọn MỘT phương án)</p>\n<ul><li>i. Ước lượng test effort liên quan đến các user story</li><li>ii. Ước lượng test effort cho tất cả các tác vụ test</li><li>iii. Xác định khả năng test được (testability) của user story</li><li>iv. Viết user story và acceptance criteria có thể test được</li><li>v. Tham gia phân tích rủi ro chi tiết của user story</li><li>vi. Tham gia phân tích project risk và rủi ro chất lượng</li></ul>",
@@ -7697,7 +7697,7 @@
    "1B, 2D, 3C, 4A",
    "1D, 2B, 3C, 4A"
   ],
-  "explanation": "<p>c) đúng. - Moderator – B. Đảm bảo buổi họp review diễn ra hiệu quả, bao gồm hòa giải, quản lý thời gian và duy trì môi trường review an toàn nơi mọi người có thể phát biểu thoải mái - Review Leader – D. Chịu trách nhiệm tổng thể về review, bao gồm quyết định ai sẽ tham gia, và tổ chức thời gian, địa điểm diễn ra review - Manager – C. Quyết định những gì cần được review và cung cấp nguồn lực, chẳng hạn như nhân sự và thời gian, cho review - Scribe – A. Tổng hợp các anomaly từ reviewer và ghi lại thông tin review, chẳng hạn như các quyết định và anomaly mới được phát hiện trong buổi họp review</p>"
+  "explanation": "<p>c) đúng.<br />\nModerator – B. Đảm bảo buổi họp review diễn ra hiệu quả, bao gồm hòa giải, quản lý thời gian và duy trì môi trường review an toàn nơi mọi người có thể phát biểu thoải mái<br />\nReview Leader – D. Chịu trách nhiệm tổng thể về review, bao gồm quyết định ai sẽ tham gia, và tổ chức thời gian, địa điểm diễn ra review<br />\nManager – C. Quyết định những gì cần được review và cung cấp nguồn lực, chẳng hạn như nhân sự và thời gian, cho review<br />\nScribe – A. Tổng hợp các anomaly từ reviewer và ghi lại thông tin review, chẳng hạn như các quyết định và anomaly mới được phát hiện trong buổi họp review</p>"
  },
  "q02-13": {
   "stem": "<p>Thông tin sau có thể được tìm thấy trong test plan không? Nếu có, thì nó CÓ KHẢ NĂNG NHẤT nằm ở đâu?</p>\n<p>Phạm vi testing và mục tiêu test của component testing:</p>\n<ul><li>• Xác nhận rằng các input tạo ra output mong đợi bên trong component</li><li>• Verification rằng dữ liệu được truyền chính xác giữa các component kết nối với nhau</li><li>• Verification rằng component xử lý phù hợp cả giá trị input bình thường lẫn giá trị cực trị</li><li>• Validation các cơ chế xử lý lỗi bên trong mỗi component</li><li>• Đảm bảo rằng các tình huống lỗi được bắt và xử lý một cách êm thấm</li><li>• Verification rằng trình tự thao tác mong đợi được tuân thủ</li></ul>",
@@ -7850,7 +7850,7 @@
    "1A, 1B, 1C, 2D, 2E, 2F",
    "1A, 1B, 1C, 1D, 1E, 1F"
   ],
-  "explanation": "<p>b) đúng. - A. (Nhiệm vụ test analysis) - B. (Nhiệm vụ test planning) - C. (Vai trò kiểm thử chịu trách nhiệm tổng thể về khía cạnh kỹ thuật của kiểm thử) - D. (Nhiệm vụ test analysis) - E. (Nhiệm vụ test monitoring) - F. (Nhiệm vụ test control)  Theo syllabus: Vai trò quản lý kiểm thử chủ yếu tập trung vào các hoạt động test planning, test monitoring and control và test completion. Vai trò kiểm thử chủ yếu tập trung vào các hoạt động test analysis, test design, test implementation và test execution.</p>"
+  "explanation": "<p>b) đúng.<br />\nA. (Nhiệm vụ test analysis)<br />\nB. (Nhiệm vụ test planning)<br />\nC. (Vai trò kiểm thử chịu trách nhiệm tổng thể về khía cạnh kỹ thuật của kiểm thử)<br />\nD. (Nhiệm vụ test analysis)<br />\nE. (Nhiệm vụ test monitoring)<br />\nF. (Nhiệm vụ test control)<br />\nTheo syllabus: Vai trò quản lý kiểm thử chủ yếu tập trung vào các hoạt động test planning, test monitoring and control và test completion. Vai trò kiểm thử chủ yếu tập trung vào các hoạt động test analysis, test design, test implementation và test execution.</p>"
  },
  "q02-29": {
   "stem": "<p>Phát biểu nào sau đây là ĐÚNG về việc viết user story cộng tác?</p>",
@@ -7941,7 +7941,7 @@
    "i, ii, iii, vi",
    "iii, v, vi"
   ],
-  "explanation": "<p>a) đúng. - (i.) đúng, theo syllabus: Cả static testing và dynamic testing (kèm phân tích failure) đều có thể dẫn đến việc phát hiện defect, tuy nhiên có một số loại defect chỉ có thể được tìm thấy bằng static testing hoặc bằng dynamic testing - (iii.) đúng, theo syllabus: Static testing tìm ra defect trực tiếp, trong khi dynamic testing gây ra failure, từ đó các defect liên quan được xác định thông qua phân tích tiếp theo - (vi.) đúng, theo syllabus: Static testing có thể dễ dàng phát hiện hơn các defect nằm trên những đường đi trong code hiếm khi được thực thi hoặc khó tiếp cận</p>"
+  "explanation": "<p>a) đúng.<br />\n(i.) đúng, theo syllabus: Cả static testing và dynamic testing (kèm phân tích failure) đều có thể dẫn đến việc phát hiện defect, tuy nhiên có một số loại defect chỉ có thể được tìm thấy bằng static testing hoặc bằng dynamic testing<br />\n(iii.) đúng, theo syllabus: Static testing tìm ra defect trực tiếp, trong khi dynamic testing gây ra failure, từ đó các defect liên quan được xác định thông qua phân tích tiếp theo<br />\n(vi.) đúng, theo syllabus: Static testing có thể dễ dàng phát hiện hơn các defect nằm trên những đường đi trong code hiếm khi được thực thi hoặc khó tiếp cận</p>"
  },
  "q02-38": {
   "stem": "<p>Chọn phát biểu phản ánh đúng một trong các nguyên tắc kiểm thử:</p>",
@@ -8501,7 +8501,7 @@
    "valid credentials → withdraw → invalid amount → back → check balance → withdraw → valid amount",
    "valid credentials → check balance → withdraw → invalid amount → check balance → withdraw → valid amount"
   ],
-  "explanation": "<p>c) đúng. Chỉ chứa các transition hợp lệ. - a) không đúng. Sau transition 'restart', ta quay lại trạng thái S1 (Login). Test phải kết thúc khi một transition quay lại S1, nên test case không được tiếp tục sau transition đầu tiên. - b) không đúng. Không có transition 'back' hợp lệ nào từ S2.</p>"
+  "explanation": "<p>c) đúng. Chỉ chứa các transition hợp lệ.<br />\na) không đúng. Sau transition 'restart', ta quay lại trạng thái S1 (Login). Test phải kết thúc khi một transition quay lại S1, nên test case không được tiếp tục sau transition đầu tiên.<br />\nb) không đúng. Không có transition 'back' hợp lệ nào từ S2.</p>"
  },
  "q04-14": {
   "stem": "<p>Phát biểu nào sau đây mô tả đúng nhất một điểm khác biệt chính giữa static testing và dynamic testing?</p>",
@@ -8551,7 +8551,7 @@
    "Entry criteria – 1, 4, 6; Exit criteria – 2, 3, 5",
    "Entry criteria – 2, 3, 5; Exit criteria – 1, 4, 6"
   ],
-  "explanation": "<p>a) đúng. - 2. Tất cả smoke test case đều pass với tỷ lệ thành công 100% - ví dụ về yêu cầu test object phải đáp ứng exit criteria của một test level trước đó trước khi có thể bắt đầu kiểm thử (entry criterion) - 4. Gói đăng ký công cụ kiểm thử UI đã được mua và quyền truy cập đã được cấp - entry criterion (sự sẵn có của công cụ kiểm thử) - 5. Dữ liệu mẫu đã được thêm vào cơ sở dữ liệu môi trường kiểm thử - entry criterion (sự sẵn sàng của môi trường kiểm thử) - 1. Đạt 90% statement coverage - exit criterion - 3. Mật độ defect dưới 1% - exit criterion - 6. Tất cả defect nghiêm trọng đã được xử lý và sửa - exit criterion</p>"
+  "explanation": "<p>a) đúng.<br />\n2. Tất cả smoke test case đều pass với tỷ lệ thành công 100% - ví dụ về yêu cầu test object phải đáp ứng exit criteria của một test level trước đó trước khi có thể bắt đầu kiểm thử (entry criterion)<br />\n4. Gói đăng ký công cụ kiểm thử UI đã được mua và quyền truy cập đã được cấp - entry criterion (sự sẵn có của công cụ kiểm thử)<br />\n5. Dữ liệu mẫu đã được thêm vào cơ sở dữ liệu môi trường kiểm thử - entry criterion (sự sẵn sàng của môi trường kiểm thử)<br />\n1. Đạt 90% statement coverage - exit criterion<br />\n3. Mật độ defect dưới 1% - exit criterion<br />\n6. Tất cả defect nghiêm trọng đã được xử lý và sửa - exit criterion</p>"
  },
  "q04-19": {
   "stem": "<p>Một ứng dụng thể dục đo số bước đi mỗi ngày và đưa ra phản hồi để khuyến khích người dùng giữ dáng.</p>\n<p>Phản hồi cho các số bước khác nhau phải là:</p>\n<ul><li>Đến 1000 - Couch Potato!</li><li>Trên 1000, đến 4000 - Getting There!</li><li>Trên 4000, đến 6000 - Not Bad!</li><li>Trên 6000 đến 9999 - Way to Go!</li><li>Trên 9999 - Champion!</li></ul>\n<p>Bộ giá trị đầu vào test nào sau đây đạt coverage equivalence partitioning TỐT NHẤT?</p>",
@@ -8621,7 +8621,7 @@
    "Chỉ AC4 không được bao phủ",
    "AC4, AC6 không được bao phủ"
   ],
-  "explanation": "<p>d) đúng. - AC1: Được bao phủ vì người dùng đăng ký với cả email và SMS - AC2: Được bao phủ vì email hợp lệ và số điện thoại hợp lệ được ngầm hiểu qua việc nhận thông báo thành công - AC3: Được bao phủ vì cả hai khung thời gian (48 giờ và 24 giờ) đều được sử dụng - AC4: Bao phủ một phần. Test có thông báo cho \"delay\", nhưng không bao phủ thông báo cho \"cancel\" - AC5: Được bao phủ vì người dùng đã thay đổi phương thức thông báo từ email sang SMS - AC6: Bao phủ một phần. Test đã xác minh khả năng hủy đăng ký sau khi thay đổi phương thức thông báo, nhưng không kiểm thử việc hủy đăng ký ngay sau lần đăng ký đầu tiên</p>"
+  "explanation": "<p>d) đúng.<br />\nAC1: Được bao phủ vì người dùng đăng ký với cả email và SMS<br />\nAC2: Được bao phủ vì email hợp lệ và số điện thoại hợp lệ được ngầm hiểu qua việc nhận thông báo thành công<br />\nAC3: Được bao phủ vì cả hai khung thời gian (48 giờ và 24 giờ) đều được sử dụng<br />\nAC4: Bao phủ một phần. Test có thông báo cho \"delay\", nhưng không bao phủ thông báo cho \"cancel\"<br />\nAC5: Được bao phủ vì người dùng đã thay đổi phương thức thông báo từ email sang SMS<br />\nAC6: Bao phủ một phần. Test đã xác minh khả năng hủy đăng ký sau khi thay đổi phương thức thông báo, nhưng không kiểm thử việc hủy đăng ký ngay sau lần đăng ký đầu tiên</p>"
  },
  "q04-26": {
   "stem": "<p>Loại kỹ thuật kiểm thử nào phù hợp nhất để xác nhận rằng một ứng dụng thương mại điện tử chỉ giảm giá khi tổng giá trị mua hàng vượt quá một mức nhất định?</p>",

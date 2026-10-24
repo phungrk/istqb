@@ -12,6 +12,7 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { formatQuestionHtml } from "./lib/line-breaks.mjs";
 import { chromium } from "playwright";
 
 const [QDIR, REPO] = process.argv.slice(2);
@@ -23,7 +24,7 @@ const esc = (s) => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replac
 const md = (s) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*\*/g, "");
 const LETTERS = "abcde";
 
-function sanitize(html) {
+function cleanHtml(html) {
   return html
     .replace(/<script[\s\S]*?<\/script>/gi, "")
     .replace(/<style[\s\S]*?<\/style>/gi, "")
@@ -40,6 +41,8 @@ function sanitize(html) {
     })
     .trim();
 }
+// One item per line: i./ii./iii., A./B./C., AC1/AC2 … (scripts/lib/line-breaks.mjs).
+const sanitize = (html) => formatQuestionHtml(cleanHtml(html));
 
 const out = [];
 
@@ -86,7 +89,7 @@ for (let n = 1; n <= 5; n++) {
       stem: sanitize(stem),
       options: q.o.map(esc),
       answers: Array.isArray(q.a) ? q.a : [q.a],
-      explanation: `<p>${md(q.x)}</p>`,
+      explanation: formatQuestionHtml(`<p>${md(q.x)}</p>`),
     });
   });
   await page.close();

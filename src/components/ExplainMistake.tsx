@@ -17,6 +17,7 @@ Never change which answer is correct, and do not invent syllabus content.`;
 const plain = (html: string) =>
   html
     .replace(/<img[^>]*>/gi, " [figure] ")
+    .replace(/<br\s*\/?>/gi, "\n")
     .replace(/<\/(p|li|tr|div)>/gi, "\n")
     .replace(/<[^>]+>/g, " ")
     .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&#39;/g, "'")

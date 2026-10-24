@@ -11,6 +11,7 @@
 import fs from "fs";
 import path from "path";
 import crypto from "crypto";
+import { formatQuestionHtml } from "./lib/line-breaks.mjs";
 
 const ROOT = path.join(path.dirname(new URL(import.meta.url).pathname), "..");
 const cfgPath = path.resolve(process.argv[2] ?? "");
@@ -46,7 +47,7 @@ function html(lines) {
   }
   close();
   closeQuote();
-  return out.join("\n");
+  return formatQuestionHtml(out.join("\n"));
 }
 
 function image(file, alt) {

@@ -635,7 +635,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 8 · Q38",
-  "stem": "<p>Consider the following defect report for a web-based shopping application:</p>\n<blockquote>\n<p><strong>Application:</strong> WebShop v0.99\n<strong>Defect:</strong> Login button not working\n<strong>Steps to Reproduce:</strong>\n1. Launch the website\n2. Click on the login button\n<strong>Expected result:</strong> The user should be redirected to the login page.\n<strong>Actual result:</strong> The login button does not respond when clicked.\n<strong>Severity:</strong> High\n<strong>Priority:</strong> Urgent</p>\n</blockquote>\n<p>What is the MOST important information that is missing from this defect report?</p>",
+  "stem": "<p>Consider the following defect report for a web-based shopping application:</p>\n<blockquote>\n<p><strong>Application:</strong> WebShop v0.99<br />\n<strong>Defect:</strong> Login button not working<br />\n<strong>Steps to Reproduce:</strong><br />\n1. Launch the website<br />\n2. Click on the login button<br />\n<strong>Expected result:</strong> The user should be redirected to the login page.<br />\n<strong>Actual result:</strong> The login button does not respond when clicked.<br />\n<strong>Severity:</strong> High<br />\n<strong>Priority:</strong> Urgent</p>\n</blockquote>\n<p>What is the MOST important information that is missing from this defect report?</p>",
   "options": [
    "Name of the tester and date",
    "Test environment elements and their version numbers",
@@ -1164,7 +1164,7 @@
   "chapter": 4,
   "lo": "4.5.3",
   "src": "Quiz 9 · Q29",
-  "stem": "<p>You have just started designing test cases for the following user story.</p>\n<blockquote>\n<p>As a customer,\nI want to be able to filter search results by price range, so that I can find products within my budget more easily.</p>\n</blockquote>\n<p>Acceptance criteria:</p>\n<ol>\n<li>The filter should work for all versions of the application from version 3.0 upwards</li>\n<li>The filter should allow the customer to set a price range with a minimum and a maximum price</li>\n<li>The search results should update dynamically as the customer adjusts the price range filter</li>\n</ol>\n<p>In all test cases the precondition is as follows: there are only two products available, products A and B. Product A costs $100 and product B costs $110.</p>\n<p>Which of the following is the BEST example of a test case for this user story?</p>",
+  "stem": "<p>You have just started designing test cases for the following user story.</p>\n<blockquote>\n<p>As a customer,<br />\nI want to be able to filter search results by price range, so that I can find products within my budget more easily.</p>\n</blockquote>\n<p>Acceptance criteria:</p>\n<ol>\n<li>The filter should work for all versions of the application from version 3.0 upwards</li>\n<li>The filter should allow the customer to set a price range with a minimum and a maximum price</li>\n<li>The search results should update dynamically as the customer adjusts the price range filter</li>\n</ol>\n<p>In all test cases the precondition is as follows: there are only two products available, products A and B. Product A costs $100 and product B costs $110.</p>\n<p>Which of the following is the BEST example of a test case for this user story?</p>",
   "options": [
    "Enter webpage and set filter to show prices between $90 and $100. Expected result: results show product A only. Set maximum price to $110. Expected result: results now include both products A and B",
    "Enter webpage. Expected result: the default minimum and maximum prices are $100 and $110 respectively. Add product C to stock, with price $120. Refresh the client's webpage. Expected result: the default maximum price changes to $120",
@@ -1321,7 +1321,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 9 · Q38",
-  "stem": "<p>Consider the following defect report for a Book Lending System.</p>\n<blockquote>\n<p><strong>Defect ID:</strong> 001 | <strong>Title:</strong> Unable to Return a Book |\n<strong>Severity:</strong> High | <strong>Priority:</strong> (empty)\n<strong>Environment:</strong> Windows 10, Google Chrome\n<strong>Description:</strong> When attempting to return a book using the Book Return feature, the system does not register the return and the book remains checked out to the user.\n<strong>Steps to Reproduce:</strong>\n1. Login to the Book Lending System as a user who has checked out a book.\n2. Click on the \"Book Return\" button for the book that has been checked out.\n3. System does not register the return and the book remains checked out.\n<strong>Expected Result:</strong> The book should be returned and no longer appear as checked out to the user.\n<strong>Actual Result:</strong> The book remains checked out to the user and is not registered as returned in the system.\n<strong>Attachments:</strong> [empty list]</p>\n</blockquote>\n<p>Which of the following is MOST likely to help the developer reproduce the failure quickly?</p>",
+  "stem": "<p>Consider the following defect report for a Book Lending System.</p>\n<blockquote>\n<p><strong>Defect ID:</strong> 001 | <strong>Title:</strong> Unable to Return a Book |<br />\n<strong>Severity:</strong> High | <strong>Priority:</strong> (empty)<br />\n<strong>Environment:</strong> Windows 10, Google Chrome<br />\n<strong>Description:</strong> When attempting to return a book using the Book Return feature, the system does not register the return and the book remains checked out to the user.<br />\n<strong>Steps to Reproduce:</strong><br />\n1. Login to the Book Lending System as a user who has checked out a book.<br />\n2. Click on the \"Book Return\" button for the book that has been checked out.<br />\n3. System does not register the return and the book remains checked out.<br />\n<strong>Expected Result:</strong> The book should be returned and no longer appear as checked out to the user.<br />\n<strong>Actual Result:</strong> The book remains checked out to the user and is not registered as returned in the system.<br />\n<strong>Attachments:</strong> [empty list]</p>\n</blockquote>\n<p>Which of the following is MOST likely to help the developer reproduce the failure quickly?</p>",
   "options": [
    "Adding information about which users and which books the failure affects to the \"Description\" section",
    "Filling in the missing value for the \"Priority\" field",
@@ -1848,7 +1848,7 @@
   "chapter": 4,
   "lo": "",
   "src": "Quiz 10 · Q29",
-  "stem": "<p>You are creating test cases for the following story, applying the ATDD approach.</p>\n<blockquote>\n<p>As a hotel owner\nI want to reserve all the rooms on a floor before moving to the next floor\nSo I can maximize the efficiency of the housekeeping staff</p>\n</blockquote>\n<p>You have decided to apply equivalence partitioning to this requirement and have identified the following partitions for the occupancy of a floor:</p>\n<p>0 | 1 - floor full | overbooked</p>\n<p>You also want to be sure that the software is usable by the staff and that it performs quickly in determining which floors have availability.</p>\n<p>Given this information, what should be the priority order for the tests you will design?</p>",
+  "stem": "<p>You are creating test cases for the following story, applying the ATDD approach.</p>\n<blockquote>\n<p>As a hotel owner<br />\nI want to reserve all the rooms on a floor before moving to the next floor<br />\nSo I can maximize the efficiency of the housekeeping staff</p>\n</blockquote>\n<p>You have decided to apply equivalence partitioning to this requirement and have identified the following partitions for the occupancy of a floor:</p>\n<p>0 | 1 - floor full | overbooked</p>\n<p>You also want to be sure that the software is usable by the staff and that it performs quickly in determining which floors have availability.</p>\n<p>Given this information, what should be the priority order for the tests you will design?</p>",
   "options": [
    "0, 1-floor full, overbooked, usability, performance",
    "Performance, 1-floor full, usability, overbooked, 0",
@@ -2528,7 +2528,7 @@
   "chapter": 4,
   "lo": "",
   "src": "Quiz 11 · Q29",
-  "stem": "<p>You are creating test cases for the following story, applying the ATDD approach.</p>\n<blockquote>\n<p>As a hotel owner\nI want to reserve all the rooms on a floor before moving to the next floor\nSo I can maximize the efficiency of the housekeeping staff</p>\n</blockquote>\n<p>You have decided to apply boundary value analysis to this requirement and have identified the following partitions for the occupancy of a floor:</p>\n<p>0 | 1 - floor full | overbooked</p>\n<p>You also want to be sure that the software is usable by the staff and it performs quickly in determining which floors have availability.</p>\n<p>You have designed the following test cases:</p>\n<ol>\n<li>Test with 1 occupant on the floor</li>\n<li>Test with the floor full and ensure the next floor is made available for bookings</li>\n<li>Test with 0 occupants on the floor and ensure that floor is only available when lower floors are fully booked</li>\n<li>Test the usability to ensure hotel staff will find the software usable</li>\n<li>Test for response time when the system is at average load and the hotel is 80% occupied</li>\n</ol>\n<p>What are you missing?</p>",
+  "stem": "<p>You are creating test cases for the following story, applying the ATDD approach.</p>\n<blockquote>\n<p>As a hotel owner<br />\nI want to reserve all the rooms on a floor before moving to the next floor<br />\nSo I can maximize the efficiency of the housekeeping staff</p>\n</blockquote>\n<p>You have decided to apply boundary value analysis to this requirement and have identified the following partitions for the occupancy of a floor:</p>\n<p>0 | 1 - floor full | overbooked</p>\n<p>You also want to be sure that the software is usable by the staff and it performs quickly in determining which floors have availability.</p>\n<p>You have designed the following test cases:</p>\n<ol>\n<li>Test with 1 occupant on the floor</li>\n<li>Test with the floor full and ensure the next floor is made available for bookings</li>\n<li>Test with 0 occupants on the floor and ensure that floor is only available when lower floors are fully booked</li>\n<li>Test the usability to ensure hotel staff will find the software usable</li>\n<li>Test for response time when the system is at average load and the hotel is 80% occupied</li>\n</ol>\n<p>What are you missing?</p>",
   "options": [
    "A test with a floor partially occupied but not fully occupied",
    "A test for performance",
@@ -3378,7 +3378,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 12 · Q40",
-  "stem": "<p>You received the following defect report from the developers stating that the anomaly described in this test report is not reproducible:</p>\n<blockquote>\n<p>Id: BUG-0561\nDefect: Spreadsheet formulas not calculating\nDate: 2023-March-12 – Emily Clarke – Open</p>\n<p>The spreadsheet component of the suite fails to calculate any new formulas entered by the user. Repeated attempts to add simple formulas like SUM or AVERAGE result in blank cells instead of calculated results. This issue persists across several user accounts. No error messages displayed; however, the error log shows timeout issues when executing calculations. According to test case TC-2097, the application should process and display results immediately upon formula entry. This feature is integral to user operations as per REQ-0556. It is urgent and affects a critical business process.</p>\n</blockquote>\n<p>The defect report does not have all the necessary details and you plan to add them. Which of the following items would NOT be typically included in a tester's initial defect report?</p>",
+  "stem": "<p>You received the following defect report from the developers stating that the anomaly described in this test report is not reproducible:</p>\n<blockquote>\n<p>Id: BUG-0561<br />\nDefect: Spreadsheet formulas not calculating<br />\nDate: 2023-March-12 – Emily Clarke – Open</p>\n<p>The spreadsheet component of the suite fails to calculate any new formulas entered by the user. Repeated attempts to add simple formulas like SUM or AVERAGE result in blank cells instead of calculated results. This issue persists across several user accounts. No error messages displayed; however, the error log shows timeout issues when executing calculations. According to test case TC-2097, the application should process and display results immediately upon formula entry. This feature is integral to user operations as per REQ-0556. It is urgent and affects a critical business process.</p>\n</blockquote>\n<p>The defect report does not have all the necessary details and you plan to add them. Which of the following items would NOT be typically included in a tester's initial defect report?</p>",
   "options": [
    "Any relevant database dumps, screenshots, or recordings",
    "Steps to reproduce the issue",
@@ -3763,7 +3763,7 @@
   "answers": [
    2
   ],
-  "explanation": "<p>c) is correct. The following valid equivalence partitions can be identified:\n1. 10% discount (3, 6, 9, 12, 33, 66, 99)\n2. 20% discount (5, 15, 25…)\n3. Free (10, 20…100)\n4. No discount (1, 2, 4, 7, 8…)</p>\n<p>Coverage: 1 (no discount), 10 (free), 12 (10%), 25 (20%), 100 (free) — covers all 4 partitions.</p>"
+  "explanation": "<p>c) is correct. The following valid equivalence partitions can be identified:<br />\n1. 10% discount (3, 6, 9, 12, 33, 66, 99)<br />\n2. 20% discount (5, 15, 25…)<br />\n3. Free (10, 20…100)<br />\n4. No discount (1, 2, 4, 7, 8…)</p>\n<p>Coverage: 1 (no discount), 10 (free), 12 (10%), 25 (20%), 100 (free) — covers all 4 partitions.</p>"
  },
  {
   "id": "q13-24",
@@ -4008,7 +4008,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 13 · Q38",
-  "stem": "<p>Consider the following defect report for a mobile banking app:</p>\n<blockquote>\n<p>Application: BankApp v2.1\nEnv.: Staging\nDefect: Unable to deposit checks via mobile app</p>\n<p>Steps to Reproduce:\n1. Log into the BankApp.\n2. Navigate to the \"Deposit\" section.\n3. Attempt to deposit a check using the mobile deposit feature.</p>\n<p>Expected Result: The check is scanned and accepted for deposit.\nActual Result: The app crashes immediately after the check is scanned.</p>\n<p>Severity: Medium\nPriority: High</p>\n</blockquote>\n<p>You received the following feedback from the quality assurance team stating that the defect described in this test report cannot be reproduced:</p>\n<blockquote>\n<p>2023-April-10 – Jane Smith – Open\nAfter multiple attempts to reproduce the issue by scanning different checks, the application did not crash and functioned as expected. Based on the test case TC-2456, the app should seamlessly handle check deposits. This functionality is critical as outlined in REQ-0456. The problem was previously reported but now appears to be resolved.</p>\n</blockquote>\n<p>What critical information is MISSING from this defect report that would have been useful for the developers?</p>",
+  "stem": "<p>Consider the following defect report for a mobile banking app:</p>\n<blockquote>\n<p>Application: BankApp v2.1<br />\nEnv.: Staging<br />\nDefect: Unable to deposit checks via mobile app</p>\n<p>Steps to Reproduce:<br />\n1. Log into the BankApp.<br />\n2. Navigate to the \"Deposit\" section.<br />\n3. Attempt to deposit a check using the mobile deposit feature.</p>\n<p>Expected Result: The check is scanned and accepted for deposit.<br />\nActual Result: The app crashes immediately after the check is scanned.</p>\n<p>Severity: Medium<br />\nPriority: High</p>\n</blockquote>\n<p>You received the following feedback from the quality assurance team stating that the defect described in this test report cannot be reproduced:</p>\n<blockquote>\n<p>2023-April-10 – Jane Smith – Open<br />\nAfter multiple attempts to reproduce the issue by scanning different checks, the application did not crash and functioned as expected. Based on the test case TC-2456, the app should seamlessly handle check deposits. This functionality is critical as outlined in REQ-0456. The problem was previously reported but now appears to be resolved.</p>\n</blockquote>\n<p>What critical information is MISSING from this defect report that would have been useful for the developers?</p>",
   "options": [
    "Estimated time to fix the defect, to help prioritize the defect or set expectations for when it might be resolved",
    "Name of the developer who's code caused the failure, to streamline the assignment of the defect to the right developer, potentially speeding up the fix",
@@ -4349,7 +4349,7 @@
   "chapter": 5,
   "lo": "5.1.7",
   "src": "Quiz 14 · Q18",
-  "stem": "<p>Consider the following test categories (1-4) and agile testing quadrants (A-D):</p>\n<ol>\n<li>Usability testing</li>\n<li>API testing</li>\n<li>Performance testing</li>\n<li>Unit integration testing</li>\n</ol>\n<p>A. Agile testing quadrant Q1: technology facing, supporting the development team\nB. Agile testing quadrant Q2: business facing, supporting the development team\nC. Agile testing quadrant Q3: business facing, critique the product\nD. Agile testing quadrant Q4: technology facing, critique the product</p>\n<p>How do the following test categories map onto the agile testing quadrants?</p>",
+  "stem": "<p>Consider the following test categories (1-4) and agile testing quadrants (A-D):</p>\n<ol>\n<li>Usability testing</li>\n<li>API testing</li>\n<li>Performance testing</li>\n<li>Unit integration testing</li>\n</ol>\n<p>A. Agile testing quadrant Q1: technology facing, supporting the development team<br />\nB. Agile testing quadrant Q2: business facing, supporting the development team<br />\nC. Agile testing quadrant Q3: business facing, critique the product<br />\nD. Agile testing quadrant Q4: technology facing, critique the product</p>\n<p>How do the following test categories map onto the agile testing quadrants?</p>",
   "options": [
    "1D, 2B, 3C, 4A",
    "1B, 2C, 3D, 4A",
@@ -4495,7 +4495,7 @@
   "answers": [
    2
   ],
-  "explanation": "<p>c) is correct. Includes all necessary boundary values. The following partitions can be identified:\n1. &lt;= 50, boundary value 50\n2. 51 – 55, boundary values 51, 55\n3. 56 – 60, boundary values 56, 60\n4. &gt;= 61, boundary value 61</p>\n<p>Boundary value according to glossary V.3.2: A minimum or maximum value of an ordered equivalence partition.</p>"
+  "explanation": "<p>c) is correct. Includes all necessary boundary values. The following partitions can be identified:<br />\n1. &lt;= 50, boundary value 50<br />\n2. 51 – 55, boundary values 51, 55<br />\n3. 56 – 60, boundary values 56, 60<br />\n4. &gt;= 61, boundary value 61</p>\n<p>Boundary value according to glossary V.3.2: A minimum or maximum value of an ordered equivalence partition.</p>"
  },
  {
   "id": "q14-27",
@@ -4808,7 +4808,7 @@
   "chapter": 5,
   "lo": "5.2.1",
   "src": "Quiz 15 · Q5",
-  "stem": "<p>Consider the following definitions and match the keyword (1-4) with the definition (A-D)</p>\n<ol>\n<li>Risk analysis</li>\n<li>Risk control</li>\n<li>Risk likelihood</li>\n<li>Risk impact</li>\n</ol>\n<p>A. The overall process of risk identification and risk assessment\nB. The probability that a risk will become an actual outcome or event\nC. The damage that will be caused if the risk becomes an actual outcome or event\nD. The overall process of risk mitigation and risk monitoring</p>",
+  "stem": "<p>Consider the following definitions and match the keyword (1-4) with the definition (A-D)</p>\n<ol>\n<li>Risk analysis</li>\n<li>Risk control</li>\n<li>Risk likelihood</li>\n<li>Risk impact</li>\n</ol>\n<p>A. The overall process of risk identification and risk assessment<br />\nB. The probability that a risk will become an actual outcome or event<br />\nC. The damage that will be caused if the risk becomes an actual outcome or event<br />\nD. The overall process of risk mitigation and risk monitoring</p>",
   "options": [
    "1D, 2A, 3B, 4C",
    "1A, 2D, 3C, 4B",
@@ -4859,7 +4859,7 @@
   "chapter": 5,
   "lo": "5.1.1",
   "src": "Quiz 15 · Q8",
-  "stem": "<p>Can the following information be found in the test plan?</p>\n<p>Test Completion Report</p>\n<p>...</p>\n<ol>\n<li>\n<p>Summary\nThe testing phase for the [Project Name] has been successfully completed. This report provides an overview of the testing activities, outcomes, and recommendations for future improvements.</p>\n</li>\n<li>\n<p>Objectives\nThe primary objectives of the testing phase were to:</p>\n</li>\n</ol>\n<ul>\n<li>Validate the functionality of [specific modules/features].</li>\n<li>Identify and report defects or issues.</li>\n<li>Ensure compatibility across various environments.</li>\n</ul>\n<p>...</p>\n<ol start=\"5\">\n<li>Test Results</li>\n</ol>\n<ul>\n<li>Test Cases Executed: [Number of test cases executed]</li>\n<li>Pass: [Number of test cases passed]</li>\n<li>Fail: [Number of test cases failed]</li>\n<li>Blocked: [Number of test cases blocked]</li>\n</ul>\n<ol start=\"6\">\n<li>Defect Summary</li>\n</ol>\n<ul>\n<li>Total Defects Identified: [Total number of defects]</li>\n<li>Critical: [Number of critical defects]</li>\n<li>Major: [Number of major defects]</li>\n<li>Minor: [Number of minor defects]</li>\n</ul>\n<ol start=\"7\">\n<li>Recommendations</li>\n</ol>\n<ul>\n<li>Provide any recommendations for improvement based on the testing experience.</li>\n<li>Suggestions for future testing processes or tools that could enhance efficiency.</li>\n</ul>",
+  "stem": "<p>Can the following information be found in the test plan?</p>\n<p>Test Completion Report</p>\n<p>...</p>\n<ol>\n<li>\n<p>Summary<br />\nThe testing phase for the [Project Name] has been successfully completed. This report provides an overview of the testing activities, outcomes, and recommendations for future improvements.</p>\n</li>\n<li>\n<p>Objectives<br />\nThe primary objectives of the testing phase were to:</p>\n</li>\n</ol>\n<ul>\n<li>Validate the functionality of [specific modules/features].</li>\n<li>Identify and report defects or issues.</li>\n<li>Ensure compatibility across various environments.</li>\n</ul>\n<p>...</p>\n<ol start=\"5\">\n<li>Test Results</li>\n</ol>\n<ul>\n<li>Test Cases Executed: [Number of test cases executed]</li>\n<li>Pass: [Number of test cases passed]</li>\n<li>Fail: [Number of test cases failed]</li>\n<li>Blocked: [Number of test cases blocked]</li>\n</ul>\n<ol start=\"6\">\n<li>Defect Summary</li>\n</ol>\n<ul>\n<li>Total Defects Identified: [Total number of defects]</li>\n<li>Critical: [Number of critical defects]</li>\n<li>Major: [Number of major defects]</li>\n<li>Minor: [Number of minor defects]</li>\n</ul>\n<ol start=\"7\">\n<li>Recommendations</li>\n</ol>\n<ul>\n<li>Provide any recommendations for improvement based on the testing experience.</li>\n<li>Suggestions for future testing processes or tools that could enhance efficiency.</li>\n</ul>",
   "options": [
    "Yes, the test completion report template can be found in the communication section",
    "Yes, the test progress report can be found in the communication section",
@@ -5182,7 +5182,7 @@
   "chapter": 2,
   "lo": "2.2.3",
   "src": "Quiz 15 · Q27",
-  "stem": "<p>Which of the below tests are executed as regression tests and which as confirmation tests?</p>\n<ol>\n<li>Regression testing</li>\n<li>Confirmation testing</li>\n</ol>\n<p>a. Running automation tests on the entire system environment to ensure that recent changes or fixes in the production environment have not introduced new defects in previously stable features\nb. Running automation tests of the filter feature that had been \"passed\" after the fix for the sorting feature\nc. Testing to ensure that users who couldn't log into the system can now log in after the fix in the login functionality\nd. Running automation tests of the sorting feature that had been \"failed\" due to the defect in products, after the fix of those products</p>",
+  "stem": "<p>Which of the below tests are executed as regression tests and which as confirmation tests?</p>\n<ol>\n<li>Regression testing</li>\n<li>Confirmation testing</li>\n</ol>\n<p>a. Running automation tests on the entire system environment to ensure that recent changes or fixes in the production environment have not introduced new defects in previously stable features<br />\nb. Running automation tests of the filter feature that had been \"passed\" after the fix for the sorting feature<br />\nc. Testing to ensure that users who couldn't log into the system can now log in after the fix in the login functionality<br />\nd. Running automation tests of the sorting feature that had been \"failed\" due to the defect in products, after the fix of those products</p>",
   "options": [
    "a-1, b-1, c-2, d-1",
    "a-2, b-1, c-2, d-2",
@@ -5328,7 +5328,7 @@
   "answers": [
    1
   ],
-  "explanation": "<p>b) is correct. As the question asks about 'coverage-based prioritization' and NOT 'additional coverage-based prioritization,' you simply need to calculate the original coverage—nothing more. Execution Order:\n1. TC3 is run first → Coverage 35%, Priority High\n2. TC4 is run second → Coverage 35%, Priority Low\n3. TC1 is run third → Coverage 30%, Priority Low\n4. TC5 is run fourth → Coverage 30%, Priority Very Low\n5. TC6 is run fifth → Coverage 25%, Priority High\n6. TC2 is run sixth (LAST) → Coverage 25%, Priority Medium</p>"
+  "explanation": "<p>b) is correct. As the question asks about 'coverage-based prioritization' and NOT 'additional coverage-based prioritization,' you simply need to calculate the original coverage—nothing more. Execution Order:<br />\n1. TC3 is run first → Coverage 35%, Priority High<br />\n2. TC4 is run second → Coverage 35%, Priority Low<br />\n3. TC1 is run third → Coverage 30%, Priority Low<br />\n4. TC5 is run fourth → Coverage 30%, Priority Very Low<br />\n5. TC6 is run fifth → Coverage 25%, Priority High<br />\n6. TC2 is run sixth (LAST) → Coverage 25%, Priority Medium</p>"
  },
  {
   "id": "q15-36",
@@ -5369,7 +5369,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 15 · Q38",
-  "stem": "<p>You have received the following defect report from the testing team stating that the anomaly described is causing significant disruptions:</p>\n<p>'Application crash on file upload'</p>\n<p>2023-April-15 – Jane Smith\nThe application crashes when uploading files larger than 5MB using the document upload feature on the data management page. Reproduced the issue using standard test files 'Test_Doc_10MB.pdf' and 'Test_Doc_6MB.jpg' in the Staging test v2.4.1. The application should manage file uploads without crashing, according to the feature specifications. This issue has been marked as high priority due to its impact on daily operations, as outlined in REQ-1023.</p>\n<p>What critical information is MISSING from this test report that would have been useful for the developers?</p>",
+  "stem": "<p>You have received the following defect report from the testing team stating that the anomaly described is causing significant disruptions:</p>\n<p>'Application crash on file upload'</p>\n<p>2023-April-15 – Jane Smith<br />\nThe application crashes when uploading files larger than 5MB using the document upload feature on the data management page. Reproduced the issue using standard test files 'Test_Doc_10MB.pdf' and 'Test_Doc_6MB.jpg' in the Staging test v2.4.1. The application should manage file uploads without crashing, according to the feature specifications. This issue has been marked as high priority due to its impact on daily operations, as outlined in REQ-1023.</p>\n<p>What critical information is MISSING from this test report that would have been useful for the developers?</p>",
   "options": [
    "Severity of the defect and expected result",
    "Test environment and application version",
@@ -5879,7 +5879,7 @@
   "chapter": 3,
   "lo": "3.2.4",
   "src": "Quiz 16 · Q28",
-  "stem": "<p>Given the following review types:</p>\n<ol>\n<li>Informal Review</li>\n<li>Walkthrough</li>\n<li>Technical Review</li>\n<li>Inspection</li>\n</ol>\n<p>And the following descriptions:</p>\n<p>A. Led by the author\nB. The author cannot act as a scribe\nC. Led by a moderator\nD. The main objective is to detect anomalies</p>\n<p>Which of the following BEST matches the review types and the descriptions?</p>",
+  "stem": "<p>Given the following review types:</p>\n<ol>\n<li>Informal Review</li>\n<li>Walkthrough</li>\n<li>Technical Review</li>\n<li>Inspection</li>\n</ol>\n<p>And the following descriptions:</p>\n<p>A. Led by the author<br />\nB. The author cannot act as a scribe<br />\nC. Led by a moderator<br />\nD. The main objective is to detect anomalies</p>\n<p>Which of the following BEST matches the review types and the descriptions?</p>",
   "options": [
    "1B, 2A, 3C, 4D",
    "1D, 2A, 3C, 4B",
@@ -6220,7 +6220,7 @@
   "chapter": 5,
   "lo": "5.1.1",
   "src": "Quiz 17 · Q8",
-  "stem": "<p>Consider the following part of a test plan.</p>\n<ol>\n<li>\n<p>Unit Testing:\n- Developers perform unit testing on their own code, ensuring immediate feedback and rapid issue resolution.</p>\n</li>\n<li>\n<p>Integration Testing:\n- Testers, separate from the development team, conduct integration testing to validate the interactions between integrated components.</p>\n</li>\n<li>\n<p>System Testing:\n- An independent testing team executes system testing to ensure a comprehensive and unbiased assessment of the entire system.</p>\n</li>\n<li>\n<p>Performance Testing:\n- Independent testing teams carry out performance testing to provide an impartial evaluation of the system's responsiveness, scalability, and stability under various conditions.</p>\n</li>\n<li>\n<p>Security Testing:\n- An independent security testing team assesses the system's resistance to unauthorized access and identifies vulnerabilities, ensuring a comprehensive and impartial security evaluation in the test plan.</p>\n</li>\n</ol>\n<p>Which part of the test plan does this part belong to?</p>",
+  "stem": "<p>Consider the following part of a test plan.</p>\n<ol>\n<li>\n<p>Unit Testing:<br />\n- Developers perform unit testing on their own code, ensuring immediate feedback and rapid issue resolution.</p>\n</li>\n<li>\n<p>Integration Testing:<br />\n- Testers, separate from the development team, conduct integration testing to validate the interactions between integrated components.</p>\n</li>\n<li>\n<p>System Testing:<br />\n- An independent testing team executes system testing to ensure a comprehensive and unbiased assessment of the entire system.</p>\n</li>\n<li>\n<p>Performance Testing:<br />\n- Independent testing teams carry out performance testing to provide an impartial evaluation of the system's responsiveness, scalability, and stability under various conditions.</p>\n</li>\n<li>\n<p>Security Testing:<br />\n- An independent security testing team assesses the system's resistance to unauthorized access and identifies vulnerabilities, ensuring a comprehensive and impartial security evaluation in the test plan.</p>\n</li>\n</ol>\n<p>Which part of the test plan does this part belong to?</p>",
   "options": [
    "Context of testing",
    "Test approach",
@@ -6424,7 +6424,7 @@
   "chapter": 2,
   "lo": "2.2.1",
   "src": "Quiz 17 · Q20",
-  "stem": "<p>You work as a system administrator on a real estate listings app for a property management company.</p>\n<p>Your tasks are:\n\"To achieve confidence that you will be able to keep the system running, and recover from adverse events quickly and without additional risk. To test backups and restoration of backups on different environments\"</p>\n<p>What levels of testing are possibly available for you to perform?</p>\n<p>i. Component testing\nii. Component integration testing\niii. System testing\niv. System integration testing\nv. Acceptance testing</p>",
+  "stem": "<p>You work as a system administrator on a real estate listings app for a property management company.</p>\n<p>Your tasks are:<br />\n\"To achieve confidence that you will be able to keep the system running, and recover from adverse events quickly and without additional risk. To test backups and restoration of backups on different environments\"</p>\n<p>What levels of testing are possibly available for you to perform?</p>\n<p>i. Component testing<br />\nii. Component integration testing<br />\niii. System testing<br />\niv. System integration testing<br />\nv. Acceptance testing</p>",
   "options": [
    "iii",
    "v",
@@ -6458,7 +6458,7 @@
   "chapter": 3,
   "lo": "3.1.2",
   "src": "Quiz 17 · Q22",
-  "stem": "<p>Refer to the following statements about static and dynamic testing:</p>\n<p>i. Dynamic testing can only be applied to both non-executable work products and executable work products\nii. Static can cause failures in the code like variables with undefined values, undeclared variables, unreachable or duplicated code\niii. Static testing may more easily detect defects that lay on paths through the code that are rarely executed or hard to reach using dynamic testing\niv. UML (Unified Modeling Language) Diagrams, ER (Entity-Relationship) Diagrams, BPMN (Business Process Model and Notation) Diagrams, Data Flow Diagrams (DFD) can be examined using static testing</p>\n<p>Which of the following is FALSE?</p>",
+  "stem": "<p>Refer to the following statements about static and dynamic testing:</p>\n<p>i. Dynamic testing can only be applied to both non-executable work products and executable work products<br />\nii. Static can cause failures in the code like variables with undefined values, undeclared variables, unreachable or duplicated code<br />\niii. Static testing may more easily detect defects that lay on paths through the code that are rarely executed or hard to reach using dynamic testing<br />\niv. UML (Unified Modeling Language) Diagrams, ER (Entity-Relationship) Diagrams, BPMN (Business Process Model and Notation) Diagrams, Data Flow Diagrams (DFD) can be examined using static testing</p>\n<p>Which of the following is FALSE?</p>",
   "options": [
    "i, ii",
    "ii, iii, iv",
@@ -6577,7 +6577,7 @@
   "chapter": 1,
   "lo": "1.4.3",
   "src": "Quiz 17 · Q29",
-  "stem": "<p>Match the following testware (1-4) with the right glossary definition (A-D).</p>\n<ol>\n<li>Test case</li>\n<li>Test procedure</li>\n<li>Test charter</li>\n<li>Test suite</li>\n</ol>\n<p>A. Documentation of the goal or objective for a test session\nB. A set of preconditions, inputs, actions (where applicable), expected results and postconditions, developed based on test conditions\nC. A sequence of test cases in execution order, and any associated actions that may be required to set up the initial preconditions and any wrap up activities post execution\nD. A set of test scripts or test procedures to be executed in a specific test run</p>",
+  "stem": "<p>Match the following testware (1-4) with the right glossary definition (A-D).</p>\n<ol>\n<li>Test case</li>\n<li>Test procedure</li>\n<li>Test charter</li>\n<li>Test suite</li>\n</ol>\n<p>A. Documentation of the goal or objective for a test session<br />\nB. A set of preconditions, inputs, actions (where applicable), expected results and postconditions, developed based on test conditions<br />\nC. A sequence of test cases in execution order, and any associated actions that may be required to set up the initial preconditions and any wrap up activities post execution<br />\nD. A set of test scripts or test procedures to be executed in a specific test run</p>",
   "options": [
    "1B, 2D, 3A, 4C",
    "1D, 2C, 3A, 4B",
@@ -6628,7 +6628,7 @@
   "chapter": 4,
   "lo": "4.2.3",
   "src": "Quiz 17 · Q32",
-  "stem": "<p>You are designing test cases based on the following decision table.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/aa15bb49299ecd8a.png\" loading=\"lazy\" /></p>\n<p>What is the expected result for each of the following test cases?</p>\n<p>TC1: 18-year-old, unregistered woman with 4 years of experience;\nTC2: 70-year-old, registered man with 4 years of experience;</p>",
+  "stem": "<p>You are designing test cases based on the following decision table.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/aa15bb49299ecd8a.png\" loading=\"lazy\" /></p>\n<p>What is the expected result for each of the following test cases?</p>\n<p>TC1: 18-year-old, unregistered woman with 4 years of experience;<br />\nTC2: 70-year-old, registered man with 4 years of experience;</p>",
   "options": [
    "A, C",
    "C, A",
@@ -6730,7 +6730,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 17 · Q38",
-  "stem": "<p>A tester identifies a defect during system testing where a user's profile picture is not displayed correctly. Which of the following should NOT be included in the defect report at this stage?</p>\n<p>i. Steps to reproduce the defect\nii. Severity and priority of the defect\niii. Expected behavior versus actual behavior\niv. Estimated time to fix the defect\nv. Root cause and detailed technical analysis</p>",
+  "stem": "<p>A tester identifies a defect during system testing where a user's profile picture is not displayed correctly. Which of the following should NOT be included in the defect report at this stage?</p>\n<p>i. Steps to reproduce the defect<br />\nii. Severity and priority of the defect<br />\niii. Expected behavior versus actual behavior<br />\niv. Estimated time to fix the defect<br />\nv. Root cause and detailed technical analysis</p>",
   "options": [
    "ii and iv",
    "iv and v",
@@ -6747,7 +6747,7 @@
   "chapter": 4,
   "lo": "4.5.3",
   "src": "Quiz 17 · Q39",
-  "stem": "<p>Consider the following user story:\n- As a frequent traveler, I want to receive notifications about flight delays, cancellations, or gate changes via my preferred method (email or SMS), so I can adjust my plans accordingly</p>\n<p>And its acceptance criteria:</p>\n<ol>\n<li>The user can subscribe to flight notifications by entering their flight number, date, and preferred notification method (email or SMS)</li>\n<li>The user must provide a valid email address (if email is selected) or a valid mobile phone number (if SMS is selected)</li>\n<li>The user should select the timeframe in which they want to receive notifications (48 hours before departure or 24 hours before departure)</li>\n<li>The system will send a notification to the user's chosen method if the flight status changes to \"delayed\" or \"canceled\"</li>\n<li>The user can change their preferred notification method at any time by repeating steps 1-3</li>\n<li>The user can unsubscribe from notifications immediately after initially subscribing or after changing their notification method</li>\n</ol>\n<p>Which of the following test cases will NOT be relevant for this user story?</p>",
+  "stem": "<p>Consider the following user story:<br />\n- As a frequent traveler, I want to receive notifications about flight delays, cancellations, or gate changes via my preferred method (email or SMS), so I can adjust my plans accordingly</p>\n<p>And its acceptance criteria:</p>\n<ol>\n<li>The user can subscribe to flight notifications by entering their flight number, date, and preferred notification method (email or SMS)</li>\n<li>The user must provide a valid email address (if email is selected) or a valid mobile phone number (if SMS is selected)</li>\n<li>The user should select the timeframe in which they want to receive notifications (48 hours before departure or 24 hours before departure)</li>\n<li>The system will send a notification to the user's chosen method if the flight status changes to \"delayed\" or \"canceled\"</li>\n<li>The user can change their preferred notification method at any time by repeating steps 1-3</li>\n<li>The user can unsubscribe from notifications immediately after initially subscribing or after changing their notification method</li>\n</ol>\n<p>Which of the following test cases will NOT be relevant for this user story?</p>",
   "options": [
    "Input: The customer enters a valid flight number, selects SMS as the notification method, and chooses notifications to be sent 48 hours before departure. Expected Output: The system confirms the subscription and sends a notification via SMS if there is any change in the flight status.",
    "Input: The customer logs into their account to review past flights they have taken with the airline. Expected Output: The system displays a list of past flight bookings and their details.",
@@ -6968,7 +6968,7 @@
   "chapter": 5,
   "lo": "5.1.7",
   "src": "Quiz 18 · Q12",
-  "stem": "<p>Consider the following test categories (1-4) and agile testing quadrants (A-D):</p>\n<ol>\n<li>Unit tests</li>\n<li>Smoke tests</li>\n<li>Beta tests</li>\n<li>User story tests</li>\n</ol>\n<p>A. Agile testing quadrant Q1: technology facing, supporting the development team\nB. Agile testing quadrant Q2: business facing, supporting the development team\nC. Agile testing quadrant Q3: business facing, critique the product\nD. Agile testing quadrant Q4: technology facing, critique the product</p>\n<p>How do the following test categories map onto the agile testing quadrants?</p>",
+  "stem": "<p>Consider the following test categories (1-4) and agile testing quadrants (A-D):</p>\n<ol>\n<li>Unit tests</li>\n<li>Smoke tests</li>\n<li>Beta tests</li>\n<li>User story tests</li>\n</ol>\n<p>A. Agile testing quadrant Q1: technology facing, supporting the development team<br />\nB. Agile testing quadrant Q2: business facing, supporting the development team<br />\nC. Agile testing quadrant Q3: business facing, critique the product<br />\nD. Agile testing quadrant Q4: technology facing, critique the product</p>\n<p>How do the following test categories map onto the agile testing quadrants?</p>",
   "options": [
    "1A, 2C, 3D, 4B",
    "1A, 2D, 3C, 4B",
@@ -7138,7 +7138,7 @@
   "chapter": 3,
   "lo": "3.1.3",
   "src": "Quiz 18 · Q22",
-  "stem": "<p>Decide which of the following statements (i-v) are true for dynamic testing and which are true for static testing</p>\n<p>i. Identifying missed elements in the database structure is easier with this testing\nii. Finding variables that are declared but never used is easier with this testing\niii. Defects and failures can be identified with this testing\niv. The test objective is to identify defects as early as possible\nv. Identifying insufficient response time of the external interface is easier with this testing</p>",
+  "stem": "<p>Decide which of the following statements (i-v) are true for dynamic testing and which are true for static testing</p>\n<p>i. Identifying missed elements in the database structure is easier with this testing<br />\nii. Finding variables that are declared but never used is easier with this testing<br />\niii. Defects and failures can be identified with this testing<br />\niv. The test objective is to identify defects as early as possible<br />\nv. Identifying insufficient response time of the external interface is easier with this testing</p>",
   "options": [
    "iii, iv, v are true for static testing; i, ii, iv are true for dynamic testing",
    "i, ii, iv are true for static testing; iii, v are true for dynamic testing",
@@ -7155,7 +7155,7 @@
   "chapter": 4,
   "lo": "4.2.1",
   "src": "Quiz 18 · Q23",
-  "stem": "<p>A video application has the following requirements:</p>\n<p>The application shall allow playing a video on the following display resolution:\n1. 2560x1440(2K)\n2. 3840x2160(4K)\n3. 7680x4320(8K)</p>\n<p>On three devices:\n1. Phone\n2. Tablet\n3. TV</p>\n<p>Phones and tablets only support video resolution up to 2K, while the TV supports video in 4K or higher. You want to apply the Each Choice Equivalence Partitioning test technique.</p>\n<p>What is the minimal number of test cases to achieve 100% VALID EP coverage?</p>",
+  "stem": "<p>A video application has the following requirements:</p>\n<p>The application shall allow playing a video on the following display resolution:<br />\n1. 2560x1440(2K)<br />\n2. 3840x2160(4K)<br />\n3. 7680x4320(8K)</p>\n<p>On three devices:<br />\n1. Phone<br />\n2. Tablet<br />\n3. TV</p>\n<p>Phones and tablets only support video resolution up to 2K, while the TV supports video in 4K or higher. You want to apply the Each Choice Equivalence Partitioning test technique.</p>\n<p>What is the minimal number of test cases to achieve 100% VALID EP coverage?</p>",
   "options": [
    "3",
    "4",
@@ -7240,7 +7240,7 @@
   "chapter": 3,
   "lo": "3.2.4",
   "src": "Quiz 18 · Q28",
-  "stem": "<p>Given the following review types and review characteristics:</p>\n<p>a. Informal review\nb. Walkthrough\nc. Technical review\nd. Inspection</p>\n<ol>\n<li>Review meeting is optional, ideally led by a trained facilitator</li>\n<li>Individual preparation before the review meeting is optional</li>\n<li>May be performed in form of \"buddy check\"</li>\n<li>Follows a defined process with formal documented outputs, based on rules and checklists</li>\n</ol>\n<p>Which of the following BEST matches the review type with the review characteristic?</p>",
+  "stem": "<p>Given the following review types and review characteristics:</p>\n<p>a. Informal review<br />\nb. Walkthrough<br />\nc. Technical review<br />\nd. Inspection</p>\n<ol>\n<li>Review meeting is optional, ideally led by a trained facilitator</li>\n<li>Individual preparation before the review meeting is optional</li>\n<li>May be performed in form of \"buddy check\"</li>\n<li>Follows a defined process with formal documented outputs, based on rules and checklists</li>\n</ol>\n<p>Which of the following BEST matches the review type with the review characteristic?</p>",
   "options": [
    "a - 3; b - 2; c - 1; d - 4",
    "a - 2; b - 3; c - 1; d - 4",
@@ -7308,7 +7308,7 @@
   "chapter": 4,
   "lo": "4.2.3",
   "src": "Quiz 18 · Q32",
-  "stem": "<p>You are designing test cases based on the following decision table.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/5d628de5507a839a.png\" loading=\"lazy\" /></p>\n<p>So far you have designed the following test cases:</p>\n<p>TC1: 19-year-old, unregistered man with no experience;\nTC2: 65-year-old, unregistered woman with 4 years of experience;\nTC3: 30-year-old, registered man with no experience;\nTC4: 65-year-old, registered woman with 4 years of experience;</p>\n<p>What is the decision table coverage achieved by these test cases?</p>",
+  "stem": "<p>You are designing test cases based on the following decision table.</p>\n<p><img class=\"qimg\" alt=\"Decision table\" src=\"/q/5d628de5507a839a.png\" loading=\"lazy\" /></p>\n<p>So far you have designed the following test cases:</p>\n<p>TC1: 19-year-old, unregistered man with no experience;<br />\nTC2: 65-year-old, unregistered woman with 4 years of experience;<br />\nTC3: 30-year-old, registered man with no experience;<br />\nTC4: 65-year-old, registered woman with 4 years of experience;</p>\n<p>What is the decision table coverage achieved by these test cases?</p>",
   "options": [
    "20%",
    "40%",
@@ -7410,7 +7410,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 18 · Q38",
-  "stem": "<p>Which of the following items are typically included in a defect report logged during dynamic testing?</p>\n<p>i. Issuing organization, and author, including their role\nii. Test technique\niii. SDLC phase\niv. Test data\nv. Status of the defect\nvi. References (e.g., to the test case)</p>",
+  "stem": "<p>Which of the following items are typically included in a defect report logged during dynamic testing?</p>\n<p>i. Issuing organization, and author, including their role<br />\nii. Test technique<br />\niii. SDLC phase<br />\niv. Test data<br />\nv. Status of the defect<br />\nvi. References (e.g., to the test case)</p>",
   "options": [
    "i, iv, v, vi",
    "i, iv, v",
@@ -7427,7 +7427,7 @@
   "chapter": 4,
   "lo": "4.5.3",
   "src": "Quiz 18 · Q39",
-  "stem": "<p>Consider the following user story:\n- As an email campaign management system, I want the ability to prioritize email campaigns for standard and premium customers based on recipient list size, so I can optimize delivery and ensure the most impactful communications are sent in a timely manner.</p>\n<p>And its acceptance criteria:\n- AC1: Premium customer emails should be processed before standard customer emails, regardless of recipient count.\n- AC2: Within each customer tier (standard or premium), campaigns with smaller recipient lists should receive higher priority\n- AC3: If two campaigns within the same customer tier have the same number of recipients, they should be processed in the order they were received</p>\n<p>Which of the following is NOT a valid test scenario based on the user story and acceptance criteria?</p>",
+  "stem": "<p>Consider the following user story:<br />\n- As an email campaign management system, I want the ability to prioritize email campaigns for standard and premium customers based on recipient list size, so I can optimize delivery and ensure the most impactful communications are sent in a timely manner.</p>\n<p>And its acceptance criteria:<br />\nAC1: Premium customer emails should be processed before standard customer emails, regardless of recipient count.<br />\nAC2: Within each customer tier (standard or premium), campaigns with smaller recipient lists should receive higher priority<br />\nAC3: If two campaigns within the same customer tier have the same number of recipients, they should be processed in the order they were received</p>\n<p>Which of the following is NOT a valid test scenario based on the user story and acceptance criteria?</p>",
   "options": [
    "Premium customer campaign with 200 recipients sent before a standard customer campaign with 100 recipients",
    "Two premium campaigns were created: one with 50 recipients, and one with 100 recipients. The campaign with 50 recipients is sent first",
@@ -7801,7 +7801,7 @@
   "chapter": 5,
   "lo": "5.3.2",
   "src": "Quiz 19 · Q21",
-  "stem": "<p>Decide which of the following items (i-vi) should be included in a test progress report:</p>\n<p>i. Current test phase progress including any notable deviations\nii. Details of any unresolved defects and their impact on project timelines\niii. Detailed planning for the next testing phase including resource allocation\niv. Test summary\nv. Test period\nvi. Review and assessment of project budget and expenditure to date</p>",
+  "stem": "<p>Decide which of the following items (i-vi) should be included in a test progress report:</p>\n<p>i. Current test phase progress including any notable deviations<br />\nii. Details of any unresolved defects and their impact on project timelines<br />\niii. Detailed planning for the next testing phase including resource allocation<br />\niv. Test summary<br />\nv. Test period<br />\nvi. Review and assessment of project budget and expenditure to date</p>",
   "options": [
    "i, ii, v",
    "i, iii, v",
@@ -7852,7 +7852,7 @@
   "chapter": 1,
   "lo": "1.4.1",
   "src": "Quiz 19 · Q24",
-  "stem": "<p>Given the following test tasks:</p>\n<ol>\n<li>Assembling test cases into test suites</li>\n<li>Elaborating the test conditions into test cases and other testware</li>\n<li>Identifying testable features in the test basis</li>\n<li>Logging the test results</li>\n<li>Adding new resources when and where needed</li>\n<li>Formulating a test schedule</li>\n</ol>\n<p>And the following test activities:</p>\n<p>A. Test design\nB. Test planning\nC. Test monitoring and control\nD. Test analysis</p>\n<p>Which of the following BEST matches the tasks with the activities?</p>",
+  "stem": "<p>Given the following test tasks:</p>\n<ol>\n<li>Assembling test cases into test suites</li>\n<li>Elaborating the test conditions into test cases and other testware</li>\n<li>Identifying testable features in the test basis</li>\n<li>Logging the test results</li>\n<li>Adding new resources when and where needed</li>\n<li>Formulating a test schedule</li>\n</ol>\n<p>And the following test activities:</p>\n<p>A. Test design<br />\nB. Test planning<br />\nC. Test monitoring and control<br />\nD. Test analysis</p>\n<p>Which of the following BEST matches the tasks with the activities?</p>",
   "options": [
    "A-1, B-6, C-5, D-2",
    "A-3, B-6, C-5, D-2",
@@ -7903,7 +7903,7 @@
   "chapter": 2,
   "lo": "2.2.3",
   "src": "Quiz 19 · Q27",
-  "stem": "<p>You are testing a language learning app for an educational institute.</p>\n<p>Your task is:\n\"To exercise the steps that should reproduce the failure caused by the defect and checking that the failure does not occur\"</p>\n<p>In the current iteration the team decided to implement the payment functionality.</p>\n<p>What level of testing are you MOST LIKELY performing?</p>",
+  "stem": "<p>You are testing a language learning app for an educational institute.</p>\n<p>Your task is:<br />\n\"To exercise the steps that should reproduce the failure caused by the defect and checking that the failure does not occur\"</p>\n<p>In the current iteration the team decided to implement the payment functionality.</p>\n<p>What level of testing are you MOST LIKELY performing?</p>",
   "options": [
    "Confirmation testing",
    "Regression Testing",
@@ -7937,7 +7937,7 @@
   "chapter": 1,
   "lo": "1.4.3",
   "src": "Quiz 19 · Q29",
-  "stem": "<p>R1: User Privacy Concerns\nRisk Description: Users might express concerns about the app's handling of sensitive health data, leading to a potential loss of trust.\nLikelihood (L): Medium\nImpact (I): High\nRisk Level (L x I): Medium-High\nMitigation Strategy: Implement robust data encryption. Clearly communicate the app's privacy policy and compliance with data protection regulations.\nStatus: Ongoing</p>\n<p>R2: Device Compatibility Issues\nRisk Description: The app may face compatibility issues with certain health monitoring devices, limiting its effectiveness.\nLikelihood (L): High\nImpact (I): Medium\nRisk Level (L x I): High\nMitigation Strategy: Conduct thorough compatibility testing with a variety of health monitoring devices. Establish partnerships with major device manufacturers.\nStatus: Not Started</p>\n<p>Which test activity produces this testware as an output?</p>",
+  "stem": "<p>R1: User Privacy Concerns<br />\nRisk Description: Users might express concerns about the app's handling of sensitive health data, leading to a potential loss of trust.<br />\nLikelihood (L): Medium<br />\nImpact (I): High<br />\nRisk Level (L x I): Medium-High<br />\nMitigation Strategy: Implement robust data encryption. Clearly communicate the app's privacy policy and compliance with data protection regulations.<br />\nStatus: Ongoing</p>\n<p>R2: Device Compatibility Issues<br />\nRisk Description: The app may face compatibility issues with certain health monitoring devices, limiting its effectiveness.<br />\nLikelihood (L): High<br />\nImpact (I): Medium<br />\nRisk Level (L x I): High<br />\nMitigation Strategy: Conduct thorough compatibility testing with a variety of health monitoring devices. Establish partnerships with major device manufacturers.<br />\nStatus: Not Started</p>\n<p>Which test activity produces this testware as an output?</p>",
   "options": [
    "Test planning",
    "Test analysis",
@@ -8005,7 +8005,7 @@
   "chapter": 1,
   "lo": "1.4.5",
   "src": "Quiz 19 · Q33",
-  "stem": "<p>Match the following roles with the right testing tasks:</p>\n<ol>\n<li>Test management role</li>\n<li>Testing role</li>\n</ol>\n<p>A. Identify any required infrastructure and tools\nB. Communicate the test completion report with the stakeholders\nC. Moderate the technical review of the test environment\nD. Check the setup of stubs, drivers, and simulators\nE. Enter change requests for open defect reports</p>",
+  "stem": "<p>Match the following roles with the right testing tasks:</p>\n<ol>\n<li>Test management role</li>\n<li>Testing role</li>\n</ol>\n<p>A. Identify any required infrastructure and tools<br />\nB. Communicate the test completion report with the stakeholders<br />\nC. Moderate the technical review of the test environment<br />\nD. Check the setup of stubs, drivers, and simulators<br />\nE. Enter change requests for open defect reports</p>",
   "options": [
    "1A, 1B, 1C, 1D, 2E",
    "1B, 1E, 2A, 2C, 2D",
@@ -8090,7 +8090,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 19 · Q38",
-  "stem": "<p>Application: MobileBank v2.3</p>\n<p>Defect: Transfer funds to a new recipient fails</p>\n<p>Steps to Reproduce:\n1. Log in to the app\n2. Tap \"Transfer Funds\"\n3. Select \"New Recipient\"\n4. Enter recipient details (name(TestJohn Doe), bank account number(3921874189244))\n5. Enter transfer amount\n6. Tap \"Confirm\"</p>\n<p>Expected result: Transfer is successful, and a confirmation message is displayed.\nActual result: Error message: \"Transaction failed. Please try again later.\"</p>\n<p>Severity: High\nPriority: Urgent</p>\n<p>The defect report does not have all the necessary details and you plan to add them. Which of the following items would NOT be typically included in a tester's initial defect report?</p>",
+  "stem": "<p>Application: MobileBank v2.3</p>\n<p>Defect: Transfer funds to a new recipient fails</p>\n<p>Steps to Reproduce:<br />\n1. Log in to the app<br />\n2. Tap \"Transfer Funds\"<br />\n3. Select \"New Recipient\"<br />\n4. Enter recipient details (name(TestJohn Doe), bank account number(3921874189244))<br />\n5. Enter transfer amount<br />\n6. Tap \"Confirm\"</p>\n<p>Expected result: Transfer is successful, and a confirmation message is displayed.<br />\nActual result: Error message: \"Transaction failed. Please try again later.\"</p>\n<p>Severity: High<br />\nPriority: Urgent</p>\n<p>The defect report does not have all the necessary details and you plan to add them. Which of the following items would NOT be typically included in a tester's initial defect report?</p>",
   "options": [
    "Date when the anomaly was observed, issuing organization, and author, including their role",
    "Unique identifier and status of the defect",
@@ -8567,7 +8567,7 @@
   "chapter": 4,
   "lo": "4.2.2",
   "src": "Quiz 20 · Q26",
-  "stem": "<p>A developer was asked to implement the following business rules:</p>\n<p>INPUT: value (integer number)\nIF (value ≥ 1000 AND value ≤ 2000) THEN write \"value OK\"\nELSE write \"value OK\"</p>\n<p>You design the test cases using a 2-value boundary value analysis.</p>\n<p>Which of the following sets of test inputs achieves the greatest coverage?</p>",
+  "stem": "<p>A developer was asked to implement the following business rules:</p>\n<p>INPUT: value (integer number)<br />\nIF (value ≥ 1000 AND value ≤ 2000) THEN write \"value OK\"<br />\nELSE write \"value OK\"</p>\n<p>You design the test cases using a 2-value boundary value analysis.</p>\n<p>Which of the following sets of test inputs achieves the greatest coverage?</p>",
   "options": [
    "1000, 1001, 2000, 2001",
    "999, 1000, 1999, 2000",
@@ -8771,7 +8771,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 20 · Q38",
-  "stem": "<p>Consider the following defect report for a mobile banking app:</p>\n<p>Application: BankApp v2.1\nDefect: Unable to deposit checks via mobile app</p>\n<p>Steps to Reproduce:\n1. Log into the BankApp.\n2. Navigate to the \"Deposit\" section.\n3. Attempt to deposit a check using the mobile deposit feature.</p>\n<p>Expected Result: The check is scanned and accepted for deposit.\nActual Result: The app crashes immediately after the check is scanned.</p>\n<p>Severity: Medium\nPriority: High</p>\n<p>You received the following feedback from the quality assurance team stating that the defect described in this test report cannot be reproduced:</p>\n<p>2023-April-10 – Jane Smith – Closed\nAfter multiple attempts to reproduce the issue by scanning different checks, the application did not crash and functioned as expected. Based on the test case TC-2456, the app should seamlessly handle check deposits. This functionality is critical as outlined in REQ-0456. The problem was previously reported but now appears to be resolved.</p>\n<p>What critical information is MISSING from this defect report that would have been useful for the developers?</p>",
+  "stem": "<p>Consider the following defect report for a mobile banking app:</p>\n<p>Application: BankApp v2.1<br />\nDefect: Unable to deposit checks via mobile app</p>\n<p>Steps to Reproduce:<br />\n1. Log into the BankApp.<br />\n2. Navigate to the \"Deposit\" section.<br />\n3. Attempt to deposit a check using the mobile deposit feature.</p>\n<p>Expected Result: The check is scanned and accepted for deposit.<br />\nActual Result: The app crashes immediately after the check is scanned.</p>\n<p>Severity: Medium<br />\nPriority: High</p>\n<p>You received the following feedback from the quality assurance team stating that the defect described in this test report cannot be reproduced:</p>\n<p>2023-April-10 – Jane Smith – Closed<br />\nAfter multiple attempts to reproduce the issue by scanning different checks, the application did not crash and functioned as expected. Based on the test case TC-2456, the app should seamlessly handle check deposits. This functionality is critical as outlined in REQ-0456. The problem was previously reported but now appears to be resolved.</p>\n<p>What critical information is MISSING from this defect report that would have been useful for the developers?</p>",
   "options": [
    "Estimated time to fix the defect, to help prioritize the defect or set expectations for when it might be resolved",
    "Name of the developer who's code caused the failure, to streamline the assignment of the defect to the right developer, potentially speeding up the fix",
@@ -8789,7 +8789,7 @@
   "chapter": 4,
   "lo": "4.5.3",
   "src": "Quiz 20 · Q39",
-  "stem": "<p>Consider the following user story:\n- As an email campaign management system, I want the ability to prioritize email campaigns for standard and premium customers based on recipient list size, so I can optimize delivery and ensure the most impactful communications are sent in a timely manner</p>\n<p>And its acceptance criteria:\n- AC1: Premium customer emails should be processed before standard customer emails, regardless of recipient count\n- AC2: Within each customer tier (standard or premium), campaigns with smaller recipient lists should receive higher priority\n- AC3: If two campaigns within the same customer tier have the same number of recipients, they should be processed in the order they were received</p>\n<p>Which of the following is the BEST example of a test case for this user story?</p>",
+  "stem": "<p>Consider the following user story:<br />\n- As an email campaign management system, I want the ability to prioritize email campaigns for standard and premium customers based on recipient list size, so I can optimize delivery and ensure the most impactful communications are sent in a timely manner</p>\n<p>And its acceptance criteria:<br />\nAC1: Premium customer emails should be processed before standard customer emails, regardless of recipient count<br />\nAC2: Within each customer tier (standard or premium), campaigns with smaller recipient lists should receive higher priority<br />\nAC3: If two campaigns within the same customer tier have the same number of recipients, they should be processed in the order they were received</p>\n<p>Which of the following is the BEST example of a test case for this user story?</p>",
   "options": [
    "Test that an email campaign from a standard customer with 300 recipients is processed before a premium customer campaign with 500 recipients because it was submitted first. Expected result: The standard customer's campaign is processed first",
    "Test that within the premium customer tier, a campaign with 250 recipients is processed after a campaign with 150 recipients, regardless of the submission order",
@@ -8857,7 +8857,7 @@
   "chapter": 3,
   "lo": "3.1.1",
   "src": "Quiz 21 · Q3",
-  "stem": "<p>Among the work products produced in the SDLC, the following is a list:</p>\n<p>i. Test cases and test plan\nii. Schedules and budget\niii. Module and module interface code\niv. Encrypted third-party libraries\nv. Database diagram</p>\n<p>Which of these can be reviewed?</p>",
+  "stem": "<p>Among the work products produced in the SDLC, the following is a list:</p>\n<p>i. Test cases and test plan<br />\nii. Schedules and budget<br />\niii. Module and module interface code<br />\niv. Encrypted third-party libraries<br />\nv. Database diagram</p>\n<p>Which of these can be reviewed?</p>",
   "options": [
    "i, ii can be reviewed; iii, iv, v cannot",
    "iii, iv can be reviewed; i, ii, v cannot",
@@ -8942,7 +8942,7 @@
   "chapter": 5,
   "lo": "5.1.1",
   "src": "Quiz 21 · Q8",
-  "stem": "<p>Can the following information be found in the test plan?\n…</p>\n<p>Email Communication\n- Email will serve as a primary means of asynchronous communication within the testing team. This form of communication allows for the detailed exchange of information, document sharing, and updates.\n- Email will be used for asynchronous communication and for sharing detailed information, documents, and updates.\n- The independent testing team must respond to emails within [response time, e.g., 24 hours] to ensure timely information exchange.\n…</p>",
+  "stem": "<p>Can the following information be found in the test plan?<br />\n…</p>\n<p>Email Communication<br />\n- Email will serve as a primary means of asynchronous communication within the testing team. This form of communication allows for the detailed exchange of information, document sharing, and updates.<br />\n- Email will be used for asynchronous communication and for sharing detailed information, documents, and updates.<br />\n- The independent testing team must respond to emails within [response time, e.g., 24 hours] to ensure timely information exchange.<br />\n…</p>",
   "options": [
    "Yes, forms and frequency of communication can be found in the communication section",
    "Yes, forms and frequency of communication with stakeholders can be found in the stakeholders section",
@@ -9044,7 +9044,7 @@
   "chapter": 3,
   "lo": "3.2.3",
   "src": "Quiz 21 · Q14",
-  "stem": "<p>Given the following roles in reviews:</p>\n<ol>\n<li>Facilitator</li>\n<li>Author</li>\n<li>Scribe</li>\n<li>Manager</li>\n</ol>\n<p>And the following responsibilities in reviews:</p>\n<p>A. Creates and amends the work product under review\nB. Ensures the effective running of review meetings, including a safe review environment\nC. Decides what is to be reviewed and allocates the necessary resources\nD. Collates anomalies from reviewers and records review outcomes</p>\n<p>Which of the following BEST matches the roles and responsibilities</p>",
+  "stem": "<p>Given the following roles in reviews:</p>\n<ol>\n<li>Facilitator</li>\n<li>Author</li>\n<li>Scribe</li>\n<li>Manager</li>\n</ol>\n<p>And the following responsibilities in reviews:</p>\n<p>A. Creates and amends the work product under review<br />\nB. Ensures the effective running of review meetings, including a safe review environment<br />\nC. Decides what is to be reviewed and allocates the necessary resources<br />\nD. Collates anomalies from reviewers and records review outcomes</p>\n<p>Which of the following BEST matches the roles and responsibilities</p>",
   "options": [
    "1C, 2A, 3D, 4B",
    "1B, 2A, 3D, 4C",
@@ -9163,7 +9163,7 @@
   "chapter": 5,
   "lo": "5.3.2",
   "src": "Quiz 21 · Q21",
-  "stem": "<p>Which of the following items (i-v) should be included in a test completion report?</p>\n<p>i. Test metrics based on test progress reports\nii. New and changed risks within testing period\niii. Testing planned for the next period\niv. Unmitigated risks, defects not fixed\nv. Lessons learned that are relevant to the testing</p>",
+  "stem": "<p>Which of the following items (i-v) should be included in a test completion report?</p>\n<p>i. Test metrics based on test progress reports<br />\nii. New and changed risks within testing period<br />\niii. Testing planned for the next period<br />\niv. Unmitigated risks, defects not fixed<br />\nv. Lessons learned that are relevant to the testing</p>",
   "options": [
    "i, ii, iii",
    "ii, iii, iv, v",
@@ -9249,7 +9249,7 @@
   "chapter": 4,
   "lo": "4.2.2",
   "src": "Quiz 21 · Q26",
-  "stem": "<p>A developer was asked to implement the following business rule:</p>\n<p>INPUT: value (integer number)\nIF (value &lt; 1 OR value &gt; 100) THEN write \"value incorrect\"\nELSE write \"value OK\"</p>\n<p>You design the test cases using a 2-value boundary value analysis.</p>\n<p>Which of the following sets of test inputs achieves the greatest coverage?</p>",
+  "stem": "<p>A developer was asked to implement the following business rule:</p>\n<p>INPUT: value (integer number)<br />\nIF (value &lt; 1 OR value &gt; 100) THEN write \"value incorrect\"<br />\nELSE write \"value OK\"</p>\n<p>You design the test cases using a 2-value boundary value analysis.</p>\n<p>Which of the following sets of test inputs achieves the greatest coverage?</p>",
   "options": [
    "-1, 0, 100, 101",
    "0, 1, 99, 100",
@@ -9317,7 +9317,7 @@
   "chapter": 5,
   "lo": "5.1.4",
   "src": "Quiz 21 · Q30",
-  "stem": "<p>Your team uses the three-point estimation technique to estimate the test effort for a newly required feature.</p>\n<p>Given the following user story: \"As an online shopper, I want the ability to easily change the quantity of products in my shopping cart, So that I can adjust my purchase quantities before proceeding to checkout\"</p>\n<p>The following estimates were made:\n- Most likely estimation: 12 person-hours\n- Most pessimistic estimation: 18 person-hours\n- Most optimistic estimation: 9 person-hours</p>\n<p>What is the MAXIMUM final estimation including the measurement error(SD)?</p>",
+  "stem": "<p>Your team uses the three-point estimation technique to estimate the test effort for a newly required feature.</p>\n<p>Given the following user story: \"As an online shopper, I want the ability to easily change the quantity of products in my shopping cart, So that I can adjust my purchase quantities before proceeding to checkout\"</p>\n<p>The following estimates were made:<br />\n- Most likely estimation: 12 person-hours<br />\n- Most pessimistic estimation: 18 person-hours<br />\n- Most optimistic estimation: 9 person-hours</p>\n<p>What is the MAXIMUM final estimation including the measurement error(SD)?</p>",
   "options": [
    "12,5 person-hours",
    "14 person-hours",
@@ -9385,7 +9385,7 @@
   "chapter": 2,
   "lo": "2.1.6",
   "src": "Quiz 21 · Q34",
-  "stem": "<p>Which of the arguments below would you use to convince your manager to organize retrospectives at the end of each release cycle?</p>\n<p>i. Increased performance efficiency of the test environments\nii. Reducing the number of test basis\niii. Increased quality of testware\niv. Better cooperation between development and testing</p>",
+  "stem": "<p>Which of the arguments below would you use to convince your manager to organize retrospectives at the end of each release cycle?</p>\n<p>i. Increased performance efficiency of the test environments<br />\nii. Reducing the number of test basis<br />\niii. Increased quality of testware<br />\niv. Better cooperation between development and testing</p>",
   "options": [
    "i, iii, iv",
    "ii, iv",
@@ -9453,7 +9453,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 21 · Q38",
-  "stem": "<p>You are testing a data entry form that accepts text inputs for user names in a software application. The log from the test execution is as follows:</p>\n<p>Environment configuration: User Entry Form Module v1.04, test case set: UCS-2, # of TCs: 4</p>\n<p>Test run ID: 1024</p>\n<p>Start 14:10:05.010\n14:10:05.010 Execution of TC1. Input: \"Alice\". Output: \"Alice\". Result: passed\n14:10:05.011 Execution of TC2. Input: \"B0b\". Output: \"B0b\". Result: passed\n14:10:05.012 Execution of TC3. Input: \"Charlie@007\". Output: \"Charlie007\". Result: failed\n14:10:05.013 Execution of TC4. Input: \"Dana12$\". Output: \"Dana12\". Result: failed</p>\n<p>End 14:10:05.014\nTotal time of test cycle: 0:00:00.004</p>\n<p>Which of the following provides the BEST description of the failure that can be used in a defect report?</p>",
+  "stem": "<p>You are testing a data entry form that accepts text inputs for user names in a software application. The log from the test execution is as follows:</p>\n<p>Environment configuration: User Entry Form Module v1.04, test case set: UCS-2, # of TCs: 4</p>\n<p>Test run ID: 1024</p>\n<p>Start 14:10:05.010<br />\n14:10:05.010 Execution of TC1. Input: \"Alice\". Output: \"Alice\". Result: passed<br />\n14:10:05.011 Execution of TC2. Input: \"B0b\". Output: \"B0b\". Result: passed<br />\n14:10:05.012 Execution of TC3. Input: \"Charlie@007\". Output: \"Charlie007\". Result: failed<br />\n14:10:05.013 Execution of TC4. Input: \"Dana12$\". Output: \"Dana12\". Result: failed</p>\n<p>End 14:10:05.014<br />\nTotal time of test cycle: 0:00:00.004</p>\n<p>Which of the following provides the BEST description of the failure that can be used in a defect report?</p>",
   "options": [
    "The system fails to accept special characters in user names. Reference: TC3, TC4",
    "The system modifies inputs by removing special characters. Reference: TC3, TC4",
@@ -9470,7 +9470,7 @@
   "chapter": 4,
   "lo": "4.5.3",
   "src": "Quiz 21 · Q39",
-  "stem": "<p>User Story:\n- As a library member, I want to be able to check out books online so that I can read them at my convenience without visiting the library.</p>\n<p>Acceptance Criteria:\n- The user can log in to the library system with a \"Member\" role\n- The member can view available books\n- The member can select books to add to their cart\n- The member can check out books online</p>\n<p>Which of the following test cases will NOT be relevant for this user story?</p>",
+  "stem": "<p>User Story:<br />\n- As a library member, I want to be able to check out books online so that I can read them at my convenience without visiting the library.</p>\n<p>Acceptance Criteria:<br />\n- The user can log in to the library system with a \"Member\" role<br />\n- The member can view available books<br />\n- The member can select books to add to their cart<br />\n- The member can check out books online</p>\n<p>Which of the following test cases will NOT be relevant for this user story?</p>",
   "options": [
    "Input: The member logs into their account on the library system and searches for available books. Expected output: The system displays a list of available books",
    "Input: The member adds selected books to their online cart. Expected output: The books are successfully added to the cart, showing the total number of items.",
@@ -9538,7 +9538,7 @@
   "chapter": 3,
   "lo": "3.1.1",
   "src": "Quiz 22 · Q3",
-  "stem": "<p>The following is a list of the work products produced in the SDLC</p>\n<p>i. Test procedures, automated test scripts, and test data\nii. A commercial off-the-shelf (COTS) graphical editing tool used for creating marketing materials\niii. XML configuration files defining the setup for an open-source content management system\niv. UML package diagram, UML object diagram, and UML activity diagram\nv. Third-party closed-source operating systems without available source files</p>\n<p>Which of the following artifacts would NOT typically be tested with static testing?</p>",
+  "stem": "<p>The following is a list of the work products produced in the SDLC</p>\n<p>i. Test procedures, automated test scripts, and test data<br />\nii. A commercial off-the-shelf (COTS) graphical editing tool used for creating marketing materials<br />\niii. XML configuration files defining the setup for an open-source content management system<br />\niv. UML package diagram, UML object diagram, and UML activity diagram<br />\nv. Third-party closed-source operating systems without available source files</p>\n<p>Which of the following artifacts would NOT typically be tested with static testing?</p>",
   "options": [
    "i, ii, v",
    "ii, iii, v",
@@ -9725,7 +9725,7 @@
   "chapter": 3,
   "lo": "3.2.3",
   "src": "Quiz 22 · Q14",
-  "stem": "<p>Given the following roles and responsibilities in reviews:</p>\n<p>a. Manager\nb. Author\nc. Moderator\nd. Recorder\ne. Reviewer\nf. Review leader</p>\n<ol>\n<li>Identifying potential defects in the work product under review</li>\n<li>Fixing defects in the work product</li>\n<li>Deciding who will be involved in the review</li>\n<li>Deciding what is to be reviewed and providing resources</li>\n<li>Being the person upon whom the success of the review often depends</li>\n<li>Collating potential defects found during the individual review activity</li>\n</ol>\n<p>Among the options provided, which one correctly pairs roles and responsibilities in a review?</p>",
+  "stem": "<p>Given the following roles and responsibilities in reviews:</p>\n<p>a. Manager<br />\nb. Author<br />\nc. Moderator<br />\nd. Recorder<br />\ne. Reviewer<br />\nf. Review leader</p>\n<ol>\n<li>Identifying potential defects in the work product under review</li>\n<li>Fixing defects in the work product</li>\n<li>Deciding who will be involved in the review</li>\n<li>Deciding what is to be reviewed and providing resources</li>\n<li>Being the person upon whom the success of the review often depends</li>\n<li>Collating potential defects found during the individual review activity</li>\n</ol>\n<p>Among the options provided, which one correctly pairs roles and responsibilities in a review?</p>",
   "options": [
    "a-3; b-2; c-5; d-6; e-1, f-4;",
    "a-4; b-1; c-5; d-6; e-2, f-3;",
@@ -9793,7 +9793,7 @@
   "chapter": 5,
   "lo": "5.3.2",
   "src": "Quiz 22 · Q18",
-  "stem": "<p>Which of the following items are part of the test progress reports and which are part of the test completion report?</p>\n<p>a. Test progress report\nb. Test completion report</p>\n<ol>\n<li>Test summary</li>\n<li>Test period</li>\n<li>Unmitigated risks, defects not fixed</li>\n<li>New and changed risks within testing period</li>\n</ol>",
+  "stem": "<p>Which of the following items are part of the test progress reports and which are part of the test completion report?</p>\n<p>a. Test progress report<br />\nb. Test completion report</p>\n<ol>\n<li>Test summary</li>\n<li>Test period</li>\n<li>Unmitigated risks, defects not fixed</li>\n<li>New and changed risks within testing period</li>\n</ol>",
   "options": [
    "1-a, 2-b, 3-b, 4-a",
    "1-b, 2-a, 3-b, 4-a",
@@ -9827,7 +9827,7 @@
   "chapter": 2,
   "lo": "2.2.1",
   "src": "Quiz 22 · Q20",
-  "stem": "<p>Which types of failures (1-4) fit which test levels (A-D) BEST?</p>\n<ol>\n<li>System workflows do not meet business or user needs</li>\n<li>Unhandled or improperly handled API behavior</li>\n<li>Incorrect module logic</li>\n<li>Incorrect or unexpected system functional or non-functional behaviour</li>\n</ol>\n<p>A. Component testing\nB. Component integration testing\nC. System testing\nD. Acceptance testing</p>",
+  "stem": "<p>Which types of failures (1-4) fit which test levels (A-D) BEST?</p>\n<ol>\n<li>System workflows do not meet business or user needs</li>\n<li>Unhandled or improperly handled API behavior</li>\n<li>Incorrect module logic</li>\n<li>Incorrect or unexpected system functional or non-functional behaviour</li>\n</ol>\n<p>A. Component testing<br />\nB. Component integration testing<br />\nC. System testing<br />\nD. Acceptance testing</p>",
   "options": [
    "1B, 2A, 3D, 4C",
    "1D, 2B, 3C, 4A",
@@ -9888,7 +9888,7 @@
   "answers": [
    3
   ],
-  "explanation": "<p>d) is correct. 59 (F grade), 60 (D grade), 70 (C grade), 89 (B grade), 100 (A grade + Hundred-Point Hero Badge) – 6 partitions (out of 6):\n1. \"A\" grade - [90;100]\n2. \"B\" grade - [80;89]\n3. \"C\" grade - [70;79]\n4. \"D\" grade - [60;69]\n5. \"F\" grade - [0;59]\n6. \"Hundred-Point Hero\" Badge - 100 points</p>"
+  "explanation": "<p>d) is correct. 59 (F grade), 60 (D grade), 70 (C grade), 89 (B grade), 100 (A grade + Hundred-Point Hero Badge) – 6 partitions (out of 6):<br />\n1. \"A\" grade - [90;100]<br />\n2. \"B\" grade - [80;89]<br />\n3. \"C\" grade - [70;79]<br />\n4. \"D\" grade - [60;69]<br />\n5. \"F\" grade - [0;59]<br />\n6. \"Hundred-Point Hero\" Badge - 100 points</p>"
  },
  {
   "id": "q22-24",
@@ -9922,7 +9922,7 @@
   "answers": [
    1
   ],
-  "explanation": "<p>b) is correct. In the three-point estimation technique:\nE = (optimistic + 4 × most likely + pessimistic) / 6 = (15 + (30 × 4) + 75) / 6 = 35\nSD = (pessimistic – optimistic) / 6 = (75 – 15) / 6 = 10\nThe final estimation is 35 ± 10 person-hours (i.e., between 25 and 45 person-hours).\nMAXIMUM final estimation including the measurement error is 45 for all three regression test suites.\nThere are three regression test suites in total, thus the MAXIMUM final estimation including the measurement error to execute per test suite is 45 / 3 = 15.</p>"
+  "explanation": "<p>b) is correct. In the three-point estimation technique:<br />\nE = (optimistic + 4 × most likely + pessimistic) / 6 = (15 + (30 × 4) + 75) / 6 = 35<br />\nSD = (pessimistic – optimistic) / 6 = (75 – 15) / 6 = 10<br />\nThe final estimation is 35 ± 10 person-hours (i.e., between 25 and 45 person-hours).<br />\nMAXIMUM final estimation including the measurement error is 45 for all three regression test suites.<br />\nThere are three regression test suites in total, thus the MAXIMUM final estimation including the measurement error to execute per test suite is 45 / 3 = 15.</p>"
  },
  {
   "id": "q22-26",
@@ -9946,7 +9946,7 @@
   "chapter": 2,
   "lo": "2.2.3",
   "src": "Quiz 22 · Q27",
-  "stem": "<p>Match the change-related testing types (a-b) with the following information (i-iv):</p>\n<p>a. Regression testing\nb. Confirmation testing</p>\n<p>i. Testing verifies if defects have been introduced or remain undetected in unchanged areas of the software\nii. Can be executed at all levels of testing\niii. Testing typically involves rerunning test cases that previously failed due to defects\niv. Involves creating new tests to cover any changes required to fix defects</p>",
+  "stem": "<p>Match the change-related testing types (a-b) with the following information (i-iv):</p>\n<p>a. Regression testing<br />\nb. Confirmation testing</p>\n<p>i. Testing verifies if defects have been introduced or remain undetected in unchanged areas of the software<br />\nii. Can be executed at all levels of testing<br />\niii. Testing typically involves rerunning test cases that previously failed due to defects<br />\niv. Involves creating new tests to cover any changes required to fix defects</p>",
   "options": [
    "a - i, ii, iv; b - iii",
    "a - i, ii; b - iii, iv",
@@ -9963,7 +9963,7 @@
   "chapter": 3,
   "lo": "3.2.2",
   "src": "Quiz 22 · Q28",
-  "stem": "<p>Given the following task descriptions:</p>\n<ol>\n<li>Discussing the findings from individual reviews in a meeting</li>\n<li>Distributing the work product and clarifying roles</li>\n<li>Documenting defects in a report for follow-up</li>\n<li>Assessing the work product's quality using checklist-based reviewing</li>\n</ol>\n<p>The following review activities:</p>\n<p>A. Review Initiation\nB. Individual Review\nC. Communication and Analysis\nD. Fixing and Reporting</p>\n<p>Which of the following BEST matches the task descriptions and activities?</p>",
+  "stem": "<p>Given the following task descriptions:</p>\n<ol>\n<li>Discussing the findings from individual reviews in a meeting</li>\n<li>Distributing the work product and clarifying roles</li>\n<li>Documenting defects in a report for follow-up</li>\n<li>Assessing the work product's quality using checklist-based reviewing</li>\n</ol>\n<p>The following review activities:</p>\n<p>A. Review Initiation<br />\nB. Individual Review<br />\nC. Communication and Analysis<br />\nD. Fixing and Reporting</p>\n<p>Which of the following BEST matches the task descriptions and activities?</p>",
   "options": [
    "1A, 2C, 3D, 4B",
    "1С, 2A, 3B, 4D",
@@ -10133,7 +10133,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 22 · Q38",
-  "stem": "<p>You received the following defect report from a tester:</p>\n<p>\"Payment Error during guest purchase journey\n2024-Jan-15 - Mary Smith - Open\nWhen attempting to complete a purchase, after adding a product to the shopping cart, by using a VISA credit card on the checkout page, an error message appeared stating, 'Invalid payment method.' This occurred on multiple browsers. Based on the requirements, all major credit cards should be accepted. This is blocking the release.\"</p>\n<p>What critical information is MISSING from this defect report?</p>",
+  "stem": "<p>You received the following defect report from a tester:</p>\n<p>\"Payment Error during guest purchase journey<br />\n2024-Jan-15 - Mary Smith - Open<br />\nWhen attempting to complete a purchase, after adding a product to the shopping cart, by using a VISA credit card on the checkout page, an error message appeared stating, 'Invalid payment method.' This occurred on multiple browsers. Based on the requirements, all major credit cards should be accepted. This is blocking the release.\"</p>\n<p>What critical information is MISSING from this defect report?</p>",
   "options": [
    "Unique identifier and title with a short summary of the anomaly",
    "Identification of the test object and test environment",
@@ -10568,7 +10568,7 @@
   "answers": [
    1
   ],
-  "explanation": "<p>b) is correct. There are 6 VALID partitions to cover:\n1. \"A\" grade - [90;100]\n2. \"B\" grade - [80;89]\n3. \"C\" grade - [70;79]\n4. \"D\" grade - [60;69]\n5. \"F\" grade - [0;59]\n6. \"Hundred-Point Hero\" Badge - 100 points</p>\n<p>The question asks about the number of partitions and not about the number of test cases.</p>"
+  "explanation": "<p>b) is correct. There are 6 VALID partitions to cover:<br />\n1. \"A\" grade - [90;100]<br />\n2. \"B\" grade - [80;89]<br />\n3. \"C\" grade - [70;79]<br />\n4. \"D\" grade - [60;69]<br />\n5. \"F\" grade - [0;59]<br />\n6. \"Hundred-Point Hero\" Badge - 100 points</p>\n<p>The question asks about the number of partitions and not about the number of test cases.</p>"
  },
  {
   "id": "q23-24",
@@ -10687,7 +10687,7 @@
   "answers": [
    0
   ],
-  "explanation": "<p>a) is correct. In the three-point estimation technique:\nE = (optimistic + 4 × most likely + pessimistic) / 6 = (9 + (4 × 15) + 18) / 6 = 14.5\nSD = (pessimistic – optimistic) / 6 = (18 – 9) / 6 = 1.5\nThe final estimation is 14.5 ± 1.5 person-hours (i.e., between 13 and 16 person-hours).\nMAXIMUM final estimation including the measurement error is 16 for all four regression test suites.\nThere are 4 regression test suites in total, thus the MAXIMUM final estimation including the measurement error to execute per test suite is 16 / 4 = 4.</p>"
+  "explanation": "<p>a) is correct. In the three-point estimation technique:<br />\nE = (optimistic + 4 × most likely + pessimistic) / 6 = (9 + (4 × 15) + 18) / 6 = 14.5<br />\nSD = (pessimistic – optimistic) / 6 = (18 – 9) / 6 = 1.5<br />\nThe final estimation is 14.5 ± 1.5 person-hours (i.e., between 13 and 16 person-hours).<br />\nMAXIMUM final estimation including the measurement error is 16 for all four regression test suites.<br />\nThere are 4 regression test suites in total, thus the MAXIMUM final estimation including the measurement error to execute per test suite is 16 / 4 = 4.</p>"
  },
  {
   "id": "q23-31",
@@ -10830,7 +10830,7 @@
   "chapter": 4,
   "lo": "4.5.3",
   "src": "Quiz 23 · Q39",
-  "stem": "<p>Consider the following user story:</p>\n<p>• As a shopper, I want the ability to purchase products on the website so that I can acquire the items I desire</p>\n<p>Acceptance Criteria:</p>\n<p>• AC1: Users can apply one of the following coupon codes at checkout:\n  - 'Saver5' for a 5% discount\n  - 'Super10' for a 10% discount\n  - 'Mega15' for a 15% discount\n• AC2: If a user purchases exactly 5 products, a 'Bulk Buy Discount' of 10% is automatically applied to their order\n• AC3: Coupons and automatic discounts cannot be combined. The system applies the highest applicable discount\n• AC4: If a user removes items from their cart causing the 'Bulk Buy Discount' to no longer apply, the automatic discount should be removed</p>\n<p>Which of the following is NOT a valid test scenario based on the user story and acceptance criteria?</p>",
+  "stem": "<p>Consider the following user story:</p>\n<p>• As a shopper, I want the ability to purchase products on the website so that I can acquire the items I desire</p>\n<p>Acceptance Criteria:</p>\n<p>• AC1: Users can apply one of the following coupon codes at checkout:<br />\n- 'Saver5' for a 5% discount<br />\n- 'Super10' for a 10% discount<br />\n- 'Mega15' for a 15% discount<br />\n• AC2: If a user purchases exactly 5 products, a 'Bulk Buy Discount' of 10% is automatically applied to their order<br />\n• AC3: Coupons and automatic discounts cannot be combined. The system applies the highest applicable discount<br />\n• AC4: If a user removes items from their cart causing the 'Bulk Buy Discount' to no longer apply, the automatic discount should be removed</p>\n<p>Which of the following is NOT a valid test scenario based on the user story and acceptance criteria?</p>",
   "options": [
    "Add four products to the cart and apply the 'Super10' coupon code. Result: The system applies only the 10% discount from the 'Super10' coupon",
    "Add five products to the cart and do not apply any coupon code: The system automatically applies the 'Bulk Buy Discount' of 10%, and the final price reflects this discount",
@@ -11579,7 +11579,7 @@
   "chapter": 4,
   "lo": "4.1.1",
   "src": "Quiz 25 · Q4",
-  "stem": "<p>Match the test technique (A-C) with the category (1-3)</p>\n<ol>\n<li>Black-box test techniques</li>\n<li>White-box test techniques</li>\n<li>Experience-based test techniques</li>\n</ol>\n<p>A. Branch Testing\nB. Checklist-Based Testing\nC. Decision Table Testing</p>",
+  "stem": "<p>Match the test technique (A-C) with the category (1-3)</p>\n<ol>\n<li>Black-box test techniques</li>\n<li>White-box test techniques</li>\n<li>Experience-based test techniques</li>\n</ol>\n<p>A. Branch Testing<br />\nB. Checklist-Based Testing<br />\nC. Decision Table Testing</p>",
   "options": [
    "1C, 2A, 3B",
    "1A, 2C, 3B",
@@ -11851,7 +11851,7 @@
   "chapter": 2,
   "lo": "2.2.2",
   "src": "Quiz 25 · Q20",
-  "stem": "<p>You work on a fitness tracking app for a social media platform for a niche community or interest group.</p>\n<p>Your task is: \"To evaluate the functions (\"what\") that a test objects should perform\"</p>\n<p>What levels of testing are you MOST LIKELY performing?</p>\n<p>i. Component testing\nii. Component integration testing\niii. System testing\niv. System integration testing\nv. Acceptance testing</p>",
+  "stem": "<p>You work on a fitness tracking app for a social media platform for a niche community or interest group.</p>\n<p>Your task is: \"To evaluate the functions (\"what\") that a test objects should perform\"</p>\n<p>What levels of testing are you MOST LIKELY performing?</p>\n<p>i. Component testing<br />\nii. Component integration testing<br />\niii. System testing<br />\niv. System integration testing<br />\nv. Acceptance testing</p>",
   "options": [
    "iv, v",
    "iii, iv, v",
@@ -11902,7 +11902,7 @@
   "chapter": 4,
   "lo": "4.2.1",
   "src": "Quiz 25 · Q23",
-  "stem": "<p>You are testing the filtering functionality of an online shop. Users can filter products based on size and product category. The system's requirements specify the following conditions:</p>\n<p>Size: S, M, L, XL, 9, 10,\nProduct category: T-shirts, Pants, Sneakers, Sandals, Slippers</p>\n<p>Only T-shirts, Pants may be S, M, L, XL sizes and only Shoes may be 9, 10 sizes. The form has a built-in validation mechanism that will not allow you to violate this rule.</p>\n<p>You want to apply the Each Choice Equivalence Partitioning test technique.</p>\n<p>What is the minimal number of test cases to achieve 100% EP coverage?</p>",
+  "stem": "<p>You are testing the filtering functionality of an online shop. Users can filter products based on size and product category. The system's requirements specify the following conditions:</p>\n<p>Size: S, M, L, XL, 9, 10,<br />\nProduct category: T-shirts, Pants, Sneakers, Sandals, Slippers</p>\n<p>Only T-shirts, Pants may be S, M, L, XL sizes and only Shoes may be 9, 10 sizes. The form has a built-in validation mechanism that will not allow you to violate this rule.</p>\n<p>You want to apply the Each Choice Equivalence Partitioning test technique.</p>\n<p>What is the minimal number of test cases to achieve 100% EP coverage?</p>",
   "options": [
    "7",
    "10",
@@ -11919,7 +11919,7 @@
   "chapter": 1,
   "lo": "1.4.2",
   "src": "Quiz 25 · Q24",
-  "stem": "<p>Which of the following factors (i-v) have SIGNIFICANT influence on the test process?</p>\n<p>i. The software type and product architecture\nii. Skills, knowledge, and level of experience of testing team members\niii. Availability of funds on the project credit card for running automated tests in the production environment\niv. The average level of experience in testing among the stakeholders\nv. The Number of lines of code in the product under test</p>",
+  "stem": "<p>Which of the following factors (i-v) have SIGNIFICANT influence on the test process?</p>\n<p>i. The software type and product architecture<br />\nii. Skills, knowledge, and level of experience of testing team members<br />\niii. Availability of funds on the project credit card for running automated tests in the production environment<br />\niv. The average level of experience in testing among the stakeholders<br />\nv. The Number of lines of code in the product under test</p>",
   "options": [
    "i, ii have significant influence; iii, iv, v have not",
    "i, iii, iv have significant influence; ii, v have not",
@@ -12031,7 +12031,7 @@
   "answers": [
    2
   ],
-  "explanation": "<p>c) is correct. In the three-point estimation technique:\nE = (optimistic + 4 × most likely + pessimistic) / 6 = (1 + (4 × 2.5) + 4) / 6 = 2.5\nSD = (pessimistic – optimistic) / 6 = (4 – 1) / 6 = 0.5\nThe final estimation is 2.5 ± 0.5 person-hours (i.e., between 2 and 3 person-hours).\nThe MINIMUM final estimation including the measurement error is 2 person-hours.</p>"
+  "explanation": "<p>c) is correct. In the three-point estimation technique:<br />\nE = (optimistic + 4 × most likely + pessimistic) / 6 = (1 + (4 × 2.5) + 4) / 6 = 2.5<br />\nSD = (pessimistic – optimistic) / 6 = (4 – 1) / 6 = 0.5<br />\nThe final estimation is 2.5 ± 0.5 person-hours (i.e., between 2 and 3 person-hours).<br />\nThe MINIMUM final estimation including the measurement error is 2 person-hours.</p>"
  },
  {
   "id": "q25-31",
@@ -12140,7 +12140,7 @@
   "chapter": 5,
   "lo": "5.5.1",
   "src": "Quiz 25 · Q38",
-  "stem": "<p>You received the following defect report from the developers stating that the anomaly described in this test report is not reproducible:</p>\n<p>Id: BUG-0561\nDefect: Spreadsheet formulas not calculating\nDate: 2023-March-12 – Emily Clarke – Open</p>\n<p>The spreadsheet component of the suite fails to calculate any new formulas entered by the user. Repeated attempts to add simple formulas like SUM or AVERAGE result in blank cells instead of calculated results. This issue persists across several user accounts. No error messages displayed; however, the error log shows timeout issues when executing calculations. According to test case TC-2097, the application should process and display results immediately upon formula entry. This feature is integral to user operations as per REQ-0556.</p>\n<p>Which of the following information would be MOST valuable to add to this defect report to help developers understand and resolve the issue?</p>",
+  "stem": "<p>You received the following defect report from the developers stating that the anomaly described in this test report is not reproducible:</p>\n<p>Id: BUG-0561<br />\nDefect: Spreadsheet formulas not calculating<br />\nDate: 2023-March-12 – Emily Clarke – Open</p>\n<p>The spreadsheet component of the suite fails to calculate any new formulas entered by the user. Repeated attempts to add simple formulas like SUM or AVERAGE result in blank cells instead of calculated results. This issue persists across several user accounts. No error messages displayed; however, the error log shows timeout issues when executing calculations. According to test case TC-2097, the application should process and display results immediately upon formula entry. This feature is integral to user operations as per REQ-0556.</p>\n<p>Which of the following information would be MOST valuable to add to this defect report to help developers understand and resolve the issue?</p>",
   "options": [
    "Unmitigated risks",
    "Date when the anomaly was observed and author",
@@ -12158,7 +12158,7 @@
   "chapter": 4,
   "lo": "4.5.3",
   "src": "Quiz 25 · Q39",
-  "stem": "<p>Consider the following user story:</p>\n<p>• As an email campaign management system, I want the ability to prioritize email campaigns for standard and premium customers based on recipient list size, so I can optimize delivery and ensure the most impactful communications are sent in a timely manner</p>\n<p>And its acceptance criteria:</p>\n<p>• AC1: Premium customer emails should be processed before standard customer emails, regardless of recipient count\n• AC2: Within each customer tier (standard or premium), campaigns with smaller recipient lists should receive higher priority\n• AC3: If two campaigns within the same customer tier have the same number of recipients, they should be processed in the order they were received</p>\n<p>Two test cases have been created:</p>\n<p>• TC1. A standard campaign with 1000 recipients is delayed in favor of a standard campaign with 100 recipients\n• TC2. A standard campaign with 1000 recipients is delayed in favor of a premium campaign with 100 recipients</p>\n<p>Which of the acceptance criteria are not COMPREHENSIVELY covered by the test cases?</p>",
+  "stem": "<p>Consider the following user story:</p>\n<p>• As an email campaign management system, I want the ability to prioritize email campaigns for standard and premium customers based on recipient list size, so I can optimize delivery and ensure the most impactful communications are sent in a timely manner</p>\n<p>And its acceptance criteria:</p>\n<p>• AC1: Premium customer emails should be processed before standard customer emails, regardless of recipient count<br />\n• AC2: Within each customer tier (standard or premium), campaigns with smaller recipient lists should receive higher priority<br />\n• AC3: If two campaigns within the same customer tier have the same number of recipients, they should be processed in the order they were received</p>\n<p>Two test cases have been created:</p>\n<p>• TC1. A standard campaign with 1000 recipients is delayed in favor of a standard campaign with 100 recipients<br />\n• TC2. A standard campaign with 1000 recipients is delayed in favor of a premium campaign with 100 recipients</p>\n<p>Which of the acceptance criteria are not COMPREHENSIVELY covered by the test cases?</p>",
   "options": [
    "AC1, AC2, and AC3 all lack comprehensive coverage",
    "AC1 and AC3 lack comprehensive coverage",
@@ -12175,7 +12175,7 @@
   "chapter": 2,
   "lo": "2.1.5",
   "src": "Quiz 25 · Q40",
-  "stem": "<p>Which of the following best practices for achieving a \"shift-left\" approach are typically the responsibility of developers rather than testers?</p>\n<p>i. TDD\nii. Component Integration testing\niii. Alpha testing\niv. BDD\nv. Test component security</p>",
+  "stem": "<p>Which of the following best practices for achieving a \"shift-left\" approach are typically the responsibility of developers rather than testers?</p>\n<p>i. TDD<br />\nii. Component Integration testing<br />\niii. Alpha testing<br />\niv. BDD<br />\nv. Test component security</p>",
   "options": [
    "i, ii",
    "i, ii, v",
@@ -12684,7 +12684,7 @@
   "answers": [
    0
   ],
-  "explanation": "<p>a) is correct. - A. (prioritized) test cases → 3. Test design - B. Test data → 4. Test implementation - C. Test environment requirements → 3. Test design - D. (prioritized) test conditions → 2. Test analysis - E. Test environment elements → 4. Test implementation</p>"
+  "explanation": "<p>a) is correct.<br />\nA. (prioritized) test cases → 3. Test design<br />\nB. Test data → 4. Test implementation<br />\nC. Test environment requirements → 3. Test design<br />\nD. (prioritized) test conditions → 2. Test analysis<br />\nE. Test environment elements → 4. Test implementation</p>"
  },
  {
   "id": "q01-30",
@@ -12803,7 +12803,7 @@
   "answers": [
    0
   ],
-  "explanation": "<p>a) is correct. - (i.) is true for dynamic testing - (ii.) is true for both static and dynamic testing - (iii.) is true for static testing - (iv.) is true for dynamic testing - (v.) is true for static testing</p>"
+  "explanation": "<p>a) is correct.<br />\n(i.) is true for dynamic testing<br />\n(ii.) is true for both static and dynamic testing<br />\n(iii.) is true for static testing<br />\n(iv.) is true for dynamic testing<br />\n(v.) is true for static testing</p>"
  },
  {
   "id": "q01-37",
@@ -12905,7 +12905,7 @@
   "answers": [
    3
   ],
-  "explanation": "<p>d) is correct. - i. (prioritized) test conditions – test analysis - ii. Test data and test environment requirements – test design - iii. Coverage items – test design - iv. Test data – test implementation - v. Defect reports regarding defects in the test basis – test analysis - vi. Test charters – test design</p>"
+  "explanation": "<p>d) is correct.<br />\ni. (prioritized) test conditions – test analysis<br />\nii. Test data and test environment requirements – test design<br />\niii. Coverage items – test design<br />\niv. Test data – test implementation<br />\nv. Defect reports regarding defects in the test basis – test analysis<br />\nvi. Test charters – test design</p>"
  },
  {
   "id": "q02-3",
@@ -12922,7 +12922,7 @@
   "answers": [
    1
   ],
-  "explanation": "<p>b) is correct. - 1D (Acceptance testing) because acceptance testing focuses on validation, demonstrating readiness for deployment, and is ideally performed by the intended users - 2C (System integration testing) because system integration testing requires suitable test environments that are preferably similar to the operational environment - 3B (System testing) because system testing is related to system specifications and may be performed by an independent test team - 4A (Component testing) because component testing is normally performed by developers in their development environments</p>"
+  "explanation": "<p>b) is correct.<br />\n1D (Acceptance testing) because acceptance testing focuses on validation, demonstrating readiness for deployment, and is ideally performed by the intended users<br />\n2C (System integration testing) because system integration testing requires suitable test environments that are preferably similar to the operational environment<br />\n3B (System testing) because system testing is related to system specifications and may be performed by an independent test team<br />\n4A (Component testing) because component testing is normally performed by developers in their development environments</p>"
  },
  {
   "id": "q02-4",
@@ -12973,7 +12973,7 @@
   "answers": [
    0
   ],
-  "explanation": "<p>a) is correct. - (i.) True. Test basis (e.g., models) - (ii.) False. Encrypted code is too complex for humans and if it is properly encrypted it will not be analyzable by most tools - (iii.) True. Testware - (iv.) False. Work products that are not appropriate for static testing include those that are difficult to interpret by human beings and that should not be analyzed by tools (e.g., 3rd party executable code due to legal reasons) - (v.) True. Test basis (e.g., specifications, source code, contracts and models etc.) - (vi.) False. Commercial-Off-The-Shelf (COTS) software and services are built and delivered usually from a third party vendor</p>"
+  "explanation": "<p>a) is correct.<br />\n(i.) True. Test basis (e.g., models)<br />\n(ii.) False. Encrypted code is too complex for humans and if it is properly encrypted it will not be analyzable by most tools<br />\n(iii.) True. Testware<br />\n(iv.) False. Work products that are not appropriate for static testing include those that are difficult to interpret by human beings and that should not be analyzed by tools (e.g., 3rd party executable code due to legal reasons)<br />\n(v.) True. Test basis (e.g., specifications, source code, contracts and models etc.)<br />\n(vi.) False. Commercial-Off-The-Shelf (COTS) software and services are built and delivered usually from a third party vendor</p>"
  },
  {
   "id": "q02-7",
@@ -12990,7 +12990,7 @@
   "answers": [
    2
   ],
-  "explanation": "<p>c) is correct. - A. Test design – 1. Elaborating the test conditions into test cases and other testware - B. Test planning – 4. Formulating a test schedule - C. Test monitoring and control – 3. Adding new resources when and where needed - D. Test analysis – 2. Identifying testable features in a test basis</p>"
+  "explanation": "<p>c) is correct.<br />\nA. Test design – 1. Elaborating the test conditions into test cases and other testware<br />\nB. Test planning – 4. Formulating a test schedule<br />\nC. Test monitoring and control – 3. Adding new resources when and where needed<br />\nD. Test analysis – 2. Identifying testable features in a test basis</p>"
  },
  {
   "id": "q02-8",
@@ -13077,7 +13077,7 @@
   "answers": [
    2
   ],
-  "explanation": "<p>c) is correct. - Moderator – B. Ensuring the effective running of review meetings, including mediation, time management, and maintaining a safe review environment where everyone can speak freely - Review Leader – D. Taking overall responsibility for the review, including deciding who will be involved, and organizing when and where the review will take place - Manager – C. Deciding what is to be reviewed and providing resources, such as staff and time, for the review - Scribe – A. Collating anomalies from reviewers and recording review information, such as decisions and new anomalies found during the review meeting</p>"
+  "explanation": "<p>c) is correct.<br />\nModerator – B. Ensuring the effective running of review meetings, including mediation, time management, and maintaining a safe review environment where everyone can speak freely<br />\nReview Leader – D. Taking overall responsibility for the review, including deciding who will be involved, and organizing when and where the review will take place<br />\nManager – C. Deciding what is to be reviewed and providing resources, such as staff and time, for the review<br />\nScribe – A. Collating anomalies from reviewers and recording review information, such as decisions and new anomalies found during the review meeting</p>"
  },
  {
   "id": "q02-13",
@@ -13335,7 +13335,7 @@
   "answers": [
    1
   ],
-  "explanation": "<p>b) is correct. - A. (Test analysis task) - B. (Test planning task) - C. (The testing role takes overall responsibility for the engineering (technical) aspect of testing) - D. (Test analysis task) - E. (Test monitoring task) - F. (Test control task)  According to the syllabus: The test management role is mainly focused on the activities of test planning, test monitoring and control and test completion. The testing role is mainly focused on the activities of test analysis, test design, test implementation and test execution.</p>"
+  "explanation": "<p>b) is correct.<br />\nA. (Test analysis task)<br />\nB. (Test planning task)<br />\nC. (The testing role takes overall responsibility for the engineering (technical) aspect of testing)<br />\nD. (Test analysis task)<br />\nE. (Test monitoring task)<br />\nF. (Test control task)<br />\nAccording to the syllabus: The test management role is mainly focused on the activities of test planning, test monitoring and control and test completion. The testing role is mainly focused on the activities of test analysis, test design, test implementation and test execution.</p>"
  },
  {
   "id": "q02-29",
@@ -13489,7 +13489,7 @@
   "answers": [
    0
   ],
-  "explanation": "<p>a) is correct. - (i.) is true, according to the syllabus: Static and dynamic testing (with analysis of failures) can both lead to the detection of defects, however there are some defect types that can only be found by either static or dynamic testing - (iii.) is true, according to the syllabus: Static testing finds defects directly, while dynamic testing causes failures from which the associated defects are determined through subsequent analysis - (vi.) is true, according to the syllabus: Static testing may more easily detect defects that lay on paths through the code that are rarely executed or hard to reach</p>"
+  "explanation": "<p>a) is correct.<br />\n(i.) is true, according to the syllabus: Static and dynamic testing (with analysis of failures) can both lead to the detection of defects, however there are some defect types that can only be found by either static or dynamic testing<br />\n(iii.) is true, according to the syllabus: Static testing finds defects directly, while dynamic testing causes failures from which the associated defects are determined through subsequent analysis<br />\n(vi.) is true, according to the syllabus: Static testing may more easily detect defects that lay on paths through the code that are rarely executed or hard to reach</p>"
  },
  {
   "id": "q02-38",
@@ -14441,7 +14441,7 @@
   "answers": [
    2
   ],
-  "explanation": "<p>c) is correct. Contains only valid transitions. - a) is not correct. After the transition 'restart', we are back to the state S1 (Login). The test must end when a transition arrives back at S1, so the test case shouldn't continue after the first transition. - b) is not correct. There is no valid 'back' transition from S2.</p>"
+  "explanation": "<p>c) is correct. Contains only valid transitions.<br />\na) is not correct. After the transition 'restart', we are back to the state S1 (Login). The test must end when a transition arrives back at S1, so the test case shouldn't continue after the first transition.<br />\nb) is not correct. There is no valid 'back' transition from S2.</p>"
  },
  {
   "id": "q04-14",
@@ -14526,7 +14526,7 @@
   "answers": [
    0
   ],
-  "explanation": "<p>a) is correct. - 2. All smoke test cases passed with a 100% success rate - example of the need for a test object to have met the exit criteria for a prior level of testing before testing can begin (entry criterion) - 4. The subscription for the UI testing tool has been purchased, and access granted - entry criterion (availability of test tools) - 5. Sample data added to the test environment database - entry criterion (test environment readiness) - 1. 90% statement coverage achieved - exit criterion - 3. Defect density below 1% - exit criterion - 6. All critical defects addressed and fixed - exit criterion</p>"
+  "explanation": "<p>a) is correct.<br />\n2. All smoke test cases passed with a 100% success rate - example of the need for a test object to have met the exit criteria for a prior level of testing before testing can begin (entry criterion)<br />\n4. The subscription for the UI testing tool has been purchased, and access granted - entry criterion (availability of test tools)<br />\n5. Sample data added to the test environment database - entry criterion (test environment readiness)<br />\n1. 90% statement coverage achieved - exit criterion<br />\n3. Defect density below 1% - exit criterion<br />\n6. All critical defects addressed and fixed - exit criterion</p>"
  },
  {
   "id": "q04-19",
@@ -14645,7 +14645,7 @@
   "answers": [
    3
   ],
-  "explanation": "<p>d) is correct. - AC1: Covered as the user subscribes with both email and SMS - AC2: Covered since valid email and valid phone number implied by successful notifications - AC3: Covered as both timeframes (48 hours and 24 hours) were used - AC4: Partially covered. The test involved notifications for \"delay\", but did not cover notifications for \"cancel\" - AC5: Covered as the user changed their notification method from email to SMS - AC6: Partially covered. The test verified the ability to unsubscribe after changing notification methods, but did not test unsubscribing immediately after the initial subscription</p>"
+  "explanation": "<p>d) is correct.<br />\nAC1: Covered as the user subscribes with both email and SMS<br />\nAC2: Covered since valid email and valid phone number implied by successful notifications<br />\nAC3: Covered as both timeframes (48 hours and 24 hours) were used<br />\nAC4: Partially covered. The test involved notifications for \"delay\", but did not cover notifications for \"cancel\"<br />\nAC5: Covered as the user changed their notification method from email to SMS<br />\nAC6: Partially covered. The test verified the ability to unsubscribe after changing notification methods, but did not test unsubscribing immediately after the initial subscription</p>"
  },
  {
   "id": "q04-26",
