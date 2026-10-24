@@ -26,6 +26,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...TOPIC_PAGES.map((p) => page(topicUrl(p), 0.7)),
     ...pair("/glossary", 0.8),
     ...TERMS.flatMap((t) => pair(`/glossary/${t.slug}`, 0.6)),
-    page("/contact", 0.2),
   ];
 }

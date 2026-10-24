@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useApp, type Tier } from "./AppProvider";
 import { PasswordInput } from "./PasswordInput";
@@ -123,12 +122,6 @@ function LoginDialog() {
                     {/* A generated password is shown in clear so it can be read and written down. */}
                     <PasswordInput key={locked ? "generated" : "typed"} defaultVisible={locked} id="login-pass" value={password} onChange={(e) => setPassword(e.target.value)} disabled={locked} placeholder="Enter password" autoComplete={locked ? "new-password" : "current-password"} style={{ minHeight: 44, fontVariantNumeric: "tabular-nums", letterSpacing: locked ? ".04em" : undefined }} />
                   </div>
-                  {!locked && (
-                    <span style={{ padding: "4px 2px", fontSize: "var(--fs-12)", color: "var(--color-accent-2-900)", textAlign: "right" }}>
-                      Forgot password?{" "}
-                      <Link href="/contact" onClick={closeDialog} style={{ color: "inherit" }}>Contact me</Link>
-                    </span>
-                  )}
                   <div className="dialog-actions" style={{ marginTop: "auto" }}>
                     <button className="btn btn-ghost" type="button" onClick={closeDialog}>Cancel</button>
                     <button className="btn btn-primary" type="submit" disabled={submitting} aria-busy={submitting} style={{ display: "inline-flex", alignItems: "center", gap: 8 }}>
