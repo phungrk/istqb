@@ -4,18 +4,20 @@ import { useEffect, useRef, useState } from "react";
 import { XIcon } from "@/components/icons";
 import { flushNow, track } from "@/lib/track";
 import { Lightbulb, ThumbsUp } from "lucide-react";
+import { ComputeArt, MatchArt, RecognizeArt } from "@/components/ExamTipsArt";
 
 const sub = { margin: "0 0 4px", fontSize: "var(--fs-14)", fontWeight: 700, color: "var(--color-accent-2-800)" } as const;
 const p = { margin: 0 } as const;
 
 /** One of the three question types: its name, what it is, and how to answer it. */
-function Kind({ n, name, what, children }: { n: number; name: string; what: string; children: React.ReactNode }) {
+function Kind({ n, name, what, art, children }: { n: number; name: string; what: string; art: React.ReactNode; children: React.ReactNode }) {
   return (
     <section style={{ background: "var(--color-bg)", borderRadius: 24, padding: "16px 18px", display: "flex", flexDirection: "column", gap: 6 }}>
       <h3 style={{ margin: 0, fontSize: "var(--fs-18)" }}>
         {n}. Loại “{name}”
       </h3>
       <span style={{ fontSize: "var(--fs-14)", fontWeight: 600, color: "var(--color-neutral-700)" }}>{what}</span>
+      {art}
       <span style={sub}>Cách làm</span>
       {children}
     </section>
@@ -127,7 +129,7 @@ export function ExamTips() {
               Làm bài test bằng tiếng Anh, bạn sẽ gặp khá nhiều câu hỏi mang tính gài bẫy. Theo kinh nghiệm của Capu, có thể chia các câu hỏi thành 3 loại, và mỗi loại có một cách làm riêng.
             </p>
 
-            <Kind n={1} name="Nhận ra" what="Chọn đúng một phát biểu, định nghĩa hoặc thuật ngữ.">
+            <Kind n={1} name="Nhận ra" what="Chọn đúng một phát biểu, định nghĩa hoặc thuật ngữ." art={<RecognizeArt />}>
               <p style={p}>
                 Ghi keyword của câu hỏi ra giấy, rồi chia ngay bên dưới keyword đó thành 2 cột: <strong>ĐÚNG | SAI</strong>. Sau đó phân loại từng lựa chọn vào một trong hai cột.
               </p>
@@ -136,13 +138,13 @@ export function ExamTips() {
               </p>
             </Kind>
 
-            <Kind n={2} name="Gán nhãn" what="Ghép hoặc phân loại nhiều mục cùng lúc.">
+            <Kind n={2} name="Gán nhãn" what="Ghép hoặc phân loại nhiều mục cùng lúc." art={<MatchArt />}>
               <p style={p}>
                 Ghi ra giấy 2 cột. Ví dụ cột 1 là 1, 2, 3, 4 và cột 2 là i, ii, iii, iv, v… Sau đó dùng bút nối các mục của hai cột với nhau.
               </p>
             </Kind>
 
-            <Kind n={3} name="Tính / áp dụng" what="Chạy một kỹ thuật trên dữ liệu cụ thể.">
+            <Kind n={3} name="Tính / áp dụng" what="Chạy một kỹ thuật trên dữ liệu cụ thể." art={<ComputeArt />}>
               <p style={p}>Học thuộc công thức là bạn lấy được điểm ngay.</p>
             </Kind>
 
