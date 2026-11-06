@@ -167,7 +167,7 @@ export function InsightsView({ data }: { data: Insights }) {
         <div>
           <h2 style={{ margin: "0 0 4px", fontSize: "var(--fs-22)" }}>Bí kíp phòng thi</h2>
           <p style={{ margin: 0, fontSize: "var(--fs-13)", color: "var(--color-neutral-700)" }}>
-            Who opened and liked the exam-tips modal on Practice tests in the last {data.days} days. Signed-in users are named; guests are counted by browser. Every click is one like.
+            Who opened and liked the exam-tips modal on Practice tests in the last {data.days} days. Signed-in users are named; guests are counted by browser. Every click is one like, and closing the modal adds one more.
           </p>
         </div>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: 12 }}>
@@ -175,7 +175,7 @@ export function InsightsView({ data }: { data: Insights }) {
           <Tile label="Visitors" value={num(data.tips.visitors)} sub="distinct browsers" />
           <Tile label="Signed-in users" value={num(data.tips.users.length)} />
           <Tile label="Guests" value={num(data.tips.guests)} sub="not signed in" />
-          <Tile label="Likes" value={num(data.tips.likes)} sub={`all time · ${num(data.tips.likesInPeriod)} in ${data.days} days (${num(data.tips.guestLikes)} by guests)`} />
+          <Tile label="Likes" value={num(data.tips.likes)} sub={`all time · ${num(data.tips.likesInPeriod)} in ${data.days} days: ${num(data.tips.likesInPeriod - data.tips.autoLikesInPeriod)} clicks + ${num(data.tips.autoLikesInPeriod)} on close (${num(data.tips.guestLikes)} by guests)`} />
         </div>
         <div style={{ ...card, overflowX: "auto" }}>
           <table className="table" style={{ width: "100%", minWidth: 420, fontSize: "var(--fs-14)" }}>

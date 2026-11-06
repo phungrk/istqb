@@ -43,6 +43,8 @@ export type Insights = {
     /** Likes by anyone, all time (the running total shown in the modal), and clicks logged in this period. */
     likes: number;
     likesInPeriod: number;
+    /** Of those, the ones added automatically when the modal was closed. */
+    autoLikesInPeriod: number;
     guestLikes: number;
     users: { username: string; opens: number; likes: number; last: string }[];
   };
@@ -184,6 +186,7 @@ export async function computeInsights(days: number): Promise<Insights> {
     guests: new Set(tipEvents.filter((e) => !e.uid).map((e) => e.anon)).size,
     likes: await store.getCounter("tips-likes"),
     likesInPeriod: likeEvents.length,
+    autoLikesInPeriod: likeEvents.filter((e) => e.auto === true).length,
     guestLikes: likeEvents.filter((e) => !e.uid).length,
     users,
   };

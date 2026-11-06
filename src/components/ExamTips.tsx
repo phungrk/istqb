@@ -33,7 +33,7 @@ export function ExamTips() {
   const opener = useRef<HTMLButtonElement>(null);
   const closeBtn = useRef<HTMLButtonElement>(null);
 
-  // Likes: every click is one like, guest or member. Clicks show at once and go to the server in small batches.
+  // Likes: every click is one like, guest or member, and closing the modal adds one more. Likes show at once and go to the server in small batches.
   const [likes, setLikes] = useState<number | null>(null);
   const [liked, setLiked] = useState(false);
   const [pop, setPop] = useState(0);
@@ -71,6 +71,10 @@ export function ExamTips() {
       .catch(() => {});
   };
   const hide = () => {
+    // Every time the modal is closed it earns one like automatically (on top of any button clicks).
+    pending.current++;
+    setLikes((l) => (l ?? 0) + 1);
+    track("tips_like", { auto: true });
     sendLikes(true);
     flushNow();
     setOpen(false);
