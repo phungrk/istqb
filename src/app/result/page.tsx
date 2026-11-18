@@ -66,7 +66,7 @@ export default function ResultPage() {
       )}
 
       <div style={{ display: "flex", gap: 24, flexWrap: "wrap", alignItems: "flex-start" }}>
-        <div style={{ flex: "0 1 380px", minWidth: 280, background: "var(--color-surface)", borderRadius: 32, padding: 26, display: "flex", flexDirection: "column", gap: 16 }}>
+        <aside className="result-side" style={{ flex: "0 1 380px", minWidth: 280, background: "var(--color-surface)", borderRadius: 32, padding: 26, display: "flex", flexDirection: "column", gap: 16 }}>
           <h4 style={{ margin: 0 }}>By chapter</h4>
           {Object.entries(r.perChapter).map(([c, [k, t]]) => (
             <div key={c} style={{ display: "flex", flexDirection: "column", gap: 6 }}>
@@ -79,7 +79,19 @@ export default function ResultPage() {
               </div>
             </div>
           ))}
-        </div>
+          <h4 style={{ margin: "6px 0 0" }}>Questions</h4>
+          <nav aria-label="Jump to question" style={{ display: "grid", gridTemplateColumns: "repeat(5,1fr)", gap: 8 }}>
+            {r.set.questions.map((q, i) => {
+              const ok = isCorrect(q, r.answers[i]);
+              return (
+                <button key={i} type="button" aria-label={`Question ${i + 1}: ${ok ? "correct" : "wrong"}`}
+                  onClick={() => { const el = document.getElementById(`q-${i + 1}`); el?.scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" }); }}
+                  style={{ aspectRatio: "1", borderRadius: "50%", border: 0, cursor: "pointer", fontWeight: 700, fontSize: "var(--fs-13)", background: ok ? "var(--color-accent-2-300)" : "var(--color-accent-300)", color: "var(--color-text)" }}>{i + 1}</button>
+              );
+            })}
+          </nav>
+          <span style={{ fontSize: 12, color: "var(--color-neutral-700)" }}>Green = correct, orange = wrong.</span>
+        </aside>
         <div style={{ flex: "1 1 520px", minWidth: 0, display: "flex", flexDirection: "column", gap: 12 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 12, flexWrap: "wrap" }}>
             <h4 style={{ margin: 0, flex: 1 }}>Review answers</h4>
@@ -90,7 +102,7 @@ export default function ResultPage() {
             const a = r.answers[i];
             const ok = isCorrect(q, a);
             return (
-              <div key={q.id + i} style={{ background: "var(--color-neutral-100)", borderRadius: 28, padding: "20px 22px", display: "flex", flexDirection: "column", gap: 8 }}>
+              <div key={q.id + i} id={`q-${i + 1}`} style={{ scrollMarginTop: 96, background: "var(--color-neutral-100)", borderRadius: 28, padding: "20px 22px", display: "flex", flexDirection: "column", gap: 8 }}>
                 <div style={{ display: "flex", gap: 10, alignItems: "center" }}>
                   <span aria-label={ok ? "Correct" : "Wrong"} style={{ width: 28, height: 28, borderRadius: "50%", flex: "none", display: "grid", placeItems: "center", background: ok ? "var(--color-accent-2-600)" : "var(--color-accent-600)", color: "var(--color-bg)" }}>
                     {ok ? <CheckIcon strokeWidth={3} /> : <XIcon strokeWidth={3} />}
