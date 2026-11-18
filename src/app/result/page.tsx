@@ -7,6 +7,7 @@ import { Html } from "@/components/Html";
 import { ExplainMistake, ExplainMistakeIntro } from "@/components/ExplainMistake";
 import { Explanation, ViLine, VietnameseToggle, useVietnamese } from "@/components/Vietnamese";
 import { Spinner } from "@/components/Loading";
+import { ReviewOptions } from "@/components/ReviewOptions";
 import { CheckIcon, XIcon } from "@/components/icons";
 import { isCorrect, letters } from "@/lib/questions";
 import { chapterTitle } from "@/lib/syllabus";
@@ -100,10 +101,14 @@ export default function ResultPage() {
                   <Html html={q.stem} style={{ fontSize: "var(--fs-15)" }} />
                   {vi && <ViLine html={q.vi?.stem} size="var(--fs-14)" />}
                 </div>
+                <ReviewOptions q={q} chosen={a ?? []} vi={vi} />
                 <span style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }}>Your answer: {letters(a)} · Correct: {letters(q.answers)}</span>
+                <div style={{ display: "flex", flexDirection: "column", gap: 6, background: ok ? "var(--color-accent-2-100)" : "var(--color-accent-100)", borderRadius: 20, padding: "14px 16px" }}>
+                  <span style={{ fontWeight: 700, fontSize: "var(--fs-14)", color: ok ? "var(--color-accent-2-800)" : "var(--color-accent-800)" }}>Explanation</span>
+                  <Explanation q={q} on={vi} style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-900)" }} />
+                </div>
                 {!ok && (
                   <>
-                    <Explanation q={q} on={vi} style={{ fontSize: "var(--fs-14)", color: "var(--color-neutral-800)" }} />
                     <ExplainMistake q={q} chosen={a ?? []} vi={vi} />
                     {flags.pro && (
                       <button className="btn btn-ghost" onClick={() => askAI(q, a)} style={{ alignSelf: "flex-start", color: "var(--color-accent-700)" }}>
